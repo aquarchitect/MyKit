@@ -55,6 +55,8 @@
 		C289ADE51B62BAD500186773 /* NSIndexPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADD71B62BAD500186773 /* NSIndexPath+.swift */; };
 		C289ADE71B62BADE00186773 /* TimeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADE61B62BADE00186773 /* TimeSystem.swift */; };
 		C289ADE81B62BADE00186773 /* TimeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADE61B62BADE00186773 /* TimeSystem.swift */; };
+		C2DEBEDD1B65723A0040E239 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEBEDC1B65723A0040E239 /* String+.swift */; };
+		C2DEBEDE1B65723A0040E239 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEBEDC1B65723A0040E239 /* String+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,7 @@
 		C289ADD71B62BAD500186773 /* NSIndexPath+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSIndexPath+.swift"; path = "MyKit/NSIndexPath+.swift"; sourceTree = "<group>"; };
 		C289ADE61B62BADE00186773 /* TimeSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSystem.swift; path = MyKit/TimeSystem.swift; sourceTree = "<group>"; };
 		C289ADEB1B62BC3A00186773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyKit/Info.plist; sourceTree = "<group>"; };
+		C2DEBEDC1B65723A0040E239 /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+.swift"; path = "MyKit/String+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +177,7 @@
 				C289ADD51B62BAD500186773 /* NSDate+.swift */,
 				C289ADD61B62BAD500186773 /* NSDateFormatter+.swift */,
 				C289ADD71B62BAD500186773 /* NSIndexPath+.swift */,
+				C2DEBEDC1B65723A0040E239 /* String+.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -391,6 +395,7 @@
 				C289ADE01B62BAD500186773 /* NSDate+.swift in Sources */,
 				C289ADCF1B62BAC200186773 /* Timing.swift in Sources */,
 				C289ADD81B62BAD500186773 /* CGPoint+.swift in Sources */,
+				C2DEBEDE1B65723A0040E239 /* String+.swift in Sources */,
 				C289ADDA1B62BAD500186773 /* CGRect+.swift in Sources */,
 				C289ADE71B62BADE00186773 /* TimeSystem.swift in Sources */,
 			);
@@ -424,6 +429,7 @@
 				C289ADDD1B62BAD500186773 /* CGSize+.swift in Sources */,
 				C289ADA81B62BA8B00186773 /* UIBezierPath+.swift in Sources */,
 				C289ADE11B62BAD500186773 /* NSDate+.swift in Sources */,
+				C2DEBEDD1B65723A0040E239 /* String+.swift in Sources */,
 				C289ADB01B62BA8B00186773 /* UIView+.swift in Sources */,
 				C289ADC81B62BAC200186773 /* Drawing.swift in Sources */,
 				C289ADAC1B62BA8B00186773 /* UIControl+.swift in Sources */,
@@ -440,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = MyKit/Info.plist;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -447,6 +454,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = MyKit/Info.plist;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
@@ -686,6 +694,7 @@
 				C289AD841B62B95700186773 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C289AD8F1B62B97400186773 /* Build configuration list for PBXNativeTarget "MyKitiOS" */ = {
 			isa = XCConfigurationList;
@@ -694,6 +703,7 @@
 				C289AD911B62B97400186773 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
