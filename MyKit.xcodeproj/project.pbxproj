@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C26488121B67181000F79D7B /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26488111B67181000F79D7B /* HTMLParser.swift */; };
-		C26488131B67181000F79D7B /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26488111B67181000F79D7B /* HTMLParser.swift */; };
 		C289AD801B62B95700186773 /* MyKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD8D1B62B97400186773 /* MyKitiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKitiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD9D1B62BA6D00186773 /* NSControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289AD9B1B62BA6D00186773 /* NSControl+.swift */; };
@@ -51,16 +49,18 @@
 		C289ADDF1B62BAD500186773 /* NSCache+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADD41B62BAD500186773 /* NSCache+.swift */; };
 		C289ADE01B62BAD500186773 /* NSDate+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADD51B62BAD500186773 /* NSDate+.swift */; };
 		C289ADE11B62BAD500186773 /* NSDate+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADD51B62BAD500186773 /* NSDate+.swift */; };
-		C289ADE21B62BAD500186773 /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADD61B62BAD500186773 /* NSDateFormatter+.swift */; };
-		C289ADE31B62BAD500186773 /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADD61B62BAD500186773 /* NSDateFormatter+.swift */; };
 		C289ADE41B62BAD500186773 /* NSIndexPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADD71B62BAD500186773 /* NSIndexPath+.swift */; };
 		C289ADE51B62BAD500186773 /* NSIndexPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADD71B62BAD500186773 /* NSIndexPath+.swift */; };
 		C289ADE71B62BADE00186773 /* TimeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADE61B62BADE00186773 /* TimeSystem.swift */; };
 		C289ADE81B62BADE00186773 /* TimeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADE61B62BADE00186773 /* TimeSystem.swift */; };
+		C29E35861B82A2D500051E3A /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E35851B82A2D500051E3A /* PresentationController.swift */; };
+		C2C48E221B7C856A00CB544F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48E211B7C856A00CB544F /* String+.swift */; };
+		C2C48E231B7C856A00CB544F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48E211B7C856A00CB544F /* String+.swift */; };
+		C2E6A1871B85BD0B00A84D81 /* Dictionary+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E6A1861B85BD0B00A84D81 /* Dictionary+.swift */; };
+		C2E6A1881B85BD0B00A84D81 /* Dictionary+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E6A1861B85BD0B00A84D81 /* Dictionary+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C26488111B67181000F79D7B /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTMLParser.swift; path = MyKit/HTMLParser.swift; sourceTree = "<group>"; };
 		C289AD7C1B62B95700186773 /* MyKitOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKitOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7F1B62B95700186773 /* MyKitOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKitOSX.h; sourceTree = "<group>"; };
 		C289AD8A1B62B97400186773 /* MyKitiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKitiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,10 +94,12 @@
 		C289ADD31B62BAD500186773 /* CGSize+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGSize+.swift"; path = "MyKit/CGSize+.swift"; sourceTree = "<group>"; };
 		C289ADD41B62BAD500186773 /* NSCache+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSCache+.swift"; path = "MyKit/NSCache+.swift"; sourceTree = "<group>"; };
 		C289ADD51B62BAD500186773 /* NSDate+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+.swift"; path = "MyKit/NSDate+.swift"; sourceTree = "<group>"; };
-		C289ADD61B62BAD500186773 /* NSDateFormatter+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDateFormatter+.swift"; path = "MyKit/NSDateFormatter+.swift"; sourceTree = "<group>"; };
 		C289ADD71B62BAD500186773 /* NSIndexPath+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSIndexPath+.swift"; path = "MyKit/NSIndexPath+.swift"; sourceTree = "<group>"; };
 		C289ADE61B62BADE00186773 /* TimeSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSystem.swift; path = MyKit/TimeSystem.swift; sourceTree = "<group>"; };
 		C289ADEB1B62BC3A00186773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyKit/Info.plist; sourceTree = "<group>"; };
+		C29E35851B82A2D500051E3A /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		C2C48E211B7C856A00CB544F /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+.swift"; path = "MyKit/String+.swift"; sourceTree = "<group>"; };
+		C2E6A1861B85BD0B00A84D81 /* Dictionary+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,12 +172,13 @@
 		C289AD931B62BA0500186773 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C2C48E211B7C856A00CB544F /* String+.swift */,
+				C2E6A1861B85BD0B00A84D81 /* Dictionary+.swift */,
 				C289ADD11B62BAD500186773 /* CGPoint+.swift */,
 				C289ADD21B62BAD500186773 /* CGRect+.swift */,
 				C289ADD31B62BAD500186773 /* CGSize+.swift */,
 				C289ADD41B62BAD500186773 /* NSCache+.swift */,
 				C289ADD51B62BAD500186773 /* NSDate+.swift */,
-				C289ADD61B62BAD500186773 /* NSDateFormatter+.swift */,
 				C289ADD71B62BAD500186773 /* NSIndexPath+.swift */,
 			);
 			name = Extension;
@@ -184,7 +187,6 @@
 		C289AD941B62BA0E00186773 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				C26488111B67181000F79D7B /* HTMLParser.swift */,
 				C289ADE61B62BADE00186773 /* TimeSystem.swift */,
 			);
 			name = Framework;
@@ -215,8 +217,9 @@
 		C289AD971B62BA3C00186773 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				C289ADB31B62BAA200186773 /* CollectionView.swift */,
+				C29E35851B82A2D500051E3A /* PresentationController.swift */,
 				C289ADB41B62BAA200186773 /* PresentationTransition.swift */,
+				C289ADB31B62BAA200186773 /* CollectionView.swift */,
 				C289ADB51B62BAA200186773 /* SnapLayout.swift */,
 				C289ADB61B62BAA200186773 /* StackView.swift */,
 				C289ADB71B62BAA200186773 /* TableView.swift */,
@@ -381,13 +384,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C26488131B67181000F79D7B /* HTMLParser.swift in Sources */,
 				C289ADC71B62BAC200186773 /* Drawing.swift in Sources */,
 				C289ADDE1B62BAD500186773 /* NSCache+.swift in Sources */,
 				C289ADC91B62BAC200186773 /* Enumeration.swift in Sources */,
-				C289ADE21B62BAD500186773 /* NSDateFormatter+.swift in Sources */,
 				C289ADDC1B62BAD500186773 /* CGSize+.swift in Sources */,
 				C289ADCB1B62BAC200186773 /* Queueing.swift in Sources */,
+				C2E6A1881B85BD0B00A84D81 /* Dictionary+.swift in Sources */,
 				C289ADE41B62BAD500186773 /* NSIndexPath+.swift in Sources */,
 				C289AD9E1B62BA6D00186773 /* NSTableView+.swift in Sources */,
 				C289ADCD1B62BAC200186773 /* Swizzling.swift in Sources */,
@@ -396,6 +398,7 @@
 				C289ADE01B62BAD500186773 /* NSDate+.swift in Sources */,
 				C289ADCF1B62BAC200186773 /* Timing.swift in Sources */,
 				C289ADD81B62BAD500186773 /* CGPoint+.swift in Sources */,
+				C2C48E231B7C856A00CB544F /* String+.swift in Sources */,
 				C289ADDA1B62BAD500186773 /* CGRect+.swift in Sources */,
 				C289ADE71B62BADE00186773 /* TimeSystem.swift in Sources */,
 			);
@@ -408,7 +411,6 @@
 				C289ADCC1B62BAC200186773 /* Queueing.swift in Sources */,
 				C289ADA91B62BA8B00186773 /* UICollectionView+.swift in Sources */,
 				C289ADBD1B62BAA200186773 /* TableView.swift in Sources */,
-				C289ADE31B62BAD500186773 /* NSDateFormatter+.swift in Sources */,
 				C289ADBC1B62BAA200186773 /* StackView.swift in Sources */,
 				C289ADCE1B62BAC200186773 /* Swizzling.swift in Sources */,
 				C289ADE51B62BAD500186773 /* NSIndexPath+.swift in Sources */,
@@ -419,6 +421,7 @@
 				C289ADAF1B62BA8B00186773 /* UITableView+.swift in Sources */,
 				C289ADAE1B62BA8B00186773 /* UIImage+.swift in Sources */,
 				C289ADE81B62BADE00186773 /* TimeSystem.swift in Sources */,
+				C2E6A1871B85BD0B00A84D81 /* Dictionary+.swift in Sources */,
 				C289ADDB1B62BAD500186773 /* CGRect+.swift in Sources */,
 				C289ADAB1B62BA8B00186773 /* UIColor+.swift in Sources */,
 				C289ADAD1B62BA8B00186773 /* UIEdgeInsets+.swift in Sources */,
@@ -428,9 +431,10 @@
 				C289ADDF1B62BAD500186773 /* NSCache+.swift in Sources */,
 				C289ADDD1B62BAD500186773 /* CGSize+.swift in Sources */,
 				C289ADA81B62BA8B00186773 /* UIBezierPath+.swift in Sources */,
+				C29E35861B82A2D500051E3A /* PresentationController.swift in Sources */,
 				C289ADE11B62BAD500186773 /* NSDate+.swift in Sources */,
+				C2C48E221B7C856A00CB544F /* String+.swift in Sources */,
 				C289ADB01B62BA8B00186773 /* UIView+.swift in Sources */,
-				C26488121B67181000F79D7B /* HTMLParser.swift in Sources */,
 				C289ADC81B62BAC200186773 /* Drawing.swift in Sources */,
 				C289ADAC1B62BA8B00186773 /* UIControl+.swift in Sources */,
 				C289ADD01B62BAC200186773 /* Timing.swift in Sources */,

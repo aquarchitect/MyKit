@@ -6,7 +6,7 @@
 //  Copyright © 2015 Hai Nguyen. All rights reserved.
 //
 
-public func swizzle(type: AnyClass, original: Selector, swizzled: Selector){
+public func swizzle(type: AnyClass, original: Selector, swizzled: Selector) {
     assert(class_respondsToSelector(type, original), "Check on Original typo.")
     assert(class_respondsToSelector(type, swizzled), "Check on Swizzled typo.")
 

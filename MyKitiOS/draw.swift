@@ -10,7 +10,7 @@ public func renderInContext(size: CGSize, opaque: Bool, render: Render) -> UIIma
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
 
     let context = UIGraphicsGetCurrentContext()
-    render(context)
+    render(context!)
     let image = UIGraphicsGetImageFromCurrentImageContext()
 
     UIGraphicsEndImageContext()

@@ -8,19 +8,6 @@
 
 public class CollectionView: UICollectionView {
 
-    private class Cell: UICollectionViewCell {
-
-        var type: UIView.Type!
-
-        lazy var view: UIView = {
-            let view = self.type.init(frame: self.bounds)
-            view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-            self.contentView.addSubview(view)
-
-            return view
-            }()
-    }
-
     public let items: [[Any]]
     private let type: UIView.Type
     private let config: (Cell, Any) -> Void
@@ -40,11 +27,10 @@ public class CollectionView: UICollectionView {
         super.init(frame: CGRectZero, collectionViewLayout: UICollectionViewLayout())
         super.registerClass(Cell.self, forCellWithReuseIdentifier: "Cell")
         super.dataSource = self
-        super.delegate = self
     }
 }
 
-extension CollectionView: UICollectionViewDataSource, UICollectionViewDelegate {
+extension CollectionView: UICollectionViewDataSource {
 
     public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return items.count
@@ -61,4 +47,17 @@ extension CollectionView: UICollectionViewDataSource, UICollectionViewDelegate {
 
         return cell
     }
+}
+
+private class Cell: UICollectionViewCell {
+
+    var type: UIView.Type!
+
+    private(set) lazy var view: UIView = {
+        let view = self.type.init(frame: self.bounds)
+        view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        self.contentView.addSubview(view)
+
+        return view
+        }()
 }
