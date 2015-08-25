@@ -6,7 +6,8 @@
 //
 //
 
-#import <Cocoa/Cocoa.h>
+@import AppKit;
+@import CoreData;
 
 //! Project version number for MyKitOSX.
 FOUNDATION_EXPORT double MyKitOSXVersionNumber;

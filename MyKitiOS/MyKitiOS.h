@@ -6,7 +6,8 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
+@import CoreData;
 
 //! Project version number for MyKitiOS.
 FOUNDATION_EXPORT double MyKitiOSVersionNumber;
