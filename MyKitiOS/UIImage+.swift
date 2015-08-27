@@ -29,7 +29,7 @@ public extension UIImage {
     }
 
     private static func renderInContext(render: Render) -> UIImage {
-        return MyKitiOS.renderInContext(CGSize(length: ln), opaque: false, render: render)
+        return MyKitiOS.renderInContext(CGSize(sideLength: ln), opaque: false, render: render)
     }
 
     private static func drawInState(context: CGContextRef, _ color: UIColor, _ draw: Void -> Void) {

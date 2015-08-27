@@ -8,7 +8,7 @@
 
 public extension CGSize {
 
-    init(length: CGFloat) {
-        self.init(width: length, height: length)
+    init(sideLength: CGFloat) {
+        self.init(width: sideLength, height: sideLength)
     }
 }

@@ -882,6 +882,7 @@
 				C2252B731B8CDCDA006977D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C289AD741B62B93800186773 /* Build configuration list for PBXProject "MyKit" */ = {
 			isa = XCConfigurationList;
