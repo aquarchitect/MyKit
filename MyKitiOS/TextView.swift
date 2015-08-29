@@ -16,7 +16,7 @@ public class TextView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         self.insertSubview(label, atIndex: 0)
 
-        ["H:|-[label]-|", "V:|-[label]-|"].map(self.addConstraintsWithVisualFormat(["label": label]))
+        _ = ["H:|-[label]-|", "V:|-[label]-|"].map(self.addConstraintsWithVisualFormat(["label": label]))
 
         return label
         }()
@@ -49,7 +49,7 @@ public class TextView: UIView {
     }
 
     public override func updateConstraints() {
-        ["H:|-[textBox]-|", "V:|-[textBox]|"].map(self.addConstraintsWithVisualFormat(["textBox": textBox]))
+        _ = ["H:|-[textBox]-|", "V:|-[textBox]|"].map(self.addConstraintsWithVisualFormat(["textBox": textBox]))
 
         super.updateConstraints()
     }

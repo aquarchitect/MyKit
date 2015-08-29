@@ -6,10 +6,21 @@
 //
 //
 
+import CoreData
+
 public extension NSManagedObject {
 
-    public convenience init(name: String, context: NSManagedObjectContext) {
+    public class func entityName() -> String {
+        return NSStringFromClass(object_getClass(self))
+    }
+
+    public convenience init(context: NSManagedObjectContext) {
+        let name = self.dynamicType.entityName()
         let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: context)!
         self.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+
+    public class func fetchObjectsFromContext<T: NSManagedObject>(context: NSManagedObjectContext, withPredicate format: String, _ args: AnyObject...) throws -> [T] {
+        return try fetchObjects(entityName(), context: context, withPredicate: format, args) as? [T] ?? []
     }
 }
