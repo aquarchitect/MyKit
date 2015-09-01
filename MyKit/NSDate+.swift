@@ -6,111 +6,112 @@
 //  Copyright © 2015 Hai Nguyen. All rights reserved.
 //
 
-public var Calendar: NSCalendar { return TimeSystem.sharedInstance.calendar }
-public var Today: NSDate { return TimeSystem.sharedInstance.today }
-
 public extension NSDate {
 
-    public var components: NSDateComponents { return Calendar.components([.Year, .Month, .Day, .Weekday, .WeekOfMonth], fromDate: self) }
+    private var calendar: NSCalendar { return TimeSystem.sharedInstance.calendar }
+    private var today: NSDate { return TimeSystem.sharedInstance.today }
+
+    public func components(unit: NSCalendarUnit) -> NSDateComponents {
+        return calendar.components(unit, fromDate: self)
+    }
+
+    public func dateByAddingUnit(unit: NSCalendarUnit, value: Int) -> NSDate {
+        return calendar.dateByAddingUnit(unit, value: value, toDate: self, options: [])!
+    }
 
     public func firstDateOfTheMonth() -> NSDate {
-        let components = Calendar.components([.Year, .Month], fromDate: self)
-        return Calendar.dateFromComponents(components)!
+        return calendar.dateFromComponents(components([.Year, .Month]))!
     }
 
     public func firstDateOfTheWeek() -> NSDate {
-        let components = Calendar.components([.Year, .WeekOfYear], fromDate: self)
-        return Calendar.dateFromComponents(components)!
+        return calendar.dateFromComponents(components([.Year, .WeekOfYear]))!
     }
 
     public func numberOfDaysInTheMonth() -> Int {
-        return Calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: self).length
+        return calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: self).length
     }
 
     public func numberOfDaysInTheYear() -> Int {
-        return Calendar.rangeOfUnit(.Day, inUnit: .Year, forDate: self).length
+        return calendar.rangeOfUnit(.Day, inUnit: .Year, forDate: self).length
     }
 
     public func numberOfWeeksInTheMonth() -> Int {
-        return Calendar.rangeOfUnit(.WeekOfMonth, inUnit: .Month, forDate: self).length
+        return calendar.rangeOfUnit(.WeekOfMonth, inUnit: .Month, forDate: self).length
     }
 
     public func numberOfWeeksInTheYear() -> Int {
-        return Calendar.rangeOfUnit(.WeekOfYear, inUnit: .Year, forDate: self).length
+        return calendar.rangeOfUnit(.WeekOfYear, inUnit: .Year, forDate: self).length
     }
 
     public func dateByAddingDays(value: Int) -> NSDate {
-        return Calendar.dateByAddingUnit(.Day, value: value, toDate: self, options: NSCalendarOptions())!
+        return dateByAddingUnit(.Day, value: value)
     }
 
     public func dateByAddingWeeks(value: Int) -> NSDate {
-        return Calendar.dateByAddingUnit(.Day, value: 7 * value, toDate: self, options: NSCalendarOptions())!
+        return dateByAddingUnit(.Day, value: 7 * value)
     }
 
     public func dateByAddingMonths(value: Int) -> NSDate {
-        return Calendar.dateByAddingUnit(.Month, value: value, toDate: self, options: NSCalendarOptions())!
+        return dateByAddingUnit(.Month, value: value)
     }
 
     public func dateByAddingYears(value: Int) -> NSDate {
-        return Calendar.dateByAddingUnit(.Year, value: value, toDate: self, options: NSCalendarOptions())!
+        return dateByAddingUnit(.Year, value: value)
     }
 
     public func isSameDayAsDate(date: NSDate) -> Bool {
-        let components = Calendar.components([.Year, .Month, .Day], fromDate: date)
-        return Calendar.date(self, matchesComponents: components)
+        return calendar.date(self, matchesComponents: components([.Year, .Month, .Day]))
     }
 
     public func isSameWeekAsDate(date: NSDate) -> Bool {
-        let components = Calendar.components([.Year, .WeekOfYear], fromDate: date)
-        return Calendar.date(self, matchesComponents: components)
+        return calendar.date(self, matchesComponents: components([.Year, .WeekOfYear]))
     }
 
     public func isSameMonthAsDate(date: NSDate) -> Bool {
-        let components = Calendar.components([.Year, .Month], fromDate: date)
-        return Calendar.date(self, matchesComponents: components)
+        return calendar.date(self, matchesComponents: components([.Year, .Month]))
     }
 
     public func isToday() ->Bool {
-        return isSameDayAsDate(Today)
+        return isSameDayAsDate(today)
     }
 
     public func isTomorrow() -> Bool {
-        return isSameDayAsDate(Today.dateByAddingDays(1))
+        return isSameDayAsDate(today.dateByAddingDays(1))
     }
 
     public func isYesterday() -> Bool {
-        return isSameDayAsDate(Today.dateByAddingDays(-1))
+        return isSameDayAsDate(today.dateByAddingDays(-1))
     }
 
     public func isThisWeek() -> Bool {
-        return isSameWeekAsDate(Today)
+        return isSameWeekAsDate(today)
     }
 
     public func isNextWeek() -> Bool {
-        return isSameWeekAsDate(Today.dateByAddingWeeks(1))
+        return isSameWeekAsDate(today.dateByAddingWeeks(1))
     }
 
     public func isLastWeek() -> Bool {
-        return isSameWeekAsDate(Today.dateByAddingWeeks(-1))
+        return isSameWeekAsDate(today.dateByAddingWeeks(-1))
     }
 
     public func isThisMonth() -> Bool {
-        return isSameMonthAsDate(Today)
+        return isSameMonthAsDate(today)
     }
 
     public func isNextMonth() -> Bool {
-        return isSameMonthAsDate(Today.dateByAddingMonths(1))
+        return isSameMonthAsDate(today.dateByAddingMonths(1))
     }
 
     public func isLastMonth() -> Bool {
-        return isSameMonthAsDate(Today.dateByAddingMonths(-1))
+        return isSameMonthAsDate(today.dateByAddingMonths(-1))
     }
 
     public func isInFuture() -> Bool {
-        return !isSameDayAsDate(Today) && self.compare(Today) == .OrderedAscending
+        return !isSameDayAsDate(today) && self.compare(today) == .OrderedAscending
     }
 
     public func isInPast() -> Bool {
-        return !isSameDayAsDate(Today) && self.compare(Today) == .OrderedDescending
+        return !isSameDayAsDate(today) && self.compare(today) == .OrderedDescending
     }
 }

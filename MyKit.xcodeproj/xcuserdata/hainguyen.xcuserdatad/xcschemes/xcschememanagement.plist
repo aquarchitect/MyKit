@@ -6,18 +6,25 @@
 	<dict>
 		<key>Demo.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>0</integer>
 		</dict>
 		<key>MyKitOSX.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
+		</dict>
+		<key>MyKitTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>MyKitiOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -33,6 +40,11 @@
 			<true/>
 		</dict>
 		<key>C289AD891B62B97400186773</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C2B60ACA1B95080800F6D2BB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

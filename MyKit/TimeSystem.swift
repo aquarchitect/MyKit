@@ -8,37 +8,25 @@
 
 public class TimeSystem {
 
-    public typealias Period = (past: Int, future: Int)
-    public static let sharedInstance = TimeSystem()
+    public static let sharedInstance = TimeSystem(calendar: .currentCalendar())
 
-    let calendar = NSCalendar.currentCalendar()
-    private(set) var today: NSDate!
+    public let calendar: NSCalendar
+    public private(set) var today: NSDate
 
-    public private(set) var thisWeekDays: Period!
-    public private(set) var thisMonthWeeks: Period!
-
-    private init() {
-        resetToday()
-        resetFirstWeekday(1)
+    private init(calendar: NSCalendar) {
+        self.calendar = calendar
+        self.today = calendar.startOfDayForDate(NSDate())
     }
 
-    public func resetToday() {
-        today = calendar.startOfDayForDate(NSDate())
-    }
-
-    public func resetFirstWeekday(weekday: Int) {
-        let range = NSMakeRange(1, 7)
-        let condition = NSLocationInRange(weekday, range)
-        assert(condition, "Weekday is out of range")
-
-        calendar.firstWeekday = weekday
-
-        var days = weekday - calendar.component(.Weekday, fromDate: today)
+    public func numberOfDaysInThisWeek() -> (Int, Int) {
+        var days = calendar.firstWeekday - today.components([.Weekday]).weekday
         days += 7 * Int(days <= 0)
-        thisWeekDays = (7 - days, days - 1)
+        return (7 - days, days - 1)
+    }
 
-        let count = calendar.rangeOfUnit(.WeekOfMonth, inUnit: .Month, forDate: today).length
-        let week = calendar.component(.WeekOfMonth, fromDate: today)
-        thisMonthWeeks = (week - 1, count - week)
+    public func numberOfWeeksInThisMonth() -> (Int, Int) {
+        let weeks = calendar.rangeOfUnit(.WeekOfMonth, inUnit: .Month, forDate: today).length
+        let week = today.components([.WeekOfMonth]).weekOfMonth
+        return (week - 1, weeks - week)
     }
 }

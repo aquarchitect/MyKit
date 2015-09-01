@@ -34,7 +34,7 @@ public class StackView: UIView {
     public override func didAddSubview(subview: UIView) {
         subview.translatesAutoresizingMaskIntoConstraints = false
 
-        _ = ["\(layoutAxis.opposite.suffix):|-[subview]-|"].map(self.addConstraintsWithVisualFormat(["subview": subview]))
+        ["\(layoutAxis.opposite.suffix):|-[subview]-|"].forEach(self.addConstraintsWithVisualFormat(["subview": subview]))
         self.setNeedsUpdateConstraints()
     }
 

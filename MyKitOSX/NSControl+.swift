@@ -24,6 +24,6 @@ public extension NSControl {
 
     internal func handleControl(sender: NSControl) {
         let object = objc_getAssociatedObject(self, &Key.action)
-        _ = unsafeBitCast(object, Action.self)(sender)
+        unsafeBitCast(object, Action.self)(sender)
     }
 }

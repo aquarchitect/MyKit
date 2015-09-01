@@ -28,7 +28,7 @@ public extension UIView {
     internal func swizzledLayoutSubviews() {
         self.swizzledLayoutSubviews()
         if let object = objc_getAssociatedObject(self, &Layout.Token) {
-            _ = unsafeBitCast(object, Layout.Handle.self)()
+            unsafeBitCast(object, Layout.Handle.self)()
         }
     }
 }

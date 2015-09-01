@@ -21,6 +21,6 @@ public extension UIControl {
     }
 
     internal func controlHandle(sender: UIControl) {
-        _ = unsafeBitCast(objc_getAssociatedObject(self, &Action.Token), Action.Handle.self)(sender)
+        unsafeBitCast(objc_getAssociatedObject(self, &Action.Token), Action.Handle.self)(sender)
     }
 }
