@@ -10,6 +10,6 @@
 
 #if TARGET_OS_MAC
     @import MyKitOSX;
-#elif TARGET_OS_IPHONE
+#elif TARGET_OS_IOS
     @import MyKitiOS;
 #endif

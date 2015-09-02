@@ -18,10 +18,10 @@ extension Int: Arbitrary {
     }
 }
 
-extension Range where Element: IntegerType {
+extension Range where Element.Distance: IntegerType {
 
     public func arbitrary() -> Element {
-        let distance = Int.arbitrary() % self.count.hashValue as! Element
-        return self[distance]
+        let distance = Int.arbitrary() % self.count.hashValue as! Element.Distance
+        return self.startIndex.advancedBy(distance)
     }
 }
