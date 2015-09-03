@@ -39,7 +39,6 @@
 		C289ADBB1B62BAA200186773 /* SnapLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADB51B62BAA200186773 /* SnapLayout.swift */; };
 		C289ADBC1B62BAA200186773 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADB61B62BAA200186773 /* StackView.swift */; };
 		C289ADBD1B62BAA200186773 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADB71B62BAA200186773 /* TableView.swift */; };
-		C289ADBE1B62BAA200186773 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADB81B62BAA200186773 /* TextView.swift */; };
 		C289ADC51B62BAC200186773 /* Boxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADBF1B62BAC200186773 /* Boxing.swift */; };
 		C289ADC61B62BAC200186773 /* Boxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADBF1B62BAC200186773 /* Boxing.swift */; };
 		C289ADC71B62BAC200186773 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADC01B62BAC200186773 /* Drawing.swift */; };
@@ -119,7 +118,6 @@
 		C289ADB51B62BAA200186773 /* SnapLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapLayout.swift; sourceTree = "<group>"; };
 		C289ADB61B62BAA200186773 /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		C289ADB71B62BAA200186773 /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
-		C289ADB81B62BAA200186773 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		C289ADBF1B62BAC200186773 /* Boxing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Boxing.swift; path = MyKit/Boxing.swift; sourceTree = "<group>"; };
 		C289ADC01B62BAC200186773 /* Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drawing.swift; path = MyKit/Drawing.swift; sourceTree = "<group>"; };
 		C289ADC11B62BAC200186773 /* Enumeration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enumeration.swift; path = MyKit/Enumeration.swift; sourceTree = "<group>"; };
@@ -319,7 +317,6 @@
 				C289ADB51B62BAA200186773 /* SnapLayout.swift */,
 				C289ADB61B62BAA200186773 /* StackView.swift */,
 				C289ADB71B62BAA200186773 /* TableView.swift */,
-				C289ADB81B62BAA200186773 /* TextView.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -625,7 +622,6 @@
 				C289ADAB1B62BA8B00186773 /* UIColor+.swift in Sources */,
 				C289ADAD1B62BA8B00186773 /* UIEdgeInsets+.swift in Sources */,
 				C289ADCA1B62BAC200186773 /* Enumeration.swift in Sources */,
-				C289ADBE1B62BAA200186773 /* TextView.swift in Sources */,
 				C289ADBB1B62BAA200186773 /* SnapLayout.swift in Sources */,
 				C289ADDF1B62BAD500186773 /* NSCache+.swift in Sources */,
 				C289ADDD1B62BAD500186773 /* CGSize+.swift in Sources */,

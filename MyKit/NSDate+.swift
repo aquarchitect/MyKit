@@ -15,6 +15,10 @@ public extension NSDate {
         return calendar.components(unit, fromDate: self)
     }
 
+    public func components(unit: NSCalendarUnit, toDate date: NSDate) -> NSDateComponents {
+        return calendar.components(unit, fromDate: self, toDate: date, options: [])
+    }
+
     public func dateByAddingUnit(unit: NSCalendarUnit, value: Int) -> NSDate {
         return calendar.dateByAddingUnit(unit, value: value, toDate: self, options: [])!
     }
@@ -60,15 +64,19 @@ public extension NSDate {
     }
 
     public func isSameDayAsDate(date: NSDate) -> Bool {
-        return calendar.date(self, matchesComponents: components([.Year, .Month, .Day]))
+        return calendar.date(self, matchesComponents: date.components([.Year, .Month, .Day]))
     }
 
     public func isSameWeekAsDate(date: NSDate) -> Bool {
-        return calendar.date(self, matchesComponents: components([.Year, .WeekOfYear]))
+        return calendar.date(self, matchesComponents: date.components([.Year, .WeekOfYear]))
     }
 
     public func isSameMonthAsDate(date: NSDate) -> Bool {
-        return calendar.date(self, matchesComponents: components([.Year, .Month]))
+        return calendar.date(self, matchesComponents: date.components([.Year, .Month]))
+    }
+
+    public func isSameYearAsDate(date: NSDate) -> Bool {
+        return calendar.date(self, matchesComponents: date.components(.Year))
     }
 
     public func isToday() ->Bool {
@@ -107,11 +115,23 @@ public extension NSDate {
         return isSameMonthAsDate(today.dateByAddingMonths(-1))
     }
 
+    public func isThisYear() -> Bool {
+        return isSameYearAsDate(today)
+    }
+
+    public func isLastYear() -> Bool {
+        return isSameYearAsDate(today.dateByAddingYears(-1))
+    }
+
+    public func isNextYear() -> Bool {
+        return isSameYearAsDate(today.dateByAddingYears(1))
+    }
+
     public func isInFuture() -> Bool {
-        return !isSameDayAsDate(today) && self.compare(today) == .OrderedAscending
+        return !isSameDayAsDate(today) && self.compare(today) == .OrderedDescending
     }
 
     public func isInPast() -> Bool {
-        return !isSameDayAsDate(today) && self.compare(today) == .OrderedDescending
+        return !isSameDayAsDate(today) && self.compare(today) == .OrderedAscending
     }
 }

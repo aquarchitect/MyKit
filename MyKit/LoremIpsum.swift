@@ -23,7 +23,7 @@ public final class LoremIpsum {
 
             let range = lorem.startIndex..<lorem.endIndex
             let characters = NSCharacterSet.whitespaceAndNewlineCharacterSet()
-            lorem.enumerateSubstringsInRange(range, options: [.BySentences]) { substring, _, _, _ in
+            lorem.enumerateSubstringsInRange(range, options: .BySentences) { substring, _, _, _ in
                 guard var string = substring else { return }
                 string = string.stringByTrimmingCharactersInSet(characters)
                 self.sentences.append((string, string.characters.split(" ").count))
@@ -37,10 +37,6 @@ public final class LoremIpsum {
         return sentences[start..<end].map { $0.string }.joinWithSeparator(" ")
     }
 
-    public func arbitraryBySentences(range: Range<Int>, fromStart: Bool) -> String {
-        return arbitraryBySentences(range.arbitrary(), fromStart: fromStart)
-    }
-
     public func arbitraryByWords(var count: Int) -> String {
         var index: Int
         repeat {
@@ -50,14 +46,17 @@ public final class LoremIpsum {
         let string = sentences[index].string
         var range = string.startIndex..<string.endIndex
 
-        sentences[index].string.enumerateSubstringsInRange(range, options: [.ByWords]) { substring, subrange, _, stop in
+        sentences[index].string.enumerateSubstringsInRange(range, options: .ByWords) { substring, subrange, _, stop in
             if substring?.isEmpty == true { return }
             range.endIndex = subrange.endIndex
-            print(range)
             if --count == 0 { stop = true }
         }
 
         return string.substringWithRange(range)
+    }
+
+    public func arbitraryBySentences(range: Range<Int>, fromStart: Bool) -> String {
+        return arbitraryBySentences(range.arbitrary(), fromStart: fromStart)
     }
 
     public func arbitraryByWords(range: Range<Int>) -> String {

@@ -19,14 +19,14 @@ public class TimeSystem {
     }
 
     public func numberOfDaysInThisWeek() -> (Int, Int) {
-        var days = calendar.firstWeekday - today.components([.Weekday]).weekday
+        var days = calendar.firstWeekday - today.components(.Weekday).weekday
         days += 7 * Int(days <= 0)
         return (7 - days, days - 1)
     }
 
     public func numberOfWeeksInThisMonth() -> (Int, Int) {
         let weeks = calendar.rangeOfUnit(.WeekOfMonth, inUnit: .Month, forDate: today).length
-        let week = today.components([.WeekOfMonth]).weekOfMonth
+        let week = today.components(.WeekOfMonth).weekOfMonth
         return (week - 1, weeks - week)
     }
 }

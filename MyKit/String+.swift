@@ -9,10 +9,10 @@
 public extension String {
 
     public func stringByRemovingSpecialCharacters() -> String {
-        return self.stringByReplacingOccurrencesOfString("[\n\t]|[ ]+", withString: "", options: [.RegularExpressionSearch], range: nil)
+        return self.stringByReplacingOccurrencesOfString("[\n\t]|[ ]+", withString: "", options: .RegularExpressionSearch, range: nil)
     }
 
     mutating public func removeSpecialCharacters() {
-        self = self.stringByReplacingOccurrencesOfString("[\n\t]|[ ]+", withString: "", options: [.RegularExpressionSearch], range: nil)
+        self = self.stringByReplacingOccurrencesOfString("[\n\t]|[ ]+", withString: "", options: .RegularExpressionSearch, range: nil)
     }
 }

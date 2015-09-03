@@ -11,7 +11,8 @@ import CoreData
 public extension NSManagedObject {
 
     public class func entityName() -> String {
-        return NSStringFromClass(object_getClass(self))
+        let fullName = NSStringFromClass(object_getClass(self))
+        return String(fullName.characters.split(".").last!)
     }
 
     public convenience init(context: NSManagedObjectContext) {
