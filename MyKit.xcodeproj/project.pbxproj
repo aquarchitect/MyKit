@@ -83,6 +83,7 @@
 		C2C535931B91035800865FDA /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C535911B91035800865FDA /* NSManagedObjectContext+.swift */; settings = {ASSET_TAGS = (); }; };
 		C2C535951B9103C900865FDA /* Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C535941B9103C900865FDA /* Fetching.swift */; settings = {ASSET_TAGS = (); }; };
 		C2C535961B9103C900865FDA /* Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C535941B9103C900865FDA /* Fetching.swift */; settings = {ASSET_TAGS = (); }; };
+		C2EA2AA41B98BD5D004AAFE8 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EA2AA31B98BD5D004AAFE8 /* TextView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,6 +146,7 @@
 		C2C48E211B7C856A00CB544F /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+.swift"; path = "MyKit/String+.swift"; sourceTree = "<group>"; };
 		C2C535911B91035800865FDA /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+.swift"; path = "MyKit/NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
 		C2C535941B9103C900865FDA /* Fetching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fetching.swift; path = MyKit/Fetching.swift; sourceTree = "<group>"; };
+		C2EA2AA31B98BD5D004AAFE8 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +319,7 @@
 				C289ADB51B62BAA200186773 /* SnapLayout.swift */,
 				C289ADB61B62BAA200186773 /* StackView.swift */,
 				C289ADB71B62BAA200186773 /* TableView.swift */,
+				C2EA2AA31B98BD5D004AAFE8 /* TextView.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				C2B60ABC1B94BF0900F6D2BB /* NSRelationshipDescription+.swift in Sources */,
 				C265BA591B966C2D00F6871E /* UIGestureRecognizer+.swift in Sources */,
 				C289ADD91B62BAD500186773 /* CGPoint+.swift in Sources */,
+				C2EA2AA41B98BD5D004AAFE8 /* TextView.swift in Sources */,
 				C289ADB21B62BA9600186773 /* draw.swift in Sources */,
 				C289ADBA1B62BAA200186773 /* PresentationTransition.swift in Sources */,
 				C289ADC61B62BAC200186773 /* Boxing.swift in Sources */,
