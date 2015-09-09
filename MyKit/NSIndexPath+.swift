@@ -8,19 +8,15 @@
 
 public extension NSIndexPath {
 
-    final var array: Array<NSIndexPath> { return [self] }
+    final var array: [NSIndexPath] { return [self] }
 
-    /// 2-node indexpath; standardize for UITableView and UICollectionView
-    final var standard: NSIndexPath {
-        return NSIndexPath(indexes: [self[0], self[1]], length: 2)
+    final var indexes: [Int] { return (0..<self.length).map(self.indexAtPosition) }
+
+    convenience init(indexes: Int...) {
+        self.init(indexes: indexes, length: indexes.count)
     }
 
-    final func append(indexes: Int...) -> NSIndexPath {
-        return indexes.reduce(self) { $0.indexPathByAddingIndex($1) }
-    }
-
-    final subscript(pos: Int) -> Int {
-        assert(pos < self.length)
-        return self.indexAtPosition(pos)
+    convenience init(indexes: Array<Int>) {
+        self.init(indexes: indexes, length: indexes.count)
     }
 }

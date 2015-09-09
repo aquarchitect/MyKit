@@ -9,7 +9,7 @@
 public struct DateIndex {
 
     public let date: NSDate
-    public let unit: NSCalendarUnit
+    public var unit: NSCalendarUnit
 
     public init(date: NSDate, unit: NSCalendarUnit) {
         self.date = date
@@ -17,7 +17,15 @@ public struct DateIndex {
     }
 }
 
-extension DateIndex: Equatable {}
+public func == (lhs: DateIndex, rhs: DateIndex) -> Bool {
+    return lhs.date == rhs.date && lhs.unit == rhs.unit
+}
+
+public func < (lhs: DateIndex, rhs: DateIndex) -> Bool {
+    return lhs.date.compare(rhs.date) == .OrderedAscending
+}
+
+extension DateIndex: Comparable {}
 
 extension DateIndex: ForwardIndexType {
 
@@ -38,8 +46,4 @@ extension DateIndex: BidirectionalIndexType {
         let date = self.date.dateByAddingUnit(self.unit, value: -1)
         return DateIndex(date: date, unit: self.unit)
     }
-}
-
-public func == (lhs: DateIndex, rhs: DateIndex) -> Bool {
-    return lhs.date == rhs.date && lhs.unit == rhs.unit
 }

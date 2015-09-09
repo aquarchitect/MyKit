@@ -56,10 +56,10 @@ public final class LoremIpsum {
     }
 
     public func arbitraryBySentences(range: Range<Int>, fromStart: Bool) -> String {
-        return arbitraryBySentences(range.arbitrary(), fromStart: fromStart)
+        return arbitraryBySentences(range.random(), fromStart: fromStart)
     }
 
     public func arbitraryByWords(range: Range<Int>) -> String {
-        return arbitraryByWords(range.arbitrary())
+        return arbitraryByWords(range.random())
     }
 }

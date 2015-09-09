@@ -8,19 +8,24 @@
 
 public extension NSDate {
 
-    private var calendar: NSCalendar { return TimeSystem.sharedInstance.calendar }
-    private var today: NSDate { return TimeSystem.sharedInstance.today }
+    private var today: NSDate { return TimeSystem.shareInstance.today }
+
+    public var calendar: NSCalendar { return .currentCalendar() }
 
     public func components(unit: NSCalendarUnit) -> NSDateComponents {
         return calendar.components(unit, fromDate: self)
     }
 
-    public func components(unit: NSCalendarUnit, toDate date: NSDate) -> NSDateComponents {
-        return calendar.components(unit, fromDate: self, toDate: date, options: [])
-    }
-
     public func dateByAddingUnit(unit: NSCalendarUnit, value: Int) -> NSDate {
         return calendar.dateByAddingUnit(unit, value: value, toDate: self, options: [])!
+    }
+
+    public func rangeOfUnit(smallerUnit: NSCalendarUnit, inUnit largerUnit: NSCalendarUnit) -> NSRange {
+        return calendar.rangeOfUnit(smallerUnit, inUnit: largerUnit, forDate: self)
+    }
+
+    public func matchesComponents(components: NSDateComponents) -> Bool {
+        return calendar.date(self, matchesComponents: components)
     }
 
     public func firstDateOfTheMonth() -> NSDate {
@@ -32,19 +37,19 @@ public extension NSDate {
     }
 
     public func numberOfDaysInTheMonth() -> Int {
-        return calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: self).length
+        return rangeOfUnit(.Day, inUnit: .Month).length
     }
 
     public func numberOfDaysInTheYear() -> Int {
-        return calendar.rangeOfUnit(.Day, inUnit: .Year, forDate: self).length
+        return rangeOfUnit(.Day, inUnit: .Year).length
     }
 
     public func numberOfWeeksInTheMonth() -> Int {
-        return calendar.rangeOfUnit(.WeekOfMonth, inUnit: .Month, forDate: self).length
+        return rangeOfUnit(.WeekOfMonth, inUnit: .Month).length
     }
 
     public func numberOfWeeksInTheYear() -> Int {
-        return calendar.rangeOfUnit(.WeekOfYear, inUnit: .Year, forDate: self).length
+        return rangeOfUnit(.WeekOfYear, inUnit: .Year).length
     }
 
     public func dateByAddingDays(value: Int) -> NSDate {
@@ -64,19 +69,19 @@ public extension NSDate {
     }
 
     public func isSameDayAsDate(date: NSDate) -> Bool {
-        return calendar.date(self, matchesComponents: date.components([.Year, .Month, .Day]))
+        return matchesComponents(date.components([.Year, .Month, .Day]))
     }
 
     public func isSameWeekAsDate(date: NSDate) -> Bool {
-        return calendar.date(self, matchesComponents: date.components([.Year, .WeekOfYear]))
+        return matchesComponents(date.components([.Year, .WeekOfYear]))
     }
 
     public func isSameMonthAsDate(date: NSDate) -> Bool {
-        return calendar.date(self, matchesComponents: date.components([.Year, .Month]))
+        return matchesComponents(date.components([.Year, .Month]))
     }
 
     public func isSameYearAsDate(date: NSDate) -> Bool {
-        return calendar.date(self, matchesComponents: date.components(.Year))
+        return matchesComponents(date.components(.Year))
     }
 
     public func isToday() ->Bool {

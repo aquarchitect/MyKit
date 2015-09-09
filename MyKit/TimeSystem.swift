@@ -8,23 +8,28 @@
 
 public class TimeSystem {
 
-    public static let sharedInstance = TimeSystem(calendar: .currentCalendar())
+    public typealias Period = (passed: Int, left: Int)
+    public static let shareInstance = TimeSystem()
 
-    public let calendar: NSCalendar
-    public private(set) var today: NSDate
+    public private(set) lazy var today: NSDate = {
+        return self.calendar.startOfDayForDate(NSDate())
+    }()
 
-    private init(calendar: NSCalendar) {
-        self.calendar = calendar
-        self.today = calendar.startOfDayForDate(NSDate())
-    }
+    public var calendar: NSCalendar { return .currentCalendar() }
 
-    public func numberOfDaysInThisWeek() -> (Int, Int) {
+    public func numberOfDaysInThisWeek() -> Period {
         var days = calendar.firstWeekday - today.components(.Weekday).weekday
         days += 7 * Int(days <= 0)
         return (7 - days, days - 1)
     }
 
-    public func numberOfWeeksInThisMonth() -> (Int, Int) {
+    public func numberOfDaysInThisMonth() -> Period {
+        let days = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: today).length
+        let day = today.components(.Day).day
+        return (day - 1, days - day)
+    }
+
+    public func numberOfWeeksInThisMonth() -> Period {
         let weeks = calendar.rangeOfUnit(.WeekOfMonth, inUnit: .Month, forDate: today).length
         let week = today.components(.WeekOfMonth).weekOfMonth
         return (week - 1, weeks - week)

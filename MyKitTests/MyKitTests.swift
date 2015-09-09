@@ -10,15 +10,6 @@ class MyKitTests: XCTestCase {
 
     var lorem = LoremIpsum()
 
-    func testRangeArbitrary() {
-        let range = 1..<5
-        (0...100).forEach { _ in
-            let rand = range.arbitrary()
-            XCTAssertLessThanOrEqual(range.startIndex, rand)
-            XCTAssertGreaterThan(range.endIndex, rand)
-        }
-    }
-
     func testLoremIsNil() {
         XCTAssert(lorem != nil)
     }
@@ -30,5 +21,11 @@ class MyKitTests: XCTestCase {
             let count = string?.characters.split(" ").count
             XCTAssertGreaterThanOrEqual(range.count, count!)
         }
+    }
+
+    func testToday() {
+        let timeSystem = TimeSystem.shareInstance
+        print(timeSystem.today)
+        print(timeSystem.calendar.dateFromComponents(timeSystem.today.components([.Year, .Month])))
     }
 }
