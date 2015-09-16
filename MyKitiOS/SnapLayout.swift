@@ -104,7 +104,7 @@ class SnapLayout: UICollectionViewFlowLayout {
         }
 
         snap.trackedIndexPath = candidate.indexPath
-        let array = trackedIndexPath.array + (snap.trackedIndexPath?.array ?? [])
+        let array = [trackedIndexPath, snap.trackedIndexPath].flatMap { $0 }
         context.invalidateItemsAtIndexPaths(array)
 
         return context

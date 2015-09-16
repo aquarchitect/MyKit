@@ -8,7 +8,7 @@
 
 public extension UIColor {
 
-    final class func randomColor() -> UIColor {
+    final class func arbitrary() -> UIColor {
         let rand: Void -> CGFloat = { _ in return CGFloat(drand48()) }
         return UIColor(red: rand(), green: rand(), blue: rand(), alpha: 1)
     }

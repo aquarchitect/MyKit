@@ -9,7 +9,7 @@
 public struct IndexPath {
 
     public let indexes: [Int]
-    public var node: Int
+    public let node: Int
 
     public var indexPath: NSIndexPath { return NSIndexPath(indexes: indexes) }
     public var standard: NSIndexPath { return NSIndexPath(indexes: indexes[0], indexes[1]) }
@@ -63,5 +63,12 @@ extension IndexPath: BidirectionalIndexType {
         indexes[node]--
 
         return IndexPath(indexes: indexes, node: self.node)
+    }
+}
+
+extension IndexPath: CustomDebugStringConvertible {
+
+    public var debugDescription: String {
+        return indexes.map { "\($0)" }.joinWithSeparator("-")
     }
 }

@@ -6,13 +6,13 @@
 //  Copyright © 2015 Hai Nguyen. All rights reserved.
 //
 
-public enum PresentationStyle {
-
-    case Custom(CGRect)
-    case Center(CGSize)
-}
-
 public class PresentationTransition: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
+
+    public enum Style {
+
+        case Custom(CGRect)
+        case Center(CGSize)
+    }
 
     // MARK: Property
 
@@ -21,11 +21,11 @@ public class PresentationTransition: UIPercentDrivenInteractiveTransition, UIVie
     public var dimDismissalEnabled: Bool
 
     private var isPresenting = true
-    private let contentStyle: PresentationStyle
+    private let contentStyle: Style
 
     // MARK: Initialization
 
-    public init(contentStyle: PresentationStyle, dimDismissalEnabled: Bool) {
+    public init(contentStyle: Style, dimDismissalEnabled: Bool) {
         self.contentStyle = contentStyle
         self.dimDismissalEnabled = dimDismissalEnabled
         super.init()
@@ -46,18 +46,16 @@ public class PresentationTransition: UIPercentDrivenInteractiveTransition, UIVie
 
         // identify controller view that will be animating
         let controller = isPresenting ? toController : fromController
+        let transform = dismissedTransform ?? CGAffineTransformIdentity
+        let duration = transitionDuration(transitionContext)
 
-        if let transform = dismissedTransform {
-            let duration = transitionDuration(transitionContext)
-
-             controller.view.transform = isPresenting ? transform : CGAffineTransformIdentity
-            UIView.animateWithDuration(duration, delay: 0, options: [.AllowUserInteraction, .BeginFromCurrentState], animations: {
-                controller.view.transform = self.isPresenting ? CGAffineTransformIdentity : transform
-                }, completion: { _ in
-                    if !self.isPresenting { fromController.view.removeFromSuperview() }
-                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
-            })
-        }
+        controller.view.transform = isPresenting ? transform : CGAffineTransformIdentity
+        UIView.animateWithDuration(duration, delay: 0, options: [.AllowUserInteraction, .BeginFromCurrentState], animations: {
+            controller.view.transform = self.isPresenting ? CGAffineTransformIdentity : transform
+            }, completion: { _ in
+                if !self.isPresenting { fromController.view.removeFromSuperview() }
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+        })
     }
 
     // MARK: Presentation Controller

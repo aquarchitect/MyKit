@@ -23,7 +23,6 @@ public class TextView: UIView {
         textBox.textContainerInset = UIEdgeInsetsZero
         textBox.textContainerInset.right = self.layoutMargins.right
         textBox.keyboardAppearance = .Dark
-        textBox.returnKeyType = .Done
         textBox.enablesReturnKeyAutomatically = true
         textBox.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
         textBox.translatesAutoresizingMaskIntoConstraints = false

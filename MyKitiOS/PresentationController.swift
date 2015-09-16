@@ -27,15 +27,6 @@ public class PresentationController: UIPresentationController {
     public init(contentFrame: CGRect, presentedViewController: UIViewController, presentingViewController: UIViewController) {
         self.contentFrame = contentFrame
         super.init(presentedViewController: presentedViewController, presentingViewController: presentingViewController)
-
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-    }
-
-    deinit { NSNotificationCenter.defaultCenter().removeObserver(self) }
-
-    public func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardRect = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue else { return }
-        contentFrame.origin.y -= keyboardRect.size.height / 2
     }
 
     public override func presentationTransitionWillBegin() {

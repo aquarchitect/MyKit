@@ -8,8 +8,6 @@
 
 public extension NSIndexPath {
 
-    final var array: [NSIndexPath] { return [self] }
-
     final var indexes: [Int] { return (0..<self.length).map(self.indexAtPosition) }
 
     convenience init(indexes: Int...) {
