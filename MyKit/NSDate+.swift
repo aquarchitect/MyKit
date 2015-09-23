@@ -28,6 +28,10 @@ public extension NSDate {
         return calendar.date(self, matchesComponents: components)
     }
 
+    public func startOfDay() -> NSDate {
+        return calendar.startOfDayForDate(self)
+    }
+
     public func firstDateOfTheMonth() -> NSDate {
         return calendar.dateFromComponents(components([.Year, .Month]))!
     }

@@ -8,13 +8,17 @@
 
 public extension UIBezierPath {
 
-    public convenience init(points: CGPoint...) {
+    public convenience init(points: [CGPoint]) {
         self.init()
 
         for (index, point) in points.enumerate() {
             if index == 0 { self.moveToPoint(point); continue }
             self.addLineToPoint(point)
         }
+    }
+
+    public convenience init(points: CGPoint...) {
+        self.init(points: points)
     }
 
     final func outlineStroke() -> UIBezierPath {

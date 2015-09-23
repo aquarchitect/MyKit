@@ -6,8 +6,6 @@
 //
 //
 
-import CoreData
-
 public extension NSManagedObject {
 
     public class func entityName() -> String {
@@ -19,9 +17,5 @@ public extension NSManagedObject {
         let name = self.dynamicType.entityName()
         let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: context)!
         self.init(entity: entity, insertIntoManagedObjectContext: context)
-    }
-
-    public class func fetchObjectsFromContext<T: NSManagedObject>(context: NSManagedObjectContext, withPredicate format: String, _ args: AnyObject...) throws -> [T] {
-        return try fetchObjects(entityName(), context: context, withPredicate: format, args) as? [T] ?? []
     }
 }

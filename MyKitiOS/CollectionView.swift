@@ -8,20 +8,22 @@
 
 public class CollectionView: UICollectionView {
 
-    public let data: [[Any]]
+    public let data: [Any]
+
     private let type: UIView.Type
     private let handle: (Cell, Any) -> Void
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public init<T, V where V: UIView>(data: [[T]], configure: (UICollectionViewCell, V, T) -> Void) {
-        self.data = data.map { $0.map { Box($0) }}
+    public init<T, V where V: UIView>(data: [T], configure: (UICollectionViewCell, V, T) -> Void) {
+        self.data = data.map { Box($0) }
         self.type = V.self
         self.handle = {
             guard let value = $1 as? Box<T>,
                 view = $0.view as? V else { return }
+
             configure($0, view, value.unbox)
         }
 
@@ -33,14 +35,14 @@ public class CollectionView: UICollectionView {
 
 extension CollectionView: UICollectionViewDataSource {
 
-    public final func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
 
-    final public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! Cell
         cell.type = type
-        handle(cell, data[indexPath.section][indexPath.item])
+        handle(cell, data[indexPath.item])
 
         return cell
     }

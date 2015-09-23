@@ -6,9 +6,12 @@
 //
 //
 
-func fetchObjects(entity: String, context: NSManagedObjectContext, withPredicate format: String, _ args: [AnyObject]) throws -> [AnyObject] {
-    let request = NSFetchRequest(entityName: entity)
-    request.predicate = NSPredicate(format: format, argumentArray: args)
+public func fetchObjects<T: NSManagedObject>(context: NSManagedObjectContext, withPredicate format: String, _ args: AnyObject...) throws -> [T]? {
+    return try fetchObjects(context, withPredicate: NSPredicate(format: format, argumentArray: args))
+}
 
-    return try context.executeFetchRequest(request)
+public func fetchObjects<T: NSManagedObject>(context: NSManagedObjectContext, withPredicate predicate: NSPredicate) throws -> [T]? {
+    let request = NSFetchRequest(entityName: T.entityName())
+    request.predicate = predicate
+    return try context.executeFetchRequest(request) as? [T]
 }
