@@ -11,6 +11,6 @@ public extension NSEntityDescription {
     public convenience init(name: String) {
         self.init()
         self.name = name
-        //self.managedObjectClassName = name
+        self.managedObjectClassName = name
     }
 }

@@ -8,7 +8,7 @@
 
 public extension NSAttributeDescription {
 
-    public convenience init(name: String, type: NSAttributeType, optional: Bool = true) {
+    public convenience init(name: String, type: NSAttributeType, optional: Bool = false) {
         self.init()
         self.name = name
         self.optional = optional

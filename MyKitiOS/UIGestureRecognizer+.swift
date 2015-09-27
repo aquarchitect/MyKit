@@ -21,6 +21,6 @@ public extension UIGestureRecognizer {
     }
 
     internal func controlHandle(sender: UIGestureRecognizer) {
-        unsafeBitCast(objc_getAssociatedObject(self, &Action.Token), Action.Handle.self)(sender)
+        _ = unsafeBitCast(objc_getAssociatedObject(self, &Action.Token), Action.Handle.self)(sender)
     }
 }

@@ -11,9 +11,14 @@ public struct DateIndex {
     public let value: NSDate
     public var unit: NSCalendarUnit
 
-    public init(value: NSDate, unit: NSCalendarUnit) {
+    public init(value: NSDate, unit: NSCalendarUnit = .Day) {
         self.value = value
         self.unit = unit
+    }
+
+    public init() {
+        let today = TimeSystem.shareInstance.today
+        self.init(value: today, unit: .Day)
     }
 }
 
@@ -52,5 +57,14 @@ extension DateIndex: BidirectionalIndexType {
     public func predecessor() -> DateIndex {
         let date = self.value.dateByAddingUnit(self.unit, value: -1)
         return DateIndex(value: date, unit: self.unit)
+    }
+}
+
+extension DateIndex {
+
+    public static func range(start start: NSDate, end: NSDate, unit: NSCalendarUnit = .Day) -> Range<DateIndex> {
+        let startIndex = DateIndex(value: start)
+        let endIndex = DateIndex(value: end)
+        return startIndex..<endIndex
     }
 }
