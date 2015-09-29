@@ -59,12 +59,3 @@ extension DateIndex: BidirectionalIndexType {
         return DateIndex(value: date, unit: self.unit)
     }
 }
-
-extension DateIndex {
-
-    public static func range(start start: NSDate, end: NSDate, unit: NSCalendarUnit = .Day) -> Range<DateIndex> {
-        let startIndex = DateIndex(value: start)
-        let endIndex = DateIndex(value: end)
-        return startIndex..<endIndex
-    }
-}

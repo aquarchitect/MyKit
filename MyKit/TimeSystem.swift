@@ -34,4 +34,10 @@ public class TimeSystem {
         let week = today.components(.WeekOfMonth).weekOfMonth
         return (week - 1, weeks - week)
     }
+
+    public func numebrOfDaysInThisMonth() -> Period {
+        let days = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: today).length
+        let day = today.components(.Day).day
+        return (day - 1, days - day)
+    }
 }

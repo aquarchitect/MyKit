@@ -12,6 +12,8 @@ public extension NSDate {
 
     public var calendar: NSCalendar { return .currentCalendar() }
 
+    public var index: DateIndex { return DateIndex(value: self.startOfDay()) }
+
     public func components(unit: NSCalendarUnit) -> NSDateComponents {
         return calendar.components(unit, fromDate: self)
     }

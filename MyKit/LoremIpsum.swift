@@ -11,30 +11,29 @@ public final class LoremIpsum {
     private var sentences = [(string: String, wordCount: Int)]()
 
     public init?() {
-        do {
-            #if os(iOS)
-                let identifier = "HaiNguyen.MyKitiOS"
-            #elseif os(OSX)
-                let identifier = "HaiNguyen.MyKitOSX"
-            #endif
+        #if os(iOS)
+            let identifier = "HaiNguyen.MyKitiOS"
+        #elseif os(OSX)
+            let identifier = "HaiNguyen.MyKitOSX"
+        #endif
 
-            guard let url = NSBundle(identifier: identifier)?.URLForResource("Lorem", withExtension: "strings"),
-                case let lorem = try String(contentsOfURL: url) else { return nil }
+        guard let url = NSBundle(identifier: identifier)?.URLForResource("Lorem", withExtension: "strings"),
+            lorem = try? String(contentsOfURL: url) else { return nil }
 
-            let range = lorem.startIndex..<lorem.endIndex
-            let characters = NSCharacterSet.whitespaceAndNewlineCharacterSet()
-            lorem.enumerateSubstringsInRange(range, options: .BySentences) { substring, _, _, _ in
-                guard var string = substring else { return }
-                string = string.stringByTrimmingCharactersInSet(characters)
-                self.sentences.append((string, string.characters.split(" ").count))
-            }
-        } catch { print(error) }
+        let range = lorem.startIndex..<lorem.endIndex
+        let characters = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+
+        lorem.enumerateSubstringsInRange(range, options: .BySentences) { substring, _, _, _ in
+            guard var string = substring else { return }
+            string = string.stringByTrimmingCharactersInSet(characters)
+            self.sentences.append((string, string.characters.split(" ").count))
+        }
     }
 
     public func arbitraryBySentences(count: Int, fromStart: Bool) -> String {
         let start = fromStart ? 0 : Int.arbitrary() % sentences.count - count
         let end = start.advancedBy(count)
-        return sentences[start..<end].map { $0.string }.joinWithSeparator(" ")
+        return sentences[start..<end].map { $0.string }.lazy.joinWithSeparator(" ")
     }
 
     public func arbitraryByWords(var count: Int) -> String {
