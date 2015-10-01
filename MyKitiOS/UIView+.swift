@@ -10,12 +10,12 @@ public extension UIView {
 
     private struct Layout {
 
-        typealias Handle = @convention(block) Void -> Void
+        typealias Handler = @convention(block) Void -> Void
         static var Token = "Layout"
     }
 
-    public func overrideLayoutSubviews(handle: Void -> Void) {
-        let object: AnyObject = unsafeBitCast(handle as Layout.Handle, AnyObject.self)
+    public func overrideLayoutSubviews(block: Void -> Void) {
+        let object: AnyObject = unsafeBitCast(block as Layout.Handler, AnyObject.self)
         objc_setAssociatedObject(self, &Layout.Token, object, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
     }
 
@@ -30,7 +30,7 @@ public extension UIView {
     internal func swizzledLayoutSubviews() {
         self.swizzledLayoutSubviews()
         if let object = objc_getAssociatedObject(self, &Layout.Token) {
-            _ = unsafeBitCast(object, Layout.Handle.self)()
+            _ = unsafeBitCast(object, Layout.Handler.self)()
         }
     }
 }

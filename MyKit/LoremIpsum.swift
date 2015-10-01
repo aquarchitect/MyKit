@@ -12,12 +12,13 @@ public final class LoremIpsum {
 
     public init?() {
         #if os(iOS)
-            let identifier = "HaiNguyen.MyKitiOS"
+            let platform = "iOS"
         #elseif os(OSX)
-            let identifier = "HaiNguyen.MyKitOSX"
+            let platform = "OSX"
         #endif
 
-        guard let url = NSBundle(identifier: identifier)?.URLForResource("Lorem", withExtension: "strings"),
+        guard let bundle = NSBundle(identifier: "HaiNguyen.MyKit" + platform),
+            url = bundle.URLForResource("Lorem", withExtension: "strings"),
             lorem = try? String(contentsOfURL: url) else { return nil }
 
         let range = lorem.startIndex..<lorem.endIndex

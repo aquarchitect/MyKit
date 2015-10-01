@@ -66,6 +66,13 @@ extension IndexPath: BidirectionalIndexType {
     }
 }
 
+extension IndexPath {
+
+    public func compare(other: IndexPath) -> NSComparisonResult {
+        return self.indexPath.compare(other.indexPath)
+    }
+}
+
 extension IndexPath: CustomDebugStringConvertible {
 
     public var debugDescription: String {
