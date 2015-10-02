@@ -85,11 +85,12 @@
 		C2D204ED1B9C20CA002A311D /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D204EC1B9C20CA002A311D /* Range+.swift */; };
 		C2D204EE1B9C20CA002A311D /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D204EC1B9C20CA002A311D /* Range+.swift */; };
 		C2D204EF1B9C20CA002A311D /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D204EC1B9C20CA002A311D /* Range+.swift */; };
-		C2D204F51B9C2170002A311D /* IndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D204F41B9C2170002A311D /* IndexPath.swift */; };
-		C2D204F61B9C2170002A311D /* IndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D204F41B9C2170002A311D /* IndexPath.swift */; };
 		C2D355941BB4F7080097B82C /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D355931BB4F7080097B82C /* PersistentStack.swift */; settings = {ASSET_TAGS = (); }; };
 		C2D355951BB4F7080097B82C /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D355931BB4F7080097B82C /* PersistentStack.swift */; settings = {ASSET_TAGS = (); }; };
 		C2D355961BB4F7080097B82C /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D355931BB4F7080097B82C /* PersistentStack.swift */; settings = {ASSET_TAGS = (); }; };
+		C2DEF0711BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */; settings = {ASSET_TAGS = (); }; };
+		C2DEF0721BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */; settings = {ASSET_TAGS = (); }; };
+		C2DEF0731BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */; settings = {ASSET_TAGS = (); }; };
 		C2EA2AA41B98BD5D004AAFE8 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EA2AA31B98BD5D004AAFE8 /* TextView.swift */; };
 		C2EF47F81BAA128C0080680E /* UITableViewCellEditingStyle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF47F71BAA128C0080680E /* UITableViewCellEditingStyle+.swift */; };
 /* End PBXBuildFile section */
@@ -154,8 +155,8 @@
 		C2C48E211B7C856A00CB544F /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+.swift"; path = "MyKit/String+.swift"; sourceTree = "<group>"; };
 		C2C535941B9103C900865FDA /* Fetching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fetching.swift; path = MyKit/Fetching.swift; sourceTree = "<group>"; };
 		C2D204EC1B9C20CA002A311D /* Range+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Range+.swift"; path = "MyKit/Range+.swift"; sourceTree = "<group>"; };
-		C2D204F41B9C2170002A311D /* IndexPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IndexPath.swift; path = MyKit/IndexPath.swift; sourceTree = "<group>"; };
 		C2D355931BB4F7080097B82C /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStack.swift; path = MyKit/PersistentStack.swift; sourceTree = "<group>"; };
+		C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDateFormatter+.swift"; path = "MyKit/NSDateFormatter+.swift"; sourceTree = "<group>"; };
 		C2EA2AA31B98BD5D004AAFE8 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		C2EF47F71BAA128C0080680E /* UITableViewCellEditingStyle+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCellEditingStyle+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,6 +282,7 @@
 				C2B60ABB1B94BAFC00F6D2BB /* NSRelationshipDescription+.swift */,
 				C289ADD41B62BAD500186773 /* NSCache+.swift */,
 				C289ADD51B62BAD500186773 /* NSDate+.swift */,
+				C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */,
 				C289ADD71B62BAD500186773 /* NSIndexPath+.swift */,
 				C26B61431B86B96A007FCCBC /* NSManagedObject+.swift */,
 				C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */,
@@ -294,7 +296,6 @@
 				C2D355931BB4F7080097B82C /* PersistentStack.swift */,
 				C289ADE61B62BADE00186773 /* TimeSystem.swift */,
 				C28DF61C1B91674300E4D716 /* LoremIpsum.swift */,
-				C2D204F41B9C2170002A311D /* IndexPath.swift */,
 				C2B162931BB0C3A800AEB7B1 /* DateIndex.swift */,
 			);
 			name = Framework;
@@ -586,6 +587,7 @@
 				C289ADC71B62BAC200186773 /* Drawing.swift in Sources */,
 				C2C535961B9103C900865FDA /* Fetching.swift in Sources */,
 				C2B60ABD1B94BF0A00F6D2BB /* NSRelationshipDescription+.swift in Sources */,
+				C2DEF0721BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */,
 				C28DF61E1B91674300E4D716 /* LoremIpsum.swift in Sources */,
 				C289ADDE1B62BAD500186773 /* NSCache+.swift in Sources */,
 				C272394C1B922FBB00B7173F /* Arbitrary.swift in Sources */,
@@ -601,7 +603,6 @@
 				C289ADCD1B62BAC200186773 /* Swizzling.swift in Sources */,
 				C289AD9D1B62BA6D00186773 /* NSControl+.swift in Sources */,
 				C289ADC51B62BAC200186773 /* Boxing.swift in Sources */,
-				C2D204F61B9C2170002A311D /* IndexPath.swift in Sources */,
 				C2B162951BB0C3A800AEB7B1 /* DateIndex.swift in Sources */,
 				C289ADE01B62BAD500186773 /* NSDate+.swift in Sources */,
 				C289ADCF1B62BAC200186773 /* Timing.swift in Sources */,
@@ -621,6 +622,7 @@
 				C289ADCC1B62BAC200186773 /* Queueing.swift in Sources */,
 				C2C535951B9103C900865FDA /* Fetching.swift in Sources */,
 				C2B60ABF1B94C72C00F6D2BB /* NSEntityDescription+.swift in Sources */,
+				C2DEF0711BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */,
 				C289ADA91B62BA8B00186773 /* UICollectionView+.swift in Sources */,
 				C289ADBD1B62BAA200186773 /* TableView.swift in Sources */,
 				C289ADBC1B62BAA200186773 /* StackView.swift in Sources */,
@@ -654,7 +656,6 @@
 				C289ADB01B62BA8B00186773 /* UIView+.swift in Sources */,
 				C26B61441B86B96A007FCCBC /* NSManagedObject+.swift in Sources */,
 				C289ADC81B62BAC200186773 /* Drawing.swift in Sources */,
-				C2D204F51B9C2170002A311D /* IndexPath.swift in Sources */,
 				C2B162941BB0C3A800AEB7B1 /* DateIndex.swift in Sources */,
 				C28DF61D1B91674300E4D716 /* LoremIpsum.swift in Sources */,
 				C289ADAC1B62BA8B00186773 /* UIControl+.swift in Sources */,
@@ -669,6 +670,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2DEF0731BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */,
 				C2B60ACE1B95080800F6D2BB /* MyKitTests.swift in Sources */,
 				C2D355961BB4F7080097B82C /* PersistentStack.swift in Sources */,
 				C2D204EF1B9C20CA002A311D /* Range+.swift in Sources */,

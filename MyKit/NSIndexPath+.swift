@@ -10,11 +10,17 @@ public extension NSIndexPath {
 
     final var indexes: [Int] { return (0..<self.length).map(self.indexAtPosition) }
 
+    var standard: NSIndexPath { return NSIndexPath(indexes: self[0], self[1]) }
+
     convenience init(indexes: Int...) {
         self.init(indexes: indexes, length: indexes.count)
     }
 
     convenience init(indexes: Array<Int>) {
         self.init(indexes: indexes, length: indexes.count)
+    }
+
+    subscript(position: Int) -> Int {
+        return self.indexAtPosition(position)
     }
 }
