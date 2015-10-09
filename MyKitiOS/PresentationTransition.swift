@@ -60,7 +60,7 @@ public class PresentationTransition: UIPercentDrivenInteractiveTransition, UIVie
 
     // MARK: Presentation Controller
 
-    public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
+    public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, CalendarInputController source: UIViewController) -> UIPresentationController? {
         let presentedRect: CGRect
         switch contentStyle {
 

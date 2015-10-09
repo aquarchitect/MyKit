@@ -37,7 +37,12 @@ public extension UIView {
 
 public extension UIView {
 
-    final func addConstraintsWithVisualFormat(views: [String: UIView], metrics: [String: AnyObject]? = nil)(format: String) {
+    public func addConstraintsWithVisualFormat(views: [String: UIView], metrics: [String: AnyObject]? = nil)(format: String) {
         self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))
+    }
+
+    public func addConstraint(item view1: AnyObject, attribute attr1: NSLayoutAttribute, relatedBy relation: NSLayoutRelation, toItem view2: AnyObject?, attribute attr2: NSLayoutAttribute, multiplier: CGFloat, constant c: CGFloat) {
+        let constraint = NSLayoutConstraint(item: view1, attribute: attr1, relatedBy: relation, toItem: view2, attribute: attr2, multiplier: multiplier, constant: c)
+        self.addConstraint(constraint)
     }
 }

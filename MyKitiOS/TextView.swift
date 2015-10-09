@@ -6,9 +6,20 @@
 //
 //
 
-public class TextView: UIView {
+public class TextView: UIControl {
 
-    public let textBox = UITextView()
+    public lazy var textBox: UITextView = {
+        let view = UITextView()
+        view.backgroundColor = .clearColor()
+        view.textContainer.lineFragmentPadding = 0
+        view.textContainerInset = UIEdgeInsetsZero
+        view.textContainerInset.right = self.layoutMargins.right
+        view.keyboardAppearance = .Dark
+        view.enablesReturnKeyAutomatically = true
+        view.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -17,16 +28,7 @@ public class TextView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         super.backgroundColor = .whiteColor()
-
-        textBox.backgroundColor = .clearColor()
-        textBox.textContainer.lineFragmentPadding = 0
-        textBox.textContainerInset = UIEdgeInsetsZero
-        textBox.textContainerInset.right = self.layoutMargins.right
-        textBox.keyboardAppearance = .Dark
-        textBox.enablesReturnKeyAutomatically = true
-        textBox.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
-        textBox.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(textBox)
+        super.addSubview(textBox)
 
         ["H:|-[textBox]|", "V:|-[textBox]-|"].forEach(self.addConstraintsWithVisualFormat(["textBox": textBox]))
     }

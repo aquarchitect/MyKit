@@ -8,7 +8,7 @@
 
 public extension NSDate {
 
-    private var today: NSDate { return TimeSystem.shareInstance.today }
+    private var today: NSDate { return TimeSystem.sharedInstance.today }
 
     public var calendar: NSCalendar { return .currentCalendar() }
 

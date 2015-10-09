@@ -9,7 +9,7 @@
 public class TimeSystem {
 
     public typealias Period = (passed: Int, left: Int)
-    public static let shareInstance = TimeSystem()
+    public static let sharedInstance = TimeSystem()
 
     public private(set) lazy var today: NSDate = {
         return self.calendar.startOfDayForDate(NSDate())

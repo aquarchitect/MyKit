@@ -31,7 +31,7 @@
 		C289ADAD1B62BA8B00186773 /* UIEdgeInsets+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADA41B62BA8B00186773 /* UIEdgeInsets+.swift */; };
 		C289ADAF1B62BA8B00186773 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADA61B62BA8B00186773 /* UITableView+.swift */; };
 		C289ADB01B62BA8B00186773 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADA71B62BA8B00186773 /* UIView+.swift */; };
-		C289ADB21B62BA9600186773 /* draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADB11B62BA9600186773 /* draw.swift */; };
+		C289ADB21B62BA9600186773 /* Drawing+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADB11B62BA9600186773 /* Drawing+.swift */; };
 		C289ADB91B62BAA200186773 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADB31B62BAA200186773 /* CollectionView.swift */; };
 		C289ADBA1B62BAA200186773 /* PresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADB41B62BAA200186773 /* PresentationTransition.swift */; };
 		C289ADBB1B62BAA200186773 /* SnapLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADB51B62BAA200186773 /* SnapLayout.swift */; };
@@ -88,6 +88,7 @@
 		C2D355941BB4F7080097B82C /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D355931BB4F7080097B82C /* PersistentStack.swift */; settings = {ASSET_TAGS = (); }; };
 		C2D355951BB4F7080097B82C /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D355931BB4F7080097B82C /* PersistentStack.swift */; settings = {ASSET_TAGS = (); }; };
 		C2D355961BB4F7080097B82C /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D355931BB4F7080097B82C /* PersistentStack.swift */; settings = {ASSET_TAGS = (); }; };
+		C2D9942D1BC86BBF00F47E06 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9942C1BC86BBF00F47E06 /* UILabel+.swift */; settings = {ASSET_TAGS = (); }; };
 		C2DEF0711BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */; settings = {ASSET_TAGS = (); }; };
 		C2DEF0721BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */; settings = {ASSET_TAGS = (); }; };
 		C2DEF0731BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */; settings = {ASSET_TAGS = (); }; };
@@ -121,7 +122,7 @@
 		C289ADA41B62BA8B00186773 /* UIEdgeInsets+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+.swift"; sourceTree = "<group>"; };
 		C289ADA61B62BA8B00186773 /* UITableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+.swift"; sourceTree = "<group>"; };
 		C289ADA71B62BA8B00186773 /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		C289ADB11B62BA9600186773 /* draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = draw.swift; sourceTree = "<group>"; };
+		C289ADB11B62BA9600186773 /* Drawing+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Drawing+.swift"; sourceTree = "<group>"; };
 		C289ADB31B62BAA200186773 /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		C289ADB41B62BAA200186773 /* PresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationTransition.swift; sourceTree = "<group>"; };
 		C289ADB51B62BAA200186773 /* SnapLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapLayout.swift; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 		C2C535941B9103C900865FDA /* Fetching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fetching.swift; path = MyKit/Fetching.swift; sourceTree = "<group>"; };
 		C2D204EC1B9C20CA002A311D /* Range+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Range+.swift"; path = "MyKit/Range+.swift"; sourceTree = "<group>"; };
 		C2D355931BB4F7080097B82C /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStack.swift; path = MyKit/PersistentStack.swift; sourceTree = "<group>"; };
+		C2D9942C1BC86BBF00F47E06 /* UILabel+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDateFormatter+.swift"; path = "MyKit/NSDateFormatter+.swift"; sourceTree = "<group>"; };
 		C2EA2AA31B98BD5D004AAFE8 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		C2EF47F71BAA128C0080680E /* UITableViewCellEditingStyle+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCellEditingStyle+.swift"; sourceTree = "<group>"; };
@@ -318,7 +320,7 @@
 		C289AD961B62BA2200186773 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				C289ADB11B62BA9600186773 /* draw.swift */,
+				C289ADB11B62BA9600186773 /* Drawing+.swift */,
 				C289AD8C1B62B97400186773 /* MyKitiOS.h */,
 			);
 			name = Support;
@@ -347,6 +349,7 @@
 				C289ADA11B62BA8B00186773 /* UICollectionViewFlowLayout+.swift */,
 				C289ADA21B62BA8B00186773 /* UIColor+.swift */,
 				C289ADA31B62BA8B00186773 /* UIControl+.swift */,
+				C2D9942C1BC86BBF00F47E06 /* UILabel+.swift */,
 				C289ADA41B62BA8B00186773 /* UIEdgeInsets+.swift */,
 				C289ADA61B62BA8B00186773 /* UITableView+.swift */,
 				C2EF47F71BAA128C0080680E /* UITableViewCellEditingStyle+.swift */,
@@ -508,6 +511,7 @@
 					};
 					C289AD891B62B97400186773 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 88HW36EGGB;
 					};
 					C2B60ACA1B95080800F6D2BB = {
 						CreatedOnToolsVersion = 7.0;
@@ -634,7 +638,7 @@
 				C2B8B3E81BB60A8B007FC72C /* NSNumber+.swift in Sources */,
 				C289ADD91B62BAD500186773 /* CGPoint+.swift in Sources */,
 				C2EA2AA41B98BD5D004AAFE8 /* TextView.swift in Sources */,
-				C289ADB21B62BA9600186773 /* draw.swift in Sources */,
+				C289ADB21B62BA9600186773 /* Drawing+.swift in Sources */,
 				C289ADBA1B62BAA200186773 /* PresentationTransition.swift in Sources */,
 				C289ADC61B62BAC200186773 /* Boxing.swift in Sources */,
 				C2D204ED1B9C20CA002A311D /* Range+.swift in Sources */,
@@ -646,6 +650,7 @@
 				C289ADAD1B62BA8B00186773 /* UIEdgeInsets+.swift in Sources */,
 				C2D355941BB4F7080097B82C /* PersistentStack.swift in Sources */,
 				C289ADCA1B62BAC200186773 /* Enumeration.swift in Sources */,
+				C2D9942D1BC86BBF00F47E06 /* UILabel+.swift in Sources */,
 				C289ADBB1B62BAA200186773 /* SnapLayout.swift in Sources */,
 				C289ADDF1B62BAD500186773 /* NSCache+.swift in Sources */,
 				C289ADDD1B62BAD500186773 /* CGSize+.swift in Sources */,
@@ -929,6 +934,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -937,6 +943,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -987,6 +994,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -995,6 +1003,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

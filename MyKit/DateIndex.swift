@@ -17,7 +17,7 @@ public struct DateIndex {
     }
 
     public init() {
-        let today = TimeSystem.shareInstance.today
+        let today = TimeSystem.sharedInstance.today
         self.init(value: today, unit: .Day)
     }
 }
