@@ -6,7 +6,7 @@
 //  Copyright © 2015 Hai Nguyen. All rights reserved.
 //
 
-public class PresentationTransition: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
+public class PresentationTransition: UIPercentDrivenInteractiveTransition {
 
     public enum Style {
 
@@ -14,24 +14,20 @@ public class PresentationTransition: UIPercentDrivenInteractiveTransition, UIVie
         case Center(CGSize)
     }
 
-    // MARK: Property
-
     public var interactionEnabled = false
     public var dismissedTransform: CGAffineTransform?
-    public var dimDismissalEnabled: Bool
+    public var dimDismissalEnabled: Bool = false
 
     private var isPresenting = true
     private let contentStyle: Style
 
-    // MARK: Initialization
-
-    public init(contentStyle: Style, dimDismissalEnabled: Bool) {
+    public init(contentStyle: Style) {
         self.contentStyle = contentStyle
-        self.dimDismissalEnabled = dimDismissalEnabled
         super.init()
     }
+}
 
-    // MARK: Transition Delegate
+extension PresentationTransition: UIViewControllerAnimatedTransitioning {
 
     public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.2
@@ -57,19 +53,25 @@ public class PresentationTransition: UIPercentDrivenInteractiveTransition, UIVie
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
         })
     }
+}
 
-    // MARK: Presentation Controller
+extension PresentationTransition: UIViewControllerTransitioningDelegate {
 
-    public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, CalendarInputController source: UIViewController) -> UIPresentationController? {
+    public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         let presentedRect: CGRect
+
         switch contentStyle {
 
         case .Custom(let rect):
             presentedRect = rect
+
         case .Center(let size):
             let presentingSize = source.view.bounds.size
-            let presentedOrigin = CGPoint(x: (presentingSize.width - size.width) / 2, y: (presentingSize.height - size.height) / 2)
 
+            let presentingOriginX = (presentingSize.width - size.width) / 2
+            let presentingOriginY = (presentingSize.height - size.height) / 2
+
+            let presentedOrigin = CGPoint(x: presentingOriginX, y: presentingOriginY)
             presentedRect = CGRect(origin: presentedOrigin, size: size)
         }
 
@@ -77,8 +79,6 @@ public class PresentationTransition: UIPercentDrivenInteractiveTransition, UIVie
         controller.dimDismissalEnabled = dimDismissalEnabled
         return controller
     }
-
-    // MARK: Animated Transition
 
     public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         isPresenting = true
@@ -89,8 +89,6 @@ public class PresentationTransition: UIPercentDrivenInteractiveTransition, UIVie
         isPresenting = false
         return self
     }
-
-    // MARK: Interacted Transition
 
     public func interactionControllerForPresentation(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactionEnabled ? self : nil

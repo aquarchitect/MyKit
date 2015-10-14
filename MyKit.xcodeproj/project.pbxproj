@@ -77,21 +77,17 @@
 		C2B60ACE1B95080800F6D2BB /* MyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */; };
 		C2B8B3E81BB60A8B007FC72C /* NSNumber+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */; settings = {ASSET_TAGS = (); }; };
 		C2B8B3E91BB60A8B007FC72C /* NSNumber+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */; settings = {ASSET_TAGS = (); }; };
-		C2B8B3EA1BB60A8B007FC72C /* NSNumber+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */; settings = {ASSET_TAGS = (); }; };
 		C2C48E221B7C856A00CB544F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48E211B7C856A00CB544F /* String+.swift */; };
 		C2C48E231B7C856A00CB544F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48E211B7C856A00CB544F /* String+.swift */; };
 		C2C535951B9103C900865FDA /* Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C535941B9103C900865FDA /* Fetching.swift */; };
 		C2C535961B9103C900865FDA /* Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C535941B9103C900865FDA /* Fetching.swift */; };
 		C2D204ED1B9C20CA002A311D /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D204EC1B9C20CA002A311D /* Range+.swift */; };
 		C2D204EE1B9C20CA002A311D /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D204EC1B9C20CA002A311D /* Range+.swift */; };
-		C2D204EF1B9C20CA002A311D /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D204EC1B9C20CA002A311D /* Range+.swift */; };
 		C2D355941BB4F7080097B82C /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D355931BB4F7080097B82C /* PersistentStack.swift */; settings = {ASSET_TAGS = (); }; };
 		C2D355951BB4F7080097B82C /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D355931BB4F7080097B82C /* PersistentStack.swift */; settings = {ASSET_TAGS = (); }; };
-		C2D355961BB4F7080097B82C /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D355931BB4F7080097B82C /* PersistentStack.swift */; settings = {ASSET_TAGS = (); }; };
 		C2D9942D1BC86BBF00F47E06 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9942C1BC86BBF00F47E06 /* UILabel+.swift */; settings = {ASSET_TAGS = (); }; };
 		C2DEF0711BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */; settings = {ASSET_TAGS = (); }; };
 		C2DEF0721BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */; settings = {ASSET_TAGS = (); }; };
-		C2DEF0731BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */; settings = {ASSET_TAGS = (); }; };
 		C2EA2AA41B98BD5D004AAFE8 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EA2AA31B98BD5D004AAFE8 /* TextView.swift */; };
 		C2EF47F81BAA128C0080680E /* UITableViewCellEditingStyle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF47F71BAA128C0080680E /* UITableViewCellEditingStyle+.swift */; };
 /* End PBXBuildFile section */
@@ -675,11 +671,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2DEF0731BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */,
 				C2B60ACE1B95080800F6D2BB /* MyKitTests.swift in Sources */,
-				C2D355961BB4F7080097B82C /* PersistentStack.swift in Sources */,
-				C2D204EF1B9C20CA002A311D /* Range+.swift in Sources */,
-				C2B8B3EA1BB60A8B007FC72C /* NSNumber+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,7 +788,9 @@
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = MyKit/Info.plist;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
@@ -805,6 +799,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = MyKit/Info.plist;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
@@ -965,7 +961,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = HaiNguyen.MyKitiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

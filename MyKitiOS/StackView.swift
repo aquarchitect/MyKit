@@ -8,15 +8,11 @@
 
 public class StackView: UIView {
 
-    // MARK: Property
-
     /// spacing between subviews
     public var spacing: CGFloat = 0
 
     private let layoutAxis: UILayoutConstraintAxis
     private var managedConstraints = [NSLayoutConstraint]()
-
-    // MARK: Initialization
 
     public required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -28,8 +24,6 @@ public class StackView: UIView {
         super.init(frame: CGRectZero)
         super.translatesAutoresizingMaskIntoConstraints = false
     }
-
-    // MARK: System Methods
 
     public override func didAddSubview(subview: UIView) {
         subview.translatesAutoresizingMaskIntoConstraints = false
