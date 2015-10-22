@@ -19,6 +19,7 @@
 		C26B61481B86B999007FCCBC /* NSManagedObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B61431B86B96A007FCCBC /* NSManagedObject+.swift */; };
 		C272394B1B922FBB00B7173F /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272394A1B922FBB00B7173F /* Arbitrary.swift */; };
 		C272394C1B922FBB00B7173F /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272394A1B922FBB00B7173F /* Arbitrary.swift */; };
+		C27A47E51BD5B66A00E27E61 /* NSColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A47E41BD5B66A00E27E61 /* NSColor+.swift */; settings = {ASSET_TAGS = (); }; };
 		C289AD801B62B95700186773 /* MyKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD8D1B62B97400186773 /* MyKitiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKitiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD9D1B62BA6D00186773 /* NSControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289AD9B1B62BA6D00186773 /* NSControl+.swift */; };
@@ -86,8 +87,12 @@
 		C2D355941BB4F7080097B82C /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D355931BB4F7080097B82C /* PersistentStack.swift */; settings = {ASSET_TAGS = (); }; };
 		C2D355951BB4F7080097B82C /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D355931BB4F7080097B82C /* PersistentStack.swift */; settings = {ASSET_TAGS = (); }; };
 		C2D9942D1BC86BBF00F47E06 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9942C1BC86BBF00F47E06 /* UILabel+.swift */; settings = {ASSET_TAGS = (); }; };
+		C2DDC2721BD0238C00D0039A /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DDC2711BD0238C00D0039A /* NSMutableAttributedString+.swift */; settings = {ASSET_TAGS = (); }; };
+		C2DDC2731BD0238C00D0039A /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DDC2711BD0238C00D0039A /* NSMutableAttributedString+.swift */; settings = {ASSET_TAGS = (); }; };
 		C2DEF0711BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */; settings = {ASSET_TAGS = (); }; };
 		C2DEF0721BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */; settings = {ASSET_TAGS = (); }; };
+		C2E9DFD81BD8116C00568BAB /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E9DFD71BD8116C00568BAB /* OpenWeather.swift */; settings = {ASSET_TAGS = (); }; };
+		C2E9DFD91BD8116C00568BAB /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E9DFD71BD8116C00568BAB /* OpenWeather.swift */; settings = {ASSET_TAGS = (); }; };
 		C2EA2AA41B98BD5D004AAFE8 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EA2AA31B98BD5D004AAFE8 /* TextView.swift */; };
 		C2EF47F81BAA128C0080680E /* UITableViewCellEditingStyle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF47F71BAA128C0080680E /* UITableViewCellEditingStyle+.swift */; };
 /* End PBXBuildFile section */
@@ -104,6 +109,7 @@
 		C265BA581B966C2D00F6871E /* UIGestureRecognizer+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+.swift"; sourceTree = "<group>"; };
 		C26B61431B86B96A007FCCBC /* NSManagedObject+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+.swift"; path = "MyKit/NSManagedObject+.swift"; sourceTree = "<group>"; };
 		C272394A1B922FBB00B7173F /* Arbitrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arbitrary.swift; path = MyKit/Arbitrary.swift; sourceTree = "<group>"; };
+		C27A47E41BD5B66A00E27E61 /* NSColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+.swift"; sourceTree = "<group>"; };
 		C289AD7C1B62B95700186773 /* MyKitOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKitOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7F1B62B95700186773 /* MyKitOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKitOSX.h; sourceTree = "<group>"; };
 		C289AD8A1B62B97400186773 /* MyKitiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKitiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,7 +160,9 @@
 		C2D204EC1B9C20CA002A311D /* Range+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Range+.swift"; path = "MyKit/Range+.swift"; sourceTree = "<group>"; };
 		C2D355931BB4F7080097B82C /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStack.swift; path = MyKit/PersistentStack.swift; sourceTree = "<group>"; };
 		C2D9942C1BC86BBF00F47E06 /* UILabel+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		C2DDC2711BD0238C00D0039A /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSMutableAttributedString+.swift"; path = "MyKit/NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDateFormatter+.swift"; path = "MyKit/NSDateFormatter+.swift"; sourceTree = "<group>"; };
+		C2E9DFD71BD8116C00568BAB /* OpenWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenWeather.swift; path = MyKit/OpenWeather.swift; sourceTree = "<group>"; };
 		C2EA2AA31B98BD5D004AAFE8 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		C2EF47F71BAA128C0080680E /* UITableViewCellEditingStyle+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCellEditingStyle+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -283,6 +291,7 @@
 				C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */,
 				C289ADD71B62BAD500186773 /* NSIndexPath+.swift */,
 				C26B61431B86B96A007FCCBC /* NSManagedObject+.swift */,
+				C2DDC2711BD0238C00D0039A /* NSMutableAttributedString+.swift */,
 				C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */,
 			);
 			name = Extension;
@@ -295,6 +304,7 @@
 				C289ADE61B62BADE00186773 /* TimeSystem.swift */,
 				C28DF61C1B91674300E4D716 /* LoremIpsum.swift */,
 				C2B162931BB0C3A800AEB7B1 /* DateIndex.swift */,
+				C2E9DFD71BD8116C00568BAB /* OpenWeather.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -366,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				C289AD9B1B62BA6D00186773 /* NSControl+.swift */,
+				C27A47E41BD5B66A00E27E61 /* NSColor+.swift */,
 				C289AD9C1B62BA6D00186773 /* NSTableView+.swift */,
 			);
 			name = Extension;
@@ -592,6 +603,7 @@
 				C289ADDE1B62BAD500186773 /* NSCache+.swift in Sources */,
 				C272394C1B922FBB00B7173F /* Arbitrary.swift in Sources */,
 				C28DF6181B91537600E4D716 /* NSAttributeDescription+.swift in Sources */,
+				C2DDC2731BD0238C00D0039A /* NSMutableAttributedString+.swift in Sources */,
 				C289ADC91B62BAC200186773 /* Enumeration.swift in Sources */,
 				C26B61481B86B999007FCCBC /* NSManagedObject+.swift in Sources */,
 				C289ADDC1B62BAD500186773 /* CGSize+.swift in Sources */,
@@ -599,12 +611,14 @@
 				C2B60AC01B94C72C00F6D2BB /* NSEntityDescription+.swift in Sources */,
 				C289ADE41B62BAD500186773 /* NSIndexPath+.swift in Sources */,
 				C289AD9E1B62BA6D00186773 /* NSTableView+.swift in Sources */,
+				C2E9DFD91BD8116C00568BAB /* OpenWeather.swift in Sources */,
 				C2D355951BB4F7080097B82C /* PersistentStack.swift in Sources */,
 				C289ADCD1B62BAC200186773 /* Swizzling.swift in Sources */,
 				C289AD9D1B62BA6D00186773 /* NSControl+.swift in Sources */,
 				C289ADC51B62BAC200186773 /* Boxing.swift in Sources */,
 				C2B162951BB0C3A800AEB7B1 /* DateIndex.swift in Sources */,
 				C289ADE01B62BAD500186773 /* NSDate+.swift in Sources */,
+				C27A47E51BD5B66A00E27E61 /* NSColor+.swift in Sources */,
 				C289ADCF1B62BAC200186773 /* Timing.swift in Sources */,
 				C289ADD81B62BAD500186773 /* CGPoint+.swift in Sources */,
 				C2C48E231B7C856A00CB544F /* String+.swift in Sources */,
@@ -631,6 +645,7 @@
 				C289ADE51B62BAD500186773 /* NSIndexPath+.swift in Sources */,
 				C2B60ABC1B94BF0900F6D2BB /* NSRelationshipDescription+.swift in Sources */,
 				C265BA591B966C2D00F6871E /* UIGestureRecognizer+.swift in Sources */,
+				C2DDC2721BD0238C00D0039A /* NSMutableAttributedString+.swift in Sources */,
 				C2B8B3E81BB60A8B007FC72C /* NSNumber+.swift in Sources */,
 				C289ADD91B62BAD500186773 /* CGPoint+.swift in Sources */,
 				C2EA2AA41B98BD5D004AAFE8 /* TextView.swift in Sources */,
@@ -654,6 +669,7 @@
 				C29E35861B82A2D500051E3A /* PresentationController.swift in Sources */,
 				C289ADE11B62BAD500186773 /* NSDate+.swift in Sources */,
 				C2C48E221B7C856A00CB544F /* String+.swift in Sources */,
+				C2E9DFD81BD8116C00568BAB /* OpenWeather.swift in Sources */,
 				C289ADB01B62BA8B00186773 /* UIView+.swift in Sources */,
 				C26B61441B86B96A007FCCBC /* NSManagedObject+.swift in Sources */,
 				C289ADC81B62BAC200186773 /* Drawing.swift in Sources */,
@@ -789,8 +805,8 @@
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = MyKit/Info.plist;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
@@ -799,8 +815,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = MyKit/Info.plist;
-				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
@@ -852,11 +868,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = HaiNguyen.MyKitOSX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -904,10 +921,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = HaiNguyen.MyKitOSX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -966,6 +985,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1019,6 +1039,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

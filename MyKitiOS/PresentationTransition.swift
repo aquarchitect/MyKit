@@ -15,8 +15,10 @@ public class PresentationTransition: UIPercentDrivenInteractiveTransition {
     }
 
     public var interactionEnabled = false
+    public var dimDismissalEnabled = false
+
+    public var dismissedAlpha: CGFloat = 1
     public var dismissedTransform: CGAffineTransform?
-    public var dimDismissalEnabled: Bool = false
 
     private var isPresenting = true
     private let contentStyle: Style
@@ -45,8 +47,11 @@ extension PresentationTransition: UIViewControllerAnimatedTransitioning {
         let transform = dismissedTransform ?? CGAffineTransformIdentity
         let duration = transitionDuration(transitionContext)
 
+        controller.view.alpha = isPresenting ? (dismissedAlpha ?? 1) : 1
         controller.view.transform = isPresenting ? transform : CGAffineTransformIdentity
+
         UIView.animateWithDuration(duration, delay: 0, options: [.AllowUserInteraction, .BeginFromCurrentState], animations: {
+            controller.view.alpha = self.isPresenting ? 1 : (self.dismissedAlpha ?? 1)
             controller.view.transform = self.isPresenting ? CGAffineTransformIdentity : transform
             }, completion: { _ in
                 if !self.isPresenting { fromController.view.removeFromSuperview() }

@@ -14,9 +14,9 @@ public extension UILabel {
     }
 
     public func heightForText(font: UIFont)(text: String)(width: CGFloat) -> CGFloat {
+        self.frame.size.width = width
         self.font = font
         self.text = text
-        self.frame.size.width = width
         self.sizeToFit()
 
         return self.bounds.height

@@ -8,6 +8,7 @@
 
 @import UIKit;
 @import CoreData;
+@import CoreLocation;
 
 //! Project version number for MyKitiOS.
 FOUNDATION_EXPORT double MyKitiOSVersionNumber;
