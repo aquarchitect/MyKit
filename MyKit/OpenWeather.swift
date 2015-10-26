@@ -9,7 +9,7 @@
 infix operator & {}
 
 private func & (lhs: String, rhs: String) -> String {
-    return lhs.appendComponent(rhs)
+    return "\(lhs)&\(rhs)"
 }
 
 public class OpenWeather {
@@ -18,13 +18,6 @@ public class OpenWeather {
 
         case Celsius = "metric"
         case Fahrenheit = "imperial"
-    }
-
-    public enum Error: ErrorType {
-
-        case InvalidURL(String)
-        case NetWorkProblem(NSURLResponse)
-        case UnableToObtainData
     }
 
     public let apiKey: String
@@ -99,15 +92,8 @@ public class OpenWeather {
                 let json = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
                 dictionary = json as? NSDictionary
             }
-
+            
             completion(dictionary)
         }.resume()
-    }
-}
-
-private extension String {
-
-    func appendComponent(component: String) -> String {
-        return self + "&\(component)"
     }
 }

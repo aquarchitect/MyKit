@@ -6,6 +6,8 @@
 //
 //
 
+@testable import MyKitOSX
+
 class MyKitTests: XCTestCase {
 
     var lorem = LoremIpsum()

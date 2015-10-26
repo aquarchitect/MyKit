@@ -63,3 +63,10 @@ public final class LoremIpsum {
         return arbitraryByWords(range.random())
     }
 }
+
+extension LoremIpsum: CustomDebugStringConvertible {
+
+    public var debugDescription: String {
+        return sentences.map { $0.string }.lazy.joinWithSeparator("\n")
+    }
+}
