@@ -10,24 +10,22 @@
 
 class MyKitTests: XCTestCase {
 
-    var lorem = LoremIpsum()
+    let lorem = try? LoremIpsum()
 
-    func testLoremIsNil() {
-        XCTAssert(lorem != nil)
+//    func testLoremWordGeneratorWithRange(range: Range<Int>) {
+//        let string = lorem?.arbitraryByWords(range)
+//        if let count = string?.componentsSeparatedByString(" ").count {
+//            XCTAssertGreaterThanOrEqual(range.count, count)
+//        } else { XCTAssertNil(string) }
+//    }
+//
+    func testLoremWordGeneratorWithCount(count: Int) {
+        let string = lorem?.arbitraryByWords(count, fromStart: false)
+        let count = string?.componentsSeparatedByString(" ").count
+        XCTAssertEqual(count, count)
     }
 
-    func testLoremGenerator() {
-        (0...100).forEach { _ in
-            let range = 1...5
-            let string = lorem?.arbitraryByWords(range)
-            let count = string?.characters.split(" ").count
-            XCTAssertGreaterThanOrEqual(range.count, count!)
-        }
-    }
-
-    func testToday() {
-        let timeSystem = TimeSystem.shareInstance
-        print(timeSystem.today)
-        print(timeSystem.calendar.dateFromComponents(timeSystem.today.components([.Year, .Month])))
+    func testLoremWordGenerator() {
+        testLoremWordGeneratorWithCount(5)
     }
 }

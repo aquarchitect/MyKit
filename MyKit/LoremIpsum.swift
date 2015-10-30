@@ -8,65 +8,100 @@
 
 public final class LoremIpsum {
 
-    private var sentences = [(string: String, wordCount: Int)]()
+    public enum Error: ErrorType {
 
-    public init?() {
+        case InvalidResourcePath
+        case UnableToOpenTheFile
+    }
+
+    private var storage = ""
+    private var maxCount: (sentences: Int, words: Int) = (0, 0)
+
+    private var range: Range<String.CharacterView.Index> {
+        return storage.startIndex..<storage.endIndex
+    }
+
+    public init() throws {
         #if os(iOS)
             let platform = "iOS"
         #elseif os(OSX)
             let platform = "OSX"
         #endif
 
-        guard let bundle = NSBundle(identifier: "HaiNguyen.MyKit" + platform),
-            url = bundle.URLForResource("Lorem", withExtension: "strings"),
-            lorem = try? String(contentsOfURL: url) else { return nil }
+        guard let bundle = NSBundle(identifier: "HaiNguyen.MyKit\(platform)"),
+            url = bundle.URLForResource("Lorem", withExtension: "strings")
+            else { throw Error.InvalidResourcePath }
 
-        let range = lorem.startIndex..<lorem.endIndex
-        let characters = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        do {
+            let lorem = try String(contentsOfURL: url)
 
-        lorem.enumerateSubstringsInRange(range, options: .BySentences) { substring, _, _, _ in
-            guard var string = substring else { return }
-            string = string.stringByTrimmingCharactersInSet(characters)
-            self.sentences.append((string, string.characters.split(" ").count))
-        }
+            func maxCountForOption(option: NSStringEnumerationOptions) -> Int {
+                var count = 0
+                lorem.enumerateSubstringsInRange(self.range, options: option) { _, _, _, _ in count++ }
+                return count
+            }
+
+            self.storage = lorem.stringByReplacingOccurrencesOfString("\\n", withString: "")
+            self.maxCount = (maxCountForOption(.BySentences), maxCountForOption(.ByWords))
+        } catch { throw Error.UnableToOpenTheFile }
     }
 
-    public func arbitraryBySentences(count: Int, fromStart: Bool) -> String {
-        let start = fromStart ? 0 : Int.arbitrary() % sentences.count - count
-        let end = start.advancedBy(count)
-        return sentences[start..<end].map { $0.string }.lazy.joinWithSeparator(" ")
-    }
+    public func arbitraryBySentences(var count: Int, fromStart flag: Bool) -> String {
+        guard count < maxCount.sentences else { return storage }
 
-    public func arbitraryByWords(var count: Int) -> String {
-        var index: Int
-        repeat {
-            index = Int.arbitrary() % sentences.count
-        } while sentences[index].wordCount <= count
+        var starIndex = 0, string = ""
 
-        let string = sentences[index].string
-        var range = string.startIndex..<string.endIndex
-
-        sentences[index].string.enumerateSubstringsInRange(range, options: .ByWords) { substring, subrange, _, stop in
-            if substring?.isEmpty == true { return }
-            range.endIndex = subrange.endIndex
-            if --count == 0 { stop = true }
+        if !flag {
+            repeat { starIndex = Int.arbitrary() % maxCount.sentences
+            } while starIndex + count > maxCount.sentences
         }
 
-        return string.substringWithRange(range)
+        storage.enumerateSubstringsInRange(range, options: .BySentences) { substring, _, _, stop in
+            if starIndex == 0 {
+                string += substring ?? ""
+
+                if count > 1 { count-- }
+                else { stop = true }
+            } else { starIndex-- }
+        }
+
+        return string
     }
 
-    public func arbitraryBySentences(range: Range<Int>, fromStart: Bool) -> String {
-        return arbitraryBySentences(range.random(), fromStart: fromStart)
+    public func arbitraryByWords(var count: Int, fromStart flag: Bool) -> String {
+        guard count < maxCount.words else { return storage }
+
+        var starIndex = 0, words = [String]()
+
+        if !flag {
+            repeat { starIndex = Int.arbitrary() % maxCount.words
+            } while starIndex + count > maxCount.words
+        }
+
+        storage.enumerateSubstringsInRange(range, options: .ByWords) { substring, _, _, stop in
+            if starIndex == 0 {
+                words += [substring ?? ""]
+
+                if count > 1 { count-- }
+                else { stop = true }
+            } else { starIndex-- }
+        }
+
+        return words.joinWithSeparator(" ").lowercaseString
     }
 
-    public func arbitraryByWords(range: Range<Int>) -> String {
-        return arbitraryByWords(range.random())
+    public func arbitraryBySentences(range: Range<Int>, fromStart flag: Bool) -> String {
+        return arbitraryBySentences(range.random(), fromStart: flag)
+    }
+
+    public func arbitraryByWords(range: Range<Int>, fromStart flag: Bool) -> String {
+        return arbitraryByWords(range.random(), fromStart: flag)
     }
 }
 
 extension LoremIpsum: CustomDebugStringConvertible {
 
     public var debugDescription: String {
-        return sentences.map { $0.string }.lazy.joinWithSeparator("\n")
+        return storage + "\n\nMax Count of Sentences - \(maxCount.sentences)" + "\nMax Count of Words - \(maxCount.words)"
     }
 }
