@@ -8,6 +8,10 @@
 
 public extension UITableView {
 
+    final func contentOffsetReachingTheBottom() -> CGPoint {
+        return CGPoint(x: 0, y: self.contentSize.height - self.bounds.height)
+    }
+
     final func isSectionValid(section: Int) -> Bool {
         return NSLocationInRange(section, NSMakeRange(0, self.numberOfSections))
     }

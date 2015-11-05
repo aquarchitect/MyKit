@@ -42,8 +42,6 @@
 		C289ADC61B62BAC200186773 /* Boxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADBF1B62BAC200186773 /* Boxing.swift */; };
 		C289ADC71B62BAC200186773 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADC01B62BAC200186773 /* Drawing.swift */; };
 		C289ADC81B62BAC200186773 /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADC01B62BAC200186773 /* Drawing.swift */; };
-		C289ADC91B62BAC200186773 /* Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADC11B62BAC200186773 /* Enumeration.swift */; };
-		C289ADCA1B62BAC200186773 /* Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADC11B62BAC200186773 /* Enumeration.swift */; };
 		C289ADCB1B62BAC200186773 /* Queueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADC21B62BAC200186773 /* Queueing.swift */; };
 		C289ADCC1B62BAC200186773 /* Queueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADC21B62BAC200186773 /* Queueing.swift */; };
 		C289ADCD1B62BAC200186773 /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADC31B62BAC200186773 /* Swizzling.swift */; };
@@ -134,7 +132,6 @@
 		C289ADB71B62BAA200186773 /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		C289ADBF1B62BAC200186773 /* Boxing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Boxing.swift; path = MyKit/Boxing.swift; sourceTree = "<group>"; };
 		C289ADC01B62BAC200186773 /* Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drawing.swift; path = MyKit/Drawing.swift; sourceTree = "<group>"; };
-		C289ADC11B62BAC200186773 /* Enumeration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enumeration.swift; path = MyKit/Enumeration.swift; sourceTree = "<group>"; };
 		C289ADC21B62BAC200186773 /* Queueing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queueing.swift; path = MyKit/Queueing.swift; sourceTree = "<group>"; };
 		C289ADC31B62BAC200186773 /* Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swizzling.swift; path = MyKit/Swizzling.swift; sourceTree = "<group>"; };
 		C289ADC41B62BAC200186773 /* Timing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Timing.swift; path = MyKit/Timing.swift; sourceTree = "<group>"; };
@@ -318,7 +315,6 @@
 			children = (
 				C289ADBF1B62BAC200186773 /* Boxing.swift */,
 				C289ADC01B62BAC200186773 /* Drawing.swift */,
-				C289ADC11B62BAC200186773 /* Enumeration.swift */,
 				C289ADC21B62BAC200186773 /* Queueing.swift */,
 				C289ADC31B62BAC200186773 /* Swizzling.swift */,
 				C2C535941B9103C900865FDA /* Fetching.swift */,
@@ -609,7 +605,6 @@
 				C272394C1B922FBB00B7173F /* Arbitrary.swift in Sources */,
 				C28DF6181B91537600E4D716 /* NSAttributeDescription+.swift in Sources */,
 				C2DDC2731BD0238C00D0039A /* NSMutableAttributedString+.swift in Sources */,
-				C289ADC91B62BAC200186773 /* Enumeration.swift in Sources */,
 				C26B61481B86B999007FCCBC /* NSManagedObject+.swift in Sources */,
 				C289ADDC1B62BAD500186773 /* CGSize+.swift in Sources */,
 				C289ADCB1B62BAC200186773 /* Queueing.swift in Sources */,
@@ -665,7 +660,6 @@
 				C289ADAB1B62BA8B00186773 /* UIColor+.swift in Sources */,
 				C289ADAD1B62BA8B00186773 /* UIEdgeInsets+.swift in Sources */,
 				C2D355941BB4F7080097B82C /* PersistentStack.swift in Sources */,
-				C289ADCA1B62BAC200186773 /* Enumeration.swift in Sources */,
 				C2D9942D1BC86BBF00F47E06 /* UILabel+.swift in Sources */,
 				C289ADBB1B62BAA200186773 /* SnapLayout.swift in Sources */,
 				C289ADDF1B62BAD500186773 /* NSCache+.swift in Sources */,
