@@ -10,6 +10,7 @@ public class TextView: UIControl {
 
     public lazy var textBox: UITextView = {
         let view = UITextView()
+        view.showsHorizontalScrollIndicator = false
         view.backgroundColor = .clearColor()
         view.textContainer.lineFragmentPadding = 0
         view.textContainerInset = UIEdgeInsetsZero

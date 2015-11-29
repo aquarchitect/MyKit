@@ -8,19 +8,19 @@
 
 public extension UIControl {
 
-    private struct Action {
+    private struct Block {
 
         typealias Handler = @convention(block) UIControl -> Void
-        static var Token = "Action"
+        static var Token = "Block"
     }
 
     final func addAction(block: UIControl -> Void, forControlEvents events: UIControlEvents) {
-        let object: AnyObject = unsafeBitCast(block as Action.Handler, AnyObject.self)
-        objc_setAssociatedObject(self, &Action.Token, object, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
-        self.addTarget(self, action: "controlHandle:", forControlEvents: events)
+        let object: AnyObject = unsafeBitCast(block as Block.Handler, AnyObject.self)
+        objc_setAssociatedObject(self, &Block.Token, object, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
+        self.addTarget(self, action: "handleControl:", forControlEvents: events)
     }
 
-    internal func controlHandle(sender: UIControl) {
-        _ = unsafeBitCast(objc_getAssociatedObject(self, &Action.Token), Action.Handler.self)(sender)
+    internal func handleControl(sender: UIControl) {
+        _ = unsafeBitCast(objc_getAssociatedObject(self, &Block.Token), Block.Handler.self)(sender)
     }
 }

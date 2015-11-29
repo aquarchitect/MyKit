@@ -11,17 +11,21 @@ public extension NSMutableAttributedString {
     private var range: NSRange { return NSMakeRange(0, self.length) }
 
     #if os(iOS)
+        public func addFontAttribute(value: UIFont, range: NSRange?) {
+            self.addFontAttribute(value, range)
+        }
 
-    public func addFontAttribute(value: UIFont, range: NSRange?) { self.addFontAttribute(value, range) }
-
-    public func addColorAttribute(value: UIColor, range: NSRange?) { self.addColorAttribute(value, range) }
-
+        public func addColorAttribute(value: UIColor, range: NSRange?) {
+            self.addColorAttribute(value, range)
+        }
     #elseif os(OSX)
+        public func addFontAttribute(value: NSFont, range: NSRange?) {
+            self.addFontAttribute(value, range: range)
+        }
 
-    public func addFontAttribute(value: NSFont, range: NSRange?) { self.addFontAttribute(value, range: range) }
-
-    public func addColorAttribute(value: NSColor, range: NSRange?) { self.addColorAttribute(value, range: range) }
-
+        public func addColorAttribute(value: NSColor, range: NSRange?) {
+            self.addColorAttribute(value, range: range)
+        }
     #endif
 
     private func addFontAttribute(value: AnyObject, _ range: NSRange?) {
@@ -45,5 +49,9 @@ public extension NSMutableAttributedString {
 
     public func addBaselineAttribute(value: Float, range: NSRange?) {
         self.addAttribute(NSBaselineOffsetAttributeName, value: NSNumber(float: value), range: range ?? self.range)
+    }
+
+    public func addKernAttribute(value: Float, range: NSRange?) {
+        self.addAttribute(NSKernAttributeName, value: NSNumber(float: value), range: range ?? self.range)
     }
 }

@@ -80,6 +80,7 @@
 		C2C48E231B7C856A00CB544F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48E211B7C856A00CB544F /* String+.swift */; };
 		C2C535951B9103C900865FDA /* Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C535941B9103C900865FDA /* Fetching.swift */; };
 		C2C535961B9103C900865FDA /* Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C535941B9103C900865FDA /* Fetching.swift */; };
+		C2C7ED851BED565300CB558E /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C7ED841BED565300CB558E /* UIScrollView+.swift */; };
 		C2C9EE701BDEA65B00008416 /* WeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C9EE6F1BDEA65B00008416 /* WeatherIcon.swift */; };
 		C2C9EE711BDEA65B00008416 /* WeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C9EE6F1BDEA65B00008416 /* WeatherIcon.swift */; };
 		C2D204ED1B9C20CA002A311D /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D204EC1B9C20CA002A311D /* Range+.swift */; };
@@ -156,6 +157,7 @@
 		C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSNumber+.swift"; path = "MyKit/NSNumber+.swift"; sourceTree = "<group>"; };
 		C2C48E211B7C856A00CB544F /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+.swift"; path = "MyKit/String+.swift"; sourceTree = "<group>"; };
 		C2C535941B9103C900865FDA /* Fetching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fetching.swift; path = MyKit/Fetching.swift; sourceTree = "<group>"; };
+		C2C7ED841BED565300CB558E /* UIScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 		C2C9EE6F1BDEA65B00008416 /* WeatherIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherIcon.swift; path = MyKit/WeatherIcon.swift; sourceTree = "<group>"; };
 		C2D204EC1B9C20CA002A311D /* Range+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Range+.swift"; path = "MyKit/Range+.swift"; sourceTree = "<group>"; };
 		C2D355931BB4F7080097B82C /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStack.swift; path = MyKit/PersistentStack.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				C289ADA31B62BA8B00186773 /* UIControl+.swift */,
 				C2D9942C1BC86BBF00F47E06 /* UILabel+.swift */,
 				C289ADA41B62BA8B00186773 /* UIEdgeInsets+.swift */,
+				C2C7ED841BED565300CB558E /* UIScrollView+.swift */,
 				C289ADA61B62BA8B00186773 /* UITableView+.swift */,
 				C2EF47F71BAA128C0080680E /* UITableViewCellEditingStyle+.swift */,
 				C289ADA71B62BA8B00186773 /* UIView+.swift */,
@@ -666,6 +669,7 @@
 				C289ADDD1B62BAD500186773 /* CGSize+.swift in Sources */,
 				C289ADA81B62BA8B00186773 /* UIBezierPath+.swift in Sources */,
 				C29E35861B82A2D500051E3A /* PresentationController.swift in Sources */,
+				C2C7ED851BED565300CB558E /* UIScrollView+.swift in Sources */,
 				C289ADE11B62BAD500186773 /* NSDate+.swift in Sources */,
 				C2C48E221B7C856A00CB544F /* String+.swift in Sources */,
 				C2E9DFD81BD8116C00568BAB /* OpenWeather.swift in Sources */,

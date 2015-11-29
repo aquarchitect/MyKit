@@ -14,14 +14,13 @@ public class PresentationTransition: UIPercentDrivenInteractiveTransition {
         case Center(CGSize)
     }
 
+    public let contentStyle: Style
     public var interactionEnabled = false
-    public var dimDismissalEnabled = false
 
-    public var dismissedAlpha: CGFloat = 1
-    public var dismissedTransform: CGAffineTransform?
+    public var dimming: (transparent: CGFloat, dismissal: Bool) = (0.4, true)
+    public var animating: (alpha: CGFloat, transform: CGAffineTransform) = (1, CGAffineTransformIdentity)
 
     private var isPresenting = true
-    private let contentStyle: Style
 
     public init(contentStyle: Style) {
         self.contentStyle = contentStyle
@@ -32,7 +31,7 @@ public class PresentationTransition: UIPercentDrivenInteractiveTransition {
 extension PresentationTransition: UIViewControllerAnimatedTransitioning {
 
     public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.2
+        return 0.5
     }
 
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -44,15 +43,14 @@ extension PresentationTransition: UIViewControllerAnimatedTransitioning {
 
         // identify controller view that will be animating
         let controller = isPresenting ? toController : fromController
-        let transform = dismissedTransform ?? CGAffineTransformIdentity
         let duration = transitionDuration(transitionContext)
 
-        controller.view.alpha = isPresenting ? (dismissedAlpha ?? 1) : 1
-        controller.view.transform = isPresenting ? transform : CGAffineTransformIdentity
+        controller.view.alpha = isPresenting ? animating.alpha : 1
+        controller.view.transform = isPresenting ? animating.transform : CGAffineTransformIdentity
 
         UIView.animateWithDuration(duration, delay: 0, options: [.AllowUserInteraction, .BeginFromCurrentState], animations: {
-            controller.view.alpha = self.isPresenting ? 1 : (self.dismissedAlpha ?? 1)
-            controller.view.transform = self.isPresenting ? CGAffineTransformIdentity : transform
+            controller.view.alpha = self.isPresenting ? 1 : self.animating.alpha
+            controller.view.transform = self.isPresenting ? CGAffineTransformIdentity : self.animating.transform
             }, completion: { _ in
                 if !self.isPresenting { fromController.view.removeFromSuperview() }
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
@@ -80,8 +78,9 @@ extension PresentationTransition: UIViewControllerTransitioningDelegate {
             presentedRect = CGRect(origin: presentedOrigin, size: size)
         }
 
-        let controller = PresentationController(contentFrame: presentedRect, presentedViewController: presented, presentingViewController: source)
-        controller.dimDismissalEnabled = dimDismissalEnabled
+        let controller = PresentationController(contentFrame: presentedRect, presentedController: presented, presentingController: source)
+        controller.dimView.userInteractionEnabled = dimming.dismissal
+        controller.dimView.backgroundColor = UIColor(white: 0, alpha: dimming.transparent)
         return controller
     }
 

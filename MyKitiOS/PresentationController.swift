@@ -8,54 +8,45 @@
 
 public class PresentationController: UIPresentationController {
 
-    var dimDismissalEnabled = true
-    private var contentFrame: CGRect
+    public let contentRect: CGRect
 
-    public private(set) lazy var dimView: UIView = {
-        let view = UIView(frame: self.containerView!.bounds)
-        view.userInteractionEnabled = self.dimDismissalEnabled
-        view.backgroundColor = UIColor(white: 0, alpha: 0.8)
-        self.containerView!.insertSubview(view, atIndex: 0)
-
-        let tap = UITapGestureRecognizer()
-        tap.addTarget(self, action: "handleTap:")
-        view.addGestureRecognizer(tap)
-
+    public let dimView: UIView = {
+        let view = UIControl()
+        view.alpha = 0
         return view
     }()
 
-    public init(contentFrame: CGRect, presentedViewController: UIViewController, presentingViewController: UIViewController) {
-        self.contentFrame = contentFrame
-        super.init(presentedViewController: presentedViewController, presentingViewController: presentingViewController)
+    public init(contentFrame: CGRect, presentedController: UIViewController, presentingController: UIViewController) {
+        self.contentRect = contentFrame
+        super.init(presentedViewController: presentedController, presentingViewController: presentingController)
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        let tap = UITapGestureRecognizer()
+        tap.addTarget(self, action: "handleTap:")
+        dimView.addGestureRecognizer(tap)
     }
 
-    func keyboardWillShow(notification: NSNotification) {
-        guard let rect = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue else { return }
-        self.presentedView()?.frame.origin.y -= rect.height / 2
+    public override func presentationTransitionWillBegin() {
+        self.containerView?.insertSubview(dimView, atIndex: 0)
+        animateDimView(alpha: 1, completion: nil)
     }
 
-    func keyboardWillHide(notification: NSNotification) {
-        guard let rect = notification.userInfo?[UIKeyboardFrameEndUserInfoKey]?.CGRectValue else { return }
-        self.presentedView()?.frame.origin.y += rect.height / 2
+    public override func dismissalTransitionWillBegin() {
+        animateDimView(alpha: 0) { self.dimView.removeFromSuperview() }
     }
 
-    private func animateDim(alpha: CGFloat) {
-        self.presentingViewController.transitionCoordinator()?.animateAlongsideTransition({ _ in self.dimView.alpha = alpha }, completion: nil)
+    private func animateDimView(alpha alpha: CGFloat, completion: (Void -> Void)?) {
+        self.presentingViewController.transitionCoordinator()?.animateAlongsideTransition({ _ in self.dimView.alpha = alpha }, completion: { _ in completion?() })
     }
-
-    public override func presentationTransitionWillBegin() { animateDim(1) }
-
-    public override func dismissalTransitionWillBegin() { animateDim(0) }
 
     public override func containerViewWillLayoutSubviews() {
-        self.presentedView()!.frame = contentFrame
+        self.presentedView()!.frame = contentRect
+    }
+
+    public override func containerViewDidLayoutSubviews() {
+        dimView.frame = self.containerView?.bounds ?? .zero
     }
 
     func handleTap(sender: UITapGestureRecognizer) {
-        let controller = self.presentingViewController
-        controller.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
     }
 }
