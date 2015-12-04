@@ -11,7 +11,7 @@ public class PresentationController: UIPresentationController {
     public let contentRect: CGRect
 
     public let dimView: UIView = {
-        let view = UIControl()
+        let view = UIView()
         view.alpha = 0
         return view
     }()
@@ -27,14 +27,14 @@ public class PresentationController: UIPresentationController {
 
     public override func presentationTransitionWillBegin() {
         self.containerView?.insertSubview(dimView, atIndex: 0)
-        animateDimView(alpha: 1, completion: nil)
+        animateDimView(1, completion: nil)
     }
 
     public override func dismissalTransitionWillBegin() {
-        animateDimView(alpha: 0) { self.dimView.removeFromSuperview() }
+        animateDimView(0) { self.dimView.removeFromSuperview() }
     }
 
-    private func animateDimView(alpha alpha: CGFloat, completion: (Void -> Void)?) {
+    private func animateDimView(alpha: CGFloat, completion: (Void -> Void)?) {
         self.presentingViewController.transitionCoordinator()?.animateAlongsideTransition({ _ in self.dimView.alpha = alpha }, completion: { _ in completion?() })
     }
 

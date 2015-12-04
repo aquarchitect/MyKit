@@ -31,7 +31,6 @@
 		C289ADAC1B62BA8B00186773 /* UIControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADA31B62BA8B00186773 /* UIControl+.swift */; };
 		C289ADAD1B62BA8B00186773 /* UIEdgeInsets+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADA41B62BA8B00186773 /* UIEdgeInsets+.swift */; };
 		C289ADAF1B62BA8B00186773 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADA61B62BA8B00186773 /* UITableView+.swift */; };
-		C289ADB01B62BA8B00186773 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADA71B62BA8B00186773 /* UIView+.swift */; };
 		C289ADB21B62BA9600186773 /* Drawing+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADB11B62BA9600186773 /* Drawing+.swift */; };
 		C289ADB91B62BAA200186773 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADB31B62BAA200186773 /* CollectionView.swift */; };
 		C289ADBA1B62BAA200186773 /* PresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADB41B62BAA200186773 /* PresentationTransition.swift */; };
@@ -66,6 +65,7 @@
 		C28DF6181B91537600E4D716 /* NSAttributeDescription+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DF6161B91537600E4D716 /* NSAttributeDescription+.swift */; };
 		C28DF61D1B91674300E4D716 /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DF61C1B91674300E4D716 /* LoremIpsum.swift */; };
 		C28DF61E1B91674300E4D716 /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28DF61C1B91674300E4D716 /* LoremIpsum.swift */; };
+		C2948A511C0FAA7B00CE3044 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C289ADA71B62BA8B00186773 /* UIView+.swift */; };
 		C29E35861B82A2D500051E3A /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E35851B82A2D500051E3A /* PresentationController.swift */; };
 		C2B162941BB0C3A800AEB7B1 /* DateIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B162931BB0C3A800AEB7B1 /* DateIndex.swift */; };
 		C2B162951BB0C3A800AEB7B1 /* DateIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B162931BB0C3A800AEB7B1 /* DateIndex.swift */; };
@@ -648,6 +648,7 @@
 				C289ADE51B62BAD500186773 /* NSIndexPath+.swift in Sources */,
 				C2B60ABC1B94BF0900F6D2BB /* NSRelationshipDescription+.swift in Sources */,
 				C265BA591B966C2D00F6871E /* UIGestureRecognizer+.swift in Sources */,
+				C2948A511C0FAA7B00CE3044 /* UIView+.swift in Sources */,
 				C2DDC2721BD0238C00D0039A /* NSMutableAttributedString+.swift in Sources */,
 				C2B8B3E81BB60A8B007FC72C /* NSNumber+.swift in Sources */,
 				C289ADD91B62BAD500186773 /* CGPoint+.swift in Sources */,
@@ -674,7 +675,6 @@
 				C2C48E221B7C856A00CB544F /* String+.swift in Sources */,
 				C2E9DFD81BD8116C00568BAB /* OpenWeather.swift in Sources */,
 				C2C9EE701BDEA65B00008416 /* WeatherIcon.swift in Sources */,
-				C289ADB01B62BA8B00186773 /* UIView+.swift in Sources */,
 				C26B61441B86B96A007FCCBC /* NSManagedObject+.swift in Sources */,
 				C289ADC81B62BAC200186773 /* Drawing.swift in Sources */,
 				C2B162941BB0C3A800AEB7B1 /* DateIndex.swift in Sources */,
