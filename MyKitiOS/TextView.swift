@@ -8,7 +8,7 @@
 
 public class TextView: UIControl {
 
-    public lazy var textBox: UITextView = {
+    public private(set) lazy var textBox: UITextView = {
         let view = UITextView()
         view.showsHorizontalScrollIndicator = false
         view.backgroundColor = .clearColor()
@@ -19,6 +19,7 @@ public class TextView: UIControl {
         view.enablesReturnKeyAutomatically = true
         view.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
         view.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(view)
         return view
     }()
 
@@ -29,12 +30,16 @@ public class TextView: UIControl {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         super.backgroundColor = .whiteColor()
-        super.addSubview(textBox)
 
-        ["H:|-[textBox]|", "V:|-[textBox]-|"].forEach(self.addConstraintsWithVisualFormat(["textBox": textBox]))
+        self.addConstraintsWithVisualFormat(["textBox": textBox])(format: "V:|-[textBox]-|")
+
+        let attributes = [(.Left, .LeftMargin), (.Right, .Right), (.Top, .TopMargin), (.Bottom, .BottomMargin)] as [(NSLayoutAttribute, NSLayoutAttribute)]
+        attributes.forEach {
+            let constraint = NSLayoutConstraint(item: self.textBox, attribute: $0, relatedBy: .Equal, toItem: self, attribute: $1, multiplier: 1, constant: 0)
+            constraint.priority = 800
+            self.addConstraint(constraint)
+        }
     }
-
-    deinit { textBox.removeObserver(self, forKeyPath: "contentSize") }
 
     public override func intrinsicContentSize() -> CGSize {
         let width = textBox.contentSize.width + self.layoutMargins.horizontal

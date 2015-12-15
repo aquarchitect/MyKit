@@ -31,23 +31,21 @@ public class PresentationTransition: UIPercentDrivenInteractiveTransition {
 extension PresentationTransition: UIViewControllerAnimatedTransitioning {
 
     public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.25
+        return 0.5
     }
 
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         let fromController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
         let toController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
 
-        let containerView = transitionContext.containerView()
-        if isPresenting { containerView!.addSubview(toController.view) }
+        isPresenting ? transitionContext.containerView()?.addSubview(toController.view) : ()
 
         let controller = isPresenting ? toController : fromController
-        let duration = transitionDuration(transitionContext)
-
         controller.view.alpha = isPresenting ? animating.alpha : 1
         controller.view.transform = isPresenting ? animating.transform : CGAffineTransformIdentity
 
-        let options: UIViewAnimationOptions = [.AllowUserInteraction, isPresenting ? .CurveEaseIn : .CurveEaseOut]
+        let options: UIViewAnimationOptions = [.AllowUserInteraction, .BeginFromCurrentState, isPresenting ? .CurveEaseIn : .CurveEaseOut]
+        let duration = transitionDuration(transitionContext)
 
         UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
             controller.view.alpha = self.isPresenting ? 1 : self.animating.alpha
