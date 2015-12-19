@@ -146,3 +146,25 @@ public extension NSDate {
         return !isSameDayAsDate(today) && self.compare(today) == .OrderedAscending
     }
 }
+
+public extension NSDate {
+
+    public func stringWithStyle(date date: NSDateFormatterStyle, time: NSDateFormatterStyle) -> String {
+        let formatter = NSDateFormatter.sharedInstance
+        formatter.timeStyle = date
+        formatter.dateStyle = time
+        return formatter.stringFromDate(self)
+    }
+
+    public func stringWithStyle(style: NSDateFormatterStyle) -> String {
+        return stringWithStyle(date: style, time: style)
+    }
+
+    public func timeStringWithStyle(style: NSDateFormatterStyle) -> String {
+        return stringWithStyle(date: .NoStyle, time: style)
+    }
+
+    public func dateStringWithStyle(style: NSDateFormatterStyle) -> String {
+        return stringWithStyle(date: style, time: .NoStyle)
+    }
+}
