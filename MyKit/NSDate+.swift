@@ -151,8 +151,8 @@ public extension NSDate {
 
     public func stringWithStyle(date date: NSDateFormatterStyle, time: NSDateFormatterStyle) -> String {
         let formatter = NSDateFormatter.sharedInstance
-        formatter.timeStyle = date
-        formatter.dateStyle = time
+        formatter.timeStyle = time
+        formatter.dateStyle = date
         return formatter.stringFromDate(self)
     }
 
