@@ -18,7 +18,6 @@ public class TransitionDelegate: UIPercentDrivenInteractiveTransition {
 
     public let presentedRect: CGRect
     public var interactionEnabled = false
-    public var transitionDuration = 0.25
 
     public var dimming: (transparent: CGFloat, dismissal: Bool) = (0.4, true)
 
@@ -33,7 +32,7 @@ public class TransitionDelegate: UIPercentDrivenInteractiveTransition {
 extension TransitionDelegate: UIViewControllerAnimatedTransitioning {
 
     public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return transitionDuration
+        return 0.25
     }
 
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
