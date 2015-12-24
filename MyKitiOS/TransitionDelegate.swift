@@ -45,7 +45,7 @@ extension TransitionDelegate: UIViewControllerTransitioningDelegate {
     public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         let controller = PresentationController(contentFrame: presentedRect, presentedController: presented, presentingController: source)
         controller.dimView.userInteractionEnabled = dimming.dismissal
-        controller.dimView.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        controller.dimView.backgroundColor = UIColor(white: 0, alpha: dimming.transparent)
         return controller
     }
 
