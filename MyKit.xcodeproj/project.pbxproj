@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2126E7B1C2E5C61009B53EB /* StreamerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126E7A1C2E5C61009B53EB /* StreamerClient.swift */; };
+		C2126E7C1C2E5C61009B53EB /* StreamerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126E7A1C2E5C61009B53EB /* StreamerClient.swift */; };
 		C2252B661B8CDCD9006977D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2252B651B8CDCD9006977D0 /* AppDelegate.swift */; };
 		C2252B681B8CDCD9006977D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2252B671B8CDCD9006977D0 /* ViewController.swift */; };
 		C2252B6D1B8CDCDA006977D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2252B6C1B8CDCDA006977D0 /* Assets.xcassets */; };
@@ -100,6 +102,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C2126E7A1C2E5C61009B53EB /* StreamerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamerClient.swift; path = MyKit/StreamerClient.swift; sourceTree = "<group>"; };
 		C2252B631B8CDCD9006977D0 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2252B651B8CDCD9006977D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2252B671B8CDCD9006977D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -310,6 +313,7 @@
 				C2B162931BB0C3A800AEB7B1 /* DateIndex.swift */,
 				C2E9DFD71BD8116C00568BAB /* OpenWeather.swift */,
 				C2C9EE6F1BDEA65B00008416 /* WeatherIcon.swift */,
+				C2126E7A1C2E5C61009B53EB /* StreamerClient.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -618,6 +622,7 @@
 				C289ADE41B62BAD500186773 /* NSIndexPath+.swift in Sources */,
 				C289AD9E1B62BA6D00186773 /* NSTableView+.swift in Sources */,
 				C2E9DFD91BD8116C00568BAB /* OpenWeather.swift in Sources */,
+				C2126E7C1C2E5C61009B53EB /* StreamerClient.swift in Sources */,
 				C2D355951BB4F7080097B82C /* PersistentStack.swift in Sources */,
 				C289ADCD1B62BAC200186773 /* Swizzling.swift in Sources */,
 				C289AD9D1B62BA6D00186773 /* NSControl+.swift in Sources */,
@@ -678,6 +683,7 @@
 				C2C48E221B7C856A00CB544F /* String+.swift in Sources */,
 				C2E9DFD81BD8116C00568BAB /* OpenWeather.swift in Sources */,
 				C2C9EE701BDEA65B00008416 /* WeatherIcon.swift in Sources */,
+				C2126E7B1C2E5C61009B53EB /* StreamerClient.swift in Sources */,
 				C2CD64D61C2877290040DAAD /* TransitionDelegate.swift in Sources */,
 				C26B61441B86B96A007FCCBC /* NSManagedObject+.swift in Sources */,
 				C289ADC81B62BAC200186773 /* Drawing.swift in Sources */,
