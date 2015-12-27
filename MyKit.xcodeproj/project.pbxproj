@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C2126E7B1C2E5C61009B53EB /* StreamerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126E7A1C2E5C61009B53EB /* StreamerClient.swift */; };
 		C2126E7C1C2E5C61009B53EB /* StreamerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126E7A1C2E5C61009B53EB /* StreamerClient.swift */; };
+		C22051691C2F957C00695AA3 /* ViewConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22051681C2F957C00695AA3 /* ViewConstraint.swift */; };
 		C2252B661B8CDCD9006977D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2252B651B8CDCD9006977D0 /* AppDelegate.swift */; };
 		C2252B681B8CDCD9006977D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2252B671B8CDCD9006977D0 /* ViewController.swift */; };
 		C2252B6D1B8CDCDA006977D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2252B6C1B8CDCDA006977D0 /* Assets.xcassets */; };
@@ -103,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		C2126E7A1C2E5C61009B53EB /* StreamerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamerClient.swift; path = MyKit/StreamerClient.swift; sourceTree = "<group>"; };
+		C22051681C2F957C00695AA3 /* ViewConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConstraint.swift; sourceTree = "<group>"; };
 		C2252B631B8CDCD9006977D0 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2252B651B8CDCD9006977D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2252B671B8CDCD9006977D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				C289ADB61B62BAA200186773 /* StackView.swift */,
 				C289ADB71B62BAA200186773 /* TableView.swift */,
 				C2EA2AA31B98BD5D004AAFE8 /* TextView.swift */,
+				C22051681C2F957C00695AA3 /* ViewConstraint.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				C2DEF0711BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */,
 				C289ADA91B62BA8B00186773 /* UICollectionView+.swift in Sources */,
 				C289ADBD1B62BAA200186773 /* TableView.swift in Sources */,
+				C22051691C2F957C00695AA3 /* ViewConstraint.swift in Sources */,
 				C289ADBC1B62BAA200186773 /* StackView.swift in Sources */,
 				C289ADCE1B62BAC200186773 /* Swizzling.swift in Sources */,
 				C272394B1B922FBB00B7173F /* Arbitrary.swift in Sources */,

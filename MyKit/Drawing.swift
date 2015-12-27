@@ -10,7 +10,7 @@ public typealias Render = CGContextRef -> Void
 
 public let PI = CGFloat(M_PI)
 
-public func drawInState(context: CGContextRef, handle: Void -> Void) {
+public func drawInState(context: CGContextRef?, handle: Void -> Void) {
     CGContextSaveGState(context)
     handle()
     CGContextRestoreGState(context)
