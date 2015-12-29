@@ -6,14 +6,15 @@
 //
 //
 
-/// StreamerCline is meant to subclass
 public class StreamClient: NSObject {
 
     public static let EventNotification = "StreamClientEventNotification"
 
+    public var timeout: CFTimeInterval = 3
     public private(set) var ip: String?
     public private(set) var port: UInt32?
 
+    private var timer: NSTimer?
     private var inputStream: NSInputStream?
     private var outputStream: NSOutputStream?
 
@@ -29,9 +30,16 @@ public class StreamClient: NSObject {
         self.inputStream = readStream?.takeUnretainedValue()
         self.outputStream = writeStream?.takeUnretainedValue()
         [inputStream, outputStream].forEach(self.addStream)
+
+        let timer = NSTimer.scheduledTimerWithTimeInterval(timeout, target: self, selector: "handleTimerout", userInfo: nil, repeats: false)
+        NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSDefaultRunLoopMode)
+        self.timer = timer
     }
 
     public func disconnect() {
+        timer?.invalidate()
+        timer = nil
+
         removeStream(&inputStream)
         removeStream(&outputStream)
     }
@@ -62,6 +70,10 @@ public class StreamClient: NSObject {
         stream?.scheduleInRunLoop(loop, forMode: NSDefaultRunLoopMode)
         stream = nil
     }
+
+    func handleTimeout() {
+        stream(NSStream(), handleEvent: .ErrorOccurred)
+    }
 }
 
 extension StreamClient: NSStreamDelegate {
@@ -70,8 +82,7 @@ extension StreamClient: NSStreamDelegate {
         switch eventCode {
 
         case let options where !options.isDisjointWith([.EndEncountered, .ErrorOccurred]):
-            removeStream(&inputStream)
-            removeStream(&outputStream)
+            disconnect()
 
         case [.HasBytesAvailable] where aStream === inputStream && inputStream?.hasBytesAvailable == true:
             var buffer = [UInt8](count: 8, repeatedValue: 0)

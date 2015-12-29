@@ -56,6 +56,8 @@ public class PresentationController: UIPresentationController {
     }
 
     func handleTap(sender: UITapGestureRecognizer) {
-        self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+        let controller = self.presentingViewController
+        controller.view.endEditing(true)
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
 }
