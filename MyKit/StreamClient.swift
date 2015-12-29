@@ -10,13 +10,24 @@ public class StreamClient: NSObject {
 
     public static let EventNotification = "StreamClientEventNotification"
 
-    public var timeout: CFTimeInterval = 3
+    public var timeout: CFTimeInterval {
+        willSet { actionScheduler.interval = newValue }
+    }
     public private(set) var ip: String?
     public private(set) var port: UInt32?
 
-    private var timer: NSTimer?
+    private let actionScheduler: ActionScheduler
     private var inputStream: NSInputStream?
     private var outputStream: NSOutputStream?
+
+    public init(timeout: CFTimeInterval = 3) {
+        self.timeout = timeout
+        self.actionScheduler = ActionScheduler(interval: timeout)
+
+        super.init()
+
+        actionScheduler.addTarget(self, action: "handleTimeout")
+    }
 
     public func connectToHost(ip: String, port: UInt32) {
         self.ip = ip
@@ -25,21 +36,16 @@ public class StreamClient: NSObject {
         var readStream: Unmanaged<CFReadStreamRef>?
         var writeStream: Unmanaged<CFWriteStreamRef>?
 
-        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, ip, port, &readStream, &writeStream)
+        CFStreamCreatePairWithSocketToHost(nil, ip, port, &readStream, &writeStream)
 
         self.inputStream = readStream?.takeUnretainedValue()
         self.outputStream = writeStream?.takeUnretainedValue()
         [inputStream, outputStream].forEach(self.addStream)
 
-        let timer = NSTimer.scheduledTimerWithTimeInterval(timeout, target: self, selector: "handleTimerout", userInfo: nil, repeats: false)
-        NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSDefaultRunLoopMode)
-        self.timer = timer
+        actionScheduler.dispatch()
     }
 
     public func disconnect() {
-        timer?.invalidate()
-        timer = nil
-
         removeStream(&inputStream)
         removeStream(&outputStream)
     }
@@ -72,6 +78,7 @@ public class StreamClient: NSObject {
     }
 
     func handleTimeout() {
+        print("Connection Timeout")
         stream(NSStream(), handleEvent: .ErrorOccurred)
     }
 }
@@ -79,6 +86,8 @@ public class StreamClient: NSObject {
 extension StreamClient: NSStreamDelegate {
 
     public func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
+        actionScheduler.cancel()
+
         switch eventCode {
 
         case let options where !options.isDisjointWith([.EndEncountered, .ErrorOccurred]):
