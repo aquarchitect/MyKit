@@ -6,10 +6,13 @@
 //
 //
 
-public protocol TransitionAnimation: class {
+@objc public protocol TransitionAnimation: class {
 
-    func animatePresentingTransition(context: UIViewControllerContextTransitioning)
-    func animateDismissingTransition(context: UIViewControllerContextTransitioning)
+    optional func animateTransitionForPresenting(context: UIViewControllerContextTransitioning)
+    optional func animateTransitionForDismissing(context: UIViewControllerContextTransitioning)
+
+    optional func animateControllerSubviewsAlongsideTransitionForPresenting(controller: UIViewController)
+    optional func animateControllerSubviewsAlongsideTransitionForDismissing(controller: UIViewController)
 }
 
 public class TransitionDelegate: UIPercentDrivenInteractiveTransition {
@@ -36,7 +39,7 @@ extension TransitionDelegate: UIViewControllerAnimatedTransitioning {
     }
 
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        (isPresenting ? dataSource?.animatePresentingTransition : dataSource?.animateDismissingTransition)?(transitionContext)
+        isPresenting ? dataSource?.animateTransitionForPresenting?(transitionContext) : dataSource?.animateTransitionForPresenting?(transitionContext)
     }
 }
 
@@ -44,6 +47,7 @@ extension TransitionDelegate: UIViewControllerTransitioningDelegate {
 
     public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         let controller = PresentationController(contentFrame: presentedRect, presentedController: presented, presentingController: source)
+        controller.alongsideAnimation = (dataSource?.animateControllerSubviewsAlongsideTransitionForPresenting, dataSource?.animateControllerSubviewsAlongsideTransitionForDismissing)
         controller.dimView.userInteractionEnabled = dimming.dismissal
         controller.dimView.backgroundColor = UIColor(white: 0, alpha: dimming.transparent)
         return controller

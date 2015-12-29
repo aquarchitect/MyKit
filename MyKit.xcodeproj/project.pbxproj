@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C2126E7B1C2E5C61009B53EB /* StreamerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126E7A1C2E5C61009B53EB /* StreamerClient.swift */; };
-		C2126E7C1C2E5C61009B53EB /* StreamerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126E7A1C2E5C61009B53EB /* StreamerClient.swift */; };
+		C2126E7B1C2E5C61009B53EB /* StreamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126E7A1C2E5C61009B53EB /* StreamClient.swift */; };
+		C2126E7C1C2E5C61009B53EB /* StreamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126E7A1C2E5C61009B53EB /* StreamClient.swift */; };
 		C22051691C2F957C00695AA3 /* ViewConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22051681C2F957C00695AA3 /* ViewConstraint.swift */; };
 		C2252B661B8CDCD9006977D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2252B651B8CDCD9006977D0 /* AppDelegate.swift */; };
 		C2252B681B8CDCD9006977D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2252B671B8CDCD9006977D0 /* ViewController.swift */; };
@@ -78,6 +78,8 @@
 		C2B60ACE1B95080800F6D2BB /* MyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */; };
 		C2B8B3E81BB60A8B007FC72C /* NSNumber+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */; };
 		C2B8B3E91BB60A8B007FC72C /* NSNumber+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */; };
+		C2C2B4BA1C31E88000C4F2A2 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2B4B91C31E88000C4F2A2 /* Setup.swift */; };
+		C2C2B4BB1C31E88000C4F2A2 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2B4B91C31E88000C4F2A2 /* Setup.swift */; };
 		C2C48E221B7C856A00CB544F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48E211B7C856A00CB544F /* String+.swift */; };
 		C2C48E231B7C856A00CB544F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48E211B7C856A00CB544F /* String+.swift */; };
 		C2C535951B9103C900865FDA /* Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C535941B9103C900865FDA /* Fetching.swift */; };
@@ -103,7 +105,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C2126E7A1C2E5C61009B53EB /* StreamerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamerClient.swift; path = MyKit/StreamerClient.swift; sourceTree = "<group>"; };
+		C2126E7A1C2E5C61009B53EB /* StreamClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamClient.swift; path = MyKit/StreamClient.swift; sourceTree = "<group>"; };
 		C22051681C2F957C00695AA3 /* ViewConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConstraint.swift; sourceTree = "<group>"; };
 		C2252B631B8CDCD9006977D0 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2252B651B8CDCD9006977D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		C2B60ACF1B95080800F6D2BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2B60AD31B95084800F6D2BB /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
 		C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSNumber+.swift"; path = "MyKit/NSNumber+.swift"; sourceTree = "<group>"; };
+		C2C2B4B91C31E88000C4F2A2 /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Setup.swift; path = MyKit/Setup.swift; sourceTree = "<group>"; };
 		C2C48E211B7C856A00CB544F /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+.swift"; path = "MyKit/String+.swift"; sourceTree = "<group>"; };
 		C2C535941B9103C900865FDA /* Fetching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fetching.swift; path = MyKit/Fetching.swift; sourceTree = "<group>"; };
 		C2C7ED841BED565300CB558E /* UIScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
@@ -286,6 +289,7 @@
 		C289AD931B62BA0500186773 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C2C2B4B91C31E88000C4F2A2 /* Setup.swift */,
 				C272394A1B922FBB00B7173F /* Arbitrary.swift */,
 				C2C48E211B7C856A00CB544F /* String+.swift */,
 				C2D204EC1B9C20CA002A311D /* Range+.swift */,
@@ -315,7 +319,7 @@
 				C2B162931BB0C3A800AEB7B1 /* DateIndex.swift */,
 				C2E9DFD71BD8116C00568BAB /* OpenWeather.swift */,
 				C2C9EE6F1BDEA65B00008416 /* WeatherIcon.swift */,
-				C2126E7A1C2E5C61009B53EB /* StreamerClient.swift */,
+				C2126E7A1C2E5C61009B53EB /* StreamClient.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -625,11 +629,12 @@
 				C289ADE41B62BAD500186773 /* NSIndexPath+.swift in Sources */,
 				C289AD9E1B62BA6D00186773 /* NSTableView+.swift in Sources */,
 				C2E9DFD91BD8116C00568BAB /* OpenWeather.swift in Sources */,
-				C2126E7C1C2E5C61009B53EB /* StreamerClient.swift in Sources */,
+				C2126E7C1C2E5C61009B53EB /* StreamClient.swift in Sources */,
 				C2D355951BB4F7080097B82C /* PersistentStack.swift in Sources */,
 				C289ADCD1B62BAC200186773 /* Swizzling.swift in Sources */,
 				C289AD9D1B62BA6D00186773 /* NSControl+.swift in Sources */,
 				C289ADC51B62BAC200186773 /* Boxing.swift in Sources */,
+				C2C2B4BB1C31E88000C4F2A2 /* Setup.swift in Sources */,
 				C2B162951BB0C3A800AEB7B1 /* DateIndex.swift in Sources */,
 				C289ADE01B62BAD500186773 /* NSDate+.swift in Sources */,
 				C27A47E51BD5B66A00E27E61 /* NSColor+.swift in Sources */,
@@ -670,6 +675,7 @@
 				C289ADC61B62BAC200186773 /* Boxing.swift in Sources */,
 				C2D204ED1B9C20CA002A311D /* Range+.swift in Sources */,
 				C289ADAF1B62BA8B00186773 /* UITableView+.swift in Sources */,
+				C2C2B4BA1C31E88000C4F2A2 /* Setup.swift in Sources */,
 				C28DF6171B91537600E4D716 /* NSAttributeDescription+.swift in Sources */,
 				C289ADE81B62BADE00186773 /* TimeSystem.swift in Sources */,
 				C289ADDB1B62BAD500186773 /* CGRect+.swift in Sources */,
@@ -687,7 +693,7 @@
 				C2C48E221B7C856A00CB544F /* String+.swift in Sources */,
 				C2E9DFD81BD8116C00568BAB /* OpenWeather.swift in Sources */,
 				C2C9EE701BDEA65B00008416 /* WeatherIcon.swift in Sources */,
-				C2126E7B1C2E5C61009B53EB /* StreamerClient.swift in Sources */,
+				C2126E7B1C2E5C61009B53EB /* StreamClient.swift in Sources */,
 				C2CD64D61C2877290040DAAD /* TransitionDelegate.swift in Sources */,
 				C26B61441B86B96A007FCCBC /* NSManagedObject+.swift in Sources */,
 				C289ADC81B62BAC200186773 /* Drawing.swift in Sources */,

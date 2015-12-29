@@ -8,6 +8,9 @@
 
 public class PresentationController: UIPresentationController {
 
+    typealias ControllerBlock = UIViewController -> Void
+    internal var alongsideAnimation: (presenting: ControllerBlock?, dismissing: ControllerBlock?)
+
     public let contentRect: CGRect
 
     public let dimView: UIView = {
@@ -28,10 +31,16 @@ public class PresentationController: UIPresentationController {
     public override func presentationTransitionWillBegin() {
         self.containerView?.insertSubview(dimView, atIndex: 0)
         animateDimView(1, completion: nil)
+
+        let controller = self.presentingViewController
+        controller.transitionCoordinator()?.animateAlongsideTransitionInView(controller.view, animation: { _ in self.alongsideAnimation.presenting?(controller) }, completion: nil)
     }
 
     public override func dismissalTransitionWillBegin() {
         animateDimView(0) { self.dimView.removeFromSuperview() }
+
+        let controller = self.presentingViewController
+        controller.transitionCoordinator()?.animateAlongsideTransitionInView(controller.view, animation: { _ in self.alongsideAnimation.dismissing?(controller) }, completion: nil)
     }
 
     private func animateDimView(alpha: CGFloat, completion: (Void -> Void)?) {
