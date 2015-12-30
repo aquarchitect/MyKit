@@ -39,6 +39,8 @@ public class PresentationController: UIPresentationController {
     public override func dismissalTransitionWillBegin() {
         animateDimView(0) { self.dimView.removeFromSuperview() }
 
+        self.presentedViewController.view.endEditing(true)
+
         let controller = self.presentingViewController
         controller.transitionCoordinator()?.animateAlongsideTransitionInView(controller.view, animation: { _ in self.alongsideAnimation.dismissing?(controller) }, completion: nil)
     }
@@ -56,8 +58,6 @@ public class PresentationController: UIPresentationController {
     }
 
     func handleTap(sender: UITapGestureRecognizer) {
-        let controller = self.presentingViewController
-        controller.view.endEditing(true)
-        controller.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController.dismissViewControllerAnimated(true, completion: nil)
     }
 }

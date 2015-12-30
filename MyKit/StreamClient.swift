@@ -8,6 +8,7 @@
 
 public class StreamClient: NSObject {
 
+    public enum Error: ErrorType { case InvalidIPAddress }
     public static let EventNotification = "StreamClientEventNotification"
 
     public var timeout: CFTimeInterval {
@@ -29,7 +30,14 @@ public class StreamClient: NSObject {
         actionScheduler.addTarget(self, action: "handleTimeout")
     }
 
-    public func connectToHost(ip: String, port: UInt32) {
+    public func connectToHost(ip: String, port: UInt32) throws {
+        guard ip.validateForIPAddress() else {
+            self.ip = nil
+            self.port = nil
+            
+            throw Error.InvalidIPAddress
+        }
+
         self.ip = ip
         self.port = port
 
@@ -50,9 +58,9 @@ public class StreamClient: NSObject {
         removeStream(&outputStream)
     }
 
-    public func reconnect() {
+    public func reconnect() throws {
         guard let ip = self.ip, port = self.port else { return }
-        connectToHost(ip, port: port)
+        try connectToHost(ip, port: port)
     }
 
     public func writeData(data: NSData) {
