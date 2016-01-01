@@ -8,9 +8,7 @@
 
 public class PresentationController: UIPresentationController {
 
-    typealias ControllerBlock = UIViewController -> Void
-    internal var alongsideAnimation: (presenting: ControllerBlock?, dismissing: ControllerBlock?)
-
+    internal weak var alongside: TransitionAlongside?
     public let contentRect: CGRect
 
     public let dimView: UIView = {
@@ -19,13 +17,18 @@ public class PresentationController: UIPresentationController {
         return view
     }()
 
-    public init(contentFrame: CGRect, presentedController: UIViewController, presentingController: UIViewController) {
-        self.contentRect = contentFrame
-        super.init(presentedViewController: presentedController, presentingViewController: presentingController)
+    public init(presented: UIViewController, presenting: UIViewController, rect: CGRect) {
+        self.contentRect = rect
+        super.init(presentedViewController: presented, presentingViewController: presenting)
 
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: "handleTap:")
         dimView.addGestureRecognizer(tap)
+    }
+
+    public convenience init(presented: UIViewController, presenting: UIViewController) {
+        let rect = UIScreen.mainScreen().bounds
+        self.init(presented: presented, presenting: presenting, rect: rect)
     }
 
     public override func presentationTransitionWillBegin() {
@@ -33,7 +36,7 @@ public class PresentationController: UIPresentationController {
         animateDimView(1, completion: nil)
 
         let controller = self.presentingViewController
-        controller.transitionCoordinator()?.animateAlongsideTransitionInView(controller.view, animation: { _ in self.alongsideAnimation.presenting?(controller) }, completion: nil)
+        controller.transitionCoordinator()?.animateAlongsideTransitionInView(controller.view, animation: { _ in self.alongside?.animateControllerSubviewsAlongsideTransitionForPresenting?(controller) }, completion: nil)
     }
 
     public override func dismissalTransitionWillBegin() {
@@ -42,7 +45,7 @@ public class PresentationController: UIPresentationController {
         self.presentedViewController.view.endEditing(true)
 
         let controller = self.presentingViewController
-        controller.transitionCoordinator()?.animateAlongsideTransitionInView(controller.view, animation: { _ in self.alongsideAnimation.dismissing?(controller) }, completion: nil)
+        controller.transitionCoordinator()?.animateAlongsideTransitionInView(controller.view, animation: { _ in self.alongside?.animateControllerSubviewsAlongsideTransitionForDismissing?(controller) }, completion: nil)
     }
 
     private func animateDimView(alpha: CGFloat, completion: (Void -> Void)?) {

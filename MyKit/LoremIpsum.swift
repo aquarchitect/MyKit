@@ -8,13 +8,8 @@
 
 public final class LoremIpsum {
 
-    public enum Error: ErrorType {
-
-        case InvalidResourcePath
-        case UnableToOpenTheFile
-    }
-
     private var storage = ""
+
     private var maxCount: (sentences: Int, words: Int) = (0, 0)
 
     private var range: Range<String.CharacterView.Index> {
@@ -22,15 +17,9 @@ public final class LoremIpsum {
     }
 
     public init() throws {
-        #if os(iOS)
-            let platform = "iOS"
-        #elseif os(OSX)
-            let platform = "OSX"
-        #endif
-
-        guard let bundle = NSBundle(identifier: "HaiNguyen.MyKit\(platform)"),
+        guard let bundle = NSBundle.defaultBundle(),
             url = bundle.URLForResource("Lorem", withExtension: "strings")
-            else { throw Error.InvalidResourcePath }
+            else { throw FileError.InvalidResourcePath }
 
         do {
             let lorem = try String(contentsOfURL: url)
@@ -43,7 +32,7 @@ public final class LoremIpsum {
 
             self.storage = lorem.stringByReplacingOccurrencesOfString("\\n", withString: "")
             self.maxCount = (maxCountForOption(.BySentences), maxCountForOption(.ByWords))
-        } catch { throw Error.UnableToOpenTheFile }
+        } catch { throw FileError.UnableToDescryptTheFile }
     }
 
     public func arbitraryBySentences(var count: Int, fromStart flag: Bool) -> String {

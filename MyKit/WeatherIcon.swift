@@ -258,13 +258,24 @@ extension WeatherIcon: CustomStringConvertible {
         }
     }
 
-    public func attributedStringWithSize(size: CGFloat) -> NSMutableAttributedString {
+    public func stringWithOption(size: CGFloat) -> NSMutableAttributedString {
         let string = NSMutableAttributedString(string: self.description)
+        let arguments = (name: "Weather Icons", size: size)
+
+        let register: AnyObject? -> Void = {
+            guard $0 == nil else { return }
+            do { try registerFont("Weather")
+            } catch { print(error) }
+        }
 
         #if os(iOS)
-            string.addFontAttribute(UIFont(name: "Weather Icons", size: size)!, range: nil)
+            register(UIFont(arguments))
+            string.addFontAttribute(UIFont(arguments)!, range: nil)
+
         #elseif os(OSX)
-            string.addFontAttribute(NSFont(name: "Weather Icons", size: size)!, range: nil)
+            register(NSFont(arguments))
+            string.addFontAttribute(NSFont(arguments)!, range: nil)
+
         #endif
 
         return string

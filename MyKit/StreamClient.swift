@@ -31,13 +31,7 @@ public class StreamClient: NSObject {
     }
 
     public func connectToHost(ip: String, port: UInt32) throws {
-        guard ip.validateForIPAddress() else {
-            self.ip = nil
-            self.port = nil
-            
-            throw Error.InvalidIPAddress
-        }
-
+        guard ip.validateForIPAddress() else { throw Error.InvalidIPAddress }
         self.ip = ip
         self.port = port
 
