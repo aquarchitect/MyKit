@@ -8,16 +8,21 @@
 
 public enum SymbolIcon: Character {
 
-    case Cross = "\u{F03A}"
-    case Check = "\u{F081}"
+    case LinedCross = "\u{F2D7}"
+    case LinedCheck = "\u{F383}"
+
+    case CircledCross = "\u{F406}"
+    case CircledCheck = "\u{F3FF}"
+
+    case StandardSetting = "\u{F13E}"
 
     public func stringWithOption(size: CGFloat) -> NSMutableAttributedString {
         let string = NSMutableAttributedString(string: "\(self.rawValue)")
-        let arguments = (name: "octicons", size: size)
+        let arguments = (name: "IonIcons", size: size)
 
         let register: AnyObject? -> Void = {
             guard $0 == nil else { return }
-            do { try registerFont("Octicons")
+            do { try registerFont("IonIcons")
             } catch { print(error) }
         }
 

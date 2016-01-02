@@ -102,12 +102,12 @@
 		C2DC4C851C3705FB00BA2EDE /* NSBundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC4C831C3705FB00BA2EDE /* NSBundle+.swift */; };
 		C2DC4C871C37098700BA2EDE /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC4C861C37098700BA2EDE /* FileError.swift */; };
 		C2DC4C881C37098700BA2EDE /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC4C861C37098700BA2EDE /* FileError.swift */; };
-		C2DC4C891C3712F200BA2EDE /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4C1C36569200C2AE72 /* Octicons.ttf */; };
 		C2DC4C8A1C3712F200BA2EDE /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; };
-		C2DC4C8B1C37130C00BA2EDE /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4C1C36569200C2AE72 /* Octicons.ttf */; };
 		C2DC4C8C1C37130C00BA2EDE /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; };
 		C2DC4C911C3717D500BA2EDE /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC4C901C3717D500BA2EDE /* Registering.swift */; };
 		C2DC4C921C3717D500BA2EDE /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC4C901C3717D500BA2EDE /* Registering.swift */; };
+		C2DC4C941C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; };
+		C2DC4C951C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; };
 		C2DDC2721BD0238C00D0039A /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DDC2711BD0238C00D0039A /* NSMutableAttributedString+.swift */; };
 		C2DDC2731BD0238C00D0039A /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DDC2711BD0238C00D0039A /* NSMutableAttributedString+.swift */; };
 		C2DEF0711BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */; };
@@ -116,7 +116,6 @@
 		C2E9DFD91BD8116C00568BAB /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E9DFD71BD8116C00568BAB /* OpenWeather.swift */; };
 		C2EA2AA41B98BD5D004AAFE8 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EA2AA31B98BD5D004AAFE8 /* TextView.swift */; };
 		C2EF47F81BAA128C0080680E /* UITableViewCellEditingStyle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF47F71BAA128C0080680E /* UITableViewCellEditingStyle+.swift */; };
-		C2F1EA4D1C36569200C2AE72 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4C1C36569200C2AE72 /* Octicons.ttf */; };
 		C2F1EA4F1C3656F500C2AE72 /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; };
 		C2F1EA511C365DFE00C2AE72 /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F1EA501C365DFE00C2AE72 /* SymbolIcon.swift */; };
 		C2F1EA521C365DFE00C2AE72 /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F1EA501C365DFE00C2AE72 /* SymbolIcon.swift */; };
@@ -195,12 +194,12 @@
 		C2DC4C831C3705FB00BA2EDE /* NSBundle+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSBundle+.swift"; path = "MyKit/NSBundle+.swift"; sourceTree = "<group>"; };
 		C2DC4C861C37098700BA2EDE /* FileError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileError.swift; path = MyKit/FileError.swift; sourceTree = "<group>"; };
 		C2DC4C901C3717D500BA2EDE /* Registering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Registering.swift; path = MyKit/Registering.swift; sourceTree = "<group>"; };
+		C2DC4C931C37203700BA2EDE /* IonIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IonIcons.ttf; path = MyKit/IonIcons.ttf; sourceTree = "<group>"; };
 		C2DDC2711BD0238C00D0039A /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSMutableAttributedString+.swift"; path = "MyKit/NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		C2DEF0701BBDFF14004EB8AC /* NSDateFormatter+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDateFormatter+.swift"; path = "MyKit/NSDateFormatter+.swift"; sourceTree = "<group>"; };
 		C2E9DFD71BD8116C00568BAB /* OpenWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenWeather.swift; path = MyKit/OpenWeather.swift; sourceTree = "<group>"; };
 		C2EA2AA31B98BD5D004AAFE8 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		C2EF47F71BAA128C0080680E /* UITableViewCellEditingStyle+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCellEditingStyle+.swift"; sourceTree = "<group>"; };
-		C2F1EA4C1C36569200C2AE72 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Octicons.ttf; path = MyKit/Octicons.ttf; sourceTree = "<group>"; };
 		C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Weather.ttf; path = MyKit/Weather.ttf; sourceTree = "<group>"; };
 		C2F1EA501C365DFE00C2AE72 /* SymbolIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SymbolIcon.swift; path = MyKit/SymbolIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -435,8 +434,8 @@
 			isa = PBXGroup;
 			children = (
 				C289ADEB1B62BC3A00186773 /* Info.plist */,
-				C2F1EA4C1C36569200C2AE72 /* Octicons.ttf */,
 				C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */,
+				C2DC4C931C37203700BA2EDE /* IonIcons.ttf */,
 				C265BA421B9637FD00F6871E /* Lorem.strings */,
 			);
 			name = Support;
@@ -603,7 +602,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2252B701B8CDCDA006977D0 /* LaunchScreen.storyboard in Resources */,
-				C2F1EA4D1C36569200C2AE72 /* Octicons.ttf in Resources */,
 				C2252B6D1B8CDCDA006977D0 /* Assets.xcassets in Resources */,
 				C2F1EA4F1C3656F500C2AE72 /* Weather.ttf in Resources */,
 			);
@@ -613,8 +611,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2DC4C8B1C37130C00BA2EDE /* Octicons.ttf in Resources */,
 				C2DC4C8C1C37130C00BA2EDE /* Weather.ttf in Resources */,
+				C2DC4C951C37203700BA2EDE /* IonIcons.ttf in Resources */,
 				C265BA441B9637FD00F6871E /* Lorem.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,8 +621,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2DC4C891C3712F200BA2EDE /* Octicons.ttf in Resources */,
 				C2DC4C8A1C3712F200BA2EDE /* Weather.ttf in Resources */,
+				C2DC4C941C37203700BA2EDE /* IonIcons.ttf in Resources */,
 				C265BA431B9637FD00F6871E /* Lorem.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

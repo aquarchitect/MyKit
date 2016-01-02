@@ -44,7 +44,7 @@ public class TransitionDelegate: UIPercentDrivenInteractiveTransition {
 extension TransitionDelegate: UIViewControllerAnimatedTransitioning {
 
     public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.5
+        return 0.25
     }
 
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
