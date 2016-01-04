@@ -18,7 +18,7 @@ extension Setup {
         return self
     }
 
-    public static func setup(block: Self -> Void) -> Self {
+    public static func setup(@noescape block: Self -> Void) -> Self {
         let result = Self.init()
         block(result)
         return result

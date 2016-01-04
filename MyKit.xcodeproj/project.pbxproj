@@ -78,8 +78,6 @@
 		C2B60ABF1B94C72C00F6D2BB /* NSEntityDescription+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B60ABE1B94C72C00F6D2BB /* NSEntityDescription+.swift */; };
 		C2B60AC01B94C72C00F6D2BB /* NSEntityDescription+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B60ABE1B94C72C00F6D2BB /* NSEntityDescription+.swift */; };
 		C2B60ACE1B95080800F6D2BB /* MyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */; };
-		C2B6440B1C3309EB005171F9 /* ActionScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B6440A1C3309EB005171F9 /* ActionScheduler.swift */; };
-		C2B6440C1C3309EB005171F9 /* ActionScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B6440A1C3309EB005171F9 /* ActionScheduler.swift */; };
 		C2B8B3E81BB60A8B007FC72C /* NSNumber+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */; };
 		C2B8B3E91BB60A8B007FC72C /* NSNumber+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */; };
 		C2C2B4BA1C31E88000C4F2A2 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2B4B91C31E88000C4F2A2 /* Setup.swift */; };
@@ -95,6 +93,8 @@
 		C2CD64D81C287A0B0040DAAD /* SimpleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CD64D71C287A0B0040DAAD /* SimpleTransition.swift */; };
 		C2D204ED1B9C20CA002A311D /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D204EC1B9C20CA002A311D /* Range+.swift */; };
 		C2D204EE1B9C20CA002A311D /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D204EC1B9C20CA002A311D /* Range+.swift */; };
+		C2D224611C38F0F600FCB5A3 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D224601C38F0F600FCB5A3 /* TaskManager.swift */; };
+		C2D224621C38F0F600FCB5A3 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D224601C38F0F600FCB5A3 /* TaskManager.swift */; };
 		C2D355941BB4F7080097B82C /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D355931BB4F7080097B82C /* PersistentStack.swift */; };
 		C2D355951BB4F7080097B82C /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D355931BB4F7080097B82C /* PersistentStack.swift */; };
 		C2D9942D1BC86BBF00F47E06 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9942C1BC86BBF00F47E06 /* UILabel+.swift */; };
@@ -179,7 +179,6 @@
 		C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKitTests.swift; sourceTree = "<group>"; };
 		C2B60ACF1B95080800F6D2BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2B60AD31B95084800F6D2BB /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
-		C2B6440A1C3309EB005171F9 /* ActionScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionScheduler.swift; path = MyKit/ActionScheduler.swift; sourceTree = "<group>"; };
 		C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSNumber+.swift"; path = "MyKit/NSNumber+.swift"; sourceTree = "<group>"; };
 		C2C2B4B91C31E88000C4F2A2 /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Setup.swift; path = MyKit/Setup.swift; sourceTree = "<group>"; };
 		C2C48E211B7C856A00CB544F /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+.swift"; path = "MyKit/String+.swift"; sourceTree = "<group>"; };
@@ -189,6 +188,7 @@
 		C2CD64D51C2877280040DAAD /* TransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionDelegate.swift; sourceTree = "<group>"; };
 		C2CD64D71C287A0B0040DAAD /* SimpleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTransition.swift; sourceTree = "<group>"; };
 		C2D204EC1B9C20CA002A311D /* Range+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Range+.swift"; path = "MyKit/Range+.swift"; sourceTree = "<group>"; };
+		C2D224601C38F0F600FCB5A3 /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskManager.swift; path = MyKit/TaskManager.swift; sourceTree = "<group>"; };
 		C2D355931BB4F7080097B82C /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStack.swift; path = MyKit/PersistentStack.swift; sourceTree = "<group>"; };
 		C2D9942C1BC86BBF00F47E06 /* UILabel+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		C2DC4C831C3705FB00BA2EDE /* NSBundle+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSBundle+.swift"; path = "MyKit/NSBundle+.swift"; sourceTree = "<group>"; };
@@ -349,7 +349,7 @@
 				C2C9EE6F1BDEA65B00008416 /* WeatherIcon.swift */,
 				C2F1EA501C365DFE00C2AE72 /* SymbolIcon.swift */,
 				C2126E7A1C2E5C61009B53EB /* StreamClient.swift */,
-				C2B6440A1C3309EB005171F9 /* ActionScheduler.swift */,
+				C2D224601C38F0F600FCB5A3 /* TaskManager.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -651,7 +651,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C289ADC71B62BAC200186773 /* Drawing.swift in Sources */,
-				C2B6440C1C3309EB005171F9 /* ActionScheduler.swift in Sources */,
+				C2D224621C38F0F600FCB5A3 /* TaskManager.swift in Sources */,
 				C2C535961B9103C900865FDA /* Fetching.swift in Sources */,
 				C2B60ABD1B94BF0A00F6D2BB /* NSRelationshipDescription+.swift in Sources */,
 				C2DEF0721BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */,
@@ -717,6 +717,7 @@
 				C289ADD91B62BAD500186773 /* CGPoint+.swift in Sources */,
 				C2EA2AA41B98BD5D004AAFE8 /* TextView.swift in Sources */,
 				C289ADB21B62BA9600186773 /* Drawing+.swift in Sources */,
+				C2D224611C38F0F600FCB5A3 /* TaskManager.swift in Sources */,
 				C289ADC61B62BAC200186773 /* Boxing.swift in Sources */,
 				C2D204ED1B9C20CA002A311D /* Range+.swift in Sources */,
 				C289ADAF1B62BA8B00186773 /* UITableView+.swift in Sources */,
@@ -727,7 +728,6 @@
 				C289ADDB1B62BAD500186773 /* CGRect+.swift in Sources */,
 				C289ADAB1B62BA8B00186773 /* UIColor+.swift in Sources */,
 				C289ADAD1B62BA8B00186773 /* UIEdgeInsets+.swift in Sources */,
-				C2B6440B1C3309EB005171F9 /* ActionScheduler.swift in Sources */,
 				C2D355941BB4F7080097B82C /* PersistentStack.swift in Sources */,
 				C2D9942D1BC86BBF00F47E06 /* UILabel+.swift in Sources */,
 				C289ADBB1B62BAA200186773 /* SnapLayout.swift in Sources */,

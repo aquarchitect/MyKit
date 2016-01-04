@@ -11,24 +11,14 @@ public class StreamClient: NSObject {
     public enum Error: ErrorType { case InvalidIPAddress }
     public static let EventNotification = "StreamClientEventNotification"
 
-    public var timeout: CFTimeInterval {
-        willSet { actionScheduler.interval = newValue }
-    }
+    private let stoppage = TaskManager()
+    public var timeout: CFTimeInterval = 3
+
     public private(set) var ip: String?
     public private(set) var port: UInt32?
 
-    private let actionScheduler: ActionScheduler
     private var inputStream: NSInputStream?
     private var outputStream: NSOutputStream?
-
-    public init(timeout: CFTimeInterval = 3) {
-        self.timeout = timeout
-        self.actionScheduler = ActionScheduler(interval: timeout)
-
-        super.init()
-
-        actionScheduler.addTarget(self, action: "handleTimeout")
-    }
 
     public func connectToHost(ip: String, port: UInt32) throws {
         guard ip.validateForIPAddress() else { throw Error.InvalidIPAddress }
@@ -44,7 +34,10 @@ public class StreamClient: NSObject {
         self.outputStream = writeStream?.takeUnretainedValue()
         [inputStream, outputStream].forEach(self.addStream)
 
-        actionScheduler.dispatch()
+        stoppage.schedule(timeout) {
+            print("Connection Timeout")
+            self.stream(NSStream(), handleEvent: .ErrorOccurred)
+        }
     }
 
     public func disconnect() {
@@ -78,17 +71,12 @@ public class StreamClient: NSObject {
         stream?.scheduleInRunLoop(loop, forMode: NSDefaultRunLoopMode)
         stream = nil
     }
-
-    func handleTimeout() {
-        print("Connection Timeout")
-        stream(NSStream(), handleEvent: .ErrorOccurred)
-    }
 }
 
 extension StreamClient: NSStreamDelegate {
 
     public func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
-        actionScheduler.cancel()
+        stoppage.cancel()
 
         switch eventCode {
 
