@@ -8,20 +8,15 @@
 
 public class TextView: UIControl {
 
-    public private(set) lazy var textBox: UITextView = {
-        let view = UITextView()
-        view.showsHorizontalScrollIndicator = false
-        view.backgroundColor = .clearColor()
-        view.textContainer.lineFragmentPadding = 0
-        view.textContainerInset = UIEdgeInsetsZero
-        view.textContainerInset.right = self.layoutMargins.right
-        view.keyboardAppearance = .Dark
-        view.enablesReturnKeyAutomatically = true
-        view.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(view)
-        return view
-    }()
+    public let textBox = UITextView().setup {
+        $0.showsHorizontalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = false
+        $0.backgroundColor = .clearColor()
+        $0.textContainer.lineFragmentPadding = 0
+        $0.textContainerInset = UIEdgeInsetsZero
+        $0.enablesReturnKeyAutomatically = true
+        $0.translatesAutoresizingMaskIntoConstraints = false
+    }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -29,10 +24,11 @@ public class TextView: UIControl {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        super.preservesSuperviewLayoutMargins = true
         super.backgroundColor = .whiteColor()
+        super.addSubview(textBox)
 
-        self.addConstraintsWithVisualFormat(["textBox": textBox])(format: "V:|-[textBox]-|")
-
+        textBox.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
         let attributes = [(.Left, .LeftMargin), (.Right, .Right), (.Top, .TopMargin), (.Bottom, .BottomMargin)] as [(NSLayoutAttribute, NSLayoutAttribute)]
         attributes.forEach {
             let constraint = NSLayoutConstraint(item: self.textBox, attribute: $0, relatedBy: .Equal, toItem: self, attribute: $1, multiplier: 1, constant: 0)
@@ -40,6 +36,8 @@ public class TextView: UIControl {
             self.addConstraint(constraint)
         }
     }
+
+    deinit { textBox.removeObserver(self, forKeyPath: "contentSize") }
 
     public override func intrinsicContentSize() -> CGSize {
         let width = textBox.contentSize.width + self.layoutMargins.horizontal

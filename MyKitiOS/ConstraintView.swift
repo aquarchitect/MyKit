@@ -1,5 +1,5 @@
 //
-//  ViewConstraint.swift
+//  ConstraintView.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 12/26/15.
@@ -17,12 +17,12 @@ public struct ConstraintAxis {
     }
 }
 
-public protocol ViewConstraint: class {
+public protocol ConstraintView: class {
 
     static var FixedDirection: ConstraintAxis { get }
 }
 
-public extension ViewConstraint where Self: UIView {
+public extension ConstraintView where Self: UIView {
 
     public func commonInitialization() {
         let constraint = self.dynamicType.FixedDirection

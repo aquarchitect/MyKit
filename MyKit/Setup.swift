@@ -6,22 +6,13 @@
 //
 //
 
-public protocol Setup {
-
-    init()
-}
+public protocol Setup {}
 
 extension Setup {
 
-    public func setup(block: Self -> Void) -> Self {
+    public func setup(@noescape block: Self -> Void) -> Self {
         block(self)
         return self
-    }
-
-    public static func setup(@noescape block: Self -> Void) -> Self {
-        let result = Self.init()
-        block(result)
-        return result
     }
 }
 

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C2126E7B1C2E5C61009B53EB /* StreamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126E7A1C2E5C61009B53EB /* StreamClient.swift */; };
 		C2126E7C1C2E5C61009B53EB /* StreamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2126E7A1C2E5C61009B53EB /* StreamClient.swift */; };
-		C22051691C2F957C00695AA3 /* ViewConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22051681C2F957C00695AA3 /* ViewConstraint.swift */; };
+		C22051691C2F957C00695AA3 /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22051681C2F957C00695AA3 /* ConstraintView.swift */; };
 		C2225B081C335D21003AA841 /* NSRange+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2225B071C335D21003AA841 /* NSRange+.swift */; };
 		C2225B091C335D21003AA841 /* NSRange+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2225B071C335D21003AA841 /* NSRange+.swift */; };
 		C2252B661B8CDCD9006977D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2252B651B8CDCD9006977D0 /* AppDelegate.swift */; };
@@ -80,6 +80,9 @@
 		C2B60ACE1B95080800F6D2BB /* MyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */; };
 		C2B8B3E81BB60A8B007FC72C /* NSNumber+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */; };
 		C2B8B3E91BB60A8B007FC72C /* NSNumber+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */; };
+		C2BA648C1C3C3BBB00B0FD1A /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BA648B1C3C3BBB00B0FD1A /* TableController.swift */; };
+		C2BA64941C3C4D8D00B0FD1A /* RowField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BA64931C3C4D8D00B0FD1A /* RowField.swift */; };
+		C2BA649C1C3C580F00B0FD1A /* FadePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BA649B1C3C580F00B0FD1A /* FadePlaceholder.swift */; };
 		C2C2B4BA1C31E88000C4F2A2 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2B4B91C31E88000C4F2A2 /* Setup.swift */; };
 		C2C2B4BB1C31E88000C4F2A2 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2B4B91C31E88000C4F2A2 /* Setup.swift */; };
 		C2C48E221B7C856A00CB544F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48E211B7C856A00CB544F /* String+.swift */; };
@@ -123,7 +126,7 @@
 
 /* Begin PBXFileReference section */
 		C2126E7A1C2E5C61009B53EB /* StreamClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamClient.swift; path = MyKit/StreamClient.swift; sourceTree = "<group>"; };
-		C22051681C2F957C00695AA3 /* ViewConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConstraint.swift; sourceTree = "<group>"; };
+		C22051681C2F957C00695AA3 /* ConstraintView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintView.swift; sourceTree = "<group>"; };
 		C2225B071C335D21003AA841 /* NSRange+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSRange+.swift"; path = "MyKit/NSRange+.swift"; sourceTree = "<group>"; };
 		C2252B631B8CDCD9006977D0 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2252B651B8CDCD9006977D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +183,9 @@
 		C2B60ACF1B95080800F6D2BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2B60AD31B95084800F6D2BB /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
 		C2B8B3E71BB60A8B007FC72C /* NSNumber+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSNumber+.swift"; path = "MyKit/NSNumber+.swift"; sourceTree = "<group>"; };
+		C2BA648B1C3C3BBB00B0FD1A /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
+		C2BA64931C3C4D8D00B0FD1A /* RowField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowField.swift; sourceTree = "<group>"; };
+		C2BA649B1C3C580F00B0FD1A /* FadePlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadePlaceholder.swift; sourceTree = "<group>"; };
 		C2C2B4B91C31E88000C4F2A2 /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Setup.swift; path = MyKit/Setup.swift; sourceTree = "<group>"; };
 		C2C48E211B7C856A00CB544F /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+.swift"; path = "MyKit/String+.swift"; sourceTree = "<group>"; };
 		C2C535941B9103C900865FDA /* Fetching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fetching.swift; path = MyKit/Fetching.swift; sourceTree = "<group>"; };
@@ -387,8 +393,11 @@
 				C289ADB51B62BAA200186773 /* SnapLayout.swift */,
 				C289ADB61B62BAA200186773 /* StackView.swift */,
 				C289ADB71B62BAA200186773 /* TableView.swift */,
+				C2BA648B1C3C3BBB00B0FD1A /* TableController.swift */,
 				C2EA2AA31B98BD5D004AAFE8 /* TextView.swift */,
-				C22051681C2F957C00695AA3 /* ViewConstraint.swift */,
+				C2BA64931C3C4D8D00B0FD1A /* RowField.swift */,
+				C22051681C2F957C00695AA3 /* ConstraintView.swift */,
+				C2BA649B1C3C580F00B0FD1A /* FadePlaceholder.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -703,9 +712,10 @@
 				C2DEF0711BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */,
 				C289ADA91B62BA8B00186773 /* UICollectionView+.swift in Sources */,
 				C289ADBD1B62BAA200186773 /* TableView.swift in Sources */,
-				C22051691C2F957C00695AA3 /* ViewConstraint.swift in Sources */,
+				C22051691C2F957C00695AA3 /* ConstraintView.swift in Sources */,
 				C289ADBC1B62BAA200186773 /* StackView.swift in Sources */,
 				C289ADCE1B62BAC200186773 /* Swizzling.swift in Sources */,
+				C2BA64941C3C4D8D00B0FD1A /* RowField.swift in Sources */,
 				C272394B1B922FBB00B7173F /* Arbitrary.swift in Sources */,
 				C289ADE51B62BAD500186773 /* NSIndexPath+.swift in Sources */,
 				C2B60ABC1B94BF0900F6D2BB /* NSRelationshipDescription+.swift in Sources */,
@@ -716,6 +726,7 @@
 				C2B8B3E81BB60A8B007FC72C /* NSNumber+.swift in Sources */,
 				C289ADD91B62BAD500186773 /* CGPoint+.swift in Sources */,
 				C2EA2AA41B98BD5D004AAFE8 /* TextView.swift in Sources */,
+				C2BA648C1C3C3BBB00B0FD1A /* TableController.swift in Sources */,
 				C289ADB21B62BA9600186773 /* Drawing+.swift in Sources */,
 				C2D224611C38F0F600FCB5A3 /* TaskManager.swift in Sources */,
 				C289ADC61B62BAC200186773 /* Boxing.swift in Sources */,
@@ -735,6 +746,7 @@
 				C289ADDD1B62BAD500186773 /* CGSize+.swift in Sources */,
 				C289ADA81B62BA8B00186773 /* UIBezierPath+.swift in Sources */,
 				C2DC4C871C37098700BA2EDE /* FileError.swift in Sources */,
+				C2BA649C1C3C580F00B0FD1A /* FadePlaceholder.swift in Sources */,
 				C29E35861B82A2D500051E3A /* PresentationController.swift in Sources */,
 				C2C7ED851BED565300CB558E /* UIScrollView+.swift in Sources */,
 				C289ADE11B62BAD500186773 /* NSDate+.swift in Sources */,
@@ -1032,6 +1044,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1093,6 +1106,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

@@ -6,57 +6,36 @@
 //  Copyright © 2015 Hai Nguyen. All rights reserved.
 //
 
-public class CollectionView: UICollectionView {
+public class CollectionView<T, C: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
 
-    public let data: [Any]
+    public var items: [[T]] = [] {
+        didSet { self.reloadData() }
+    }
 
-    private let type: UIView.Type
-    private let handle: (Cell, Any) -> Void
+    public var config: ((C, T) -> Void)?
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public init<T, V where V: UIView>(data: [T], configure: (UICollectionViewCell, V, T) -> Void) {
-        self.data = data.map { Box($0) }
-        self.type = V.self
-        self.handle = {
-            guard let value = $1 as? Box<T>,
-                view = $0.view as? V else { return }
-
-            configure($0, view, value.unbox)
-        }
-
-        super.init(frame: CGRectZero, collectionViewLayout: UICollectionViewLayout())
-        super.registerClass(Cell.self, forCellWithReuseIdentifier: "Cell")
+    public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(frame: frame, collectionViewLayout: layout)
+        super.registerClass(C.self, forCellWithReuseIdentifier: "Cell")
         super.dataSource = self
     }
-}
 
-extension CollectionView: UICollectionViewDataSource {
+    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return items.count
+    }
 
     public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return items[section].count
     }
 
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! Cell
-        cell.type = type
-        handle(cell, data[indexPath.item])
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! C
+        config?(cell, items[indexPath.section][indexPath.item])
 
         return cell
     }
-}
-
-private class Cell: UICollectionViewCell {
-
-    var type: UIView.Type!
-
-    lazy var view: UIView = {
-        let view = self.type.init(frame: self.bounds)
-        view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        self.contentView.addSubview(view)
-
-        return view
-        }()
 }
