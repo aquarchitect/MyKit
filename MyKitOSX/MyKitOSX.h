@@ -9,6 +9,7 @@
 @import AppKit;
 @import CoreData;
 @import CoreLocation;
+@import CloudKit;
 
 //! Project version number for MyKitOSX.
 FOUNDATION_EXPORT double MyKitOSXVersionNumber;

@@ -34,7 +34,7 @@ public class RowField: UITableViewCell, FadePlaceholder {
         super.contentView.addSubview(textView)
 
         textBox.delegate = self
-        ["H:|[textView(>=44)]|", "V:|[textView]|"].forEach(self.contentView.addConstraintsWithVisualFormat(["textView": textView]))
+        ["H:|[textView]|", "V:|[textView]|"].forEach(self.contentView.addConstraintsWithVisualFormat(["textView": textView]))
     }
 
     public override func becomeFirstResponder() -> Bool {

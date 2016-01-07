@@ -9,6 +9,7 @@
 @import UIKit;
 @import CoreData;
 @import CoreLocation;
+@import CloudKit;
 
 //! Project version number for MyKitiOS.
 FOUNDATION_EXPORT double MyKitiOSVersionNumber;
