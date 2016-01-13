@@ -8,13 +8,11 @@
 
 public class TableView<T, C: UITableViewCell>: UITableView, UITableViewDataSource {
 
-    public var items: [[T]] = [] {
-        didSet { self.reloadData() }
-    }
+    public var items: [[T]] = []
 
     public var config: ((C, T) -> Void)?
 
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

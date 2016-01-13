@@ -8,7 +8,6 @@
 
 public protocol RowFieldDelegate: class {
 
-    var selectedIndexPath: NSIndexPath? { get }
     func rowFieldDidChange(rowField: RowField)
 }
 
@@ -51,7 +50,7 @@ extension RowField: UITextViewDelegate {
     }
 
     public func textViewDidChange(textView: UITextView) {
-        animatePlaceholderAccordingly(textView)
+        delayPlaceholderAnimation(textView)
         delegate?.rowFieldDidChange(self)
     }
 }

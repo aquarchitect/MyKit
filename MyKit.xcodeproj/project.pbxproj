@@ -19,6 +19,8 @@
 		C26B61481B86B999007FCCBC /* NSManagedObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26B61431B86B96A007FCCBC /* NSManagedObject+.swift */; };
 		C272394B1B922FBB00B7173F /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272394A1B922FBB00B7173F /* Arbitrary.swift */; };
 		C272394C1B922FBB00B7173F /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272394A1B922FBB00B7173F /* Arbitrary.swift */; };
+		C272DE381C462A65002FBD58 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272DE371C462A65002FBD58 /* CloudManager.swift */; };
+		C272DE391C462A65002FBD58 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C272DE371C462A65002FBD58 /* CloudManager.swift */; };
 		C27A47E51BD5B66A00E27E61 /* NSColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A47E41BD5B66A00E27E61 /* NSColor+.swift */; };
 		C289AD801B62B95700186773 /* MyKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD8D1B62B97400186773 /* MyKitiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKitiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -82,8 +84,6 @@
 		C2C2B4BB1C31E88000C4F2A2 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C2B4B91C31E88000C4F2A2 /* Setup.swift */; };
 		C2C48E221B7C856A00CB544F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48E211B7C856A00CB544F /* String+.swift */; };
 		C2C48E231B7C856A00CB544F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C48E211B7C856A00CB544F /* String+.swift */; };
-		C2C4C7021C3DB9EA005E6DD8 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4C7001C3DB99B005E6DD8 /* Cloud.swift */; };
-		C2C4C7031C3DB9EB005E6DD8 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C4C7001C3DB99B005E6DD8 /* Cloud.swift */; };
 		C2C535951B9103C900865FDA /* Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C535941B9103C900865FDA /* Fetching.swift */; };
 		C2C535961B9103C900865FDA /* Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C535941B9103C900865FDA /* Fetching.swift */; };
 		C2C7ED851BED565300CB558E /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C7ED841BED565300CB558E /* UIScrollView+.swift */; };
@@ -128,6 +128,7 @@
 		C265BA581B966C2D00F6871E /* UIGestureRecognizer+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+.swift"; sourceTree = "<group>"; };
 		C26B61431B86B96A007FCCBC /* NSManagedObject+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObject+.swift"; path = "MyKit/NSManagedObject+.swift"; sourceTree = "<group>"; };
 		C272394A1B922FBB00B7173F /* Arbitrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arbitrary.swift; path = MyKit/Arbitrary.swift; sourceTree = "<group>"; };
+		C272DE371C462A65002FBD58 /* CloudManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudManager.swift; path = MyKit/CloudManager.swift; sourceTree = "<group>"; };
 		C27A47E41BD5B66A00E27E61 /* NSColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+.swift"; sourceTree = "<group>"; };
 		C289AD7C1B62B95700186773 /* MyKitOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKitOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7F1B62B95700186773 /* MyKitOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKitOSX.h; sourceTree = "<group>"; };
@@ -177,7 +178,6 @@
 		C2BA649B1C3C580F00B0FD1A /* FadePlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadePlaceholder.swift; sourceTree = "<group>"; };
 		C2C2B4B91C31E88000C4F2A2 /* Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Setup.swift; path = MyKit/Setup.swift; sourceTree = "<group>"; };
 		C2C48E211B7C856A00CB544F /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+.swift"; path = "MyKit/String+.swift"; sourceTree = "<group>"; };
-		C2C4C7001C3DB99B005E6DD8 /* Cloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Cloud.swift; path = MyKit/Cloud.swift; sourceTree = "<group>"; };
 		C2C4C7041C3DEC2E005E6DD8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C2C535941B9103C900865FDA /* Fetching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fetching.swift; path = MyKit/Fetching.swift; sourceTree = "<group>"; };
 		C2C7ED841BED565300CB558E /* UIScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
@@ -281,7 +281,6 @@
 		C289AD931B62BA0500186773 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C2C4C7001C3DB99B005E6DD8 /* Cloud.swift */,
 				C2C2B4B91C31E88000C4F2A2 /* Setup.swift */,
 				C272394A1B922FBB00B7173F /* Arbitrary.swift */,
 				C2C48E211B7C856A00CB544F /* String+.swift */,
@@ -318,6 +317,7 @@
 				C2F1EA501C365DFE00C2AE72 /* SymbolIcon.swift */,
 				C2126E7A1C2E5C61009B53EB /* StreamClient.swift */,
 				C2D224601C38F0F600FCB5A3 /* TaskManager.swift */,
+				C272DE371C462A65002FBD58 /* CloudManager.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -586,10 +586,10 @@
 				C2C535961B9103C900865FDA /* Fetching.swift in Sources */,
 				C2B60ABD1B94BF0A00F6D2BB /* NSRelationshipDescription+.swift in Sources */,
 				C2DEF0721BBDFF14004EB8AC /* NSDateFormatter+.swift in Sources */,
-				C2C4C7031C3DB9EB005E6DD8 /* Cloud.swift in Sources */,
 				C28DF61E1B91674300E4D716 /* LoremIpsum.swift in Sources */,
 				C2F1EA521C365DFE00C2AE72 /* SymbolIcon.swift in Sources */,
 				C2C9EE711BDEA65B00008416 /* WeatherIcon.swift in Sources */,
+				C272DE391C462A65002FBD58 /* CloudManager.swift in Sources */,
 				C289ADDE1B62BAD500186773 /* NSCache+.swift in Sources */,
 				C272394C1B922FBB00B7173F /* Arbitrary.swift in Sources */,
 				C28DF6181B91537600E4D716 /* NSAttributeDescription+.swift in Sources */,
@@ -628,6 +628,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C272DE381C462A65002FBD58 /* CloudManager.swift in Sources */,
 				C289ADCC1B62BAC200186773 /* Queueing.swift in Sources */,
 				C2C535951B9103C900865FDA /* Fetching.swift in Sources */,
 				C2F1EA511C365DFE00C2AE72 /* SymbolIcon.swift in Sources */,
@@ -655,7 +656,6 @@
 				C289ADC61B62BAC200186773 /* Boxing.swift in Sources */,
 				C2D204ED1B9C20CA002A311D /* Range+.swift in Sources */,
 				C289ADAF1B62BA8B00186773 /* UITableView+.swift in Sources */,
-				C2C4C7021C3DB9EA005E6DD8 /* Cloud.swift in Sources */,
 				C2DC4C841C3705FB00BA2EDE /* NSBundle+.swift in Sources */,
 				C2C2B4BA1C31E88000C4F2A2 /* Setup.swift in Sources */,
 				C28DF6171B91537600E4D716 /* NSAttributeDescription+.swift in Sources */,

@@ -9,6 +9,7 @@
 public class TextView: UIControl {
 
     public let textBox = UITextView().setup {
+        $0.font = .systemFontOfSize(17)
         $0.showsHorizontalScrollIndicator = false
         $0.backgroundColor = .clearColor()
         $0.textContainer.lineFragmentPadding = 0
@@ -24,7 +25,6 @@ public class TextView: UIControl {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         super.preservesSuperviewLayoutMargins = true
-        super.backgroundColor = .whiteColor()
         super.addSubview(textBox)
 
         textBox.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
@@ -42,6 +42,11 @@ public class TextView: UIControl {
         let width = textBox.contentSize.width + self.layoutMargins.horizontal
         let height = textBox.contentSize.height + self.layoutMargins.vertical
         return CGSize(width: width, height: height)
+    }
+
+    public override func layoutMarginsDidChange() {
+        self.invalidateIntrinsicContentSize()
+        super.layoutMarginsDidChange()
     }
 
     public override func layoutSubviews() {
