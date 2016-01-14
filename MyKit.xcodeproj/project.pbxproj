@@ -512,7 +512,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0730;
 				TargetAttributes = {
 					C289AD7B1B62B95700186773 = {
 						CreatedOnToolsVersion = 7.0;
@@ -709,7 +709,7 @@
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = MyKit/Info.plist;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_OBJC_BRIDGING_HEADER = "";

@@ -9,13 +9,13 @@
 public class TableController<T, C: UITableViewCell>: UITableViewController {
 
     public var items: [[T]] {
-        get { return (tableView as? TableView)?.items ?? [] }
-        set { (tableView as? TableView)?.items = newValue }
+        get { return (tableView as? TableView<T, C>)?.items ?? [] }
+        set { (tableView as? TableView<T, C>)?.items = newValue }
     }
 
     public var config: ((C, T) -> Void)? {
-        get { return (tableView as? TableView)?.config }
-        set { (tableView as? TableView)?.config = newValue }
+        get { return (tableView as? TableView<T, C>)?.config }
+        set { (tableView as? TableView<T, C>)?.config = newValue }
     }
 
     private let style: UITableViewStyle

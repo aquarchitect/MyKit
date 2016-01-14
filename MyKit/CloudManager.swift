@@ -74,6 +74,7 @@ public class CloudManager {
     }
 
     public static func postErrorNotification(error: CKErrorCode) {
+        print(error.rawValue)
         NSNotificationCenter.defaultCenter().postNotificationName(ErrorNotification, object: Box(error))
     }
 }
