@@ -1,9 +1,9 @@
 //
-//  Boxing.swift
+//  Box.swift
 //  MyKit
 //
-//  Created by Hai Nguyen on 6/29/15.
-//  Copyright © 2015 Hai Nguyen. All rights reserved.
+//  Created by Hai Nguyen on 1/18/16.
+//
 //
 
 public class Box<T> {

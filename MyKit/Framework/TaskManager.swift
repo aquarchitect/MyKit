@@ -10,9 +10,13 @@ final public class TaskManager {
 
     private var timer: NSTimer?
 
+    public var valid: Bool {
+        return timer?.valid ?? false
+    }
+
     public init() {}
 
-    public func schedule(time: CFTimeInterval, block: Void -> Void) {
+    public func schedule(time: CFTimeInterval, @noescape block: Void -> Void) {
         let timer = NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "timerFireMethod:", userInfo: Box(block), repeats: false)
         NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSDefaultRunLoopMode)
         self.timer = timer

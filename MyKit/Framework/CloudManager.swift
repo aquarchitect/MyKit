@@ -9,7 +9,7 @@
 public protocol CloudRelation {
 
     var action: CKReferenceAction { get }
-    var isFetched: Bool { get }
+    var fetched: Bool { get }
 }
 
 public extension CloudRelation where Self: CloudObject {
@@ -62,13 +62,24 @@ public class CloudManager {
         }
     }
 
-    public func modifyRecordsWithAccess(access: Access, recordsToSave sRecords: [CKRecord], recordsToDelete dRecords: [CKRecord]) {
+    public func saveObject<T: CloudObject>(object: T) {
+        let database = databaseWithAccess(object.access)
+        database.saveRecord(object.record, completionHandler: { _, _ in })
+    }
+
+    public func deleteObject<T: CloudObject>(object: T) {
+        let database = databaseWithAccess(object.access)
+        database.deleteRecordWithID(object.record.recordID, completionHandler: { _, _ in })
+    }
+
+    public func modifyRecordsWithAccess(access: Access, records: (save: [CKRecord], delete: [CKRecord]), completion: (Void -> Void)? = nil) {
         let operation = CKModifyRecordsOperation()
-        operation.recordIDsToDelete = dRecords.map { $0.recordID }
-        operation.recordsToSave = sRecords
+        operation.recordIDsToDelete = records.delete.map { $0.recordID }
+        operation.recordsToSave = records.save
         operation.modifyRecordsCompletionBlock = { _, _, error in
-            guard let code = error as? CKErrorCode else { return }
-            self.dynamicType.postErrorNotification(code)
+            if let code = error as? CKErrorCode {
+                self.dynamicType.postErrorNotification(code)
+            } else { completion?() }
         }
         databaseWithAccess(access).addOperation(operation)
     }
