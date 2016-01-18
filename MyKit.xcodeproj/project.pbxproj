@@ -109,6 +109,7 @@
 		C259F0851C4D704500F9B2BC /* NSRelationshipDescription+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFF61C4D6EDB00F9B2BC /* NSRelationshipDescription+.swift */; };
 		C259F0861C4D704500F9B2BC /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFF71C4D6EDB00F9B2BC /* Range+.swift */; };
 		C259F0871C4D704500F9B2BC /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFF91C4D6EDB00F9B2BC /* String+.swift */; };
+		C259F0B31C4D815600F9B2BC /* DynamicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0B21C4D815600F9B2BC /* DynamicCell.swift */; };
 		C265BA431B9637FD00F6871E /* Lorem.strings in Resources */ = {isa = PBXBuildFile; fileRef = C265BA421B9637FD00F6871E /* Lorem.strings */; };
 		C265BA441B9637FD00F6871E /* Lorem.strings in Resources */ = {isa = PBXBuildFile; fileRef = C265BA421B9637FD00F6871E /* Lorem.strings */; };
 		C289AD801B62B95700186773 /* MyKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -186,6 +187,7 @@
 		C259F05B1C4D701D00F9B2BC /* NSColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSColor+.swift"; path = "Extension/NSColor+.swift"; sourceTree = "<group>"; };
 		C259F05C1C4D701D00F9B2BC /* NSControl+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSControl+.swift"; path = "Extension/NSControl+.swift"; sourceTree = "<group>"; };
 		C259F05D1C4D701D00F9B2BC /* NSTableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTableView+.swift"; path = "Extension/NSTableView+.swift"; sourceTree = "<group>"; };
+		C259F0B21C4D815600F9B2BC /* DynamicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicCell.swift; path = Framework/DynamicCell.swift; sourceTree = "<group>"; };
 		C265BA421B9637FD00F6871E /* Lorem.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Lorem.strings; path = MyKit/Lorem.strings; sourceTree = "<group>"; };
 		C289AD7C1B62B95700186773 /* MyKitOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKitOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7F1B62B95700186773 /* MyKitOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKitOSX.h; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				C259F0101C4D6FE200F9B2BC /* CollectionView.swift */,
+				C259F0B21C4D815600F9B2BC /* DynamicCell.swift */,
 				C259F0111C4D6FE200F9B2BC /* ConstraintView.swift */,
 				C259F0121C4D6FE200F9B2BC /* FadePlaceholder.swift */,
 				C259F0131C4D6FE200F9B2BC /* PresentationController.swift */,
@@ -656,6 +659,7 @@
 				C259EFE41C4D6ECE00F9B2BC /* TaskManager.swift in Sources */,
 				C259F0011C4D6EDB00F9B2BC /* NSDate+.swift in Sources */,
 				C259EFFE1C4D6EDB00F9B2BC /* NSAttributeDescription+.swift in Sources */,
+				C259F0B31C4D815600F9B2BC /* DynamicCell.swift in Sources */,
 				C259EFE31C4D6ECE00F9B2BC /* SymbolIcon.swift in Sources */,
 				C259EFCB1C4D6EBF00F9B2BC /* Drawing.swift in Sources */,
 				C259EFCF1C4D6EBF00F9B2BC /* Swizzling.swift in Sources */,

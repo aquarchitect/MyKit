@@ -6,12 +6,16 @@
 //  Copyright © 2015 Hai Nguyen. All rights reserved.
 //
 
-public typealias Render = CGContextRef -> Void
+/// Defines a rendering block for a context
+public typealias Render = CGContextRef? -> Void
 
 public let PI = CGFloat(M_PI)
 
-public func drawInState(context: CGContextRef?, handle: Void -> Void) {
+/// Encapsulates the graphics state stack for the context
+/// - Parameter context: the graphic context whose the graphics state you want to encapsulate
+/// - Parameter render: encapsulated rendering block
+public func drawInState(context: CGContextRef?, render: Render) {
     CGContextSaveGState(context)
-    handle()
+    render(context)
     CGContextRestoreGState(context)
 }
