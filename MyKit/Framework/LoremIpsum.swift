@@ -32,7 +32,7 @@ public final class LoremIpsum {
 
             self.storage = lorem.stringByReplacingOccurrencesOfString("\\n", withString: "")
             self.maxCount = (maxCountForOption(.BySentences), maxCountForOption(.ByWords))
-        } catch { throw FileError.UnableToDescryptTheFile }
+        } catch { throw FileError.UnableToDecryptTheFile }
     }
 
     public func arbitraryBySentences(var count: Int, fromStart flag: Bool) -> String {

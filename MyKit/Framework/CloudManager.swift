@@ -41,6 +41,7 @@ public func == <T: CloudObject>(lhs: T, rhs: T) -> Bool {
     return lhs.record == rhs.record
 }
 
+
 public class CloudManager {
 
     public static let ErrorNotification = "CloudErrorNotification"

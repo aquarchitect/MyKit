@@ -6,15 +6,32 @@
 //
 //
 
+/**
+    Return an image from rendering block.
+    
+    ```
+    // render an image from UILabel
+
+    let label = UILabel()
+    label.text = "+"
+    label.textAlignmnet = .Center
+    
+    renderInContext(label.bounds.size, opaque: true, render: label.layer.renderInContext)
+
+    ```
+
+    - Parameters:
+        - size: The size of output image
+        - opaque: The bit-map opaque flag
+        - render: Custom rendering block within a graphic context
+    
+    - Returns: An image object from rendering block
+*/
 public func renderInContext(size: CGSize, opaque: Bool, render: Render) -> UIImage? {
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
 
-    var image: UIImage?
-
-    if let context = UIGraphicsGetCurrentContext() {
-        render(context)
-        image = UIGraphicsGetImageFromCurrentImageContext()
-    }
+    if let context = UIGraphicsGetCurrentContext() { render(context) }
+    let image = UIGraphicsGetImageFromCurrentImageContext()
 
     UIGraphicsEndImageContext()
     

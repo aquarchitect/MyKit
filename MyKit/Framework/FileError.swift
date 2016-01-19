@@ -9,5 +9,5 @@
 public enum FileError: ErrorType {
 
     case InvalidResourcePath
-    case UnableToDescryptTheFile
+    case UnableToDecryptTheFile
 }

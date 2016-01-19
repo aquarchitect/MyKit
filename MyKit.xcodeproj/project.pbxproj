@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C23C9BBB1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
+		C23C9BBC1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
 		C259EFCB1C4D6EBF00F9B2BC /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */; };
-		C259EFCC1C4D6EBF00F9B2BC /* Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC51C4D6EBF00F9B2BC /* Fetching.swift */; };
 		C259EFCD1C4D6EBF00F9B2BC /* Queueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC61C4D6EBF00F9B2BC /* Queueing.swift */; };
 		C259EFCE1C4D6EBF00F9B2BC /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC71C4D6EBF00F9B2BC /* Registering.swift */; };
 		C259EFCF1C4D6EBF00F9B2BC /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */; };
@@ -74,7 +75,6 @@
 		C259F0611C4D701D00F9B2BC /* NSControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F05C1C4D701D00F9B2BC /* NSControl+.swift */; };
 		C259F0631C4D701D00F9B2BC /* NSTableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F05D1C4D701D00F9B2BC /* NSTableView+.swift */; };
 		C259F0641C4D703800F9B2BC /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */; };
-		C259F0651C4D703800F9B2BC /* Fetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC51C4D6EBF00F9B2BC /* Fetching.swift */; };
 		C259F0661C4D703800F9B2BC /* Queueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC61C4D6EBF00F9B2BC /* Queueing.swift */; };
 		C259F0671C4D703800F9B2BC /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC71C4D6EBF00F9B2BC /* Registering.swift */; };
 		C259F0681C4D703800F9B2BC /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */; };
@@ -122,8 +122,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+.swift"; path = "MyKit/Extension/NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
 		C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drawing.swift; path = MyKit/Utility/Drawing.swift; sourceTree = "<group>"; };
-		C259EFC51C4D6EBF00F9B2BC /* Fetching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fetching.swift; path = MyKit/Utility/Fetching.swift; sourceTree = "<group>"; };
 		C259EFC61C4D6EBF00F9B2BC /* Queueing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queueing.swift; path = MyKit/Utility/Queueing.swift; sourceTree = "<group>"; };
 		C259EFC71C4D6EBF00F9B2BC /* Registering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Registering.swift; path = MyKit/Utility/Registering.swift; sourceTree = "<group>"; };
 		C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swizzling.swift; path = MyKit/Utility/Swizzling.swift; sourceTree = "<group>"; };
@@ -297,6 +297,7 @@
 				C259EFF01C4D6EDB00F9B2BC /* NSEntityDescription+.swift */,
 				C259EFF11C4D6EDB00F9B2BC /* NSIndexPath+.swift */,
 				C259EFF21C4D6EDB00F9B2BC /* NSManagedObject+.swift */,
+				C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */,
 				C259EFF31C4D6EDB00F9B2BC /* NSMutableAttributedString+.swift */,
 				C259EFF41C4D6EDB00F9B2BC /* NSNumber+.swift */,
 				C259EFF51C4D6EDB00F9B2BC /* NSRange+.swift */,
@@ -329,7 +330,6 @@
 			isa = PBXGroup;
 			children = (
 				C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */,
-				C259EFC51C4D6EBF00F9B2BC /* Fetching.swift */,
 				C259EFC61C4D6EBF00F9B2BC /* Queueing.swift */,
 				C259EFC71C4D6EBF00F9B2BC /* Registering.swift */,
 				C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */,
@@ -593,6 +593,7 @@
 				C259F0841C4D704500F9B2BC /* NSRange+.swift in Sources */,
 				C259F0741C4D703D00F9B2BC /* WeatherIcon.swift in Sources */,
 				C259F0751C4D704500F9B2BC /* Arbitrary.swift in Sources */,
+				C23C9BBC1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */,
 				C259F07A1C4D704500F9B2BC /* NSAttributeDescription+.swift in Sources */,
 				C259F0801C4D704500F9B2BC /* NSIndexPath+.swift in Sources */,
 				C259F06C1C4D703D00F9B2BC /* FileError.swift in Sources */,
@@ -608,7 +609,6 @@
 				C259F00F1C4D6EFF00F9B2BC /* Box.swift in Sources */,
 				C259F0771C4D704500F9B2BC /* CGPoint+.swift in Sources */,
 				C259F0691C4D703800F9B2BC /* Timing.swift in Sources */,
-				C259F0651C4D703800F9B2BC /* Fetching.swift in Sources */,
 				C259F06E1C4D703D00F9B2BC /* OpenWeather.swift in Sources */,
 				C259F06F1C4D703D00F9B2BC /* PersistentStack.swift in Sources */,
 				C259F06B1C4D703D00F9B2BC /* DateIndex.swift in Sources */,
@@ -638,7 +638,6 @@
 				C259F0411C4D6FEF00F9B2BC /* Drawing+.swift in Sources */,
 				C259EFCE1C4D6EBF00F9B2BC /* Registering.swift in Sources */,
 				C259EFE21C4D6ECE00F9B2BC /* StreamClient.swift in Sources */,
-				C259EFCC1C4D6EBF00F9B2BC /* Fetching.swift in Sources */,
 				C259F0431C4D6FEF00F9B2BC /* UIBezierPath+.swift in Sources */,
 				C259F0281C4D6FE200F9B2BC /* SnapLayout.swift in Sources */,
 				C259F04D1C4D6FEF00F9B2BC /* UIEdgeInsets+.swift in Sources */,
@@ -676,6 +675,7 @@
 				C259EFE11C4D6ECE00F9B2BC /* PersistentStack.swift in Sources */,
 				C259EFCD1C4D6EBF00F9B2BC /* Queueing.swift in Sources */,
 				C259EFD01C4D6EBF00F9B2BC /* Timing.swift in Sources */,
+				C23C9BBB1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */,
 				C259F00E1C4D6EFF00F9B2BC /* Box.swift in Sources */,
 				C259F0091C4D6EDB00F9B2BC /* NSRelationshipDescription+.swift in Sources */,
 				C259F0471C4D6FEF00F9B2BC /* UICollectionViewFlowLayout+.swift in Sources */,
