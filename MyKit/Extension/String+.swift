@@ -13,10 +13,10 @@ public extension String {
     }
 
     mutating public func removeSpecialCharacters() {
-        self = self.stringByReplacingOccurrencesOfString("[\n\t]|[ ]+", withString: "", options: .RegularExpressionSearch, range: nil)
+        self = self.stringByRemovingSpecialCharacters()
     }
 
-    public func validateForIPAddress() -> Bool {
+    public func isIPAddress() -> Bool {
         let component = "([01]?\\d\\d?|2[0-4]\\d|25[0-5])"
         let pattern = [String](count: 4, repeatedValue: component).joinWithSeparator("\\.")
 

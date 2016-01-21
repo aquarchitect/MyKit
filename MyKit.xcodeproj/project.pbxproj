@@ -198,7 +198,6 @@
 		C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKitTests.swift; sourceTree = "<group>"; };
 		C2B60ACF1B95080800F6D2BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2B60AD31B95084800F6D2BB /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
-		C2C4C7041C3DEC2E005E6DD8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C2DC4C931C37203700BA2EDE /* IonIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IonIcons.ttf; path = MyKit/IonIcons.ttf; sourceTree = "<group>"; };
 		C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Weather.ttf; path = MyKit/Weather.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,7 +230,6 @@
 		C289AD701B62B93800186773 = {
 			isa = PBXGroup;
 			children = (
-				C2C4C7041C3DEC2E005E6DD8 /* README.md */,
 				C289AD921B62B9AD00186773 /* MyKit */,
 				C289AD8B1B62B97400186773 /* MyKitiOS */,
 				C289AD7E1B62B95700186773 /* MyKitOSX */,
