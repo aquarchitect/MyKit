@@ -1,6 +1,6 @@
 MyKit
 =====
 
-MyKit is a collection of frameworks that extend the Apple fundamental core libraries in order to ease the development process. 
+MyKit is a collection of frameworks and extesions that extend that eases the development process. 
 
-Detail documnetation is coming soon.
+Detail documentation is under development.
