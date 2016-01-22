@@ -17,7 +17,7 @@ Register custom font from ttf into system.
     - UnableToDescryptTheFile
 
 */
-internal func registerFont(name: String) throws {
+func registerFont(name: String) throws {
     // check extension
     assert(!name.hasSuffix(".ttf"), "Only support file name without extension.")
 

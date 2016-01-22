@@ -6,20 +6,7 @@
 //
 //
 
-public protocol CloudRelation {
-
-    var action: CKReferenceAction { get }
-    var fetched: Bool { get }
-}
-
-public extension CloudRelation where Self: CloudObject {
-
-    var reference: CKReference {
-        return CKReference(record: record, action: action)
-    }
-}
-
-public protocol CloudObject: Hashable {
+public protocol CloudObject: Equatable {
 
     static var Key: String { get }
     var record: CKRecord { get }
@@ -42,6 +29,18 @@ public func == <T: CloudObject>(lhs: T, rhs: T) -> Bool {
     return lhs.record == rhs.record
 }
 
+public protocol CloudRelation: CloudObject {
+
+    var action: CKReferenceAction { get }
+    var fetched: Bool { get }
+}
+
+public extension CloudRelation {
+
+    var reference: CKReference {
+        return CKReference(record: record, action: action)
+    }
+}
 
 public class CloudManager {
 

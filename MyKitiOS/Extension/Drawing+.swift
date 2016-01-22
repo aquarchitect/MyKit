@@ -7,25 +7,26 @@
 //
 
 /**
-    Return an image from rendering block.
-    
-    ```
-    // render an image from UILabel
 
-    let label = UILabel()
-    label.text = "+"
-    label.textAlignmnet = .Center
-    
-    renderInContext(label.bounds.size, opaque: true, render: label.layer.renderInContext)
+Return an image from rendering block.
 
-    ```
+```
+// render an image from UILabel
 
-    - Parameters:
-        - size: The size of output image
-        - opaque: The bit-map opaque flag
-        - render: Custom rendering block within a graphic context
-    
-    - Returns: An image object from rendering block
+let label = UILabel()
+label.text = "+"
+label.textAlignmnet = .Center
+
+renderInContext(label.bounds.size, opaque: true, render: label.layer.renderInContext)
+
+```
+
+- parameter size: The size of output image.
+- parameter opaque: The bit-map opaque flag.
+- parameter render: Custom rendering block within a graphic context.
+
+- returns: An image object from rendering block
+
 */
 public func renderInContext(size: CGSize, opaque: Bool, render: Render) -> UIImage? {
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0)

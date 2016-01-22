@@ -8,21 +8,25 @@
 
 public extension String {
 
-    public func stringByRemovingSpecialCharacters() -> String {
-        return self.stringByReplacingOccurrencesOfString("[\n\t]|[ ]+", withString: "", options: .RegularExpressionSearch, range: nil)
+    /// Known format for string
+    public enum Format {
+
+        case IPAddress
     }
 
-    mutating public func removeSpecialCharacters() {
-        self = self.stringByRemovingSpecialCharacters()
-    }
-
-    public func isIPAddress() -> Bool {
-        let component = "([01]?\\d\\d?|2[0-4]\\d|25[0-5])"
-        let pattern = [String](count: 4, repeatedValue: component).joinWithSeparator("\\.")
-
-        guard let regex = try? NSRegularExpression(pattern: "^\(pattern)$", options: []) else { return false }
+    /// Validate the receiver with format
+    public func validateFormat(format: Format) -> Bool {
+        guard let regex = try? NSRegularExpression(pattern: "^\(format.pattern)$", options: []) else { return false }
         let range = NSMakeRange(0, self.characters.count)
 
         return regex.rangeOfFirstMatchInString(self, options: .ReportProgress, range: range) == range
+    }
+}
+
+private extension String.Format {
+
+    var pattern: String {
+        let component = "([01]?\\d\\d?|2[0-4]\\d|25[0-5])"
+        return [String](count: 4, repeatedValue: component).joinWithSeparator("\\.")
     }
 }

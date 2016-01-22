@@ -12,11 +12,12 @@ public typealias Render = CGContextRef -> Void
 public let PI = CGFloat(M_PI)
 
 /**
-    Encapsulates the graphics state stack for the context.
 
-    - Parameters:
-        - context: The graphic context whose the graphics state you want to encapsulate
-        - render: Tendering block for the encapsulated graphics state
+Encapsulates the graphics state stack for the context.
+
+- parameter context: The graphic context whose the graphics state you want to encapsulate.
+- parameter render: Tendering block for the encapsulated graphics state.
+ 
 */
 public func drawInState(context: CGContextRef?, render: Render) {
     CGContextSaveGState(context)

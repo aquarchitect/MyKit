@@ -6,6 +6,7 @@
 //
 //
 
+/// Type that can be chosen randomly
 public protocol Arbitrary {
 
     static func arbitrary() -> Self
@@ -13,6 +14,7 @@ public protocol Arbitrary {
 
 extension Int: Arbitrary {
 
+    /// Random integer
     public static func arbitrary() -> Int {
         return Int(arc4random())
     }
@@ -20,6 +22,7 @@ extension Int: Arbitrary {
 
 extension Character: Arbitrary {
 
+    /// Random character
     public static func arbitrary() -> Character {
         let unicode = UnicodeScalar((65...90).random())
         return Character(unicode)
