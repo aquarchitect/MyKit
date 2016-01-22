@@ -7,16 +7,17 @@
 //
 
 /**
-    Register custom font from ttf into system.
+
+Register custom font from ttf into system.
     
-    - Parameters:
-        - name: The name of ttf file with extension.
+- parameter name: The name of ttf file with extension.
         
-    - Throws: Results into `FileError`.
-        - __InvalidResourcePath__
-        - __UnableToDescryptTheFile__
+- throws: Results into `FileError`.
+    - InvalidResourcePath
+    - UnableToDescryptTheFile
+
 */
-func registerFont(name: String) throws {
+internal func registerFont(name: String) throws {
     // check extension
     assert(!name.hasSuffix(".ttf"), "Only support file name without extension.")
 

@@ -33,9 +33,6 @@ public extension UIView {
             _ = unsafeBitCast(object, Layout.Handler.self)()
         }
     }
-}
-
-public extension UIView {
 
     public func addConstraintsWithVisualFormat(views: [String: UIView], metrics: [String: AnyObject]? = nil)(format: String) {
         self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))

@@ -37,6 +37,7 @@ public extension CloudObject {
     }
 }
 
+// :nodoc:
 public func == <T: CloudObject>(lhs: T, rhs: T) -> Bool {
     return lhs.record == rhs.record
 }

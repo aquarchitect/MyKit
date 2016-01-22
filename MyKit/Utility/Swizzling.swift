@@ -7,12 +7,13 @@
 //
 
 /**
-    Replaces original method.
 
-    - Parameters: 
-        - type: Class name.
-        - original: Name of original method.
-        - swizzled: Name of replaced method.
+Replaces original method.
+
+- parameter type: Class name.
+- parameter original: Name of original method.
+- parameter swizzled: Name of replaced method.
+
 */
 public func swizzle(type: AnyClass, original: Selector, swizzled: Selector) {
     // check type / existence of methods
