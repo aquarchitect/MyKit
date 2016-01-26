@@ -1,14 +1,7 @@
 #!/usr/bin/env bash
 
-if [[ $(basename $(pwd)) != "MyKit" ]]; then
-	echo "Only run on the project's root directory."
-	exit 1
-fi
-
-if [[ ! -z $(git status -s) ]]; then
-   echo "Jazzy process requires a clean directory."
-   exit 1
-fi
+[ $(basename $(pwd) != "MyKit") ] && { echo "Only run on the project's root directory."; exit 1; }
+[ ! -z '$(git status -s)' ] && { echo "Jazzy process requires a clean directory."; exit 1; }
 
 # generate documentation
 echo "Start documentation generation process..."
