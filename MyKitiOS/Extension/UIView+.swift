@@ -24,14 +24,15 @@ public extension UIView {
 
     // :nodoc:
     public override class func initialize() {
-        struct Static { static var token: dispatch_once_t = 0 }
+        struct Dispatch { static var token: dispatch_once_t = 0 }
 
-        dispatch_once(&Static.token) {
+        dispatch_once(&Dispatch.token) {
             swizzle(UIView.self, original: "layoutSubviews", swizzled: "swizzledLayoutSubviews")
         }
     }
 
-    internal func swizzledLayoutSubviews() {
+    // :nodoc:
+    public func swizzledLayoutSubviews() {
         self.swizzledLayoutSubviews()
         if let object = objc_getAssociatedObject(self, &Layout.Token) {
             _ = unsafeBitCast(object, Layout.Handler.self)()
@@ -41,13 +42,11 @@ public extension UIView {
     // - MARK: Auto-layout Constraints
 
     /**
-
     Add constraints by using visual format and currying
     
     ```swift
         ["H:[self(30)]", "V:[self(50)]"].forEach(self.addConstraintsWithVisualFormat(["self": self]))
     ```
-    
     */
     public func addConstraintsWithVisualFormat(views: [String: UIView], metrics: [String: AnyObject]? = nil)(format: String) {
         self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))

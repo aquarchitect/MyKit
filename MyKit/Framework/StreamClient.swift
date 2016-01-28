@@ -21,7 +21,9 @@ public class StreamClient: NSObject {
     private var outputStream: NSOutputStream?
 
     public func connectToHost(ip: String, port: UInt32) throws {
-        guard ip.isIPAddress() else { throw Error.InvalidIPAddress }
+        guard ip.validateFormat(.IPAddress)
+            else { throw Error.InvalidIPAddress }
+
         self.ip = ip
         self.port = port
 
