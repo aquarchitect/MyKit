@@ -6,18 +6,43 @@
 //
 //
 
-public enum SymbolIcon: Character {
+public enum SymbolIcon {
 
-    case LinedCross = "\u{F2D7}"
-    case LinedCheck = "\u{F383}"
+    public enum Style1 { case Lined, Circled }
+    public enum Style2 { case Stroked, Filled }
 
-    case CircledCross = "\u{F406}"
-    case CircledCheck = "\u{F3FF}"
+    case Cross(Style1)
+    case Check(Style1)
+    case Heart(Style2)
+    case Configuration
 
-    case StandardSetting = "\u{F13E}"
+    public var character: Character {
+        switch self {
+
+        case .Cross(let style):
+            switch style {
+
+            case .Lined: return "\u{F2D7}"
+            case .Circled: return "\u{F406}"
+            }
+        case .Check(let style):
+            switch style {
+
+            case .Lined: return "\u{F383}"
+            case .Circled: return "\u{F3FF}"
+            }
+        case .Heart(let style):
+            switch style {
+
+            case .Stroked: return "\u{F442}"
+            case .Filled: return "\u{F443}"
+            }
+        case .Configuration: return "\u{F13E}"
+        }
+    }
 
     public func attributedStringIn(size: CGFloat) -> NSMutableAttributedString {
-        return SymbolIcon.attributedStringWith(self.rawValue, size: size)
+        return SymbolIcon.attributedStringWith(self.character, size: size)
     }
 }
 

@@ -14,7 +14,7 @@
 		C259EFCE1C4D6EBF00F9B2BC /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC71C4D6EBF00F9B2BC /* Registering.swift */; };
 		C259EFCF1C4D6EBF00F9B2BC /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */; };
 		C259EFD01C4D6EBF00F9B2BC /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC91C4D6EBF00F9B2BC /* Timing.swift */; };
-		C259EFDC1C4D6ECE00F9B2BC /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD11C4D6ECE00F9B2BC /* CloudManager.swift */; };
+		C259EFDC1C4D6ECE00F9B2BC /* CloudManner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD11C4D6ECE00F9B2BC /* CloudManner.swift */; };
 		C259EFDD1C4D6ECE00F9B2BC /* DateIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */; };
 		C259EFDE1C4D6ECE00F9B2BC /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD31C4D6ECE00F9B2BC /* FileError.swift */; };
 		C259EFDF1C4D6ECE00F9B2BC /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD41C4D6ECE00F9B2BC /* LoremIpsum.swift */; };
@@ -79,7 +79,7 @@
 		C259F0671C4D703800F9B2BC /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC71C4D6EBF00F9B2BC /* Registering.swift */; };
 		C259F0681C4D703800F9B2BC /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */; };
 		C259F0691C4D703800F9B2BC /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC91C4D6EBF00F9B2BC /* Timing.swift */; };
-		C259F06A1C4D703D00F9B2BC /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD11C4D6ECE00F9B2BC /* CloudManager.swift */; };
+		C259F06A1C4D703D00F9B2BC /* CloudManner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD11C4D6ECE00F9B2BC /* CloudManner.swift */; };
 		C259F06B1C4D703D00F9B2BC /* DateIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */; };
 		C259F06C1C4D703D00F9B2BC /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD31C4D6ECE00F9B2BC /* FileError.swift */; };
 		C259F06D1C4D703D00F9B2BC /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD41C4D6ECE00F9B2BC /* LoremIpsum.swift */; };
@@ -110,16 +110,24 @@
 		C259F0861C4D704500F9B2BC /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFF71C4D6EDB00F9B2BC /* Range+.swift */; };
 		C259F0871C4D704500F9B2BC /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFF91C4D6EDB00F9B2BC /* String+.swift */; };
 		C259F0B31C4D815600F9B2BC /* DynamicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0B21C4D815600F9B2BC /* DynamicCell.swift */; };
-		C265BA431B9637FD00F6871E /* Lorem.strings in Resources */ = {isa = PBXBuildFile; fileRef = C265BA421B9637FD00F6871E /* Lorem.strings */; };
-		C265BA441B9637FD00F6871E /* Lorem.strings in Resources */ = {isa = PBXBuildFile; fileRef = C265BA421B9637FD00F6871E /* Lorem.strings */; };
+		C265BA431B9637FD00F6871E /* Lorem.strings in Resources */ = {isa = PBXBuildFile; fileRef = C265BA421B9637FD00F6871E /* Lorem.strings */; settings = {ASSET_TAGS = (text, ); }; };
+		C265BA441B9637FD00F6871E /* Lorem.strings in Resources */ = {isa = PBXBuildFile; fileRef = C265BA421B9637FD00F6871E /* Lorem.strings */; settings = {ASSET_TAGS = (text, ); }; };
 		C28666D51C56AE3F002163DB /* RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28666D41C56AE3F002163DB /* RoundCorners.swift */; };
 		C289AD801B62B95700186773 /* MyKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD8D1B62B97400186773 /* MyKitiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKitiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2B60ACE1B95080800F6D2BB /* MyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */; };
-		C2DC4C8A1C3712F200BA2EDE /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; };
-		C2DC4C8C1C37130C00BA2EDE /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; };
-		C2DC4C941C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; };
-		C2DC4C951C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; };
+		C2DB5A0C1C5ED821001E1C03 /* Bool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */; };
+		C2DB5A0D1C5ED821001E1C03 /* Bool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */; };
+		C2DB5A0F1C5ED84C001E1C03 /* CKRecordID+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */; };
+		C2DB5A101C5ED84C001E1C03 /* CKRecordID+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */; };
+		C2DB5A151C5EFC92001E1C03 /* CKQueryOperation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A141C5EFC92001E1C03 /* CKQueryOperation+.swift */; };
+		C2DB5A161C5EFC92001E1C03 /* CKQueryOperation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A141C5EFC92001E1C03 /* CKQueryOperation+.swift */; };
+		C2DC4C8A1C3712F200BA2EDE /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
+		C2DC4C8C1C37130C00BA2EDE /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
+		C2DC4C941C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
+		C2DC4C951C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
+		C2EF30101C61422F0044512C /* Currying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF300F1C61422F0044512C /* Currying.swift */; };
+		C2EF30111C61422F0044512C /* Currying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF300F1C61422F0044512C /* Currying.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,7 +137,7 @@
 		C259EFC71C4D6EBF00F9B2BC /* Registering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Registering.swift; path = MyKit/Utility/Registering.swift; sourceTree = "<group>"; };
 		C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swizzling.swift; path = MyKit/Utility/Swizzling.swift; sourceTree = "<group>"; };
 		C259EFC91C4D6EBF00F9B2BC /* Timing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Timing.swift; path = MyKit/Utility/Timing.swift; sourceTree = "<group>"; };
-		C259EFD11C4D6ECE00F9B2BC /* CloudManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudManager.swift; path = MyKit/Framework/CloudManager.swift; sourceTree = "<group>"; };
+		C259EFD11C4D6ECE00F9B2BC /* CloudManner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudManner.swift; path = MyKit/Framework/CloudManner.swift; sourceTree = "<group>"; };
 		C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateIndex.swift; path = MyKit/Framework/DateIndex.swift; sourceTree = "<group>"; };
 		C259EFD31C4D6ECE00F9B2BC /* FileError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileError.swift; path = MyKit/Framework/FileError.swift; sourceTree = "<group>"; };
 		C259EFD41C4D6ECE00F9B2BC /* LoremIpsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoremIpsum.swift; path = MyKit/Framework/LoremIpsum.swift; sourceTree = "<group>"; };
@@ -200,7 +208,11 @@
 		C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKitTests.swift; sourceTree = "<group>"; };
 		C2B60ACF1B95080800F6D2BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2B60AD31B95084800F6D2BB /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
+		C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bool+.swift"; path = "MyKit/Extension/Bool+.swift"; sourceTree = "<group>"; };
+		C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecordID+.swift"; path = "MyKit/Extension/CKRecordID+.swift"; sourceTree = "<group>"; };
+		C2DB5A141C5EFC92001E1C03 /* CKQueryOperation+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKQueryOperation+.swift"; path = "MyKit/Extension/CKQueryOperation+.swift"; sourceTree = "<group>"; };
 		C2DC4C931C37203700BA2EDE /* IonIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IonIcons.ttf; path = MyKit/IonIcons.ttf; sourceTree = "<group>"; };
+		C2EF300F1C61422F0044512C /* Currying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Currying.swift; path = MyKit/Utility/Currying.swift; sourceTree = "<group>"; };
 		C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Weather.ttf; path = MyKit/Weather.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -286,9 +298,12 @@
 				C259EFE71C4D6EDB00F9B2BC /* Arbitrary.swift */,
 				C259F00D1C4D6EFF00F9B2BC /* Box.swift */,
 				C259EFF81C4D6EDB00F9B2BC /* Setup.swift */,
+				C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */,
 				C259EFE81C4D6EDB00F9B2BC /* CGPoint+.swift */,
 				C259EFE91C4D6EDB00F9B2BC /* CGRect+.swift */,
 				C259EFEA1C4D6EDB00F9B2BC /* CGSize+.swift */,
+				C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */,
+				C2DB5A141C5EFC92001E1C03 /* CKQueryOperation+.swift */,
 				C259EFEB1C4D6EDB00F9B2BC /* NSAttributeDescription+.swift */,
 				C259EFEC1C4D6EDB00F9B2BC /* NSBundle+.swift */,
 				C259EFED1C4D6EDB00F9B2BC /* NSCache+.swift */,
@@ -311,7 +326,7 @@
 		C289AD941B62BA0E00186773 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				C259EFD11C4D6ECE00F9B2BC /* CloudManager.swift */,
+				C259EFD11C4D6ECE00F9B2BC /* CloudManner.swift */,
 				C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */,
 				C259EFD31C4D6ECE00F9B2BC /* FileError.swift */,
 				C259EFD41C4D6ECE00F9B2BC /* LoremIpsum.swift */,
@@ -334,6 +349,7 @@
 				C259EFC71C4D6EBF00F9B2BC /* Registering.swift */,
 				C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */,
 				C259EFC91C4D6EBF00F9B2BC /* Timing.swift */,
+				C2EF300F1C61422F0044512C /* Currying.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -515,6 +531,10 @@
 		C289AD711B62B93800186773 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					fonts,
+					text,
+				);
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0730;
 				TargetAttributes = {
@@ -585,10 +605,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2DB5A0D1C5ED821001E1C03 /* Bool+.swift in Sources */,
 				C259F07B1C4D704500F9B2BC /* NSBundle+.swift in Sources */,
-				C259F06A1C4D703D00F9B2BC /* CloudManager.swift in Sources */,
+				C259F06A1C4D703D00F9B2BC /* CloudManner.swift in Sources */,
 				C259F0871C4D704500F9B2BC /* String+.swift in Sources */,
 				C259F0851C4D704500F9B2BC /* NSRelationshipDescription+.swift in Sources */,
+				C2DB5A101C5ED84C001E1C03 /* CKRecordID+.swift in Sources */,
+				C2DB5A161C5EFC92001E1C03 /* CKQueryOperation+.swift in Sources */,
 				C259F07F1C4D704500F9B2BC /* NSEntityDescription+.swift in Sources */,
 				C259F0831C4D704500F9B2BC /* NSNumber+.swift in Sources */,
 				C259F0841C4D704500F9B2BC /* NSRange+.swift in Sources */,
@@ -610,6 +633,7 @@
 				C259F00F1C4D6EFF00F9B2BC /* Box.swift in Sources */,
 				C259F0771C4D704500F9B2BC /* CGPoint+.swift in Sources */,
 				C259F0691C4D703800F9B2BC /* Timing.swift in Sources */,
+				C2EF30111C61422F0044512C /* Currying.swift in Sources */,
 				C259F06E1C4D703D00F9B2BC /* OpenWeather.swift in Sources */,
 				C259F06F1C4D703D00F9B2BC /* PersistentStack.swift in Sources */,
 				C259F06B1C4D703D00F9B2BC /* DateIndex.swift in Sources */,
@@ -635,7 +659,7 @@
 				C259F01E1C4D6FE200F9B2BC /* ConstraintView.swift in Sources */,
 				C259F00B1C4D6EDB00F9B2BC /* Setup.swift in Sources */,
 				C28666D51C56AE3F002163DB /* RoundCorners.swift in Sources */,
-				C259EFDC1C4D6ECE00F9B2BC /* CloudManager.swift in Sources */,
+				C259EFDC1C4D6ECE00F9B2BC /* CloudManner.swift in Sources */,
 				C259EFFA1C4D6EDB00F9B2BC /* Arbitrary.swift in Sources */,
 				C259F0411C4D6FEF00F9B2BC /* Drawing+.swift in Sources */,
 				C259EFCE1C4D6EBF00F9B2BC /* Registering.swift in Sources */,
@@ -661,6 +685,7 @@
 				C259F0011C4D6EDB00F9B2BC /* NSDate+.swift in Sources */,
 				C259EFFE1C4D6EDB00F9B2BC /* NSAttributeDescription+.swift in Sources */,
 				C259F0B31C4D815600F9B2BC /* DynamicCell.swift in Sources */,
+				C2DB5A151C5EFC92001E1C03 /* CKQueryOperation+.swift in Sources */,
 				C259EFE31C4D6ECE00F9B2BC /* SymbolIcon.swift in Sources */,
 				C259EFCB1C4D6EBF00F9B2BC /* Drawing.swift in Sources */,
 				C259EFCF1C4D6EBF00F9B2BC /* Swizzling.swift in Sources */,
@@ -673,6 +698,7 @@
 				C259F0221C4D6FE200F9B2BC /* PresentationController.swift in Sources */,
 				C259EFFF1C4D6EDB00F9B2BC /* NSBundle+.swift in Sources */,
 				C259F0061C4D6EDB00F9B2BC /* NSMutableAttributedString+.swift in Sources */,
+				C2DB5A0F1C5ED84C001E1C03 /* CKRecordID+.swift in Sources */,
 				C259F04B1C4D6FEF00F9B2BC /* UIControl+.swift in Sources */,
 				C259EFE11C4D6ECE00F9B2BC /* PersistentStack.swift in Sources */,
 				C259EFCD1C4D6EBF00F9B2BC /* Queueing.swift in Sources */,
@@ -694,8 +720,10 @@
 				C259F0201C4D6FE200F9B2BC /* FadePlaceholder.swift in Sources */,
 				C259EFDE1C4D6ECE00F9B2BC /* FileError.swift in Sources */,
 				C259EFDF1C4D6ECE00F9B2BC /* LoremIpsum.swift in Sources */,
+				C2EF30101C61422F0044512C /* Currying.swift in Sources */,
 				C259F0001C4D6EDB00F9B2BC /* NSCache+.swift in Sources */,
 				C259EFFB1C4D6EDB00F9B2BC /* CGPoint+.swift in Sources */,
+				C2DB5A0C1C5ED821001E1C03 /* Bool+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +741,7 @@
 		C289AD751B62B93800186773 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_ON_DEMAND_RESOURCES = YES;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = MyKit/Info.plist;
 				ONLY_ACTIVE_ARCH = YES;
@@ -725,6 +754,7 @@
 		C289AD761B62B93800186773 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_ON_DEMAND_RESOURCES = YES;
 				INFOPLIST_FILE = MyKit/Info.plist;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -757,6 +787,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_VERSION = A;
@@ -817,6 +848,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -871,6 +903,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_BITCODE = YES;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -934,6 +967,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;

@@ -48,8 +48,8 @@ public extension UIView {
         ["H:[self(30)]", "V:[self(50)]"].forEach(self.addConstraintsWithVisualFormat(["self": self]))
     ```
     */
-    public func addConstraintsWithVisualFormat(views: [String: UIView], metrics: [String: AnyObject]? = nil)(format: String) {
-        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views))
+    public func addConstraintsWithVisualFormat(views: [String: UIView], metrics: [String: AnyObject]? = nil) -> (format: String) -> Void {
+        return { self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat($0, options: [], metrics: metrics, views: views)) }
     }
 
     /// Add constraints directly
