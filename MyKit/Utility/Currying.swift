@@ -15,3 +15,7 @@ public func --> <A, B, C>(lhs: A -> B, rhs: B -> C) -> (A -> C) {
 public func --> <T>(@autoclosure lhs: Void -> T, rhs: T -> Void) {
     rhs(lhs())
 }
+
+public func --> <A, B, C>(lhs: A -> B, rhs: (B -> C)?) -> A -> C? {
+    return { rhs?(lhs($0)) }
+}

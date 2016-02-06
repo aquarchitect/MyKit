@@ -112,7 +112,6 @@
 		C259F0B31C4D815600F9B2BC /* DynamicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0B21C4D815600F9B2BC /* DynamicCell.swift */; };
 		C265BA431B9637FD00F6871E /* Lorem.strings in Resources */ = {isa = PBXBuildFile; fileRef = C265BA421B9637FD00F6871E /* Lorem.strings */; settings = {ASSET_TAGS = (text, ); }; };
 		C265BA441B9637FD00F6871E /* Lorem.strings in Resources */ = {isa = PBXBuildFile; fileRef = C265BA421B9637FD00F6871E /* Lorem.strings */; settings = {ASSET_TAGS = (text, ); }; };
-		C28666D51C56AE3F002163DB /* RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28666D41C56AE3F002163DB /* RoundCorners.swift */; };
 		C289AD801B62B95700186773 /* MyKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD8D1B62B97400186773 /* MyKitiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKitiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2B60ACE1B95080800F6D2BB /* MyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */; };
@@ -120,8 +119,6 @@
 		C2DB5A0D1C5ED821001E1C03 /* Bool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */; };
 		C2DB5A0F1C5ED84C001E1C03 /* CKRecordID+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */; };
 		C2DB5A101C5ED84C001E1C03 /* CKRecordID+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */; };
-		C2DB5A151C5EFC92001E1C03 /* CKQueryOperation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A141C5EFC92001E1C03 /* CKQueryOperation+.swift */; };
-		C2DB5A161C5EFC92001E1C03 /* CKQueryOperation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A141C5EFC92001E1C03 /* CKQueryOperation+.swift */; };
 		C2DC4C8A1C3712F200BA2EDE /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
 		C2DC4C8C1C37130C00BA2EDE /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
 		C2DC4C941C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
@@ -198,7 +195,6 @@
 		C259F05D1C4D701D00F9B2BC /* NSTableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTableView+.swift"; path = "Extension/NSTableView+.swift"; sourceTree = "<group>"; };
 		C259F0B21C4D815600F9B2BC /* DynamicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicCell.swift; path = Framework/DynamicCell.swift; sourceTree = "<group>"; };
 		C265BA421B9637FD00F6871E /* Lorem.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Lorem.strings; path = MyKit/Lorem.strings; sourceTree = "<group>"; };
-		C28666D41C56AE3F002163DB /* RoundCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundCorners.swift; path = Framework/RoundCorners.swift; sourceTree = "<group>"; };
 		C289AD7C1B62B95700186773 /* MyKitOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKitOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7F1B62B95700186773 /* MyKitOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKitOSX.h; sourceTree = "<group>"; };
 		C289AD8A1B62B97400186773 /* MyKitiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKitiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,7 +206,6 @@
 		C2B60AD31B95084800F6D2BB /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
 		C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bool+.swift"; path = "MyKit/Extension/Bool+.swift"; sourceTree = "<group>"; };
 		C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecordID+.swift"; path = "MyKit/Extension/CKRecordID+.swift"; sourceTree = "<group>"; };
-		C2DB5A141C5EFC92001E1C03 /* CKQueryOperation+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKQueryOperation+.swift"; path = "MyKit/Extension/CKQueryOperation+.swift"; sourceTree = "<group>"; };
 		C2DC4C931C37203700BA2EDE /* IonIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IonIcons.ttf; path = MyKit/IonIcons.ttf; sourceTree = "<group>"; };
 		C2EF300F1C61422F0044512C /* Currying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Currying.swift; path = MyKit/Utility/Currying.swift; sourceTree = "<group>"; };
 		C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Weather.ttf; path = MyKit/Weather.ttf; sourceTree = "<group>"; };
@@ -303,7 +298,6 @@
 				C259EFE91C4D6EDB00F9B2BC /* CGRect+.swift */,
 				C259EFEA1C4D6EDB00F9B2BC /* CGSize+.swift */,
 				C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */,
-				C2DB5A141C5EFC92001E1C03 /* CKQueryOperation+.swift */,
 				C259EFEB1C4D6EDB00F9B2BC /* NSAttributeDescription+.swift */,
 				C259EFEC1C4D6EDB00F9B2BC /* NSBundle+.swift */,
 				C259EFED1C4D6EDB00F9B2BC /* NSCache+.swift */,
@@ -378,7 +372,6 @@
 				C259F0191C4D6FE200F9B2BC /* TableView.swift */,
 				C259F01A1C4D6FE200F9B2BC /* TextView.swift */,
 				C259F01B1C4D6FE200F9B2BC /* TransitionDelegate.swift */,
-				C28666D41C56AE3F002163DB /* RoundCorners.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -611,7 +604,6 @@
 				C259F0871C4D704500F9B2BC /* String+.swift in Sources */,
 				C259F0851C4D704500F9B2BC /* NSRelationshipDescription+.swift in Sources */,
 				C2DB5A101C5ED84C001E1C03 /* CKRecordID+.swift in Sources */,
-				C2DB5A161C5EFC92001E1C03 /* CKQueryOperation+.swift in Sources */,
 				C259F07F1C4D704500F9B2BC /* NSEntityDescription+.swift in Sources */,
 				C259F0831C4D704500F9B2BC /* NSNumber+.swift in Sources */,
 				C259F0841C4D704500F9B2BC /* NSRange+.swift in Sources */,
@@ -658,7 +650,6 @@
 			files = (
 				C259F01E1C4D6FE200F9B2BC /* ConstraintView.swift in Sources */,
 				C259F00B1C4D6EDB00F9B2BC /* Setup.swift in Sources */,
-				C28666D51C56AE3F002163DB /* RoundCorners.swift in Sources */,
 				C259EFDC1C4D6ECE00F9B2BC /* CloudManner.swift in Sources */,
 				C259EFFA1C4D6EDB00F9B2BC /* Arbitrary.swift in Sources */,
 				C259F0411C4D6FEF00F9B2BC /* Drawing+.swift in Sources */,
@@ -685,7 +676,6 @@
 				C259F0011C4D6EDB00F9B2BC /* NSDate+.swift in Sources */,
 				C259EFFE1C4D6EDB00F9B2BC /* NSAttributeDescription+.swift in Sources */,
 				C259F0B31C4D815600F9B2BC /* DynamicCell.swift in Sources */,
-				C2DB5A151C5EFC92001E1C03 /* CKQueryOperation+.swift in Sources */,
 				C259EFE31C4D6ECE00F9B2BC /* SymbolIcon.swift in Sources */,
 				C259EFCB1C4D6EBF00F9B2BC /* Drawing.swift in Sources */,
 				C259EFCF1C4D6EBF00F9B2BC /* Swizzling.swift in Sources */,

@@ -41,7 +41,16 @@ public enum SymbolIcon {
         }
     }
 
-    public func attributedStringIn(size: CGFloat) -> NSMutableAttributedString {
+    #if os(iOS)
+
+    public func imageWith(size: CGFloat) -> UIImage? {
+        return SymbolIcon.imageWith(self.character, size: size)
+    }
+
+    #endif
+
+
+    public func attributedStringWith(size: CGFloat) -> NSMutableAttributedString {
         return SymbolIcon.attributedStringWith(self.character, size: size)
     }
 }
@@ -72,13 +81,13 @@ public extension SymbolIcon {
     }
 
     #if os(iOS)
-        public static func imageWithCharacter(character: Character, size: CGFloat) -> UIImage? {
-            let label = UILabel.sharedInstance.setup {
-                $0.attributedText = SymbolIcon.attributedStringWith(character, size: size)
-                $0.sizeToFit()
-            }
-
-            return renderInContext(label.bounds.size, opaque: false, render: label.layer.renderInContext)
+    public static func imageWith(character: Character, size: CGFloat) -> UIImage? {
+        let label = UILabel.sharedInstance.setup {
+            $0.attributedText = SymbolIcon.attributedStringWith(character, size: size)
+            $0.sizeToFit()
         }
+
+        return renderInContext(label.bounds.size, opaque: false, render: label.layer.renderInContext)
+    }
     #endif
 }

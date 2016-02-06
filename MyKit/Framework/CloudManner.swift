@@ -6,6 +6,8 @@
 //
 //
 
+public typealias CloudHandler = (CKQueryCursor?, NSError?) -> Void
+
 public protocol CloudController: class {
 
     var cloudStack: CloudStack { get }
@@ -14,22 +16,18 @@ public protocol CloudController: class {
 
 public class CloudObject {
 
-    public static var Key: String {
-        return String(self.dynamicType)
-    }
-
     public let record: CKRecord
 
     public required init?(record: CKRecord) {
         self.record = record
 
-        if record.recordType != CloudObject.Key {
+        if record.recordType != String(self.dynamicType) {
             return nil
         }
     }
 
     public init() {
-        self.record = CKRecord(recordType: CloudObject.Key)
+        self.record = CKRecord(recordType: String(self.dynamicType))
     }
 }
 
