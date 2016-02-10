@@ -41,10 +41,9 @@ public class CloudObject: NSObject {
 
 public class CloudStack {
 
-    public typealias UserRecordHandler = (CKReference?, NSError?) -> Void
     public enum Access { case Private, Public }
 
-    private var userRecordReference: CKReference?
+    public private(set) var userRecordReference: CKReference?
     public let container: CKContainer
 
     public init(container: CKContainer = .defaultContainer()) {
@@ -60,14 +59,12 @@ public class CloudStack {
     }
 
     /// User record ID will be cached after the initial fetching
-    public func fetchUserRecordReference(completion: UserRecordHandler) {
-        if let reference = self.userRecordReference {
-            completion(reference, nil)
-        } else {
-            container.fetchUserRecordIDWithCompletionHandler { [weak self] in
-                if let error = $1 { completion(nil, error); return }
-                self?.userRecordReference = $0?.referenceWithAction(.None).then { completion($0, nil) }
-            }
+    public func fetchUserRecordReference(completion: (CKReference?, NSError?) -> Void) {
+        if let reference = self.userRecordReference { completion(reference, nil); return }
+
+        container.fetchUserRecordIDWithCompletionHandler { [weak self] in
+            if let error = $1 { completion(nil, error); return }
+            self?.userRecordReference = $0?.referenceWithAction(.None).then { completion($0, nil) }
         }
     }
 
