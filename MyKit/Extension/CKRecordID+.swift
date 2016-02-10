@@ -8,7 +8,7 @@
 
 extension CKRecordID {
 
-    public func referenceWithAction(action: CKReferenceAction) -> CKReference {
+    public func referenceOf(action: CKReferenceAction) -> CKReference {
         return CKReference(recordID: self, action: action)
     }
 }

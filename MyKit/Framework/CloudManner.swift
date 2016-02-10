@@ -20,7 +20,7 @@ public protocol CloudReference {
 extension CloudReference where Self: CloudObject {
 
     public var reference: CKReference {
-        return recordID.referenceWithAction(action)
+        return recordID.referenceOf(action)
     }
 }
 
@@ -64,7 +64,7 @@ public class CloudStack {
 
         container.fetchUserRecordIDWithCompletionHandler { [weak self] in
             if let error = $1 { completion(nil, error); return }
-            self?.userRecordReference = $0?.referenceWithAction(.None).then { completion($0, nil) }
+            self?.userRecordReference = $0?.referenceOf(.None).then { completion($0, nil) }
         }
     }
 
