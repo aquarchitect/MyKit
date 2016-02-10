@@ -8,7 +8,7 @@
 
 public class TextView: UIControl {
 
-    public let textBox = UITextView().setup {
+    public let textBox = UITextView().then {
         $0.font = .systemFontOfSize(17)
         $0.showsHorizontalScrollIndicator = false
         $0.backgroundColor = .clearColor()

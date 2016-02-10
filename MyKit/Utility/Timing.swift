@@ -13,7 +13,7 @@ public func delay(time: NSTimeInterval, block: Void -> Void) {
 }
 
 /// Measures and output execution elapsed time
-public func time(action: Void -> Void) {
+public func time(@noescape action: Void -> Void) {
     let start = CFAbsoluteTimeGetCurrent()
     action()
     let end = CFAbsoluteTimeGetCurrent()

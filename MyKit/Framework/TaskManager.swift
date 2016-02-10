@@ -17,15 +17,14 @@ final public class TaskManager {
     public init() {}
 
     public func schedule(time: CFTimeInterval, @noescape block: Void -> Void) {
-        let timer = NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "timerFireMethod:", userInfo: Box(block), repeats: false)
-        NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSDefaultRunLoopMode)
-        self.timer = timer
+        NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "timerFireMethod:", userInfo: Box(block), repeats: false).then {
+            NSRunLoop.currentRunLoop().addTimer($0, forMode: NSDefaultRunLoopMode)
+            timer = $0
+        }
     }
 
     public func schedule(time: CFTimeInterval, target: AnyObject, action: Selector, withObject object: AnyObject? = nil) {
-        schedule(time) { [weak target] in
-            target?.performSelector(action, withObject: object)
-        }
+        schedule(time) { [weak target] in target?.performSelector(action, withObject: object) }
     }
 
     public func cancel() {

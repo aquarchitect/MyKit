@@ -82,7 +82,7 @@ public extension SymbolIcon {
 
     #if os(iOS)
     public static func imageWith(character: Character, size: CGFloat) -> UIImage? {
-        let label = UILabel.sharedInstance.setup {
+        let label = UILabel.sharedInstance.then {
             $0.attributedText = SymbolIcon.attributedStringWith(character, size: size)
             $0.sizeToFit()
         }

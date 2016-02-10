@@ -8,10 +8,7 @@
 
 public class CollectionView<T, C: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
 
-    public var items: [[T]] = [] {
-        didSet { self.reloadData() }
-    }
-
+    public var items: [[T]] = []
     public var config: ((C, T) -> Void)?
 
     public required init?(coder aDecoder: NSCoder) {

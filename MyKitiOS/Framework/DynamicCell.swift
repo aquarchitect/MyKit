@@ -6,9 +6,9 @@
 //
 //
 
-public class DynamicCell<V: UIView where V: Setup>: UICollectionViewCell {
+public class DynamicCell<V: UIView where V: Then>: UICollectionViewCell {
 
-    public let presentView = V().setup {
+    public let presentView = V().then {
         $0.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
     }
 

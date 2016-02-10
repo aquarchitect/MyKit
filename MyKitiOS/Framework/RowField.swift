@@ -18,7 +18,7 @@ public class RowField: UITableViewCell, FadePlaceholder {
     public var textBox: UITextView { return textView.textBox }
     public var placeholder: UILabel { return self.textLabel! }
 
-    private let textView = TextView().setup {
+    private let textView = TextView().then {
         $0.backgroundColor = .clearColor()
         $0.translatesAutoresizingMaskIntoConstraints = false
     }

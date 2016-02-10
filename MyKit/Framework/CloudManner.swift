@@ -6,39 +6,45 @@
 //
 //
 
-public typealias CloudHandler = (CKQueryCursor?, NSError?) -> Void
-
 public protocol CloudController: class {
 
     var cloudStack: CloudStack { get }
     func fetchData()
 }
 
-public class CloudObject {
+public protocol CloudReference {
 
-    public let record: CKRecord
+    var action: CKReferenceAction { get }
+}
 
-    public required init?(record: CKRecord) {
-        self.record = record
+extension CloudReference where Self: CloudObject {
 
-        if record.recordType != String(self.dynamicType) {
-            return nil
-        }
-    }
-
-    public init() {
-        self.record = CKRecord(recordType: String(self.dynamicType))
+    public var reference: CKReference {
+        return recordID.referenceWithAction(action)
     }
 }
 
-extension CloudObject: Setup {}
+public class CloudObject: NSObject {
+
+    public var recordID: CKRecordID
+
+    public required init(record: CKRecord) throws {
+        self.recordID = record.recordID
+        super.init()
+
+        if record.recordType != String(self.dynamicType) {
+            enum Error: ErrorType { case UnmatchedType }
+            throw Error.UnmatchedType
+        }
+    }
+}
 
 public class CloudStack {
 
-    public typealias UserRecordIDHandler = (CKRecordID?, NSError?) -> Void
+    public typealias UserRecordHandler = (CKReference?, NSError?) -> Void
     public enum Access { case Private, Public }
 
-    private var userRecordID: CKRecordID?
+    private var userRecordReference: CKReference?
     public let container: CKContainer
 
     public init(container: CKContainer = .defaultContainer()) {
@@ -54,13 +60,13 @@ public class CloudStack {
     }
 
     /// User record ID will be cached after the initial fetching
-    public func fetchUserRecordID(completion: UserRecordIDHandler) {
-        if let recordID = self.userRecordID {
-            completion(recordID, nil)
+    public func fetchUserRecordReference(completion: UserRecordHandler) {
+        if let reference = self.userRecordReference {
+            completion(reference, nil)
         } else {
             container.fetchUserRecordIDWithCompletionHandler { [weak self] in
-                self?.userRecordID = $0
-                completion($0, $1)
+                if let error = $1 { completion(nil, error); return }
+                self?.userRecordReference = $0?.referenceWithAction(.None).then { completion($0, nil) }
             }
         }
     }

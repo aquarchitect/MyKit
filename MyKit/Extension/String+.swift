@@ -30,3 +30,13 @@ private extension String.Format {
         return [String](count: 4, repeatedValue: component).joinWithSeparator("\\.")
     }
 }
+
+public extension String {
+
+    public func toCamelCase() -> String {
+        let characters = NSCharacterSet(charactersInString: " -_")
+        let components = self.componentsSeparatedByCharactersInSet(characters)
+        let parse: (Int, String) -> String = { $0 == 0 ? $1.lowercaseString : $1.capitalizedString }
+        return components.enumerate().map(parse).joinWithSeparator("")
+    }
+}
