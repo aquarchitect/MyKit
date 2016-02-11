@@ -6,12 +6,6 @@
 //
 //
 
-public protocol CloudController: class {
-
-    var cloudStack: CloudStack { get }
-    func fetchData()
-}
-
 public protocol CloudReference {
 
     var action: CKReferenceAction { get }
@@ -41,7 +35,7 @@ public class CloudObject: NSObject {
 
 public class CloudStack {
 
-    public enum Access { case Private, Public }
+    @objc public enum Access: Int { case Private, Public }
 
     public private(set) var userRecordReference: CKReference?
     public let container: CKContainer
