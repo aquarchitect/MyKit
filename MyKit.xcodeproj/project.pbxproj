@@ -114,6 +114,7 @@
 		C265BA441B9637FD00F6871E /* Lorem.strings in Resources */ = {isa = PBXBuildFile; fileRef = C265BA421B9637FD00F6871E /* Lorem.strings */; settings = {ASSET_TAGS = (text, ); }; };
 		C289AD801B62B95700186773 /* MyKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD8D1B62B97400186773 /* MyKitiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKitiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA948E1C6D505200EDF761 /* UIViewController+.swift */; };
 		C2AEED061C6A70CC0059A4BE /* CKRecord+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AEED051C6A70CC0059A4BE /* CKRecord+.swift */; };
 		C2AEED071C6A70CC0059A4BE /* CKRecord+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AEED051C6A70CC0059A4BE /* CKRecord+.swift */; };
 		C2B60ACE1B95080800F6D2BB /* MyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */; };
@@ -202,6 +203,7 @@
 		C289AD8A1B62B97400186773 /* MyKitiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKitiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD8C1B62B97400186773 /* MyKitiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKitiOS.h; sourceTree = "<group>"; };
 		C289ADEB1B62BC3A00186773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyKit/Info.plist; sourceTree = "<group>"; };
+		C2AA948E1C6D505200EDF761 /* UIViewController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+.swift"; path = "Extension/UIViewController+.swift"; sourceTree = "<group>"; };
 		C2AEED051C6A70CC0059A4BE /* CKRecord+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecord+.swift"; path = "MyKit/Extension/CKRecord+.swift"; sourceTree = "<group>"; };
 		C2B60ACB1B95080800F6D2BB /* MyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKitTests.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				C259F03E1C4D6FEF00F9B2BC /* UITableView+.swift */,
 				C259F03F1C4D6FEF00F9B2BC /* UITableViewCellEditingStyle+.swift */,
 				C259F0401C4D6FEF00F9B2BC /* UIView+.swift */,
+				C2AA948E1C6D505200EDF761 /* UIViewController+.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 				C259EFFA1C4D6EDB00F9B2BC /* Arbitrary.swift in Sources */,
 				C259F0411C4D6FEF00F9B2BC /* Drawing+.swift in Sources */,
 				C259EFCE1C4D6EBF00F9B2BC /* Registering.swift in Sources */,
+				C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */,
 				C259EFE21C4D6ECE00F9B2BC /* StreamClient.swift in Sources */,
 				C259F0431C4D6FEF00F9B2BC /* UIBezierPath+.swift in Sources */,
 				C259F0281C4D6FE200F9B2BC /* SnapLayout.swift in Sources */,
