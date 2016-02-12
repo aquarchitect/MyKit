@@ -8,7 +8,7 @@
 
 public extension CKRecord {
 
-    public func unload<T: CloudObject>()  -> T? {
+    public func unload<T: CloudObject>(type: T.Type)  -> T? {
         guard let result = try? T(record: self) else { return nil }
 
         for key in self.allKeys() where result.respondsToSelector(Selector(key)) {
