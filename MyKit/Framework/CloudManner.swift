@@ -6,6 +6,23 @@
 //
 //
 
+public protocol CloudModel: class {
+
+    var cloudStack: CloudStack { get }
+    var fetchedRecords: [CKRecordID: CKRecord] { get set }
+}
+
+extension CloudModel {
+
+    public func appendNewObject<T: CloudObject>(type: T.Type) -> T? {
+        let record = CKRecord(recordType: String(T.self)).then {
+            fetchedRecords[$0.recordID] = $0
+        }
+
+        return try? T(record: record)
+    }
+}
+
 public protocol CloudReference {
 
     var action: CKReferenceAction { get }
@@ -35,8 +52,6 @@ public class CloudObject: NSObject {
 
 public class CloudStack {
 
-    @objc public enum Access: Int { case Private, Public }
-
     public private(set) var userRecordReference: CKReference?
     public let container: CKContainer
 
@@ -44,7 +59,7 @@ public class CloudStack {
         self.container = container
     }
 
-    public func databaseFor(access: Access) -> CKDatabase {
+    public func databaseFor(access: AccessControl) -> CKDatabase {
         switch access {
 
         case .Private: return container.privateCloudDatabase
@@ -62,7 +77,7 @@ public class CloudStack {
         }
     }
 
-    public func execute(access: Access, operation: CKDatabaseOperation) {
+    public func execute(access: AccessControl, operation: CKDatabaseOperation) {
         databaseFor(access).addOperation(operation)
     }
 }

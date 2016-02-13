@@ -8,12 +8,12 @@
 
 public extension UILabel {
 
-    public static var sharedInstance: UILabel {
+    public static var measuringInstance: UILabel {
         struct Cache { static let label = UILabel() }
         return Cache.label
     }
 
-    public func heightForText(font: UIFont)(text: String)(width: CGFloat) -> CGFloat {
+    public func heightOf(width: CGFloat)(font: UIFont)(text: String) -> CGFloat {
         self.frame.size.width = width
         self.font = font
         self.text = text

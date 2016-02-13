@@ -20,7 +20,7 @@ public extension CKRecord {
     }
 
     public func load<T: CloudObject>(obj: T) {
-        guard obj.recordID == self.recordID else { return }
+        assert(obj.recordID != self.recordID, "Object does not match with record.")
 
         for key in self.allKeys() where obj.respondsToSelector(Selector(key)) {
             self[key] = obj.valueForKey(key) as? CKRecordValue
