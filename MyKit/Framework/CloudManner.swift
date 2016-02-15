@@ -6,22 +6,25 @@
 //
 //
 
+// MARK: Model
+
 public protocol CloudModel: class {
 
-    var cloudStack: CloudStack { get }
     var fetchedRecords: [CKRecordID: CKRecord] { get set }
 }
 
 extension CloudModel {
 
-    public func appendNewObject<T: CloudObject>(type: T.Type) -> T? {
-        let record = CKRecord(recordType: String(T.self)).then {
+    public func appendNewObject<T: CloudObject>(type: T.Type) -> T {
+        let record = CKRecord(recordType: T.self).then {
             fetchedRecords[$0.recordID] = $0
         }
 
-        return try? T(record: record)
+        return try! T(record: record)
     }
 }
+
+// MARK: Reference
 
 public protocol CloudReference {
 
@@ -35,9 +38,37 @@ extension CloudReference where Self: CloudObject {
     }
 }
 
-public class CloudObject: NSObject {
+// MARK: Record
 
-    public var recordID: CKRecordID
+public protocol CloudRecord: class {
+
+    var recordID: CKRecordID { get }
+    init(record: CKRecord) throws
+}
+
+extension CloudRecord where Self: NSObject {
+
+    private func extract(record: CKRecord) {
+        for key in record.allKeys() where self.respondsToSelector(Selector(key)) {
+            guard let value = record[key] else { continue }
+            self.setValue(value, forKey: key)
+        }
+    }
+
+    public func saveTo(record: CKRecord) {
+        assert(recordID != record.recordID, "Object does not match with record.")
+
+        for key in record.allKeys() where self.respondsToSelector(Selector(key)) {
+            record[key] = self.valueForKey(key) as? CKRecordValue
+        }
+    }
+}
+
+// MARK: Object
+
+public class CloudObject: NSObject, CloudRecord {
+
+    public private(set) var recordID: CKRecordID
 
     public required init(record: CKRecord) throws {
         self.recordID = record.recordID
@@ -47,12 +78,41 @@ public class CloudObject: NSObject {
             enum Error: ErrorType { case UnmatchedType }
             throw Error.UnmatchedType
         }
+
+        extract(record)
+    }
+
+    public func transferToNewRecord() -> CKRecord {
+        return CKRecord(recordType: String(self.dynamicType)).then {
+            recordID = $0.recordID
+            saveTo($0)
+        }
     }
 }
 
-public class CloudStack {
+// MARK: User
 
-    public private(set) var userRecordReference: CKReference?
+public class CloudUser: NSObject, CloudRecord {
+
+    public let recordID: CKRecordID
+
+    public required init(record: CKRecord) throws {
+        self.recordID = record.recordID
+        super.init()
+
+        if record.recordType != CKRecordTypeUserRecord {
+            enum Error: ErrorType { case NotUserRecord }
+            throw Error.NotUserRecord
+        }
+
+        extract(record)
+    }
+}
+
+// MARK: Stack
+
+public class CloudStack: NSObject {
+
     public let container: CKContainer
 
     public init(container: CKContainer = .defaultContainer()) {
@@ -64,16 +124,6 @@ public class CloudStack {
 
         case .Private: return container.privateCloudDatabase
         case .Public: return container.publicCloudDatabase
-        }
-    }
-
-    /// User record ID will be cached after the initial fetching
-    public func fetchUserRecordReference(completion: (CKReference?, NSError?) -> Void) {
-        if let reference = self.userRecordReference { completion(reference, nil); return }
-
-        container.fetchUserRecordIDWithCompletionHandler { [weak self] in
-            if let error = $1 { completion(nil, error); return }
-            self?.userRecordReference = $0?.referenceOf(.None).then { completion($0, nil) }
         }
     }
 

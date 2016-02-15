@@ -114,8 +114,6 @@
 		C289AD801B62B95700186773 /* MyKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD8D1B62B97400186773 /* MyKitiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKitiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA948E1C6D505200EDF761 /* UIViewController+.swift */; };
-		C2AEED061C6A70CC0059A4BE /* CKRecord+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AEED051C6A70CC0059A4BE /* CKRecord+.swift */; };
-		C2AEED071C6A70CC0059A4BE /* CKRecord+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AEED051C6A70CC0059A4BE /* CKRecord+.swift */; };
 		C2B60ACE1B95080800F6D2BB /* MyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */; };
 		C2C7064E1C6F0D58000941A6 /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C7064D1C6F0D58000941A6 /* Miscellaneous.swift */; };
 		C2C7064F1C6F0D58000941A6 /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C7064D1C6F0D58000941A6 /* Miscellaneous.swift */; };
@@ -129,6 +127,10 @@
 		C2DC4C951C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
 		C2EF30101C61422F0044512C /* Currying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF300F1C61422F0044512C /* Currying.swift */; };
 		C2EF30111C61422F0044512C /* Currying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF300F1C61422F0044512C /* Currying.swift */; };
+		C2F310441C71A6900032CD5A /* CKQuery+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F310431C71A68F0032CD5A /* CKQuery+.swift */; };
+		C2F310451C71A6900032CD5A /* CKQuery+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F310431C71A68F0032CD5A /* CKQuery+.swift */; };
+		C2F603411C716DB000449DED /* CKRecord+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F603401C716DB000449DED /* CKRecord+.swift */; };
+		C2F603421C716DB000449DED /* CKRecord+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F603401C716DB000449DED /* CKRecord+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -205,7 +207,6 @@
 		C289AD8C1B62B97400186773 /* MyKitiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKitiOS.h; sourceTree = "<group>"; };
 		C289ADEB1B62BC3A00186773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyKit/Info.plist; sourceTree = "<group>"; };
 		C2AA948E1C6D505200EDF761 /* UIViewController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+.swift"; path = "Extension/UIViewController+.swift"; sourceTree = "<group>"; };
-		C2AEED051C6A70CC0059A4BE /* CKRecord+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecord+.swift"; path = "MyKit/Extension/CKRecord+.swift"; sourceTree = "<group>"; };
 		C2B60ACB1B95080800F6D2BB /* MyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKitTests.swift; sourceTree = "<group>"; };
 		C2B60ACF1B95080800F6D2BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -216,6 +217,8 @@
 		C2DC4C931C37203700BA2EDE /* IonIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IonIcons.ttf; path = MyKit/IonIcons.ttf; sourceTree = "<group>"; };
 		C2EF300F1C61422F0044512C /* Currying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Currying.swift; path = MyKit/Utility/Currying.swift; sourceTree = "<group>"; };
 		C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Weather.ttf; path = MyKit/Weather.ttf; sourceTree = "<group>"; };
+		C2F310431C71A68F0032CD5A /* CKQuery+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKQuery+.swift"; path = "MyKit/Extension/CKQuery+.swift"; sourceTree = "<group>"; };
+		C2F603401C716DB000449DED /* CKRecord+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecord+.swift"; path = "MyKit/Extension/CKRecord+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,7 +310,8 @@
 				C259EFE91C4D6EDB00F9B2BC /* CGRect+.swift */,
 				C259EFEA1C4D6EDB00F9B2BC /* CGSize+.swift */,
 				C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */,
-				C2AEED051C6A70CC0059A4BE /* CKRecord+.swift */,
+				C2F603401C716DB000449DED /* CKRecord+.swift */,
+				C2F310431C71A68F0032CD5A /* CKQuery+.swift */,
 				C259EFEB1C4D6EDB00F9B2BC /* NSAttributeDescription+.swift */,
 				C259EFEC1C4D6EDB00F9B2BC /* NSBundle+.swift */,
 				C259EFED1C4D6EDB00F9B2BC /* NSCache+.swift */,
@@ -636,16 +640,17 @@
 				C259F0691C4D703800F9B2BC /* Timing.swift in Sources */,
 				C2EF30111C61422F0044512C /* Currying.swift in Sources */,
 				C2C7064F1C6F0D58000941A6 /* Miscellaneous.swift in Sources */,
+				C2F310451C71A6900032CD5A /* CKQuery+.swift in Sources */,
 				C259F06E1C4D703D00F9B2BC /* OpenWeather.swift in Sources */,
 				C259F06F1C4D703D00F9B2BC /* PersistentStack.swift in Sources */,
 				C259F06B1C4D703D00F9B2BC /* DateIndex.swift in Sources */,
 				C259F05F1C4D701D00F9B2BC /* NSColor+.swift in Sources */,
 				C259F0721C4D703D00F9B2BC /* TaskManager.swift in Sources */,
 				C259F0661C4D703800F9B2BC /* Queueing.swift in Sources */,
-				C2AEED071C6A70CC0059A4BE /* CKRecord+.swift in Sources */,
 				C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */,
 				C259F0711C4D703D00F9B2BC /* SymbolIcon.swift in Sources */,
 				C259F0681C4D703800F9B2BC /* Swizzling.swift in Sources */,
+				C2F603421C716DB000449DED /* CKRecord+.swift in Sources */,
 				C259F0611C4D701D00F9B2BC /* NSControl+.swift in Sources */,
 				C259F0761C4D704500F9B2BC /* Then.swift in Sources */,
 				C259F0791C4D704500F9B2BC /* CGSize+.swift in Sources */,
@@ -686,7 +691,9 @@
 				C259EFE61C4D6ECE00F9B2BC /* WeatherIcon.swift in Sources */,
 				C259F0081C4D6EDB00F9B2BC /* NSRange+.swift in Sources */,
 				C259F02A1C4D6FE200F9B2BC /* StackView.swift in Sources */,
+				C2F603411C716DB000449DED /* CKRecord+.swift in Sources */,
 				C259EFE41C4D6ECE00F9B2BC /* TaskManager.swift in Sources */,
+				C2F310441C71A6900032CD5A /* CKQuery+.swift in Sources */,
 				C259F0011C4D6EDB00F9B2BC /* NSDate+.swift in Sources */,
 				C259EFFE1C4D6EDB00F9B2BC /* NSAttributeDescription+.swift in Sources */,
 				C259F0B31C4D815600F9B2BC /* DynamicCell.swift in Sources */,
@@ -708,7 +715,6 @@
 				C259EFCD1C4D6EBF00F9B2BC /* Queueing.swift in Sources */,
 				C259EFD01C4D6EBF00F9B2BC /* Timing.swift in Sources */,
 				C23C9BBB1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */,
-				C2AEED061C6A70CC0059A4BE /* CKRecord+.swift in Sources */,
 				C259F00E1C4D6EFF00F9B2BC /* Box.swift in Sources */,
 				C259F0091C4D6EDB00F9B2BC /* NSRelationshipDescription+.swift in Sources */,
 				C259F0471C4D6FEF00F9B2BC /* UICollectionViewFlowLayout+.swift in Sources */,
