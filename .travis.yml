@@ -1,0 +1,9 @@
+language: objective-c
+osx_image: xcode7.3
+xcode_project: MyKit.xcodeproj
+xcode_scheme: 
+- MyKitiOS
+- MyKitOSX
+xcode_sdk: 
+- iphonesimulator9.0
+- macosx10.11
