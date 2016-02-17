@@ -10,7 +10,7 @@ public final class LoremIpsum {
 
     private var storage = ""
 
-    private var maxCount: (sentences: Int, words: Int) = (0, 0)
+    private var numberOfSentences = 0
 
     private var range: Range<String.CharacterView.Index> {
         return storage.startIndex..<storage.endIndex
@@ -24,73 +24,36 @@ public final class LoremIpsum {
         do {
             let lorem = try String(contentsOfURL: url)
 
-            func maxCountForOption(option: NSStringEnumerationOptions) -> Int {
-                var count = 0
-                lorem.enumerateSubstringsInRange(self.range, options: option) { _, _, _, _ in count++ }
-                return count
-            }
+            var count = 0
+            lorem.enumerateSubstringsInRange(self.range, options: .BySentences) { _, _, _, _ in count += 1}
 
             self.storage = lorem.stringByReplacingOccurrencesOfString("\\n", withString: "")
-            self.maxCount = (maxCountForOption(.BySentences), maxCountForOption(.ByWords))
+            self.numberOfSentences = count
         } catch { throw FileError.UnableToDecryptTheFile }
     }
 
-    public func arbitraryBySentences(var count: Int, fromStart flag: Bool) -> String {
-        guard count < maxCount.sentences else { return storage }
+    public func generatedBySentences(count: Int, fromStart flag: Bool) -> String {
+        assert(count <= numberOfSentences, "Exceed the limit of sentences.")
 
-        var starIndex = 0, string = ""
-
-        if !flag {
-            repeat { starIndex = Int.arbitrary() % maxCount.sentences
-            } while starIndex + count > maxCount.sentences
-        }
+        var index = flag ? 0 : ((0..<numberOfSentences).random ?? 0)
+        var string = "", _count = count
 
         storage.enumerateSubstringsInRange(range, options: .BySentences) { substring, _, _, stop in
-            if starIndex == 0 {
-                string += substring ?? ""
+            if index != 0 { index -= 1; return  }
 
-                if count > 1 { count-- }
-                else { stop = true }
-            } else { starIndex-- }
+            string += substring ?? ""
+
+            if _count > 1 { _count -= 1 }
+            else { stop = true }
         }
 
         return string
-    }
-
-    public func arbitraryByWords(var count: Int, fromStart flag: Bool) -> String {
-        guard count < maxCount.words else { return storage }
-
-        var starIndex = 0, words = [String]()
-
-        if !flag {
-            repeat { starIndex = Int.arbitrary() % maxCount.words
-            } while starIndex + count > maxCount.words
-        }
-
-        storage.enumerateSubstringsInRange(range, options: .ByWords) { substring, _, _, stop in
-            if starIndex == 0 {
-                words += [substring ?? ""]
-
-                if count > 1 { count-- }
-                else { stop = true }
-            } else { starIndex-- }
-        }
-
-        return words.joinWithSeparator(" ").lowercaseString
-    }
-
-    public func arbitraryBySentences(range: Range<Int>, fromStart flag: Bool) -> String {
-        return arbitraryBySentences(range.random(), fromStart: flag)
-    }
-
-    public func arbitraryByWords(range: Range<Int>, fromStart flag: Bool) -> String {
-        return arbitraryByWords(range.random(), fromStart: flag)
     }
 }
 
 extension LoremIpsum: CustomDebugStringConvertible {
 
     public var debugDescription: String {
-        return storage + "\n\nMax Count of Sentences - \(maxCount.sentences)" + "\nMax Count of Words - \(maxCount.words)"
+        return storage + "\n\nMax Count of Sentences - \(numberOfSentences)"
     }
 }

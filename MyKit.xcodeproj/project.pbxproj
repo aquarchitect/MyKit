@@ -10,6 +10,8 @@
 		C23C9BBB1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
 		C23C9BBC1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
 		C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245D5621C6E5C8A00F0C899 /* NSText+.swift */; };
+		C25877761C74369E00DF1F88 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25877751C74369E00DF1F88 /* CollectionType+.swift */; };
+		C25877771C74369E00DF1F88 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25877751C74369E00DF1F88 /* CollectionType+.swift */; };
 		C259EFCB1C4D6EBF00F9B2BC /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */; };
 		C259EFCD1C4D6EBF00F9B2BC /* Queueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC61C4D6EBF00F9B2BC /* Queueing.swift */; };
 		C259EFCE1C4D6EBF00F9B2BC /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC71C4D6EBF00F9B2BC /* Registering.swift */; };
@@ -25,7 +27,7 @@
 		C259EFE41C4D6ECE00F9B2BC /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD91C4D6ECE00F9B2BC /* TaskManager.swift */; };
 		C259EFE51C4D6ECE00F9B2BC /* TimeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFDA1C4D6ECE00F9B2BC /* TimeSystem.swift */; };
 		C259EFE61C4D6ECE00F9B2BC /* WeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFDB1C4D6ECE00F9B2BC /* WeatherIcon.swift */; };
-		C259EFFA1C4D6EDB00F9B2BC /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFE71C4D6EDB00F9B2BC /* Arbitrary.swift */; };
+		C259EFFA1C4D6EDB00F9B2BC /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFE71C4D6EDB00F9B2BC /* Random.swift */; };
 		C259EFFB1C4D6EDB00F9B2BC /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFE81C4D6EDB00F9B2BC /* CGPoint+.swift */; };
 		C259EFFC1C4D6EDB00F9B2BC /* CGRect+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFE91C4D6EDB00F9B2BC /* CGRect+.swift */; };
 		C259EFFD1C4D6EDB00F9B2BC /* CGSize+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFEA1C4D6EDB00F9B2BC /* CGSize+.swift */; };
@@ -89,7 +91,7 @@
 		C259F0721C4D703D00F9B2BC /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD91C4D6ECE00F9B2BC /* TaskManager.swift */; };
 		C259F0731C4D703D00F9B2BC /* TimeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFDA1C4D6ECE00F9B2BC /* TimeSystem.swift */; };
 		C259F0741C4D703D00F9B2BC /* WeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFDB1C4D6ECE00F9B2BC /* WeatherIcon.swift */; };
-		C259F0751C4D704500F9B2BC /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFE71C4D6EDB00F9B2BC /* Arbitrary.swift */; };
+		C259F0751C4D704500F9B2BC /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFE71C4D6EDB00F9B2BC /* Random.swift */; };
 		C259F0761C4D704500F9B2BC /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFF81C4D6EDB00F9B2BC /* Then.swift */; };
 		C259F0771C4D704500F9B2BC /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFE81C4D6EDB00F9B2BC /* CGPoint+.swift */; };
 		C259F0781C4D704500F9B2BC /* CGRect+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFE91C4D6EDB00F9B2BC /* CGRect+.swift */; };
@@ -136,6 +138,8 @@
 /* Begin PBXFileReference section */
 		C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+.swift"; path = "MyKit/Extension/NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
 		C245D5621C6E5C8A00F0C899 /* NSText+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSText+.swift"; path = "Extension/NSText+.swift"; sourceTree = "<group>"; };
+		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
+		C25877751C74369E00DF1F88 /* CollectionType+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CollectionType+.swift"; path = "MyKit/Extension/CollectionType+.swift"; sourceTree = "<group>"; };
 		C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drawing.swift; path = MyKit/Utility/Drawing.swift; sourceTree = "<group>"; };
 		C259EFC61C4D6EBF00F9B2BC /* Queueing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queueing.swift; path = MyKit/Utility/Queueing.swift; sourceTree = "<group>"; };
 		C259EFC71C4D6EBF00F9B2BC /* Registering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Registering.swift; path = MyKit/Utility/Registering.swift; sourceTree = "<group>"; };
@@ -151,7 +155,7 @@
 		C259EFD91C4D6ECE00F9B2BC /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskManager.swift; path = MyKit/Framework/TaskManager.swift; sourceTree = "<group>"; };
 		C259EFDA1C4D6ECE00F9B2BC /* TimeSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeSystem.swift; path = MyKit/Framework/TimeSystem.swift; sourceTree = "<group>"; };
 		C259EFDB1C4D6ECE00F9B2BC /* WeatherIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherIcon.swift; path = MyKit/Framework/WeatherIcon.swift; sourceTree = "<group>"; };
-		C259EFE71C4D6EDB00F9B2BC /* Arbitrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arbitrary.swift; path = MyKit/Extension/Arbitrary.swift; sourceTree = "<group>"; };
+		C259EFE71C4D6EDB00F9B2BC /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Random.swift; path = MyKit/Extension/Random.swift; sourceTree = "<group>"; };
 		C259EFE81C4D6EDB00F9B2BC /* CGPoint+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGPoint+.swift"; path = "MyKit/Extension/CGPoint+.swift"; sourceTree = "<group>"; };
 		C259EFE91C4D6EDB00F9B2BC /* CGRect+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGRect+.swift"; path = "MyKit/Extension/CGRect+.swift"; sourceTree = "<group>"; };
 		C259EFEA1C4D6EDB00F9B2BC /* CGSize+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGSize+.swift"; path = "MyKit/Extension/CGSize+.swift"; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 		C289AD701B62B93800186773 = {
 			isa = PBXGroup;
 			children = (
+				C25877741C742F1400DF1F88 /* MyKit.playground */,
 				C289AD921B62B9AD00186773 /* MyKit */,
 				C289AD8B1B62B97400186773 /* MyKitiOS */,
 				C289AD7E1B62B95700186773 /* MyKitOSX */,
@@ -300,12 +305,13 @@
 		C289AD931B62BA0500186773 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C259EFE71C4D6EDB00F9B2BC /* Arbitrary.swift */,
+				C259EFE71C4D6EDB00F9B2BC /* Random.swift */,
 				C259F00D1C4D6EFF00F9B2BC /* Box.swift */,
 				C259EFF81C4D6EDB00F9B2BC /* Then.swift */,
 				C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */,
 				C259EFF91C4D6EDB00F9B2BC /* String+.swift */,
 				C259EFF71C4D6EDB00F9B2BC /* Range+.swift */,
+				C25877751C74369E00DF1F88 /* CollectionType+.swift */,
 				C259EFE81C4D6EDB00F9B2BC /* CGPoint+.swift */,
 				C259EFE91C4D6EDB00F9B2BC /* CGRect+.swift */,
 				C259EFEA1C4D6EDB00F9B2BC /* CGSize+.swift */,
@@ -550,7 +556,6 @@
 					};
 					C289AD891B62B97400186773 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 88HW36EGGB;
 					};
 					C2B60ACA1B95080800F6D2BB = {
 						CreatedOnToolsVersion = 7.0;
@@ -622,7 +627,7 @@
 				C259F0831C4D704500F9B2BC /* NSNumber+.swift in Sources */,
 				C259F0841C4D704500F9B2BC /* NSRange+.swift in Sources */,
 				C259F0741C4D703D00F9B2BC /* WeatherIcon.swift in Sources */,
-				C259F0751C4D704500F9B2BC /* Arbitrary.swift in Sources */,
+				C259F0751C4D704500F9B2BC /* Random.swift in Sources */,
 				C23C9BBC1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */,
 				C259F07A1C4D704500F9B2BC /* NSAttributeDescription+.swift in Sources */,
 				C259F0801C4D704500F9B2BC /* NSIndexPath+.swift in Sources */,
@@ -633,6 +638,7 @@
 				C259F0701C4D703D00F9B2BC /* StreamClient.swift in Sources */,
 				C259F0731C4D703D00F9B2BC /* TimeSystem.swift in Sources */,
 				C259F07E1C4D704500F9B2BC /* NSDateFormatter+.swift in Sources */,
+				C25877771C74369E00DF1F88 /* CollectionType+.swift in Sources */,
 				C259F07C1C4D704500F9B2BC /* NSCache+.swift in Sources */,
 				C259F06D1C4D703D00F9B2BC /* LoremIpsum.swift in Sources */,
 				C259F00F1C4D6EFF00F9B2BC /* Box.swift in Sources */,
@@ -668,7 +674,7 @@
 				C259F01E1C4D6FE200F9B2BC /* ConstraintView.swift in Sources */,
 				C259F00B1C4D6EDB00F9B2BC /* Then.swift in Sources */,
 				C259EFDC1C4D6ECE00F9B2BC /* CloudManner.swift in Sources */,
-				C259EFFA1C4D6EDB00F9B2BC /* Arbitrary.swift in Sources */,
+				C259EFFA1C4D6EDB00F9B2BC /* Random.swift in Sources */,
 				C259F0411C4D6FEF00F9B2BC /* Drawing+.swift in Sources */,
 				C2C7064E1C6F0D58000941A6 /* Miscellaneous.swift in Sources */,
 				C259EFCE1C4D6EBF00F9B2BC /* Registering.swift in Sources */,
@@ -700,6 +706,7 @@
 				C259EFE31C4D6ECE00F9B2BC /* SymbolIcon.swift in Sources */,
 				C259EFCB1C4D6EBF00F9B2BC /* Drawing.swift in Sources */,
 				C259EFCF1C4D6EBF00F9B2BC /* Swizzling.swift in Sources */,
+				C25877761C74369E00DF1F88 /* CollectionType+.swift in Sources */,
 				C259F0451C4D6FEF00F9B2BC /* UICollectionView+.swift in Sources */,
 				C259F0531C4D6FEF00F9B2BC /* UIScrollView+.swift in Sources */,
 				C259F0511C4D6FEF00F9B2BC /* UILabel+.swift in Sources */,
@@ -1024,6 +1031,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1048,6 +1056,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = HaiNguyen.MyKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = MyKitTests/Bridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1074,6 +1083,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1090,6 +1100,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = HaiNguyen.MyKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_OBJC_BRIDGING_HEADER = MyKitTests/Bridging.h;
 			};
 			name = Release;

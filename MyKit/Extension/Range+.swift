@@ -8,16 +8,10 @@
 
 public extension Range {
 
-    /// Randomly choose element in range
-    public func random() -> Element {
-        let distance = Int.arbitrary() % (self.count as! Int)
-        return self.startIndex.advancedBy(distance as! Element.Distance)
-    }
-
     /// Shift range by specified value
-    public func rangeByOffset(value: Int) -> Range {
-        let start = self.startIndex.advancedBy(value as! Element.Distance)
-        let end = self.endIndex.advancedBy(value as! Element.Distance)
-        return Range(start: start, end: end)
+    public func offsetedBy(n: Element.Distance) -> Range {
+        let start = self.startIndex.advancedBy(n)
+        let end = self.endIndex.advancedBy(n)
+        return start..<end
     }
 }

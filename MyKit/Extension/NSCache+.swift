@@ -8,10 +8,8 @@
 
 public extension NSCache {
 
-    final func fetchObjectForKey(key: AnyObject, withConstructor handle: Void -> AnyObject) -> AnyObject {
-        var object: AnyObject? = self.objectForKey(key)
-        if object == nil { object = handle(); self.setObject(object!, forKey: key) }
-
-        return object!
+    final func fetchObjectForKey<T>(key: AnyObject, withConstructor handle: Void -> T) -> T {
+        if let object = self.objectForKey(key) as? T { return object }
+        return Box(handle()).then { self.setObject($0, forKey: key) }.unbox
     }
 }
