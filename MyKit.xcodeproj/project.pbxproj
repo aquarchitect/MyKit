@@ -116,13 +116,13 @@
 		C289AD801B62B95700186773 /* MyKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD8D1B62B97400186773 /* MyKitiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKitiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA948E1C6D505200EDF761 /* UIViewController+.swift */; };
-		C2B60ACE1B95080800F6D2BB /* MyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */; };
 		C2C7064E1C6F0D58000941A6 /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C7064D1C6F0D58000941A6 /* Miscellaneous.swift */; };
 		C2C7064F1C6F0D58000941A6 /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C7064D1C6F0D58000941A6 /* Miscellaneous.swift */; };
 		C2DB5A0C1C5ED821001E1C03 /* Bool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */; };
 		C2DB5A0D1C5ED821001E1C03 /* Bool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */; };
 		C2DB5A0F1C5ED84C001E1C03 /* CKRecordID+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */; };
 		C2DB5A101C5ED84C001E1C03 /* CKRecordID+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */; };
+		C2DC09B21C74E55E00C963A9 /* LoremIpsumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC09B11C74E55E00C963A9 /* LoremIpsumTests.swift */; };
 		C2DC4C8A1C3712F200BA2EDE /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
 		C2DC4C8C1C37130C00BA2EDE /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
 		C2DC4C941C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
@@ -212,12 +212,12 @@
 		C289ADEB1B62BC3A00186773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyKit/Info.plist; sourceTree = "<group>"; };
 		C2AA948E1C6D505200EDF761 /* UIViewController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+.swift"; path = "Extension/UIViewController+.swift"; sourceTree = "<group>"; };
 		C2B60ACB1B95080800F6D2BB /* MyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKitTests.swift; sourceTree = "<group>"; };
 		C2B60ACF1B95080800F6D2BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2B60AD31B95084800F6D2BB /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
 		C2C7064D1C6F0D58000941A6 /* Miscellaneous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Miscellaneous.swift; path = MyKit/Framework/Miscellaneous.swift; sourceTree = "<group>"; };
 		C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bool+.swift"; path = "MyKit/Extension/Bool+.swift"; sourceTree = "<group>"; };
 		C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecordID+.swift"; path = "MyKit/Extension/CKRecordID+.swift"; sourceTree = "<group>"; };
+		C2DC09B11C74E55E00C963A9 /* LoremIpsumTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoremIpsumTests.swift; sourceTree = "<group>"; };
 		C2DC4C931C37203700BA2EDE /* IonIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IonIcons.ttf; path = MyKit/IonIcons.ttf; sourceTree = "<group>"; };
 		C2EF300F1C61422F0044512C /* Currying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Currying.swift; path = MyKit/Utility/Currying.swift; sourceTree = "<group>"; };
 		C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Weather.ttf; path = MyKit/Weather.ttf; sourceTree = "<group>"; };
@@ -448,7 +448,7 @@
 		C2B60ACC1B95080800F6D2BB /* MyKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				C2B60ACD1B95080800F6D2BB /* MyKitTests.swift */,
+				C2DC09B11C74E55E00C963A9 /* LoremIpsumTests.swift */,
 				C2B60AD41B95084E00F6D2BB /* Support */,
 			);
 			path = MyKitTests;
@@ -748,7 +748,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2B60ACE1B95080800F6D2BB /* MyKitTests.swift in Sources */,
+				C2DC09B21C74E55E00C963A9 /* LoremIpsumTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

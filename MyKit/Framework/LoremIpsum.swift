@@ -6,14 +6,20 @@
 //
 //
 
-public final class LoremIpsum {
+/**
 
-    private var storage = ""
+Return a lorem ipsum generator. The class is designed specifically for testing; therefore, a random ouput of different length of string will make the test much more efficently.
 
-    private var numberOfSentences = 0
+- throws: It will throw file error in case of file corruption.
 
-    private var range: Range<String.CharacterView.Index> {
-        return storage.startIndex..<storage.endIndex
+*/
+public final class LoremIpsum: CollectionType {
+
+    private var storage: [String] = []
+
+    public let startIndex = 0
+    public var endIndex: Int {
+        return storage.count
     }
 
     public init() throws {
@@ -23,37 +29,18 @@ public final class LoremIpsum {
 
         do {
             let lorem = try String(contentsOfURL: url)
+            let range = lorem.startIndex..<lorem.endIndex
 
-            var count = 0
-            lorem.enumerateSubstringsInRange(self.range, options: .BySentences) { _, _, _, _ in count += 1}
+            lorem.enumerateSubstringsInRange(range, options: .BySentences) {
+                var string = ($0.0 ?? "").stringByReplacingOccurrencesOfString("\\n", withString: "")
+                string = string.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
 
-            self.storage = lorem.stringByReplacingOccurrencesOfString("\\n", withString: "")
-            self.numberOfSentences = count
+                self.storage.append(string ?? "")
+            }
         } catch { throw FileError.UnableToDecryptTheFile }
     }
 
-    public func generatedBySentences(count: Int, fromStart flag: Bool) -> String {
-        assert(count <= numberOfSentences, "Exceed the limit of sentences.")
-
-        var index = flag ? 0 : ((0..<numberOfSentences).random ?? 0)
-        var string = "", _count = count
-
-        storage.enumerateSubstringsInRange(range, options: .BySentences) { substring, _, _, stop in
-            if index != 0 { index -= 1; return  }
-
-            string += substring ?? ""
-
-            if _count > 1 { _count -= 1 }
-            else { stop = true }
-        }
-
-        return string
-    }
-}
-
-extension LoremIpsum: CustomDebugStringConvertible {
-
-    public var debugDescription: String {
-        return storage + "\n\nMax Count of Sentences - \(numberOfSentences)"
+    public subscript(index: Int) -> String {
+        return storage[index]
     }
 }
