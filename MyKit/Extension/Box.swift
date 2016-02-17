@@ -14,3 +14,5 @@ public class Box<T> {
         self.unbox = value
     }
 }
+
+extension Box: Then {}
