@@ -17,7 +17,7 @@ public class CollectionView<T, C: UICollectionViewCell>: UICollectionView, UICol
 
     public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        super.registerClass(C.self, forCellWithReuseIdentifier: "Cell")
+        super.register(C.self, forReuseIdentifier: "Cell")
         super.dataSource = self
     }
 

@@ -107,4 +107,11 @@ public extension UICollectionView {
         } else { return nil }
     }
 
+    public func register<T: UICollectionViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
+        self.registerClass(T.self, forCellWithReuseIdentifier: identifier)
+    }
+
+    public func register<T: UICollectionReusableView>(type: T.Type, forKind kind: String, withReuseIdentifier identifier: String) {
+        self.registerClass(T.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: identifier)
+    }
 }

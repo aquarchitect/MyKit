@@ -19,7 +19,7 @@ public class TableView<T, C: UITableViewCell>: UITableView, UITableViewDataSourc
     public override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
         super.showsHorizontalScrollIndicator = false
-        super.registerClass(C.self, forCellReuseIdentifier: "Cell")
+        super.register(C.self, forReuseIdentifier: "Cell")
         super.dataSource = self
     }
 
