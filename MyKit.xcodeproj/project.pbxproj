@@ -13,7 +13,6 @@
 		C25877761C74369E00DF1F88 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25877751C74369E00DF1F88 /* CollectionType+.swift */; };
 		C25877771C74369E00DF1F88 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25877751C74369E00DF1F88 /* CollectionType+.swift */; };
 		C259EFCB1C4D6EBF00F9B2BC /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */; };
-		C259EFCD1C4D6EBF00F9B2BC /* Queueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC61C4D6EBF00F9B2BC /* Queueing.swift */; };
 		C259EFCE1C4D6EBF00F9B2BC /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC71C4D6EBF00F9B2BC /* Registering.swift */; };
 		C259EFCF1C4D6EBF00F9B2BC /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */; };
 		C259EFD01C4D6EBF00F9B2BC /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC91C4D6EBF00F9B2BC /* Timing.swift */; };
@@ -46,8 +45,6 @@
 		C259F00A1C4D6EDB00F9B2BC /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFF71C4D6EDB00F9B2BC /* Range+.swift */; };
 		C259F00B1C4D6EDB00F9B2BC /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFF81C4D6EDB00F9B2BC /* Then.swift */; };
 		C259F00C1C4D6EDB00F9B2BC /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFF91C4D6EDB00F9B2BC /* String+.swift */; };
-		C259F00E1C4D6EFF00F9B2BC /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F00D1C4D6EFF00F9B2BC /* Box.swift */; };
-		C259F00F1C4D6EFF00F9B2BC /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F00D1C4D6EFF00F9B2BC /* Box.swift */; };
 		C259F01C1C4D6FE200F9B2BC /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0101C4D6FE200F9B2BC /* CollectionView.swift */; };
 		C259F01E1C4D6FE200F9B2BC /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0111C4D6FE200F9B2BC /* ConstraintView.swift */; };
 		C259F0201C4D6FE200F9B2BC /* FadePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0121C4D6FE200F9B2BC /* FadePlaceholder.swift */; };
@@ -77,7 +74,6 @@
 		C259F0611C4D701D00F9B2BC /* NSControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F05C1C4D701D00F9B2BC /* NSControl+.swift */; };
 		C259F0631C4D701D00F9B2BC /* NSTableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F05D1C4D701D00F9B2BC /* NSTableView+.swift */; };
 		C259F0641C4D703800F9B2BC /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */; };
-		C259F0661C4D703800F9B2BC /* Queueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC61C4D6EBF00F9B2BC /* Queueing.swift */; };
 		C259F0671C4D703800F9B2BC /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC71C4D6EBF00F9B2BC /* Registering.swift */; };
 		C259F0681C4D703800F9B2BC /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */; };
 		C259F0691C4D703800F9B2BC /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC91C4D6EBF00F9B2BC /* Timing.swift */; };
@@ -127,6 +123,8 @@
 		C2DC4C8C1C37130C00BA2EDE /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
 		C2DC4C941C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
 		C2DC4C951C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
+		C2DFB4721C7507CA00CE6E16 /* Boxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DFB4701C7507CA00CE6E16 /* Boxing.swift */; };
+		C2DFB4731C7507CA00CE6E16 /* Queueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DFB4711C7507CA00CE6E16 /* Queueing.swift */; };
 		C2EF30101C61422F0044512C /* Currying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF300F1C61422F0044512C /* Currying.swift */; };
 		C2EF30111C61422F0044512C /* Currying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF300F1C61422F0044512C /* Currying.swift */; };
 		C2F310441C71A6900032CD5A /* CKQuery+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F310431C71A68F0032CD5A /* CKQuery+.swift */; };
@@ -141,7 +139,6 @@
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C25877751C74369E00DF1F88 /* CollectionType+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CollectionType+.swift"; path = "MyKit/Extension/CollectionType+.swift"; sourceTree = "<group>"; };
 		C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drawing.swift; path = MyKit/Utility/Drawing.swift; sourceTree = "<group>"; };
-		C259EFC61C4D6EBF00F9B2BC /* Queueing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queueing.swift; path = MyKit/Utility/Queueing.swift; sourceTree = "<group>"; };
 		C259EFC71C4D6EBF00F9B2BC /* Registering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Registering.swift; path = MyKit/Utility/Registering.swift; sourceTree = "<group>"; };
 		C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swizzling.swift; path = MyKit/Utility/Swizzling.swift; sourceTree = "<group>"; };
 		C259EFC91C4D6EBF00F9B2BC /* Timing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Timing.swift; path = MyKit/Utility/Timing.swift; sourceTree = "<group>"; };
@@ -174,7 +171,6 @@
 		C259EFF71C4D6EDB00F9B2BC /* Range+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Range+.swift"; path = "MyKit/Extension/Range+.swift"; sourceTree = "<group>"; };
 		C259EFF81C4D6EDB00F9B2BC /* Then.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Then.swift; path = MyKit/Extension/Then.swift; sourceTree = "<group>"; };
 		C259EFF91C4D6EDB00F9B2BC /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+.swift"; path = "MyKit/Extension/String+.swift"; sourceTree = "<group>"; };
-		C259F00D1C4D6EFF00F9B2BC /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Box.swift; path = MyKit/Extension/Box.swift; sourceTree = "<group>"; };
 		C259F0101C4D6FE200F9B2BC /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionView.swift; path = Framework/CollectionView.swift; sourceTree = "<group>"; };
 		C259F0111C4D6FE200F9B2BC /* ConstraintView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Framework/ConstraintView.swift; sourceTree = "<group>"; };
 		C259F0121C4D6FE200F9B2BC /* FadePlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FadePlaceholder.swift; path = Framework/FadePlaceholder.swift; sourceTree = "<group>"; };
@@ -219,6 +215,8 @@
 		C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecordID+.swift"; path = "MyKit/Extension/CKRecordID+.swift"; sourceTree = "<group>"; };
 		C2DC09B11C74E55E00C963A9 /* LoremIpsumTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoremIpsumTests.swift; sourceTree = "<group>"; };
 		C2DC4C931C37203700BA2EDE /* IonIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IonIcons.ttf; path = MyKit/IonIcons.ttf; sourceTree = "<group>"; };
+		C2DFB4701C7507CA00CE6E16 /* Boxing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Boxing.swift; path = MyKit/Utility/Boxing.swift; sourceTree = "<group>"; };
+		C2DFB4711C7507CA00CE6E16 /* Queueing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queueing.swift; path = MyKit/Utility/Queueing.swift; sourceTree = "<group>"; };
 		C2EF300F1C61422F0044512C /* Currying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Currying.swift; path = MyKit/Utility/Currying.swift; sourceTree = "<group>"; };
 		C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Weather.ttf; path = MyKit/Weather.ttf; sourceTree = "<group>"; };
 		C2F310431C71A68F0032CD5A /* CKQuery+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKQuery+.swift"; path = "MyKit/Extension/CKQuery+.swift"; sourceTree = "<group>"; };
@@ -306,7 +304,6 @@
 			isa = PBXGroup;
 			children = (
 				C259EFE71C4D6EDB00F9B2BC /* Random.swift */,
-				C259F00D1C4D6EFF00F9B2BC /* Box.swift */,
 				C259EFF81C4D6EDB00F9B2BC /* Then.swift */,
 				C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */,
 				C259EFF91C4D6EDB00F9B2BC /* String+.swift */,
@@ -357,11 +354,12 @@
 			isa = PBXGroup;
 			children = (
 				C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */,
-				C259EFC61C4D6EBF00F9B2BC /* Queueing.swift */,
 				C259EFC71C4D6EBF00F9B2BC /* Registering.swift */,
 				C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */,
 				C259EFC91C4D6EBF00F9B2BC /* Timing.swift */,
 				C2EF300F1C61422F0044512C /* Currying.swift */,
+				C2DFB4701C7507CA00CE6E16 /* Boxing.swift */,
+				C2DFB4711C7507CA00CE6E16 /* Queueing.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -641,7 +639,6 @@
 				C25877771C74369E00DF1F88 /* CollectionType+.swift in Sources */,
 				C259F07C1C4D704500F9B2BC /* NSCache+.swift in Sources */,
 				C259F06D1C4D703D00F9B2BC /* LoremIpsum.swift in Sources */,
-				C259F00F1C4D6EFF00F9B2BC /* Box.swift in Sources */,
 				C259F0771C4D704500F9B2BC /* CGPoint+.swift in Sources */,
 				C259F0691C4D703800F9B2BC /* Timing.swift in Sources */,
 				C2EF30111C61422F0044512C /* Currying.swift in Sources */,
@@ -652,7 +649,6 @@
 				C259F06B1C4D703D00F9B2BC /* DateIndex.swift in Sources */,
 				C259F05F1C4D701D00F9B2BC /* NSColor+.swift in Sources */,
 				C259F0721C4D703D00F9B2BC /* TaskManager.swift in Sources */,
-				C259F0661C4D703800F9B2BC /* Queueing.swift in Sources */,
 				C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */,
 				C259F0711C4D703D00F9B2BC /* SymbolIcon.swift in Sources */,
 				C259F0681C4D703800F9B2BC /* Swizzling.swift in Sources */,
@@ -681,6 +677,7 @@
 				C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */,
 				C259EFE21C4D6ECE00F9B2BC /* StreamClient.swift in Sources */,
 				C259F0431C4D6FEF00F9B2BC /* UIBezierPath+.swift in Sources */,
+				C2DFB4731C7507CA00CE6E16 /* Queueing.swift in Sources */,
 				C259F0281C4D6FE200F9B2BC /* SnapLayout.swift in Sources */,
 				C259F04D1C4D6FEF00F9B2BC /* UIEdgeInsets+.swift in Sources */,
 				C259F0571C4D6FEF00F9B2BC /* UITableViewCellEditingStyle+.swift in Sources */,
@@ -709,6 +706,7 @@
 				C25877761C74369E00DF1F88 /* CollectionType+.swift in Sources */,
 				C259F0451C4D6FEF00F9B2BC /* UICollectionView+.swift in Sources */,
 				C259F0531C4D6FEF00F9B2BC /* UIScrollView+.swift in Sources */,
+				C2DFB4721C7507CA00CE6E16 /* Boxing.swift in Sources */,
 				C259F0511C4D6FEF00F9B2BC /* UILabel+.swift in Sources */,
 				C259EFDD1C4D6ECE00F9B2BC /* DateIndex.swift in Sources */,
 				C259F0551C4D6FEF00F9B2BC /* UITableView+.swift in Sources */,
@@ -719,10 +717,8 @@
 				C2DB5A0F1C5ED84C001E1C03 /* CKRecordID+.swift in Sources */,
 				C259F04B1C4D6FEF00F9B2BC /* UIControl+.swift in Sources */,
 				C259EFE11C4D6ECE00F9B2BC /* PersistentStack.swift in Sources */,
-				C259EFCD1C4D6EBF00F9B2BC /* Queueing.swift in Sources */,
 				C259EFD01C4D6EBF00F9B2BC /* Timing.swift in Sources */,
 				C23C9BBB1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */,
-				C259F00E1C4D6EFF00F9B2BC /* Box.swift in Sources */,
 				C259F0091C4D6EDB00F9B2BC /* NSRelationshipDescription+.swift in Sources */,
 				C259F0471C4D6FEF00F9B2BC /* UICollectionViewFlowLayout+.swift in Sources */,
 				C259F0071C4D6EDB00F9B2BC /* NSNumber+.swift in Sources */,

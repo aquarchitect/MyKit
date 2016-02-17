@@ -1,12 +1,12 @@
 language: objective-c
 osx_image: xcode7.3
 branches:
-	only:
-		- master
+only:
+- master
 xcode_project: MyKit.xcodeproj
 xcode_scheme: 
-	- MyKitiOS
-	- MyKitOSX
+- MyKitiOS
+- MyKitOSX
 xcode_sdk: 
-	- iphonesimulator9.3
-	- macosx10.11
+- iphonesimulator9.3
+- macosx10.11

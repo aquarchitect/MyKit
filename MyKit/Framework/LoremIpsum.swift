@@ -8,7 +8,7 @@
 
 /**
 
-Return a lorem ipsum generator. The class is designed specifically for testing; therefore, a random ouput of different length of string will make the test much more efficently.
+LorumIpsum is a random text generator designed specifically for testing; therefore, a output string at different will make the test much more efficently.
 
 - throws: It will throw file error in case of file corruption.
 
