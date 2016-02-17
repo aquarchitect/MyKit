@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C20F701D1C752D3E004C688F /* Resulting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F701C1C752D3E004C688F /* Resulting.swift */; };
+		C20F701E1C752D3E004C688F /* Resulting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F701C1C752D3E004C688F /* Resulting.swift */; };
 		C23C9BBB1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
 		C23C9BBC1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
 		C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245D5621C6E5C8A00F0C899 /* NSText+.swift */; };
@@ -136,6 +138,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C20F701C1C752D3E004C688F /* Resulting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Resulting.swift; path = MyKit/Utility/Resulting.swift; sourceTree = "<group>"; };
 		C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+.swift"; path = "MyKit/Extension/NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
 		C245D5621C6E5C8A00F0C899 /* NSText+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSText+.swift"; path = "Extension/NSText+.swift"; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
@@ -362,6 +365,7 @@
 				C2EF300F1C61422F0044512C /* Currying.swift */,
 				C2DFB4701C7507CA00CE6E16 /* Boxing.swift */,
 				C2DFB4711C7507CA00CE6E16 /* Queueing.swift */,
+				C20F701C1C752D3E004C688F /* Resulting.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -640,6 +644,7 @@
 				C259F0731C4D703D00F9B2BC /* TimeSystem.swift in Sources */,
 				C259F07E1C4D704500F9B2BC /* NSDateFormatter+.swift in Sources */,
 				C25877771C74369E00DF1F88 /* CollectionType+.swift in Sources */,
+				C20F701E1C752D3E004C688F /* Resulting.swift in Sources */,
 				C259F07C1C4D704500F9B2BC /* NSCache+.swift in Sources */,
 				C259F06D1C4D703D00F9B2BC /* LoremIpsum.swift in Sources */,
 				C259F0771C4D704500F9B2BC /* CGPoint+.swift in Sources */,
@@ -732,6 +737,7 @@
 				C259EFE51C4D6ECE00F9B2BC /* TimeSystem.swift in Sources */,
 				C259F0321C4D6FE200F9B2BC /* TransitionDelegate.swift in Sources */,
 				C259EFFD1C4D6EDB00F9B2BC /* CGSize+.swift in Sources */,
+				C20F701D1C752D3E004C688F /* Resulting.swift in Sources */,
 				C259F0021C4D6EDB00F9B2BC /* NSDateFormatter+.swift in Sources */,
 				C259F00A1C4D6EDB00F9B2BC /* Range+.swift in Sources */,
 				C259F0041C4D6EDB00F9B2BC /* NSIndexPath+.swift in Sources */,

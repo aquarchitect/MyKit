@@ -19,12 +19,3 @@ extension Int: Random {
         return Int(arc4random())
     }
 }
-
-//extension Character: Random {
-
-//    / Random character
-//    public static func random() -> Character {
-//        let unicode = UnicodeScalar((65...90).random())
-//        return Character(unicode)
-//    }
-//}

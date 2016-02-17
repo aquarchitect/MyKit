@@ -7,14 +7,14 @@
 		<key>MyKitOSX.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
-			<true/>
+			<false/>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
 		<key>MyKitTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<true/>
+			<false/>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
