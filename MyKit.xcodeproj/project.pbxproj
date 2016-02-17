@@ -125,6 +125,8 @@
 		C2DC4C951C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
 		C2DFB4721C7507CA00CE6E16 /* Boxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DFB4701C7507CA00CE6E16 /* Boxing.swift */; };
 		C2DFB4731C7507CA00CE6E16 /* Queueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DFB4711C7507CA00CE6E16 /* Queueing.swift */; };
+		C2DFB4741C7509C900CE6E16 /* Boxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DFB4701C7507CA00CE6E16 /* Boxing.swift */; };
+		C2DFB4751C7509CD00CE6E16 /* Queueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DFB4711C7507CA00CE6E16 /* Queueing.swift */; };
 		C2EF30101C61422F0044512C /* Currying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF300F1C61422F0044512C /* Currying.swift */; };
 		C2EF30111C61422F0044512C /* Currying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF300F1C61422F0044512C /* Currying.swift */; };
 		C2F310441C71A6900032CD5A /* CKQuery+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F310431C71A68F0032CD5A /* CKQuery+.swift */; };
@@ -623,6 +625,7 @@
 				C2DB5A101C5ED84C001E1C03 /* CKRecordID+.swift in Sources */,
 				C259F07F1C4D704500F9B2BC /* NSEntityDescription+.swift in Sources */,
 				C259F0831C4D704500F9B2BC /* NSNumber+.swift in Sources */,
+				C2DFB4751C7509CD00CE6E16 /* Queueing.swift in Sources */,
 				C259F0841C4D704500F9B2BC /* NSRange+.swift in Sources */,
 				C259F0741C4D703D00F9B2BC /* WeatherIcon.swift in Sources */,
 				C259F0751C4D704500F9B2BC /* Random.swift in Sources */,
@@ -653,6 +656,7 @@
 				C259F0711C4D703D00F9B2BC /* SymbolIcon.swift in Sources */,
 				C259F0681C4D703800F9B2BC /* Swizzling.swift in Sources */,
 				C2F603421C716DB000449DED /* CKRecord+.swift in Sources */,
+				C2DFB4741C7509C900CE6E16 /* Boxing.swift in Sources */,
 				C259F0611C4D701D00F9B2BC /* NSControl+.swift in Sources */,
 				C259F0761C4D704500F9B2BC /* Then.swift in Sources */,
 				C259F0791C4D704500F9B2BC /* CGSize+.swift in Sources */,

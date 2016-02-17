@@ -1,12 +1,17 @@
 language: objective-c
-osx_image: xcode7.3
+osx_image: xcode7.2
+notifications:
+email: false
 branches:
 only:
 - master
-xcode_project: MyKit.xcodeproj
-xcode_scheme: 
+xcode_scheme:
 - MyKitiOS
 - MyKitOSX
-xcode_sdk: 
-- iphonesimulator9.3
+xcode_sdk:
+- iphonesimulator9.2
 - macosx10.11
+
+# script:
+# - xcodebuild -project MyKit.xcodeproj -target MyKitiOS -sdk iphonesimulator9.2
+# - xcodebuild -project MyKit.xcodeproj -target MyKitOSX -sdk macosx10.11
