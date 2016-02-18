@@ -17,14 +17,20 @@ Register custom font from ttf into system.
     - UnableToDescryptTheFile
 
 */
-func registerFont(name: String) throws {
-    // check extension
-    assert(!name.hasSuffix(".ttf"), "Only support file name without extension.")
+func register(font file: String) throws {
+    enum Error: ErrorType {
+
+        case FailedToLocate(String)
+        case FailedToRegister(String)
+    }
+
+    let ext = "ttf"
+    let _file = file.hasSuffix(ext) ? file : (file + ".\(ext)")
 
     // get file url
     guard let bundle = NSBundle.defaultBundle(),
-        url = bundle.URLForResource(name, withExtension: "ttf")
-        else { throw FileError.InvalidResourcePath }
+        url = bundle.URLForResource(_file, withExtension: "ttf")
+        else { throw Error.FailedToLocate(file) }
 
     let data = NSData(contentsOfURL: url)
     let provider = CGDataProviderCreateWithCFData(data)
@@ -32,5 +38,5 @@ func registerFont(name: String) throws {
     // register font
     guard let font = CGFontCreateWithDataProvider(provider)
         where CTFontManagerRegisterGraphicsFont(font, nil)
-        else { throw FileError.UnableToDecryptTheFile }
+        else { throw Error.FailedToRegister(file) }
 }

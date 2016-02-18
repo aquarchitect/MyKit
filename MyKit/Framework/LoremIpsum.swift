@@ -22,22 +22,20 @@ public final class LoremIpsum: CollectionType {
         return storage.count
     }
 
-    public init() throws {
+    public init?() throws {
         guard let bundle = NSBundle.defaultBundle(),
-            url = bundle.URLForResource("Lorem", withExtension: "strings")
-            else { throw FileError.InvalidResourcePath }
+            url = bundle.URLForResource("LoremIpsum", withExtension: "strings")
+            else { return nil }
 
-        do {
-            let lorem = try String(contentsOfURL: url)
-            let range = lorem.startIndex..<lorem.endIndex
+        let lorem = try String(contentsOfURL: url)
+        let range = lorem.startIndex..<lorem.endIndex
 
-            lorem.enumerateSubstringsInRange(range, options: .BySentences) {
-                var string = ($0.0 ?? "").stringByReplacingOccurrencesOfString("\\n", withString: "")
-                string = string.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
+        lorem.enumerateSubstringsInRange(range, options: .BySentences) {
+            var string = ($0.0 ?? "").stringByReplacingOccurrencesOfString("\\n", withString: "")
+            string = string.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
 
-                self.storage.append(string ?? "")
-            }
-        } catch { throw FileError.UnableToDecryptTheFile }
+            self.storage.append(string ?? "")
+        }
     }
 
     public subscript(index: Int) -> String {

@@ -11,32 +11,34 @@ public extension NSMutableAttributedString {
     private var range: NSRange { return NSMakeRange(0, self.length) }
 
     #if os(iOS)
-        public func addFontAttribute(value: UIFont, range: NSRange?) {
+        public func addFontAttribute(value: UIFont?, range: NSRange? = nil) {
             self.addFontAttribute(value, range)
         }
 
-        public func addColorAttribute(value: UIColor, range: NSRange?) {
+        public func addColorAttribute(value: UIColor?, range: NSRange? = nil) {
             self.addColorAttribute(value, range)
         }
     #elseif os(OSX)
-        public func addFontAttribute(value: NSFont, range: NSRange?) {
-            self.addFontAttribute(value, range: range)
+        public func addFontAttribute(value: NSFont?, range: NSRange? = nil) {
+            self.addFontAttribute(value, range)
         }
 
-        public func addColorAttribute(value: NSColor, range: NSRange?) {
-            self.addColorAttribute(value, range: range)
+        public func addColorAttribute(value: NSColor?, range: NSRange? = nil) {
+            self.addColorAttribute(value, range)
         }
     #endif
 
-    private func addFontAttribute(value: AnyObject, _ range: NSRange?) {
-        self.addAttribute(NSFontAttributeName, value: value, range: range ?? self.range)
+    private func addFontAttribute(value: AnyObject?, _ range: NSRange?) {
+        guard let _value = value else { return }
+        self.addAttribute(NSFontAttributeName, value: _value, range: range ?? self.range)
     }
 
-    private func addColorAttribute(value: AnyObject, _ range: NSRange?) {
-        self.addAttribute(NSForegroundColorAttributeName, value: value, range: range ?? self.range)
+    private func addColorAttribute(value: AnyObject?, _ range: NSRange?) {
+        guard let _value = value else { return }
+        self.addAttribute(NSForegroundColorAttributeName, value: _value, range: range ?? self.range)
     }
 
-    public func addAlignmentAttribute(value: NSTextAlignment, range: NSRange?) {
+    public func addAlignmentAttribute(value: NSTextAlignment, _ range: NSRange?) {
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = value
 

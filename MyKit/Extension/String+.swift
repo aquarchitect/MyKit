@@ -33,7 +33,7 @@ private extension String.Format {
 
 public extension String {
 
-    public func toCamelCase() -> String {
+    public var camelcaseString: String {
         let characters = NSCharacterSet(charactersInString: " -_")
         let components = self.componentsSeparatedByCharactersInSet(characters)
         let parse: (Int, String) -> String = { $0 == 0 ? $1.lowercaseString : $1.capitalizedString }
