@@ -27,8 +27,6 @@
 		C20F702C1C753489004C688F /* CloudRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F702A1C753489004C688F /* CloudRecord.swift */; };
 		C20F70311C753662004C688F /* CKQueryOperation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F70301C753662004C688F /* CKQueryOperation+.swift */; };
 		C20F70321C753662004C688F /* CKQueryOperation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F70301C753662004C688F /* CKQueryOperation+.swift */; };
-		C2215D431C75542F00E39A44 /* CloudResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2215D421C75542F00E39A44 /* CloudResult.swift */; };
-		C2215D441C75542F00E39A44 /* CloudResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2215D421C75542F00E39A44 /* CloudResult.swift */; };
 		C23C9BBB1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
 		C23C9BBC1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
 		C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245D5621C6E5C8A00F0C899 /* NSText+.swift */; };
@@ -156,7 +154,6 @@
 		C209F5441C7666B7007C3975 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = MyKit/Utility/Result.swift; sourceTree = "<group>"; };
 		C20F702A1C753489004C688F /* CloudRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudRecord.swift; path = MyKit/Framework/CloudRecord.swift; sourceTree = "<group>"; };
 		C20F70301C753662004C688F /* CKQueryOperation+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKQueryOperation+.swift"; path = "MyKit/Extension/CKQueryOperation+.swift"; sourceTree = "<group>"; };
-		C2215D421C75542F00E39A44 /* CloudResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudResult.swift; path = MyKit/Framework/CloudResult.swift; sourceTree = "<group>"; };
 		C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+.swift"; path = "MyKit/Extension/NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
 		C245D5621C6E5C8A00F0C899 /* NSText+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSText+.swift"; path = "Extension/NSText+.swift"; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
@@ -270,7 +267,6 @@
 			children = (
 				C259EFD11C4D6ECE00F9B2BC /* CloudProtocol.swift */,
 				C20F702A1C753489004C688F /* CloudRecord.swift */,
-				C2215D421C75542F00E39A44 /* CloudResult.swift */,
 			);
 			name = CloudKit;
 			sourceTree = "<group>";
@@ -696,7 +692,6 @@
 				C259F0821C4D704500F9B2BC /* NSMutableAttributedString+.swift in Sources */,
 				C259F0701C4D703D00F9B2BC /* StreamClient.swift in Sources */,
 				C259F0731C4D703D00F9B2BC /* TimeSystem.swift in Sources */,
-				C2215D441C75542F00E39A44 /* CloudResult.swift in Sources */,
 				C259F07E1C4D704500F9B2BC /* NSDateFormatter+.swift in Sources */,
 				C25877771C74369E00DF1F88 /* CollectionType+.swift in Sources */,
 				C259F07C1C4D704500F9B2BC /* NSCache+.swift in Sources */,
@@ -779,7 +774,6 @@
 				C2DB5A0F1C5ED84C001E1C03 /* CKRecordID+.swift in Sources */,
 				C259F04B1C4D6FEF00F9B2BC /* UIControl+.swift in Sources */,
 				C259EFE11C4D6ECE00F9B2BC /* PersistentStack.swift in Sources */,
-				C2215D431C75542F00E39A44 /* CloudResult.swift in Sources */,
 				C23C9BBB1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */,
 				C259F0091C4D6EDB00F9B2BC /* NSRelationshipDescription+.swift in Sources */,
 				C259F0471C4D6FEF00F9B2BC /* UICollectionViewFlowLayout+.swift in Sources */,

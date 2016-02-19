@@ -6,13 +6,18 @@
 //
 //
 
-public protocol CloudModel {
+public protocol CloudResult {
 
     typealias Element
+
+    var parsedObjects: [Element] { get set }
     var fetchedRecords: [CKRecordID: CKRecord] { get set }
+    var queryCursors: [CKQueryCursor]? { get set }
+
+    init()
 }
 
-extension CloudModel where Element: CloudObject {
+extension CloudResult where Element: CloudRecord {
 
     public mutating func appendNewObject(type: Element.Type) -> Element {
         let record = CKRecord(recordType: Element.self).then {
@@ -47,6 +52,6 @@ public protocol CloudReference {
 extension CloudReference where Self: CloudRecord {
 
     public var reference: CKReference {
-        return recordID.referenceOf(action)
+        return id.targetOf(action)
     }
 }

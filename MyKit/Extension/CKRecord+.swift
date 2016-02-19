@@ -8,11 +8,11 @@
 
 public extension CKRecord {
 
-    public convenience init<T: CloudObject>(recordType: T.Type) {
-        self.init(recordType: String(T.self))
+    public convenience init<T: CloudRecord>(recordType: T.Type) {
+        self.init(recordType: recordType == CloudUser.self ? CKRecordTypeUserRecord : String(recordType))
     }
 
-    public func extractTo<T: CloudObject>(type: T.Type) -> T? {
-        return try? T(record: self)
+    public func parseTo<T: CloudRecord>(type: T.Type) throws -> T {
+        return try type.init(record: self)
     }
 }

@@ -8,18 +8,16 @@
 
 public struct Future<T> {
 
-    public typealias Callback = Result<T> -> Void
+    private let operation: Result<T>.Callback -> Void
 
-    private let operation: Callback -> Void
-
-    public init(operation: Callback -> Void) {
+    public init(operation: Result<T>.Callback -> Void) {
         self.operation = operation
     }
 }
 
 public extension Future {
 
-    public func finish(callback: Callback) {
+    public func finish(callback: Result<T>.Callback) {
         self.operation(callback)
     }
 
@@ -29,18 +27,26 @@ public extension Future {
         }
     }
 
+    public func map<U>(f: T -> U) -> Future<U> {
+        return Future<U> { callback in
+            self.finish { callback($0.map(f)) }
+        }
+    }
+
     public func andThen<U>(f: T throws -> Future<U>) -> Future<U> {
         return Future<U> { callback in
             self.finish {
-                switch $0 {
+                do { try ($0.resolve >>> f)().finish(callback) }
+                catch { callback(.Failure(error)) }
+            }
+        }
+    }
 
-                case .Success(let value):
-                    do { try f(value).finish(callback) }
-                    catch { callback(.Failure(error)) }
-
-                case .Failure(let error):
-                    callback(.Failure(error))
-                }
+    public func andThen<U>(f: T -> Future<U>) -> Future<U> {
+        return Future<U> { callback in
+            self.finish {
+                do { try ($0.resolve >>> f)().finish(callback) }
+                catch { callback(.Failure(error)) }
             }
         }
     }

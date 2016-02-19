@@ -14,6 +14,8 @@ public enum Result<T> {
 
 public extension Result {
 
+    typealias Callback = Result -> Void
+
     public func map<U>(f: T throws -> U) -> Result<U> {
         switch self {
 
@@ -23,6 +25,22 @@ public extension Result {
 
         case .Failure(let error):
             return .Failure(error)
+        }
+    }
+
+    public func map<U>(f: T -> U) -> Result<U> {
+        switch self {
+
+        case .Success(let value): return .Success(f(value))
+        case .Failure(let error): return .Failure(error)
+        }
+    }
+
+    public func resolve() throws -> T {
+        switch self {
+
+        case .Success(let value): return value
+        case .Failure(let error): throw error
         }
     }
 }

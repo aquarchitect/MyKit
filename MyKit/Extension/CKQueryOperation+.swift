@@ -8,35 +8,29 @@
 
 public extension CKQueryOperation {
 
-    public var predicate: NSPredicate? {
-        get { return self.query?.predicate }
-        set {
-            guard let value = newValue, type = self.query?.recordType
-                else { return self.cancel() }
-            self.query = CKQuery(recordType: type, predicate: value)
-        }
-    }
-
-    public convenience init<T: CloudObject>(callback: Result<CloudResult<T>> -> Void) {
-        let predicate = NSPredicate(value: true)
-        var result = CloudResult<T>()
-
+    private convenience init<T: CloudResult where T.Element: CloudObject>(callback: Result<T>.Callback) {
+        var result = T()
         self.init()
-        self.query = CKQuery(recordType: T.self, predicate: predicate)
         self.recordFetchedBlock = {
-            result.parsedObjects += [$0.extractTo(T.self)].flatMap { $0 }
+            result.parsedObjects += [try? $0.parseTo(T.Element.self)].flatMap { $0 }
             result.fetchedRecords[$0.recordID] = $0
         }
         self.queryCompletionBlock = { cursor, error in
-            if let _cursor = cursor {
-                CKQueryOperation(callback: callback).then {
-                    $0.cursor = _cursor
-                    result.nextOperation = $0
-                }
-                callback(.Success(result))
-            } else if let _error = error {
+            if let _error = error {
                 callback(.Failure(_error))
+            } else {
+                callback(.Success(result))
             }
         }
+    }
+
+    public convenience init<T: CloudResult where T.Element: CloudObject>(predicate: NSPredicate, callback: Result<T>.Callback) {
+        self.init(callback: callback)
+        self.query = CKQuery(recordType: T.Element.self, predicate: predicate)
+    }
+
+    public convenience init<T: CloudResult where T.Element: CloudObject>(cursor: CKQueryCursor, callback: Result<T>.Callback) {
+        self.init(callback: callback)
+        self.cursor = cursor
     }
 }
