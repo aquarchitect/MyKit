@@ -16,8 +16,6 @@
 		C209F5431C7665EC007C3975 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53C1C7665EC007C3975 /* Time.swift */; };
 		C209F5451C7666B7007C3975 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5441C7666B7007C3975 /* Result.swift */; };
 		C209F5461C7666B7007C3975 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5441C7666B7007C3975 /* Result.swift */; };
-		C209F54B1C766709007C3975 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F54A1C766709007C3975 /* Promise.swift */; };
-		C209F54C1C766709007C3975 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F54A1C766709007C3975 /* Promise.swift */; };
 		C209F54D1C76673E007C3975 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5361C7665EC007C3975 /* Box.swift */; };
 		C209F54E1C76673E007C3975 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5371C7665EC007C3975 /* Curry.swift */; };
 		C209F54F1C76673E007C3975 /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5381C7665EC007C3975 /* Draw.swift */; };
@@ -25,8 +23,6 @@
 		C209F5511C76673E007C3975 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53A1C7665EC007C3975 /* Register.swift */; };
 		C209F5521C76673E007C3975 /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53B1C7665EC007C3975 /* Swizzle.swift */; };
 		C209F5531C76673E007C3975 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53C1C7665EC007C3975 /* Time.swift */; };
-		C20F70281C75344D004C688F /* CloudStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F70271C75344D004C688F /* CloudStack.swift */; };
-		C20F70291C75344D004C688F /* CloudStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F70271C75344D004C688F /* CloudStack.swift */; };
 		C20F702B1C753489004C688F /* CloudRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F702A1C753489004C688F /* CloudRecord.swift */; };
 		C20F702C1C753489004C688F /* CloudRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F702A1C753489004C688F /* CloudRecord.swift */; };
 		C20F70311C753662004C688F /* CKQueryOperation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F70301C753662004C688F /* CKQueryOperation+.swift */; };
@@ -38,7 +34,7 @@
 		C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245D5621C6E5C8A00F0C899 /* NSText+.swift */; };
 		C25877761C74369E00DF1F88 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25877751C74369E00DF1F88 /* CollectionType+.swift */; };
 		C25877771C74369E00DF1F88 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25877751C74369E00DF1F88 /* CollectionType+.swift */; };
-		C259EFDC1C4D6ECE00F9B2BC /* CloudMiscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD11C4D6ECE00F9B2BC /* CloudMiscellaneous.swift */; };
+		C259EFDC1C4D6ECE00F9B2BC /* CloudProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD11C4D6ECE00F9B2BC /* CloudProtocol.swift */; };
 		C259EFDD1C4D6ECE00F9B2BC /* DateIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */; };
 		C259EFDF1C4D6ECE00F9B2BC /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD41C4D6ECE00F9B2BC /* LoremIpsum.swift */; };
 		C259EFE01C4D6ECE00F9B2BC /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD51C4D6ECE00F9B2BC /* WeatherAPI.swift */; };
@@ -95,7 +91,7 @@
 		C259F05F1C4D701D00F9B2BC /* NSColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F05B1C4D701D00F9B2BC /* NSColor+.swift */; };
 		C259F0611C4D701D00F9B2BC /* NSControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F05C1C4D701D00F9B2BC /* NSControl+.swift */; };
 		C259F0631C4D701D00F9B2BC /* NSTableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F05D1C4D701D00F9B2BC /* NSTableView+.swift */; };
-		C259F06A1C4D703D00F9B2BC /* CloudMiscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD11C4D6ECE00F9B2BC /* CloudMiscellaneous.swift */; };
+		C259F06A1C4D703D00F9B2BC /* CloudProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD11C4D6ECE00F9B2BC /* CloudProtocol.swift */; };
 		C259F06B1C4D703D00F9B2BC /* DateIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */; };
 		C259F06D1C4D703D00F9B2BC /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD41C4D6ECE00F9B2BC /* LoremIpsum.swift */; };
 		C259F06E1C4D703D00F9B2BC /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD51C4D6ECE00F9B2BC /* WeatherAPI.swift */; };
@@ -139,6 +135,10 @@
 		C2DC4C8C1C37130C00BA2EDE /* WeatherFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* WeatherFont.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
 		C2DC4C941C37203700BA2EDE /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* SymbolIcon.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
 		C2DC4C951C37203700BA2EDE /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* SymbolIcon.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
+		C2F18C951C76B2F400A1DB83 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F18C941C76B2F400A1DB83 /* Future.swift */; };
+		C2F18C961C76B2F400A1DB83 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F18C941C76B2F400A1DB83 /* Future.swift */; };
+		C2F18C981C76C86100A1DB83 /* CKDatabase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F18C971C76C86100A1DB83 /* CKDatabase+.swift */; };
+		C2F18C991C76C86100A1DB83 /* CKDatabase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F18C971C76C86100A1DB83 /* CKDatabase+.swift */; };
 		C2F310441C71A6900032CD5A /* CKQuery+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F310431C71A68F0032CD5A /* CKQuery+.swift */; };
 		C2F310451C71A6900032CD5A /* CKQuery+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F310431C71A68F0032CD5A /* CKQuery+.swift */; };
 		C2F603411C716DB000449DED /* CKRecord+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F603401C716DB000449DED /* CKRecord+.swift */; };
@@ -154,8 +154,6 @@
 		C209F53B1C7665EC007C3975 /* Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swizzle.swift; path = MyKit/Utility/Swizzle.swift; sourceTree = "<group>"; };
 		C209F53C1C7665EC007C3975 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Time.swift; path = MyKit/Utility/Time.swift; sourceTree = "<group>"; };
 		C209F5441C7666B7007C3975 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = MyKit/Utility/Result.swift; sourceTree = "<group>"; };
-		C209F54A1C766709007C3975 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = MyKit/Utility/Promise.swift; sourceTree = "<group>"; };
-		C20F70271C75344D004C688F /* CloudStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudStack.swift; path = MyKit/Framework/CloudStack.swift; sourceTree = "<group>"; };
 		C20F702A1C753489004C688F /* CloudRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudRecord.swift; path = MyKit/Framework/CloudRecord.swift; sourceTree = "<group>"; };
 		C20F70301C753662004C688F /* CKQueryOperation+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKQueryOperation+.swift"; path = "MyKit/Extension/CKQueryOperation+.swift"; sourceTree = "<group>"; };
 		C2215D421C75542F00E39A44 /* CloudResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudResult.swift; path = MyKit/Framework/CloudResult.swift; sourceTree = "<group>"; };
@@ -163,7 +161,7 @@
 		C245D5621C6E5C8A00F0C899 /* NSText+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSText+.swift"; path = "Extension/NSText+.swift"; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C25877751C74369E00DF1F88 /* CollectionType+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CollectionType+.swift"; path = "MyKit/Extension/CollectionType+.swift"; sourceTree = "<group>"; };
-		C259EFD11C4D6ECE00F9B2BC /* CloudMiscellaneous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudMiscellaneous.swift; path = MyKit/Framework/CloudMiscellaneous.swift; sourceTree = "<group>"; };
+		C259EFD11C4D6ECE00F9B2BC /* CloudProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudProtocol.swift; path = MyKit/Framework/CloudProtocol.swift; sourceTree = "<group>"; };
 		C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateIndex.swift; path = MyKit/Framework/DateIndex.swift; sourceTree = "<group>"; };
 		C259EFD41C4D6ECE00F9B2BC /* LoremIpsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoremIpsum.swift; path = MyKit/Framework/LoremIpsum.swift; sourceTree = "<group>"; };
 		C259EFD51C4D6ECE00F9B2BC /* WeatherAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherAPI.swift; path = MyKit/Framework/WeatherAPI.swift; sourceTree = "<group>"; };
@@ -235,6 +233,8 @@
 		C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecordID+.swift"; path = "MyKit/Extension/CKRecordID+.swift"; sourceTree = "<group>"; };
 		C2DC09B11C74E55E00C963A9 /* LoremIpsumTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoremIpsumTests.swift; sourceTree = "<group>"; };
 		C2DC4C931C37203700BA2EDE /* SymbolIcon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SymbolIcon.ttf; path = MyKit/SymbolIcon.ttf; sourceTree = "<group>"; };
+		C2F18C941C76B2F400A1DB83 /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Future.swift; path = MyKit/Utility/Future.swift; sourceTree = "<group>"; };
+		C2F18C971C76C86100A1DB83 /* CKDatabase+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKDatabase+.swift"; path = "MyKit/Extension/CKDatabase+.swift"; sourceTree = "<group>"; };
 		C2F1EA4E1C3656F500C2AE72 /* WeatherFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = WeatherFont.ttf; path = MyKit/WeatherFont.ttf; sourceTree = "<group>"; };
 		C2F310431C71A68F0032CD5A /* CKQuery+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKQuery+.swift"; path = "MyKit/Extension/CKQuery+.swift"; sourceTree = "<group>"; };
 		C2F603401C716DB000449DED /* CKRecord+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecord+.swift"; path = "MyKit/Extension/CKRecord+.swift"; sourceTree = "<group>"; };
@@ -268,8 +268,7 @@
 		C20F70231C753284004C688F /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
-				C259EFD11C4D6ECE00F9B2BC /* CloudMiscellaneous.swift */,
-				C20F70271C75344D004C688F /* CloudStack.swift */,
+				C259EFD11C4D6ECE00F9B2BC /* CloudProtocol.swift */,
 				C20F702A1C753489004C688F /* CloudRecord.swift */,
 				C2215D421C75542F00E39A44 /* CloudResult.swift */,
 			);
@@ -371,6 +370,7 @@
 				C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */,
 				C2F603401C716DB000449DED /* CKRecord+.swift */,
 				C2F310431C71A68F0032CD5A /* CKQuery+.swift */,
+				C2F18C971C76C86100A1DB83 /* CKDatabase+.swift */,
 				C20F70301C753662004C688F /* CKQueryOperation+.swift */,
 				C259EFEB1C4D6EDB00F9B2BC /* NSAttributeDescription+.swift */,
 				C259EFEC1C4D6EDB00F9B2BC /* NSBundle+.swift */,
@@ -416,7 +416,7 @@
 				C209F53B1C7665EC007C3975 /* Swizzle.swift */,
 				C209F53C1C7665EC007C3975 /* Time.swift */,
 				C209F5441C7666B7007C3975 /* Result.swift */,
-				C209F54A1C766709007C3975 /* Promise.swift */,
+				C2F18C941C76B2F400A1DB83 /* Future.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -671,7 +671,7 @@
 			files = (
 				C2DB5A0D1C5ED821001E1C03 /* Bool+.swift in Sources */,
 				C259F07B1C4D704500F9B2BC /* NSBundle+.swift in Sources */,
-				C259F06A1C4D703D00F9B2BC /* CloudMiscellaneous.swift in Sources */,
+				C259F06A1C4D703D00F9B2BC /* CloudProtocol.swift in Sources */,
 				C209F54F1C76673E007C3975 /* Draw.swift in Sources */,
 				C209F5511C76673E007C3975 /* Register.swift in Sources */,
 				C259F0871C4D704500F9B2BC /* String+.swift in Sources */,
@@ -679,10 +679,11 @@
 				C2DB5A101C5ED84C001E1C03 /* CKRecordID+.swift in Sources */,
 				C209F54E1C76673E007C3975 /* Curry.swift in Sources */,
 				C259F07F1C4D704500F9B2BC /* NSEntityDescription+.swift in Sources */,
-				C20F70291C75344D004C688F /* CloudStack.swift in Sources */,
 				C259F0831C4D704500F9B2BC /* NSNumber+.swift in Sources */,
+				C2F18C961C76B2F400A1DB83 /* Future.swift in Sources */,
 				C259F0841C4D704500F9B2BC /* NSRange+.swift in Sources */,
 				C209F5461C7666B7007C3975 /* Result.swift in Sources */,
+				C2F18C991C76C86100A1DB83 /* CKDatabase+.swift in Sources */,
 				C259F0741C4D703D00F9B2BC /* WeatherIcon.swift in Sources */,
 				C259F0751C4D704500F9B2BC /* Random.swift in Sources */,
 				C209F54D1C76673E007C3975 /* Box.swift in Sources */,
@@ -706,7 +707,6 @@
 				C2F310451C71A6900032CD5A /* CKQuery+.swift in Sources */,
 				C259F06E1C4D703D00F9B2BC /* WeatherAPI.swift in Sources */,
 				C259F06F1C4D703D00F9B2BC /* PersistentStack.swift in Sources */,
-				C209F54C1C766709007C3975 /* Promise.swift in Sources */,
 				C209F5501C76673E007C3975 /* Queue.swift in Sources */,
 				C259F06B1C4D703D00F9B2BC /* DateIndex.swift in Sources */,
 				C259F05F1C4D701D00F9B2BC /* NSColor+.swift in Sources */,
@@ -730,8 +730,7 @@
 			files = (
 				C259F01E1C4D6FE200F9B2BC /* ConstraintView.swift in Sources */,
 				C259F00B1C4D6EDB00F9B2BC /* Then.swift in Sources */,
-				C209F54B1C766709007C3975 /* Promise.swift in Sources */,
-				C259EFDC1C4D6ECE00F9B2BC /* CloudMiscellaneous.swift in Sources */,
+				C259EFDC1C4D6ECE00F9B2BC /* CloudProtocol.swift in Sources */,
 				C259EFFA1C4D6EDB00F9B2BC /* Random.swift in Sources */,
 				C259F0411C4D6FEF00F9B2BC /* Drawing+.swift in Sources */,
 				C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */,
@@ -750,6 +749,7 @@
 				C259F0591C4D6FEF00F9B2BC /* UIView+.swift in Sources */,
 				C259F01C1C4D6FE200F9B2BC /* CollectionView.swift in Sources */,
 				C259F0031C4D6EDB00F9B2BC /* NSEntityDescription+.swift in Sources */,
+				C2F18C951C76B2F400A1DB83 /* Future.swift in Sources */,
 				C259F0261C4D6FE200F9B2BC /* SimpleTransition.swift in Sources */,
 				C259EFE01C4D6ECE00F9B2BC /* WeatherAPI.swift in Sources */,
 				C259F0491C4D6FEF00F9B2BC /* UIColor+.swift in Sources */,
@@ -762,7 +762,6 @@
 				C209F5411C7665EC007C3975 /* Register.swift in Sources */,
 				C259F0011C4D6EDB00F9B2BC /* NSDate+.swift in Sources */,
 				C259EFFE1C4D6EDB00F9B2BC /* NSAttributeDescription+.swift in Sources */,
-				C20F70281C75344D004C688F /* CloudStack.swift in Sources */,
 				C259F0B31C4D815600F9B2BC /* DynamicCell.swift in Sources */,
 				C259EFE31C4D6ECE00F9B2BC /* SymbolIcon.swift in Sources */,
 				C25877761C74369E00DF1F88 /* CollectionType+.swift in Sources */,
@@ -790,6 +789,7 @@
 				C209F5401C7665EC007C3975 /* Queue.swift in Sources */,
 				C259F0051C4D6EDB00F9B2BC /* NSManagedObject+.swift in Sources */,
 				C259F0241C4D6FE200F9B2BC /* RowField.swift in Sources */,
+				C2F18C981C76C86100A1DB83 /* CKDatabase+.swift in Sources */,
 				C259EFE51C4D6ECE00F9B2BC /* TimeSystem.swift in Sources */,
 				C259F0321C4D6FE200F9B2BC /* TransitionDelegate.swift in Sources */,
 				C259EFFD1C4D6EDB00F9B2BC /* CGSize+.swift in Sources */,

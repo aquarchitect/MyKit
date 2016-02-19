@@ -6,12 +6,14 @@
 //  
 //
 
-public struct CloudResult<T: CloudRecord> {
+public struct CloudResult<T: CloudObject>: CloudModel {
 
-    public var parsedObjects: [T] = []
-    public var nextOperation: NSOperation?
+    public typealias Element = T
 
-    var fetchedRecords: [CKRecordID: CKRecord] = [:]
+    public var parsedObjects: [Element] = []
+    public var nextOperation: CKDatabaseOperation?
+
+    public var fetchedRecords: [CKRecordID: CKRecord] = [:]
 
     init() {}
 }

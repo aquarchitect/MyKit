@@ -10,11 +10,6 @@ public enum Result<T> {
 
     case Success(T)
     case Failure(ErrorType)
-
-    public init(@noescape _ completion: Void throws -> T) {
-        do { self = .Success(try completion()) }
-        catch { self = .Failure(error) }
-    }
 }
 
 public extension Result {
@@ -26,7 +21,8 @@ public extension Result {
             do { return .Success(try f(value)) }
             catch { return .Failure(error) }
 
-        case .Failure(let error): return .Failure(error)
+        case .Failure(let error):
+            return .Failure(error)
         }
     }
 }

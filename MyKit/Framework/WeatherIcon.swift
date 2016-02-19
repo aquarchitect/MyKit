@@ -262,23 +262,17 @@ extension WeatherIcon: CustomStringConvertible {
         let arguments = (name: "Weather Icons", size: size)
 
         #if os(iOS)
-            let callback: Void throws -> UIFont? = {
-                try UIFont(arguments) ?? {
-                    try register(font: "WeatherFont")
-                    return UIFont(arguments)
-                }()
-            }
+            let font: UIFont? = UIFont(arguments) ?? {
+                try! register(font: "WeatherFont")
+                return UIFont(arguments)
+            }()
         #elseif os(OSX)
-            let callback: Void throws -> NSFont? = {
-                try NSFont(arguments) ?? {
-                    try register(font: "WeatherFont")
-                    return NSFont(arguments)
-                }()
-            }
+            let font: NSFont? = NSFont(arguments) ?? {
+                try! register(font: "WeatherFont")
+                return NSFont(arguments)
+            }()
         #endif
 
-        return NSMutableAttributedString(string: self.description).then { string in
-            Promise(callback).succeed { string.addFontAttribute($0) }
-        }
+        return NSMutableAttributedString(string: self.description).then { $0.addFontAttribute(font) }
     }
 }

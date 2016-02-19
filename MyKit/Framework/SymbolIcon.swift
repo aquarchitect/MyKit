@@ -12,24 +12,18 @@ public struct SymbolIcon {
         let arguments = (name: "IonIcons", size: size)
 
         #if os(iOS)
-            let callback: Void throws -> UIFont? = {
-                try UIFont(arguments) ?? {
-                    try register(font: "IonIcons")
-                    return UIFont(arguments)
-                }()
-            }
+            let font: UIFont? = UIFont(arguments) ?? {
+                try! register(font: "IonIcons")
+                return UIFont(arguments)
+            }()
         #elseif os(OSX)
-            let callback: Void throws -> NSFont? = {
-                try NSFont(arguments) ?? {
-                    try register(font: "IonIcons")
-                    return NSFont(arguments)
-                }()
-            }
+            let font: NSFont? = NSFont(arguments) ?? {
+                try! register(font: "IonIcons")
+                return NSFont(arguments)
+            }()
         #endif
         
-        return NSMutableAttributedString(string: "\(character)").then { string in
-            Promise(callback).succeed { string.addFontAttribute($0) }
-        }
+        return NSMutableAttributedString(string: "\(character)").then { $0.addFontAttribute(font) }
     }
 
     #if os(iOS)
