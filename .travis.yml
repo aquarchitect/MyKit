@@ -11,7 +11,7 @@ notifications:
 branches:
 	only:
 		- master
-		
+
 # script:
 # - xcodebuild -project MyKit.xcodeproj -target MyKitiOS -sdk iphonesimulator9.2
 # - xcodebuild -project MyKit.xcodeproj -target MyKitOSX -sdk macosx10.11
