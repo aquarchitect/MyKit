@@ -1,17 +1,33 @@
 language: objective-c
 osx_image: xcode7.2
-xcode_scheme:
-	- MyKitiOS
-	- MyKitOSX
-xcode_sdk:
-	- iphonesimulator9.2
-	- macosx10.11
-notifications:
-	email: false
-branches:
-	only:
-		- master
 
-# script:
-# - xcodebuild -project MyKit.xcodeproj -target MyKitiOS -sdk iphonesimulator9.2
-# - xcodebuild -project MyKit.xcodeproj -target MyKitOSX -sdk macosx10.11
+notifications:
+  email: false
+
+branches:
+  only:
+    - master
+
+env:
+  global:
+    - FRAMEWORK="MyKit"
+    - OSX_SDK=macosx10.11
+    - IOS_SDK=iphonesimulator9.2
+  matrix:
+    - DESTINATION="arch=x86_64"           SCHEME="OSX"  SDK=$OSX_SDK  ACTION="build"
+    - DESTINATION="OS=9.0,name=iPhone 5s" SCHEME="iOS"  SDK=$IOS_SDK  ACTION="build"
+
+script:
+  - xcodebuild
+    -project $FRAMEWORK".xcodeproj"
+    -scheme $FRAMEWORK$SCHEME
+    -sdk $SDK
+    -destination $DESTINATION
+    -configuration Debug
+    ONLY_ACTIVE_ARCH=NO
+    GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
+    GCC_GENERATE_TEST_COVERAGE_FILES=YES
+    $ACTION
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
