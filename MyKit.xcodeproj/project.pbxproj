@@ -7,21 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C20F701D1C752D3E004C688F /* Resulting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F701C1C752D3E004C688F /* Resulting.swift */; };
-		C20F701E1C752D3E004C688F /* Resulting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F701C1C752D3E004C688F /* Resulting.swift */; };
+		C200B6CB1C79133E000AC3F3 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200B6CA1C79133E000AC3F3 /* NSObject+.swift */; };
+		C200B6CC1C79133E000AC3F3 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200B6CA1C79133E000AC3F3 /* NSObject+.swift */; };
+		C200B6CE1C79448F000AC3F3 /* CKContainer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200B6CD1C79448F000AC3F3 /* CKContainer+.swift */; };
+		C200B6CF1C79448F000AC3F3 /* CKContainer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200B6CD1C79448F000AC3F3 /* CKContainer+.swift */; };
+		C206AEB91C783C7A00C34950 /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = C206AEB81C783C7A00C34950 /* Unwrap.swift */; };
+		C209F53D1C7665EC007C3975 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5361C7665EC007C3975 /* Box.swift */; };
+		C209F53E1C7665EC007C3975 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5371C7665EC007C3975 /* Curry.swift */; };
+		C209F53F1C7665EC007C3975 /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5381C7665EC007C3975 /* Draw.swift */; };
+		C209F5401C7665EC007C3975 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5391C7665EC007C3975 /* Queue.swift */; };
+		C209F5411C7665EC007C3975 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53A1C7665EC007C3975 /* Register.swift */; };
+		C209F5421C7665EC007C3975 /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53B1C7665EC007C3975 /* Swizzle.swift */; };
+		C209F5431C7665EC007C3975 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53C1C7665EC007C3975 /* Time.swift */; };
+		C209F5451C7666B7007C3975 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5441C7666B7007C3975 /* Result.swift */; };
+		C209F5461C7666B7007C3975 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5441C7666B7007C3975 /* Result.swift */; };
+		C209F54D1C76673E007C3975 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5361C7665EC007C3975 /* Box.swift */; };
+		C209F54E1C76673E007C3975 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5371C7665EC007C3975 /* Curry.swift */; };
+		C209F54F1C76673E007C3975 /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5381C7665EC007C3975 /* Draw.swift */; };
+		C209F5501C76673E007C3975 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5391C7665EC007C3975 /* Queue.swift */; };
+		C209F5511C76673E007C3975 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53A1C7665EC007C3975 /* Register.swift */; };
+		C209F5521C76673E007C3975 /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53B1C7665EC007C3975 /* Swizzle.swift */; };
+		C209F5531C76673E007C3975 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53C1C7665EC007C3975 /* Time.swift */; };
+		C20F702B1C753489004C688F /* CloudRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F702A1C753489004C688F /* CloudRecord.swift */; };
+		C20F702C1C753489004C688F /* CloudRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F702A1C753489004C688F /* CloudRecord.swift */; };
+		C20F70311C753662004C688F /* CKQueryOperation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F70301C753662004C688F /* CKQueryOperation+.swift */; };
+		C20F70321C753662004C688F /* CKQueryOperation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F70301C753662004C688F /* CKQueryOperation+.swift */; };
 		C23C9BBB1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
 		C23C9BBC1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
 		C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245D5621C6E5C8A00F0C899 /* NSText+.swift */; };
 		C25877761C74369E00DF1F88 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25877751C74369E00DF1F88 /* CollectionType+.swift */; };
 		C25877771C74369E00DF1F88 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25877751C74369E00DF1F88 /* CollectionType+.swift */; };
-		C259EFCB1C4D6EBF00F9B2BC /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */; };
-		C259EFCE1C4D6EBF00F9B2BC /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC71C4D6EBF00F9B2BC /* Registering.swift */; };
-		C259EFCF1C4D6EBF00F9B2BC /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */; };
-		C259EFD01C4D6EBF00F9B2BC /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC91C4D6EBF00F9B2BC /* Timing.swift */; };
-		C259EFDC1C4D6ECE00F9B2BC /* CloudManner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD11C4D6ECE00F9B2BC /* CloudManner.swift */; };
+		C259EFDC1C4D6ECE00F9B2BC /* CloudStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD11C4D6ECE00F9B2BC /* CloudStack.swift */; };
 		C259EFDD1C4D6ECE00F9B2BC /* DateIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */; };
 		C259EFDF1C4D6ECE00F9B2BC /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD41C4D6ECE00F9B2BC /* LoremIpsum.swift */; };
-		C259EFE01C4D6ECE00F9B2BC /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD51C4D6ECE00F9B2BC /* OpenWeather.swift */; };
+		C259EFE01C4D6ECE00F9B2BC /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD51C4D6ECE00F9B2BC /* WeatherAPI.swift */; };
 		C259EFE11C4D6ECE00F9B2BC /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD61C4D6ECE00F9B2BC /* PersistentStack.swift */; };
 		C259EFE21C4D6ECE00F9B2BC /* StreamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD71C4D6ECE00F9B2BC /* StreamClient.swift */; };
 		C259EFE31C4D6ECE00F9B2BC /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD81C4D6ECE00F9B2BC /* SymbolIcon.swift */; };
@@ -75,14 +94,10 @@
 		C259F05F1C4D701D00F9B2BC /* NSColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F05B1C4D701D00F9B2BC /* NSColor+.swift */; };
 		C259F0611C4D701D00F9B2BC /* NSControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F05C1C4D701D00F9B2BC /* NSControl+.swift */; };
 		C259F0631C4D701D00F9B2BC /* NSTableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F05D1C4D701D00F9B2BC /* NSTableView+.swift */; };
-		C259F0641C4D703800F9B2BC /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */; };
-		C259F0671C4D703800F9B2BC /* Registering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC71C4D6EBF00F9B2BC /* Registering.swift */; };
-		C259F0681C4D703800F9B2BC /* Swizzling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */; };
-		C259F0691C4D703800F9B2BC /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFC91C4D6EBF00F9B2BC /* Timing.swift */; };
-		C259F06A1C4D703D00F9B2BC /* CloudManner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD11C4D6ECE00F9B2BC /* CloudManner.swift */; };
+		C259F06A1C4D703D00F9B2BC /* CloudStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD11C4D6ECE00F9B2BC /* CloudStack.swift */; };
 		C259F06B1C4D703D00F9B2BC /* DateIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */; };
 		C259F06D1C4D703D00F9B2BC /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD41C4D6ECE00F9B2BC /* LoremIpsum.swift */; };
-		C259F06E1C4D703D00F9B2BC /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD51C4D6ECE00F9B2BC /* OpenWeather.swift */; };
+		C259F06E1C4D703D00F9B2BC /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD51C4D6ECE00F9B2BC /* WeatherAPI.swift */; };
 		C259F06F1C4D703D00F9B2BC /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD61C4D6ECE00F9B2BC /* PersistentStack.swift */; };
 		C259F0701C4D703D00F9B2BC /* StreamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD71C4D6ECE00F9B2BC /* StreamClient.swift */; };
 		C259F0711C4D703D00F9B2BC /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD81C4D6ECE00F9B2BC /* SymbolIcon.swift */; };
@@ -109,28 +124,24 @@
 		C259F0861C4D704500F9B2BC /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFF71C4D6EDB00F9B2BC /* Range+.swift */; };
 		C259F0871C4D704500F9B2BC /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFF91C4D6EDB00F9B2BC /* String+.swift */; };
 		C259F0B31C4D815600F9B2BC /* DynamicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0B21C4D815600F9B2BC /* DynamicCell.swift */; };
-		C265BA431B9637FD00F6871E /* Lorem.strings in Resources */ = {isa = PBXBuildFile; fileRef = C265BA421B9637FD00F6871E /* Lorem.strings */; settings = {ASSET_TAGS = (text, ); }; };
-		C265BA441B9637FD00F6871E /* Lorem.strings in Resources */ = {isa = PBXBuildFile; fileRef = C265BA421B9637FD00F6871E /* Lorem.strings */; settings = {ASSET_TAGS = (text, ); }; };
+		C265BA431B9637FD00F6871E /* LoremIpsum.strings in Resources */ = {isa = PBXBuildFile; fileRef = C265BA421B9637FD00F6871E /* LoremIpsum.strings */; settings = {ASSET_TAGS = (text, ); }; };
+		C265BA441B9637FD00F6871E /* LoremIpsum.strings in Resources */ = {isa = PBXBuildFile; fileRef = C265BA421B9637FD00F6871E /* LoremIpsum.strings */; settings = {ASSET_TAGS = (text, ); }; };
 		C289AD801B62B95700186773 /* MyKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD8D1B62B97400186773 /* MyKitiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKitiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA948E1C6D505200EDF761 /* UIViewController+.swift */; };
-		C2C7064E1C6F0D58000941A6 /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C7064D1C6F0D58000941A6 /* Miscellaneous.swift */; };
-		C2C7064F1C6F0D58000941A6 /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C7064D1C6F0D58000941A6 /* Miscellaneous.swift */; };
 		C2DB5A0C1C5ED821001E1C03 /* Bool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */; };
 		C2DB5A0D1C5ED821001E1C03 /* Bool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */; };
 		C2DB5A0F1C5ED84C001E1C03 /* CKRecordID+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */; };
 		C2DB5A101C5ED84C001E1C03 /* CKRecordID+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */; };
 		C2DC09B21C74E55E00C963A9 /* LoremIpsumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DC09B11C74E55E00C963A9 /* LoremIpsumTests.swift */; };
-		C2DC4C8A1C3712F200BA2EDE /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
-		C2DC4C8C1C37130C00BA2EDE /* Weather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
-		C2DC4C941C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
-		C2DC4C951C37203700BA2EDE /* IonIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* IonIcons.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
-		C2DFB4721C7507CA00CE6E16 /* Boxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DFB4701C7507CA00CE6E16 /* Boxing.swift */; };
-		C2DFB4731C7507CA00CE6E16 /* Queueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DFB4711C7507CA00CE6E16 /* Queueing.swift */; };
-		C2DFB4741C7509C900CE6E16 /* Boxing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DFB4701C7507CA00CE6E16 /* Boxing.swift */; };
-		C2DFB4751C7509CD00CE6E16 /* Queueing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DFB4711C7507CA00CE6E16 /* Queueing.swift */; };
-		C2EF30101C61422F0044512C /* Currying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF300F1C61422F0044512C /* Currying.swift */; };
-		C2EF30111C61422F0044512C /* Currying.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EF300F1C61422F0044512C /* Currying.swift */; };
+		C2DC4C8A1C3712F200BA2EDE /* WeatherFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* WeatherFont.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
+		C2DC4C8C1C37130C00BA2EDE /* WeatherFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2F1EA4E1C3656F500C2AE72 /* WeatherFont.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
+		C2DC4C941C37203700BA2EDE /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* SymbolIcon.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
+		C2DC4C951C37203700BA2EDE /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* SymbolIcon.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
+		C2F18C951C76B2F400A1DB83 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F18C941C76B2F400A1DB83 /* Future.swift */; };
+		C2F18C961C76B2F400A1DB83 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F18C941C76B2F400A1DB83 /* Future.swift */; };
+		C2F18C981C76C86100A1DB83 /* CKDatabase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F18C971C76C86100A1DB83 /* CKDatabase+.swift */; };
+		C2F18C991C76C86100A1DB83 /* CKDatabase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F18C971C76C86100A1DB83 /* CKDatabase+.swift */; };
 		C2F310441C71A6900032CD5A /* CKQuery+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F310431C71A68F0032CD5A /* CKQuery+.swift */; };
 		C2F310451C71A6900032CD5A /* CKQuery+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F310431C71A68F0032CD5A /* CKQuery+.swift */; };
 		C2F603411C716DB000449DED /* CKRecord+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F603401C716DB000449DED /* CKRecord+.swift */; };
@@ -138,19 +149,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C20F701C1C752D3E004C688F /* Resulting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Resulting.swift; path = MyKit/Utility/Resulting.swift; sourceTree = "<group>"; };
+		C200B6CA1C79133E000AC3F3 /* NSObject+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSObject+.swift"; path = "MyKit/Extension/NSObject+.swift"; sourceTree = "<group>"; };
+		C200B6CD1C79448F000AC3F3 /* CKContainer+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKContainer+.swift"; path = "MyKit/Extension/CKContainer+.swift"; sourceTree = "<group>"; };
+		C206AEB81C783C7A00C34950 /* Unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Unwrap.swift; path = MyKit/Utility/Unwrap.swift; sourceTree = "<group>"; };
+		C209F5361C7665EC007C3975 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Box.swift; path = MyKit/Utility/Box.swift; sourceTree = "<group>"; };
+		C209F5371C7665EC007C3975 /* Curry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Curry.swift; path = MyKit/Utility/Curry.swift; sourceTree = "<group>"; };
+		C209F5381C7665EC007C3975 /* Draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Draw.swift; path = MyKit/Utility/Draw.swift; sourceTree = "<group>"; };
+		C209F5391C7665EC007C3975 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = MyKit/Utility/Queue.swift; sourceTree = "<group>"; };
+		C209F53A1C7665EC007C3975 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Register.swift; path = MyKit/Utility/Register.swift; sourceTree = "<group>"; };
+		C209F53B1C7665EC007C3975 /* Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swizzle.swift; path = MyKit/Utility/Swizzle.swift; sourceTree = "<group>"; };
+		C209F53C1C7665EC007C3975 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Time.swift; path = MyKit/Utility/Time.swift; sourceTree = "<group>"; };
+		C209F5441C7666B7007C3975 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = MyKit/Utility/Result.swift; sourceTree = "<group>"; };
+		C20F702A1C753489004C688F /* CloudRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudRecord.swift; path = MyKit/Framework/CloudRecord.swift; sourceTree = "<group>"; };
+		C20F70301C753662004C688F /* CKQueryOperation+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKQueryOperation+.swift"; path = "MyKit/Extension/CKQueryOperation+.swift"; sourceTree = "<group>"; };
 		C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+.swift"; path = "MyKit/Extension/NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
 		C245D5621C6E5C8A00F0C899 /* NSText+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSText+.swift"; path = "Extension/NSText+.swift"; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C25877751C74369E00DF1F88 /* CollectionType+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CollectionType+.swift"; path = "MyKit/Extension/CollectionType+.swift"; sourceTree = "<group>"; };
-		C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Drawing.swift; path = MyKit/Utility/Drawing.swift; sourceTree = "<group>"; };
-		C259EFC71C4D6EBF00F9B2BC /* Registering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Registering.swift; path = MyKit/Utility/Registering.swift; sourceTree = "<group>"; };
-		C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swizzling.swift; path = MyKit/Utility/Swizzling.swift; sourceTree = "<group>"; };
-		C259EFC91C4D6EBF00F9B2BC /* Timing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Timing.swift; path = MyKit/Utility/Timing.swift; sourceTree = "<group>"; };
-		C259EFD11C4D6ECE00F9B2BC /* CloudManner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudManner.swift; path = MyKit/Framework/CloudManner.swift; sourceTree = "<group>"; };
+		C259EFD11C4D6ECE00F9B2BC /* CloudStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudStack.swift; path = MyKit/Framework/CloudStack.swift; sourceTree = "<group>"; };
 		C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateIndex.swift; path = MyKit/Framework/DateIndex.swift; sourceTree = "<group>"; };
 		C259EFD41C4D6ECE00F9B2BC /* LoremIpsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoremIpsum.swift; path = MyKit/Framework/LoremIpsum.swift; sourceTree = "<group>"; };
-		C259EFD51C4D6ECE00F9B2BC /* OpenWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenWeather.swift; path = MyKit/Framework/OpenWeather.swift; sourceTree = "<group>"; };
+		C259EFD51C4D6ECE00F9B2BC /* WeatherAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherAPI.swift; path = MyKit/Framework/WeatherAPI.swift; sourceTree = "<group>"; };
 		C259EFD61C4D6ECE00F9B2BC /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStack.swift; path = MyKit/Framework/PersistentStack.swift; sourceTree = "<group>"; };
 		C259EFD71C4D6ECE00F9B2BC /* StreamClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamClient.swift; path = MyKit/Framework/StreamClient.swift; sourceTree = "<group>"; };
 		C259EFD81C4D6ECE00F9B2BC /* SymbolIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SymbolIcon.swift; path = MyKit/Framework/SymbolIcon.swift; sourceTree = "<group>"; };
@@ -205,7 +224,7 @@
 		C259F05C1C4D701D00F9B2BC /* NSControl+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSControl+.swift"; path = "Extension/NSControl+.swift"; sourceTree = "<group>"; };
 		C259F05D1C4D701D00F9B2BC /* NSTableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTableView+.swift"; path = "Extension/NSTableView+.swift"; sourceTree = "<group>"; };
 		C259F0B21C4D815600F9B2BC /* DynamicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicCell.swift; path = Framework/DynamicCell.swift; sourceTree = "<group>"; };
-		C265BA421B9637FD00F6871E /* Lorem.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Lorem.strings; path = MyKit/Lorem.strings; sourceTree = "<group>"; };
+		C265BA421B9637FD00F6871E /* LoremIpsum.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = LoremIpsum.strings; path = MyKit/LoremIpsum.strings; sourceTree = "<group>"; };
 		C289AD7C1B62B95700186773 /* MyKitOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKitOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7F1B62B95700186773 /* MyKitOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKitOSX.h; sourceTree = "<group>"; };
 		C289AD8A1B62B97400186773 /* MyKitiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKitiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,15 +234,13 @@
 		C2B60ACB1B95080800F6D2BB /* MyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B60ACF1B95080800F6D2BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2B60AD31B95084800F6D2BB /* Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging.h; sourceTree = "<group>"; };
-		C2C7064D1C6F0D58000941A6 /* Miscellaneous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Miscellaneous.swift; path = MyKit/Framework/Miscellaneous.swift; sourceTree = "<group>"; };
 		C2DB5A0B1C5ED821001E1C03 /* Bool+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bool+.swift"; path = "MyKit/Extension/Bool+.swift"; sourceTree = "<group>"; };
 		C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecordID+.swift"; path = "MyKit/Extension/CKRecordID+.swift"; sourceTree = "<group>"; };
 		C2DC09B11C74E55E00C963A9 /* LoremIpsumTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoremIpsumTests.swift; sourceTree = "<group>"; };
-		C2DC4C931C37203700BA2EDE /* IonIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IonIcons.ttf; path = MyKit/IonIcons.ttf; sourceTree = "<group>"; };
-		C2DFB4701C7507CA00CE6E16 /* Boxing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Boxing.swift; path = MyKit/Utility/Boxing.swift; sourceTree = "<group>"; };
-		C2DFB4711C7507CA00CE6E16 /* Queueing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queueing.swift; path = MyKit/Utility/Queueing.swift; sourceTree = "<group>"; };
-		C2EF300F1C61422F0044512C /* Currying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Currying.swift; path = MyKit/Utility/Currying.swift; sourceTree = "<group>"; };
-		C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Weather.ttf; path = MyKit/Weather.ttf; sourceTree = "<group>"; };
+		C2DC4C931C37203700BA2EDE /* SymbolIcon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SymbolIcon.ttf; path = MyKit/SymbolIcon.ttf; sourceTree = "<group>"; };
+		C2F18C941C76B2F400A1DB83 /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Future.swift; path = MyKit/Utility/Future.swift; sourceTree = "<group>"; };
+		C2F18C971C76C86100A1DB83 /* CKDatabase+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKDatabase+.swift"; path = "MyKit/Extension/CKDatabase+.swift"; sourceTree = "<group>"; };
+		C2F1EA4E1C3656F500C2AE72 /* WeatherFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = WeatherFont.ttf; path = MyKit/WeatherFont.ttf; sourceTree = "<group>"; };
 		C2F310431C71A68F0032CD5A /* CKQuery+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKQuery+.swift"; path = "MyKit/Extension/CKQuery+.swift"; sourceTree = "<group>"; };
 		C2F603401C716DB000449DED /* CKRecord+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecord+.swift"; path = "MyKit/Extension/CKRecord+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -253,6 +270,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C20F70231C753284004C688F /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				C20F702A1C753489004C688F /* CloudRecord.swift */,
+				C259EFD11C4D6ECE00F9B2BC /* CloudStack.swift */,
+			);
+			name = CloudKit;
+			sourceTree = "<group>";
+		};
+		C20F70241C7532EC004C688F /* LoremIpsum */ = {
+			isa = PBXGroup;
+			children = (
+				C259EFD41C4D6ECE00F9B2BC /* LoremIpsum.swift */,
+				C265BA421B9637FD00F6871E /* LoremIpsum.strings */,
+			);
+			name = LoremIpsum;
+			sourceTree = "<group>";
+		};
+		C20F70251C7532F8004C688F /* OpenWeather */ = {
+			isa = PBXGroup;
+			children = (
+				C259EFD51C4D6ECE00F9B2BC /* WeatherAPI.swift */,
+				C259EFDB1C4D6ECE00F9B2BC /* WeatherIcon.swift */,
+				C2F1EA4E1C3656F500C2AE72 /* WeatherFont.ttf */,
+			);
+			name = OpenWeather;
+			sourceTree = "<group>";
+		};
+		C20F70261C753309004C688F /* SymbolIcon */ = {
+			isa = PBXGroup;
+			children = (
+				C259EFD81C4D6ECE00F9B2BC /* SymbolIcon.swift */,
+				C2DC4C931C37203700BA2EDE /* SymbolIcon.ttf */,
+			);
+			name = SymbolIcon;
+			sourceTree = "<group>";
+		};
 		C289AD701B62B93800186773 = {
 			isa = PBXGroup;
 			children = (
@@ -317,11 +371,15 @@
 				C259EFE81C4D6EDB00F9B2BC /* CGPoint+.swift */,
 				C259EFE91C4D6EDB00F9B2BC /* CGRect+.swift */,
 				C259EFEA1C4D6EDB00F9B2BC /* CGSize+.swift */,
-				C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */,
 				C2F603401C716DB000449DED /* CKRecord+.swift */,
+				C2DB5A0E1C5ED84C001E1C03 /* CKRecordID+.swift */,
 				C2F310431C71A68F0032CD5A /* CKQuery+.swift */,
+				C2F18C971C76C86100A1DB83 /* CKDatabase+.swift */,
+				C200B6CD1C79448F000AC3F3 /* CKContainer+.swift */,
+				C20F70301C753662004C688F /* CKQueryOperation+.swift */,
 				C259EFEB1C4D6EDB00F9B2BC /* NSAttributeDescription+.swift */,
 				C259EFEC1C4D6EDB00F9B2BC /* NSBundle+.swift */,
+				C200B6CA1C79133E000AC3F3 /* NSObject+.swift */,
 				C259EFED1C4D6EDB00F9B2BC /* NSCache+.swift */,
 				C259EFEE1C4D6EDB00F9B2BC /* NSDate+.swift */,
 				C259EFEF1C4D6EDB00F9B2BC /* NSDateFormatter+.swift */,
@@ -340,17 +398,15 @@
 		C289AD941B62BA0E00186773 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				C2C7064D1C6F0D58000941A6 /* Miscellaneous.swift */,
-				C259EFD11C4D6ECE00F9B2BC /* CloudManner.swift */,
+				C20F70261C753309004C688F /* SymbolIcon */,
+				C20F70251C7532F8004C688F /* OpenWeather */,
+				C20F70241C7532EC004C688F /* LoremIpsum */,
+				C20F70231C753284004C688F /* CloudKit */,
 				C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */,
-				C259EFD41C4D6ECE00F9B2BC /* LoremIpsum.swift */,
-				C259EFD51C4D6ECE00F9B2BC /* OpenWeather.swift */,
 				C259EFD61C4D6ECE00F9B2BC /* PersistentStack.swift */,
 				C259EFD71C4D6ECE00F9B2BC /* StreamClient.swift */,
-				C259EFD81C4D6ECE00F9B2BC /* SymbolIcon.swift */,
 				C259EFD91C4D6ECE00F9B2BC /* TaskManager.swift */,
 				C259EFDA1C4D6ECE00F9B2BC /* TimeSystem.swift */,
-				C259EFDB1C4D6ECE00F9B2BC /* WeatherIcon.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -358,14 +414,16 @@
 		C289AD951B62BA1700186773 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				C259EFC41C4D6EBF00F9B2BC /* Drawing.swift */,
-				C259EFC71C4D6EBF00F9B2BC /* Registering.swift */,
-				C259EFC81C4D6EBF00F9B2BC /* Swizzling.swift */,
-				C259EFC91C4D6EBF00F9B2BC /* Timing.swift */,
-				C2EF300F1C61422F0044512C /* Currying.swift */,
-				C2DFB4701C7507CA00CE6E16 /* Boxing.swift */,
-				C2DFB4711C7507CA00CE6E16 /* Queueing.swift */,
-				C20F701C1C752D3E004C688F /* Resulting.swift */,
+				C209F5361C7665EC007C3975 /* Box.swift */,
+				C209F5371C7665EC007C3975 /* Curry.swift */,
+				C209F5381C7665EC007C3975 /* Draw.swift */,
+				C209F5391C7665EC007C3975 /* Queue.swift */,
+				C209F53A1C7665EC007C3975 /* Register.swift */,
+				C209F53B1C7665EC007C3975 /* Swizzle.swift */,
+				C209F53C1C7665EC007C3975 /* Time.swift */,
+				C209F5441C7666B7007C3975 /* Result.swift */,
+				C2F18C941C76B2F400A1DB83 /* Future.swift */,
+				C206AEB81C783C7A00C34950 /* Unwrap.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -442,9 +500,6 @@
 			isa = PBXGroup;
 			children = (
 				C289ADEB1B62BC3A00186773 /* Info.plist */,
-				C2F1EA4E1C3656F500C2AE72 /* Weather.ttf */,
-				C2DC4C931C37203700BA2EDE /* IonIcons.ttf */,
-				C265BA421B9637FD00F6871E /* Lorem.strings */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -591,9 +646,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2DC4C8C1C37130C00BA2EDE /* Weather.ttf in Resources */,
-				C2DC4C951C37203700BA2EDE /* IonIcons.ttf in Resources */,
-				C265BA441B9637FD00F6871E /* Lorem.strings in Resources */,
+				C2DC4C8C1C37130C00BA2EDE /* WeatherFont.ttf in Resources */,
+				C2DC4C951C37203700BA2EDE /* SymbolIcon.ttf in Resources */,
+				C265BA441B9637FD00F6871E /* LoremIpsum.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,9 +656,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2DC4C8A1C3712F200BA2EDE /* Weather.ttf in Resources */,
-				C2DC4C941C37203700BA2EDE /* IonIcons.ttf in Resources */,
-				C265BA431B9637FD00F6871E /* Lorem.strings in Resources */,
+				C2DC4C8A1C3712F200BA2EDE /* WeatherFont.ttf in Resources */,
+				C2DC4C941C37203700BA2EDE /* SymbolIcon.ttf in Resources */,
+				C265BA431B9637FD00F6871E /* LoremIpsum.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,16 +678,23 @@
 			files = (
 				C2DB5A0D1C5ED821001E1C03 /* Bool+.swift in Sources */,
 				C259F07B1C4D704500F9B2BC /* NSBundle+.swift in Sources */,
-				C259F06A1C4D703D00F9B2BC /* CloudManner.swift in Sources */,
+				C259F06A1C4D703D00F9B2BC /* CloudStack.swift in Sources */,
+				C209F54F1C76673E007C3975 /* Draw.swift in Sources */,
+				C209F5511C76673E007C3975 /* Register.swift in Sources */,
 				C259F0871C4D704500F9B2BC /* String+.swift in Sources */,
 				C259F0851C4D704500F9B2BC /* NSRelationshipDescription+.swift in Sources */,
 				C2DB5A101C5ED84C001E1C03 /* CKRecordID+.swift in Sources */,
+				C200B6CF1C79448F000AC3F3 /* CKContainer+.swift in Sources */,
+				C209F54E1C76673E007C3975 /* Curry.swift in Sources */,
 				C259F07F1C4D704500F9B2BC /* NSEntityDescription+.swift in Sources */,
 				C259F0831C4D704500F9B2BC /* NSNumber+.swift in Sources */,
-				C2DFB4751C7509CD00CE6E16 /* Queueing.swift in Sources */,
+				C2F18C961C76B2F400A1DB83 /* Future.swift in Sources */,
 				C259F0841C4D704500F9B2BC /* NSRange+.swift in Sources */,
+				C209F5461C7666B7007C3975 /* Result.swift in Sources */,
+				C2F18C991C76C86100A1DB83 /* CKDatabase+.swift in Sources */,
 				C259F0741C4D703D00F9B2BC /* WeatherIcon.swift in Sources */,
 				C259F0751C4D704500F9B2BC /* Random.swift in Sources */,
+				C209F54D1C76673E007C3975 /* Box.swift in Sources */,
 				C23C9BBC1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */,
 				C259F07A1C4D704500F9B2BC /* NSAttributeDescription+.swift in Sources */,
 				C259F0801C4D704500F9B2BC /* NSIndexPath+.swift in Sources */,
@@ -644,31 +706,29 @@
 				C259F0731C4D703D00F9B2BC /* TimeSystem.swift in Sources */,
 				C259F07E1C4D704500F9B2BC /* NSDateFormatter+.swift in Sources */,
 				C25877771C74369E00DF1F88 /* CollectionType+.swift in Sources */,
-				C20F701E1C752D3E004C688F /* Resulting.swift in Sources */,
 				C259F07C1C4D704500F9B2BC /* NSCache+.swift in Sources */,
 				C259F06D1C4D703D00F9B2BC /* LoremIpsum.swift in Sources */,
 				C259F0771C4D704500F9B2BC /* CGPoint+.swift in Sources */,
-				C259F0691C4D703800F9B2BC /* Timing.swift in Sources */,
-				C2EF30111C61422F0044512C /* Currying.swift in Sources */,
-				C2C7064F1C6F0D58000941A6 /* Miscellaneous.swift in Sources */,
+				C209F5531C76673E007C3975 /* Time.swift in Sources */,
+				C20F70321C753662004C688F /* CKQueryOperation+.swift in Sources */,
 				C2F310451C71A6900032CD5A /* CKQuery+.swift in Sources */,
-				C259F06E1C4D703D00F9B2BC /* OpenWeather.swift in Sources */,
+				C259F06E1C4D703D00F9B2BC /* WeatherAPI.swift in Sources */,
 				C259F06F1C4D703D00F9B2BC /* PersistentStack.swift in Sources */,
+				C209F5501C76673E007C3975 /* Queue.swift in Sources */,
 				C259F06B1C4D703D00F9B2BC /* DateIndex.swift in Sources */,
 				C259F05F1C4D701D00F9B2BC /* NSColor+.swift in Sources */,
 				C259F0721C4D703D00F9B2BC /* TaskManager.swift in Sources */,
 				C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */,
 				C259F0711C4D703D00F9B2BC /* SymbolIcon.swift in Sources */,
-				C259F0681C4D703800F9B2BC /* Swizzling.swift in Sources */,
 				C2F603421C716DB000449DED /* CKRecord+.swift in Sources */,
-				C2DFB4741C7509C900CE6E16 /* Boxing.swift in Sources */,
 				C259F0611C4D701D00F9B2BC /* NSControl+.swift in Sources */,
+				C209F5521C76673E007C3975 /* Swizzle.swift in Sources */,
 				C259F0761C4D704500F9B2BC /* Then.swift in Sources */,
+				C20F702C1C753489004C688F /* CloudRecord.swift in Sources */,
 				C259F0791C4D704500F9B2BC /* CGSize+.swift in Sources */,
+				C200B6CC1C79133E000AC3F3 /* NSObject+.swift in Sources */,
 				C259F07D1C4D704500F9B2BC /* NSDate+.swift in Sources */,
 				C259F0631C4D701D00F9B2BC /* NSTableView+.swift in Sources */,
-				C259F0641C4D703800F9B2BC /* Drawing.swift in Sources */,
-				C259F0671C4D703800F9B2BC /* Registering.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,27 +738,31 @@
 			files = (
 				C259F01E1C4D6FE200F9B2BC /* ConstraintView.swift in Sources */,
 				C259F00B1C4D6EDB00F9B2BC /* Then.swift in Sources */,
-				C259EFDC1C4D6ECE00F9B2BC /* CloudManner.swift in Sources */,
+				C259EFDC1C4D6ECE00F9B2BC /* CloudStack.swift in Sources */,
 				C259EFFA1C4D6EDB00F9B2BC /* Random.swift in Sources */,
 				C259F0411C4D6FEF00F9B2BC /* Drawing+.swift in Sources */,
-				C2C7064E1C6F0D58000941A6 /* Miscellaneous.swift in Sources */,
-				C259EFCE1C4D6EBF00F9B2BC /* Registering.swift in Sources */,
 				C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */,
 				C259EFE21C4D6ECE00F9B2BC /* StreamClient.swift in Sources */,
+				C200B6CE1C79448F000AC3F3 /* CKContainer+.swift in Sources */,
 				C259F0431C4D6FEF00F9B2BC /* UIBezierPath+.swift in Sources */,
-				C2DFB4731C7507CA00CE6E16 /* Queueing.swift in Sources */,
+				C209F5431C7665EC007C3975 /* Time.swift in Sources */,
+				C209F53D1C7665EC007C3975 /* Box.swift in Sources */,
 				C259F0281C4D6FE200F9B2BC /* SnapLayout.swift in Sources */,
 				C259F04D1C4D6FEF00F9B2BC /* UIEdgeInsets+.swift in Sources */,
 				C259F0571C4D6FEF00F9B2BC /* UITableViewCellEditingStyle+.swift in Sources */,
+				C200B6CB1C79133E000AC3F3 /* NSObject+.swift in Sources */,
 				C259F02E1C4D6FE200F9B2BC /* TableView.swift in Sources */,
 				C259F0301C4D6FE200F9B2BC /* TextView.swift in Sources */,
+				C206AEB91C783C7A00C34950 /* Unwrap.swift in Sources */,
 				C259F02C1C4D6FE200F9B2BC /* TableController.swift in Sources */,
+				C209F53E1C7665EC007C3975 /* Curry.swift in Sources */,
 				C259F04F1C4D6FEF00F9B2BC /* UIGestureRecognizer+.swift in Sources */,
 				C259F0591C4D6FEF00F9B2BC /* UIView+.swift in Sources */,
 				C259F01C1C4D6FE200F9B2BC /* CollectionView.swift in Sources */,
 				C259F0031C4D6EDB00F9B2BC /* NSEntityDescription+.swift in Sources */,
+				C2F18C951C76B2F400A1DB83 /* Future.swift in Sources */,
 				C259F0261C4D6FE200F9B2BC /* SimpleTransition.swift in Sources */,
-				C259EFE01C4D6ECE00F9B2BC /* OpenWeather.swift in Sources */,
+				C259EFE01C4D6ECE00F9B2BC /* WeatherAPI.swift in Sources */,
 				C259F0491C4D6FEF00F9B2BC /* UIColor+.swift in Sources */,
 				C259EFE61C4D6ECE00F9B2BC /* WeatherIcon.swift in Sources */,
 				C259F0081C4D6EDB00F9B2BC /* NSRange+.swift in Sources */,
@@ -706,44 +770,46 @@
 				C2F603411C716DB000449DED /* CKRecord+.swift in Sources */,
 				C259EFE41C4D6ECE00F9B2BC /* TaskManager.swift in Sources */,
 				C2F310441C71A6900032CD5A /* CKQuery+.swift in Sources */,
+				C209F5411C7665EC007C3975 /* Register.swift in Sources */,
 				C259F0011C4D6EDB00F9B2BC /* NSDate+.swift in Sources */,
 				C259EFFE1C4D6EDB00F9B2BC /* NSAttributeDescription+.swift in Sources */,
 				C259F0B31C4D815600F9B2BC /* DynamicCell.swift in Sources */,
 				C259EFE31C4D6ECE00F9B2BC /* SymbolIcon.swift in Sources */,
-				C259EFCB1C4D6EBF00F9B2BC /* Drawing.swift in Sources */,
-				C259EFCF1C4D6EBF00F9B2BC /* Swizzling.swift in Sources */,
 				C25877761C74369E00DF1F88 /* CollectionType+.swift in Sources */,
 				C259F0451C4D6FEF00F9B2BC /* UICollectionView+.swift in Sources */,
 				C259F0531C4D6FEF00F9B2BC /* UIScrollView+.swift in Sources */,
-				C2DFB4721C7507CA00CE6E16 /* Boxing.swift in Sources */,
 				C259F0511C4D6FEF00F9B2BC /* UILabel+.swift in Sources */,
 				C259EFDD1C4D6ECE00F9B2BC /* DateIndex.swift in Sources */,
 				C259F0551C4D6FEF00F9B2BC /* UITableView+.swift in Sources */,
 				C259F00C1C4D6EDB00F9B2BC /* String+.swift in Sources */,
 				C259F0221C4D6FE200F9B2BC /* PresentationController.swift in Sources */,
 				C259EFFF1C4D6EDB00F9B2BC /* NSBundle+.swift in Sources */,
+				C20F702B1C753489004C688F /* CloudRecord.swift in Sources */,
+				C209F5451C7666B7007C3975 /* Result.swift in Sources */,
 				C259F0061C4D6EDB00F9B2BC /* NSMutableAttributedString+.swift in Sources */,
 				C2DB5A0F1C5ED84C001E1C03 /* CKRecordID+.swift in Sources */,
 				C259F04B1C4D6FEF00F9B2BC /* UIControl+.swift in Sources */,
 				C259EFE11C4D6ECE00F9B2BC /* PersistentStack.swift in Sources */,
-				C259EFD01C4D6EBF00F9B2BC /* Timing.swift in Sources */,
 				C23C9BBB1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */,
 				C259F0091C4D6EDB00F9B2BC /* NSRelationshipDescription+.swift in Sources */,
 				C259F0471C4D6FEF00F9B2BC /* UICollectionViewFlowLayout+.swift in Sources */,
+				C20F70311C753662004C688F /* CKQueryOperation+.swift in Sources */,
 				C259F0071C4D6EDB00F9B2BC /* NSNumber+.swift in Sources */,
 				C259EFFC1C4D6EDB00F9B2BC /* CGRect+.swift in Sources */,
+				C209F5401C7665EC007C3975 /* Queue.swift in Sources */,
 				C259F0051C4D6EDB00F9B2BC /* NSManagedObject+.swift in Sources */,
 				C259F0241C4D6FE200F9B2BC /* RowField.swift in Sources */,
+				C2F18C981C76C86100A1DB83 /* CKDatabase+.swift in Sources */,
 				C259EFE51C4D6ECE00F9B2BC /* TimeSystem.swift in Sources */,
 				C259F0321C4D6FE200F9B2BC /* TransitionDelegate.swift in Sources */,
 				C259EFFD1C4D6EDB00F9B2BC /* CGSize+.swift in Sources */,
-				C20F701D1C752D3E004C688F /* Resulting.swift in Sources */,
 				C259F0021C4D6EDB00F9B2BC /* NSDateFormatter+.swift in Sources */,
 				C259F00A1C4D6EDB00F9B2BC /* Range+.swift in Sources */,
 				C259F0041C4D6EDB00F9B2BC /* NSIndexPath+.swift in Sources */,
 				C259F0201C4D6FE200F9B2BC /* FadePlaceholder.swift in Sources */,
 				C259EFDF1C4D6ECE00F9B2BC /* LoremIpsum.swift in Sources */,
-				C2EF30101C61422F0044512C /* Currying.swift in Sources */,
+				C209F5421C7665EC007C3975 /* Swizzle.swift in Sources */,
+				C209F53F1C7665EC007C3975 /* Draw.swift in Sources */,
 				C259F0001C4D6EDB00F9B2BC /* NSCache+.swift in Sources */,
 				C259EFFB1C4D6EDB00F9B2BC /* CGPoint+.swift in Sources */,
 				C2DB5A0C1C5ED821001E1C03 /* Bool+.swift in Sources */,

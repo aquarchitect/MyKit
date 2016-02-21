@@ -9,10 +9,24 @@
 public extension CKRecord {
 
     public convenience init<T: CloudObject>(recordType: T.Type) {
-        self.init(recordType: String(T.self))
+        self.init(recordType: String(recordType))
     }
 
-    public func extractTo<T: CloudObject>(type: T.Type) -> T? {
-        return try? T(record: self)
+    public func archive() -> NSData {
+        let data = NSMutableData()
+
+        NSKeyedArchiver(forWritingWithMutableData: data).then {
+            $0.requiresSecureCoding = true
+            self.encodeSystemFieldsWithCoder($0)
+            $0.finishEncoding()
+        }
+
+        return data
+    }
+
+    public convenience init?(data: NSData) {
+        let coder = NSKeyedUnarchiver(forReadingWithData: data)
+        self.init(coder: coder)
+        coder.finishDecoding()
     }
 }

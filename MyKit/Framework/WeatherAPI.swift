@@ -12,7 +12,7 @@ private func & (lhs: String, rhs: String) -> String {
     return "\(lhs)&\(rhs)"
 }
 
-public class OpenWeather {
+public final class OpenWeather {
 
     public enum TemperatureFormat: String {
 
