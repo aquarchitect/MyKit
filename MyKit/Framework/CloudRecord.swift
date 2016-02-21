@@ -12,79 +12,63 @@ private enum ParseError: ErrorType {
     case NotUserType
 }
 
-// MARK: Record
+public protocol CloudRecord: class {}
 
-public protocol CloudRecord: class {
+private extension CloudRecord where Self: NSObject {
 
-    var id: CKRecordID { get }
-    init(record: CKRecord) throws
-    func archiveTo(record: CKRecord) throws
-}
-
-extension CloudRecord where Self: NSObject {
-
-    private func parseFrom(record: CKRecord) {
-        for key in record.allKeys() where self.respondsToSelector(Selector(key)) {
+    func extractFrom(record: CKRecord) {
+        for key in record.allKeys() where self.respondsTo(key) {
             guard let value = record[key] else { continue }
             self.setValue(value, forKey: key)
         }
     }
 
-    private func commitTo(record: CKRecord) {
-        for key in record.allKeys() where self.respondsToSelector(Selector(key)) {
+    func commitTo(record: CKRecord) {
+        for key in record.allKeys() where self.respondsTo(key) {
             record[key] = self.valueForKey(key) as? CKRecordValue
         }
     }
 }
 
-// MARK: Object
-
 public class CloudObject: NSObject, CloudRecord {
 
-    public private(set) var id: CKRecordID
+    public private(set) var metadata: NSData?
 
-    public required init(record: CKRecord) throws {
-        self.id = record.recordID
+    public required init(record: CKRecord, cached: Bool) throws {
         super.init()
 
-        if record.recordType != String(self.dynamicType) {
+        guard record.recordType == String(self.dynamicType) else {
             throw ParseError.MissedMatch
         }
 
-        parseFrom(record)
+        metadata = cached ? record.archive() : nil
     }
 
-    public func archiveTo(record: CKRecord) throws {
-        if record.recordType != String(self.dynamicType) {
-            throw ParseError.MissedMatch
-        }
-
-        commitTo(record)
+    public func recordToSave() -> CKRecord {
+        return (metadata?.record ?? CKRecord(recordType: self.dynamicType)).then { commitTo($0) }
     }
 }
 
-// MARK: User
-
 public class CloudUser: NSObject, CloudRecord {
 
-    public let id: CKRecordID
+    public private(set) var metadata: NSData!
 
     public required init(record: CKRecord) throws {
-        self.id = record.recordID
         super.init()
 
-        if record.recordType != CKRecordTypeUserRecord {
-            throw ParseError.NotUserType
-        }
-        
-        parseFrom(record)
-    }
-
-    public func archiveTo(record: CKRecord) throws {
-        if record.recordType != CKRecordTypeUserRecord {
+        guard record.recordType == CKRecordTypeUserRecord else {
             throw ParseError.NotUserType
         }
 
-        commitTo(record)
+        metadata = record.archive()
     }
+
+    public func recordToSave() -> CKRecord? {
+        return metadata.record
+    }
+}
+
+private extension NSData {
+
+    var record: CKRecord? { return CKRecord(data: self) }
 }
