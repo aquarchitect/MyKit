@@ -19,13 +19,13 @@ private extension CloudRecord where Self: NSObject {
     func extractFrom(record: CKRecord) {
         for key in record.allKeys() where self.respondsTo(key) {
             guard let value = record[key] else { continue }
-            self.setValue(value, forKey: key)
+            self.setValue(value, forKey: key.camelcaseString)
         }
     }
 
     func commitTo(record: CKRecord) {
         for key in record.allKeys() where self.respondsTo(key) {
-            record[key] = self.valueForKey(key) as? CKRecordValue
+            record[key] = self.valueForKey(key.camelcaseString) as? CKRecordValue
         }
     }
 }

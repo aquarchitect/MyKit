@@ -30,8 +30,6 @@
 		C209F5531C76673E007C3975 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53C1C7665EC007C3975 /* Time.swift */; };
 		C20F702B1C753489004C688F /* CloudRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F702A1C753489004C688F /* CloudRecord.swift */; };
 		C20F702C1C753489004C688F /* CloudRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F702A1C753489004C688F /* CloudRecord.swift */; };
-		C20F70311C753662004C688F /* CKQueryOperation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F70301C753662004C688F /* CKQueryOperation+.swift */; };
-		C20F70321C753662004C688F /* CKQueryOperation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F70301C753662004C688F /* CKQueryOperation+.swift */; };
 		C23C9BBB1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
 		C23C9BBC1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
 		C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245D5621C6E5C8A00F0C899 /* NSText+.swift */; };
@@ -161,7 +159,6 @@
 		C209F53C1C7665EC007C3975 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Time.swift; path = MyKit/Utility/Time.swift; sourceTree = "<group>"; };
 		C209F5441C7666B7007C3975 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = MyKit/Utility/Result.swift; sourceTree = "<group>"; };
 		C20F702A1C753489004C688F /* CloudRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudRecord.swift; path = MyKit/Framework/CloudRecord.swift; sourceTree = "<group>"; };
-		C20F70301C753662004C688F /* CKQueryOperation+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKQueryOperation+.swift"; path = "MyKit/Extension/CKQueryOperation+.swift"; sourceTree = "<group>"; };
 		C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+.swift"; path = "MyKit/Extension/NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
 		C245D5621C6E5C8A00F0C899 /* NSText+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSText+.swift"; path = "Extension/NSText+.swift"; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
@@ -376,7 +373,6 @@
 				C2F310431C71A68F0032CD5A /* CKQuery+.swift */,
 				C2F18C971C76C86100A1DB83 /* CKDatabase+.swift */,
 				C200B6CD1C79448F000AC3F3 /* CKContainer+.swift */,
-				C20F70301C753662004C688F /* CKQueryOperation+.swift */,
 				C259EFEB1C4D6EDB00F9B2BC /* NSAttributeDescription+.swift */,
 				C259EFEC1C4D6EDB00F9B2BC /* NSBundle+.swift */,
 				C200B6CA1C79133E000AC3F3 /* NSObject+.swift */,
@@ -710,7 +706,6 @@
 				C259F06D1C4D703D00F9B2BC /* LoremIpsum.swift in Sources */,
 				C259F0771C4D704500F9B2BC /* CGPoint+.swift in Sources */,
 				C209F5531C76673E007C3975 /* Time.swift in Sources */,
-				C20F70321C753662004C688F /* CKQueryOperation+.swift in Sources */,
 				C2F310451C71A6900032CD5A /* CKQuery+.swift in Sources */,
 				C259F06E1C4D703D00F9B2BC /* WeatherAPI.swift in Sources */,
 				C259F06F1C4D703D00F9B2BC /* PersistentStack.swift in Sources */,
@@ -793,7 +788,6 @@
 				C23C9BBB1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */,
 				C259F0091C4D6EDB00F9B2BC /* NSRelationshipDescription+.swift in Sources */,
 				C259F0471C4D6FEF00F9B2BC /* UICollectionViewFlowLayout+.swift in Sources */,
-				C20F70311C753662004C688F /* CKQueryOperation+.swift in Sources */,
 				C259F0071C4D6EDB00F9B2BC /* NSNumber+.swift in Sources */,
 				C259EFFC1C4D6EDB00F9B2BC /* CGRect+.swift in Sources */,
 				C209F5401C7665EC007C3975 /* Queue.swift in Sources */,
