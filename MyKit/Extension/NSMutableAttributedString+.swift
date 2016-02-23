@@ -57,3 +57,7 @@ public extension NSMutableAttributedString {
         self.addAttribute(NSKernAttributeName, value: NSNumber(float: value), range: range ?? self.range)
     }
 }
+
+public func + (lhs: NSMutableAttributedString, rhs: NSMutableAttributedString) -> NSMutableAttributedString {
+    return NSMutableAttributedString(attributedString: lhs).then { $0.appendAttributedString(rhs) }
+}
