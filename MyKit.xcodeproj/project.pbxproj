@@ -33,7 +33,6 @@
 		C23C9BBB1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
 		C23C9BBC1C4DA78A00C55236 /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */; };
 		C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245D5621C6E5C8A00F0C899 /* NSText+.swift */; };
-		C24AD9F41C7C585500C7FC45 /* NetworkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24AD9F31C7C585500C7FC45 /* NetworkButton.swift */; };
 		C25877761C74369E00DF1F88 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25877751C74369E00DF1F88 /* CollectionType+.swift */; };
 		C25877771C74369E00DF1F88 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25877751C74369E00DF1F88 /* CollectionType+.swift */; };
 		C259EFDC1C4D6ECE00F9B2BC /* CloudStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD11C4D6ECE00F9B2BC /* CloudStack.swift */; };
@@ -163,7 +162,6 @@
 		C20F702A1C753489004C688F /* CloudRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudRecord.swift; path = MyKit/Framework/CloudRecord.swift; sourceTree = "<group>"; };
 		C23C9BBA1C4DA78A00C55236 /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+.swift"; path = "MyKit/Extension/NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
 		C245D5621C6E5C8A00F0C899 /* NSText+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSText+.swift"; path = "Extension/NSText+.swift"; sourceTree = "<group>"; };
-		C24AD9F31C7C585500C7FC45 /* NetworkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkButton.swift; path = Framework/NetworkButton.swift; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C25877751C74369E00DF1F88 /* CollectionType+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CollectionType+.swift"; path = "MyKit/Extension/CollectionType+.swift"; sourceTree = "<group>"; };
 		C259EFD11C4D6ECE00F9B2BC /* CloudStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudStack.swift; path = MyKit/Framework/CloudStack.swift; sourceTree = "<group>"; };
@@ -450,7 +448,6 @@
 				C259F0181C4D6FE200F9B2BC /* TableController.swift */,
 				C259F0191C4D6FE200F9B2BC /* TableView.swift */,
 				C259F01A1C4D6FE200F9B2BC /* TextView.swift */,
-				C24AD9F31C7C585500C7FC45 /* NetworkButton.swift */,
 				C259F0131C4D6FE200F9B2BC /* PresentationController.swift */,
 				C259F01B1C4D6FE200F9B2BC /* TransitionDelegate.swift */,
 			);
@@ -766,7 +763,6 @@
 				C206AEB91C783C7A00C34950 /* Unwrap.swift in Sources */,
 				C259F02C1C4D6FE200F9B2BC /* TableController.swift in Sources */,
 				C209F53E1C7665EC007C3975 /* Curry.swift in Sources */,
-				C24AD9F41C7C585500C7FC45 /* NetworkButton.swift in Sources */,
 				C259F04F1C4D6FEF00F9B2BC /* UIGestureRecognizer+.swift in Sources */,
 				C259F0591C4D6FEF00F9B2BC /* UIView+.swift in Sources */,
 				C259F01C1C4D6FE200F9B2BC /* CollectionView.swift in Sources */,
