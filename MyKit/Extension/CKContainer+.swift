@@ -8,7 +8,7 @@
 
 public extension CKContainer {
 
-    public func fetchUserID(callback: Result<CKRecordID>.Callback) -> Future<CKRecordID> {
+    public func fetchUserID() -> Future<CKRecordID> {
         return Future { callback in
             self.fetchUserRecordIDWithCompletionHandler {
                 if let recordID = $0 {

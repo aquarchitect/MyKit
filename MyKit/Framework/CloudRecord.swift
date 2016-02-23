@@ -12,7 +12,10 @@ private enum ParseError: ErrorType {
     case NotUserType
 }
 
-public protocol CloudRecord: class {}
+public protocol CloudRecord: class {
+
+    func recordToSave() -> CKRecord
+}
 
 private extension CloudRecord where Self: NSObject {
 
@@ -44,6 +47,10 @@ public class CloudObject: NSObject, CloudRecord {
         metadata = cached ? record.archive() : nil
     }
 
+    public override init() {
+        super.init()
+    }
+
     public func recordToSave() -> CKRecord {
         return (metadata?.record ?? CKRecord(recordType: self.dynamicType)).then { commitTo($0) }
     }
@@ -63,8 +70,8 @@ public class CloudUser: NSObject, CloudRecord {
         metadata = record.archive()
     }
 
-    public func recordToSave() -> CKRecord? {
-        return metadata.record
+    public func recordToSave() -> CKRecord {
+        return metadata.record!
     }
 }
 

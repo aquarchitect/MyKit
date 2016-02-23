@@ -6,6 +6,8 @@
 //  
 //
 
+public enum ContentError: ErrorType { case Empty }
+
 public enum Result<T> {
 
     case Success(T)

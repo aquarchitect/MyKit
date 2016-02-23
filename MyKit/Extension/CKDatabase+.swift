@@ -8,8 +8,8 @@
 
 public extension CKDatabase {
 
-    public func fetchUser<T: CloudUser>(callback: Result<T>.Callback) -> Future<T> {
-        return Future(operation: { callback in
+    public func fetchUser<T: CloudUser>() -> Future<T> {
+        return Future({ callback in
             CKFetchRecordsOperation.fetchCurrentUserRecordOperation().then {
                 $0.perRecordCompletionBlock = {
                     if let record = $0, user = try? T(record: record) {
@@ -20,5 +20,17 @@ public extension CKDatabase {
                 }
             }
         } >>> self.addOperation)
+    }
+
+    public func save<T: CloudRecord>(object: T) -> Future<T> {
+        return Future({ callback in
+            self.saveRecord(object.recordToSave()) {
+                if let _ = $0 {
+                    callback(.Success(object))
+                } else if let error = $1 {
+                    callback(.Failure(error))
+                }
+            }
+        })
     }
 }
