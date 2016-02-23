@@ -38,7 +38,7 @@ public extension NSMutableAttributedString {
         self.addAttribute(NSForegroundColorAttributeName, value: _value, range: range ?? self.range)
     }
 
-    public func addAlignmentAttribute(value: NSTextAlignment, _ range: NSRange?) {
+    public func addAlignmentAttribute(value: NSTextAlignment, range: NSRange?) {
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = value
 
