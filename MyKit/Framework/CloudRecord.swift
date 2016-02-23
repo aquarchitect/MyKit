@@ -37,7 +37,7 @@ public class CloudObject: NSObject, CloudRecord {
 
     public private(set) var metadata: NSData?
 
-    public required init(record: CKRecord, cached: Bool) throws {
+    public init(record: CKRecord, cached: Bool) throws {
         super.init()
 
         guard record.recordType == String(self.dynamicType) else {

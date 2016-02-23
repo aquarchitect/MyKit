@@ -22,11 +22,11 @@ public extension CKDatabase {
         } >>> self.addOperation)
     }
 
-    public func save<T: CloudRecord>(object: T) -> Future<T> {
+    public func save<T: CloudRecord>(object: T) -> Future<CKRecord> {
         return Future({ callback in
             self.saveRecord(object.recordToSave()) {
-                if let _ = $0 {
-                    callback(.Success(object))
+                if let record = $0 {
+                    callback(.Success(record))
                 } else if let error = $1 {
                     callback(.Failure(error))
                 }
