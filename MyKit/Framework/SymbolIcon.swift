@@ -13,12 +13,12 @@ public struct SymbolIcon {
 
         #if os(iOS)
             let font: UIFont? = UIFont(arguments) ?? {
-                try! register(font: "IonIcons")
+                try! register(font: "SymbolIcon")
                 return UIFont(arguments)
             }()
         #elseif os(OSX)
             let font: NSFont? = NSFont(arguments) ?? {
-                try! register(font: "IonIcons")
+                try! register(font: "SymbolIcon")
                 return NSFont(arguments)
             }()
         #endif

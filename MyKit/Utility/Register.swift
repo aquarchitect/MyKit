@@ -25,7 +25,12 @@ func register(font file: String) throws {
     }
 
     let ext = "ttf"
-    let _file = file.hasSuffix(ext) ? file : (file + ".\(ext)")
+
+    let _file = !file.hasSuffix(ext) ? file : {
+        let endIndex = file.endIndex
+        let startIndex = file.endIndex.advancedBy(-ext.characters.count)
+        return file[startIndex..<endIndex]
+    }()
 
     // get file url
     guard let bundle = NSBundle.defaultBundle(),
