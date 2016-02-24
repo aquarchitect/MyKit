@@ -364,20 +364,11 @@
 		C289AD931B62BA0500186773 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C2DB0D101C7E31430010B70E /* Foundation */,
 				C2B8A7841C7D028900DCA8D2 /* Native */,
 				C2B8A7851C7D029E00DCA8D2 /* CoreGraphics */,
 				C2B8A7861C7D02B200DCA8D2 /* CloudKit */,
 				C2B8A7871C7D02CC00DCA8D2 /* CoreData */,
-				C259EFEC1C4D6EDB00F9B2BC /* NSBundle+.swift */,
-				C200B6CA1C79133E000AC3F3 /* NSObject+.swift */,
-				C259EFED1C4D6EDB00F9B2BC /* NSCache+.swift */,
-				C259EFEE1C4D6EDB00F9B2BC /* NSDate+.swift */,
-				C259EFEF1C4D6EDB00F9B2BC /* NSDateFormatter+.swift */,
-				C259EFF11C4D6EDB00F9B2BC /* NSIndexPath+.swift */,
-				C259EFF41C4D6EDB00F9B2BC /* NSNumber+.swift */,
-				C259EFF51C4D6EDB00F9B2BC /* NSRange+.swift */,
-				C2B8A7811C7D027700DCA8D2 /* NSPredicate+.swift */,
-				C259EFF31C4D6EDB00F9B2BC /* NSMutableAttributedString+.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -389,11 +380,11 @@
 				C20F70251C7532F8004C688F /* OpenWeather */,
 				C20F70241C7532EC004C688F /* LoremIpsum */,
 				C20F70231C753284004C688F /* CloudKit */,
-				C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */,
 				C259EFD61C4D6ECE00F9B2BC /* PersistentStack.swift */,
 				C259EFD71C4D6ECE00F9B2BC /* StreamClient.swift */,
 				C259EFD91C4D6ECE00F9B2BC /* TaskManager.swift */,
 				C259EFDA1C4D6ECE00F9B2BC /* TimeSystem.swift */,
+				C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -553,6 +544,23 @@
 				C259EFF61C4D6EDB00F9B2BC /* NSRelationshipDescription+.swift */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		C2DB0D101C7E31430010B70E /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				C259EFEC1C4D6EDB00F9B2BC /* NSBundle+.swift */,
+				C200B6CA1C79133E000AC3F3 /* NSObject+.swift */,
+				C259EFED1C4D6EDB00F9B2BC /* NSCache+.swift */,
+				C259EFEE1C4D6EDB00F9B2BC /* NSDate+.swift */,
+				C259EFEF1C4D6EDB00F9B2BC /* NSDateFormatter+.swift */,
+				C259EFF11C4D6EDB00F9B2BC /* NSIndexPath+.swift */,
+				C259EFF41C4D6EDB00F9B2BC /* NSNumber+.swift */,
+				C259EFF51C4D6EDB00F9B2BC /* NSRange+.swift */,
+				C2B8A7811C7D027700DCA8D2 /* NSPredicate+.swift */,
+				C259EFF31C4D6EDB00F9B2BC /* NSMutableAttributedString+.swift */,
+			);
+			name = Foundation;
 			sourceTree = "<group>";
 		};
 		C2E01D2C1C7BC8B9002444D4 /* Protocols */ = {

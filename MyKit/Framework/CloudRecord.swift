@@ -6,27 +6,18 @@
 //  
 //
 
-private enum ParseError: ErrorType {
-
-    case MissedMatch
-    case NotUserType
-}
-
-public protocol CloudRecord: class {
-
-    func recordToSave() -> CKRecord
-}
+public protocol CloudRecord: class {}
 
 private extension CloudRecord where Self: NSObject {
 
-    func extractFrom(record: CKRecord) {
+    func decodeFrom(record: CKRecord) {
         for key in record.allKeys() where self.respondsTo(key) {
             guard let value = record[key] else { continue }
             self.setValue(value, forKey: key.camelcaseString)
         }
     }
 
-    func commitTo(record: CKRecord) {
+    func encodeTo(record: CKRecord) {
         for key in record.allKeys() where self.respondsTo(key) {
             record[key] = self.valueForKey(key.camelcaseString) as? CKRecordValue
         }
@@ -37,45 +28,43 @@ public class CloudObject: NSObject, CloudRecord {
 
     public private(set) var metadata: NSData?
 
-    public init(record: CKRecord, cached: Bool) throws {
+    public init?(record: CKRecord, cached: Bool) {
+        self.metadata = cached ? record.archive() : nil
         super.init()
 
-        guard record.recordType == String(self.dynamicType) else {
-            throw ParseError.MissedMatch
-        }
-
-        metadata = cached ? record.archive() : nil
+        if record.recordType == String(self.dynamicType) { return nil }
+        decodeFrom(record)
     }
 
     public override init() {
         super.init()
     }
 
-    public func recordToSave() -> CKRecord {
-        return (metadata?.record ?? CKRecord(recordType: self.dynamicType)).then { commitTo($0) }
+    public func toRecord() -> CKRecord {
+        return (metadata?.record ?? CKRecord(recordType: self.dynamicType)).then { encodeTo($0) }
     }
 }
 
 public class CloudUser: NSObject, CloudRecord {
 
-    public private(set) var metadata: NSData!
+    public let metadata: NSData
 
-    public required init(record: CKRecord) throws {
+    public required init?(record: CKRecord) {
+        self.metadata = record.archive()
         super.init()
 
-        guard record.recordType == CKRecordTypeUserRecord else {
-            throw ParseError.NotUserType
-        }
-
-        metadata = record.archive()
+        if record.recordType == CKRecordTypeUserRecord { return nil }
+        decodeFrom(record)
     }
 
-    public func recordToSave() -> CKRecord {
-        return metadata.record!
+    public func toRecord() -> CKRecord? {
+        return metadata.record
     }
 }
 
 private extension NSData {
 
-    var record: CKRecord? { return CKRecord(data: self) }
+    var record: CKRecord? {
+        return CKRecord(data: self)
+    }
 }
