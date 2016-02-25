@@ -8,13 +8,13 @@
 
 public extension CKContainer {
 
-    public func fetchUserID() -> Future<CKRecordID> {
-        return Future { callback in
+    public func fetchUserID() -> Promise<CKRecordID> {
+        return Promise { callback in
             self.fetchUserRecordIDWithCompletionHandler {
                 if let recordID = $0 {
-                    callback(.Success(recordID))
+                    callback(.Fullfill(recordID))
                 } else if let error = $1 {
-                    callback(.Failure(error))
+                    callback(.Reject(error))
                 }
             }
         }

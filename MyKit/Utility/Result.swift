@@ -6,43 +6,41 @@
 //  
 //
 
-public enum ContentError: ErrorType { case Empty }
-
 public enum Result<T> {
 
-    case Success(T)
-    case Failure(ErrorType)
+    case Fullfill(T)
+    case Reject(ErrorType)
 }
 
 public extension Result {
 
     typealias Callback = Result -> Void
 
-    public func map<U>(f: T throws -> U) -> Result<U> {
+    public func then<U>(f: T -> U) -> Result<U> {
         switch self {
 
-        case .Success(let value):
-            do { return .Success(try f(value)) }
-            catch { return .Failure(error) }
-
-        case .Failure(let error):
-            return .Failure(error)
+        case .Fullfill(let value): return .Fullfill(f(value))
+        case .Reject(let error): return .Reject(error)
         }
     }
 
-    public func map<U>(f: T -> U) -> Result<U> {
+    public func then<U>(f: T throws -> U) -> Result<U> {
         switch self {
 
-        case .Success(let value): return .Success(f(value))
-        case .Failure(let error): return .Failure(error)
+        case .Fullfill(let value):
+            do { return .Fullfill(try f(value)) }
+            catch { return .Reject(error) }
+
+        case .Reject(let error):
+            return .Reject(error)
         }
     }
 
     public func resolve() throws -> T {
         switch self {
 
-        case .Success(let value): return value
-        case .Failure(let error): throw error
+        case .Fullfill(let value): return value
+        case .Reject(let error): throw error
         }
     }
 }

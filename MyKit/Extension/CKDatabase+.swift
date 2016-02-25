@@ -11,33 +11,33 @@ public extension CKDatabase {
     private func handle(callback: Result<CKRecord>.Callback) -> ((CKRecord?, NSError?) -> Void) {
         return {
             if let record = $0 {
-                callback(.Success(record))
+                callback(.Fullfill(record))
             } else if let error = $1 {
-                callback(.Failure(error))
+                callback(.Reject(error))
             }
         }
     }
 
-    public func fetchCurrentUser<T: CloudUser>() -> Future<T> {
-        return Future({ callback in
+    public func fetchCurrentUser<T: CloudUser>() -> Promise<T> {
+        return Promise({ callback in
             CKFetchRecordsOperation.fetchCurrentUserRecordOperation().then {
                 $0.perRecordCompletionBlock = {
                     if let user = $0?.parseTo(T.self) {
-                        callback(.Success(user))
+                        callback(.Fullfill(user))
                     } else if let error = $2 {
-                        callback(.Failure(error))
+                        callback(.Reject(error))
                     }
                 }
             }
         } >>> self.addOperation)
     }
 
-    public func save(record: CKRecord) -> Future<CKRecord> {
-        return Future(handle >>> { self.saveRecord(record, completionHandler: $0) })
+    public func save(record: CKRecord) -> Promise<CKRecord> {
+        return Promise(handle >>> { self.saveRecord(record, completionHandler: $0) })
     }
 
-    public func fetch(recordID: CKRecordID) -> Future<CKRecord> {
-        return Future(handle >>> { self.fetchRecordWithID(recordID, completionHandler: $0) })
+    public func fetch(recordID: CKRecordID) -> Promise<CKRecord> {
+        return Promise(handle >>> { self.fetchRecordWithID(recordID, completionHandler: $0) })
     }
 }
 
