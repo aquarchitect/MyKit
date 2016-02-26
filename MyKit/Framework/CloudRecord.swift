@@ -18,9 +18,17 @@ private extension CloudRecord where Self: NSObject {
     }
 
     func encodeTo(record: CKRecord) {
-        for key in record.allKeys() where self.respondsTo(key) {
-            record[key] = self.valueForKey(key.camelcaseString) as? CKRecordValue
+        var count: UInt32 = 0
+        let props = class_copyPropertyList(self.dynamicType, &count)
+
+        (0..<Int(count)).flatMap {
+            let string = property_getName(props[$0])
+            return String(CString: string, encoding: NSUTF8StringEncoding)
+        }.lazy.forEach {
+            record[$0.capitalizedString] = self.valueForKey($0) as? CKRecordValue
         }
+
+        free(props)
     }
 }
 
@@ -28,7 +36,7 @@ public class CloudObject: NSObject, CloudRecord {
 
     public private(set) var metadata: NSData?
 
-    public init?(record: CKRecord, cached: Bool) {
+    public required init?(record: CKRecord, cached: Bool) {
         self.metadata = cached ? record.archive() : nil
         super.init()
 

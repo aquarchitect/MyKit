@@ -139,6 +139,8 @@
 		C2DC4C941C37203700BA2EDE /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* SymbolIcon.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
 		C2DC4C951C37203700BA2EDE /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2DC4C931C37203700BA2EDE /* SymbolIcon.ttf */; settings = {ASSET_TAGS = (fonts, ); }; };
 		C2E01D2E1C7BC8DF002444D4 /* IndicateActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E01D2D1C7BC8DF002444D4 /* IndicateActivity.swift */; };
+		C2F0E8E51C7FBC6B00A8F5A9 /* CloudQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0E8E41C7FBC6B00A8F5A9 /* CloudQuery.swift */; };
+		C2F0E8E61C7FBC6B00A8F5A9 /* CloudQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0E8E41C7FBC6B00A8F5A9 /* CloudQuery.swift */; };
 		C2F18C951C76B2F400A1DB83 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F18C941C76B2F400A1DB83 /* Promise.swift */; };
 		C2F18C961C76B2F400A1DB83 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F18C941C76B2F400A1DB83 /* Promise.swift */; };
 		C2F18C981C76C86100A1DB83 /* CKDatabase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F18C971C76C86100A1DB83 /* CKDatabase+.swift */; };
@@ -240,6 +242,7 @@
 		C2DC09B11C74E55E00C963A9 /* LoremIpsumTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoremIpsumTests.swift; sourceTree = "<group>"; };
 		C2DC4C931C37203700BA2EDE /* SymbolIcon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SymbolIcon.ttf; path = MyKit/SymbolIcon.ttf; sourceTree = "<group>"; };
 		C2E01D2D1C7BC8DF002444D4 /* IndicateActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IndicateActivity.swift; path = Framework/IndicateActivity.swift; sourceTree = "<group>"; };
+		C2F0E8E41C7FBC6B00A8F5A9 /* CloudQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudQuery.swift; path = MyKit/Framework/CloudQuery.swift; sourceTree = "<group>"; };
 		C2F18C941C76B2F400A1DB83 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = MyKit/Utility/Promise.swift; sourceTree = "<group>"; };
 		C2F18C971C76C86100A1DB83 /* CKDatabase+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKDatabase+.swift"; path = "MyKit/Extension/CKDatabase+.swift"; sourceTree = "<group>"; };
 		C2F1EA4E1C3656F500C2AE72 /* WeatherFont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = WeatherFont.ttf; path = MyKit/WeatherFont.ttf; sourceTree = "<group>"; };
@@ -277,6 +280,7 @@
 			children = (
 				C20F702A1C753489004C688F /* CloudRecord.swift */,
 				C259EFD11C4D6ECE00F9B2BC /* CloudStack.swift */,
+				C2F0E8E41C7FBC6B00A8F5A9 /* CloudQuery.swift */,
 			);
 			name = CloudKit;
 			sourceTree = "<group>";
@@ -364,11 +368,11 @@
 		C289AD931B62BA0500186773 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C2DB0D101C7E31430010B70E /* Foundation */,
 				C2B8A7841C7D028900DCA8D2 /* Native */,
-				C2B8A7851C7D029E00DCA8D2 /* CoreGraphics */,
+				C2DB0D101C7E31430010B70E /* Foundation */,
 				C2B8A7861C7D02B200DCA8D2 /* CloudKit */,
 				C2B8A7871C7D02CC00DCA8D2 /* CoreData */,
+				C2B8A7851C7D029E00DCA8D2 /* CoreGraphics */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -767,6 +771,7 @@
 				C209F5501C76673E007C3975 /* Queue.swift in Sources */,
 				C259F06B1C4D703D00F9B2BC /* DateIndex.swift in Sources */,
 				C259F05F1C4D701D00F9B2BC /* NSColor+.swift in Sources */,
+				C2F0E8E61C7FBC6B00A8F5A9 /* CloudQuery.swift in Sources */,
 				C259F0721C4D703D00F9B2BC /* TaskManager.swift in Sources */,
 				C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */,
 				C259F0711C4D703D00F9B2BC /* SymbolIcon.swift in Sources */,
@@ -851,6 +856,7 @@
 				C209F5401C7665EC007C3975 /* Queue.swift in Sources */,
 				C259F0051C4D6EDB00F9B2BC /* NSManagedObject+.swift in Sources */,
 				C259F0241C4D6FE200F9B2BC /* RowField.swift in Sources */,
+				C2F0E8E51C7FBC6B00A8F5A9 /* CloudQuery.swift in Sources */,
 				C2F18C981C76C86100A1DB83 /* CKDatabase+.swift in Sources */,
 				C259EFE51C4D6ECE00F9B2BC /* TimeSystem.swift in Sources */,
 				C259F0321C4D6FE200F9B2BC /* TransitionDelegate.swift in Sources */,
