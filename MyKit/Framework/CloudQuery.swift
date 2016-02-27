@@ -15,7 +15,7 @@ extension CloudQuery {
 
     public typealias Callback = Result<([Self], CKQueryCursor?)>.Callback
 
-    private static func fetchData(cached: Bool, _ callback: Callback) -> CKQueryOperation {
+    public static func fetchData(cached: Bool, callback: Callback) -> CKQueryOperation {
         var results = [Self]()
         return CKQueryOperation().then {
             $0.recordFetchedBlock = {
@@ -29,13 +29,5 @@ extension CloudQuery {
                 }
             }
         }
-    }
-
-    public static func fetchData(predicate predicate: NSPredicate, cached: Bool) -> (Callback -> CKQueryOperation) {
-        return { fetchData(cached, $0).then { $0.query = CKQuery(recordType: String(self), predicate: predicate) }}
-    }
-
-    public static func fetchData(cursor cursor: CKQueryCursor, cached: Bool) -> (Callback -> CKQueryOperation) {
-        return { fetchData(cached, $0).then { $0.cursor = cursor }}
     }
 }

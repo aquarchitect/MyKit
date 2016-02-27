@@ -6,6 +6,8 @@
 //  
 //
 
+public enum DataError: ErrorType { case NoContent }
+
 public enum Result<T> {
 
     case Fullfill(T)

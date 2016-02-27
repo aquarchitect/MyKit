@@ -8,9 +8,9 @@
 
 /**
 
-An LorumIpsum object generates random text designed specifically for testing; therefore, an output string at different will make unit test much more efficently.
+An LorumIpsum object generates random text at different length designed specifically for testing.
 
-- throws: It will throw file error in case of file corruption.
+- throws: file corruption error.
 
 */
 public final class LoremIpsum: CollectionType {

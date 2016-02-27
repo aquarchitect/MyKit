@@ -13,7 +13,7 @@ private extension CloudRecord where Self: NSObject {
     func decodeFrom(record: CKRecord) {
         for key in record.allKeys() where self.respondsTo(key) {
             guard let value = record[key] else { continue }
-            self.setValue(value, forKey: key.camelcaseString)
+            self.setValue(value, forKey: key)
         }
     }
 
@@ -25,7 +25,7 @@ private extension CloudRecord where Self: NSObject {
             let string = property_getName(props[$0])
             return String(CString: string, encoding: NSUTF8StringEncoding)
         }.lazy.forEach {
-            record[$0.capitalizedString] = self.valueForKey($0) as? CKRecordValue
+            record[$0] = self.valueForKey($0) as? CKRecordValue
         }
 
         free(props)
@@ -40,7 +40,7 @@ public class CloudObject: NSObject, CloudRecord {
         self.metadata = cached ? record.archive() : nil
         super.init()
 
-        if record.recordType == String(self.dynamicType) { return nil }
+        if record.recordType != String(self.dynamicType) { return nil }
         decodeFrom(record)
     }
 
@@ -61,7 +61,7 @@ public class CloudUser: NSObject, CloudRecord {
         self.metadata = record.archive()
         super.init()
 
-        if record.recordType == CKRecordTypeUserRecord { return nil }
+        if record.recordType != CKRecordTypeUserRecord { return nil }
         decodeFrom(record)
     }
 
