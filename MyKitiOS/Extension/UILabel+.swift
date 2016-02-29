@@ -8,7 +8,7 @@
 
 public extension UILabel {
 
-    public static var measuringInstance: UILabel {
+    public static var dummyInstance: UILabel {
         struct Cache { static let label = UILabel() }
         return Cache.label
     }

@@ -28,7 +28,7 @@ public struct SymbolIcon {
 
     #if os(iOS)
         public static func imageOf(character: Character, size: CGFloat) -> UIImage? {
-            let label = UILabel.measuringInstance.then {
+            let label = UILabel.dummyInstance.then {
                 let string = SymbolIcon.attributedStringOf(character, size: size)
                 $0.attributedText = string
                 $0.sizeToFit()
