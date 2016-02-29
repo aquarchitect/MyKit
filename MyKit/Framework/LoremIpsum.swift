@@ -26,7 +26,7 @@ public final class LoremIpsum: CollectionType {
 
     init() throws {
         guard let bundle = NSBundle.defaultBundle(),
-            url = bundle.URLForResource("LoremIpsum", withExtension: "strings")
+            url = bundle.URLForResource("LoremIpsum", withExtension: "txt")
             else { return }
 
         let lorem = try String(contentsOfURL: url)
@@ -36,11 +36,19 @@ public final class LoremIpsum: CollectionType {
             var string = ($0.0 ?? "").stringByReplacingOccurrencesOfString("\\n", withString: "")
             string = string.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
 
-            self.storage.append(string ?? "")
+            guard !string.isEmpty else { return }
+            self.storage.append(string)
         }
     }
 
     public subscript(index: Int) -> String {
         return storage[index]
+    }
+}
+
+extension LoremIpsum: CustomDebugStringConvertible {
+
+    public var debugDescription: String {
+        return "\(storage)"
     }
 }

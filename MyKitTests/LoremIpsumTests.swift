@@ -10,13 +10,9 @@
 
 final class LoremIpsumTests: XCTestCase {
 
-    let lorem = try? LoremIpsum()
-
     func testLorem() {
-        let slice = lorem?.randomSlice
-        print(slice)
-        print(slice?.count)
-        print(slice?.joinWithSeparator(" "))
+        print(LoremIpsum.sharedInstance?.first)
+        print(LoremIpsum.sharedInstance?.last)
 
         XCTAssertTrue(true)
     }
