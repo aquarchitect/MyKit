@@ -14,7 +14,9 @@ public protocol FadePlaceholder: class {
 extension FadePlaceholder {
 
     public func animatePlaceholder(alpha: CGFloat) {
-        UIView.animateWithDuration(0.25) { self.placeholder.alpha = alpha }
+        UIView.animateWithDuration(0.25) { [unowned placeholder] in
+            placeholder.alpha = alpha
+        }
     }
 
     public func delayPlaceholderAnimation(textView: UITextView) {

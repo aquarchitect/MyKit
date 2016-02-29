@@ -8,13 +8,7 @@
 
 public extension UITableView {
 
-    final func isSectionValid(section: Int) -> Bool {
-        return NSLocationInRange(section, NSMakeRange(0, self.numberOfSections))
-    }
-
-    final func cellHandleAtIndexPath<T>(indexPath: NSIndexPath, handle: T -> Void) {
-        if let cell = self.cellForRowAtIndexPath(indexPath) as? T { handle(cell) }
-    }
+    // - MARK: Transform IndexPath
 
     final func forwardIndexPath(indexPath: NSIndexPath) -> NSIndexPath? {
         if indexPath.row < self.numberOfRowsInSection(indexPath.section) - 1 {
@@ -35,11 +29,19 @@ public extension UITableView {
         } else { return nil }
     }
 
+    // - MARK: Register Reusable Views
+
     public func register<T: UITableViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
         self.registerClass(T.self, forCellReuseIdentifier: identifier)
     }
 
     public func register<T: UITableViewHeaderFooterView>(type: T.Type, forReuseIdentifier identifier: String) {
         self.registerClass(T.self, forHeaderFooterViewReuseIdentifier: identifier)
+    }
+
+    // - MARK: Miscellaneous
+
+    final func isSectionValid(section: Int) -> Bool {
+        return NSLocationInRange(section, NSMakeRange(0, self.numberOfSections))
     }
 }

@@ -39,19 +39,20 @@ final public class SimpleTransition: TransitionDelegate {
 
         isPresenting ? transitionContext.containerView()?.addSubview(toController.view) : ()
 
-        let controller = isPresenting ? toController : fromController
-        controller.view.alpha = isPresenting ? animating.alpha : 1
-        controller.view.transform = isPresenting ? animating.transform : CGAffineTransformIdentity
-
         let options: UIViewAnimationOptions = [.AllowUserInteraction, .BeginFromCurrentState, isPresenting ? .CurveEaseIn : .CurveEaseOut]
         let duration = transitionDuration(transitionContext)
 
-        UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
+        let controller = (isPresenting ? toController : fromController).then {
+            $0.view.alpha = isPresenting ? animating.alpha : 1
+            $0.view.transform = isPresenting ? animating.transform : CGAffineTransformIdentity
+        }
+
+        UIView.animateWithDuration(duration, delay: 0, options: options, animations: { [unowned self, unowned controller] in
             controller.view.alpha = self.isPresenting ? 1 : self.animating.alpha
             controller.view.transform = self.isPresenting ? CGAffineTransformIdentity : self.animating.transform
-            }, completion: { _ in
-                if !self.isPresenting { fromController.view.removeFromSuperview() }
-                transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+            }, completion: { [weak self, weak fromController, weak transitionContext] _ in
+                if self?.isPresenting == false { fromController?.view.removeFromSuperview() }
+                transitionContext?.completeTransition(!(transitionContext?.transitionWasCancelled() == true))
         })
     }
 }
