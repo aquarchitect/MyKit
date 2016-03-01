@@ -8,7 +8,10 @@
 
 public extension UIScrollView {
 
+    /// Bottom content offset takes into account contentInset
     final var bottomContentOffset: CGPoint {
-        return CGPoint(x: 0, y: max(self.contentSize.height - self.bounds.height, 0))
+        let x = max(self.contentSize.width - self.bounds.width + self.contentInset.right, 0)
+        let y = max(self.contentSize.height - self.bounds.height + self.contentInset.bottom, 0)
+        return CGPointMake(x, y)
     }
 }
