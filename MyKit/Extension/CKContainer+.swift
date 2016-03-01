@@ -8,7 +8,7 @@
 
 public extension CKContainer {
 
-    public func fetchUserID() -> Promise<CKRecordID> {
+    public func fetchCurrentUserID() -> Promise<CKRecordID> {
         return Promise { callback in
             self.fetchUserRecordIDWithCompletionHandler {
                 if let recordID = $0 {
