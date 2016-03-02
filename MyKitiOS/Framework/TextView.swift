@@ -28,11 +28,11 @@ public class TextView: UIControl {
         super.addSubview(textBox)
 
         textBox.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
-        let attributes = [(.Left, .LeftMargin), (.Right, .Right), (.Top, .TopMargin), (.Bottom, .BottomMargin)] as [(NSLayoutAttribute, NSLayoutAttribute)]
-        attributes.forEach {
-            let constraint = NSLayoutConstraint(item: self.textBox, attribute: $0, relatedBy: .Equal, toItem: self, attribute: $1, multiplier: 1, constant: 0)
-            constraint.priority = 800
-            self.addConstraint(constraint)
+        ([(.Left, .LeftMargin), (.Right, .Right), (.Top, .TopMargin), (.Bottom, .BottomMargin)] as [(NSLayoutAttribute, NSLayoutAttribute)]).forEach {
+            NSLayoutConstraint(item: self.textBox, attribute: $0, relatedBy: .Equal, toItem: self, attribute: $1, multiplier: 1, constant: 0).then {
+                $0.priority = 800
+                self.addConstraint($0)
+            }
         }
     }
 
@@ -52,8 +52,10 @@ public class TextView: UIControl {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        let diff = textBox.contentSize.height - textBox.bounds.height
-        if diff < 0 { textBox.contentOffset.y = diff / 2 }
+        textBox.then {
+            let diff = $0.contentSize.height - $0.bounds.height
+            if diff < 0 { $0.contentOffset.y = diff / 2 }
+        }
     }
 
     public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {

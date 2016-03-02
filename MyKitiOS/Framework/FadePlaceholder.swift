@@ -13,14 +13,14 @@ public protocol FadePlaceholder: class {
 
 extension FadePlaceholder {
 
-    public func animatePlaceholder(alpha: CGFloat) {
-        UIView.animateWithDuration(0.25) { [unowned placeholder] in
-            placeholder.alpha = alpha
+    public func fadePlaceholderAlongsideWith(text: String) {
+        let animation = { (alpha: CGFloat) in
+            UIView.animateWithDuration(0.25) {
+                self.placeholder.alpha = alpha
+            }
         }
-    }
 
-    public func delayPlaceholderAnimation(textView: UITextView) {
-        if placeholder.alpha == 1 && !textView.text.isEmpty { animatePlaceholder(0) }
-        if placeholder.alpha == 0 && textView.text.isEmpty { animatePlaceholder(1) }
+        if placeholder.alpha == 1 && !text.isEmpty { animation(0) }
+        if placeholder.alpha == 0 && text.isEmpty { animation(1) }
     }
 }
