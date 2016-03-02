@@ -17,9 +17,8 @@ final public class TaskManager {
     public init() {}
 
     public func schedule(time: CFTimeInterval, @noescape block: Void -> Void) {
-        NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "timerFireMethod:", userInfo: Box(block), repeats: false).then {
+        timer = NSTimer.scheduledTimerWithTimeInterval(time, target: self, selector: "timerFireMethod:", userInfo: Box(block), repeats: false).then {
             NSRunLoop.currentRunLoop().addTimer($0, forMode: NSDefaultRunLoopMode)
-            timer = $0
         }
     }
 
