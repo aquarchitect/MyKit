@@ -25,12 +25,10 @@ public extension CKDatabase {
 
 public extension CKDatabase {
 
-    private typealias NetworkCallCompletionHandler = (CKRecord?, NSError?) -> Void
-
-    private func redirect(callback: Result<CKRecord>.Callback) -> NetworkCallCompletionHandler {
+    private func redirect<T>(callback: Result<T>.Callback) -> (T?, NSError?) -> Void {
         return {
-            if let record = $0 {
-                callback(.Fullfill(record))
+            if let result = $0 {
+                callback(.Fullfill(result))
             } else if let error = $1 {
                 callback(.Reject(error))
             }
@@ -39,6 +37,10 @@ public extension CKDatabase {
 
     public func save(record: CKRecord) -> Promise<CKRecord> {
         return Promise(redirect >>> { self.saveRecord(record, completionHandler: $0) })
+    }
+
+    public func delete(recordID: CKRecordID) -> Promise<CKRecordID> {
+        return Promise(redirect >>> { self.deleteRecordWithID(recordID, completionHandler: $0) })
     }
 
     public func fetch(recordID: CKRecordID) -> Promise<CKRecord> {
