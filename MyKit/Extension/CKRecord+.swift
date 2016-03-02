@@ -12,16 +12,14 @@ public extension CKRecord {
         self.init(recordType: String(recordType))
     }
 
-    public func archive() -> NSData {
-        let data = NSMutableData()
-
-        NSKeyedArchiver(forWritingWithMutableData: data).then {
-            $0.requiresSecureCoding = true
-            self.encodeSystemFieldsWithCoder($0)
-            $0.finishEncoding()
+    public var metadata: NSData {
+        return NSMutableData().then {
+            NSKeyedArchiver(forWritingWithMutableData: $0).then {
+                $0.requiresSecureCoding = true
+                self.encodeSystemFieldsWithCoder($0)
+                $0.finishEncoding()
+            }
         }
-
-        return data
     }
 
     public convenience init?(data: NSData) {

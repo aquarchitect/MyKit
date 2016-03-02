@@ -37,7 +37,7 @@ public class CloudObject: NSObject, CloudRecord {
     public private(set) var metadata: NSData?
 
     public required init?(record: CKRecord, cached: Bool) {
-        self.metadata = cached ? record.archive() : nil
+        self.metadata = cached ? record.metadata : nil
         super.init()
 
         if record.recordType != String(self.dynamicType) { return nil }
@@ -48,8 +48,12 @@ public class CloudObject: NSObject, CloudRecord {
         super.init()
     }
 
-    public func toRecord() -> CKRecord {
-        return (metadata?.record ?? CKRecord(recordType: self.dynamicType)).then { encodeTo($0) }
+    public func toRecord() -> CKRecord? {
+        return metadata?.then {
+            CKRecord(data: $0)
+        }?.then {
+            encodeTo($0)
+        }
     }
 }
 
@@ -58,21 +62,10 @@ public class CloudUser: NSObject, CloudRecord {
     public let metadata: NSData
 
     public required init?(record: CKRecord) {
-        self.metadata = record.archive()
+        self.metadata = record.metadata
         super.init()
 
         if record.recordType != CKRecordTypeUserRecord { return nil }
         decodeFrom(record)
-    }
-
-    public func toRecord() -> CKRecord? {
-        return metadata.record
-    }
-}
-
-private extension NSData {
-
-    var record: CKRecord? {
-        return CKRecord(data: self)
     }
 }

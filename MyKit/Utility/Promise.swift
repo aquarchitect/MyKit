@@ -50,37 +50,40 @@ public extension Promise {
             }
         }
     }
-}
 
-public func combine<T>(promises: Promise<T>...) -> Promise<[T]> {
-    var _values: [T] = []
-    var _error: ErrorType?
+    static public func when(promises: [Promise]) -> Promise<[T]> {
+        var values: [T] = []
+        var stopped = false
 
-    let group = dispatch_group_create()
-    let queue = dispatch_queue_create("Execution", DISPATCH_QUEUE_CONCURRENT)
+        let group = dispatch_group_create()
+        let queue = dispatch_queue_create("When", DISPATCH_QUEUE_CONCURRENT)
 
-    return Promise { callback in
-        for promise in promises {
-            dispatch_group_enter(group)
+        return Promise<[T]> { callback in
+            for promise in promises {
+                dispatch_group_enter(group)
 
-            promise.resolve { result in
-                dispatch_barrier_sync(queue) {
-                    switch result {
+                promise.resolve { result in
+                    defer { dispatch_group_leave(group) }
+                    guard !stopped else { return }
 
-                    case .Fullfill(let value): _values.append(value)
-                    case .Reject(let error): _error = error
+                    // safe-thread modification for values
+                    dispatch_barrier_sync(queue) {
+                        switch result {
+
+                        case .Fullfill(let value):
+                            values.append(value)
+                        case .Reject(let error):
+                            stopped = true
+                            callback(.Reject(error))
+                        }
                     }
                 }
-                dispatch_group_leave(group)
             }
-        }
 
-        dispatch_group_notify(group, queue) {
-            if let error = _error {
-                callback(.Reject(error))
-            } else {
-                callback(.Fullfill(_values))
+            dispatch_group_notify(group, queue) {
+                if !stopped { callback(.Fullfill(values)) }
             }
         }
     }
 }
+

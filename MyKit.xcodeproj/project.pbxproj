@@ -68,7 +68,6 @@
 		C259F01E1C4D6FE200F9B2BC /* ConstraintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0111C4D6FE200F9B2BC /* ConstraintView.swift */; };
 		C259F0201C4D6FE200F9B2BC /* FadePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0121C4D6FE200F9B2BC /* FadePlaceholder.swift */; };
 		C259F0221C4D6FE200F9B2BC /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0131C4D6FE200F9B2BC /* PresentationController.swift */; };
-		C259F0241C4D6FE200F9B2BC /* RowField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0141C4D6FE200F9B2BC /* RowField.swift */; };
 		C259F0261C4D6FE200F9B2BC /* SimpleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0151C4D6FE200F9B2BC /* SimpleTransition.swift */; };
 		C259F0281C4D6FE200F9B2BC /* SnapLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0161C4D6FE200F9B2BC /* SnapLayout.swift */; };
 		C259F02A1C4D6FE200F9B2BC /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0171C4D6FE200F9B2BC /* StackView.swift */; };
@@ -197,7 +196,6 @@
 		C259F0111C4D6FE200F9B2BC /* ConstraintView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Framework/ConstraintView.swift; sourceTree = "<group>"; };
 		C259F0121C4D6FE200F9B2BC /* FadePlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FadePlaceholder.swift; path = Framework/FadePlaceholder.swift; sourceTree = "<group>"; };
 		C259F0131C4D6FE200F9B2BC /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationController.swift; path = Framework/PresentationController.swift; sourceTree = "<group>"; };
-		C259F0141C4D6FE200F9B2BC /* RowField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RowField.swift; path = Framework/RowField.swift; sourceTree = "<group>"; };
 		C259F0151C4D6FE200F9B2BC /* SimpleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimpleTransition.swift; path = Framework/SimpleTransition.swift; sourceTree = "<group>"; };
 		C259F0161C4D6FE200F9B2BC /* SnapLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapLayout.swift; path = Framework/SnapLayout.swift; sourceTree = "<group>"; };
 		C259F0171C4D6FE200F9B2BC /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackView.swift; path = Framework/StackView.swift; sourceTree = "<group>"; };
@@ -418,7 +416,6 @@
 				C2E01D2C1C7BC8B9002444D4 /* Protocols */,
 				C259F0101C4D6FE200F9B2BC /* CollectionView.swift */,
 				C259F0B21C4D815600F9B2BC /* DynamicCell.swift */,
-				C259F0141C4D6FE200F9B2BC /* RowField.swift */,
 				C259F0151C4D6FE200F9B2BC /* SimpleTransition.swift */,
 				C259F0161C4D6FE200F9B2BC /* SnapLayout.swift */,
 				C259F0171C4D6FE200F9B2BC /* StackView.swift */,
@@ -841,7 +838,6 @@
 				C259EFFC1C4D6EDB00F9B2BC /* CGRect+.swift in Sources */,
 				C209F5401C7665EC007C3975 /* Queue.swift in Sources */,
 				C259F0051C4D6EDB00F9B2BC /* NSManagedObject+.swift in Sources */,
-				C259F0241C4D6FE200F9B2BC /* RowField.swift in Sources */,
 				C2F0E8E51C7FBC6B00A8F5A9 /* CloudQuery.swift in Sources */,
 				C2F18C981C76C86100A1DB83 /* CKDatabase+.swift in Sources */,
 				C259EFE51C4D6ECE00F9B2BC /* TimeSystem.swift in Sources */,
