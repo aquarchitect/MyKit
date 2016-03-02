@@ -52,11 +52,9 @@ public extension Promise {
     }
 
     static public func when(promises: [Promise]) -> Promise<[T]> {
-        var values: [T] = []
-        var stopped = false
-
+        let queue = dispatch_queue_create("HaiNguyen.Listing.when", DISPATCH_QUEUE_CONCURRENT)
         let group = dispatch_group_create()
-        let queue = dispatch_queue_create("When", DISPATCH_QUEUE_CONCURRENT)
+        var _result: Result<[T]>?
 
         return Promise<[T]> { callback in
             for promise in promises {
@@ -64,26 +62,21 @@ public extension Promise {
 
                 promise.resolve { result in
                     defer { dispatch_group_leave(group) }
-                    guard !stopped else { return }
+                    if case .Reject(_)? = _result { return }
 
                     // safe-thread modification for values
                     dispatch_barrier_sync(queue) {
-                        switch result {
-
-                        case .Fullfill(let value):
-                            values.append(value)
-                        case .Reject(let error):
-                            stopped = true
-                            callback(.Reject(error))
+                        _result = result.then {
+                            let values = try _result?.resolve()
+                            return (values ?? []) + [$0]
                         }
                     }
                 }
             }
 
             dispatch_group_notify(group, queue) {
-                if !stopped { callback(.Fullfill(values)) }
+                if let result = _result { callback(result) }
             }
         }
     }
 }
-
