@@ -59,5 +59,7 @@ public extension NSMutableAttributedString {
 }
 
 public func + (lhs: NSMutableAttributedString, rhs: NSMutableAttributedString) -> NSMutableAttributedString {
-    return NSMutableAttributedString(attributedString: lhs).then { $0.appendAttributedString(rhs) }
+    return NSMutableAttributedString(attributedString: lhs).then {
+        $0.appendAttributedString(rhs)
+    }
 }
