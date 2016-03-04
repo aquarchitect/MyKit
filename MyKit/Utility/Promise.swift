@@ -51,31 +51,51 @@ public extension Promise {
         }
     }
 
+    private func joint<U>(queue: dispatch_queue_t, _ group: dispatch_group_t, f: ((T throws -> U) -> Result<U>) -> Void) {
+        dispatch_group_enter(group)
+
+        resolve { result in
+            dispatch_barrier_sync(queue) { f(result.then) }
+            dispatch_group_leave(group)
+        }
+    }
+
     static public func when(promises: [Promise]) -> Promise<[T]> {
-        let queue = dispatch_queue_create("HaiNguyen.Listing.when", DISPATCH_QUEUE_CONCURRENT)
+        let queue = dispatch_queue_create("HaiNguyen.MyKit.Promise.array", DISPATCH_QUEUE_CONCURRENT)
         let group = dispatch_group_create()
-        var _result: Result<[T]>?
+
+        var output: Result<[T]>?
 
         return Promise<[T]> { callback in
-            for promise in promises {
-                dispatch_group_enter(group)
-
-                promise.resolve { result in
-                    defer { dispatch_group_leave(group) }
-                    if case .Reject(_)? = _result { return }
-
-                    // safe-thread modification for values
-                    dispatch_barrier_sync(queue) {
-                        _result = result.then {
-                            let values = try _result?.resolve()
-                            return (values ?? []) + [$0]
-                        }
-                    }
-                }
-            }
+            promises.forEach { $0.joint(queue, group) {
+                output = $0 { (try output?.resolve() ?? []) + [$0] }
+            }}
 
             dispatch_group_notify(group, queue) {
-                if let result = _result { callback(result) }
+                if let result = output { callback(result) }
+            }
+        }
+    }
+}
+
+infix operator +++ { associativity left }
+
+public func +++ <A, B>(lhs: Promise<A>, rhs: Promise<B>) -> Promise<(A, B)> {
+    let queue = dispatch_queue_create("HaiNguyen.MyKit.Promise.tuple", DISPATCH_QUEUE_CONCURRENT)
+    let group = dispatch_group_create()
+
+    var output: Result<(A?, B?)>?
+
+    return Promise<(A, B)> { callback in
+        lhs.joint(queue, group) { output = $0 { ($0, try output?.resolve().1) }}
+        rhs.joint(queue, group) { output = $0 { (try output?.resolve().0, $0) }}
+
+        dispatch_group_notify(group, queue) {
+            switch output {
+
+            case .Fullfill(let a?, let b?)?: callback(.Fullfill((a, b)))
+            case .Reject(let error)?: callback(.Reject(error))
+            default: break
             }
         }
     }
