@@ -82,18 +82,13 @@ public final class OpenWeather {
         let language = "lang=\(self.language)"
         let units = "units=\(format.rawValue)"
 
-        let string = [apiKey, language, units].reduce(baseURL + String(version) + method, combine: &)
-        guard let url = NSURL(string: string) else { return }
-
-        NSURLSession.sharedSession().dataTaskWithURL(url) { optinalData, _, _ in
-            var dictionary: NSDictionary?
-
-            if let data = optinalData {
-                let json = try? NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
-                dictionary = json as? NSDictionary
+        NSURL(string: [apiKey, language, units].reduce(baseURL + String(version) + method, combine: &))?.then {
+            NSURLSession.sharedSession().dataTaskWithURL($0) { data, _, _ in
+                data?.then {
+                    (try? NSJSONSerialization.JSONObjectWithData($0, options: .MutableContainers)) as? NSDictionary
+                }?.then { completion($0) }
             }
-            
-            completion(dictionary)
         }.resume()
+
     }
 }
