@@ -30,9 +30,8 @@ public class CollectionView<T, C: UICollectionViewCell>: UICollectionView, UICol
     }
 
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! C
-        config?(cell, items[indexPath.section][indexPath.item])
-
-        return cell
+        return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath).then {
+            config?($0 as! C, items[indexPath.section][indexPath.item])
+        }
     }
 }

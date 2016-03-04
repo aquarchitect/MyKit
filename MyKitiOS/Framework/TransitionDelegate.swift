@@ -55,11 +55,13 @@ extension TransitionDelegate: UIViewControllerAnimatedTransitioning {
 extension TransitionDelegate: UIViewControllerTransitioningDelegate {
 
     public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        let controller = PresentationController(presented: presented, presenting: source, rect: presentedRect)
-        controller.alongside = alongside
-        controller.dimView.userInteractionEnabled = dimming.dismissal
-        controller.dimView.backgroundColor = UIColor(white: 0, alpha: dimming.transparent)
-        return controller
+        return PresentationController(presented: presented, presenting: source, rect: presentedRect).then {
+            $0.alongside = alongside
+            $0.dimView.then {
+                $0.userInteractionEnabled = dimming.dismissal
+                $0.backgroundColor = UIColor(white: 0, alpha: dimming.transparent)
+            }
+        }
     }
 
     public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

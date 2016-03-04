@@ -48,8 +48,10 @@ final public class SimpleTransition: TransitionDelegate {
         }
 
         UIView.animateWithDuration(duration, delay: 0, options: options, animations: { [unowned self, unowned controller] in
-            controller.view.alpha = self.isPresenting ? 1 : self.animating.alpha
-            controller.view.transform = self.isPresenting ? CGAffineTransformIdentity : self.animating.transform
+            controller.view.then {
+                $0.alpha = self.isPresenting ? 1 : self.animating.alpha
+                $0.transform = self.isPresenting ? CGAffineTransformIdentity : self.animating.transform
+            }
             }, completion: { [weak self, weak fromController, weak transitionContext] _ in
                 if self?.isPresenting == false { fromController?.view.removeFromSuperview() }
                 transitionContext?.completeTransition(!(transitionContext?.transitionWasCancelled() == true))

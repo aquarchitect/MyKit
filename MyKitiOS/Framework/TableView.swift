@@ -32,9 +32,8 @@ public class TableView<T, C: UITableViewCell>: UITableView, UITableViewDataSourc
     }
 
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! C
-        config?(cell, items[indexPath.section][indexPath.row])
-
-        return cell
+        return tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath).then {
+            config?($0 as! C, items[indexPath.section][indexPath.row])
+        }
     }
 }

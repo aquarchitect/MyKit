@@ -15,8 +15,8 @@ extension Then {
         return self
     }
 
-    public func then<U>(@noescape f: Self -> U) -> U {
-        return f(self)
+    public func then<U>(@noescape f: Self throws -> U) rethrows -> U {
+        return try f(self)
     }
 }
 

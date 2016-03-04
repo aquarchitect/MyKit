@@ -111,13 +111,8 @@ class SnapLayout: UICollectionViewFlowLayout {
     }
 
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        guard let original = super.layoutAttributesForItemAtIndexPath(indexPath) else { return nil }
-        if indexPath == snap.trackedIndexPath {
-            let replacement = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
-            replacement.frame = original.frame
-            snap.transform?(replacement)
-            
-            return replacement
-        } else { return original }
+        return super.layoutAttributesForItemAtIndexPath(indexPath)?.then { attrs in
+            indexPath == snap.trackedIndexPath ? UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath).then { $0.frame = attrs.frame; snap.transform?($0) } : attrs
+        }
     }
 }

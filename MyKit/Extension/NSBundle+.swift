@@ -15,7 +15,6 @@ extension NSBundle {
             let platform = "OSX"
         #endif
 
-        let identifier = "HaiNguyen.MyKit\(platform)"
-        return NSBundle(identifier: identifier)
+        return NSBundle(identifier: "HaiNguyen.MyKit\(platform)")
     }
 }

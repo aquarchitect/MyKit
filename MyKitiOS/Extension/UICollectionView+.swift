@@ -67,6 +67,7 @@ public extension UICollectionView {
 
             hold.trackedIndexPath = frontIndexPath
             selectItemsToIndexPath(indexPath)
+
         case .OrderedDescending:
             guard let cell = self.cellForItemAtIndexPath(frontIndexPath) else { return }
 

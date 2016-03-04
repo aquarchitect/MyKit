@@ -35,8 +35,11 @@ public class PresentationController: UIPresentationController {
         self.containerView?.insertSubview(dimView, atIndex: 0)
         animateDimView(1, completion: nil)
 
-        let controller = self.presentingViewController
-        controller.transitionCoordinator()?.animateAlongsideTransitionInView(controller.view, animation: { _ in self.alongside?.animateControllerSubviewsAlongsideTransitionForPresenting?(controller) }, completion: nil)
+        self.presentingViewController.then { controller in
+            controller.transitionCoordinator()?.animateAlongsideTransitionInView(controller.view, animation: { _ in
+                self.alongside?.animateControllerSubviewsAlongsideTransitionForPresenting?(controller)
+            }, completion: nil)
+        }
     }
 
     public override func dismissalTransitionWillBegin() {
@@ -44,12 +47,17 @@ public class PresentationController: UIPresentationController {
 
         self.presentedViewController.view.endEditing(true)
 
-        let controller = self.presentingViewController
-        controller.transitionCoordinator()?.animateAlongsideTransitionInView(controller.view, animation: { _ in self.alongside?.animateControllerSubviewsAlongsideTransitionForDismissing?(controller) }, completion: nil)
+        self.presentingViewController.then { controller in
+            controller.transitionCoordinator()?.animateAlongsideTransitionInView(controller.view, animation: { _ in
+                self.alongside?.animateControllerSubviewsAlongsideTransitionForDismissing?(controller)
+            }, completion: nil)
+        }
     }
 
     private func animateDimView(alpha: CGFloat, completion: (Void -> Void)?) {
-        self.presentingViewController.transitionCoordinator()?.animateAlongsideTransition({ _ in self.dimView.alpha = alpha }, completion: { _ in completion?() })
+        self.presentingViewController.transitionCoordinator()?.animateAlongsideTransition({ [unowned dimView] _ in
+            dimView.alpha = alpha
+        }, completion: { _ in completion?() })
     }
 
     public override func containerViewWillLayoutSubviews() {
