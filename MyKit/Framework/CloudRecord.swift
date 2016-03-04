@@ -6,6 +6,12 @@
 //  
 //
 
+private enum ParseError: ErrorType {
+
+    case MissedMatch
+    case NotUserType
+}
+
 public protocol CloudRecord: class {}
 
 private extension CloudRecord where Self: NSObject {
@@ -36,16 +42,20 @@ public class CloudObject: NSObject, CloudRecord {
 
     public private(set) var metadata: NSData?
 
-    public required init?(record: CKRecord, cached: Bool) {
-        self.metadata = cached ? record.metadata : nil
+    public init(record: CKRecord, cacheMetadata flag: Bool) throws {
         super.init()
-
-        if record.recordType != String(self.dynamicType) { return nil }
-        decodeFrom(record)
+        try reload(record, cacheMetadata: flag)
     }
 
-    public override init() {
-        super.init()
+    public override init() { super.init() }
+
+    public func reload(record: CKRecord, cacheMetadata flag: Bool) throws {
+        if record.recordType != String(self.dynamicType) {
+            throw ParseError.MissedMatch
+        }
+
+        metadata = flag ? record.metadata : nil
+        decodeFrom(record)
     }
 
     public func toRecord() -> CKRecord? {
@@ -59,13 +69,27 @@ public class CloudObject: NSObject, CloudRecord {
 
 public class CloudUser: NSObject, CloudRecord {
 
-    public let metadata: NSData
+    public private(set) var metadata: NSData!
 
-    public required init?(record: CKRecord) {
-        self.metadata = record.metadata
+    public init(record: CKRecord) throws {
         super.init()
+        try reload(record)
+    }
 
-        if record.recordType != CKRecordTypeUserRecord { return nil }
+    public func reload(record: CKRecord) throws {
+        if record.recordType != CKRecordTypeUserRecord {
+            throw ParseError.NotUserType
+        }
+
+        metadata = record.metadata
         decodeFrom(record)
+    }
+
+    public func toRecord() -> CKRecord {
+        return metadata.then {
+            CKRecord(data: $0)
+        }!.then {
+            encodeTo($0)
+        }
     }
 }

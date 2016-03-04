@@ -25,7 +25,7 @@ public extension CKDatabase {
 
 public extension CKDatabase {
 
-    private func redirect<T>(callback: Result<T>.Callback) -> (T?, NSError?) -> Void {
+    private func transform<T>(callback: Result<T>.Callback) -> (T?, NSError?) -> Void {
         return {
             if let result = $0 {
                 callback(.Fullfill(result))
@@ -36,14 +36,18 @@ public extension CKDatabase {
     }
 
     public func save(record: CKRecord) -> Promise<CKRecord> {
-        return Promise(redirect >>> { self.saveRecord(record, completionHandler: $0) })
+        return Promise(transform >>> { self.saveRecord(record, completionHandler: $0) })
     }
 
     public func delete(recordID: CKRecordID) -> Promise<CKRecordID> {
-        return Promise(redirect >>> { self.deleteRecordWithID(recordID, completionHandler: $0) })
+        return Promise(transform >>> { self.deleteRecordWithID(recordID, completionHandler: $0) })
     }
 
     public func fetch(recordID: CKRecordID) -> Promise<CKRecord> {
-        return Promise(redirect >>> { self.fetchRecordWithID(recordID, completionHandler: $0) })
+        return Promise(transform >>> { self.fetchRecordWithID(recordID, completionHandler: $0) })
+    }
+
+    public func perform(query: CKQuery, zone: CKRecordZoneID? = nil) -> Promise<[CKRecord]> {
+        return Promise(transform >>> { self.performQuery(query, inZoneWithID: zone, completionHandler: $0) })
     }
 }
