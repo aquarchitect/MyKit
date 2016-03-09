@@ -66,6 +66,43 @@
 		C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA948E1C6D505200EDF761 /* UIViewController+.swift */; };
 		C2C06AF81C8FC55D000283D7 /* TestLoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C06AF71C8FC55D000283D7 /* TestLoremIpsum.swift */; };
 		C2C06AFA1C8FCAF4000283D7 /* TestPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C06AF91C8FCAF4000283D7 /* TestPromise.swift */; };
+		C2EF9AE31C90AC8C0037BE4D /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2EFDCC81C8FF5F2000DFB63 /* SymbolIcon.ttf */; };
+		C2EF9AE41C90AC8C0037BE4D /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCC91C8FF5F2000DFB63 /* SymbolIcon.swift */; };
+		C2EF9AE51C90AC910037BE4D /* WeatherFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2EFDCCC1C8FF601000DFB63 /* WeatherFont.ttf */; };
+		C2EF9AE61C90AC910037BE4D /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCCD1C8FF601000DFB63 /* WeatherAPI.swift */; };
+		C2EF9AE71C90AC910037BE4D /* WeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCCE1C8FF601000DFB63 /* WeatherIcon.swift */; };
+		C2EF9AE81C90AC970037BE4D /* LoremIpsum.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2EFDCD21C8FF611000DFB63 /* LoremIpsum.txt */; };
+		C2EF9AE91C90AC970037BE4D /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCD31C8FF611000DFB63 /* LoremIpsum.swift */; };
+		C2EF9AEA1C90AC9D0037BE4D /* CloudRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCD61C8FF61E000DFB63 /* CloudRecord.swift */; };
+		C2EF9AEB1C90AC9D0037BE4D /* CloudStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCD71C8FF61E000DFB63 /* CloudStack.swift */; };
+		C2EF9AEC1C90ACAF0037BE4D /* Bool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC901C8FF0C8000DFB63 /* Bool+.swift */; };
+		C2EF9AED1C90ACAF0037BE4D /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC911C8FF0C8000DFB63 /* CollectionType+.swift */; };
+		C2EF9AEE1C90ACAF0037BE4D /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC921C8FF0C8000DFB63 /* Random.swift */; };
+		C2EF9AEF1C90ACAF0037BE4D /* Range+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC931C8FF0C8000DFB63 /* Range+.swift */; };
+		C2EF9AF01C90ACAF0037BE4D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC941C8FF0C8000DFB63 /* String+.swift */; };
+		C2EF9AF11C90ACAF0037BE4D /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC951C8FF0C8000DFB63 /* Then.swift */; };
+		C2EF9AF21C90ACB90037BE4D /* NSBundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC9C1C8FF0E5000DFB63 /* NSBundle+.swift */; };
+		C2EF9AF31C90ACB90037BE4D /* NSCache+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC9D1C8FF0E5000DFB63 /* NSCache+.swift */; };
+		C2EF9AF41C90ACB90037BE4D /* NSDate+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC9E1C8FF0E5000DFB63 /* NSDate+.swift */; };
+		C2EF9AF51C90ACB90037BE4D /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC9F1C8FF0E5000DFB63 /* NSDateFormatter+.swift */; };
+		C2EF9AF61C90ACB90037BE4D /* NSIndexPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCA01C8FF0E5000DFB63 /* NSIndexPath+.swift */; };
+		C2EF9AF71C90ACB90037BE4D /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCA11C8FF0E5000DFB63 /* NSMutableAttributedString+.swift */; };
+		C2EF9AF81C90ACB90037BE4D /* NSNumber+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCA21C8FF0E5000DFB63 /* NSNumber+.swift */; };
+		C2EF9AF91C90ACB90037BE4D /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCA31C8FF0E5000DFB63 /* NSObject+.swift */; };
+		C2EF9AFA1C90ACB90037BE4D /* NSRange+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCA41C8FF0E5000DFB63 /* NSRange+.swift */; };
+		C2EF9AFB1C90ACC30037BE4D /* CKContainer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCAE1C8FF0F7000DFB63 /* CKContainer+.swift */; };
+		C2EF9AFC1C90ACC30037BE4D /* CKDatabase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCAF1C8FF0F7000DFB63 /* CKDatabase+.swift */; };
+		C2EF9AFD1C90ACC30037BE4D /* CKQuery+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCB01C8FF0F7000DFB63 /* CKQuery+.swift */; };
+		C2EF9AFE1C90ACC30037BE4D /* CKRecord+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCB11C8FF0F7000DFB63 /* CKRecord+.swift */; };
+		C2EF9AFF1C90ACC30037BE4D /* CKRecordID+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCB21C8FF0F7000DFB63 /* CKRecordID+.swift */; };
+		C2EF9B001C90ACCD0037BE4D /* NSAttributeDescription+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCB81C8FF102000DFB63 /* NSAttributeDescription+.swift */; };
+		C2EF9B011C90ACCD0037BE4D /* NSEntityDescription+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCB91C8FF102000DFB63 /* NSEntityDescription+.swift */; };
+		C2EF9B021C90ACCD0037BE4D /* NSManagedObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCBA1C8FF102000DFB63 /* NSManagedObject+.swift */; };
+		C2EF9B031C90ACCD0037BE4D /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCBB1C8FF102000DFB63 /* NSManagedObjectContext+.swift */; };
+		C2EF9B041C90ACCD0037BE4D /* NSRelationshipDescription+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCBC1C8FF102000DFB63 /* NSRelationshipDescription+.swift */; };
+		C2EF9B051C90ACD90037BE4D /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCC21C8FF113000DFB63 /* CGPoint+.swift */; };
+		C2EF9B061C90ACD90037BE4D /* CGRect+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCC31C8FF113000DFB63 /* CGRect+.swift */; };
+		C2EF9B071C90ACD90037BE4D /* CGSize+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCC41C8FF113000DFB63 /* CGSize+.swift */; };
 		C2EFDC961C8FF0C8000DFB63 /* Bool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC901C8FF0C8000DFB63 /* Bool+.swift */; };
 		C2EFDC971C8FF0C8000DFB63 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC911C8FF0C8000DFB63 /* CollectionType+.swift */; };
 		C2EFDC981C8FF0C8000DFB63 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC921C8FF0C8000DFB63 /* Random.swift */; };
@@ -666,6 +703,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2EF9AE51C90AC910037BE4D /* WeatherFont.ttf in Resources */,
+				C2EF9AE81C90AC970037BE4D /* LoremIpsum.txt in Resources */,
+				C2EF9AE31C90AC8C0037BE4D /* SymbolIcon.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,23 +734,57 @@
 			buildActionMask = 2147483647;
 			files = (
 				C209F54F1C76673E007C3975 /* Draw.swift in Sources */,
+				C2EF9AE71C90AC910037BE4D /* WeatherIcon.swift in Sources */,
+				C2EF9AE91C90AC970037BE4D /* LoremIpsum.swift in Sources */,
+				C2EF9AEF1C90ACAF0037BE4D /* Range+.swift in Sources */,
+				C2EF9B051C90ACD90037BE4D /* CGPoint+.swift in Sources */,
+				C2EF9AED1C90ACAF0037BE4D /* CollectionType+.swift in Sources */,
+				C2EF9B041C90ACCD0037BE4D /* NSRelationshipDescription+.swift in Sources */,
 				C209F5511C76673E007C3975 /* Register.swift in Sources */,
 				C209F54E1C76673E007C3975 /* Curry.swift in Sources */,
 				C2F18C961C76B2F400A1DB83 /* Promise.swift in Sources */,
 				C209F5461C7666B7007C3975 /* Result.swift in Sources */,
+				C2EF9AFB1C90ACC30037BE4D /* CKContainer+.swift in Sources */,
+				C2EF9AF31C90ACB90037BE4D /* NSCache+.swift in Sources */,
 				C209F54D1C76673E007C3975 /* Box.swift in Sources */,
+				C2EF9AF61C90ACB90037BE4D /* NSIndexPath+.swift in Sources */,
+				C2EF9B031C90ACCD0037BE4D /* NSManagedObjectContext+.swift in Sources */,
+				C2EF9AF71C90ACB90037BE4D /* NSMutableAttributedString+.swift in Sources */,
+				C2EF9AF91C90ACB90037BE4D /* NSObject+.swift in Sources */,
+				C2EF9AEB1C90AC9D0037BE4D /* CloudStack.swift in Sources */,
+				C2EF9AEC1C90ACAF0037BE4D /* Bool+.swift in Sources */,
+				C2EF9AFC1C90ACC30037BE4D /* CKDatabase+.swift in Sources */,
+				C2EF9AE41C90AC8C0037BE4D /* SymbolIcon.swift in Sources */,
 				C259F0701C4D703D00F9B2BC /* StreamClient.swift in Sources */,
+				C2EF9AF51C90ACB90037BE4D /* NSDateFormatter+.swift in Sources */,
 				C259F0731C4D703D00F9B2BC /* TimeSystem.swift in Sources */,
+				C2EF9B021C90ACCD0037BE4D /* NSManagedObject+.swift in Sources */,
+				C2EF9B061C90ACD90037BE4D /* CGRect+.swift in Sources */,
+				C2EF9AF21C90ACB90037BE4D /* NSBundle+.swift in Sources */,
 				C209F5531C76673E007C3975 /* Time.swift in Sources */,
 				C259F06F1C4D703D00F9B2BC /* PersistentStack.swift in Sources */,
 				C209F5501C76673E007C3975 /* Queue.swift in Sources */,
+				C2EF9B011C90ACCD0037BE4D /* NSEntityDescription+.swift in Sources */,
+				C2EF9AF41C90ACB90037BE4D /* NSDate+.swift in Sources */,
 				C259F06B1C4D703D00F9B2BC /* DateIndex.swift in Sources */,
 				C259F05F1C4D701D00F9B2BC /* NSColor+.swift in Sources */,
+				C2EF9AF81C90ACB90037BE4D /* NSNumber+.swift in Sources */,
+				C2EF9B001C90ACCD0037BE4D /* NSAttributeDescription+.swift in Sources */,
 				C259F0721C4D703D00F9B2BC /* TaskManager.swift in Sources */,
 				C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */,
 				C259F0611C4D701D00F9B2BC /* NSControl+.swift in Sources */,
+				C2EF9AEA1C90AC9D0037BE4D /* CloudRecord.swift in Sources */,
+				C2EF9AE61C90AC910037BE4D /* WeatherAPI.swift in Sources */,
+				C2EF9AF01C90ACAF0037BE4D /* String+.swift in Sources */,
 				C209F5521C76673E007C3975 /* Swizzle.swift in Sources */,
 				C259F0631C4D701D00F9B2BC /* NSTableView+.swift in Sources */,
+				C2EF9AFA1C90ACB90037BE4D /* NSRange+.swift in Sources */,
+				C2EF9AF11C90ACAF0037BE4D /* Then.swift in Sources */,
+				C2EF9AFE1C90ACC30037BE4D /* CKRecord+.swift in Sources */,
+				C2EF9B071C90ACD90037BE4D /* CGSize+.swift in Sources */,
+				C2EF9AFF1C90ACC30037BE4D /* CKRecordID+.swift in Sources */,
+				C2EF9AFD1C90ACC30037BE4D /* CKQuery+.swift in Sources */,
+				C2EF9AEE1C90ACAF0037BE4D /* Random.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
