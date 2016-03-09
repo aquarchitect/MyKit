@@ -10,8 +10,8 @@ public protocol Then {}
 
 extension Then {
 
-    public func then(@noescape f: Self -> Void) -> Self {
-        f(self)
+    public func then(@noescape f: Self throws -> Void) rethrows -> Self {
+        try f(self)
         return self
     }
 
