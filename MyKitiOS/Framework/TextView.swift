@@ -28,8 +28,9 @@ public class TextView: UIControl {
         super.addSubview(textBox)
 
         textBox.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
-        ([(.Left, .LeftMargin), (.Right, .Right), (.Top, .TopMargin), (.Bottom, .BottomMargin)] as [(NSLayoutAttribute, NSLayoutAttribute)]).forEach {
-            NSLayoutConstraint(item: self.textBox, attribute: $0, relatedBy: .Equal, toItem: self, attribute: $1, multiplier: 1, constant: 0).then {
+
+        [(.Left, .LeftMargin), (.Right, .Right), (.Top, .TopMargin), (.Bottom, .BottomMargin)].forEach {
+            NSLayoutConstraint(item: textBox, attribute: $0, relatedBy: .Equal, toItem: self, attribute: $1, multiplier: 1, constant: 0).then {
                 $0.priority = 800
                 self.addConstraint($0)
             }
