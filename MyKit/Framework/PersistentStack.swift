@@ -6,23 +6,33 @@
 //
 //
 
-public class PersistentStack {
+public protocol PersistentStack {
 
-    public let context: NSManagedObjectContext
-    public let coordinator: NSPersistentStoreCoordinator
+    var context: NSManagedObjectContext { get }
+}
 
-    public init(appName: String) throws {
-        var storeURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last
-        storeURL = storeURL?.URLByAppendingPathComponent(appName + "Data.sqlite")
+public extension PersistentStack {
 
-        let modelURL = NSBundle.mainBundle().URLForResource(appName, withExtension: "momd")
-        let modelObject = NSManagedObjectModel(contentsOfURL: modelURL!)
+    public var coordinator: NSPersistentStoreCoordinator? {
+        return context.persistentStoreCoordinator
+    }
 
-        self.context = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-        self.coordinator = NSPersistentStoreCoordinator(managedObjectModel: modelObject!)
-        try self.coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+    public static func defaultContextFor(app name: String) throws -> NSManagedObjectContext {
+        let url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last?.then {
+            $0.URLByAppendingPathComponent(name + "Data.sqlite")
+        }
 
-        self.context.persistentStoreCoordinator = coordinator
-        self.context.undoManager = NSUndoManager()
+        let model = NSBundle.mainBundle().URLForResource(name, withExtension: "momd")?.then {
+            NSManagedObjectModel(contentsOfURL: $0)
+        }
+
+        let coordinator = try NSPersistentStoreCoordinator(managedObjectModel: model!).then {
+                try $0.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url!, options: nil)
+            } as NSPersistentStoreCoordinator
+
+        return NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType).then {
+            $0.persistentStoreCoordinator = coordinator
+            $0.undoManager = NSUndoManager()
+        }
     }
 }

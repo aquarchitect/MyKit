@@ -8,10 +8,10 @@
 
 public class Box<T> {
 
-    public let unbox: T
+    public let value: T
 
     public init(_ value: T) {
-        self.unbox = value
+        self.value = value
     }
 }
 

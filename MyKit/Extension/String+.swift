@@ -15,28 +15,32 @@ public extension String {
     }
 
     /// Validate the receiver with format
-    public func validateFormat(format: Format) -> Bool {
-        guard let regex = try? NSRegularExpression(pattern: "^\(format.pattern)$", options: []) else { return false }
+    public func validateFor(format: Format) -> Bool {
         let range = NSMakeRange(0, self.characters.count)
 
-        return regex.rangeOfFirstMatchInString(self, options: .ReportProgress, range: range) == range
+        return (try? NSRegularExpression(pattern: "^\(format.pattern)$", options: []).then {
+            $0.rangeOfFirstMatchInString(self, options: .ReportProgress, range: range) == range
+        }) ?? false
     }
 }
 
 private extension String.Format {
 
     var pattern: String {
-        let component = "([01]?\\d\\d?|2[0-4]\\d|25[0-5])"
-        return [String](count: 4, repeatedValue: component).joinWithSeparator("\\.")
+        switch self {
+
+        case .IPAddress: return [String](count: 4, repeatedValue:  "([01]?\\d\\d?|2[0-4]\\d|25[0-5])").joinWithSeparator("\\.")
+        }
     }
 }
 
 public extension String {
 
     public var camelcaseString: String {
-        let characters = NSCharacterSet(charactersInString: " -_")
-        let components = self.componentsSeparatedByCharactersInSet(characters)
-        let parse: (Int, String) -> String = { $0 == 0 ? $1.lowercaseString : $1.capitalizedString }
-        return components.enumerate().map(parse).joinWithSeparator("")
+        return NSCharacterSet(charactersInString: " -_").then {
+                self.componentsSeparatedByCharactersInSet($0)
+            }.enumerate().map {
+                $0 == 0 ? $1.lowercaseString : $1.capitalizedString
+            }.joinWithSeparator("")
     }
 }

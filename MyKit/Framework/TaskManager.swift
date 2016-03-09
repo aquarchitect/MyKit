@@ -10,9 +10,7 @@ final public class TaskManager {
 
     private var timer: NSTimer?
 
-    public var valid: Bool {
-        return timer?.valid ?? false
-    }
+    public var valid: Bool { return timer?.valid ?? false }
 
     public init() {}
 
@@ -23,7 +21,9 @@ final public class TaskManager {
     }
 
     public func schedule(time: CFTimeInterval, target: AnyObject, action: Selector, withObject object: AnyObject? = nil) {
-        schedule(time) { [weak target] in target?.performSelector(action, withObject: object) }
+        schedule(time) { [weak target] in
+            target?.performSelector(action, withObject: object)
+        }
     }
 
     public func cancel() {
@@ -32,6 +32,6 @@ final public class TaskManager {
     }
 
     @objc internal func timerFireMethod(timer: NSTimer) {
-        (timer.userInfo as? Box<Void -> Void>)?.unbox()
+        (timer.userInfo as? Box<(Void -> Void)>)?.value()
     }
 }
