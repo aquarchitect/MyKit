@@ -21,9 +21,10 @@ public class PresentationController: UIPresentationController {
         self.contentRect = rect
         super.init(presentedViewController: presented, presentingViewController: presenting)
 
-        let tap = UITapGestureRecognizer()
-        tap.addTarget(self, action: "handleTap:")
-        dimView.addGestureRecognizer(tap)
+        UITapGestureRecognizer().then {
+            $0.addTarget(self, action: "handleTap:")
+            dimView.addGestureRecognizer($0)
+        }
     }
 
     public convenience init(presented: UIViewController, presenting: UIViewController) {
