@@ -6,6 +6,8 @@
 //  
 //
 
+infix operator +++ { associativity left }
+
 public struct Promise<T> {
 
     private let operation: Result<T>.Callback -> Void
@@ -77,8 +79,6 @@ public extension Promise {
         }
     }
 }
-
-infix operator +++ { associativity left }
 
 public func +++ <A, B>(lhs: Promise<A>, rhs: Promise<B>) -> Promise<(A, B)> {
     let queue = dispatch_queue_create("HaiNguyen.MyKit.Promise.tuple", DISPATCH_QUEUE_CONCURRENT)
