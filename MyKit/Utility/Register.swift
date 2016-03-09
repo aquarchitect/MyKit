@@ -6,24 +6,22 @@
 //
 //
 
-/**
+private enum Exception: ErrorType {
 
-Register custom font from ttf into system.
+    case FailedToLocate(String)
+    case FailedToRegister(String)
+}
+
+/**
+Register custom font from .ttf file into system.
     
 - parameter name: The name of ttf file with extension.
         
 - throws: Results into `FileError`.
     - InvalidResourcePath
     - UnableToDescryptTheFile
-
 */
 func register(font file: String) throws {
-    enum Error: ErrorType {
-
-        case FailedToLocate(String)
-        case FailedToRegister(String)
-    }
-
     let ext = "ttf"
 
     let _file = !file.hasSuffix(ext) ? file : {
@@ -35,7 +33,7 @@ func register(font file: String) throws {
     // get file url
     guard let bundle = NSBundle.defaultBundle(),
         url = bundle.URLForResource(_file, withExtension: "ttf")
-        else { throw Error.FailedToLocate(file) }
+        else { throw Exception.FailedToLocate(file) }
 
     let data = NSData(contentsOfURL: url)
     let provider = CGDataProviderCreateWithCFData(data)
@@ -43,5 +41,5 @@ func register(font file: String) throws {
     // register font
     guard let font = CGFontCreateWithDataProvider(provider)
         where CTFontManagerRegisterGraphicsFont(font, nil)
-        else { throw Error.FailedToRegister(file) }
+        else { throw Exception.FailedToRegister(file) }
 }

@@ -3,12 +3,12 @@
 //  MyKit
 //
 //  Created by Hai Nguyen on 6/29/15.
-//  Copyright © 2015 Hai Nguyen. All rights reserved.
+//  
 //
 
 public extension UIView {
 
-    // - MARK: Layout Subviews Swizzling
+    // MARK: Layout Subviews Swizzling
 
     private struct Layout {
 
@@ -39,7 +39,7 @@ public extension UIView {
         }
     }
 
-    // - MARK: Auto-layout Constraints
+    // MARK: Auto-layout Constraints
 
     /**
     Add constraints by using visual format and currying

@@ -8,6 +8,8 @@
 
 public class TextView: UIControl {
 
+    // MARK: Property
+
     public let textBox = UITextView().then {
         $0.font = .systemFontOfSize(17)
         $0.showsHorizontalScrollIndicator = false
@@ -18,8 +20,10 @@ public class TextView: UIControl {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
+    // MARK: Initialization
+
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 
     public override init(frame: CGRect) {
@@ -38,6 +42,8 @@ public class TextView: UIControl {
     }
 
     deinit { textBox.removeObserver(self, forKeyPath: "contentSize") }
+
+    // MARK: System Method
 
     public override func intrinsicContentSize() -> CGSize {
         let width = textBox.contentSize.width + self.layoutMargins.horizontal

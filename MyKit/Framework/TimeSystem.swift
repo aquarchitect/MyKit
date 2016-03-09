@@ -3,7 +3,7 @@
 //  MyKit
 //
 //  Created by Hai Nguyen on 6/30/15.
-//  Copyright © 2015 Hai Nguyen. All rights reserved.
+//  
 //
 
 public class TimeSystem {

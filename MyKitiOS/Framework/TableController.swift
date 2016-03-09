@@ -20,10 +20,6 @@ public class TableController<T, C: UITableViewCell>: UITableViewController {
 
     private let style: UITableViewStyle
 
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     public override init(style: UITableViewStyle) {
         self.style = style
         super.init(style: style)

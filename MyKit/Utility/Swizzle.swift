@@ -3,22 +3,35 @@
 //  MyKit
 //
 //  Created by Hai Nguyen on 6/29/15.
-//  Copyright © 2015 Hai Nguyen. All rights reserved.
+//  
 //
 
-/**
+private enum Exception: ErrorType, CustomStringConvertible {
 
+    case MethodNotFound(Selector)
+
+    var description: String {
+        switch self {
+
+        case .MethodNotFound(let sel):
+            return "\(sel) not found"
+        }
+    }
+}
+
+/**
 Replaces original method.
 
 - parameter type: Class name.
 - parameter original: Name of original method.
 - parameter swizzled: Name of replaced method.
-
 */
 public func swizzle(type: AnyClass, original: Selector, swizzled: Selector) {
-    // check type / existence of methods
-    assert(class_respondsToSelector(type, original), "Check on Original typo.")
-    assert(class_respondsToSelector(type, swizzled), "Check on Swizzled typo.")
+    // double check string typo
+    [original, swizzled].forEach {
+        guard !class_respondsToSelector(type, $0) else { return }
+        fatalError(Exception.MethodNotFound($0).description)
+    }
 
     // get objects of methods
     let originalMethod = class_getInstanceMethod(type, original)

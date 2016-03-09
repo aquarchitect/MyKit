@@ -7,7 +7,6 @@
 //
 
 /**
-
 Return an image from rendering block.
 
 ```
@@ -26,9 +25,8 @@ renderInContext(label.bounds.size, opaque: true, render: label.layer.renderInCon
 - parameter render: Custom rendering block within a graphic context.
 
 - returns: An image object from rendering block
-
 */
-public func renderInContext(size: CGSize, opaque: Bool, render: Render) -> UIImage? {
+public func renderInContext(size: CGSize, opaque: Bool, render: CGContextRef -> Void) -> UIImage? {
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
 
     if let context = UIGraphicsGetCurrentContext() { render(context) }

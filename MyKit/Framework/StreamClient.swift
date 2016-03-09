@@ -6,9 +6,14 @@
 //
 //
 
+private enum Exception: ErrorType {
+
+    case InvalidIPAddress
+    case ConnectionTimeout
+}
+
 public class StreamClient: NSObject {
 
-    public enum Error: ErrorType { case InvalidIPAddress }
     public static let EventNotification = "StreamClientEventNotification"
 
     private let stoppage = TaskManager()
@@ -21,8 +26,9 @@ public class StreamClient: NSObject {
     private var outputStream: NSOutputStream?
 
     public func connectToHost(ip: String, port: UInt32) throws {
-        guard ip.validateFor(.IPAddress)
-            else { throw Error.InvalidIPAddress }
+        guard ip.isValidatedFor(.IPAddress) else {
+            throw Exception.InvalidIPAddress
+        }
 
         self.ip = ip
         self.port = port
@@ -37,7 +43,7 @@ public class StreamClient: NSObject {
         [inputStream, outputStream].forEach(self.addStream)
 
         stoppage.schedule(timeout) {
-            print("Connection Timeout")
+            print(Exception.ConnectionTimeout)
             self.stream(NSStream(), handleEvent: .ErrorOccurred)
         }
     }

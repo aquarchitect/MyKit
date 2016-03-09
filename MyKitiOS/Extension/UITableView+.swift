@@ -3,12 +3,12 @@
 //  MyKit
 //
 //  Created by Hai Nguyen on 6/29/15.
-//  Copyright © 2015 Hai Nguyen. All rights reserved.
+//  
 //
 
 public extension UITableView {
 
-    // - MARK: Transform IndexPath
+    // MARK: Transform IndexPath
 
     final func forwardIndexPath(indexPath: NSIndexPath) -> NSIndexPath? {
         if indexPath.row < self.numberOfRowsInSection(indexPath.section) - 1 {
@@ -29,7 +29,7 @@ public extension UITableView {
         } else { return nil }
     }
 
-    // - MARK: Register Reusable Views
+    // MARK: Register Reusable Views
 
     public func register<T: UITableViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
         self.registerClass(T.self, forCellReuseIdentifier: identifier)
@@ -39,7 +39,7 @@ public extension UITableView {
         self.registerClass(T.self, forHeaderFooterViewReuseIdentifier: identifier)
     }
 
-    // - MARK: Miscellaneous
+    // MARK: Miscellaneous
 
     final func isSectionValid(section: Int) -> Bool {
         return NSLocationInRange(section, NSMakeRange(0, self.numberOfSections))

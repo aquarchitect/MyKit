@@ -3,16 +3,16 @@
 //  MyKit
 //
 //  Created by Hai Nguyen on 6/29/15.
-//  Copyright © 2015 Hai Nguyen. All rights reserved.
+//  
 //
 
 /// Delays block execution
-public func delay(time: NSTimeInterval, block: Void -> Void) {
-    let poptime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * time))
-    dispatch_after(poptime, Queue.Main, block)
+public func delay(interval: NSTimeInterval, queue: dispatch_queue_t = Queue.Main, block: Void -> Void) {
+    let poptime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * interval))
+    dispatch_after(poptime, queue, block)
 }
 
-/// Measures and output execution elapsed time
+/// Measures and print execution elapsed time
 public func time(@noescape action: Void -> Void) {
     let start = CFAbsoluteTimeGetCurrent()
     action()

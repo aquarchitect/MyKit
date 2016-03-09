@@ -3,10 +3,9 @@
 //  MyKit
 //
 //  Created by Hai Nguyen on 6/29/15.
-//  Copyright © 2015 Hai Nguyen. All rights reserved.
+//  
 //
 
-//:nodoc
 public struct Queue {
 
     public static var Main: dispatch_queue_t {

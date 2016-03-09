@@ -37,7 +37,7 @@ final public class SimpleTransition: TransitionDelegate {
         guard let fromController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey),
             toController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) else { return }
 
-        isPresenting ? transitionContext.containerView()?.addSubview(toController.view) : ()
+        if isPresenting { transitionContext.containerView()?.addSubview(toController.view) }
 
         let options: UIViewAnimationOptions = [.AllowUserInteraction, .BeginFromCurrentState, isPresenting ? .CurveEaseIn : .CurveEaseOut]
         let duration = transitionDuration(transitionContext)

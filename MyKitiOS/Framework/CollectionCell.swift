@@ -1,20 +1,20 @@
 //
-//  DynamicCell.swift
+//  CollectionCell.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 1/18/16.
 //
 //
 
-public class DynamicCell<V: UIView where V: Then>: UICollectionViewCell {
+public class CollectionCell<V: UIView where V: Then>: UICollectionViewCell {
+
+    // MARK: Property
 
     public let presentView = V().then {
         $0.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    // MARK: Initialization
 
     public override init(frame: CGRect) {
         super.init(frame: frame)

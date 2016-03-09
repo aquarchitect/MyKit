@@ -6,6 +6,11 @@
 //
 //
 
+private enum Exception: ErrorType {
+
+    case Invalid(String.Format)
+}
+
 public extension String {
 
     /// Known format for string
@@ -15,12 +20,21 @@ public extension String {
     }
 
     /// Validate the receiver with format
-    public func validateFor(format: Format) -> Bool {
+    public func isValidatedFor(format: Format) -> Bool {
         let range = NSMakeRange(0, self.characters.count)
 
-        return (try? NSRegularExpression(pattern: "^\(format.pattern)$", options: []).then {
+        return try! NSRegularExpression(pattern: "^\(format.pattern)$", options: []).then {
             $0.rangeOfFirstMatchInString(self, options: .ReportProgress, range: range) == range
-        }) ?? false
+        }
+    }
+
+    /// Produce a camel case string
+    public var camelcaseString: String {
+        return NSCharacterSet(charactersInString: " -_").then {
+                self.componentsSeparatedByCharactersInSet($0)
+            }.enumerate().map {
+                $0 == 0 ? $1.lowercaseString : $1.capitalizedString
+            }.joinWithSeparator("")
     }
 }
 
@@ -31,16 +45,5 @@ private extension String.Format {
 
         case .IPAddress: return [String](count: 4, repeatedValue:  "([01]?\\d\\d?|2[0-4]\\d|25[0-5])").joinWithSeparator("\\.")
         }
-    }
-}
-
-public extension String {
-
-    public var camelcaseString: String {
-        return NSCharacterSet(charactersInString: " -_").then {
-                self.componentsSeparatedByCharactersInSet($0)
-            }.enumerate().map {
-                $0 == 0 ? $1.lowercaseString : $1.capitalizedString
-            }.joinWithSeparator("")
     }
 }

@@ -3,7 +3,7 @@
 //  MyKit
 //
 //  Created by Hai Nguyen on 7/3/15.
-//  Copyright © 2015 Hai Nguyen. All rights reserved.
+//  
 //
 
 class SnapLayout: UICollectionViewFlowLayout {

@@ -3,7 +3,7 @@
 //  MyKit
 //
 //  Created by Hai Nguyen on 7/11/15.
-//  Copyright © 2015 Hai Nguyen. All rights reserved.
+//  
 //
 
 public class TableView<T, C: UITableViewCell>: UITableView, UITableViewDataSource {
@@ -11,10 +11,6 @@ public class TableView<T, C: UITableViewCell>: UITableView, UITableViewDataSourc
     public var items: [[T]] = []
 
     public var config: ((C, T) -> Void)?
-
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     public override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
