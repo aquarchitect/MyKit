@@ -21,7 +21,6 @@
 		C209F54F1C76673E007C3975 /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5381C7665EC007C3975 /* Draw.swift */; };
 		C209F5501C76673E007C3975 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5391C7665EC007C3975 /* Queue.swift */; };
 		C209F5511C76673E007C3975 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53A1C7665EC007C3975 /* Register.swift */; };
-		C209F5521C76673E007C3975 /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53B1C7665EC007C3975 /* Swizzle.swift */; };
 		C209F5531C76673E007C3975 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53C1C7665EC007C3975 /* Time.swift */; };
 		C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245D5621C6E5C8A00F0C899 /* NSText+.swift */; };
 		C259EFDD1C4D6ECE00F9B2BC /* DateIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */; };
@@ -61,8 +60,8 @@
 		C259F0721C4D703D00F9B2BC /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD91C4D6ECE00F9B2BC /* TaskManager.swift */; };
 		C259F0731C4D703D00F9B2BC /* TimeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFDA1C4D6ECE00F9B2BC /* TimeSystem.swift */; };
 		C259F0B31C4D815600F9B2BC /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0B21C4D815600F9B2BC /* CollectionCell.swift */; };
-		C289AD801B62B95700186773 /* MyKitOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKitOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C289AD8D1B62B97400186773 /* MyKitiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKitiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C289AD801B62B95700186773 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKit.h */; };
+		C289AD8D1B62B97400186773 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA948E1C6D505200EDF761 /* UIViewController+.swift */; };
 		C2C06AF81C8FC55D000283D7 /* TestLoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C06AF71C8FC55D000283D7 /* TestLoremIpsum.swift */; };
 		C2C06AFA1C8FCAF4000283D7 /* TestPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C06AF91C8FCAF4000283D7 /* TestPromise.swift */; };
@@ -99,10 +98,11 @@
 		C2EF9B011C90ACCD0037BE4D /* NSEntityDescription+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCB91C8FF102000DFB63 /* NSEntityDescription+.swift */; };
 		C2EF9B021C90ACCD0037BE4D /* NSManagedObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCBA1C8FF102000DFB63 /* NSManagedObject+.swift */; };
 		C2EF9B031C90ACCD0037BE4D /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCBB1C8FF102000DFB63 /* NSManagedObjectContext+.swift */; };
-		C2EF9B041C90ACCD0037BE4D /* NSRelationshipDescription+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCBC1C8FF102000DFB63 /* NSRelationshipDescription+.swift */; };
 		C2EF9B051C90ACD90037BE4D /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCC21C8FF113000DFB63 /* CGPoint+.swift */; };
 		C2EF9B061C90ACD90037BE4D /* CGRect+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCC31C8FF113000DFB63 /* CGRect+.swift */; };
 		C2EF9B071C90ACD90037BE4D /* CGSize+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCC41C8FF113000DFB63 /* CGSize+.swift */; };
+		C2EF9B0E1C90F4860037BE4D /* NSRelationshipDescription+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCBC1C8FF102000DFB63 /* NSRelationshipDescription+.swift */; };
+		C2EF9B0F1C90F49D0037BE4D /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53B1C7665EC007C3975 /* Swizzle.swift */; };
 		C2EFDC961C8FF0C8000DFB63 /* Bool+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC901C8FF0C8000DFB63 /* Bool+.swift */; };
 		C2EFDC971C8FF0C8000DFB63 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC911C8FF0C8000DFB63 /* CollectionType+.swift */; };
 		C2EFDC981C8FF0C8000DFB63 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDC921C8FF0C8000DFB63 /* Random.swift */; };
@@ -188,10 +188,10 @@
 		C259F05C1C4D701D00F9B2BC /* NSControl+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSControl+.swift"; path = "Extension/NSControl+.swift"; sourceTree = "<group>"; };
 		C259F05D1C4D701D00F9B2BC /* NSTableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTableView+.swift"; path = "Extension/NSTableView+.swift"; sourceTree = "<group>"; };
 		C259F0B21C4D815600F9B2BC /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionCell.swift; path = Framework/CollectionCell.swift; sourceTree = "<group>"; };
-		C289AD7C1B62B95700186773 /* MyKitOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKitOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C289AD7F1B62B95700186773 /* MyKitOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKitOSX.h; sourceTree = "<group>"; };
-		C289AD8A1B62B97400186773 /* MyKitiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKitiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C289AD8C1B62B97400186773 /* MyKitiOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKitiOS.h; sourceTree = "<group>"; };
+		C289AD7C1B62B95700186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C289AD7F1B62B95700186773 /* MyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKit.h; sourceTree = "<group>"; };
+		C289AD8A1B62B97400186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C289AD8C1B62B97400186773 /* MyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKit.h; sourceTree = "<group>"; };
 		C289ADEB1B62BC3A00186773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyKit/Info.plist; sourceTree = "<group>"; };
 		C2AA948E1C6D505200EDF761 /* UIViewController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+.swift"; path = "Extension/UIViewController+.swift"; sourceTree = "<group>"; };
 		C2B60ACB1B95080800F6D2BB /* MyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -317,8 +317,8 @@
 		C289AD7D1B62B95700186773 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C289AD7C1B62B95700186773 /* MyKitOSX.framework */,
-				C289AD8A1B62B97400186773 /* MyKitiOS.framework */,
+				C289AD7C1B62B95700186773 /* MyKit.framework */,
+				C289AD8A1B62B97400186773 /* MyKit.framework */,
 				C2B60ACB1B95080800F6D2BB /* MyKitTests.xctest */,
 			);
 			name = Products;
@@ -401,7 +401,7 @@
 		C289AD961B62BA2200186773 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				C289AD8C1B62B97400186773 /* MyKitiOS.h */,
+				C289AD8C1B62B97400186773 /* MyKit.h */,
 				C259F0341C4D6FEE00F9B2BC /* Draw+.swift */,
 			);
 			name = Support;
@@ -445,7 +445,7 @@
 		C289AD991B62BA5200186773 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				C289AD7F1B62B95700186773 /* MyKitOSX.h */,
+				C289AD7F1B62B95700186773 /* MyKit.h */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -586,7 +586,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C289AD801B62B95700186773 /* MyKitOSX.h in Headers */,
+				C289AD801B62B95700186773 /* MyKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,7 +594,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C289AD8D1B62B97400186773 /* MyKitiOS.h in Headers */,
+				C289AD8D1B62B97400186773 /* MyKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,7 +616,7 @@
 			);
 			name = MyKitOSX;
 			productName = MyKitOSX;
-			productReference = C289AD7C1B62B95700186773 /* MyKitOSX.framework */;
+			productReference = C289AD7C1B62B95700186773 /* MyKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C289AD891B62B97400186773 /* MyKitiOS */ = {
@@ -634,7 +634,7 @@
 			);
 			name = MyKitiOS;
 			productName = MyKitiOS;
-			productReference = C289AD8A1B62B97400186773 /* MyKitiOS.framework */;
+			productReference = C289AD8A1B62B97400186773 /* MyKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C2B60ACA1B95080800F6D2BB /* MyKitTests */ = {
@@ -739,7 +739,6 @@
 				C2EF9AEF1C90ACAF0037BE4D /* Range+.swift in Sources */,
 				C2EF9B051C90ACD90037BE4D /* CGPoint+.swift in Sources */,
 				C2EF9AED1C90ACAF0037BE4D /* CollectionType+.swift in Sources */,
-				C2EF9B041C90ACCD0037BE4D /* NSRelationshipDescription+.swift in Sources */,
 				C209F5511C76673E007C3975 /* Register.swift in Sources */,
 				C209F54E1C76673E007C3975 /* Curry.swift in Sources */,
 				C2F18C961C76B2F400A1DB83 /* Promise.swift in Sources */,
@@ -758,6 +757,7 @@
 				C259F0701C4D703D00F9B2BC /* StreamClient.swift in Sources */,
 				C2EF9AF51C90ACB90037BE4D /* NSDateFormatter+.swift in Sources */,
 				C259F0731C4D703D00F9B2BC /* TimeSystem.swift in Sources */,
+				C2EF9B0F1C90F49D0037BE4D /* Swizzle.swift in Sources */,
 				C2EF9B021C90ACCD0037BE4D /* NSManagedObject+.swift in Sources */,
 				C2EF9B061C90ACD90037BE4D /* CGRect+.swift in Sources */,
 				C2EF9AF21C90ACB90037BE4D /* NSBundle+.swift in Sources */,
@@ -768,6 +768,7 @@
 				C2EF9AF41C90ACB90037BE4D /* NSDate+.swift in Sources */,
 				C259F06B1C4D703D00F9B2BC /* DateIndex.swift in Sources */,
 				C259F05F1C4D701D00F9B2BC /* NSColor+.swift in Sources */,
+				C2EF9B0E1C90F4860037BE4D /* NSRelationshipDescription+.swift in Sources */,
 				C2EF9AF81C90ACB90037BE4D /* NSNumber+.swift in Sources */,
 				C2EF9B001C90ACCD0037BE4D /* NSAttributeDescription+.swift in Sources */,
 				C259F0721C4D703D00F9B2BC /* TaskManager.swift in Sources */,
@@ -776,7 +777,6 @@
 				C2EF9AEA1C90AC9D0037BE4D /* CloudRecord.swift in Sources */,
 				C2EF9AE61C90AC910037BE4D /* WeatherAPI.swift in Sources */,
 				C2EF9AF01C90ACAF0037BE4D /* String+.swift in Sources */,
-				C209F5521C76673E007C3975 /* Swizzle.swift in Sources */,
 				C259F0631C4D701D00F9B2BC /* NSTableView+.swift in Sources */,
 				C2EF9AFA1C90ACB90037BE4D /* NSRange+.swift in Sources */,
 				C2EF9AF11C90ACAF0037BE4D /* Then.swift in Sources */,
@@ -888,6 +888,7 @@
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = MyKit/Info.plist;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = MyKit;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -899,6 +900,7 @@
 			buildSettings = {
 				ENABLE_ON_DEMAND_RESOURCES = YES;
 				INFOPLIST_FILE = MyKit/Info.plist;
+				PRODUCT_NAME = MyKit;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -955,10 +957,12 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = HaiNguyen.MyKitOSX;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = MyKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = MyKitOSX/MyKitOSX.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1009,10 +1013,12 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = HaiNguyen.MyKitOSX;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = MyKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = MyKitOSX/MyKitOSX.h;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1069,10 +1075,11 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = HaiNguyen.MyKitiOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MyKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1124,10 +1131,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = HaiNguyen.MyKitiOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = MyKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
