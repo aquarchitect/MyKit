@@ -27,17 +27,17 @@ Replaces original method.
 - parameter swizzled: Name of replaced method.
 */
 public func swizzle(type: AnyClass, original: Selector, swizzled: Selector) {
-    // double check string typo
+    // double check string method typo
     [original, swizzled].forEach {
         guard !class_respondsToSelector(type, $0) else { return }
         fatalError(Exception.MethodNotFound($0).description)
     }
 
-    // get objects of methods
+    // get method objects
     let originalMethod = class_getInstanceMethod(type, original)
     let swizzledMethod = class_getInstanceMethod(type, swizzled)
 
-    // check whether original method has been replaced
+    // check whether original method has been swizzlled
     if class_addMethod(type, original, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod)) {
         class_replaceMethod(type, swizzled, originalMethod, method_getTypeEncoding(originalMethod))
     } else { method_exchangeImplementations(originalMethod, swizzledMethod) }
