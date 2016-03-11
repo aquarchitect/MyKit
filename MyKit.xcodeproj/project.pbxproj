@@ -24,8 +24,6 @@
 		C209F5531C76673E007C3975 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53C1C7665EC007C3975 /* Time.swift */; };
 		C20F341D1C924739004CF7C3 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F341C1C924739004CF7C3 /* Client.swift */; };
 		C20F341E1C924739004CF7C3 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F341C1C924739004CF7C3 /* Client.swift */; };
-		C20F34231C9259B8004CF7C3 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F34221C9259B8004CF7C3 /* Server.swift */; };
-		C20F34241C9259B8004CF7C3 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F34221C9259B8004CF7C3 /* Server.swift */; };
 		C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245D5621C6E5C8A00F0C899 /* NSText+.swift */; };
 		C259EFDD1C4D6ECE00F9B2BC /* DateIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */; };
 		C259EFE11C4D6ECE00F9B2BC /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD61C4D6ECE00F9B2BC /* PersistentStack.swift */; };
@@ -161,7 +159,6 @@
 		C209F53C1C7665EC007C3975 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Time.swift; path = MyKit/Utility/Time.swift; sourceTree = "<group>"; };
 		C209F5441C7666B7007C3975 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = MyKit/Utility/Result.swift; sourceTree = "<group>"; };
 		C20F341C1C924739004CF7C3 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = MyKit/Utility/Client.swift; sourceTree = "<group>"; };
-		C20F34221C9259B8004CF7C3 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Server.swift; path = MyKit/Utility/Server.swift; sourceTree = "<group>"; };
 		C245D5621C6E5C8A00F0C899 /* NSText+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSText+.swift"; path = "Extension/NSText+.swift"; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateIndex.swift; path = MyKit/Framework/DateIndex.swift; sourceTree = "<group>"; };
@@ -405,7 +402,6 @@
 				C2F18C941C76B2F400A1DB83 /* Promise.swift */,
 				C260C0121C9231CE00C2CB7A /* Socket.swift */,
 				C20F341C1C924739004CF7C3 /* Client.swift */,
-				C20F34221C9259B8004CF7C3 /* Server.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -672,10 +668,6 @@
 		C289AD711B62B93800186773 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				KnownAssetTags = (
-					fonts,
-					text,
-				);
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0730;
 				TargetAttributes = {
@@ -795,7 +787,6 @@
 				C2EF9AFA1C90ACB90037BE4D /* NSRange+.swift in Sources */,
 				C2EF9AF11C90ACAF0037BE4D /* Then.swift in Sources */,
 				C2EF9AFE1C90ACC30037BE4D /* CKRecord+.swift in Sources */,
-				C20F34241C9259B8004CF7C3 /* Server.swift in Sources */,
 				C2EF9B071C90ACD90037BE4D /* CGSize+.swift in Sources */,
 				C2EF9AFF1C90ACC30037BE4D /* CKRecordID+.swift in Sources */,
 				C2EF9AFD1C90ACC30037BE4D /* CKQuery+.swift in Sources */,
@@ -835,7 +826,6 @@
 				C259F0591C4D6FEF00F9B2BC /* UIView+.swift in Sources */,
 				C259F01C1C4D6FE200F9B2BC /* CollectionView.swift in Sources */,
 				C2F18C951C76B2F400A1DB83 /* Promise.swift in Sources */,
-				C20F34231C9259B8004CF7C3 /* Server.swift in Sources */,
 				C2EFDC9B1C8FF0C8000DFB63 /* Then.swift in Sources */,
 				C259F0261C4D6FE200F9B2BC /* SimpleTransition.swift in Sources */,
 				C2EFDCC11C8FF102000DFB63 /* NSRelationshipDescription+.swift in Sources */,
@@ -980,7 +970,9 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1036,7 +1028,9 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1097,7 +1091,9 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1153,7 +1149,9 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
