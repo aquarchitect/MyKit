@@ -64,14 +64,14 @@
 		C259F0B31C4D815600F9B2BC /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0B21C4D815600F9B2BC /* CollectionCell.swift */; };
 		C260C0131C9231CE00C2CB7A /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C260C0121C9231CE00C2CB7A /* Socket.swift */; };
 		C260C0141C9231CE00C2CB7A /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C260C0121C9231CE00C2CB7A /* Socket.swift */; };
-		C2677ED51C9387030061317F /* CloudKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677ED11C9387030061317F /* CloudKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677ED61C9387030061317F /* CoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677ED21C9387030061317F /* CoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677ED71C9387030061317F /* CoreLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677ED31C9387030061317F /* CoreLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677ED81C9387030061317F /* UIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677ED41C9387030061317F /* UIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EDE1C9387660061317F /* AppKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EDA1C9387660061317F /* AppKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EDF1C9387660061317F /* CloudKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EDB1C9387660061317F /* CloudKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EE01C9387660061317F /* CoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EDC1C9387660061317F /* CoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EE11C9387660061317F /* CoreLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EDD1C9387660061317F /* CoreLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2677EE51C9389FA0061317F /* AppKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE41C9389FA0061317F /* AppKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2677EE91C938A520061317F /* CloudKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE61C938A520061317F /* CloudKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2677EEA1C938A520061317F /* CoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE71C938A520061317F /* CoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2677EEB1C938A520061317F /* CoreLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE81C938A520061317F /* CoreLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2677EED1C938A880061317F /* UIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EEC1C938A880061317F /* UIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2677EEE1C938AA30061317F /* CloudKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE61C938A520061317F /* CloudKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2677EEF1C938AA30061317F /* CoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE71C938A520061317F /* CoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2677EF01C938AA30061317F /* CoreLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE81C938A520061317F /* CoreLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD801B62B95700186773 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD8D1B62B97400186773 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA948E1C6D505200EDF761 /* UIViewController+.swift */; };
@@ -202,14 +202,11 @@
 		C259F05D1C4D701D00F9B2BC /* NSTableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTableView+.swift"; path = "Extension/NSTableView+.swift"; sourceTree = "<group>"; };
 		C259F0B21C4D815600F9B2BC /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionCell.swift; path = Framework/CollectionCell.swift; sourceTree = "<group>"; };
 		C260C0121C9231CE00C2CB7A /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Socket.swift; path = MyKit/Utility/Socket.swift; sourceTree = "<group>"; };
-		C2677ED11C9387030061317F /* CloudKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudKit.h; path = Header/CloudKit.h; sourceTree = "<group>"; };
-		C2677ED21C9387030061317F /* CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreData.h; path = Header/CoreData.h; sourceTree = "<group>"; };
-		C2677ED31C9387030061317F /* CoreLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocation.h; path = Header/CoreLocation.h; sourceTree = "<group>"; };
-		C2677ED41C9387030061317F /* UIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIKit.h; path = Header/UIKit.h; sourceTree = "<group>"; };
-		C2677EDA1C9387660061317F /* AppKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppKit.h; path = Header/AppKit.h; sourceTree = "<group>"; };
-		C2677EDB1C9387660061317F /* CloudKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudKit.h; path = Header/CloudKit.h; sourceTree = "<group>"; };
-		C2677EDC1C9387660061317F /* CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreData.h; path = Header/CoreData.h; sourceTree = "<group>"; };
-		C2677EDD1C9387660061317F /* CoreLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocation.h; path = Header/CoreLocation.h; sourceTree = "<group>"; };
+		C2677EE41C9389FA0061317F /* AppKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppKit.h; sourceTree = "<group>"; };
+		C2677EE61C938A520061317F /* CloudKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudKit.h; path = MyKit/Header/CloudKit.h; sourceTree = "<group>"; };
+		C2677EE71C938A520061317F /* CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreData.h; path = MyKit/Header/CoreData.h; sourceTree = "<group>"; };
+		C2677EE81C938A520061317F /* CoreLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocation.h; path = MyKit/Header/CoreLocation.h; sourceTree = "<group>"; };
+		C2677EEC1C938A880061317F /* UIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKit.h; sourceTree = "<group>"; };
 		C289AD7C1B62B95700186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7F1B62B95700186773 /* MyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKit.h; sourceTree = "<group>"; };
 		C289AD8A1B62B97400186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -324,28 +321,6 @@
 			name = SymbolIcon;
 			sourceTree = "<group>";
 		};
-		C2677ECF1C93869D0061317F /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				C2677EDA1C9387660061317F /* AppKit.h */,
-				C2677EDB1C9387660061317F /* CloudKit.h */,
-				C2677EDC1C9387660061317F /* CoreData.h */,
-				C2677EDD1C9387660061317F /* CoreLocation.h */,
-			);
-			name = Header;
-			sourceTree = "<group>";
-		};
-		C2677ED01C9386AE0061317F /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				C2677ED11C9387030061317F /* CloudKit.h */,
-				C2677ED21C9387030061317F /* CoreData.h */,
-				C2677ED31C9387030061317F /* CoreLocation.h */,
-				C2677ED41C9387030061317F /* UIKit.h */,
-			);
-			name = Header;
-			sourceTree = "<group>";
-		};
 		C289AD701B62B93800186773 = {
 			isa = PBXGroup;
 			children = (
@@ -372,8 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				C289AD9A1B62BA5500186773 /* Extension */,
-				C2677ECF1C93869D0061317F /* Header */,
-				C289AD991B62BA5200186773 /* Umbrella */,
+				C289AD991B62BA5200186773 /* Support */,
 			);
 			path = MyKitOSX;
 			sourceTree = "<group>";
@@ -383,8 +357,7 @@
 			children = (
 				C289AD971B62BA3C00186773 /* Framework */,
 				C289AD981B62BA4400186773 /* Extension */,
-				C2677ED01C9386AE0061317F /* Header */,
-				C289AD961B62BA2200186773 /* Umbrella */,
+				C289AD961B62BA2200186773 /* Support */,
 			);
 			path = MyKitiOS;
 			sourceTree = "<group>";
@@ -446,12 +419,13 @@
 			name = Utility;
 			sourceTree = "<group>";
 		};
-		C289AD961B62BA2200186773 /* Umbrella */ = {
+		C289AD961B62BA2200186773 /* Support */ = {
 			isa = PBXGroup;
 			children = (
 				C289AD8C1B62B97400186773 /* MyKit.h */,
+				C2677EEC1C938A880061317F /* UIKit.h */,
 			);
-			name = Umbrella;
+			name = Support;
 			sourceTree = "<group>";
 		};
 		C289AD971B62BA3C00186773 /* Framework */ = {
@@ -490,12 +464,13 @@
 			name = Extension;
 			sourceTree = "<group>";
 		};
-		C289AD991B62BA5200186773 /* Umbrella */ = {
+		C289AD991B62BA5200186773 /* Support */ = {
 			isa = PBXGroup;
 			children = (
 				C289AD7F1B62B95700186773 /* MyKit.h */,
+				C2677EE41C9389FA0061317F /* AppKit.h */,
 			);
-			name = Umbrella;
+			name = Support;
 			sourceTree = "<group>";
 		};
 		C289AD9A1B62BA5500186773 /* Extension */ = {
@@ -513,6 +488,9 @@
 			isa = PBXGroup;
 			children = (
 				C289ADEB1B62BC3A00186773 /* Info.plist */,
+				C2677EE61C938A520061317F /* CloudKit.h */,
+				C2677EE71C938A520061317F /* CoreData.h */,
+				C2677EE81C938A520061317F /* CoreLocation.h */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -635,10 +613,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C289AD801B62B95700186773 /* MyKit.h in Headers */,
-				C2677EDE1C9387660061317F /* AppKit.h in Headers */,
-				C2677EE11C9387660061317F /* CoreLocation.h in Headers */,
-				C2677EDF1C9387660061317F /* CloudKit.h in Headers */,
-				C2677EE01C9387660061317F /* CoreData.h in Headers */,
+				C2677EE51C9389FA0061317F /* AppKit.h in Headers */,
+				C2677EF01C938AA30061317F /* CoreLocation.h in Headers */,
+				C2677EEE1C938AA30061317F /* CloudKit.h in Headers */,
+				C2677EEF1C938AA30061317F /* CoreData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,10 +625,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C289AD8D1B62B97400186773 /* MyKit.h in Headers */,
-				C2677ED61C9387030061317F /* CoreData.h in Headers */,
-				C2677ED71C9387030061317F /* CoreLocation.h in Headers */,
-				C2677ED51C9387030061317F /* CloudKit.h in Headers */,
-				C2677ED81C9387030061317F /* UIKit.h in Headers */,
+				C2677EEA1C938A520061317F /* CoreData.h in Headers */,
+				C2677EEB1C938A520061317F /* CoreLocation.h in Headers */,
+				C2677EE91C938A520061317F /* CloudKit.h in Headers */,
+				C2677EED1C938A880061317F /* UIKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
