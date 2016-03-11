@@ -6,17 +6,13 @@
 //
 //
 
-@import AppKit;
-@import CoreData;
-@import CoreLocation;
-@import CloudKit;
+#import <MyKit/AppKit.h>
+#import <MyKit/CoreLocation.h>
+#import <MyKit/CoreData.h>
+#import <MyKit/CloudKit.h>
 
 //! Project version number for MyKitOSX.
 FOUNDATION_EXPORT double MyKitOSXVersionNumber;
 
 //! Project version string for MyKitOSX.
 FOUNDATION_EXPORT const unsigned char MyKitOSXVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <MyKitOSX/PublicHeader.h>
-
-
