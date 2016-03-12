@@ -10,7 +10,9 @@ final public class TaskManager {
 
     private var timer: NSTimer?
 
-    public var valid: Bool { return timer?.valid ?? false }
+    public var valid: Bool {
+        return timer?.valid ?? false
+    }
 
     public init() {}
 
@@ -28,7 +30,6 @@ final public class TaskManager {
 
     public func cancel() {
         timer?.invalidate()
-        timer = nil
     }
 
     @objc internal func timerFireMethod(timer: NSTimer) {

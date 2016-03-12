@@ -6,13 +6,9 @@
 //
 //
 
-private enum Exception: ErrorType {
+public class StreamClient: NSObject, NSStreamDelegate {
 
-    case InvalidIPAddress
-    case ConnectionTimeout
-}
-
-public class StreamClient: NSObject {
+    // MARK: Property
 
     public static let EventNotification = "StreamClientEventNotification"
 
@@ -25,7 +21,11 @@ public class StreamClient: NSObject {
     private var inputStream: NSInputStream?
     private var outputStream: NSOutputStream?
 
-    public func connectToHost(ip: String, port: UInt32) throws {
+    // MARK: Action Method
+
+    final public func connectToHost(ip: String, port: UInt32) throws {
+        enum Exception: ErrorType { case InvalidIPAddress }
+
         guard ip.isValidatedFor(.IPAddress) else {
             throw Exception.InvalidIPAddress
         }
@@ -40,63 +40,55 @@ public class StreamClient: NSObject {
 
         self.inputStream = readStream?.takeUnretainedValue()
         self.outputStream = writeStream?.takeUnretainedValue()
-        [inputStream, outputStream].forEach(self.addStream)
 
-        stoppage.schedule(timeout) {
-            print(Exception.ConnectionTimeout)
-            self.stream(NSStream(), handleEvent: .ErrorOccurred)
+        ([inputStream, outputStream] as [NSStream?]).forEach {
+            $0?.delegate = self
+            $0?.scheduleInRunLoop(.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+            $0?.open()
         }
+
+        stoppage.schedule(timeout) { stream(NSStream(), handleEvent: .ErrorOccurred) }
     }
 
-    public func disconnect() {
-        removeStream(&inputStream)
-        removeStream(&outputStream)
+    final public func disconnect() {
+        inputStream?.close()
+        inputStream = nil
+
+        outputStream?.close()
+        outputStream = nil
     }
 
-    public func reconnect() throws {
+    final public func reconnect() throws {
         guard let ip = self.ip, port = self.port else { return }
         try connectToHost(ip, port: port)
     }
 
+    // MARK: Override Method
+
     public func writeData(data: NSData) {
-        guard outputStream?.hasSpaceAvailable == true else { return }
-        outputStream?.write(UnsafePointer<UInt8>(data.bytes), maxLength: data.length)
+        outputStream?.then {
+            guard $0.hasSpaceAvailable else { return }
+            $0.write(UnsafePointer<UInt8>(data.bytes), maxLength: data.length)
+        }
     }
 
     public func readData(data: NSData) {}
 
-    private func addStream<T: NSStream>(stream: T?) {
-        let loop = NSRunLoop.currentRunLoop()
-        stream?.delegate = self
-        stream?.scheduleInRunLoop(loop, forMode: NSDefaultRunLoopMode)
-        stream?.open()
-    }
+    // MARK: Stream Delegate
 
-    private func removeStream<T: NSStream>(inout stream: T?) {
-        let loop = NSRunLoop.currentRunLoop()
-        stream?.close()
-        stream?.delegate = self
-        stream?.scheduleInRunLoop(loop, forMode: NSDefaultRunLoopMode)
-        stream = nil
-    }
-}
-
-extension StreamClient: NSStreamDelegate {
-
-    public func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
+    final public func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
         stoppage.cancel()
 
         switch eventCode {
 
-        case let options where !options.isDisjointWith([.EndEncountered, .ErrorOccurred]):
+        case _ where !eventCode.isDisjointWith([.EndEncountered, .ErrorOccurred]):
             disconnect()
 
-        case [.HasBytesAvailable] where aStream === inputStream && inputStream?.hasBytesAvailable == true:
+        case [.HasBytesAvailable] where (aStream as? NSInputStream)?.then { $0.hasBytesAvailable } == true:
             var buffer = [UInt8](count: 8, repeatedValue: 0)
 
             guard let result = inputStream?.read(&buffer, maxLength: buffer.count) else { break }
-            let data = NSData(bytes: buffer, length: result)
-            readData(data)
+            NSData(bytes: buffer, length: result).then(readData)
 
         default: break
         }
