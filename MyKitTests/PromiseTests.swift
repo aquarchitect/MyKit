@@ -1,5 +1,5 @@
 //
-//  TestPromise.swift
+//  PromiseTests.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 3/8/16.
@@ -8,10 +8,10 @@
 
 infix operator +++ { associativity left }
 
-final class TestPromise: XCTestCase {
+final class PromiseTests: XCTestCase {
 
     func testFullfilledArray() {
-        let expectation = expectationWithDescription("Callback after delay")
+        let expectation = expectationWithDescription(__FUNCTION__)
 
         let p1 = Promise<Int> { callback in delay(0.5) { callback(.Fullfill(5)) }}
         let p2 = Promise<Int> { callback in delay(0.5) { callback(.Fullfill(10)) }}
@@ -29,13 +29,11 @@ final class TestPromise: XCTestCase {
             }
         }
 
-        waitForExpectationsWithTimeout(3) {
-            XCTAssertNil($0, "Error \($0!) Occurred")
-        }
+        waitForExpectationsWithTimeout(3) { XCTAssertNil($0) }
     }
 
     func testRejectedArray() {
-        let expectation = expectationWithDescription("Callback after delay")
+        let expectation = expectationWithDescription(__FUNCTION__)
 
         let p1 = Promise<Int> { callback in delay(0.5) { callback(.Fullfill(5)) }}
         let p2 = Promise<Int> { callback in delay(0.5) { callback(.Reject(DataError.NoContent)) }}
@@ -56,13 +54,11 @@ final class TestPromise: XCTestCase {
             }
         }
 
-        waitForExpectationsWithTimeout(3) {
-            XCTAssertNil($0, "Error \($0!) Occurred")
-        }
+        waitForExpectationsWithTimeout(3) { XCTAssertNil($0) }
     }
 
     func testFullfilledTuple() {
-        let expectation = expectationWithDescription("Callback after delay")
+        let expectation = expectationWithDescription(__FUNCTION__)
 
         let p1 = Promise<Bool> { callback in delay(0.5) { callback(.Fullfill(true)) }}
         let p2 = Promise<String> { callback in delay(1) { callback(.Fullfill("Success")) }}
@@ -79,13 +75,11 @@ final class TestPromise: XCTestCase {
             }
         }
 
-        waitForExpectationsWithTimeout(3) {
-            XCTAssertNil($0, "Error \($0!) Occurred")
-        }
+        waitForExpectationsWithTimeout(3) { XCTAssertNil($0) }
     }
 
     func testRejectedTuple() {
-        let expectation = expectationWithDescription("Callback after delay")
+        let expectation = expectationWithDescription(__FUNCTION__)
 
         let p1 = Promise<Bool> { callback in delay(0.5) { callback(.Fullfill(true)) }}
         let p2 = Promise<String> { callback in delay(1) { callback(.Reject(DataError.NoContent)) }}
@@ -105,8 +99,6 @@ final class TestPromise: XCTestCase {
             }
         }
 
-        waitForExpectationsWithTimeout(3) {
-            XCTAssertNil($0, "Error \($0!) Occurred")
-        }
+        waitForExpectationsWithTimeout(3) { XCTAssertNil($0) }
     }
 }

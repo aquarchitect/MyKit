@@ -1,12 +1,12 @@
 //
-//  TestLoremIpsum.swift
+//  LoremIpsumTests.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 3/8/16.
 //  
 //
 
-final class TestLoremIpsum: XCTestCase {
+final class LoremIpsumTests: XCTestCase {
 
     func testRandomElement() {
         let element = LoremIpsum.sharedInstance?.randomElement

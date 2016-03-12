@@ -6,10 +6,5 @@
 //
 //
 
-@import XCTest;
-
-#if TARGET_OS_MAC
-    @import MyKitOSX;
-#elif TARGET_OS_IOS
-    @import MyKitiOS;
-#endif
+#import <XCTest/XCTest.h>
+#import <MyKit/AppKit.h>
