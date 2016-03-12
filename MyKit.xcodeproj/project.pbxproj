@@ -72,8 +72,8 @@
 		C2677EEE1C938AA30061317F /* CloudKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE61C938A520061317F /* CloudKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2677EEF1C938AA30061317F /* CoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE71C938A520061317F /* CoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2677EF01C938AA30061317F /* CoreLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE81C938A520061317F /* CoreLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EF21C938BF00061317F /* Darwin.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EF11C938BF00061317F /* Darwin.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EF31C938BF00061317F /* Darwin.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EF11C938BF00061317F /* Darwin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2677EF81C93915A0061317F /* Foundation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EF71C93915A0061317F /* Foundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2677EF91C93915A0061317F /* Foundation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EF71C93915A0061317F /* Foundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD801B62B95700186773 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C289AD8D1B62B97400186773 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA948E1C6D505200EDF761 /* UIViewController+.swift */; };
@@ -210,6 +210,7 @@
 		C2677EE81C938A520061317F /* CoreLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocation.h; path = MyKit/Header/CoreLocation.h; sourceTree = "<group>"; };
 		C2677EEC1C938A880061317F /* UIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKit.h; sourceTree = "<group>"; };
 		C2677EF11C938BF00061317F /* Darwin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Darwin.h; path = MyKit/Header/Darwin.h; sourceTree = "<group>"; };
+		C2677EF71C93915A0061317F /* Foundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Foundation.h; path = MyKit/Foundation.h; sourceTree = "<group>"; };
 		C289AD7C1B62B95700186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7F1B62B95700186773 /* MyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKit.h; sourceTree = "<group>"; };
 		C289AD8A1B62B97400186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -495,6 +496,7 @@
 				C2677EE61C938A520061317F /* CloudKit.h */,
 				C2677EE71C938A520061317F /* CoreData.h */,
 				C2677EE81C938A520061317F /* CoreLocation.h */,
+				C2677EF71C93915A0061317F /* Foundation.h */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -619,9 +621,9 @@
 				C289AD801B62B95700186773 /* MyKit.h in Headers */,
 				C2677EE51C9389FA0061317F /* AppKit.h in Headers */,
 				C2677EF01C938AA30061317F /* CoreLocation.h in Headers */,
+				C2677EF91C93915A0061317F /* Foundation.h in Headers */,
 				C2677EEE1C938AA30061317F /* CloudKit.h in Headers */,
 				C2677EEF1C938AA30061317F /* CoreData.h in Headers */,
-				C2677EF31C938BF00061317F /* Darwin.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,9 +634,9 @@
 				C289AD8D1B62B97400186773 /* MyKit.h in Headers */,
 				C2677EEA1C938A520061317F /* CoreData.h in Headers */,
 				C2677EEB1C938A520061317F /* CoreLocation.h in Headers */,
+				C2677EF81C93915A0061317F /* Foundation.h in Headers */,
 				C2677EE91C938A520061317F /* CloudKit.h in Headers */,
 				C2677EED1C938A880061317F /* UIKit.h in Headers */,
-				C2677EF21C938BF00061317F /* Darwin.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
