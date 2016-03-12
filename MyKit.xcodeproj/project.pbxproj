@@ -68,18 +68,8 @@
 		C259F0B31C4D815600F9B2BC /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0B21C4D815600F9B2BC /* CollectionCell.swift */; };
 		C260C0131C9231CE00C2CB7A /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C260C0121C9231CE00C2CB7A /* Socket.swift */; };
 		C260C0141C9231CE00C2CB7A /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C260C0121C9231CE00C2CB7A /* Socket.swift */; };
-		C2677EE51C9389FA0061317F /* AppKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE41C9389FA0061317F /* AppKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EE91C938A520061317F /* CloudKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE61C938A520061317F /* CloudKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EEA1C938A520061317F /* CoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE71C938A520061317F /* CoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EEB1C938A520061317F /* CoreLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE81C938A520061317F /* CoreLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EED1C938A880061317F /* UIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EEC1C938A880061317F /* UIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EEE1C938AA30061317F /* CloudKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE61C938A520061317F /* CloudKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EEF1C938AA30061317F /* CoreData.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE71C938A520061317F /* CoreData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EF01C938AA30061317F /* CoreLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EE81C938A520061317F /* CoreLocation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EF81C93915A0061317F /* Foundation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EF71C93915A0061317F /* Foundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2677EF91C93915A0061317F /* Foundation.h in Headers */ = {isa = PBXBuildFile; fileRef = C2677EF71C93915A0061317F /* Foundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C289AD801B62B95700186773 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD7F1B62B95700186773 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C289AD8D1B62B97400186773 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C289AD8C1B62B97400186773 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C29559FB1C94CED3005CAA3A /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C29559FA1C94CED3005CAA3A /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C29559FC1C94CED8005CAA3A /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C29559FA1C94CED3005CAA3A /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA948E1C6D505200EDF761 /* UIViewController+.swift */; };
 		C2C06AF81C8FC55D000283D7 /* LoremIpsumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C06AF71C8FC55D000283D7 /* LoremIpsumTests.swift */; };
 		C2C06AFA1C8FCAF4000283D7 /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C06AF91C8FCAF4000283D7 /* PromiseTests.swift */; };
@@ -221,18 +211,10 @@
 		C259F05D1C4D701D00F9B2BC /* NSTableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTableView+.swift"; path = "Extension/NSTableView+.swift"; sourceTree = "<group>"; };
 		C259F0B21C4D815600F9B2BC /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionCell.swift; path = Framework/CollectionCell.swift; sourceTree = "<group>"; };
 		C260C0121C9231CE00C2CB7A /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Socket.swift; path = MyKit/Utility/Socket.swift; sourceTree = "<group>"; };
-		C2677EE41C9389FA0061317F /* AppKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppKit.h; sourceTree = "<group>"; };
-		C2677EE61C938A520061317F /* CloudKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudKit.h; path = MyKit/Header/CloudKit.h; sourceTree = "<group>"; };
-		C2677EE71C938A520061317F /* CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreData.h; path = MyKit/Header/CoreData.h; sourceTree = "<group>"; };
-		C2677EE81C938A520061317F /* CoreLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocation.h; path = MyKit/Header/CoreLocation.h; sourceTree = "<group>"; };
-		C2677EEC1C938A880061317F /* UIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKit.h; sourceTree = "<group>"; };
-		C2677EF11C938BF00061317F /* Darwin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Darwin.h; path = MyKit/Header/Darwin.h; sourceTree = "<group>"; };
-		C2677EF71C93915A0061317F /* Foundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Foundation.h; path = MyKit/Foundation.h; sourceTree = "<group>"; };
 		C289AD7C1B62B95700186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C289AD7F1B62B95700186773 /* MyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKit.h; sourceTree = "<group>"; };
 		C289AD8A1B62B97400186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C289AD8C1B62B97400186773 /* MyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKit.h; sourceTree = "<group>"; };
 		C289ADEB1B62BC3A00186773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyKit/Info.plist; sourceTree = "<group>"; };
+		C29559FA1C94CED3005CAA3A /* MyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyKit.h; path = MyKit/MyKit.h; sourceTree = "<group>"; };
 		C2AA948E1C6D505200EDF761 /* UIViewController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+.swift"; path = "Extension/UIViewController+.swift"; sourceTree = "<group>"; };
 		C2B60ACB1B95080800F6D2BB /* MyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2B60ACF1B95080800F6D2BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -368,7 +350,6 @@
 			isa = PBXGroup;
 			children = (
 				C289AD9A1B62BA5500186773 /* Extension */,
-				C289AD991B62BA5200186773 /* Support */,
 			);
 			path = MyKitOSX;
 			sourceTree = "<group>";
@@ -378,7 +359,6 @@
 			children = (
 				C289AD971B62BA3C00186773 /* Framework */,
 				C289AD981B62BA4400186773 /* Extension */,
-				C289AD961B62BA2200186773 /* Support */,
 			);
 			path = MyKitiOS;
 			sourceTree = "<group>";
@@ -441,15 +421,6 @@
 			name = Utility;
 			sourceTree = "<group>";
 		};
-		C289AD961B62BA2200186773 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				C289AD8C1B62B97400186773 /* MyKit.h */,
-				C2677EEC1C938A880061317F /* UIKit.h */,
-			);
-			name = Support;
-			sourceTree = "<group>";
-		};
 		C289AD971B62BA3C00186773 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,15 +457,6 @@
 			name = Extension;
 			sourceTree = "<group>";
 		};
-		C289AD991B62BA5200186773 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				C289AD7F1B62B95700186773 /* MyKit.h */,
-				C2677EE41C9389FA0061317F /* AppKit.h */,
-			);
-			name = Support;
-			sourceTree = "<group>";
-		};
 		C289AD9A1B62BA5500186773 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,12 +471,8 @@
 		C289ADEA1B62BBF400186773 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				C29559FA1C94CED3005CAA3A /* MyKit.h */,
 				C289ADEB1B62BC3A00186773 /* Info.plist */,
-				C2677EF11C938BF00061317F /* Darwin.h */,
-				C2677EE61C938A520061317F /* CloudKit.h */,
-				C2677EE71C938A520061317F /* CoreData.h */,
-				C2677EE81C938A520061317F /* CoreLocation.h */,
-				C2677EF71C93915A0061317F /* Foundation.h */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -638,12 +596,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C289AD801B62B95700186773 /* MyKit.h in Headers */,
-				C2677EE51C9389FA0061317F /* AppKit.h in Headers */,
-				C2677EF01C938AA30061317F /* CoreLocation.h in Headers */,
-				C2677EF91C93915A0061317F /* Foundation.h in Headers */,
-				C2677EEE1C938AA30061317F /* CloudKit.h in Headers */,
-				C2677EEF1C938AA30061317F /* CoreData.h in Headers */,
+				C29559FC1C94CED8005CAA3A /* MyKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,12 +604,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C289AD8D1B62B97400186773 /* MyKit.h in Headers */,
-				C2677EEA1C938A520061317F /* CoreData.h in Headers */,
-				C2677EEB1C938A520061317F /* CoreLocation.h in Headers */,
-				C2677EF81C93915A0061317F /* Foundation.h in Headers */,
-				C2677EE91C938A520061317F /* CloudKit.h in Headers */,
-				C2677EED1C938A880061317F /* UIKit.h in Headers */,
+				C29559FB1C94CED3005CAA3A /* MyKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,6 +970,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					TARGET_OSX,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1081,6 +1030,7 @@
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = TARGET_OSX;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1144,6 +1094,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					TARGET_IOS,
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1204,6 +1155,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = TARGET_OSX;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
