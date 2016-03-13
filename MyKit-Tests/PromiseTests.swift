@@ -10,14 +10,16 @@ infix operator +++ { associativity left }
 
 final class PromiseTests: XCTestCase {
 
+    private func delayFor<T>(interval: CFTimeInterval, result: Result<T>) -> Promise<T> {
+        return Promise { callback in delay(interval) { callback(result) }}
+    }
+
     func testFullfilledArray() {
         let expectation = expectationWithDescription(__FUNCTION__)
 
-        let p1 = Promise<Int> { callback in delay(0.5) { callback(.Fullfill(5)) }}
-        let p2 = Promise<Int> { callback in delay(0.5) { callback(.Fullfill(10)) }}
-        let p3 = Promise<Int> { callback in delay(1.0) { callback(.Fullfill(15)) }}
+        let ps = [(0.5, .Fullfill(5)), (0.5, .Fullfill(10)), (1.0, .Fullfill(15))].map(delayFor)
 
-        Promise<Int>.when([p1, p2, p3]).resolve {
+        Promise<Int>.when(ps).resolve {
             switch $0 {
 
             case .Fullfill(let value):
@@ -35,11 +37,9 @@ final class PromiseTests: XCTestCase {
     func testRejectedArray() {
         let expectation = expectationWithDescription(__FUNCTION__)
 
-        let p1 = Promise<Int> { callback in delay(0.5) { callback(.Fullfill(5)) }}
-        let p2 = Promise<Int> { callback in delay(0.5) { callback(.Reject(DataError.NoContent)) }}
-        let p3 = Promise<Int> { callback in delay(1.0) { callback(.Fullfill(15)) }}
+        let ps = [(0.5, .Fullfill(5)), (0.5, .Reject(DataError.NoContent)), (1.0, .Fullfill(15))].map(delayFor)
 
-        Promise<Int>.when([p1, p2, p3]).resolve {
+        Promise<Int>.when(ps).resolve {
             switch $0 {
 
             case .Fullfill(let value):
@@ -60,8 +60,8 @@ final class PromiseTests: XCTestCase {
     func testFullfilledTuple() {
         let expectation = expectationWithDescription(__FUNCTION__)
 
-        let p1 = Promise<Bool> { callback in delay(0.5) { callback(.Fullfill(true)) }}
-        let p2 = Promise<String> { callback in delay(1) { callback(.Fullfill("Success")) }}
+        let p1 = delayFor(0.5, result: .Fullfill(true))
+        let p2 = delayFor(1.0, result: .Fullfill("Success"))
 
         (p1 +++ p2).resolve {
             switch $0 {
@@ -81,8 +81,8 @@ final class PromiseTests: XCTestCase {
     func testRejectedTuple() {
         let expectation = expectationWithDescription(__FUNCTION__)
 
-        let p1 = Promise<Bool> { callback in delay(0.5) { callback(.Fullfill(true)) }}
-        let p2 = Promise<String> { callback in delay(1) { callback(.Reject(DataError.NoContent)) }}
+        let p1 = delayFor(0.5, result: .Fullfill(true))
+        let p2 = delayFor(1.0, result: Result<String>.Reject(DataError.NoContent))
 
         (p1 +++ p2).resolve {
             switch $0 {
