@@ -22,13 +22,8 @@
 		C209F5501C76673E007C3975 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5391C7665EC007C3975 /* Queue.swift */; };
 		C209F5511C76673E007C3975 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53A1C7665EC007C3975 /* Register.swift */; };
 		C209F5531C76673E007C3975 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53C1C7665EC007C3975 /* Time.swift */; };
-		C20F341D1C924739004CF7C3 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F341C1C924739004CF7C3 /* Client.swift */; };
-		C20F341E1C924739004CF7C3 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F341C1C924739004CF7C3 /* Client.swift */; };
 		C245D5631C6E5C8A00F0C899 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245D5621C6E5C8A00F0C899 /* NSText+.swift */; };
 		C24941981C93D6BB004C220A /* TaskManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24941971C93D6BB004C220A /* TaskManagerTests.swift */; };
-		C249419A1C93D6C6004C220A /* StreamClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24941991C93D6C6004C220A /* StreamClientTests.swift */; };
-		C24941A01C93E7A8004C220A /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = C249419F1C93E7A8004C220A /* Server.swift */; };
-		C24941A11C93E7A8004C220A /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = C249419F1C93E7A8004C220A /* Server.swift */; };
 		C259EFDD1C4D6ECE00F9B2BC /* DateIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */; };
 		C259EFE11C4D6ECE00F9B2BC /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD61C4D6ECE00F9B2BC /* PersistentStack.swift */; };
 		C259EFE21C4D6ECE00F9B2BC /* StreamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD71C4D6ECE00F9B2BC /* StreamClient.swift */; };
@@ -66,8 +61,6 @@
 		C259F0721C4D703D00F9B2BC /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD91C4D6ECE00F9B2BC /* TaskManager.swift */; };
 		C259F0731C4D703D00F9B2BC /* TimeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFDA1C4D6ECE00F9B2BC /* TimeSystem.swift */; };
 		C259F0B31C4D815600F9B2BC /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259F0B21C4D815600F9B2BC /* CollectionCell.swift */; };
-		C260C0131C9231CE00C2CB7A /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C260C0121C9231CE00C2CB7A /* Socket.swift */; };
-		C260C0141C9231CE00C2CB7A /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C260C0121C9231CE00C2CB7A /* Socket.swift */; };
 		C29559FB1C94CED3005CAA3A /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C29559FA1C94CED3005CAA3A /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C29559FC1C94CED8005CAA3A /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C29559FA1C94CED3005CAA3A /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2AA948F1C6D505200EDF761 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AA948E1C6D505200EDF761 /* UIViewController+.swift */; };
@@ -175,7 +168,6 @@
 		C20F341C1C924739004CF7C3 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = MyKit/Utility/Client.swift; sourceTree = "<group>"; };
 		C245D5621C6E5C8A00F0C899 /* NSText+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSText+.swift"; path = "Extension/NSText+.swift"; sourceTree = "<group>"; };
 		C24941971C93D6BB004C220A /* TaskManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManagerTests.swift; sourceTree = "<group>"; };
-		C24941991C93D6C6004C220A /* StreamClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamClientTests.swift; sourceTree = "<group>"; };
 		C249419F1C93E7A8004C220A /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Server.swift; path = MyKit/Utility/Server.swift; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateIndex.swift; path = MyKit/Framework/DateIndex.swift; sourceTree = "<group>"; };
@@ -483,7 +475,6 @@
 				C2C06AF91C8FCAF4000283D7 /* PromiseTests.swift */,
 				C2C06AF71C8FC55D000283D7 /* LoremIpsumTests.swift */,
 				C24941971C93D6BB004C220A /* TaskManagerTests.swift */,
-				C24941991C93D6C6004C220A /* StreamClientTests.swift */,
 				C2B60AD41B95084E00F6D2BB /* Support */,
 			);
 			path = MyKitTests;
@@ -760,7 +751,6 @@
 				C2EF9AEB1C90AC9D0037BE4D /* CloudStack.swift in Sources */,
 				C2EF9AEC1C90ACAF0037BE4D /* Bool+.swift in Sources */,
 				C2EF9AFC1C90ACC30037BE4D /* CKDatabase+.swift in Sources */,
-				C260C0141C9231CE00C2CB7A /* Socket.swift in Sources */,
 				C2EF9AE41C90AC8C0037BE4D /* SymbolIcon.swift in Sources */,
 				C259F0701C4D703D00F9B2BC /* StreamClient.swift in Sources */,
 				C2EF9AF51C90ACB90037BE4D /* NSDateFormatter+.swift in Sources */,
@@ -784,13 +774,11 @@
 				C259F0611C4D701D00F9B2BC /* NSControl+.swift in Sources */,
 				C2EF9AEA1C90AC9D0037BE4D /* CloudRecord.swift in Sources */,
 				C2EF9AE61C90AC910037BE4D /* WeatherAPI.swift in Sources */,
-				C20F341E1C924739004CF7C3 /* Client.swift in Sources */,
 				C2EF9AF01C90ACAF0037BE4D /* String+.swift in Sources */,
 				C259F0631C4D701D00F9B2BC /* NSTableView+.swift in Sources */,
 				C2EF9AFA1C90ACB90037BE4D /* NSRange+.swift in Sources */,
 				C2EF9AF11C90ACAF0037BE4D /* Then.swift in Sources */,
 				C2EF9AFE1C90ACC30037BE4D /* CKRecord+.swift in Sources */,
-				C24941A11C93E7A8004C220A /* Server.swift in Sources */,
 				C2EF9B071C90ACD90037BE4D /* CGSize+.swift in Sources */,
 				C2EF9AFF1C90ACC30037BE4D /* CKRecordID+.swift in Sources */,
 				C2EF9AFD1C90ACC30037BE4D /* CKQuery+.swift in Sources */,
@@ -830,7 +818,6 @@
 				C259F0591C4D6FEF00F9B2BC /* UIView+.swift in Sources */,
 				C259F01C1C4D6FE200F9B2BC /* CollectionView.swift in Sources */,
 				C2F18C951C76B2F400A1DB83 /* Promise.swift in Sources */,
-				C24941A01C93E7A8004C220A /* Server.swift in Sources */,
 				C2EFDC9B1C8FF0C8000DFB63 /* Then.swift in Sources */,
 				C259F0261C4D6FE200F9B2BC /* SimpleTransition.swift in Sources */,
 				C2EFDCC11C8FF102000DFB63 /* NSRelationshipDescription+.swift in Sources */,
@@ -857,7 +844,6 @@
 				C259F0531C4D6FEF00F9B2BC /* UIScrollView+.swift in Sources */,
 				C259F0511C4D6FEF00F9B2BC /* UILabel+.swift in Sources */,
 				C259EFDD1C4D6ECE00F9B2BC /* DateIndex.swift in Sources */,
-				C20F341D1C924739004CF7C3 /* Client.swift in Sources */,
 				C259F0551C4D6FEF00F9B2BC /* UITableView+.swift in Sources */,
 				C2EFDCAB1C8FF0E5000DFB63 /* NSNumber+.swift in Sources */,
 				C259F0221C4D6FE200F9B2BC /* PresentationController.swift in Sources */,
@@ -866,7 +852,6 @@
 				C2EFDCD01C8FF601000DFB63 /* WeatherAPI.swift in Sources */,
 				C2EFDCD91C8FF61E000DFB63 /* CloudStack.swift in Sources */,
 				C259F04B1C4D6FEF00F9B2BC /* UIControl+.swift in Sources */,
-				C260C0131C9231CE00C2CB7A /* Socket.swift in Sources */,
 				C259EFE11C4D6ECE00F9B2BC /* PersistentStack.swift in Sources */,
 				C2EFDCC61C8FF113000DFB63 /* CGRect+.swift in Sources */,
 				C259F0471C4D6FEF00F9B2BC /* UICollectionViewFlowLayout+.swift in Sources */,
@@ -886,7 +871,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C249419A1C93D6C6004C220A /* StreamClientTests.swift in Sources */,
 				C24941981C93D6BB004C220A /* TaskManagerTests.swift in Sources */,
 				C2C06AF81C8FC55D000283D7 /* LoremIpsumTests.swift in Sources */,
 				C2C06AFA1C8FCAF4000283D7 /* PromiseTests.swift in Sources */,
@@ -951,6 +935,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1016,6 +1001,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1074,7 +1060,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1140,7 +1126,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
