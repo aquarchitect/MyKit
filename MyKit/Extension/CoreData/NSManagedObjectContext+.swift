@@ -8,12 +8,12 @@
 
 public extension NSManagedObjectContext {
 
-    public func fetchObjects<T: NSManagedObject>(predicate: NSPredicate, sortDescriptos: [NSSortDescriptor]) throws -> [T]? {
+    public func fetch<T: NSManagedObject>(predicate: NSPredicate, sortDescriptos: [NSSortDescriptor]) throws -> [T]? {
         return try NSFetchRequest(entityName: T.entityName()).then {
-            $0.predicate = predicate
-            $0.sortDescriptors = sortDescriptos
-        }.then {
-            try self.executeRequest($0) as? [T]
-        }
+                $0.predicate = predicate
+                $0.sortDescriptors = sortDescriptos
+            }.then {
+                try self.executeFetchRequest($0) as? [T]
+            }
     }
 }
