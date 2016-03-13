@@ -17,7 +17,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C289AD7B1B62B95700186773"
                BuildableName = "MyKit.framework"
-               BlueprintName = "MyKitOSX"
+               BlueprintName = "MyKit-OSX"
                ReferencedContainer = "container:MyKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -35,7 +35,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C289AD7B1B62B95700186773"
             BuildableName = "MyKit.framework"
-            BlueprintName = "MyKitOSX"
+            BlueprintName = "MyKit-OSX"
             ReferencedContainer = "container:MyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -57,7 +57,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C289AD7B1B62B95700186773"
             BuildableName = "MyKit.framework"
-            BlueprintName = "MyKitOSX"
+            BlueprintName = "MyKit-OSX"
             ReferencedContainer = "container:MyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -75,7 +75,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C289AD7B1B62B95700186773"
             BuildableName = "MyKit.framework"
-            BlueprintName = "MyKitOSX"
+            BlueprintName = "MyKit-OSX"
             ReferencedContainer = "container:MyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

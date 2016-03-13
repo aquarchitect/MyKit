@@ -17,7 +17,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C289AD891B62B97400186773"
                BuildableName = "MyKit.framework"
-               BlueprintName = "MyKitiOS"
+               BlueprintName = "MyKit-iOS"
                ReferencedContainer = "container:MyKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -35,7 +35,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C289AD891B62B97400186773"
             BuildableName = "MyKit.framework"
-            BlueprintName = "MyKitiOS"
+            BlueprintName = "MyKit-iOS"
             ReferencedContainer = "container:MyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -57,7 +57,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C289AD891B62B97400186773"
             BuildableName = "MyKit.framework"
-            BlueprintName = "MyKitiOS"
+            BlueprintName = "MyKit-iOS"
             ReferencedContainer = "container:MyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -75,7 +75,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C289AD891B62B97400186773"
             BuildableName = "MyKit.framework"
-            BlueprintName = "MyKitiOS"
+            BlueprintName = "MyKit-iOS"
             ReferencedContainer = "container:MyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
