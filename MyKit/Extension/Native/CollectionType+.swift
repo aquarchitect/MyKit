@@ -24,6 +24,6 @@ public extension CollectionType where Index.Distance == Int {
         let endDistance = (startDistance..<self.count).randomElement ?? startDistance
         let endIndex = self.startIndex.advancedBy(endDistance)
 
-        return self[startIndex...endIndex]
+        return self[startIndex..<endIndex]
     }
 }
