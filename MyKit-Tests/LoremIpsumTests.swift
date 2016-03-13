@@ -8,13 +8,11 @@
 
 final class LoremIpsumTests: XCTestCase {
 
-    func testRandomElement() {
-        let element = LoremIpsum.sharedInstance?.randomElement
-        XCTAssert(!(element ?? "").isEmpty)
-    }
+    private let loremIpsum = LoremIpsum.sharedInstance
 
-    func testRandomSlice() {
-        let slice = LoremIpsum.sharedInstance?.randomSlice.map { $0 }
-        XCTAssert(!(slice ?? []).isEmpty)
+    func testLoremIpsum() {
+        XCTAssertNotNil(loremIpsum)
+        XCTAssert(!(loremIpsum?.randomElement ?? "").isEmpty)
+        XCTAssert(!(loremIpsum?.randomSlice.map { $0 } ?? []).isEmpty)
     }
 }

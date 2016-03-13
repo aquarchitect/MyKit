@@ -6,5 +6,5 @@
 //
 //
 
-#import <XCTest/XCTest.h>
-#import <MyKit/AppKit.h>
+@import XCTest;
+@import MyKit;
