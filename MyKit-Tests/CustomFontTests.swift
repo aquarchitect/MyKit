@@ -10,7 +10,7 @@
 
 final class CustomFontTests: XCTestCase {
 
-    func testsFontOf<T: CustomFont>(type: T.Type) {
+    func testsFontInstanceOf<T: CustomFont>(type: T.Type) {
         [("Ionicons", "SymbolIcon"), ("Weather Icons", "WeatherFont")].forEach {
             XCTAssertNotNil(T.fontWith(name: $0.0, size: 17, fromFile: $0.1))
         }
@@ -20,9 +20,9 @@ final class CustomFontTests: XCTestCase {
         XCTAssertNotNil(NSBundle.defaultBundle)
 
         #if os(iOS)
-            testsFontOf(UIFont.self)
+            testsFontInstanceOf(UIFont.self)
         #elseif os(OSX)
-            testsFontOf(NSFont.self)
+            testsFontInstanceOf(NSFont.self)
         #endif
     }
 }
