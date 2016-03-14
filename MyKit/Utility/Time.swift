@@ -6,7 +6,7 @@
 //  
 //
 
-/// Delays block execution
+/// Delays block execution on sepefic queue
 public func delay(interval: NSTimeInterval, queue: dispatch_queue_t = Queue.Main, block: Void -> Void) {
     let poptime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * interval))
     dispatch_after(poptime, queue, block)

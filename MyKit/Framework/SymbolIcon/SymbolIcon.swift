@@ -9,20 +9,14 @@
 public struct SymbolIcon {
 
     public static func attributedStringOf(character: Character, size: CGFloat) -> NSMutableAttributedString {
-        let arguments = (name: "IonIcons", size: size)
+        let arguments = (name: "Ionicons", size: size, fromFile: "SymbolIcon")
 
         #if os(iOS)
-            let font: UIFont? = UIFont(arguments) ?? {
-                try! register(font: "SymbolIcon")
-                return UIFont(arguments)
-            }()
+            let font = UIFont.fontWith(arguments)
         #elseif os(OSX)
-            let font: NSFont? = NSFont(arguments) ?? {
-                try! register(font: "SymbolIcon")
-                return NSFont(arguments)
-            }()
+            let font = NSFont.fontWith(arguments)
         #endif
-        
+
         return NSMutableAttributedString(string: "\(character)").then { $0.addFontAttribute(font) }
     }
 

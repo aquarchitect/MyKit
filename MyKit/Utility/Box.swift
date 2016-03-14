@@ -14,5 +14,3 @@ public class Box<T> {
         self.value = value
     }
 }
-
-extension Box: Then {}

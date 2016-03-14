@@ -17,7 +17,7 @@ public protocol CloudRecord: class {}
 private extension CloudRecord where Self: NSObject {
 
     func decodeFrom(record: CKRecord) {
-        for key in record.allKeys() where self.respondsTo(key) {
+        for key in record.allKeys() where self.respondsToSelector(Selector(key)) {
             guard let value = record[key] else { continue }
             self.setValue(value, forKey: key)
         }

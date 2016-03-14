@@ -16,6 +16,6 @@ public func >>> <A, B, C>(lhs: A throws -> B, rhs: B throws -> C) -> (A throws -
     return { try rhs(try lhs($0)) }
 }
 
-public func >>> <T>(lhs: Void -> T, rhs: T -> Void) {
+public func >>> <T>(@autoclosure lhs: Void -> T, rhs: T -> Void) {
     rhs(lhs())
 }

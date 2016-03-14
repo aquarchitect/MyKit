@@ -8,17 +8,25 @@
 
 public extension NSDate {
 
-    private var today: NSDate { return TimeSystem.sharedInstance.today }
+    public typealias Period = (passed: Int, left: Int)
 
-    public var calendar: NSCalendar { return .currentCalendar() }
+    public static var Today: NSDate {
+        return NSDate().startOfDay()
+    }
 
-    public var index: DateIndex { return DateIndex(value: self.startOfDay()) }
+    public var calendar: NSCalendar {
+        return .autoupdatingCurrentCalendar()
+    }
+
+    public func startOfDay() -> NSDate {
+        return calendar.startOfDayForDate(self)
+    }
 
     public func components(unit: NSCalendarUnit) -> NSDateComponents {
         return calendar.components(unit, fromDate: self)
     }
 
-    public func dateByAddingUnit(unit: NSCalendarUnit, value: Int) -> NSDate {
+    public func dateByAdding(unit: NSCalendarUnit, value: Int) -> NSDate {
         return calendar.dateByAddingUnit(unit, value: value, toDate: self, options: [])!
     }
 
@@ -26,13 +34,14 @@ public extension NSDate {
         return calendar.rangeOfUnit(smallerUnit, inUnit: largerUnit, forDate: self)
     }
 
-    public func matchesComponents(components: NSDateComponents) -> Bool {
+    public func isMatchedWith(components: NSDateComponents) -> Bool {
         return calendar.date(self, matchesComponents: components)
     }
+}
 
-    public func startOfDay() -> NSDate {
-        return calendar.startOfDayForDate(self)
-    }
+// MARK: First Date
+
+public extension NSDate {
 
     public func firstDateOfTheMonth() -> NSDate {
         return calendar.dateFromComponents(components([.Year, .Month]))!
@@ -41,6 +50,11 @@ public extension NSDate {
     public func firstDateOfTheWeek() -> NSDate {
         return calendar.dateFromComponents(components([.Year, .WeekOfYear]))!
     }
+}
+
+// MARK: Number of Days
+
+public extension NSDate {
 
     public func numberOfDaysInTheMonth() -> Int {
         return rangeOfUnit(.Day, inUnit: .Month).length
@@ -58,113 +72,169 @@ public extension NSDate {
         return rangeOfUnit(.WeekOfYear, inUnit: .Year).length
     }
 
-    public func dateByAddingDays(value: Int) -> NSDate {
-        return dateByAddingUnit(.Day, value: value)
+    public func numberOfDaysInThisWeek() -> Period {
+        var days = calendar.firstWeekday - NSDate.Today.components(.Weekday).weekday
+        days += 7 * Int(days <= 0)
+        return (7 - days, days - 1)
     }
 
-    public func dateByAddingWeeks(value: Int) -> NSDate {
-        return dateByAddingUnit(.Day, value: 7 * value)
+    public func numberOfDaysInThisMonth() -> Period {
+        let days = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: .Today).length
+        let day = NSDate.Today.components(.Day).day
+        return (day - 1, days - day)
     }
 
-    public func dateByAddingMonths(value: Int) -> NSDate {
-        return dateByAddingUnit(.Month, value: value)
+    public func numberOfWeeksInThisMonth() -> Period {
+        let weeks = calendar.rangeOfUnit(.WeekOfMonth, inUnit: .Month, forDate: .Today).length
+        let week = NSDate.Today.components(.WeekOfMonth).weekOfMonth
+        return (week - 1, weeks - week)
     }
 
-    public func dateByAddingYears(value: Int) -> NSDate {
-        return dateByAddingUnit(.Year, value: value)
-    }
-
-    public func isSameDayAsDate(date: NSDate) -> Bool {
-        return matchesComponents(date.components([.Year, .Month, .Day]))
-    }
-
-    public func isSameWeekAsDate(date: NSDate) -> Bool {
-        return matchesComponents(date.components([.Year, .WeekOfYear]))
-    }
-
-    public func isSameMonthAsDate(date: NSDate) -> Bool {
-        return matchesComponents(date.components([.Year, .Month]))
-    }
-
-    public func isSameYearAsDate(date: NSDate) -> Bool {
-        return matchesComponents(date.components(.Year))
-    }
-
-    public func isToday() ->Bool {
-        return isSameDayAsDate(today)
-    }
-
-    public func isTomorrow() -> Bool {
-        return isSameDayAsDate(today.dateByAddingDays(1))
-    }
-
-    public func isYesterday() -> Bool {
-        return isSameDayAsDate(today.dateByAddingDays(-1))
-    }
-
-    public func isThisWeek() -> Bool {
-        return isSameWeekAsDate(today)
-    }
-
-    public func isNextWeek() -> Bool {
-        return isSameWeekAsDate(today.dateByAddingWeeks(1))
-    }
-
-    public func isLastWeek() -> Bool {
-        return isSameWeekAsDate(today.dateByAddingWeeks(-1))
-    }
-
-    public func isThisMonth() -> Bool {
-        return isSameMonthAsDate(today)
-    }
-
-    public func isNextMonth() -> Bool {
-        return isSameMonthAsDate(today.dateByAddingMonths(1))
-    }
-
-    public func isLastMonth() -> Bool {
-        return isSameMonthAsDate(today.dateByAddingMonths(-1))
-    }
-
-    public func isThisYear() -> Bool {
-        return isSameYearAsDate(today)
-    }
-
-    public func isLastYear() -> Bool {
-        return isSameYearAsDate(today.dateByAddingYears(-1))
-    }
-
-    public func isNextYear() -> Bool {
-        return isSameYearAsDate(today.dateByAddingYears(1))
-    }
-
-    public func isInFuture() -> Bool {
-        return !isSameDayAsDate(today) && self.compare(today) == .OrderedDescending
-    }
-
-    public func isInPast() -> Bool {
-        return !isSameDayAsDate(today) && self.compare(today) == .OrderedAscending
+    public func numebrOfDaysInThisMonth() -> Period {
+        let days = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: .Today).length
+        let day = NSDate.Today.components(.Day).day
+        return (day - 1, days - day)
     }
 }
 
+// MARK: Date Calculation
+
 public extension NSDate {
 
-    public func stringWithStyle(date date: NSDateFormatterStyle, time: NSDateFormatterStyle) -> String {
+    public func dateByAdding(days value: Int) -> NSDate {
+        return dateByAdding(.Day, value: value)
+    }
+
+    public func dateByAdding(weeks value: Int) -> NSDate {
+        return dateByAdding(.Day, value: 7 * value)
+    }
+
+    public func dateByAdding(months value: Int) -> NSDate {
+        return dateByAdding(.Month, value: value)
+    }
+
+    public func dateByAdding(years value: Int) -> NSDate {
+        return dateByAdding(.Year, value: value)
+    }
+}
+
+// MARK: Date Comparison
+
+public extension NSDate {
+
+    public func isSameDayAs(date: NSDate) -> Bool {
+        return date.components([.Year, .Month, .Day]).then(isMatchedWith)
+    }
+
+    public func isSameWeekAs(date: NSDate) -> Bool {
+        return date.components([.Year, .WeekOfYear]).then(isMatchedWith)
+    }
+
+    public func isSameMonthAs(date: NSDate) -> Bool {
+        return date.components([.Year, .Month]).then(isMatchedWith)
+    }
+
+    public func isSameYearAs(date: NSDate) -> Bool {
+        return date.components(.Year).then(isMatchedWith)
+    }
+}
+
+// MARK: Today Comparison
+
+public extension NSDate {
+
+    public func isInFuture() -> Bool {
+        return NSDate.Today.then { !isSameDayAs($0) && self.compare($0) == .OrderedDescending }
+    }
+
+    public func isInPast() -> Bool {
+        return NSDate.Today.then { !isSameDayAs($0) && self.compare($0) == .OrderedAscending }
+    }
+}
+
+// MARK: Today Comparison within a Week
+
+public extension NSDate {
+
+    public func isToday() ->Bool {
+        return isSameDayAs(.Today)
+    }
+
+    public func isTomorrow() -> Bool {
+        return NSDate.Today.dateByAdding(days: 1).then(isSameDayAs)
+    }
+
+    public func isYesterday() -> Bool {
+        return NSDate.Today.dateByAdding(days: -1).then(isSameDayAs)
+    }
+}
+
+// MARK: Today Comparison within a Month
+
+public extension NSDate {
+
+    public func isThisWeek() -> Bool {
+        return isSameWeekAs(.Today)
+    }
+
+    public func isNextWeek() -> Bool {
+        return NSDate.Today.dateByAdding(weeks: 1).then(isSameWeekAs)
+    }
+
+    public func isLastWeek() -> Bool {
+        return NSDate.Today.dateByAdding(weeks: -1).then(isSameWeekAs)
+    }
+}
+
+// MARK: Today Comparison within a Year
+
+public extension NSDate {
+
+    public func isThisMonth() -> Bool {
+        return isSameMonthAs(.Today)
+    }
+
+    public func isNextMonth() -> Bool {
+        return NSDate.Today.dateByAdding(months: 1).then(isSameMonthAs)
+    }
+
+    public func isLastMonth() -> Bool {
+        return NSDate.Today.dateByAdding(months: -1).then(isSameMonthAs)
+    }
+
+    public func isThisYear() -> Bool {
+        return isSameYearAs(.Today)
+    }
+
+    public func isLastYear() -> Bool {
+        return NSDate.Today.dateByAdding(years: -1).then(isSameYearAs)
+    }
+
+    public func isNextYear() -> Bool {
+        return NSDate.Today.dateByAdding(years: 1).then(isSameYearAs)
+    }
+}
+
+// MARK: String with Style
+
+public extension NSDate {
+
+    public func stringWith(date date: NSDateFormatterStyle, time: NSDateFormatterStyle) -> String {
         let formatter = NSDateFormatter.sharedInstance
         formatter.timeStyle = time
         formatter.dateStyle = date
         return formatter.stringFromDate(self)
     }
 
-    public func stringWithStyle(style: NSDateFormatterStyle) -> String {
-        return stringWithStyle(date: style, time: style)
+    public func stringWith(style: NSDateFormatterStyle) -> String {
+        return stringWith(date: style, time: style)
     }
 
-    public func timeStringWithStyle(style: NSDateFormatterStyle) -> String {
-        return stringWithStyle(date: .NoStyle, time: style)
+    public func timeStringWith(style: NSDateFormatterStyle) -> String {
+        return stringWith(date: .NoStyle, time: style)
     }
 
     public func dateStringWithStyle(style: NSDateFormatterStyle) -> String {
-        return stringWithStyle(date: style, time: .NoStyle)
+        return stringWith(date: style, time: .NoStyle)
     }
 }

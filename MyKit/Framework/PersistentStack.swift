@@ -17,17 +17,20 @@ public extension PersistentStack {
         return context.persistentStoreCoordinator
     }
 
-    public static func defaultContextFor(app name: String) throws -> NSManagedObjectContext {
+    public static func contextFor(app name: String, withType type: String = NSSQLiteStoreType) throws -> NSManagedObjectContext {
         let url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last?.then {
-            $0.URLByAppendingPathComponent(name + "Data.sqlite")
+            $0.URLByAppendingPathComponent("\(name)Data.sqlite")
         }
 
         let model = NSBundle.mainBundle().URLForResource(name, withExtension: "momd")?.then {
             NSManagedObjectModel(contentsOfURL: $0)
         }
 
-        let coordinator = try NSPersistentStoreCoordinator(managedObjectModel: model!).then {
-                try $0.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url!, options: nil)
+        guard let _url = url else { throw CommonError.FailedToLocate(file: "\(name)Data.sqlite")}
+        guard let _model = model else { throw CommonError.FailedToLocate(file: "\(name).momd") }
+
+        let coordinator = try NSPersistentStoreCoordinator(managedObjectModel: _model).then {
+                try $0.addPersistentStoreWithType(type, configuration: nil, URL: _url, options: nil)
             } as NSPersistentStoreCoordinator
 
         return NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType).then {

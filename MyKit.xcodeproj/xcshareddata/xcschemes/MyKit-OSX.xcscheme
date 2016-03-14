@@ -34,7 +34,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C2848E001C956A7600707F53"
-               BuildableName = "MyKit-OSXTests.xctest"
+               BuildableName = "MyKitTests.xctest"
                BlueprintName = "MyKit-OSXTests"
                ReferencedContainer = "container:MyKit.xcodeproj">
             </BuildableReference>

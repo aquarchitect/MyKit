@@ -21,3 +21,4 @@ extension Then {
 }
 
 extension NSObject: Then {}
+extension Box: Then {}

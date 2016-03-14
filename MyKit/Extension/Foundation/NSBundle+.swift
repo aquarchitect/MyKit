@@ -8,7 +8,7 @@
 
 extension NSBundle {
 
-    class func defaultBundle() -> NSBundle? {
+    static var defaultBundle: NSBundle? {
         #if os(iOS)
             let platform = "iOS"
         #elseif os(OSX)

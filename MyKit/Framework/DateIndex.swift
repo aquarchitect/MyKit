@@ -15,20 +15,30 @@ public struct DateIndex {
         self.value = value
         self.unit = unit
     }
+}
 
-    public init() {
-        let today = TimeSystem.sharedInstance.today
-        self.init(value: today, unit: .Day)
+extension DateIndex: ForwardIndexType {
+
+    public func successor() -> DateIndex {
+        return value.dateByAdding(unit, value: 1).then {
+            DateIndex(value: $0, unit: unit)
+        }
+    }
+
+    public func advancedBy(n: Int) -> DateIndex {
+        return value.dateByAdding(unit, value: n).then {
+            DateIndex(value: $0, unit: unit)
+        }
     }
 }
 
-// :nodoc:
-public func == (lhs: DateIndex, rhs: DateIndex) -> Bool {
-    return lhs.value == rhs.value && lhs.unit == rhs.unit
-}
+extension DateIndex: BidirectionalIndexType {
 
-public func < (lhs: DateIndex, rhs: DateIndex) -> Bool {
-    return lhs.value.compare(rhs.value) == .OrderedAscending
+    public func predecessor() -> DateIndex {
+        return value.dateByAdding(unit, value: -1).then {
+            DateIndex(value: $0, unit: unit)
+        }
+    }
 }
 
 extension DateIndex: Comparable {}
@@ -40,23 +50,11 @@ extension DateIndex: Hashable {
     }
 }
 
-extension DateIndex: ForwardIndexType {
-
-    public func successor() -> DateIndex {
-        let date = self.value.dateByAddingUnit(self.unit, value: 1)
-        return DateIndex(value: date, unit: self.unit)
-    }
-
-    public func advancedBy(n: Int) -> DateIndex {
-        let date = self.value.dateByAddingUnit(self.unit, value: n)
-        return DateIndex(value: date, unit: self.unit)
-    }
+// :nodoc:
+public func == (lhs: DateIndex, rhs: DateIndex) -> Bool {
+    return lhs.value == rhs.value && lhs.unit == rhs.unit
 }
 
-extension DateIndex: BidirectionalIndexType {
-
-    public func predecessor() -> DateIndex {
-        let date = self.value.dateByAddingUnit(self.unit, value: -1)
-        return DateIndex(value: date, unit: self.unit)
-    }
+public func < (lhs: DateIndex, rhs: DateIndex) -> Bool {
+    return lhs.value.compare(rhs.value) == .OrderedAscending
 }

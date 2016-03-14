@@ -14,25 +14,31 @@ private func & (lhs: String, rhs: String) -> String {
 
 public final class OpenWeather {
 
-    public enum TemperatureFormat: String {
+    public enum Format: String {
 
         case Celsius = "metric"
         case Fahrenheit = "imperial"
     }
 
+    // MARK: Property
+
     public let apiKey: String
     public let version: Double
     public let language: String
-    public let format: TemperatureFormat
+    public let format: Format
 
     private let baseURL = "http://api.openweathermap.org/data/"
 
-    public init(apiKey: String, version: Double = 2.5, language: String = "en", format: TemperatureFormat = .Celsius) {
+    // MARK: Initialization
+
+    public init(apiKey: String, version: Double = 2.5, language: String = "en", format: Format = .Celsius) {
         self.apiKey = apiKey
         self.version = version
         self.language = language
         self.format = format
     }
+
+    // MARK: Support Method
 
     private func componentForReturnedDays(count: Int) -> String {
         return "cnt=\(count)"
@@ -49,6 +55,22 @@ public final class OpenWeather {
     private func componentForCoordinate(coordinate: CLLocationCoordinate2D) -> String {
         return "lat=\(coordinate.latitude)&lon=\(coordinate.longitude)"
     }
+
+    private func retrieveData(method: String, completion: NSDictionary? -> Void)  {
+        let apiKey = "APPID=\(self.apiKey)"
+        let language = "lang=\(self.language)"
+        let units = "units=\(format.rawValue)"
+
+        NSURL(string: [apiKey, language, units].reduce(baseURL + String(version) + method, combine: &))?.then {
+            NSURLSession.sharedSession().dataTaskWithURL($0) { data, _, _ in
+                data?.then {
+                    (try? NSJSONSerialization.JSONObjectWithData($0, options: .MutableContainers)) as? NSDictionary
+                    }?.then { completion($0) }
+            }
+        }.resume()
+    }
+
+    // MARK: Network Call
 
     public func currentWeather(cityName: String, completion: NSDictionary? -> Void) {
         retrieveData("/weather?" + componentForCityName(cityName), completion: completion)
@@ -75,20 +97,5 @@ public final class OpenWeather {
     public func dailyForecast(coordinate: CLLocationCoordinate2D, numberOfDays: Int, completion: NSDictionary? -> Void) {
         let components = componentForCoordinate(coordinate) & componentForReturnedDays(numberOfDays)
         retrieveData("/forecast/daily?" + components, completion: completion)
-    }
-
-    private func retrieveData(method: String, completion: NSDictionary? -> Void)  {
-        let apiKey = "APPID=\(self.apiKey)"
-        let language = "lang=\(self.language)"
-        let units = "units=\(format.rawValue)"
-
-        NSURL(string: [apiKey, language, units].reduce(baseURL + String(version) + method, combine: &))?.then {
-            NSURLSession.sharedSession().dataTaskWithURL($0) { data, _, _ in
-                data?.then {
-                    (try? NSJSONSerialization.JSONObjectWithData($0, options: .MutableContainers)) as? NSDictionary
-                }?.then { completion($0) }
-            }
-        }.resume()
-
     }
 }

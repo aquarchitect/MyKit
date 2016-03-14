@@ -19,22 +19,26 @@ public struct Promise<T> {
 
 public extension Promise {
 
+    /// Execute promise operation with a callback
     public func resolve(callback: Result<T>.Callback) {
         self.operation(callback)
     }
 
+    /// Transform the promise from one type to another
     public func then<U>(f: T -> U) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { callback($0.then(f)) }
         }
     }
 
+    /// Transform the promise from one type to another with a potential error
     public func then<U>(f: T throws -> U) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { callback($0.then(f)) }
         }
     }
 
+    /// Transform to another promise
     public func andThen<U>(f: T -> Promise<U>) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve {
@@ -44,6 +48,7 @@ public extension Promise {
         }
     }
 
+    /// Transform to another promise with a potential error
     public func andThen<U>(f: T throws -> Promise<U>) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve {
@@ -52,7 +57,13 @@ public extension Promise {
             }
         }
     }
+}
 
+// MARK: Multiple Promises
+
+public extension Promise {
+
+    // execute promises concurrently with a group-dispatch monitoring
     private func joint<U>(queue: dispatch_queue_t, _ group: dispatch_group_t, f: ((T throws -> U) -> Result<U>) -> Void) {
         dispatch_group_enter(group)
 
@@ -62,8 +73,9 @@ public extension Promise {
         }
     }
 
+    /// Convert concurrent promises of a same type to a promise of an array
     static public func when(promises: [Promise]) -> Promise<[T]> {
-        let queue = dispatch_queue_create("HaiNguyen.MyKit.Promise.array", DISPATCH_QUEUE_CONCURRENT)
+        let queue = dispatch_queue_create("MyKit.Promise.array", DISPATCH_QUEUE_CONCURRENT)
         let group = dispatch_group_create()
 
         var output: Result<[T]>?
@@ -80,8 +92,9 @@ public extension Promise {
     }
 }
 
+/// Convert concurrent promises of 2 different types to a promise of tuple
 public func +++ <A, B>(lhs: Promise<A>, rhs: Promise<B>) -> Promise<(A, B)> {
-    let queue = dispatch_queue_create("HaiNguyen.MyKit.Promise.tuple", DISPATCH_QUEUE_CONCURRENT)
+    let queue = dispatch_queue_create("MyKit.Promise.tuple", DISPATCH_QUEUE_CONCURRENT)
     let group = dispatch_group_create()
 
     var output: Result<(A?, B?)>?

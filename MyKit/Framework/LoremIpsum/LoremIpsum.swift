@@ -7,11 +7,9 @@
 //
 
 /**
-
-An LorumIpsum object generates random text at different length designed specifically for testing.
+An LorumIpsum object generates random text at different length designed specifically for robust testing.
 
 - throws: file corruption error.
-
 */
 public final class LoremIpsum: CollectionType {
 
@@ -25,9 +23,10 @@ public final class LoremIpsum: CollectionType {
     }
 
     init() throws {
-        guard let bundle = NSBundle.defaultBundle(),
-            url = bundle.URLForResource("LoremIpsum", withExtension: "txt")
-            else { return }
+        let name = "LoremIpsum", ext = "txt"
+
+        guard let url = NSBundle.defaultBundle?.URLForResource(name, withExtension: ext)
+            else { throw CommonError.FailedToLocate(file: "\(name).\(ext)") }
 
         let lorem = try String(contentsOfURL: url)
         let range = lorem.startIndex..<lorem.endIndex
@@ -49,6 +48,6 @@ public final class LoremIpsum: CollectionType {
 extension LoremIpsum: CustomDebugStringConvertible {
 
     public var debugDescription: String {
-        return "\(storage)"
+        return storage.joinWithSeparator(" ")
     }
 }

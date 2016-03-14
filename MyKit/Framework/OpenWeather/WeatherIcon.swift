@@ -257,20 +257,17 @@ extension WeatherIcon: CustomStringConvertible {
         case .N957: return "\u{f050}"
         }
     }
+}
 
-    public func stringWithOption(size: CGFloat) -> NSMutableAttributedString {
-        let arguments = (name: "Weather Icons", size: size)
+extension WeatherIcon {
+
+    public func stringOf(size: CGFloat) -> NSMutableAttributedString {
+        let arguments = (name: "Weather Icons", size: size, fromFile: "WeatherFont")
 
         #if os(iOS)
-            let font: UIFont? = UIFont(arguments) ?? {
-                try! register(font: "WeatherFont")
-                return UIFont(arguments)
-            }()
+            let font = UIFont.fontWith(arguments)
         #elseif os(OSX)
-            let font: NSFont? = NSFont(arguments) ?? {
-                try! register(font: "WeatherFont")
-                return NSFont(arguments)
-            }()
+            let font = NSFont.fontWith(arguments)
         #endif
 
         return NSMutableAttributedString(string: self.description).then { $0.addFontAttribute(font) }

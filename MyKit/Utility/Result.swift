@@ -6,8 +6,7 @@
 //  
 //
 
-public enum DataError: ErrorType { case NoContent }
-
+/// Constant that helps define results of a callback
 public enum Result<T> {
 
     case Fullfill(T)
@@ -18,6 +17,7 @@ public extension Result {
 
     typealias Callback = Result -> Void
 
+    /// Tranform the result of one type to another
     public func then<U>(f: T -> U) -> Result<U> {
         switch self {
 
@@ -26,6 +26,7 @@ public extension Result {
         }
     }
 
+    /// Transfrom the result of one type to another with a potential error
     public func then<U>(f: T throws -> U) -> Result<U> {
         switch self {
 
@@ -38,6 +39,7 @@ public extension Result {
         }
     }
 
+    /// Unwrap in result into values
     public func resolve() throws -> T {
         switch self {
 
