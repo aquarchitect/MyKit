@@ -13,6 +13,5 @@ final class LoremIpsumTests: XCTestCase {
     func testLoremIpsum() {
         XCTAssertNotNil(loremIpsum)
         XCTAssert(!(loremIpsum?.randomElement ?? "").isEmpty)
-        XCTAssert(!(loremIpsum?.randomSlice.map { $0 } ?? []).isEmpty)
     }
 }

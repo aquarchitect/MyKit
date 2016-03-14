@@ -26,7 +26,7 @@
                   Identifier = "CustomFontTests">
                </Test>
                <Test
-                  Identifier = "LoremIpsumTests">
+                  Identifier = "NSDateTests">
                </Test>
                <Test
                   Identifier = "PromiseTests">
