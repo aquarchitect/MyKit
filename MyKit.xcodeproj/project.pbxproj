@@ -81,6 +81,9 @@
 		C2BBFED11C967BE000E63145 /* TaskManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7C00A1C954BE700D79747 /* TaskManagerTests.swift */; };
 		C2BBFED61C96860100E63145 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BBFED41C96860100E63145 /* CustomFont.swift */; };
 		C2BBFED91C969A8300E63145 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BBFED41C96860100E63145 /* CustomFont.swift */; };
+		C2E191941C9724A100FE33C3 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E191911C97236E00FE33C3 /* NSDateTests.swift */; };
+		C2E191951C9724A100FE33C3 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E191911C97236E00FE33C3 /* NSDateTests.swift */; };
+		C2E191961C9724A200FE33C3 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E191911C97236E00FE33C3 /* NSDateTests.swift */; };
 		C2EF9AE31C90AC8C0037BE4D /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2EFDCC81C8FF5F2000DFB63 /* SymbolIcon.ttf */; };
 		C2EF9AE41C90AC8C0037BE4D /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EFDCC91C8FF5F2000DFB63 /* SymbolIcon.swift */; };
 		C2EF9AE51C90AC910037BE4D /* WeatherFont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2EFDCCC1C8FF601000DFB63 /* WeatherFont.ttf */; };
@@ -241,6 +244,7 @@
 		C2BBFEB91C96703D00E63145 /* CustomFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomFontTests.swift; path = "MyKit-Tests/CustomFontTests.swift"; sourceTree = SOURCE_ROOT; };
 		C2BBFEC61C967AD800E63145 /* MyKit-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MyKit-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2BBFED41C96860100E63145 /* CustomFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomFont.swift; path = MyKit/Framework/CustomFont.swift; sourceTree = "<group>"; };
+		C2E191911C97236E00FE33C3 /* NSDateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateTests.swift; path = "MyKit-Tests/NSDateTests.swift"; sourceTree = SOURCE_ROOT; };
 		C2EFDC901C8FF0C8000DFB63 /* Bool+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bool+.swift"; path = "MyKit/Extension/Native/Bool+.swift"; sourceTree = "<group>"; };
 		C2EFDC911C8FF0C8000DFB63 /* CollectionType+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CollectionType+.swift"; path = "MyKit/Extension/Native/CollectionType+.swift"; sourceTree = "<group>"; };
 		C2EFDC921C8FF0C8000DFB63 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Random.swift; path = MyKit/Extension/Native/Random.swift; sourceTree = "<group>"; };
@@ -516,6 +520,7 @@
 		C2B60ACC1B95080800F6D2BB /* MyKit-Tests */ = {
 			isa = PBXGroup;
 			children = (
+				C2E191911C97236E00FE33C3 /* NSDateTests.swift */,
 				C2B7C0091C954BE700D79747 /* PromiseTests.swift */,
 				C2BBFEB91C96703D00E63145 /* CustomFontTests.swift */,
 				C2B7C0081C954BE700D79747 /* LoremIpsumTests.swift */,
@@ -842,6 +847,7 @@
 				C2848DEC1C9564F300707F53 /* LoremIpsumTests.swift in Sources */,
 				C2BBFEBA1C96703D00E63145 /* CustomFontTests.swift in Sources */,
 				C2848DEB1C9564F300707F53 /* PromiseTests.swift in Sources */,
+				C2E191951C9724A100FE33C3 /* NSDateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -853,6 +859,7 @@
 				C2848E0D1C956DB800707F53 /* LoremIpsumTests.swift in Sources */,
 				C2BBFEBB1C96703D00E63145 /* CustomFontTests.swift in Sources */,
 				C2848E0C1C956DB800707F53 /* PromiseTests.swift in Sources */,
+				C2E191961C9724A200FE33C3 /* NSDateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1001,6 +1008,7 @@
 				C2BBFECF1C967BE000E63145 /* PromiseTests.swift in Sources */,
 				C2BBFED11C967BE000E63145 /* TaskManagerTests.swift in Sources */,
 				C2BBFED01C967BE000E63145 /* LoremIpsumTests.swift in Sources */,
+				C2E191941C9724A100FE33C3 /* NSDateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1640,6 +1648,7 @@
 				C2BBFECD1C967AD800E63145 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

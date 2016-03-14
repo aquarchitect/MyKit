@@ -6,11 +6,6 @@
 //  
 //
 
-private enum Exception: ErrorType {
-
-    case MethodNotFound(Selector)
-}
-
 /**
 Swizzles original method.
 
@@ -44,18 +39,15 @@ Swizzles original method.
         struct Dispatch { static var token: dispatch_once_t = 0 }
 
         dispatch_once(&Dispatch.token) {
-            do { try swizzle(UIView.self, original: "layoutSubviews", swizzled: "swizzledLayoutSubviews") }
-            catch { print(error) }
+            swizzle(UIView.self, original: "layoutSubviews", swizzled: "swizzledLayoutSubviews")
         }
     }
 ```
 */
-public func swizzle(type: AnyClass, original: Selector, swizzled: Selector) throws {
+public func swizzle(type: AnyClass, original: Selector, swizzled: Selector) {
     // double check string method typo
-    try [original, swizzled].forEach {
-        if !class_respondsToSelector(type, $0) {
-            throw Exception.MethodNotFound($0)
-        }
+    [original, swizzled].forEach {
+        if !class_respondsToSelector(type, $0) { fatalError("\($0)") }
     }
 
     // get method objects

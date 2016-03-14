@@ -6,6 +6,8 @@
 //  
 //
 
+// MARK: Support Method
+
 public extension NSDate {
 
     public typealias Period = (passed: Int, left: Int)
@@ -14,28 +16,32 @@ public extension NSDate {
         return NSDate().startOfDay()
     }
 
-    public var calendar: NSCalendar {
+    public static var Calendar: NSCalendar {
         return .autoupdatingCurrentCalendar()
     }
 
     public func startOfDay() -> NSDate {
-        return calendar.startOfDayForDate(self)
+        return NSDate.Calendar.startOfDayForDate(self)
+    }
+
+    public func component(unit: NSCalendarUnit) -> Int {
+        return NSDate.Calendar.component(unit, fromDate: self)
     }
 
     public func components(unit: NSCalendarUnit) -> NSDateComponents {
-        return calendar.components(unit, fromDate: self)
+        return NSDate.Calendar.components(unit, fromDate: self)
     }
 
     public func dateByAdding(unit: NSCalendarUnit, value: Int) -> NSDate {
-        return calendar.dateByAddingUnit(unit, value: value, toDate: self, options: [])!
+        return NSDate.Calendar.dateByAddingUnit(unit, value: value, toDate: self, options: [])!
     }
 
     public func rangeOfUnit(smallerUnit: NSCalendarUnit, inUnit largerUnit: NSCalendarUnit) -> NSRange {
-        return calendar.rangeOfUnit(smallerUnit, inUnit: largerUnit, forDate: self)
+        return NSDate.Calendar.rangeOfUnit(smallerUnit, inUnit: largerUnit, forDate: self)
     }
 
     public func isMatchedWith(components: NSDateComponents) -> Bool {
-        return calendar.date(self, matchesComponents: components)
+        return NSDate.Calendar.date(self, matchesComponents: components)
     }
 }
 
@@ -44,11 +50,11 @@ public extension NSDate {
 public extension NSDate {
 
     public func firstDateOfTheMonth() -> NSDate {
-        return calendar.dateFromComponents(components([.Year, .Month]))!
+        return NSDate.Calendar.dateFromComponents(components([.Year, .Month]))!
     }
 
     public func firstDateOfTheWeek() -> NSDate {
-        return calendar.dateFromComponents(components([.Year, .WeekOfYear]))!
+        return NSDate.Calendar.dateFromComponents(components([.Year, .WeekOfYear]))!
     }
 }
 
@@ -72,27 +78,27 @@ public extension NSDate {
         return rangeOfUnit(.WeekOfYear, inUnit: .Year).length
     }
 
-    public func numberOfDaysInThisWeek() -> Period {
-        var days = calendar.firstWeekday - NSDate.Today.components(.Weekday).weekday
+    public static func numberOfDaysInThisWeek() -> Period {
+        var days = Calendar.firstWeekday - Today.components(.Weekday).weekday
         days += 7 * Int(days <= 0)
         return (7 - days, days - 1)
     }
 
-    public func numberOfDaysInThisMonth() -> Period {
-        let days = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: .Today).length
-        let day = NSDate.Today.components(.Day).day
+    public static func numberOfDaysInThisMonth() -> Period {
+        let days = Calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: .Today).length
+        let day = Today.components(.Day).day
         return (day - 1, days - day)
     }
 
-    public func numberOfWeeksInThisMonth() -> Period {
-        let weeks = calendar.rangeOfUnit(.WeekOfMonth, inUnit: .Month, forDate: .Today).length
-        let week = NSDate.Today.components(.WeekOfMonth).weekOfMonth
+    public static func numberOfWeeksInThisMonth() -> Period {
+        let weeks = Calendar.rangeOfUnit(.WeekOfMonth, inUnit: .Month, forDate: .Today).length
+        let week = Today.components(.WeekOfMonth).weekOfMonth
         return (week - 1, weeks - week)
     }
 
-    public func numebrOfDaysInThisMonth() -> Period {
-        let days = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: .Today).length
-        let day = NSDate.Today.components(.Day).day
+    public static func numebrOfDaysInThisMonth() -> Period {
+        let days = Calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: .Today).length
+        let day = Today.components(.Day).day
         return (day - 1, days - day)
     }
 }
@@ -220,10 +226,12 @@ public extension NSDate {
 public extension NSDate {
 
     public func stringWith(date date: NSDateFormatterStyle, time: NSDateFormatterStyle) -> String {
-        let formatter = NSDateFormatter.sharedInstance
-        formatter.timeStyle = time
-        formatter.dateStyle = date
-        return formatter.stringFromDate(self)
+        return NSDateFormatter.sharedInstance.then {
+            $0.timeStyle = time
+            $0.dateStyle = date
+        }.then {
+            $0.stringFromDate(self)
+        }
     }
 
     public func stringWith(style: NSDateFormatterStyle) -> String {

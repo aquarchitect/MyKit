@@ -39,9 +39,6 @@ extension CustomFont {
             where CTFontManagerRegisterGraphicsFont(font, nil)
             else { throw Exception.FailedToRegister(_file) }
     }
-}
-
-extension CustomFont {
 
     /// Return a font object
     static func fontWith(name name: String, size: CGFloat, fromFile file: String, ofBundle bundle: NSBundle) -> Self? {

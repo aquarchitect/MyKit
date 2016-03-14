@@ -21,6 +21,20 @@
                BlueprintName = "MyKit-Tests"
                ReferencedContainer = "container:MyKit.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "CustomFontTests">
+               </Test>
+               <Test
+                  Identifier = "LoremIpsumTests">
+               </Test>
+               <Test
+                  Identifier = "PromiseTests">
+               </Test>
+               <Test
+                  Identifier = "TaskManagerTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <AdditionalOptions>
