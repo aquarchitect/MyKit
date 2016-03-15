@@ -40,22 +40,22 @@ private extension CloudRecord where Self: NSObject {
 
 public class CloudObject: NSObject, CloudRecord {
 
-    public private(set) var metadata: NSData?
+    public let metadata: NSData?
 
     public init(record: CKRecord, cacheMetadata flag: Bool) throws {
+        self.metadata = flag ? record.metadata : nil
         super.init()
-        try reload(record, cacheMetadata: flag)
-    }
 
-    public override init() { super.init() }
-
-    public func reload(record: CKRecord, cacheMetadata flag: Bool) throws {
         if record.recordType != String(self.dynamicType) {
             throw ParseError.MissedMatch
         }
 
-        metadata = flag ? record.metadata : nil
         decodeFrom(record)
+    }
+
+    public override init() {
+        self.metadata = nil
+        super.init()
     }
 
     public func toRecord() -> CKRecord? {
@@ -69,19 +69,16 @@ public class CloudObject: NSObject, CloudRecord {
 
 public class CloudUser: NSObject, CloudRecord {
 
-    public private(set) var metadata: NSData!
+    public let metadata: NSData
 
     public init(record: CKRecord) throws {
+        self.metadata = record.metadata
         super.init()
-        try reload(record)
-    }
 
-    public func reload(record: CKRecord) throws {
         if record.recordType != CKRecordTypeUserRecord {
             throw ParseError.NotUserType
         }
 
-        metadata = record.metadata
         decodeFrom(record)
     }
 

@@ -81,6 +81,8 @@
 		C2BBFED11C967BE000E63145 /* TaskManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7C00A1C954BE700D79747 /* TaskManagerTests.swift */; };
 		C2BBFED61C96860100E63145 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BBFED41C96860100E63145 /* CustomFont.swift */; };
 		C2BBFED91C969A8300E63145 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BBFED41C96860100E63145 /* CustomFont.swift */; };
+		C2C291F31C988C9700394585 /* CloudCategorical.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C291F21C988C9700394585 /* CloudCategorical.swift */; };
+		C2C291F41C988C9700394585 /* CloudCategorical.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C291F21C988C9700394585 /* CloudCategorical.swift */; };
 		C2E191941C9724A100FE33C3 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E191911C97236E00FE33C3 /* NSDateTests.swift */; };
 		C2E191951C9724A100FE33C3 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E191911C97236E00FE33C3 /* NSDateTests.swift */; };
 		C2E191961C9724A200FE33C3 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E191911C97236E00FE33C3 /* NSDateTests.swift */; };
@@ -244,6 +246,7 @@
 		C2BBFEB91C96703D00E63145 /* CustomFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomFontTests.swift; path = "MyKit-Tests/CustomFontTests.swift"; sourceTree = SOURCE_ROOT; };
 		C2BBFEC61C967AD800E63145 /* MyKit-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MyKit-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2BBFED41C96860100E63145 /* CustomFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomFont.swift; path = MyKit/Framework/CustomFont.swift; sourceTree = "<group>"; };
+		C2C291F21C988C9700394585 /* CloudCategorical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudCategorical.swift; path = MyKit/Framework/CloudKit/CloudCategorical.swift; sourceTree = "<group>"; };
 		C2E191911C97236E00FE33C3 /* NSDateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateTests.swift; path = "MyKit-Tests/NSDateTests.swift"; sourceTree = SOURCE_ROOT; };
 		C2EFDC901C8FF0C8000DFB63 /* Bool+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bool+.swift"; path = "MyKit/Extension/Native/Bool+.swift"; sourceTree = "<group>"; };
 		C2EFDC911C8FF0C8000DFB63 /* CollectionType+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CollectionType+.swift"; path = "MyKit/Extension/Native/CollectionType+.swift"; sourceTree = "<group>"; };
@@ -328,6 +331,7 @@
 			children = (
 				C2EFDCD61C8FF61E000DFB63 /* CloudRecord.swift */,
 				C2EFDCD71C8FF61E000DFB63 /* CloudStack.swift */,
+				C2C291F21C988C9700394585 /* CloudCategorical.swift */,
 			);
 			name = CloudKit;
 			sourceTree = "<group>";
@@ -912,6 +916,7 @@
 				C2EF9AF01C90ACAF0037BE4D /* String+.swift in Sources */,
 				C2EF9AFA1C90ACB90037BE4D /* NSRange+.swift in Sources */,
 				C2EF9AF11C90ACAF0037BE4D /* Then.swift in Sources */,
+				C2C291F41C988C9700394585 /* CloudCategorical.swift in Sources */,
 				C2EF9AFE1C90ACC30037BE4D /* CKRecord+.swift in Sources */,
 				C2EF9B071C90ACD90037BE4D /* CGSize+.swift in Sources */,
 				C2EF9AFD1C90ACC30037BE4D /* CKQuery+.swift in Sources */,
@@ -940,6 +945,7 @@
 				C2EFDCBD1C8FF102000DFB63 /* NSAttributeDescription+.swift in Sources */,
 				C209F5431C7665EC007C3975 /* Time.swift in Sources */,
 				C2EFDCB41C8FF0F7000DFB63 /* CKDatabase+.swift in Sources */,
+				C2C291F31C988C9700394585 /* CloudCategorical.swift in Sources */,
 				C2EFDCAA1C8FF0E5000DFB63 /* NSMutableAttributedString+.swift in Sources */,
 				C2B7BFE11C95306200D79747 /* TransitionDelegate.swift in Sources */,
 				C2ACE23F1C960ABB0066AE87 /* CKRecordID+.swift in Sources */,

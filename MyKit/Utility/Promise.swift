@@ -108,7 +108,7 @@ public func +++ <A, B>(lhs: Promise<A>, rhs: Promise<B>) -> Promise<(A, B)> {
 
             case .Fullfill(let a?, let b?)?: callback(.Fullfill((a, b)))
             case .Reject(let error)?: callback(.Reject(error))
-            default: break
+            default: callback(.Reject(CommonError.NoContent))
             }
         }
     }

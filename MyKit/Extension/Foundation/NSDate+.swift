@@ -242,7 +242,7 @@ public extension NSDate {
         return stringWith(date: .NoStyle, time: style)
     }
 
-    public func dateStringWithStyle(style: NSDateFormatterStyle) -> String {
+    public func dateStringWith(style: NSDateFormatterStyle) -> String {
         return stringWith(date: style, time: .NoStyle)
     }
 }
