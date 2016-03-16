@@ -10,7 +10,6 @@ public extension UICollectionView {
 
     private class Dragger: NSObject {
 
-        static let Action: Selector = "handleMultipleSelectionByDragging:"
         static var Key = String(self.dynamicType)
 
         let gesture = UILongPressGestureRecognizer()
@@ -29,7 +28,7 @@ public extension UICollectionView {
             dragger?.gesture.then(self.removeGestureRecognizer)
 
             newValue?.gesture.then {
-                $0.addTarget(self, action: Dragger.Action)
+                $0.addTarget(self, action: "handleMultipleSelectionByDragging:")
                 self.addGestureRecognizer($0)
             }
 
@@ -42,7 +41,7 @@ public extension UICollectionView {
         set { dragger = newValue ? Dragger() : nil }
     }
 
-    internal final func handleHold(sender: UILongPressGestureRecognizer) {
+    internal final func handleMultipleSelectionByDragging(sender: UILongPressGestureRecognizer) {
         guard case let location = sender.locationInView(self),
             let indexPath = self.indexPathForItemAtPoint(location),
             dragger = self.dragger else { return }

@@ -19,6 +19,7 @@ env:
 
 script:
   - xcodebuild
+    -verbose
     -project "$FRAMEWORK.xcodeproj"
     -scheme "$FRAMEWORK-$SCHEME"
     -sdk "$SDK"
@@ -30,3 +31,6 @@ script:
     GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
     GCC_GENERATE_TEST_COVERAGE_FILES=YES
     "$ACTION"
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

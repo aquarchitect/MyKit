@@ -1,12 +1,12 @@
 //
-//  TaskManager.swift
+//  TaskScheduler.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 1/2/16.
 //
 //
 
-final public class TaskManager {
+final public class TaskScheduler {
 
     private var timer: NSTimer?
 

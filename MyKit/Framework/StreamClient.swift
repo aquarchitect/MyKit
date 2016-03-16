@@ -12,7 +12,7 @@ public class StreamClient: NSObject, NSStreamDelegate {
 
     public static let EventNotification = "StreamClientEventNotification"
 
-    private let stoppage = TaskManager()
+    private let stoppage = TaskScheduler()
     public var timeout: CFTimeInterval = 3
 
     public private(set) var ip: String?

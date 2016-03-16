@@ -1,29 +1,29 @@
 //
-//  TaskManagerTests.swift
+//  TaskSchedulerTests.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 3/11/16.
 //  
 //
 
-final class TaskManagerTests: XCTestCase {
+final class TaskSchedulerTests: XCTestCase {
 
-    private let taskManager = TaskManager()
+    private let taskScheduler = TaskScheduler()
 
-    func testFullfilledTaskManager() {
+    func testFullfilledTaskScheduler() {
         let expectation = expectationWithDescription(__FUNCTION__)
 
-        taskManager.schedule(1) { expectation.fulfill() }
+        taskScheduler.schedule(1) { expectation.fulfill() }
         waitForExpectationsWithTimeout(2) { XCTAssertNil($0) }
     }
 
-    func testRejectedTaskManager() {
+    func testRejectedTaskScheduler() {
         let expectation = expectationWithDescription(__FUNCTION__)
 
-        taskManager.schedule(1) { XCTFail() }
+        taskScheduler.schedule(1) { XCTFail() }
 
         delay(0.5) {
-            self.taskManager.cancel()
+            self.taskScheduler.cancel()
             expectation.fulfill()
         }
 

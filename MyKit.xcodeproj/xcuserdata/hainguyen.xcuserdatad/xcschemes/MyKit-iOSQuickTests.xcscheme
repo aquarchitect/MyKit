@@ -16,25 +16,11 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C2BBFEC51C967AD800E63145"
-               BuildableName = "MyKit-Tests.xctest"
-               BlueprintName = "MyKit-Tests"
+               BlueprintIdentifier = "C2B9242C1C9A0EFB00C7FCFD"
+               BuildableName = "MyKitQuickTests.xctest"
+               BlueprintName = "MyKit-iOSQuickTests"
                ReferencedContainer = "container:MyKit.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "CustomFontTests">
-               </Test>
-               <Test
-                  Identifier = "NSDateTests">
-               </Test>
-               <Test
-                  Identifier = "PromiseTests">
-               </Test>
-               <Test
-                  Identifier = "TaskManagerTests">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
       <AdditionalOptions>

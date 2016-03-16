@@ -13,7 +13,7 @@ public extension UILabel {
         return Cache.label
     }
 
-    public func heightOf(width: CGFloat)(font: UIFont)(text: String) -> CGFloat {
+    public func heightOf(width: CGFloat, font: UIFont, text: String) -> CGFloat {
         self.frame.size.width = width
         self.font = font
         self.text = text
