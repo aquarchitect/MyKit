@@ -138,6 +138,6 @@ public extension UICollectionView {
     }
 
     public func register<T: UICollectionReusableView>(type: T.Type, forKind kind: String, withReuseIdentifier identifier: String) {
-        self.registerClass(T.self, forSupplementaryViewOfKind: kind, withReuseIdentifier: identifier)
+        self.registerClass(type, forSupplementaryViewOfKind: kind, withReuseIdentifier: identifier)
     }
 }

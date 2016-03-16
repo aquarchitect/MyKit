@@ -463,14 +463,14 @@
 		C289AD971B62BA3C00186773 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				C2B924281C99D67700C7FCFD /* Presentation */,
 				C2B7BFCE1C95306200D79747 /* SimpleTransition.swift */,
 				C2B7BFCF1C95306200D79747 /* SnapLayout.swift */,
 				C2B7BFD01C95306200D79747 /* StackView.swift */,
 				C2B7BFD31C95306200D79747 /* TextView.swift */,
+				C2E01D2C1C7BC8B9002444D4 /* Protocols */,
 				C2EFDCDB1C8FF8F6000DFB63 /* Collection */,
 				C2EFDCDA1C8FF846000DFB63 /* Table */,
-				C2E01D2C1C7BC8B9002444D4 /* Protocols */,
+				C2B924281C99D67700C7FCFD /* Presentation */,
 			);
 			name = Framework;
 			sourceTree = "<group>";

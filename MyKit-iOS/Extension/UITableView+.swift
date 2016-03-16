@@ -38,10 +38,10 @@ public extension UITableView {
     // MARK: Register Views
 
     public func register<T: UITableViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
-        self.registerClass(T.self, forCellReuseIdentifier: identifier)
+        self.registerClass(type, forCellReuseIdentifier: identifier)
     }
 
     public func register<T: UITableViewHeaderFooterView>(type: T.Type, forReuseIdentifier identifier: String) {
-        self.registerClass(T.self, forHeaderFooterViewReuseIdentifier: identifier)
+        self.registerClass(type, forHeaderFooterViewReuseIdentifier: identifier)
     }
 }
