@@ -8,9 +8,12 @@
 
 public extension UICollectionView {
 
-    private class Hold: NSObject {
+    private class Dragger: NSObject {
 
-        static var Key = "Hold"
+        static let Action: Selector = "handleMultipleSelectionByDragging:"
+        static var Key = String(self.dynamicType)
+
+        let gesture = UILongPressGestureRecognizer()
 
         var anchorIndexPath: NSIndexPath?
         var trackedIndexPath: NSIndexPath?
@@ -20,43 +23,58 @@ public extension UICollectionView {
         }
     }
 
-    final func setupMultiSelection() {
-        self.allowsMultipleSelection = true
+    private var dragger: Dragger? {
+        get { return objc_getAssociatedObject(self, &Dragger.Key) as? Dragger }
+        set {
+            dragger?.gesture.then(self.removeGestureRecognizer)
 
-        let hold = UILongPressGestureRecognizer()
-        hold.addTarget(self, action: "handleHold:")
-        self.addGestureRecognizer(hold)
+            newValue?.gesture.then {
+                $0.addTarget(self, action: Dragger.Action)
+                self.addGestureRecognizer($0)
+            }
 
-        objc_setAssociatedObject(self, &Hold.Key, Hold(), objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
+            objc_setAssociatedObject(self, &Dragger.Key, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
+        }
     }
 
-    internal func handleHold(sender: UILongPressGestureRecognizer) {
-        let location = sender.locationInView(self)
-        guard let hold = objc_getAssociatedObject(self, &Hold.Key) as? Hold,
-            indexPath = self.indexPathForItemAtPoint(location) else { return }
+    public var allowsMultipleSelectionWithDragging: Bool {
+        get { return dragger != nil }
+        set { dragger = newValue ? Dragger() : nil }
+    }
+
+    internal final func handleHold(sender: UILongPressGestureRecognizer) {
+        guard case let location = sender.locationInView(self),
+            let indexPath = self.indexPathForItemAtPoint(location),
+            dragger = self.dragger else { return }
 
         switch sender.state {
 
         case .Began:
             self.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: .None)
-            hold.anchorIndexPath = indexPath
-            hold.trackedIndexPath = indexPath
+            dragger.anchorIndexPath = indexPath
+            dragger.trackedIndexPath = indexPath
+
         case .Changed:
-            guard indexPath != hold.trackedIndexPath else { return }
-            self.selectItemsToIndexPath(indexPath)
+            guard indexPath != dragger.trackedIndexPath else { return }
+            selectItemsRecursivelyTo(indexPath)
+
         default:
-            hold.anchorIndexPath = nil
-            hold.trackedIndexPath = nil
+            dragger.anchorIndexPath = nil
+            dragger.trackedIndexPath = nil
         }
     }
 
-    private func selectItemsToIndexPath(indexPath: NSIndexPath) {
-        guard let hold = objc_getAssociatedObject(self, &Hold.Key) as? Hold,
-            anchorIndexPath = hold.anchorIndexPath, trackedIndexPath = hold.trackedIndexPath else { return }
-        guard let frontIndexPath = self.forwardIndexPath(trackedIndexPath),
-            backIndexPath = self.backwardIndexPath(trackedIndexPath) else { return }
+    private final func selectItemsRecursivelyTo(destination: NSIndexPath) {
+        guard let dragger = self.dragger,
+            anchorIndexPath = dragger.anchorIndexPath,
+            trackedIndexPath = dragger.trackedIndexPath
+            else { return }
 
-        switch trackedIndexPath.compare(indexPath) {
+        guard let frontIndexPath = successorOf(trackedIndexPath),
+            backIndexPath = predecessorOf(trackedIndexPath)
+            else { return }
+
+        switch trackedIndexPath.compare(destination) {
 
         case .OrderedAscending:
             guard let cell = self.cellForItemAtIndexPath(backIndexPath) else { return }
@@ -65,8 +83,8 @@ public extension UICollectionView {
                 cell.selected ? self.selectItemAtIndexPath(trackedIndexPath, animated: false, scrollPosition: .None) : self.deselectItemAtIndexPath(trackedIndexPath, animated: false)
             }
 
-            hold.trackedIndexPath = frontIndexPath
-            selectItemsToIndexPath(indexPath)
+            dragger.trackedIndexPath = frontIndexPath
+            selectItemsRecursivelyTo(destination)
 
         case .OrderedDescending:
             guard let cell = self.cellForItemAtIndexPath(frontIndexPath) else { return }
@@ -75,8 +93,9 @@ public extension UICollectionView {
                 cell.selected ? self.selectItemAtIndexPath(trackedIndexPath, animated: false, scrollPosition: .None) : self.deselectItemAtIndexPath(trackedIndexPath, animated: false)
             }
 
-            hold.trackedIndexPath = backIndexPath
-            selectItemsToIndexPath(indexPath)
+            dragger.trackedIndexPath = backIndexPath
+            selectItemsRecursivelyTo(destination)
+
         case .OrderedSame:
             self.selectItemAtIndexPath(trackedIndexPath, animated: true, scrollPosition: .None)
         }
@@ -85,11 +104,15 @@ public extension UICollectionView {
 
 public extension UICollectionView {
 
-    final func cellHandleAtIndexPath<T>(indexPath: NSIndexPath, handle: T -> Void) {
-        if let cell = self.cellForItemAtIndexPath(indexPath) as? T { handle(cell) }
+    // MARK: Miscellaneous
+
+    final func isSectionValid(section: Int) -> Bool {
+        return NSLocationInRange(section, NSMakeRange(0, self.numberOfSections()))
     }
 
-    final func forwardIndexPath(indexPath: NSIndexPath) -> NSIndexPath? {
+    // MARK: Transform IndexPath
+
+    final func successorOf(indexPath: NSIndexPath) -> NSIndexPath? {
         if indexPath.item < self.numberOfItemsInSection(indexPath.section) - 1 {
             return NSIndexPath(forItem: indexPath.item + 1, inSection: indexPath.section)
         } else if indexPath.section < self.numberOfSections() - 1 {
@@ -97,7 +120,7 @@ public extension UICollectionView {
         } else { return nil }
     }
 
-    final func backwardIndexPath(indexPath: NSIndexPath) -> NSIndexPath? {
+    final func predecessorOf(indexPath: NSIndexPath) -> NSIndexPath? {
         if indexPath.item > 0 {
             return NSIndexPath(forItem: indexPath.item - 1, inSection: indexPath.section)
         } else if indexPath.section > 0 {
@@ -107,6 +130,8 @@ public extension UICollectionView {
             return NSIndexPath(forItem: item, inSection: section)
         } else { return nil }
     }
+
+    // MARK: Register Views
 
     public func register<T: UICollectionViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
         self.registerClass(T.self, forCellWithReuseIdentifier: identifier)

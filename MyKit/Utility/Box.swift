@@ -6,7 +6,7 @@
 //
 //
 
-public class Box<T> {
+public final class Box<T> {
 
     public let value: T
 

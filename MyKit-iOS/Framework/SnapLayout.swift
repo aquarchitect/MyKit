@@ -6,45 +6,45 @@
 //  
 //
 
-class SnapLayout: UICollectionViewFlowLayout {
+public class SnapLayout: UICollectionViewFlowLayout {
 
-    private struct Snap {
+    private struct Snapper {
 
         var trackedIndexPath: NSIndexPath?
         var proposedIndexPath: NSIndexPath?
 
         let position: CGPoint
-        let transform: (UICollectionViewLayoutAttributes -> Void)?
+        let config: (UICollectionViewLayoutAttributes -> Void)?
 
-        init(position: CGPoint, handle: (UICollectionViewLayoutAttributes -> Void)?) {
+        init(position: CGPoint, config: (UICollectionViewLayoutAttributes -> Void)?) {
             self.position = position
-            self.transform = handle
+            self.config = config
         }
 
-        func distance(anchor: CGPoint) -> UICollectionViewLayoutAttributes -> CGFloat {
-            let point = CGPointMake(anchor.x + position.x, anchor.y + position.y)
+        func distanceFrom(point: CGPoint) -> UICollectionViewLayoutAttributes -> CGFloat {
+            let point = CGPointMake(point.x + position.x, point.y + position.y)
             return { CGPointDistanceFrom(fromPoint: $0.center, toPoint: point) }
         }
     }
 
-    private var snap: Snap
+    private var snapper: Snapper
 
-    required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(position: CGPoint, configure: (UICollectionViewLayoutAttributes -> Void)?) {
-        self.snap = Snap(position: position, handle: configure)
+    public init(position: CGPoint, config: (UICollectionViewLayoutAttributes -> Void)?) {
+        self.snapper = Snapper(position: position, config: config)
         super.init()
     }
 
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    public override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let originals = super.layoutAttributesForElementsInRect(rect) else { return nil }
         var elements = [UICollectionViewLayoutAttributes]()
 
-        if snap.trackedIndexPath == nil {
+        if snapper.trackedIndexPath == nil {
             var candidate: UICollectionViewLayoutAttributes?
-            let distance = snap.distance(self.collectionView!.contentOffset)
+            let distance = snapper.distanceFrom(self.collectionView!.contentOffset)
 
             for attributes in originals {
                 var replacement = attributes
@@ -57,62 +57,65 @@ class SnapLayout: UICollectionViewFlowLayout {
                 elements.append(replacement)
             }
 
-            snap.trackedIndexPath = candidate?.indexPath
-        } else { elements = originals.map { $0.representedElementCategory == .Cell ? (self.layoutAttributesForItemAtIndexPath($0.indexPath) ??  $0) : $0 }}
+            snapper.trackedIndexPath = candidate?.indexPath
+        } else {
+            elements = originals.map { $0.representedElementCategory == .Cell ? (self.layoutAttributesForItemAtIndexPath($0.indexPath) ??  $0) : $0 }
+        }
 
         return elements
     }
 
-    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+    public override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         let size = self.collectionView!.bounds.size
         let rect = CGRect(origin: proposedContentOffset, size: size)
 
         guard let elements = self.layoutAttributesForElementsInRect(rect) else { return proposedContentOffset }
-        let distance = snap.distance(proposedContentOffset)
+        let distance = snapper.distanceFrom(proposedContentOffset)
         let check = { distance($0) < distance($1) }
 
         if let attributes = (elements.filter { $0.representedElementCategory == .Cell }.sort(check).first) {
-            snap.proposedIndexPath = attributes.indexPath
-            return CGPointMake(attributes.center.x - snap.position.x, attributes.center.y - snap.position.y)
-        } else { return proposedContentOffset }
+            snapper.proposedIndexPath = attributes.indexPath
+            return CGPointMake(attributes.center.x - snapper.position.x, attributes.center.y - snapper.position.y)
+        } else {
+            return proposedContentOffset
+        }
     }
 
-    override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
         return true
     }
 
-    override func invalidationContextForBoundsChange(newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
+    public override func invalidationContextForBoundsChange(newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
         let context = super.invalidationContextForBoundsChange(newBounds)
 
-        guard let trackedIndexPath = snap.trackedIndexPath, proposedIndexPath = snap.proposedIndexPath,
-            var candidate = self.layoutAttributesForItemAtIndexPath(trackedIndexPath) else { return context }
+        guard let trackedIndexPath = snapper.trackedIndexPath, proposedIndexPath = snapper.proposedIndexPath,
+            var candidateAttributes = self.layoutAttributesForItemAtIndexPath(trackedIndexPath) else { return context }
+        let distance = snapper.distanceFrom(newBounds.origin)
 
-        let distance = snap.distance(newBounds.origin)
-
-        var indexPath = snap.trackedIndexPath
+        var indexPath = snapper.trackedIndexPath
         while indexPath != proposedIndexPath {
             switch indexPath!.compare(proposedIndexPath) {
 
-            case .OrderedAscending: indexPath = self.collectionView!.forwardIndexPath(indexPath!)
-            case .OrderedDescending: indexPath = self.collectionView!.backwardIndexPath(indexPath!)
+            case .OrderedAscending: indexPath = self.collectionView!.successorOf(indexPath!)
+            case .OrderedDescending: indexPath = self.collectionView!.predecessorOf(indexPath!)
             case .OrderedSame: break
             }
 
             guard let attributes = self.layoutAttributesForItemAtIndexPath(indexPath!)
-                where distance(attributes) < distance(candidate) else { continue }
-            candidate = attributes
+                where distance(attributes) < distance(candidateAttributes) else { continue }
+            candidateAttributes = attributes
         }
 
-        snap.trackedIndexPath = candidate.indexPath
-        let array = [trackedIndexPath, snap.trackedIndexPath].flatMap { $0 }
+        snapper.trackedIndexPath = candidateAttributes.indexPath
+        let array = [trackedIndexPath, snapper.trackedIndexPath].flatMap { $0 }
         context.invalidateItemsAtIndexPaths(array)
 
         return context
     }
 
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         return super.layoutAttributesForItemAtIndexPath(indexPath)?.then { attrs in
-            indexPath == snap.trackedIndexPath ? UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath).then { $0.frame = attrs.frame; snap.transform?($0) } : attrs
+            indexPath == snapper.trackedIndexPath ? UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath).then { $0.frame = attrs.frame; snapper.config?($0) } : attrs
         }
     }
 }
