@@ -10,7 +10,7 @@ public class CollectionCell<V: UIView where V: Then>: UICollectionViewCell {
 
     // MARK: Property
 
-    public let presentView = V().then {
+    public let dynamicView = V().then {
         $0.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
     }
 
@@ -18,8 +18,7 @@ public class CollectionCell<V: UIView where V: Then>: UICollectionViewCell {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        super.contentView.addSubview(presentView)
-
-        presentView.frame = self.bounds
+        super.contentView.addSubview(dynamicView)
+        dynamicView.frame = self.bounds
     }
 }

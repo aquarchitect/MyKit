@@ -1,19 +1,19 @@
 //
-//  FadePlaceholder.swift
+//  PlaceholderFadable.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 1/5/16.
 //
 //
 
-public protocol FadePlaceholder: class {
+public protocol PlaceholderFadable: class {
 
     var placeholder: UILabel { get }
 }
 
-extension FadePlaceholder {
+extension PlaceholderFadable {
 
-    public func fadePlaceholderAlongsideWith(text: String) {
+    public func PlaceholderFadableAlongsideWith(text: String) {
         let animation = { (alpha: CGFloat) in
             UIView.animateWithDuration(0.25) {
                 self.placeholder.alpha = alpha

@@ -6,30 +6,30 @@
 //
 //
 
-final public class SimpleTransition: TransitionDelegate {
+final public class SimpleTransition: PresentationTransition {
 
-    public enum Frame {
+    public enum Kind {
 
-        case Custom(CGRect)
-        case Center(CGSize)
+        case CustomRect(CGRect)
+        case CenterScreen(CGSize)
     }
 
     public var animating: (alpha: CGFloat, transform: CGAffineTransform) = (1, CGAffineTransformIdentity)
 
-    public init(presentedFrame frame: Frame) {
-        switch frame {
+    public init(kind: Kind) {
+        switch kind {
 
-        case .Custom(let rect):
-            super.init(presentedRect: rect)
+        case .CustomRect(let rect):
+            super.init(presentedContentRect: rect)
 
-        case .Center(let size):
+        case .CenterScreen(let size):
             let bounds = UIScreen.mainScreen().bounds
 
             let x = (bounds.width - size.width) / 2
             let y = (bounds.height - size.height) / 2
 
             let rect = CGRectMake(x, y, size.width, size.height)
-            super.init(presentedRect: rect)
+            super.init(presentedContentRect: rect)
         }
     }
 

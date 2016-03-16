@@ -8,7 +8,7 @@
 
 private var Action = "Action"
 
-private final class ActionWrapper<T>: NSObject {
+final private class ActionWrapper<T>: NSObject {
 
     let f: T -> Void
 
@@ -29,12 +29,12 @@ public extension ActionBlock {
         return "handleBlock:"
     }
 
-    private final func setAction(block: Self -> Void) {
+    final private func setAction(block: Self -> Void) {
         let obj: AnyObject = unsafeBitCast(ActionWrapper(f: block), AnyObject.self)
         objc_setAssociatedObject(self, &Action, obj, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
     }
 
-    private final func handleBlock(sender: Self) {
+    final internal func handleBlock(sender: Self) {
          unsafeBitCast(objc_getAssociatedObject(self, &Action), ActionWrapper.self).f(sender)
     }
 }

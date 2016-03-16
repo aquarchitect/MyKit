@@ -1,63 +1,55 @@
 //
-//  TransitionDelegate.swift
+//  PresentationTransition.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 12/21/15.
 //
 //
 
-public protocol TransitionAnimation: class {
+public protocol PresentationTransitionDataSource: class {
 
     func animateTransitionForPresenting(context: UIViewControllerContextTransitioning)
     func animateTransitionForDismissing(context: UIViewControllerContextTransitioning)
 }
 
-@objc public protocol TransitionAlongside: class {
+public class PresentationTransition: UIPercentDrivenInteractiveTransition {
 
-    optional func animateControllerSubviewsAlongsideTransitionForPresenting(controller: UIViewController)
-    optional func animateControllerSubviewsAlongsideTransitionForDismissing(controller: UIViewController)
-}
+    public weak var dataSource: PresentationTransitionDataSource?
 
-public class TransitionDelegate: UIPercentDrivenInteractiveTransition {
-
-    public weak var dataSource: TransitionAnimation?
-    public weak var alongside: TransitionAlongside?
-
-    public let presentedRect: CGRect
+    public let presentedContentRect: CGRect
     public var interactionEnabled = false
 
     public var dimming: (transparent: CGFloat, dismissal: Bool) = (0.4, true)
 
-    private(set) internal var isPresenting = true
+    internal private(set) var isPresenting = true
 
-    public init(presentedRect rect: CGRect) {
-        self.presentedRect = rect
+    public init(presentedContentRect rect: CGRect) {
+        self.presentedContentRect = rect
         super.init()
     }
 
     public override convenience init() {
         let rect = UIScreen.mainScreen().bounds
-        self.init(presentedRect: rect)
+        self.init(presentedContentRect: rect)
     }
 }
 
-extension TransitionDelegate: UIViewControllerAnimatedTransitioning {
+extension PresentationTransition: UIViewControllerAnimatedTransitioning {
 
     public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.25
     }
 
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        isPresenting ? dataSource?.animateTransitionForPresenting(transitionContext) : dataSource?.animateTransitionForPresenting(transitionContext)
+        (isPresenting ? dataSource?.animateTransitionForPresenting : dataSource?.animateTransitionForPresenting)?(transitionContext)
     }
 }
 
-extension TransitionDelegate: UIViewControllerTransitioningDelegate {
+extension PresentationTransition: UIViewControllerTransitioningDelegate {
 
     public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return PresentationController(presented: presented, presenting: source, rect: presentedRect).then {
-            $0.alongside = alongside
-            $0.dimView.then {
+        return PresentationController(presented: presented, presenting: source, contentRect: presentedContentRect).then {
+            $0.managedView.then {
                 $0.userInteractionEnabled = dimming.dismissal
                 $0.backgroundColor = UIColor(white: 0, alpha: dimming.transparent)
             }

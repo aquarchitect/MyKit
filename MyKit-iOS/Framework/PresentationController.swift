@@ -8,65 +8,43 @@
 
 public class PresentationController: UIPresentationController {
 
-    internal weak var alongside: TransitionAlongside?
-    public let contentRect: CGRect
+    public let presentedContentRect: CGRect
+    internal let managedView = UIView().then{ $0.alpha = 0 }
 
-    public let dimView: UIView = {
-        let view = UIView()
-        view.alpha = 0
-        return view
-    }()
-
-    public init(presented: UIViewController, presenting: UIViewController, rect: CGRect) {
-        self.contentRect = rect
+    public init(presented: UIViewController, presenting: UIViewController, contentRect: CGRect) {
+        self.presentedContentRect = contentRect
         super.init(presentedViewController: presented, presentingViewController: presenting)
 
         UITapGestureRecognizer().then {
             $0.addTarget(self, action: "handleTap:")
-            dimView.addGestureRecognizer($0)
+            managedView.addGestureRecognizer($0)
         }
     }
 
     public convenience init(presented: UIViewController, presenting: UIViewController) {
         let rect = UIScreen.mainScreen().bounds
-        self.init(presented: presented, presenting: presenting, rect: rect)
+        self.init(presented: presented, presenting: presenting, contentRect: rect)
     }
 
     public override func presentationTransitionWillBegin() {
-        self.containerView?.insertSubview(dimView, atIndex: 0)
+        self.containerView?.insertSubview(managedView, atIndex: 0)
         animateDimView(1, completion: nil)
-
-        self.presentingViewController.then { controller in
-            controller.transitionCoordinator()?.animateAlongsideTransitionInView(controller.view, animation: { _ in
-                self.alongside?.animateControllerSubviewsAlongsideTransitionForPresenting?(controller)
-            }, completion: nil)
-        }
     }
 
     public override func dismissalTransitionWillBegin() {
-        animateDimView(0) { self.dimView.removeFromSuperview() }
-
-        self.presentedViewController.view.endEditing(true)
-
-        self.presentingViewController.then { controller in
-            controller.transitionCoordinator()?.animateAlongsideTransitionInView(controller.view, animation: { _ in
-                self.alongside?.animateControllerSubviewsAlongsideTransitionForDismissing?(controller)
-            }, completion: nil)
-        }
+        animateDimView(0) { [weak managedView] in managedView?.removeFromSuperview() }
     }
 
     private func animateDimView(alpha: CGFloat, completion: (Void -> Void)?) {
-        self.presentingViewController.transitionCoordinator()?.animateAlongsideTransition({ [unowned dimView] _ in
-            dimView.alpha = alpha
-        }, completion: { _ in completion?() })
+        self.presentingViewController.transitionCoordinator()?.animateAlongsideTransition({ _ in self.managedView.alpha = alpha }, completion: { _ in completion?() })
     }
 
     public override func containerViewWillLayoutSubviews() {
-        self.presentedView()!.frame = contentRect
+        self.presentedView()?.frame = presentedContentRect
     }
 
     public override func containerViewDidLayoutSubviews() {
-        dimView.frame = self.containerView?.bounds ?? .zero
+        managedView.frame = self.containerView?.bounds ?? .zero
     }
 
     func handleTap(sender: UITapGestureRecognizer) {
