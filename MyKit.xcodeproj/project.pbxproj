@@ -57,9 +57,7 @@
 		C2B7BFF11C95309A00D79747 /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFE41C95309A00D79747 /* UICollectionView+.swift */; };
 		C2B7BFF21C95309A00D79747 /* UICollectionViewFlowLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFE51C95309A00D79747 /* UICollectionViewFlowLayout+.swift */; };
 		C2B7BFF31C95309A00D79747 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFE61C95309A00D79747 /* UIColor+.swift */; };
-		C2B7BFF41C95309A00D79747 /* UIControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFE71C95309A00D79747 /* UIControl+.swift */; };
 		C2B7BFF51C95309A00D79747 /* UIEdgeInsets+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFE81C95309A00D79747 /* UIEdgeInsets+.swift */; };
-		C2B7BFF61C95309A00D79747 /* UIGestureRecognizer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFE91C95309A00D79747 /* UIGestureRecognizer+.swift */; };
 		C2B7BFF71C95309A00D79747 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFEA1C95309A00D79747 /* UILabel+.swift */; };
 		C2B7BFF81C95309A00D79747 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFEB1C95309A00D79747 /* UIScrollView+.swift */; };
 		C2B7BFF91C95309A00D79747 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFEC1C95309A00D79747 /* UITableView+.swift */; };
@@ -224,9 +222,7 @@
 		C2B7BFE41C95309A00D79747 /* UICollectionView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+.swift"; path = "MyKit-iOS/Extension/UICollectionView+.swift"; sourceTree = SOURCE_ROOT; };
 		C2B7BFE51C95309A00D79747 /* UICollectionViewFlowLayout+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionViewFlowLayout+.swift"; path = "MyKit-iOS/Extension/UICollectionViewFlowLayout+.swift"; sourceTree = SOURCE_ROOT; };
 		C2B7BFE61C95309A00D79747 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+.swift"; path = "MyKit-iOS/Extension/UIColor+.swift"; sourceTree = SOURCE_ROOT; };
-		C2B7BFE71C95309A00D79747 /* UIControl+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIControl+.swift"; path = "MyKit-iOS/Extension/UIControl+.swift"; sourceTree = SOURCE_ROOT; };
 		C2B7BFE81C95309A00D79747 /* UIEdgeInsets+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIEdgeInsets+.swift"; path = "MyKit-iOS/Extension/UIEdgeInsets+.swift"; sourceTree = SOURCE_ROOT; };
-		C2B7BFE91C95309A00D79747 /* UIGestureRecognizer+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIGestureRecognizer+.swift"; path = "MyKit-iOS/Extension/UIGestureRecognizer+.swift"; sourceTree = SOURCE_ROOT; };
 		C2B7BFEA1C95309A00D79747 /* UILabel+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILabel+.swift"; path = "MyKit-iOS/Extension/UILabel+.swift"; sourceTree = SOURCE_ROOT; };
 		C2B7BFEB1C95309A00D79747 /* UIScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScrollView+.swift"; path = "MyKit-iOS/Extension/UIScrollView+.swift"; sourceTree = SOURCE_ROOT; };
 		C2B7BFEC1C95309A00D79747 /* UITableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+.swift"; path = "MyKit-iOS/Extension/UITableView+.swift"; sourceTree = SOURCE_ROOT; };
@@ -489,9 +485,7 @@
 				C2B7BFE41C95309A00D79747 /* UICollectionView+.swift */,
 				C2B7BFE51C95309A00D79747 /* UICollectionViewFlowLayout+.swift */,
 				C2B7BFE61C95309A00D79747 /* UIColor+.swift */,
-				C2B7BFE71C95309A00D79747 /* UIControl+.swift */,
 				C2B7BFE81C95309A00D79747 /* UIEdgeInsets+.swift */,
-				C2B7BFE91C95309A00D79747 /* UIGestureRecognizer+.swift */,
 				C2B7BFEA1C95309A00D79747 /* UILabel+.swift */,
 				C2B7BFEB1C95309A00D79747 /* UIScrollView+.swift */,
 				C2B7BFEC1C95309A00D79747 /* UITableView+.swift */,
@@ -938,7 +932,6 @@
 				C259EFE21C4D6ECE00F9B2BC /* StreamClient.swift in Sources */,
 				C2B7BFE01C95306200D79747 /* TextView.swift in Sources */,
 				C2B7BFD71C95306200D79747 /* CollectionView.swift in Sources */,
-				C2B7BFF41C95309A00D79747 /* UIControl+.swift in Sources */,
 				C2EFDCC51C8FF113000DFB63 /* CGPoint+.swift in Sources */,
 				C2EFDCB61C8FF0F7000DFB63 /* CKRecord+.swift in Sources */,
 				C2B7BFFA1C95309A00D79747 /* UIView+.swift in Sources */,
@@ -974,7 +967,6 @@
 				C2EFDCA71C8FF0E5000DFB63 /* NSDate+.swift in Sources */,
 				C2B7BFD81C95306200D79747 /* ConstraintAxis.swift in Sources */,
 				C2EFDC981C8FF0C8000DFB63 /* Random.swift in Sources */,
-				C2B7BFF61C95309A00D79747 /* UIGestureRecognizer+.swift in Sources */,
 				C2EFDCAD1C8FF0E5000DFB63 /* NSRange+.swift in Sources */,
 				C2EFDCD81C8FF61E000DFB63 /* CloudRecord.swift in Sources */,
 				C2EFDC9A1C8FF0C8000DFB63 /* String+.swift in Sources */,
