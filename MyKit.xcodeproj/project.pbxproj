@@ -193,14 +193,11 @@
 		C209F53B1C7665EC007C3975 /* Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swizzle.swift; path = MyKit/Utility/Swizzle.swift; sourceTree = "<group>"; };
 		C209F53C1C7665EC007C3975 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Time.swift; path = MyKit/Utility/Time.swift; sourceTree = "<group>"; };
 		C209F5441C7666B7007C3975 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = MyKit/Utility/Result.swift; sourceTree = "<group>"; };
-		C20F341C1C924739004CF7C3 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = MyKit/Utility/Client.swift; sourceTree = "<group>"; };
-		C249419F1C93E7A8004C220A /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Server.swift; path = MyKit/Utility/Server.swift; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateIndex.swift; path = MyKit/Framework/DateIndex.swift; sourceTree = "<group>"; };
 		C259EFD61C4D6ECE00F9B2BC /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStack.swift; path = MyKit/Framework/PersistentStack.swift; sourceTree = "<group>"; };
 		C259EFD71C4D6ECE00F9B2BC /* StreamClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamClient.swift; path = MyKit/Framework/StreamClient.swift; sourceTree = "<group>"; };
 		C259EFD91C4D6ECE00F9B2BC /* TaskScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskScheduler.swift; path = MyKit/Framework/TaskScheduler.swift; sourceTree = "<group>"; };
-		C260C0121C9231CE00C2CB7A /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Socket.swift; path = MyKit/Utility/Socket.swift; sourceTree = "<group>"; };
 		C273D47D1C9920010090FC27 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = MyKit/Utility/Action.swift; sourceTree = "<group>"; };
 		C2848DE01C95642E00707F53 /* MyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2848E011C956A7600707F53 /* MyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -467,9 +464,6 @@
 				C209F53C1C7665EC007C3975 /* Time.swift */,
 				C209F5441C7666B7007C3975 /* Result.swift */,
 				C2F18C941C76B2F400A1DB83 /* Promise.swift */,
-				C260C0121C9231CE00C2CB7A /* Socket.swift */,
-				C20F341C1C924739004CF7C3 /* Client.swift */,
-				C249419F1C93E7A8004C220A /* Server.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1795,6 +1789,7 @@
 				C2B924341C9A0EFB00C7FCFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C2BBFECB1C967AD800E63145 /* Build configuration list for PBXNativeTarget "MyKit-OSXQuickTests" */ = {
 			isa = XCConfigurationList;

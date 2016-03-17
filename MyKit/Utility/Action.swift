@@ -31,9 +31,9 @@ public extension ActionBlock {
     }
 }
 
-extension NSObject {
+internal extension NSObject {
 
-    internal func handleBlock() {
+    func handleBlock() {
         unsafeBitCast(objc_getAssociatedObject(self, &Action), ActionWrapper.self).f(self)
     }
 }
