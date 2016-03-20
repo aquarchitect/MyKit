@@ -6,26 +6,18 @@
 //
 //
 
-private enum Exception: ErrorType {
-
-    case Invalid(String.Format)
-}
-
 public extension String {
 
     /// Known format for string
-    public enum Format {
-
-        case IPAddress
-    }
+    public enum Format { case IPAddress }
 
     /// Validate the receiver with format
     public func isValidatedFor(format: Format) -> Bool {
-        let range = NSMakeRange(0, self.characters.count)
+        return isMatchedWith(format.pattern)
+    }
 
-        return try! NSRegularExpression(pattern: "^\(format.pattern)$", options: []).then {
-            $0.rangeOfFirstMatchInString(self, options: .ReportProgress, range: range) == range
-        }
+    public func isMatchedWith(pattern: String) -> Bool {
+        return NSPredicate(format: "SELF MATCHES %@", pattern).evaluateWithObject(self)
     }
 
     /// Produce a camel case string

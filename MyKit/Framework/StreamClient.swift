@@ -24,9 +24,8 @@ public class StreamClient: NSObject, NSStreamDelegate {
     // MARK: Action Method
 
     final public func connectToHost(ip: String, port: UInt32) throws {
-        enum Exception: ErrorType { case InvalidIPAddress }
-
         guard ip.isValidatedFor(.IPAddress) else {
+            enum Exception: ErrorType { case InvalidIPAddress }
             throw Exception.InvalidIPAddress
         }
 

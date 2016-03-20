@@ -32,6 +32,7 @@ public class PresentationController: UIPresentationController {
     }
 
     public override func dismissalTransitionWillBegin() {
+        self.presentedView()?.endEditing(true)
         animateDimView(0) { [weak managedView] in managedView?.removeFromSuperview() }
     }
 

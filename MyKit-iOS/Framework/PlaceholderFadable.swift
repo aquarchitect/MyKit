@@ -13,7 +13,7 @@ public protocol PlaceholderFadable: class {
 
 extension PlaceholderFadable {
 
-    public func PlaceholderFadableAlongsideWith(text: String) {
+    public func fadePlaceholderAlongsideWith(text: String) {
         let animation = { (alpha: CGFloat) in
             UIView.animateWithDuration(0.25) {
                 self.placeholder.alpha = alpha

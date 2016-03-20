@@ -20,6 +20,8 @@
 		C209F54F1C76673E007C3975 /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5381C7665EC007C3975 /* Draw.swift */; };
 		C209F5501C76673E007C3975 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F5391C7665EC007C3975 /* Queue.swift */; };
 		C209F5531C76673E007C3975 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53C1C7665EC007C3975 /* Time.swift */; };
+		C21C1D6E1C9CCC9100AF5ABB /* NSScanner+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21C1D6D1C9CCC9100AF5ABB /* NSScanner+.swift */; };
+		C21C1D6F1C9CCC9100AF5ABB /* NSScanner+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21C1D6D1C9CCC9100AF5ABB /* NSScanner+.swift */; };
 		C259EFDD1C4D6ECE00F9B2BC /* DateIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */; };
 		C259EFE11C4D6ECE00F9B2BC /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD61C4D6ECE00F9B2BC /* PersistentStack.swift */; };
 		C259EFE21C4D6ECE00F9B2BC /* StreamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD71C4D6ECE00F9B2BC /* StreamClient.swift */; };
@@ -193,6 +195,7 @@
 		C209F53B1C7665EC007C3975 /* Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swizzle.swift; path = MyKit/Utility/Swizzle.swift; sourceTree = "<group>"; };
 		C209F53C1C7665EC007C3975 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Time.swift; path = MyKit/Utility/Time.swift; sourceTree = "<group>"; };
 		C209F5441C7666B7007C3975 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = MyKit/Utility/Result.swift; sourceTree = "<group>"; };
+		C21C1D6D1C9CCC9100AF5ABB /* NSScanner+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSScanner+.swift"; path = "MyKit/Extension/Foundation/NSScanner+.swift"; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateIndex.swift; path = MyKit/Framework/DateIndex.swift; sourceTree = "<group>"; };
 		C259EFD61C4D6ECE00F9B2BC /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStack.swift; path = MyKit/Framework/PersistentStack.swift; sourceTree = "<group>"; };
@@ -610,6 +613,7 @@
 				C2EFDCA11C8FF0E5000DFB63 /* NSMutableAttributedString+.swift */,
 				C2EFDCA21C8FF0E5000DFB63 /* NSNumber+.swift */,
 				C2EFDCA41C8FF0E5000DFB63 /* NSRange+.swift */,
+				C21C1D6D1C9CCC9100AF5ABB /* NSScanner+.swift */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -912,6 +916,7 @@
 				C2EF9AE71C90AC910037BE4D /* WeatherIcon.swift in Sources */,
 				C2EF9AE91C90AC970037BE4D /* LoremIpsum.swift in Sources */,
 				C2EF9AEF1C90ACAF0037BE4D /* Range+.swift in Sources */,
+				C21C1D6F1C9CCC9100AF5ABB /* NSScanner+.swift in Sources */,
 				C2EF9B051C90ACD90037BE4D /* CGPoint+.swift in Sources */,
 				C2BBFEB81C966CA000E63145 /* CommonError.swift in Sources */,
 				C2EF9AED1C90ACAF0037BE4D /* CollectionType+.swift in Sources */,
@@ -990,6 +995,7 @@
 				C2B7BFF51C95309A00D79747 /* UIEdgeInsets+.swift in Sources */,
 				C209F53D1C7665EC007C3975 /* Box.swift in Sources */,
 				C2EFDCBE1C8FF102000DFB63 /* NSEntityDescription+.swift in Sources */,
+				C21C1D6E1C9CCC9100AF5ABB /* NSScanner+.swift in Sources */,
 				C2B7BFD91C95306200D79747 /* PlaceholderFadable.swift in Sources */,
 				C2B7BFF21C95309A00D79747 /* UICollectionViewFlowLayout+.swift in Sources */,
 				C209F53E1C7665EC007C3975 /* Curry.swift in Sources */,
@@ -1190,7 +1196,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1241,7 +1247,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1272,6 +1278,7 @@
 		C289AD751B62B93800186773 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_ON_DEMAND_RESOURCES = YES;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = MyKit/Info.plist;
@@ -1288,6 +1295,7 @@
 		C289AD761B62B93800186773 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_ON_DEMAND_RESOURCES = YES;
 				INFOPLIST_FILE = MyKit/Info.plist;
 				PRODUCT_NAME = MyKit;
@@ -1316,7 +1324,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1382,7 +1390,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1441,7 +1449,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1507,7 +1515,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1656,7 +1664,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1707,7 +1715,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
