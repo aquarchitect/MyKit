@@ -16,7 +16,7 @@ public class PresentationController: UIPresentationController {
         super.init(presentedViewController: presented, presentingViewController: presenting)
 
         UITapGestureRecognizer().then {
-            $0.addTarget(self, action: "handleTap:")
+            $0.addTarget(self, action: #selector(handleTap(_:)))
             managedView.addGestureRecognizer($0)
         }
     }

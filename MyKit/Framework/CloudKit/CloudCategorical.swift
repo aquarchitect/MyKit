@@ -8,7 +8,7 @@
 
 public protocol CloudCategorical {
 
-    typealias Element
+    associatedtype Element
     var element: Element { get }
     init(record: CKRecord, cachedMetadata flag: Bool) throws
 }

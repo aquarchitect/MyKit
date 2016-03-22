@@ -28,7 +28,7 @@ public extension UICollectionView {
             dragger?.gesture.then(self.removeGestureRecognizer)
 
             newValue?.gesture.then {
-                $0.addTarget(self, action: "handleMultipleSelectionByDragging:")
+                $0.addTarget(self, action: #selector(handleMultipleSelectionByDragging(_:)))
                 self.addGestureRecognizer($0)
             }
 

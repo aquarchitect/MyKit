@@ -12,7 +12,7 @@ public extension String {
     public enum Format { case IPAddress }
 
     /// Validate the receiver with format
-    public func isValidatedFor(format: Format) -> Bool {
+    public func isValidatedAs(format: Format) -> Bool {
         return isMatchedWith(format.pattern)
     }
 

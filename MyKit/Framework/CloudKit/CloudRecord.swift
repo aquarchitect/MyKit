@@ -43,12 +43,12 @@ public class CloudObject: NSObject, CloudRecord {
     public let metadata: NSData?
 
     public init(record: CKRecord, cacheMetadata flag: Bool) throws {
-        self.metadata = flag ? record.metadata : nil
-        super.init()
-
         if record.recordType != String(self.dynamicType) {
             throw ParseError.MissedMatch
         }
+
+        self.metadata = flag ? record.metadata : nil
+        super.init()
 
         decodeFrom(record)
     }
@@ -72,12 +72,12 @@ public class CloudUser: NSObject, CloudRecord {
     public let metadata: NSData
 
     public init(record: CKRecord) throws {
-        self.metadata = record.metadata
-        super.init()
-
         if record.recordType != CKRecordTypeUserRecord {
             throw ParseError.NotUserType
         }
+
+        self.metadata = record.metadata
+        super.init()
 
         decodeFrom(record)
     }

@@ -45,11 +45,6 @@ Swizzles original method.
 ```
 */
 public func swizzle(type: AnyClass, original: Selector, swizzled: Selector) {
-    // double check string method typo
-    [original, swizzled].forEach {
-        if !class_respondsToSelector(type, $0) { fatalError("\($0)") }
-    }
-
     // get method objects
     let originalMethod = class_getInstanceMethod(type, original)
     let swizzledMethod = class_getInstanceMethod(type, swizzled)

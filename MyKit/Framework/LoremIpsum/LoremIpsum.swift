@@ -15,7 +15,7 @@ public final class LoremIpsum: CollectionType {
 
     public static let sharedInstance = try? LoremIpsum()
 
-    private var storage: [String] = []
+    private let storage: [String]
 
     public let startIndex = 0
     public var endIndex: Int {
@@ -30,14 +30,17 @@ public final class LoremIpsum: CollectionType {
 
         let lorem = try String(contentsOfURL: url)
         let range = lorem.startIndex..<lorem.endIndex
+        var storage = [String]()
 
         lorem.enumerateSubstringsInRange(range, options: .BySentences) {
             var string = ($0.0 ?? "").stringByReplacingOccurrencesOfString("\\n", withString: "")
             string = string.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
 
             guard !string.isEmpty else { return }
-            self.storage.append(string)
+            storage.append(string)
         }
+
+        self.storage = storage
     }
 
     public subscript(index: Int) -> String {

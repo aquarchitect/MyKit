@@ -22,6 +22,8 @@
 		C209F5531C76673E007C3975 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209F53C1C7665EC007C3975 /* Time.swift */; };
 		C21C1D6E1C9CCC9100AF5ABB /* NSScanner+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21C1D6D1C9CCC9100AF5ABB /* NSScanner+.swift */; };
 		C21C1D6F1C9CCC9100AF5ABB /* NSScanner+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21C1D6D1C9CCC9100AF5ABB /* NSScanner+.swift */; };
+		C22EAEC21CA1A13D007B6A1F /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EAEC11CA1A13D007B6A1F /* Host.swift */; };
+		C22EAEC31CA1A13D007B6A1F /* Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22EAEC11CA1A13D007B6A1F /* Host.swift */; };
 		C259EFDD1C4D6ECE00F9B2BC /* DateIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */; };
 		C259EFE11C4D6ECE00F9B2BC /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD61C4D6ECE00F9B2BC /* PersistentStack.swift */; };
 		C259EFE21C4D6ECE00F9B2BC /* StreamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C259EFD71C4D6ECE00F9B2BC /* StreamClient.swift */; };
@@ -196,6 +198,10 @@
 		C209F53C1C7665EC007C3975 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Time.swift; path = MyKit/Utility/Time.swift; sourceTree = "<group>"; };
 		C209F5441C7666B7007C3975 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = MyKit/Utility/Result.swift; sourceTree = "<group>"; };
 		C21C1D6D1C9CCC9100AF5ABB /* NSScanner+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSScanner+.swift"; path = "MyKit/Extension/Foundation/NSScanner+.swift"; sourceTree = "<group>"; };
+		C22EAEBE1CA19C0C007B6A1F /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Socket.swift; path = MyKit/Utility/Socket.swift; sourceTree = "<group>"; };
+		C22EAEC11CA1A13D007B6A1F /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Host.swift; path = MyKit/Utility/Host.swift; sourceTree = "<group>"; };
+		C22EAEC41CA1AF83007B6A1F /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = MyKit/Utility/Client.swift; sourceTree = "<group>"; };
+		C22EAEC71CA1BBF1007B6A1F /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Server.swift; path = MyKit/Utility/Server.swift; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateIndex.swift; path = MyKit/Framework/DateIndex.swift; sourceTree = "<group>"; };
 		C259EFD61C4D6ECE00F9B2BC /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStack.swift; path = MyKit/Framework/PersistentStack.swift; sourceTree = "<group>"; };
@@ -467,6 +473,10 @@
 				C209F53C1C7665EC007C3975 /* Time.swift */,
 				C209F5441C7666B7007C3975 /* Result.swift */,
 				C2F18C941C76B2F400A1DB83 /* Promise.swift */,
+				C22EAEC11CA1A13D007B6A1F /* Host.swift */,
+				C22EAEBE1CA19C0C007B6A1F /* Socket.swift */,
+				C22EAEC41CA1AF83007B6A1F /* Client.swift */,
+				C22EAEC71CA1BBF1007B6A1F /* Server.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -961,6 +971,7 @@
 				C2C291F41C988C9700394585 /* CloudCategorical.swift in Sources */,
 				C2EF9AFE1C90ACC30037BE4D /* CKRecord+.swift in Sources */,
 				C2EF9B071C90ACD90037BE4D /* CGSize+.swift in Sources */,
+				C22EAEC31CA1A13D007B6A1F /* Host.swift in Sources */,
 				C2EF9AFD1C90ACC30037BE4D /* CKQuery+.swift in Sources */,
 				C2B7C0051C9530C900D79747 /* NSControl+.swift in Sources */,
 			);
@@ -981,6 +992,7 @@
 				C2EFDCB61C8FF0F7000DFB63 /* CKRecord+.swift in Sources */,
 				C2B7BFFA1C95309A00D79747 /* UIView+.swift in Sources */,
 				C2EFDCBD1C8FF102000DFB63 /* NSAttributeDescription+.swift in Sources */,
+				C22EAEC21CA1A13D007B6A1F /* Host.swift in Sources */,
 				C2B924211C99D65C00C7FCFD /* CollectionCell.swift in Sources */,
 				C209F5431C7665EC007C3975 /* Time.swift in Sources */,
 				C2B924271C99D66800C7FCFD /* TableView.swift in Sources */,
@@ -1126,7 +1138,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "MyKit-Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
@@ -1168,7 +1180,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "MyKit-Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
@@ -1594,7 +1606,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "MyKit-Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
@@ -1636,7 +1648,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "MyKit-Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;

@@ -47,7 +47,7 @@ internal extension NSObject {
 
         public final func addAction(block: Self -> Void, forControlEvents events: UIControlEvents) {
             self.setAction(block)
-            self.addTarget(self, action: "handleBlock", forControlEvents: events)
+            self.addTarget(self, action: #selector(handleBlock), forControlEvents: events)
         }
     }
 #endif
@@ -61,7 +61,7 @@ internal extension NSObject {
 
         public final func addAction(block: Self -> Void) {
             self.setAction(block)
-            self.addTarget(self, action: "handleBlock")
+            self.addTarget(self, action: #selector(handleBlock))
         }
     }
 #endif

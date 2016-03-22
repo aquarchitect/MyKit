@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode7.2
+osx_image: xcode7.3
 
 notifications:
   email: false
@@ -12,7 +12,7 @@ env:
   global:
     - FRAMEWORK="MyKit"
     - OSX_SDK=macosx10.11
-    - IOS_SDK=iphonesimulator9.2
+    - IOS_SDK=iphonesimulator9.3
   matrix:
     - DESTINATION="arch=x86_64"             SCHEME="OSX"    SDK=$OSX_SDK    ACTION="test"
     - DESTINATION="OS=9.0,name=iPhone 5S"   SCHEME="iOS"    SDK=$IOS_SDK    ACTION="test"
