@@ -11,16 +11,16 @@ final class TaskSchedulerTests: XCTestCase {
     private let taskScheduler = TaskScheduler()
 
     func testFullfilledTaskScheduler() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
-        taskScheduler.schedule(1) { expectation.fulfill() }
+        taskScheduler.runAfter(1) { expectation.fulfill() }
         waitForExpectationsWithTimeout(2) { XCTAssertNil($0) }
     }
 
     func testRejectedTaskScheduler() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
-        taskScheduler.schedule(1) { XCTFail() }
+        taskScheduler.runAfter(1) { XCTFail() }
 
         delay(0.5) {
             self.taskScheduler.cancel()

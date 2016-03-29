@@ -15,7 +15,7 @@ final class PromiseTests: XCTestCase {
     }
 
     func testFullfilledArray() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         let ps = [(0.5, .Fullfill(5)), (0.5, .Fullfill(10)), (1.0, .Fullfill(15))].map(delayFor)
 
@@ -35,7 +35,7 @@ final class PromiseTests: XCTestCase {
     }
 
     func testRejectedArray() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         let ps = [(0.5, .Fullfill(5)), (0.5, .Reject(CommonError.NoContent)), (1.0, .Fullfill(15))].map(delayFor)
 
@@ -58,7 +58,7 @@ final class PromiseTests: XCTestCase {
     }
 
     func testFullfilledTuple() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         let p1 = delayFor(0.5, result: .Fullfill(true))
         let p2 = delayFor(1.0, result: .Fullfill("Success"))
@@ -79,7 +79,7 @@ final class PromiseTests: XCTestCase {
     }
 
     func testRejectedTuple() {
-        let expectation = expectationWithDescription(__FUNCTION__)
+        let expectation = expectationWithDescription(#function)
 
         let p1 = delayFor(0.5, result: .Fullfill(true))
         let p2 = delayFor(1.0, result: Result<String>.Reject(CommonError.NoContent))

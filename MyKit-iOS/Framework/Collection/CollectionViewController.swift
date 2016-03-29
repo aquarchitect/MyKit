@@ -20,7 +20,7 @@ final public class CollectionViewController<T, C: UICollectionViewCell>: UIColle
         set { (collectionView as? CollectionGenericView<T, C>)?.config = newValue }
     }
 
-    // MARK: Initialization
+    // MARK: View LifeCycle
 
     public override func loadView() {
         collectionView = CollectionGenericView<T, C>(frame: .zero, collectionViewLayout: self.collectionViewLayout)
