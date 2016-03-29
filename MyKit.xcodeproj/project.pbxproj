@@ -45,13 +45,11 @@
 		C29559FB1C94CED3005CAA3A /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C29559FA1C94CED3005CAA3A /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C29559FC1C94CED8005CAA3A /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C29559FA1C94CED3005CAA3A /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2ACE23F1C960ABB0066AE87 /* CKRecordID+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ACE23E1C960ABB0066AE87 /* CKRecordID+.swift */; };
-		C2B7BFD91C95306200D79747 /* PlaceholderFadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFCC1C95306200D79747 /* PlaceholderFadable.swift */; };
-		C2B7BFDA1C95306200D79747 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFCD1C95306200D79747 /* PresentationController.swift */; };
-		C2B7BFDB1C95306200D79747 /* SimpleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFCE1C95306200D79747 /* SimpleTransition.swift */; };
-		C2B7BFDC1C95306200D79747 /* SnapLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFCF1C95306200D79747 /* SnapLayout.swift */; };
-		C2B7BFDD1C95306200D79747 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFD01C95306200D79747 /* StackView.swift */; };
-		C2B7BFE01C95306200D79747 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFD31C95306200D79747 /* TextView.swift */; };
-		C2B7BFE11C95306200D79747 /* PresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFD41C95306200D79747 /* PresentationTransition.swift */; };
+		C2B7BFDA1C95306200D79747 /* PresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFCD1C95306200D79747 /* PresentationViewController.swift */; };
+		C2B7BFDB1C95306200D79747 /* PresentationSimpleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFCE1C95306200D79747 /* PresentationSimpleTransition.swift */; };
+		C2B7BFDC1C95306200D79747 /* CenterPagedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFCF1C95306200D79747 /* CenterPagedLayout.swift */; };
+		C2B7BFE01C95306200D79747 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFD31C95306200D79747 /* GrowingTextView.swift */; };
+		C2B7BFE11C95306200D79747 /* PresentationAnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFD41C95306200D79747 /* PresentationAnimatedTransition.swift */; };
 		C2B7BFEF1C95309A00D79747 /* Draw+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFE21C95309A00D79747 /* Draw+.swift */; };
 		C2B7BFF01C95309A00D79747 /* UIBezierPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFE31C95309A00D79747 /* UIBezierPath+.swift */; };
 		C2B7BFF11C95309A00D79747 /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFE41C95309A00D79747 /* UICollectionView+.swift */; };
@@ -67,11 +65,11 @@
 		C2B7C0051C9530C900D79747 /* NSControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFFD1C9530BD00D79747 /* NSControl+.swift */; };
 		C2B7C0061C9530C900D79747 /* NSTableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFFE1C9530BD00D79747 /* NSTableView+.swift */; };
 		C2B7C0071C9530C900D79747 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7BFFF1C9530BD00D79747 /* NSText+.swift */; };
-		C2B924211C99D65C00C7FCFD /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B9241E1C99D65C00C7FCFD /* CollectionCell.swift */; };
-		C2B924221C99D65C00C7FCFD /* CollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B9241F1C99D65C00C7FCFD /* CollectionController.swift */; };
-		C2B924231C99D65C00C7FCFD /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B924201C99D65C00C7FCFD /* CollectionView.swift */; };
-		C2B924261C99D66800C7FCFD /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B924241C99D66800C7FCFD /* TableController.swift */; };
-		C2B924271C99D66800C7FCFD /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B924251C99D66800C7FCFD /* TableView.swift */; };
+		C2B924211C99D65C00C7FCFD /* CollectionDynamicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B9241E1C99D65C00C7FCFD /* CollectionDynamicCell.swift */; };
+		C2B924221C99D65C00C7FCFD /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B9241F1C99D65C00C7FCFD /* CollectionViewController.swift */; };
+		C2B924231C99D65C00C7FCFD /* CollectionGenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B924201C99D65C00C7FCFD /* CollectionGenericView.swift */; };
+		C2B924261C99D66800C7FCFD /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B924241C99D66800C7FCFD /* TableViewController.swift */; };
+		C2B924271C99D66800C7FCFD /* TableGenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B924251C99D66800C7FCFD /* TableGenericView.swift */; };
 		C2B924351C9A106700C7FCFD /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E191911C97236E00FE33C3 /* NSDateTests.swift */; };
 		C2B924361C9A106700C7FCFD /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B7C0091C954BE700D79747 /* PromiseTests.swift */; };
 		C2B924371C9A106700C7FCFD /* CustomFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BBFEB91C96703D00E63145 /* CustomFontTests.swift */; };
@@ -198,10 +196,7 @@
 		C209F53C1C7665EC007C3975 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Time.swift; path = MyKit/Utility/Time.swift; sourceTree = "<group>"; };
 		C209F5441C7666B7007C3975 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = MyKit/Utility/Result.swift; sourceTree = "<group>"; };
 		C21C1D6D1C9CCC9100AF5ABB /* NSScanner+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSScanner+.swift"; path = "MyKit/Extension/Foundation/NSScanner+.swift"; sourceTree = "<group>"; };
-		C22EAEBE1CA19C0C007B6A1F /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Socket.swift; path = MyKit/Utility/Socket.swift; sourceTree = "<group>"; };
 		C22EAEC11CA1A13D007B6A1F /* Host.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Host.swift; path = MyKit/Utility/Host.swift; sourceTree = "<group>"; };
-		C22EAEC41CA1AF83007B6A1F /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = MyKit/Utility/Client.swift; sourceTree = "<group>"; };
-		C22EAEC71CA1BBF1007B6A1F /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Server.swift; path = MyKit/Utility/Server.swift; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C259EFD21C4D6ECE00F9B2BC /* DateIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateIndex.swift; path = MyKit/Framework/DateIndex.swift; sourceTree = "<group>"; };
 		C259EFD61C4D6ECE00F9B2BC /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStack.swift; path = MyKit/Framework/PersistentStack.swift; sourceTree = "<group>"; };
@@ -215,13 +210,11 @@
 		C289ADEB1B62BC3A00186773 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyKit/Info.plist; sourceTree = "<group>"; };
 		C29559FA1C94CED3005CAA3A /* MyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyKit.h; path = MyKit/MyKit.h; sourceTree = "<group>"; };
 		C2ACE23E1C960ABB0066AE87 /* CKRecordID+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecordID+.swift"; path = "MyKit/Extension/CloudKit/CKRecordID+.swift"; sourceTree = "<group>"; };
-		C2B7BFCC1C95306200D79747 /* PlaceholderFadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaceholderFadable.swift; path = "MyKit-iOS/Framework/PlaceholderFadable.swift"; sourceTree = SOURCE_ROOT; };
-		C2B7BFCD1C95306200D79747 /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationController.swift; path = "MyKit-iOS/Framework/PresentationController.swift"; sourceTree = SOURCE_ROOT; };
-		C2B7BFCE1C95306200D79747 /* SimpleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimpleTransition.swift; path = "MyKit-iOS/Framework/SimpleTransition.swift"; sourceTree = SOURCE_ROOT; };
-		C2B7BFCF1C95306200D79747 /* SnapLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapLayout.swift; path = "MyKit-iOS/Framework/SnapLayout.swift"; sourceTree = SOURCE_ROOT; };
-		C2B7BFD01C95306200D79747 /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StackView.swift; path = "MyKit-iOS/Framework/StackView.swift"; sourceTree = SOURCE_ROOT; };
-		C2B7BFD31C95306200D79747 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextView.swift; path = "MyKit-iOS/Framework/TextView.swift"; sourceTree = SOURCE_ROOT; };
-		C2B7BFD41C95306200D79747 /* PresentationTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationTransition.swift; path = "MyKit-iOS/Framework/PresentationTransition.swift"; sourceTree = SOURCE_ROOT; };
+		C2B7BFCD1C95306200D79747 /* PresentationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationViewController.swift; path = "MyKit-iOS/Framework/PresentationViewController.swift"; sourceTree = SOURCE_ROOT; };
+		C2B7BFCE1C95306200D79747 /* PresentationSimpleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationSimpleTransition.swift; path = "MyKit-iOS/Framework/PresentationSimpleTransition.swift"; sourceTree = SOURCE_ROOT; };
+		C2B7BFCF1C95306200D79747 /* CenterPagedLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenterPagedLayout.swift; path = "MyKit-iOS/Framework/CenterPagedLayout.swift"; sourceTree = SOURCE_ROOT; };
+		C2B7BFD31C95306200D79747 /* GrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GrowingTextView.swift; path = "MyKit-iOS/Framework/GrowingTextView.swift"; sourceTree = SOURCE_ROOT; };
+		C2B7BFD41C95306200D79747 /* PresentationAnimatedTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PresentationAnimatedTransition.swift; path = "MyKit-iOS/Framework/PresentationAnimatedTransition.swift"; sourceTree = SOURCE_ROOT; };
 		C2B7BFE21C95309A00D79747 /* Draw+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Draw+.swift"; path = "MyKit-iOS/Extension/Draw+.swift"; sourceTree = SOURCE_ROOT; };
 		C2B7BFE31C95309A00D79747 /* UIBezierPath+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIBezierPath+.swift"; path = "MyKit-iOS/Extension/UIBezierPath+.swift"; sourceTree = SOURCE_ROOT; };
 		C2B7BFE41C95309A00D79747 /* UICollectionView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+.swift"; path = "MyKit-iOS/Extension/UICollectionView+.swift"; sourceTree = SOURCE_ROOT; };
@@ -242,11 +235,11 @@
 		C2B7C00A1C954BE700D79747 /* TaskSchedulerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskSchedulerTests.swift; path = "MyKit-Tests/TaskSchedulerTests.swift"; sourceTree = SOURCE_ROOT; };
 		C2B7C00E1C954BF700D79747 /* Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bridging.h; path = "MyKit-Tests/Bridging.h"; sourceTree = SOURCE_ROOT; };
 		C2B7C00F1C954BF700D79747 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "MyKit-Tests/Info.plist"; sourceTree = SOURCE_ROOT; };
-		C2B9241E1C99D65C00C7FCFD /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionCell.swift; path = "MyKit-iOS/Framework/Collection/CollectionCell.swift"; sourceTree = SOURCE_ROOT; };
-		C2B9241F1C99D65C00C7FCFD /* CollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionController.swift; path = "MyKit-iOS/Framework/Collection/CollectionController.swift"; sourceTree = SOURCE_ROOT; };
-		C2B924201C99D65C00C7FCFD /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionView.swift; path = "MyKit-iOS/Framework/Collection/CollectionView.swift"; sourceTree = SOURCE_ROOT; };
-		C2B924241C99D66800C7FCFD /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableController.swift; path = "MyKit-iOS/Framework/Table/TableController.swift"; sourceTree = SOURCE_ROOT; };
-		C2B924251C99D66800C7FCFD /* TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableView.swift; path = "MyKit-iOS/Framework/Table/TableView.swift"; sourceTree = SOURCE_ROOT; };
+		C2B9241E1C99D65C00C7FCFD /* CollectionDynamicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionDynamicCell.swift; path = "MyKit-iOS/Framework/Collection/CollectionDynamicCell.swift"; sourceTree = SOURCE_ROOT; };
+		C2B9241F1C99D65C00C7FCFD /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = "MyKit-iOS/Framework/Collection/CollectionViewController.swift"; sourceTree = SOURCE_ROOT; };
+		C2B924201C99D65C00C7FCFD /* CollectionGenericView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionGenericView.swift; path = "MyKit-iOS/Framework/Collection/CollectionGenericView.swift"; sourceTree = SOURCE_ROOT; };
+		C2B924241C99D66800C7FCFD /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = "MyKit-iOS/Framework/Table/TableViewController.swift"; sourceTree = SOURCE_ROOT; };
+		C2B924251C99D66800C7FCFD /* TableGenericView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableGenericView.swift; path = "MyKit-iOS/Framework/Table/TableGenericView.swift"; sourceTree = SOURCE_ROOT; };
 		C2B9242D1C9A0EFB00C7FCFD /* MyKitQuickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitQuickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2BBFEB31C96692100E63145 /* NSBundle+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSBundle+.swift"; path = "MyKit/Extension/Foundation/NSBundle+.swift"; sourceTree = "<group>"; };
 		C2BBFEB61C966CA000E63145 /* CommonError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommonError.swift; path = MyKit/Framework/CommonError.swift; sourceTree = "<group>"; };
@@ -474,9 +467,6 @@
 				C209F5441C7666B7007C3975 /* Result.swift */,
 				C2F18C941C76B2F400A1DB83 /* Promise.swift */,
 				C22EAEC11CA1A13D007B6A1F /* Host.swift */,
-				C22EAEBE1CA19C0C007B6A1F /* Socket.swift */,
-				C22EAEC41CA1AF83007B6A1F /* Client.swift */,
-				C22EAEC71CA1BBF1007B6A1F /* Server.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -484,14 +474,11 @@
 		C289AD971B62BA3C00186773 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				C2B7BFCE1C95306200D79747 /* SimpleTransition.swift */,
-				C2B7BFCF1C95306200D79747 /* SnapLayout.swift */,
-				C2B7BFD01C95306200D79747 /* StackView.swift */,
-				C2B7BFD31C95306200D79747 /* TextView.swift */,
-				C2E01D2C1C7BC8B9002444D4 /* Protocols */,
+				C2B7BFD31C95306200D79747 /* GrowingTextView.swift */,
+				C2B7BFCF1C95306200D79747 /* CenterPagedLayout.swift */,
+				C2B924281C99D67700C7FCFD /* Presentation */,
 				C2EFDCDB1C8FF8F6000DFB63 /* Collection */,
 				C2EFDCDA1C8FF846000DFB63 /* Table */,
-				C2B924281C99D67700C7FCFD /* Presentation */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -606,8 +593,9 @@
 		C2B924281C99D67700C7FCFD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				C2B7BFCD1C95306200D79747 /* PresentationController.swift */,
-				C2B7BFD41C95306200D79747 /* PresentationTransition.swift */,
+				C2B7BFCD1C95306200D79747 /* PresentationViewController.swift */,
+				C2B7BFD41C95306200D79747 /* PresentationAnimatedTransition.swift */,
+				C2B7BFCE1C95306200D79747 /* PresentationSimpleTransition.swift */,
 			);
 			name = Presentation;
 			sourceTree = "<group>";
@@ -628,19 +616,11 @@
 			name = Foundation;
 			sourceTree = "<group>";
 		};
-		C2E01D2C1C7BC8B9002444D4 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				C2B7BFCC1C95306200D79747 /* PlaceholderFadable.swift */,
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
 		C2EFDCDA1C8FF846000DFB63 /* Table */ = {
 			isa = PBXGroup;
 			children = (
-				C2B924241C99D66800C7FCFD /* TableController.swift */,
-				C2B924251C99D66800C7FCFD /* TableView.swift */,
+				C2B924241C99D66800C7FCFD /* TableViewController.swift */,
+				C2B924251C99D66800C7FCFD /* TableGenericView.swift */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -648,9 +628,9 @@
 		C2EFDCDB1C8FF8F6000DFB63 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				C2B9241F1C99D65C00C7FCFD /* CollectionController.swift */,
-				C2B924201C99D65C00C7FCFD /* CollectionView.swift */,
-				C2B9241E1C99D65C00C7FCFD /* CollectionCell.swift */,
+				C2B9241F1C99D65C00C7FCFD /* CollectionViewController.swift */,
+				C2B924201C99D65C00C7FCFD /* CollectionGenericView.swift */,
+				C2B9241E1C99D65C00C7FCFD /* CollectionDynamicCell.swift */,
 			);
 			name = Collection;
 			sourceTree = "<group>";
@@ -982,25 +962,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2BBFEB41C96692100E63145 /* NSBundle+.swift in Sources */,
-				C2B7BFDD1C95306200D79747 /* StackView.swift in Sources */,
 				C2EFDCA61C8FF0E5000DFB63 /* NSCache+.swift in Sources */,
 				C2EFDCC71C8FF113000DFB63 /* CGSize+.swift in Sources */,
 				C2EFDCBF1C8FF102000DFB63 /* NSManagedObject+.swift in Sources */,
 				C259EFE21C4D6ECE00F9B2BC /* StreamClient.swift in Sources */,
-				C2B7BFE01C95306200D79747 /* TextView.swift in Sources */,
+				C2B7BFE01C95306200D79747 /* GrowingTextView.swift in Sources */,
 				C2EFDCC51C8FF113000DFB63 /* CGPoint+.swift in Sources */,
 				C2EFDCB61C8FF0F7000DFB63 /* CKRecord+.swift in Sources */,
 				C2B7BFFA1C95309A00D79747 /* UIView+.swift in Sources */,
 				C2EFDCBD1C8FF102000DFB63 /* NSAttributeDescription+.swift in Sources */,
 				C22EAEC21CA1A13D007B6A1F /* Host.swift in Sources */,
-				C2B924211C99D65C00C7FCFD /* CollectionCell.swift in Sources */,
+				C2B924211C99D65C00C7FCFD /* CollectionDynamicCell.swift in Sources */,
 				C209F5431C7665EC007C3975 /* Time.swift in Sources */,
-				C2B924271C99D66800C7FCFD /* TableView.swift in Sources */,
+				C2B924271C99D66800C7FCFD /* TableGenericView.swift in Sources */,
 				C2EFDCB41C8FF0F7000DFB63 /* CKDatabase+.swift in Sources */,
 				C2C291F31C988C9700394585 /* CloudCategorical.swift in Sources */,
 				C2EFDCAA1C8FF0E5000DFB63 /* NSMutableAttributedString+.swift in Sources */,
-				C2B924231C99D65C00C7FCFD /* CollectionView.swift in Sources */,
-				C2B7BFE11C95306200D79747 /* PresentationTransition.swift in Sources */,
+				C2B924231C99D65C00C7FCFD /* CollectionGenericView.swift in Sources */,
+				C2B7BFE11C95306200D79747 /* PresentationAnimatedTransition.swift in Sources */,
 				C2ACE23F1C960ABB0066AE87 /* CKRecordID+.swift in Sources */,
 				C2EFDCD11C8FF601000DFB63 /* WeatherIcon.swift in Sources */,
 				C2EFDC991C8FF0C8000DFB63 /* Range+.swift in Sources */,
@@ -1008,7 +987,6 @@
 				C209F53D1C7665EC007C3975 /* Box.swift in Sources */,
 				C2EFDCBE1C8FF102000DFB63 /* NSEntityDescription+.swift in Sources */,
 				C21C1D6E1C9CCC9100AF5ABB /* NSScanner+.swift in Sources */,
-				C2B7BFD91C95306200D79747 /* PlaceholderFadable.swift in Sources */,
 				C2B7BFF21C95309A00D79747 /* UICollectionViewFlowLayout+.swift in Sources */,
 				C209F53E1C7665EC007C3975 /* Curry.swift in Sources */,
 				C2BBFED91C969A8300E63145 /* CustomFont.swift in Sources */,
@@ -1030,7 +1008,7 @@
 				C2EFDCD81C8FF61E000DFB63 /* CloudRecord.swift in Sources */,
 				C2EFDC9A1C8FF0C8000DFB63 /* String+.swift in Sources */,
 				C259EFDD1C4D6ECE00F9B2BC /* DateIndex.swift in Sources */,
-				C2B924221C99D65C00C7FCFD /* CollectionController.swift in Sources */,
+				C2B924221C99D65C00C7FCFD /* CollectionViewController.swift in Sources */,
 				C2EFDCAB1C8FF0E5000DFB63 /* NSNumber+.swift in Sources */,
 				C209F5451C7666B7007C3975 /* Result.swift in Sources */,
 				C2B7BFF81C95309A00D79747 /* UIScrollView+.swift in Sources */,
@@ -1038,21 +1016,21 @@
 				C2EFDCD01C8FF601000DFB63 /* WeatherAPI.swift in Sources */,
 				C2EFDCD91C8FF61E000DFB63 /* CloudStack.swift in Sources */,
 				C2B7BFF91C95309A00D79747 /* UITableView+.swift in Sources */,
-				C2B7BFDB1C95306200D79747 /* SimpleTransition.swift in Sources */,
+				C2B7BFDB1C95306200D79747 /* PresentationSimpleTransition.swift in Sources */,
 				C2B7BFFB1C95309A00D79747 /* UIViewController+.swift in Sources */,
-				C2B7BFDC1C95306200D79747 /* SnapLayout.swift in Sources */,
+				C2B7BFDC1C95306200D79747 /* CenterPagedLayout.swift in Sources */,
 				C259EFE11C4D6ECE00F9B2BC /* PersistentStack.swift in Sources */,
 				C2EFDCC61C8FF113000DFB63 /* CGRect+.swift in Sources */,
 				C209F5401C7665EC007C3975 /* Queue.swift in Sources */,
 				C2EFDCD51C8FF611000DFB63 /* LoremIpsum.swift in Sources */,
 				C2B7BFEF1C95309A00D79747 /* Draw+.swift in Sources */,
 				C2B7BFF31C95309A00D79747 /* UIColor+.swift in Sources */,
-				C2B7BFDA1C95306200D79747 /* PresentationController.swift in Sources */,
+				C2B7BFDA1C95306200D79747 /* PresentationViewController.swift in Sources */,
 				C2BBFEB71C966CA000E63145 /* CommonError.swift in Sources */,
 				C2EFDCB51C8FF0F7000DFB63 /* CKQuery+.swift in Sources */,
 				C2EFDCA91C8FF0E5000DFB63 /* NSIndexPath+.swift in Sources */,
 				C209F5421C7665EC007C3975 /* Swizzle.swift in Sources */,
-				C2B924261C99D66800C7FCFD /* TableController.swift in Sources */,
+				C2B924261C99D66800C7FCFD /* TableViewController.swift in Sources */,
 				C209F53F1C7665EC007C3975 /* Draw.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

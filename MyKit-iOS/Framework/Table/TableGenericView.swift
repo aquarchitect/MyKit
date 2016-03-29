@@ -1,12 +1,12 @@
 //
-//  TableView.swift
+//  TableGenericView.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 7/11/15.
 //  
 //
 
-public class TableView<T, C: UITableViewCell>: UITableView, UITableViewDataSource {
+public class TableGenericView<T, C: UITableViewCell>: UITableView, UITableViewDataSource {
 
     public var items: [[T]] = []
 

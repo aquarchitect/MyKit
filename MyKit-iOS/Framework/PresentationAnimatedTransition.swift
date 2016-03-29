@@ -6,15 +6,15 @@
 //
 //
 
-public protocol PresentationTransitionDataSource: class {
+public protocol PresentationAnimatedTransitionDataSource: class {
 
     func animateTransitionForPresenting(context: UIViewControllerContextTransitioning)
     func animateTransitionForDismissing(context: UIViewControllerContextTransitioning)
 }
 
-public class PresentationTransition: UIPercentDrivenInteractiveTransition {
+public class PresentationAnimatedTransition: UIPercentDrivenInteractiveTransition {
 
-    public weak var dataSource: PresentationTransitionDataSource?
+    public weak var dataSource: PresentationAnimatedTransitionDataSource?
 
     public let presentedContentRect: CGRect
     public var interactionEnabled = false
@@ -34,7 +34,7 @@ public class PresentationTransition: UIPercentDrivenInteractiveTransition {
     }
 }
 
-extension PresentationTransition: UIViewControllerAnimatedTransitioning {
+extension PresentationAnimatedTransition: UIViewControllerAnimatedTransitioning {
 
     public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.25
@@ -45,10 +45,10 @@ extension PresentationTransition: UIViewControllerAnimatedTransitioning {
     }
 }
 
-extension PresentationTransition: UIViewControllerTransitioningDelegate {
+extension PresentationAnimatedTransition: UIViewControllerTransitioningDelegate {
 
     public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return PresentationController(presented: presented, presenting: source, contentRect: presentedContentRect).then {
+        return PresentationViewController(presented: presented, presenting: source, contentRect: presentedContentRect).then {
             $0.managedView.then {
                 $0.userInteractionEnabled = dimming.dismissal
                 $0.backgroundColor = UIColor(white: 0, alpha: dimming.transparent)

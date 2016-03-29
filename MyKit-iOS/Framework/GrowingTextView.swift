@@ -1,12 +1,12 @@
 //
-//  TextView.swift
+//  GrowingTextView.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 9/3/15.
 //
 //
 
-public class TextView: UIControl {
+public class GrowingTextView: UIControl {
 
     // MARK: Property
 
@@ -34,10 +34,7 @@ public class TextView: UIControl {
         textBox.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
 
         [(.Left, .LeftMargin), (.Right, .Right), (.Top, .TopMargin), (.Bottom, .BottomMargin)].forEach {
-            NSLayoutConstraint(item: textBox, attribute: $0, relatedBy: .Equal, toItem: self, attribute: $1, multiplier: 1, constant: 0).then {
-                $0.priority = 800
-                self.addConstraint($0)
-            }
+            self.addConstraint(item: textBox, attribute: $0, relatedBy: .Equal, toItem: self, attribute: $1, multiplier: 1, constant: 0, priority: 800)
         }
     }
 

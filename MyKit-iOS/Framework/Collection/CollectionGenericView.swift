@@ -1,12 +1,12 @@
 //
-//  CollectionView.swift
+//  CollectionGenericView.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 6/26/15.
 //  
 //
 
-public class CollectionView<T, C: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
+public class CollectionGenericView<T, C: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
 
     // MARK: Property
 

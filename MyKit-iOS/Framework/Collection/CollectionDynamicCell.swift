@@ -1,12 +1,12 @@
 //
-//  CollectionCell.swift
+//  CollectionDynamicCell.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 1/18/16.
 //
 //
 
-public class CollectionCell<V: UIView where V: Then>: UICollectionViewCell {
+public class CollectionDynamicCell<V: UIView where V: Then>: UICollectionViewCell {
 
     // MARK: Property
 

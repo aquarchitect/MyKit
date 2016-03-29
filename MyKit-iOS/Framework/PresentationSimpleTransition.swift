@@ -1,12 +1,12 @@
 //
-//  SimpleTransition.swift
+//  PresentationSimpleTransition.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 12/21/15.
 //
 //
 
-final public class SimpleTransition: PresentationTransition {
+final public class PresentationSimpleTransition: PresentationAnimatedTransition {
 
     public enum Kind {
 

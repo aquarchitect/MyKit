@@ -1,12 +1,12 @@
 //
-//  SnapLayout.swift
+//  CenterPagedLayout.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 7/3/15.
 //  
 //
 
-public class SnapLayout: UICollectionViewFlowLayout {
+public class CenterPagedLayout: UICollectionViewFlowLayout {
 
     private struct Snapper {
 

@@ -1,12 +1,9 @@
 MyKit
 =====
 
-[![Build 
-Status](https://img.shields.io/travis/aquarchitect/MyKit.svg?style=flat-square)](https://travis-ci.org/aquarchitect/MyKit.svg)  [![Platform 
-Support](https://img.shields.io/badge/platforms-iOS%20%7C%20OS%20X%20-lightgrey.svg?style=flat-square)](https://github.com/aquarchitect/MyKit)
+[![Swift Version](https://img.shields.io/badge/Swift-2.2-Orange.svg?style=flat-square)]() [![Build Status](https://img.shields.io/travis/aquarchitect/MyKit.svg?style=flat-square)]()  [![Platform Support](https://img.shields.io/badge/platforms-iOS%20%7C%20OS%20X%20-lightgrey.svg?style=flat-square)]()
 
-**MyKit** was originally made to centralize reusable codes for my developments. It has been growing strong over the year, and now it not 
-only contains high-leveled helper functions on top of *CloudKit*, *CoreData*, and many others; but also includes a wide variety of 
+**MyKit** was originally made to centralize reusable codes for my developments. It has been growing strong over the year, and now it not only contains high-leveled helper functions on top of *CloudKit*, *CoreData*, and many others; but also includes a wide variety of 
 frameworks ranging from data structure to user interface that will ease every-day iOS/OSX development. Every elements is carefully designed 
 to be functional and modular.
 
