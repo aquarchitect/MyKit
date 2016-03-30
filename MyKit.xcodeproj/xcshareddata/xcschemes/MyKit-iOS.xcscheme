@@ -11,8 +11,7 @@
             buildForRunning = "YES"
             buildForProfiling = "YES"
             buildForArchiving = "YES"
-            buildForAnalyzing = "YES"
-            hideIssues = "NO">
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C289AD891B62B97400186773"
@@ -34,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C2848DDF1C95642E00707F53"
-               BuildableName = "MyKitTests.xctest"
-               BlueprintName = "MyKit-iOSTests"
+               BuildableName = "MyKitUnitTests.xctest"
+               BlueprintName = "MyKit-iOSUnitTests"
                ReferencedContainer = "container:MyKit.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C2DC8B6D1CAB29CF00837D9E"
-               BuildableName = "MyKit-iOSDemo.app"
+               BlueprintIdentifier = "C2DC8B861CAB2EDB00837D9E"
+               BuildableName = "MyKitDemo.app"
                BlueprintName = "MyKit-iOSDemo"
                ReferencedContainer = "container:MyKit.xcodeproj">
             </BuildableReference>
@@ -28,12 +28,22 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C2E191581CAB9F8300E4EAB2"
+               BuildableName = "MyKitUITest.xctest"
+               BlueprintName = "MyKit-iOSUITests"
+               ReferencedContainer = "container:MyKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C2DC8B6D1CAB29CF00837D9E"
-            BuildableName = "MyKit-iOSDemo.app"
+            BlueprintIdentifier = "C2DC8B861CAB2EDB00837D9E"
+            BuildableName = "MyKitDemo.app"
             BlueprintName = "MyKit-iOSDemo"
             ReferencedContainer = "container:MyKit.xcodeproj">
          </BuildableReference>
@@ -55,8 +65,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C2DC8B6D1CAB29CF00837D9E"
-            BuildableName = "MyKit-iOSDemo.app"
+            BlueprintIdentifier = "C2DC8B861CAB2EDB00837D9E"
+            BuildableName = "MyKitDemo.app"
             BlueprintName = "MyKit-iOSDemo"
             ReferencedContainer = "container:MyKit.xcodeproj">
          </BuildableReference>
@@ -74,8 +84,8 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C2DC8B6D1CAB29CF00837D9E"
-            BuildableName = "MyKit-iOSDemo.app"
+            BlueprintIdentifier = "C2DC8B861CAB2EDB00837D9E"
+            BuildableName = "MyKitDemo.app"
             BlueprintName = "MyKit-iOSDemo"
             ReferencedContainer = "container:MyKit.xcodeproj">
          </BuildableReference>

@@ -6,7 +6,7 @@
 //  
 //
 
-final public class CollectionViewController<T, C: UICollectionViewCell>: UICollectionViewController {
+public class CollectionViewController<T, C: UICollectionViewCell>: UICollectionViewController {
 
     // MARK: Property
 
@@ -18,6 +18,12 @@ final public class CollectionViewController<T, C: UICollectionViewCell>: UIColle
     public var config: ((C, T) -> Void)? {
         get { return (collectionView as? CollectionGenericView<T, C>)?.config }
         set { (collectionView as? CollectionGenericView<T, C>)?.config = newValue }
+    }
+
+    // MARK: Initialization
+
+    public override init(collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(collectionViewLayout: layout)
     }
 
     // MARK: View LifeCycle
