@@ -437,9 +437,9 @@
 				C25877741C742F1400DF1F88 /* MyKit.playground */,
 				C289AD921B62B9AD00186773 /* MyKit-Source */,
 				C2DC8B881CAB2EDB00837D9E /* MyKit-Demo */,
-				C2B60ACC1B95080800F6D2BB /* MyKit-UnitTests */,
 				C2F3D6A71CAB5733002E8F1A /* MyKit-UITests */,
-				C2E191541CAB9F3700E4EAB2 /* Product */,
+				C2B60ACC1B95080800F6D2BB /* MyKit-UnitTests */,
+				C2E191541CAB9F3700E4EAB2 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -724,7 +724,7 @@
 			name = Support;
 			sourceTree = "<group>";
 		};
-		C2E191541CAB9F3700E4EAB2 /* Product */ = {
+		C2E191541CAB9F3700E4EAB2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				C289AD7C1B62B95700186773 /* MyKit.framework */,
@@ -738,7 +738,7 @@
 				C2E191591CAB9F8300E4EAB2 /* MyKitUITests.xctest */,
 				C2E191681CABA16600E4EAB2 /* MyKitUITests.xctest */,
 			);
-			name = Product;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		C2E191631CAB9FD900E4EAB2 /* Support */ = {
