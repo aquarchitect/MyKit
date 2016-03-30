@@ -9,7 +9,7 @@
 final class ViewController: CollectionViewController<Int, CollectionDynamicCell<UILabel>> {
 
     init() {
-        let layout = CenterPagedLayout(snappingPosition: CGPointMake(100, 100)).then {
+        let layout = CollectionSnapLayout(snappingPosition: CGPointMake(100, 100)).then {
             $0.itemSize = CGSizeMake(44, 44)
             $0.minimumLineSpacing = 2
             $0.minimumLineSpacing = 2
@@ -32,4 +32,3 @@ final class ViewController: CollectionViewController<Int, CollectionDynamicCell<
         }
     }
 }
-

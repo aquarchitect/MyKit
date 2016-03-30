@@ -6,14 +6,19 @@
 //
 //
 
-#if defined(TARGET_IOS)
+/*
+ * TARGET_OS_SIMULATOR, TARGET_OS_IPHONE, and TARGET_OS_MAC macros
+ * require TargetConditionals module to work
+ */
+#import <TargetConditionals.h>
+
+#if TARGET_OS_IPHONE
     @import UIKit;
-#elif defined(TARGET_OSX)
+#elif TARGET_OS_MAC
     @import AppKit;
 #endif
 
 @import CoreData;
-@import CoreLocation;
 @import CloudKit;
 
 //! Project version number for MyKit.

@@ -1,12 +1,12 @@
 //
-//  CenterPagedLayout.swift
+//  CollectionViewLayoutSnapping.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 7/3/15.
 //  
 //
 
-public class CenterPagedLayout: UICollectionViewFlowLayout {
+public class CollectionSnapLayout: UICollectionViewFlowLayout {
 
     public struct Snap {
 
@@ -81,11 +81,15 @@ public class CenterPagedLayout: UICollectionViewFlowLayout {
         return elements
     }
 
+    /*
+     * Call once before collection view starts scrolling
+     * so it's perfectly fine for one loop iteration.
+     */
     public override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         let size = self.collectionView!.bounds.size
         let rect = CGRect(origin: proposedContentOffset, size: size)
 
-        guard let elements = self.layoutAttributesForElementsInRect(rect) else { return proposedContentOffset }
+        guard let elements = layoutAttributesForElementsInRect(rect) else { return proposedContentOffset }
         let distance = snapping.distanceFrom(proposedContentOffset)
         let check = { distance($0) < distance($1) }
 
@@ -101,39 +105,46 @@ public class CenterPagedLayout: UICollectionViewFlowLayout {
         return true
     }
 
+    /*
+     * Start a loop from current snapped indexPath to
+     * a proposed snapped indexPath where scrolling will
+     * stop. For optimization, the iteration also filters 
+     * the unecessary attributes that are not visible on
+     * screen.
+     */
     public override func invalidationContextForBoundsChange(newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
         let context = super.invalidationContextForBoundsChange(newBounds)
-        guard let trackedIndexPath = snapping.trackedIndexPath else { return context }
-        context.invalidateItemsAtIndexPaths([trackedIndexPath])
 
-        guard let proposedIndexPath = snapping.proposedIndexPath else { return context }
-        var candidate = layoutAttributesForItemAtIndexPath(trackedIndexPath)
+        guard let trackedIndexPath = snapping.trackedIndexPath?.clone(),
+            var candidate = super.layoutAttributesForItemAtIndexPath(trackedIndexPath)
+            else { return context }
         let distance = snapping.distanceFrom(newBounds.origin)
+        var indexPath = trackedIndexPath.clone()
 
-        var indexPath = snapping.trackedIndexPath
-        while let _indexPath = indexPath where _indexPath != proposedIndexPath {
-            switch _indexPath.compare(proposedIndexPath) {
-            case .OrderedAscending: indexPath = self.collectionView!.successorOf(_indexPath)
-            case .OrderedDescending: indexPath = self.collectionView!.predecessorOf(_indexPath)
-            case .OrderedSame: continue
+        indexing: while let attributes = super.layoutAttributesForItemAtIndexPath(indexPath)
+            where CGRectIntersectsRect(newBounds, attributes.frame) && snapping.proposedIndexPath != indexPath {
+            switch snapping.proposedIndexPath?.compare(indexPath) {
+            case .OrderedDescending?: self.collectionView?.successorOf(indexPath)?.then { indexPath = $0 }
+            case .OrderedAscending?: self.collectionView?.predecessorOf(indexPath)?.then { indexPath = $0 }
+            default: break indexing
             }
 
-            layoutAttributesForItemAtIndexPath(_indexPath)?.then {
-                distance($0) < distance(candidate!) ? candidate = $0 : ()
+            super.layoutAttributesForItemAtIndexPath(indexPath)?.then {
+                distance($0) < distance(candidate) ? candidate = $0 : ()
             }
         }
 
-        snapping.trackedIndexPath = candidate!.indexPath
-        return context.then { $0.invalidateItemsAtIndexPaths([candidate!.indexPath]) }
+        snapping.trackedIndexPath = candidate.indexPath
+        return context.then { $0.invalidateItemsAtIndexPaths([trackedIndexPath, candidate.indexPath].distint()) }
     }
 
     public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        return layoutAttributesForCenterPagedItemAtIndexPath(indexPath) ?? super.layoutAttributesForItemAtIndexPath(indexPath)
+        return layoutAttributesForSnappingItemAtIndexPath(indexPath) ?? super.layoutAttributesForItemAtIndexPath(indexPath)
     }
 
     // MARK: Override Method
 
-    public func layoutAttributesForCenterPagedItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    public func layoutAttributesForSnappingItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         guard snapping.trackedIndexPath == indexPath else { return nil }
         return UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath).then {
             $0.frame = super.layoutAttributesForItemAtIndexPath(indexPath)?.frame ?? .zero
@@ -142,7 +153,7 @@ public class CenterPagedLayout: UICollectionViewFlowLayout {
     }
 }
 
-private extension CenterPagedLayout.Snap {
+private extension CollectionSnapLayout.Snap {
 
     func distanceFrom(point: CGPoint) -> UICollectionViewLayoutAttributes -> CGFloat {
         let point = CGPointMake(point.x + position.x, point.y + position.y)
@@ -150,7 +161,7 @@ private extension CenterPagedLayout.Snap {
     }
 }
 
-extension CenterPagedLayout.Snap: CustomDebugStringConvertible {
+extension CollectionSnapLayout.Snap: CustomDebugStringConvertible {
 
     public var debugDescription: String {
         let track = "Track IndexPath: \(trackedIndexPath?.description)"
