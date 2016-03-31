@@ -9,10 +9,14 @@
 final class ViewController: CollectionViewController<Int, CollectionDynamicCell<UILabel>> {
 
     init() {
-        let layout = CollectionSnapLayout(snappingPosition: CGPointMake(100, 100)).then {
-            $0.itemSize = CGSizeMake(44, 44)
-            $0.minimumLineSpacing = 2
-            $0.minimumLineSpacing = 2
+        let layout = CollectionSnapFlowLayout().then {
+            $0.itemSize = CGSizeMake(100, 100)
+            $0.minimumLineSpacing = 10
+            $0.minimumLineSpacing = 10
+        }
+
+        dispatch_async(Queue.Main) { [weak layout] in
+            layout?.snappedIndexPath = NSIndexPath(forItem: 4, inSection: 0)
         }
 
         super.init(collectionViewLayout: layout)
@@ -21,7 +25,10 @@ final class ViewController: CollectionViewController<Int, CollectionDynamicCell<
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView?.backgroundColor = .whiteColor()
+        collectionView?.then {
+            $0.backgroundColor = .whiteColor()
+            $0.contentInset.top = 50
+        }
 
         items = [Array(0..<200)]
         config = {

@@ -10,7 +10,9 @@ public extension NSIndexPath {
 
     public var indexes: [Int] { return (0..<self.length).map(self.indexAtPosition) }
 
-    public var standard: NSIndexPath { return NSIndexPath(indexes: self[0], self[1]) }
+    public override var debugDescription: String {
+        return "NSIndexPath: " + indexes.map(String.init).joinWithSeparator("-")
+    }
 
     public convenience init(indexes: Int...) {
         self.init(indexes: indexes, length: indexes.count)
@@ -20,11 +22,7 @@ public extension NSIndexPath {
         self.init(indexes: indexes, length: indexes.count)
     }
 
-    public subscript(position: Int) -> Int {
-        return self.indexAtPosition(position)
-    }
-
-    public func clone() -> NSIndexPath {
-        return NSIndexPath(indexes: indexes)
+    public func doubleIndices() -> NSIndexPath {
+        return NSIndexPath(indexes: (0...1).map(self.indexAtPosition))
     }
 }

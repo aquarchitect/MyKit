@@ -172,15 +172,32 @@
 		C2393A2B1CAC92C200526B30 /* ModalTransitionRootDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A261CAC92C200526B30 /* ModalTransitionRootDelegate.swift */; };
 		C2393A2C1CAC92C200526B30 /* ModalTransitionSimpleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A271CAC92C200526B30 /* ModalTransitionSimpleDelegate.swift */; };
 		C2393A2D1CAC92C200526B30 /* ModalTransitionSimpleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A271CAC92C200526B30 /* ModalTransitionSimpleDelegate.swift */; };
-		C2393A2F1CAC92D900526B30 /* CollectionViewLayoutSnapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A2E1CAC92D900526B30 /* CollectionViewLayoutSnapping.swift */; };
-		C2393A301CAC92D900526B30 /* CollectionViewLayoutSnapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A2E1CAC92D900526B30 /* CollectionViewLayoutSnapping.swift */; };
-		C2393A321CAC94E900526B30 /* CollectionRegularSnapLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A311CAC94E900526B30 /* CollectionRegularSnapLayout.swift */; };
-		C2393A351CAC950200526B30 /* CollectionFlowSnapLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A341CAC950100526B30 /* CollectionFlowSnapLayout.swift */; };
+		C2393A2F1CAC92D900526B30 /* CollectionSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A2E1CAC92D900526B30 /* CollectionSnapFlowLayout.swift */; };
+		C2393A301CAC92D900526B30 /* CollectionSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A2E1CAC92D900526B30 /* CollectionSnapFlowLayout.swift */; };
+		C2393A371CAC9FDD00526B30 /* CollectionLayoutSnappingUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A361CAC9FDD00526B30 /* CollectionLayoutSnappingUserInfo.swift */; };
+		C23DFCED1CADFEF9008EFF34 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
+		C23DFCEE1CADFEF9008EFF34 /* MyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C23DFCF21CAE0EF9008EFF34 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
+		C23DFCF31CAE0EF9008EFF34 /* MyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
 		C2848E061C956A7600707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C23DFCEF1CADFEF9008EFF34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C289AD711B62B93800186773 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C289AD891B62B97400186773;
+			remoteInfo = "MyKit-iOS";
+		};
+		C23DFCF41CAE0EF9008EFF34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C289AD711B62B93800186773 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C289AD7B1B62B95700186773;
+			remoteInfo = "MyKit-OSX";
+		};
 		C2848DE61C95642E00707F53 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C289AD711B62B93800186773 /* Project object */;
@@ -210,6 +227,31 @@
 			remoteInfo = "MyKit-OSXDemo";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C23DFCF11CADFEF9008EFF34 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C23DFCEE1CADFEF9008EFF34 /* MyKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C23DFCF61CAE0EF9008EFF34 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C23DFCF31CAE0EF9008EFF34 /* MyKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C23938D71CAC7D2000526B30 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Source/Common/Utility/Action.swift; sourceTree = "<group>"; };
@@ -312,9 +354,8 @@
 		C2393A251CAC92C200526B30 /* ModalTransitionPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModalTransitionPresentationController.swift; path = Source/iOS/Framework/ModalTransition/ModalTransitionPresentationController.swift; sourceTree = SOURCE_ROOT; };
 		C2393A261CAC92C200526B30 /* ModalTransitionRootDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModalTransitionRootDelegate.swift; path = Source/iOS/Framework/ModalTransition/ModalTransitionRootDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C2393A271CAC92C200526B30 /* ModalTransitionSimpleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModalTransitionSimpleDelegate.swift; path = Source/iOS/Framework/ModalTransition/ModalTransitionSimpleDelegate.swift; sourceTree = SOURCE_ROOT; };
-		C2393A2E1CAC92D900526B30 /* CollectionViewLayoutSnapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewLayoutSnapping.swift; path = Source/iOS/Framework/SnapLayout/CollectionViewLayoutSnapping.swift; sourceTree = SOURCE_ROOT; };
-		C2393A311CAC94E900526B30 /* CollectionRegularSnapLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionRegularSnapLayout.swift; path = Source/iOS/Framework/SnapLayout/CollectionRegularSnapLayout.swift; sourceTree = SOURCE_ROOT; };
-		C2393A341CAC950100526B30 /* CollectionFlowSnapLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionFlowSnapLayout.swift; sourceTree = SOURCE_ROOT; };
+		C2393A2E1CAC92D900526B30 /* CollectionSnapFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionSnapFlowLayout.swift; path = Source/iOS/Framework/SnapLayout/CollectionSnapFlowLayout.swift; sourceTree = SOURCE_ROOT; };
+		C2393A361CAC9FDD00526B30 /* CollectionLayoutSnappingUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionLayoutSnappingUserInfo.swift; path = Source/iOS/Framework/SnapLayout/CollectionLayoutSnappingUserInfo.swift; sourceTree = SOURCE_ROOT; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C2848DE01C95642E00707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2848E011C956A7600707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -377,6 +418,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C23DFCED1CADFEF9008EFF34 /* MyKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +440,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C23DFCF21CAE0EF9008EFF34 /* MyKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,9 +488,8 @@
 		C2393A241CAC91FD00526B30 /* SnapLayout */ = {
 			isa = PBXGroup;
 			children = (
-				C2393A2E1CAC92D900526B30 /* CollectionViewLayoutSnapping.swift */,
-				C2393A311CAC94E900526B30 /* CollectionRegularSnapLayout.swift */,
-				C2393A341CAC950100526B30 /* CollectionFlowSnapLayout.swift */,
+				C2393A361CAC9FDD00526B30 /* CollectionLayoutSnappingUserInfo.swift */,
+				C2393A2E1CAC92D900526B30 /* CollectionSnapFlowLayout.swift */,
 			);
 			name = SnapLayout;
 			sourceTree = "<group>";
@@ -980,10 +1022,12 @@
 				C2DC8B831CAB2EDB00837D9E /* Frameworks */,
 				C2DC8B841CAB2EDB00837D9E /* Resources */,
 				C2DC8B851CAB2EDB00837D9E /* ShellScript */,
+				C23DFCF11CADFEF9008EFF34 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C23DFCF01CADFEF9008EFF34 /* PBXTargetDependency */,
 			);
 			name = "MyKit-iOSDemo";
 			productName = "MyKit-iOSDemo";
@@ -1033,10 +1077,12 @@
 				C2EF9F6C1CAB955100BC205F /* Sources */,
 				C2EF9F6D1CAB955100BC205F /* Frameworks */,
 				C2EF9F6E1CAB955100BC205F /* Resources */,
+				C23DFCF61CAE0EF9008EFF34 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C23DFCF51CAE0EF9008EFF34 /* PBXTargetDependency */,
 			);
 			name = "MyKit-OSXDemo";
 			productName = "MyKit-OSXDemo";
@@ -1067,6 +1113,7 @@
 					};
 					C289AD891B62B97400186773 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 88HW36EGGB;
 					};
 					C2B9242C1C9A0EFB00C7FCFD = {
 						CreatedOnToolsVersion = 7.3;
@@ -1077,6 +1124,7 @@
 					};
 					C2DC8B861CAB2EDB00837D9E = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 88HW36EGGB;
 					};
 					C2E191581CAB9F8300E4EAB2 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1291,7 +1339,7 @@
 				C2393A231CAC85D400526B30 /* Array+.swift in Sources */,
 				C23939051CAC7D4700526B30 /* PersistentStack.swift in Sources */,
 				C23939731CAC7E0500526B30 /* CGRect+.swift in Sources */,
-				C2393A301CAC92D900526B30 /* CollectionViewLayoutSnapping.swift in Sources */,
+				C2393A301CAC92D900526B30 /* CollectionSnapFlowLayout.swift in Sources */,
 				C23938EF1CAC7D2000526B30 /* Queue.swift in Sources */,
 				C23938FF1CAC7D4700526B30 /* CommonError.swift in Sources */,
 				C23939751CAC7E0500526B30 /* CGSize+.swift in Sources */,
@@ -1368,7 +1416,6 @@
 				C23939721CAC7E0500526B30 /* CGRect+.swift in Sources */,
 				C239396B1CAC7DF000526B30 /* NSRelationshipDescription+.swift in Sources */,
 				C23939581CAC7DDD00526B30 /* CKQuery+.swift in Sources */,
-				C2393A351CAC950200526B30 /* CollectionFlowSnapLayout.swift in Sources */,
 				C23939AB1CAC7EF600526B30 /* UILabel+.swift in Sources */,
 				C239398C1CAC7ECE00526B30 /* CollectionViewController.swift in Sources */,
 				C23939A11CAC7EF600526B30 /* UIBezierPath+.swift in Sources */,
@@ -1376,19 +1423,19 @@
 				C239394D1CAC7DC500526B30 /* NSScanner+.swift in Sources */,
 				C23939921CAC7EE200526B30 /* TableViewController.swift in Sources */,
 				C23938E21CAC7D2000526B30 /* Action.swift in Sources */,
+				C2393A371CAC9FDD00526B30 /* CollectionLayoutSnappingUserInfo.swift in Sources */,
 				C23939771CAC7E1800526B30 /* GrowingTextView.swift in Sources */,
 				C23939451CAC7DC500526B30 /* NSIndexPath+.swift in Sources */,
 				C23939001CAC7D4700526B30 /* CustomFont.swift in Sources */,
 				C23939691CAC7DF000526B30 /* NSManagedObjectContext+.swift in Sources */,
 				C23939241CAC7D8D00526B30 /* CloudRecord.swift in Sources */,
-				C2393A2F1CAC92D900526B30 /* CollectionViewLayoutSnapping.swift in Sources */,
+				C2393A2F1CAC92D900526B30 /* CollectionSnapFlowLayout.swift in Sources */,
 				C23939A91CAC7EF600526B30 /* UIEdgeInsets+.swift in Sources */,
 				C23938F21CAC7D2000526B30 /* Swizzle.swift in Sources */,
 				C23939A31CAC7EF600526B30 /* UICollectionView+.swift in Sources */,
 				C23939B11CAC7EF600526B30 /* UIView+.swift in Sources */,
 				C23938EC1CAC7D2000526B30 /* Promise.swift in Sources */,
 				C23939AF1CAC7EF600526B30 /* UITableView+.swift in Sources */,
-				C2393A321CAC94E900526B30 /* CollectionRegularSnapLayout.swift in Sources */,
 				C2393A281CAC92C200526B30 /* ModalTransitionPresentationController.swift in Sources */,
 				C23939021CAC7D4700526B30 /* DateIndex.swift in Sources */,
 				C2393A2C1CAC92C200526B30 /* ModalTransitionSimpleDelegate.swift in Sources */,
@@ -1475,6 +1522,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C23DFCF01CADFEF9008EFF34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C289AD891B62B97400186773 /* MyKit-iOS */;
+			targetProxy = C23DFCEF1CADFEF9008EFF34 /* PBXContainerItemProxy */;
+		};
+		C23DFCF51CAE0EF9008EFF34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C289AD7B1B62B95700186773 /* MyKit-OSX */;
+			targetProxy = C23DFCF41CAE0EF9008EFF34 /* PBXContainerItemProxy */;
+		};
 		C2848DE71C95642E00707F53 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C289AD891B62B97400186773 /* MyKit-iOS */;
@@ -1752,7 +1809,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1818,7 +1875,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1879,6 +1936,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1945,6 +2003,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2194,6 +2253,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_ON_DEMAND_RESOURCES = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2217,6 +2277,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-iOSDemo";
 				PRODUCT_NAME = MyKitDemo;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = Demos/Bridging.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2246,6 +2307,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_ON_DEMAND_RESOURCES = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2263,6 +2325,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-iOSDemo";
 				PRODUCT_NAME = MyKitDemo;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = Demos/Bridging.h;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2290,6 +2353,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2340,6 +2404,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2383,6 +2448,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2436,6 +2502,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2481,6 +2548,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2533,6 +2601,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

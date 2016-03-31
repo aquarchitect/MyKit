@@ -8,20 +8,20 @@
 
 public extension CollectionType where Index.Distance == Int {
 
-    private var randomDistance: Index.Distance {
+    private func randomDistance() -> Index.Distance {
         return Int(arc4random_uniform(UInt32(self.count)))
     }
 
-    public var randomElement: Generator.Element? {
+    public func randomElement() -> Generator.Element? {
         guard !self.isEmpty else { return nil }
-        return self[self.startIndex.advancedBy(randomDistance)]
+        return self[self.startIndex.advancedBy(randomDistance())]
     }
 
-    public var randomSlice: SubSequence {
-        let startDistance = Int(arc4random_uniform(UInt32(self.count)))
+    public func randomSequence() -> SubSequence {
+        let startDistance = randomDistance()
         let startIndex = self.startIndex.advancedBy(startDistance)
 
-        let endDistance = (startDistance..<self.count).randomElement ?? startDistance
+        let endDistance = (startDistance..<self.count).randomElement() ?? startDistance
         let endIndex = self.startIndex.advancedBy(endDistance)
 
         return self[startIndex..<endIndex]
