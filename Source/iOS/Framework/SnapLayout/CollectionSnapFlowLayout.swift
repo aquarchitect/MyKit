@@ -24,11 +24,27 @@ public class CollectionSnapFlowLayout: UICollectionViewFlowLayout {
             default: userInfo = nil
             }
 
-            self.invalidateLayout()
+            self.collectionView?.performBatchUpdates({
+                self.collectionView?.then {
+                    $0.reloadItemsAtIndexPaths($0.indexPathsForVisibleItems())
+                }
+                }, completion: nil)
         }
     }
 
     private var userInfo: CollectionLayoutSnappingUserInfo?
+    private let scales: [CGFloat]
+
+    // MARK: Initialization
+
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    public init(scales: [CGFloat] = [1.2, 0.9]) {
+        self.scales = scales
+        super.init()
+    }
 
     // MARK: System Method
 
@@ -106,16 +122,13 @@ public class CollectionSnapFlowLayout: UICollectionViewFlowLayout {
     }
 
     public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        return layoutAttributesForSnappingItemAtIndexPath(indexPath) ?? super.layoutAttributesForItemAtIndexPath(indexPath)
-    }
+        return super.layoutAttributesForItemAtIndexPath(indexPath)?.then {
+            guard let userInfo = self.userInfo else { return }
+            let condition = userInfo.trackedIndexPath == indexPath
+            let scale = condition ? scales[0] : scales[1]
 
-    // MARK: Override Method
-
-    public func layoutAttributesForSnappingItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        guard userInfo?.trackedIndexPath == indexPath else { return nil }
-        return UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath).then {
-            $0.frame = super.layoutAttributesForItemAtIndexPath(indexPath)?.frame ?? .zero
-            $0.transform = CGAffineTransformMakeScale(1.1, 1.1)
+            $0.transform = CGAffineTransformMakeScale(scale, scale)
+            $0.zIndex = condition ? 1 : 0
         }
     }
 }
