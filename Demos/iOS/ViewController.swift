@@ -15,20 +15,13 @@ final class ViewController: CollectionViewController<Int, CollectionDynamicCell<
             $0.minimumLineSpacing = 10
         }
 
-        dispatch_async(Queue.Main) { [weak layout] in
-            layout?.snappedIndexPath = NSIndexPath(forItem: 4, inSection: 0)
-        }
-
         super.init(collectionViewLayout: layout)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView?.then {
-            $0.backgroundColor = .whiteColor()
-            $0.contentInset.top = 50
-        }
+        collectionView?.backgroundColor = .whiteColor()
 
         items = [Array(0..<200)]
         config = {
@@ -37,5 +30,11 @@ final class ViewController: CollectionViewController<Int, CollectionDynamicCell<
             $0.mainView.textColor = .whiteColor()
             $0.mainView.textAlignment = .Center
         }
+    }
+
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        self.collectionViewLayout
+            .then { $0 as? CollectionSnapFlowLayout }?
+            .then { $0.snappedIndexPath = $0.snappedIndexPath == indexPath ? nil : indexPath }
     }
 }

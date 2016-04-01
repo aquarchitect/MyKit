@@ -11,7 +11,7 @@ public class CollectionSnapFlowLayout: UICollectionViewFlowLayout {
     // MARK: Property
 
     public var snappedIndexPath: NSIndexPath? {
-        get { return userInfo?.trackedIndexPath }
+        get { return userInfo?.centeredIndexPath }
         set {
             switch newValue {
             case let value?:
@@ -21,14 +21,14 @@ public class CollectionSnapFlowLayout: UICollectionViewFlowLayout {
 
                 position = CGPointMake(position.x - offset.x, position.y - offset.y)
                 userInfo = CollectionLayoutSnappingUserInfo(indexPath: value, position: position)
-            default: userInfo = nil
+            default:
+                userInfo = nil
             }
 
+            print(newValue)
             self.collectionView?.performBatchUpdates({
-                self.collectionView?.then {
-                    $0.reloadItemsAtIndexPaths($0.indexPathsForVisibleItems())
-                }
-                }, completion: nil)
+                self.collectionView?.then { $0.reloadItemsAtIndexPaths($0.indexPathsForVisibleItems()) }
+            }, completion: nil)
         }
     }
 
@@ -54,10 +54,6 @@ public class CollectionSnapFlowLayout: UICollectionViewFlowLayout {
         }
     }
 
-    /*
-     * Call once before collection view starts scrolling
-     * so it's perfectly fine for one loop iteration.
-     */
     public override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         guard let userInfo = self.userInfo else { return proposedContentOffset }
         let size = (self.collectionView?.bounds ?? .zero).size
@@ -65,11 +61,9 @@ public class CollectionSnapFlowLayout: UICollectionViewFlowLayout {
 
         let distance = userInfo.distanceFrom(proposedContentOffset)
 
-        let attributes = (super.layoutAttributesForElementsInRect(rect) ?? []).filter {
-                $0.representedElementCategory == .Cell
-            }.sort {
-                distance($0) < distance($1)
-            }.first
+        let attributes = (super.layoutAttributesForElementsInRect(rect) ?? [])
+            .filter { $0.representedElementCategory == .Cell }
+            .sort { distance($0) < distance($1) }.first
 
         if let _attributes = attributes {
             userInfo.proposedIndexPath = NSIndexPath(indexes: _attributes.indexPath.indexes)
@@ -86,22 +80,15 @@ public class CollectionSnapFlowLayout: UICollectionViewFlowLayout {
         return true
     }
 
-    /*
-     * Start a loop from current snapped indexPath to
-     * a proposed snapped indexPath where scrolling will
-     * stop. For optimization, the iteration also filters 
-     * the unecessary attributes that are not visible on
-     * screen.
-     */
     public override func invalidationContextForBoundsChange(newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
         let context = super.invalidationContextForBoundsChange(newBounds)
 
         guard let userInfo = self.userInfo,
-            var candidate = super.layoutAttributesForItemAtIndexPath(userInfo.trackedIndexPath)
+            var candidate = super.layoutAttributesForItemAtIndexPath(userInfo.centeredIndexPath)
             else { return context }
 
         let distanceTo = userInfo.distanceFrom(newBounds.origin)
-        var indexPath = userInfo.trackedIndexPath
+        var indexPath = userInfo.centeredIndexPath
 
         indexing: while userInfo.proposedIndexPath != indexPath {
             switch userInfo.proposedIndexPath.compare(indexPath) {
@@ -116,15 +103,15 @@ public class CollectionSnapFlowLayout: UICollectionViewFlowLayout {
         }
 
         return context.then {
-            $0.invalidateItemsAtIndexPaths([userInfo.trackedIndexPath, candidate.indexPath].distint())
-            userInfo.trackedIndexPath = candidate.indexPath
+            $0.invalidateItemsAtIndexPaths([userInfo.centeredIndexPath, candidate.indexPath].distint())
+            userInfo.centeredIndexPath = candidate.indexPath
         }
     }
 
     public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         return super.layoutAttributesForItemAtIndexPath(indexPath)?.then {
             guard let userInfo = self.userInfo else { return }
-            let condition = userInfo.trackedIndexPath == indexPath
+            let condition = userInfo.centeredIndexPath == indexPath
             let scale = condition ? scales[0] : scales[1]
 
             $0.transform = CGAffineTransformMakeScale(scale, scale)

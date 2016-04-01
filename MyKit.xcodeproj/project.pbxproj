@@ -181,6 +181,8 @@
 		C23DFCF31CAE0EF9008EFF34 /* MyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
 		C2848E061C956A7600707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
+		C2EAC1071CAEEFB20050B154 /* SequenceType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAC1061CAEEFB20050B154 /* SequenceType+.swift */; };
+		C2EAC1081CAEEFB20050B154 /* SequenceType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAC1061CAEEFB20050B154 /* SequenceType+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -366,6 +368,7 @@
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191591CAB9F8300E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191681CABA16600E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2EAC1061CAEEFB20050B154 /* SequenceType+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SequenceType+.swift"; path = "Source/Common/Extension/Native/SequenceType+.swift"; sourceTree = "<group>"; };
 		C2EF9F701CAB955100BC205F /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -647,6 +650,7 @@
 				C2393A211CAC85D400526B30 /* Array+.swift */,
 				C239392A1CAC7DAB00526B30 /* Range+.swift */,
 				C239392B1CAC7DAB00526B30 /* String+.swift */,
+				C2EAC1061CAEEFB20050B154 /* SequenceType+.swift */,
 				C23939291CAC7DAB00526B30 /* CollectionType+.swift */,
 			);
 			name = Native;
@@ -1361,6 +1365,7 @@
 				C23939661CAC7DF000526B30 /* NSEntityDescription+.swift in Sources */,
 				C23938ED1CAC7D2000526B30 /* Promise.swift in Sources */,
 				C23938F71CAC7D2000526B30 /* Time.swift in Sources */,
+				C2EAC1081CAEEFB20050B154 /* SequenceType+.swift in Sources */,
 				C239391E1CAC7D7E00526B30 /* LoremIpsum.swift in Sources */,
 				C2393A2B1CAC92C200526B30 /* ModalTransitionRootDelegate.swift in Sources */,
 				C23939401CAC7DC500526B30 /* NSCache+.swift in Sources */,
@@ -1445,6 +1450,7 @@
 				C2393A221CAC85D400526B30 /* Array+.swift in Sources */,
 				C23939041CAC7D4700526B30 /* PersistentStack.swift in Sources */,
 				C23938EE1CAC7D2000526B30 /* Queue.swift in Sources */,
+				C2EAC1071CAEEFB20050B154 /* SequenceType+.swift in Sources */,
 				C23939A71CAC7EF600526B30 /* UIColor+.swift in Sources */,
 				C23939221CAC7D8D00526B30 /* CloudCategorical.swift in Sources */,
 				C23938E81CAC7D2000526B30 /* Draw.swift in Sources */,
