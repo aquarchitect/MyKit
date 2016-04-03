@@ -1,5 +1,5 @@
 //
-//  ModalTransitionRootDelegate.swift
+//  TransitionRootDelegate.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 12/21/15.
@@ -12,7 +12,7 @@ public protocol ModalTransitionDataSource: class {
     func dismissingAnimationForTransition(context: UIViewControllerContextTransitioning)
 }
 
-public class ModalTransitionRootDelegate: UIPercentDrivenInteractiveTransition {
+public class TransitionRootDelegate: UIPercentDrivenInteractiveTransition {
 
     public weak var dataSource: ModalTransitionDataSource?
 
@@ -34,7 +34,7 @@ public class ModalTransitionRootDelegate: UIPercentDrivenInteractiveTransition {
     }
 }
 
-extension ModalTransitionRootDelegate: UIViewControllerAnimatedTransitioning {
+extension TransitionRootDelegate: UIViewControllerAnimatedTransitioning {
 
     public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.25
@@ -45,10 +45,10 @@ extension ModalTransitionRootDelegate: UIViewControllerAnimatedTransitioning {
     }
 }
 
-extension ModalTransitionRootDelegate: UIViewControllerTransitioningDelegate {
+extension TransitionRootDelegate: UIViewControllerTransitioningDelegate {
 
     public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return ModalTransitionPresentationController(presented: presented, presenting: source, contentRect: presentedContentRect).then {
+        return TransitionPresentationController(presented: presented, presenting: source, contentRect: presentedContentRect).then {
             $0.managedView.then {
                 $0.userInteractionEnabled = dimming.dismissal
                 $0.backgroundColor = UIColor(white: 0, alpha: dimming.transparent)

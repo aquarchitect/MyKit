@@ -1,12 +1,12 @@
 //
-//  ModalTransitionSimpleDelegate.swift
+//  TransitionSimpleDelegate.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 12/21/15.
 //
 //
 
-final public class ModalTransitionSimpleDelegate: ModalTransitionRootDelegate {
+final public class TransitionSimpleDelegate: TransitionRootDelegate {
 
     public enum Kind {
 

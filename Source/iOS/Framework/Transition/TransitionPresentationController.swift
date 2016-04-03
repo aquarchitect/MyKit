@@ -1,12 +1,12 @@
 //
-//  ModalTransitionPresentationController.swift
+//  TransitionPresentationController.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 8/17/15.
 //
 //
 
-public class ModalTransitionPresentationController: UIPresentationController {
+public class TransitionPresentationController: UIPresentationController {
 
     public let presentedContentRect: CGRect
     internal let managedView = UIView().then{ $0.alpha = 0 }

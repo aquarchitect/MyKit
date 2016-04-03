@@ -8,14 +8,12 @@
 
 public extension NSManagedObject {
 
-    public class func entityName() -> String {
-        let fullName = NSStringFromClass(object_getClass(self))
-        return String(fullName.characters.split(".").last!)
+    public static var entityName: String {
+        return String(String(self.dynamicType).characters.split(".").last?.map { $0 } ?? [])
     }
 
-    public convenience init(context: NSManagedObjectContext) {
-        let name = self.dynamicType.entityName()
-        let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: context)!
+    public convenience init?(context: NSManagedObjectContext) {
+        guard let entity = NSEntityDescription.entityFor(self.dynamicType, context: context) else { return nil }
         self.init(entity: entity, insertIntoManagedObjectContext: context)
     }
 }

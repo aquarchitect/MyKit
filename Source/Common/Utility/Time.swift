@@ -13,9 +13,9 @@ public func delay(interval: NSTimeInterval, queue: dispatch_queue_t = Queue.Main
 }
 
 /// Measures and print execution elapsed time
-public func time(@noescape action: Void -> Void) {
+public func measure(@noescape block: Void -> Void) {
     let start = CFAbsoluteTimeGetCurrent()
-    action()
+    block()
     let end = CFAbsoluteTimeGetCurrent()
 
     print("Elapsed time is \(end - start) seconds.")

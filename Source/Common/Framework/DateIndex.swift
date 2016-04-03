@@ -20,24 +20,21 @@ public struct DateIndex {
 extension DateIndex: ForwardIndexType {
 
     public func successor() -> DateIndex {
-        return value.dateByAdding(unit, value: 1).then {
-            DateIndex(value: $0, unit: unit)
-        }
+        return value.dateByAdding(unit, value: 1)
+            .andThen { DateIndex(value: $0, unit: unit) }
     }
 
     public func advancedBy(n: Int) -> DateIndex {
-        return value.dateByAdding(unit, value: n).then {
-            DateIndex(value: $0, unit: unit)
-        }
+        return value.dateByAdding(unit, value: n)
+            .andThen { DateIndex(value: $0, unit: unit) }
     }
 }
 
 extension DateIndex: BidirectionalIndexType {
 
     public func predecessor() -> DateIndex {
-        return value.dateByAdding(unit, value: -1).then {
-            DateIndex(value: $0, unit: unit)
-        }
+        return value.dateByAdding(unit, value: -1)
+            .andThen { DateIndex(value: $0, unit: unit) }
     }
 }
 

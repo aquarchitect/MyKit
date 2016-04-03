@@ -6,7 +6,7 @@
 //
 //
 
-public protocol Then {}
+public protocol Then: class {}
 
 extension Then {
 
@@ -15,7 +15,7 @@ extension Then {
         return self
     }
 
-    public func then<U>(@noescape f: Self throws -> U) rethrows -> U {
+    public func andThen<U>(@noescape f: Self throws -> U) rethrows -> U {
         return try f(self)
     }
 }

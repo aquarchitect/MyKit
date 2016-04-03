@@ -6,17 +6,31 @@
 //
 //
 
-public class StreamClient: NSObject, NSStreamDelegate {
+public class StreamClient: NSObject {
 
     // MARK: Property
 
     public static let EventNotification = "StreamClientEventNotification"
 
-    private let timeput = TaskScheduler()
     public private(set) var host: Host?
+    private var timeout: Timeout?
 
     private var inputStream: NSInputStream?
     private var outputStream: NSOutputStream?
+
+    // MARK: Override Method
+
+    public func write(data: NSData) {
+        outputStream?.then {
+            guard $0.hasSpaceAvailable else { return }
+            $0.write(UnsafePointer<UInt8>(data.bytes), maxLength: data.length)
+        }
+    }
+
+    public func read(data: NSData) {}
+}
+
+public extension StreamClient {
 
     // MARK: Action Method
 
@@ -37,8 +51,8 @@ public class StreamClient: NSObject, NSStreamDelegate {
             $0?.open()
         }
 
-        timeput.runAfter(interval) {
-            stream(NSStream(), handleEvent: .ErrorOccurred)
+        timeout = Timeout(after: interval) {
+            self.stream(NSStream(), handleEvent: .ErrorOccurred)
         }
     }
 
@@ -53,34 +67,22 @@ public class StreamClient: NSObject, NSStreamDelegate {
     final public func reconnect() {
         if let host = self.host { connectTo(host) }
     }
+}
 
-    // MARK: Override Method
-
-    public func write(data: NSData) {
-        outputStream?.then {
-            guard $0.hasSpaceAvailable else { return }
-            $0.write(UnsafePointer<UInt8>(data.bytes), maxLength: data.length)
-        }
-    }
-
-    public func read(data: NSData) {}
+extension StreamClient: NSStreamDelegate {
 
     // MARK: Stream Delegate
 
     final public func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
-        timeput.cancel()
+        timeout = nil
 
         switch eventCode {
-
-        case _ where !eventCode.isDisjointWith([.EndEncountered, .ErrorOccurred]):
-            disconnect()
-
+        case _ where !eventCode.isDisjointWith([.EndEncountered, .ErrorOccurred]): disconnect()
         case [.HasBytesAvailable] where (aStream as? NSInputStream)?.then { $0.hasBytesAvailable } == true:
             var buffer = [UInt8](count: 8, repeatedValue: 0)
 
             guard let result = inputStream?.read(&buffer, maxLength: buffer.count) else { break }
             NSData(bytes: buffer, length: result).then(read)
-
         default: break
         }
 

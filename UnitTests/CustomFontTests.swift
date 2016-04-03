@@ -11,7 +11,7 @@
 final class CustomFontTests: XCTestCase {
 
     func testsFontInstanceOf<T: CustomFont>(type: T.Type) {
-        [("Ionicons", "SymbolIcon"), ("Weather Icons", "WeatherFont")].forEach {
+        [("Ionicons", "SymbolIcon"), ("Weather Icons", "OpenWeather")].forEach {
             XCTAssertNotNil(T.fontWith(name: $0.0, size: 17, fromFile: $0.1))
         }
     }

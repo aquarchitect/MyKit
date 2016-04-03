@@ -25,7 +25,7 @@ extension CustomFont {
             let endIndex = file.endIndex
             let startIndex = file.endIndex.advancedBy(-ext.characters.count)
             return file[startIndex..<endIndex]
-            }()
+        }()
 
         // get file url
         guard let url = bundle.URLForResource(_file, withExtension: "ttf")
@@ -51,9 +51,8 @@ extension CustomFont {
     /// Return a font object from default bundle
     static func fontWith(name name: String, size: CGFloat, fromFile file: String) -> Self? {
         return Self(name: name, size: size) ?? {
-            _ = try? NSBundle.defaultBundle?.then {
-                try registerFontFrom(file, ofBundle: $0)
-            }
+            _ = try? NSBundle.defaultBundle?
+                .then { try registerFontFrom(file, ofBundle: $0) }
             return Self(name: name, size: size)
         }()
     }

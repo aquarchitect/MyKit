@@ -22,9 +22,8 @@ public extension PersistentStack {
             $0.URLByAppendingPathComponent("\(name)Data.sqlite")
         }
 
-        let model = NSBundle.mainBundle().URLForResource(name, withExtension: "momd")?.then {
-            NSManagedObjectModel(contentsOfURL: $0)
-        }
+        let model = NSBundle.mainBundle().URLForResource(name, withExtension: "momd")?
+            .andThen { NSManagedObjectModel(contentsOfURL: $0) }
 
         guard let _url = url else { throw CommonError.FailedToLocate(file: "\(name)Data.sqlite")}
         guard let _model = model else { throw CommonError.FailedToLocate(file: "\(name).momd") }

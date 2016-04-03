@@ -21,7 +21,7 @@ public extension UIView {
 
     // :nodoc:
     public func addConstraint(item view1: UIView, attribute attr1: NSLayoutAttribute, relatedBy relation: NSLayoutRelation, toItem view2: UIView?, attribute attr2: NSLayoutAttribute, multiplier: CGFloat, constant c: CGFloat, priority: Float = UILayoutPriorityRequired) {
-        return NSLayoutConstraint(item: view1, attribute: attr1, relatedBy: relation, toItem: view2, attribute: attr2, multiplier: multiplier, constant: c).then {
+        NSLayoutConstraint(item: view1, attribute: attr1, relatedBy: relation, toItem: view2, attribute: attr2, multiplier: multiplier, constant: c).then {
                 $0.priority = priority
                 self.addConstraint($0)
             }

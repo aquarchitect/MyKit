@@ -22,11 +22,10 @@ public extension String {
 
     /// Produce a camel case string
     public var camelcaseString: String {
-        return NSCharacterSet(charactersInString: " -_").then {
-                self.componentsSeparatedByCharactersInSet($0)
-            }.enumerate().map {
-                $0 == 0 ? $1.lowercaseString : $1.capitalizedString
-            }.joinWithSeparator("")
+        return NSCharacterSet(charactersInString: " -_")
+            .andThen { self.componentsSeparatedByCharactersInSet($0) }.enumerate()
+            .map { $0 == 0 ? $1.lowercaseString : $1.capitalizedString }
+            .joinWithSeparator("")
     }
 }
 
