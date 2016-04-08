@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  MyKit-iOSDemo
+//  MyKitDemo
 //
 //  Created by Hai Nguyen on 3/29/16.
 //
@@ -15,11 +15,18 @@ final class AppDelegate: UIResponder {
 extension AppDelegate: UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = ViewController()
-        window?.backgroundColor = .blackColor()
-        window?.makeKeyAndVisible()
-                                
+        let layout = MagnifyFluidLayout().then {
+            $0.magnifyConfig = MagnifyLayoutConfig()
+            $0.itemSize = CGSizeMake(100, 100)
+            $0.iterimSpacing = 20
+        }
+
+        window = UIWindow(frame: UIScreen.mainScreen().bounds).then {
+            $0.rootViewController = CollectionViewController<UICollectionViewCell>(collectionViewLayout: layout)
+            $0.backgroundColor = .blackColor()
+            $0.makeKeyAndVisible()
+        }
+
         return true
     }
 }

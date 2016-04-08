@@ -6,24 +6,27 @@
 //  
 //
 
-public class MagnifyFlowLayout: SnapFlowLayout {
+public class MagnifyFlowLayout: UICollectionViewFlowLayout {
 
     // MARK: Property
 
-    public var magnifyConfig: MagnifyLayoutConfig? {
-        didSet {
-            self.collectionView?.performBatchUpdates({
-                self.invalidateLayout()
-                self.collectionView?.then { $0.reloadItemsAtIndexPaths($0.indexPathsForVisibleItems()) }
-            }, completion: nil)
-        }
-    }
+    public var magnifyConfig = MagnifyLayoutConfig()
+
+    internal private(set) var visibleIndexPaths: [NSIndexPath] = []
 
     // MARK: System Methods
 
     public override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        visibleIndexPaths.removeAll(keepCapacity: true)
+
         return super.layoutAttributesForElementsInRect(rect)?.map {
-            $0.representedElementCategory == .Cell ? (self.layoutAttributesForItemAtIndexPath($0.indexPath) ?? $0) : $0
+            switch $0.representedElementCategory {
+            case .Cell:
+                visibleIndexPaths += [$0.indexPath]
+                return self.layoutAttributesForItemAtIndexPath($0.indexPath) ?? $0
+            default:
+                return $0
+            }
         }
     }
 
@@ -32,19 +35,18 @@ public class MagnifyFlowLayout: SnapFlowLayout {
     }
 
     public override func invalidationContextForBoundsChange(newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
-        let context = super.invalidationContextForBoundsChange(newBounds)
-        guard let _ = self.magnifyConfig else { return context }
-
         return super.invalidationContextForBoundsChange(newBounds).then {
-            magnifyConfig != nil ? $0.invalidateItemsAtIndexPaths(self.collectionView?.indexPathsForVisibleItems() ?? []) : ()
+            $0.invalidateItemsAtIndexPaths(visibleIndexPaths)
         }
     }
 
     public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         return super.layoutAttributesForItemAtIndexPath(indexPath)?.then {
-            guard let magnifyConfig = self.magnifyConfig, contentOffset = self.collectionView?.contentOffset else { return }
-            let center = contentOffset.convertPointToCoordinate($0.center)
-            let scale = magnifyConfig.scaleFor(center)
+            guard let contentOffset = self.collectionView?.contentOffset else { return }
+
+            let center = $0.center.shiftToCoordinate(contentOffset)
+            let scale = magnifyConfig.scaleAttributesAt(center)
+
             $0.transform = CGAffineTransformMakeScale(scale, scale)
         }
     }

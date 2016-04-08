@@ -44,13 +44,13 @@ Swizzles original method.
     }
 ```
 */
-public func swizzle(type: AnyClass, original: Selector, swizzled: Selector) {
+public func swizzle(type: AnyClass, original originalSelector: Selector, swizzled swizzledSelector: Selector) {
     // get method objects
-    let originalMethod = class_getInstanceMethod(type, original)
-    let swizzledMethod = class_getInstanceMethod(type, swizzled)
+    let originalMethod = class_getInstanceMethod(type, originalSelector)
+    let swizzledMethod = class_getInstanceMethod(type, swizzledSelector)
 
     // check whether original method has been swizzlled
-    if class_addMethod(type, original, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod)) {
-        class_replaceMethod(type, swizzled, originalMethod, method_getTypeEncoding(originalMethod))
+    if class_addMethod(type, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod)) {
+        class_replaceMethod(type, swizzledSelector, originalMethod, method_getTypeEncoding(originalMethod))
     } else { method_exchangeImplementations(originalMethod, swizzledMethod) }
 }

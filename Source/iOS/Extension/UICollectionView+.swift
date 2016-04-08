@@ -8,6 +8,46 @@
 
 public extension UICollectionView {
 
+    // MARK: Miscellaneous
+
+    final func isSectionValid(section: Int) -> Bool {
+        return NSLocationInRange(section, NSMakeRange(0, self.numberOfSections()))
+    }
+
+    // MARK: Transform IndexPath
+
+    final func successorOf(indexPath: NSIndexPath) -> NSIndexPath? {
+        if indexPath.item < self.numberOfItemsInSection(indexPath.section) - 1 {
+            return NSIndexPath(forItem: indexPath.item + 1, inSection: indexPath.section)
+        } else if indexPath.section < self.numberOfSections() - 1 {
+            return NSIndexPath(forItem: 0, inSection: indexPath.section + 1)
+        } else { return nil }
+    }
+
+    final func predecessorOf(indexPath: NSIndexPath) -> NSIndexPath? {
+        if indexPath.item > 0 {
+            return NSIndexPath(forItem: indexPath.item - 1, inSection: indexPath.section)
+        } else if indexPath.section > 0 {
+            let section = indexPath.section - 1
+            let item = self.numberOfItemsInSection(section) - 1
+
+            return NSIndexPath(forItem: item, inSection: section)
+        } else { return nil }
+    }
+
+    // MARK: Register Views
+
+    public func register<T: UICollectionViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
+        self.registerClass(T.self, forCellWithReuseIdentifier: identifier)
+    }
+
+    public func register<T: UICollectionReusableView>(type: T.Type, forKind kind: String, withReuseIdentifier identifier: String) {
+        self.registerClass(type, forSupplementaryViewOfKind: kind, withReuseIdentifier: identifier)
+    }
+}
+
+public extension UICollectionView {
+
     private class Dragger: NSObject {
 
         static var Key = String(self.dynamicType)
@@ -98,45 +138,5 @@ public extension UICollectionView {
         case .OrderedSame:
             self.selectItemAtIndexPath(trackedIndexPath, animated: true, scrollPosition: .None)
         }
-    }
-}
-
-public extension UICollectionView {
-
-    // MARK: Miscellaneous
-
-    final func isSectionValid(section: Int) -> Bool {
-        return NSLocationInRange(section, NSMakeRange(0, self.numberOfSections()))
-    }
-
-    // MARK: Transform IndexPath
-
-    final func successorOf(indexPath: NSIndexPath) -> NSIndexPath? {
-        if indexPath.item < self.numberOfItemsInSection(indexPath.section) - 1 {
-            return NSIndexPath(forItem: indexPath.item + 1, inSection: indexPath.section)
-        } else if indexPath.section < self.numberOfSections() - 1 {
-            return NSIndexPath(forItem: 0, inSection: indexPath.section + 1)
-        } else { return nil }
-    }
-
-    final func predecessorOf(indexPath: NSIndexPath) -> NSIndexPath? {
-        if indexPath.item > 0 {
-            return NSIndexPath(forItem: indexPath.item - 1, inSection: indexPath.section)
-        } else if indexPath.section > 0 {
-            let section = indexPath.section - 1
-            let item = self.numberOfItemsInSection(section) - 1
-
-            return NSIndexPath(forItem: item, inSection: section)
-        } else { return nil }
-    }
-
-    // MARK: Register Views
-
-    public func register<T: UICollectionViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
-        self.registerClass(T.self, forCellWithReuseIdentifier: identifier)
-    }
-
-    public func register<T: UICollectionReusableView>(type: T.Type, forKind kind: String, withReuseIdentifier identifier: String) {
-        self.registerClass(type, forSupplementaryViewOfKind: kind, withReuseIdentifier: identifier)
     }
 }
