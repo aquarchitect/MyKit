@@ -8,14 +8,14 @@
 
 public protocol Then: class {}
 
-extension Then {
+extension Then where Self: AnyObject {
 
     public func then(@noescape f: Self throws -> Void) rethrows -> Self {
         try f(self)
         return self
     }
 
-    public func andThen<U>(@noescape f: Self throws -> U) rethrows -> U {
+    public func then<U>(@noescape f: Self throws -> U) rethrows -> U {
         return try f(self)
     }
 }

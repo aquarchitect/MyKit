@@ -9,10 +9,11 @@
 public extension NSManagedObjectContext {
 
     public func fetch<T: NSManagedObject>(predicate: NSPredicate, sortDescriptos: [NSSortDescriptor]) throws -> [T]? {
-        return try NSFetchRequest(type: T.self).then {
+        return try NSFetchRequest(type: T.self)
+            .then {
                 $0.predicate = predicate
                 $0.sortDescriptors = sortDescriptos
-            }.andThen {
+            }.then {
                 try self.executeFetchRequest($0) as? [T]
             }
     }

@@ -58,13 +58,17 @@ public final class OpenWeather {
         let baseComps: [Component] = [.APIKey(apiKey), .Language(language), .Units(format)]
         let fullURL = baseURL + String(version) + (method + Component.Compound(baseComps + comps))
 
-        NSURL(string: fullURL)?.andThen {
+        NSURL(string: fullURL)?.then {
             NSURLSession.sharedSession().dataTaskWithURL($0) { data, _, error in
                 if let _error = error { return callback(.Reject(_error)) }
                 guard let _data = data else { return }
 
-                do { callback(.Fullfill(try NSJSONSerialization.JSONObjectWithData(_data, options: .MutableContainers) as? [String: AnyObject] ?? [:])) }
-                catch { callback(.Reject(error)) }
+                do {
+                    let results = try NSJSONSerialization.JSONObjectWithData(_data, options: .MutableContainers)
+                    callback(.Fullfill( results as? [String: AnyObject] ?? [:]))
+                } catch {
+                    callback(.Reject(error))
+                }
             }
         }.resume()
 

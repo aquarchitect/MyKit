@@ -13,7 +13,7 @@ public class StreamClient: NSObject {
     public static let EventNotification = "StreamClientEventNotification"
 
     public private(set) var host: Host?
-    private var timeout: Timeout?
+    private var timeoutID: Schedule.ID?
 
     private var inputStream: NSInputStream?
     private var outputStream: NSOutputStream?
@@ -51,7 +51,7 @@ public extension StreamClient {
             $0?.open()
         }
 
-        timeout = Timeout(after: interval) {
+        timeoutID = Schedule.timeout(interval) {
             self.stream(NSStream(), handleEvent: .ErrorOccurred)
         }
     }
@@ -74,7 +74,7 @@ extension StreamClient: NSStreamDelegate {
     // MARK: Stream Delegate
 
     final public func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
-        timeout = nil
+        Schedule.cancel(timeoutID ?? 0)
 
         switch eventCode {
         case _ where !eventCode.isDisjointWith([.EndEncountered, .ErrorOccurred]): disconnect()

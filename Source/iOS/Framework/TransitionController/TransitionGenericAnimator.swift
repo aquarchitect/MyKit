@@ -1,5 +1,5 @@
 //
-//  TransitionRootDelegate.swift
+//  TransitionGenericAnimator.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 12/21/15.
@@ -12,32 +12,29 @@ public protocol ModalTransitionDataSource: class {
     func dismissingAnimationForTransition(context: UIViewControllerContextTransitioning)
 }
 
-public class TransitionRootDelegate: UIPercentDrivenInteractiveTransition {
+public class TransitionGenericAnimator: UIPercentDrivenInteractiveTransition {
+
+    // MARK: Property
 
     public weak var dataSource: ModalTransitionDataSource?
 
-    public let presentedContentRect: CGRect
     public var interactionEnabled = false
+    public let presentedRect: CGRect
+    private(set) var isPresenting = true
 
-    public var dimming: (transparent: CGFloat, dismissal: Bool) = (0.4, true)
+    public var dimming: (transparent: CGFloat, dismissal: Bool)?
 
-    internal private(set) var isPresenting = true
+    // MARK: Initialization
 
-    public init(presentedContentRect rect: CGRect) {
-        self.presentedContentRect = rect
-        super.init()
-    }
-
-    public override convenience init() {
-        let rect = UIScreen.mainScreen().bounds
-        self.init(presentedContentRect: rect)
+    public init(presentedRect rect: CGRect = UIScreen.mainScreen().bounds) {
+        self.presentedRect = rect
     }
 }
 
-extension TransitionRootDelegate: UIViewControllerAnimatedTransitioning {
+extension TransitionGenericAnimator: UIViewControllerAnimatedTransitioning {
 
     public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.25
+        return 0.5
     }
 
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -45,13 +42,17 @@ extension TransitionRootDelegate: UIViewControllerAnimatedTransitioning {
     }
 }
 
-extension TransitionRootDelegate: UIViewControllerTransitioningDelegate {
+extension TransitionGenericAnimator: UIViewControllerTransitioningDelegate {
 
     public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return TransitionPresentationController(presented: presented, presenting: source, contentRect: presentedContentRect).then {
-            $0.managedView.then {
-                $0.userInteractionEnabled = dimming.dismissal
-                $0.backgroundColor = UIColor(white: 0, alpha: dimming.transparent)
+        return TransitionPresentationController(presentedViewController: presented, presentingViewController: source).then {
+            $0.presentedRect = presentedRect
+
+            guard let (transparent, dismissal) = dimming else { return }
+            $0.dimmedView = UIView().then {
+                $0.alpha = 0
+                $0.backgroundColor = UIColor(white: 0, alpha: transparent)
+                $0.userInteractionEnabled = dismissal
             }
         }
     }

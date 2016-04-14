@@ -18,23 +18,23 @@ public extension PersistentStack {
     }
 
     public static func contextFor(app name: String, withType type: String = NSSQLiteStoreType) throws -> NSManagedObjectContext {
-        let url = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last?.then {
-            $0.URLByAppendingPathComponent("\(name)Data.sqlite")
-        }
+        let url = NSFileManager.defaultManager()
+            .URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last?
+            .then { $0.URLByAppendingPathComponent("\(name)Data.sqlite") }
 
-        let model = NSBundle.mainBundle().URLForResource(name, withExtension: "momd")?
-            .andThen { NSManagedObjectModel(contentsOfURL: $0) }
+        let model = NSBundle.mainBundle()
+            .URLForResource(name, withExtension: "momd")?
+            .then { NSManagedObjectModel(contentsOfURL: $0) }
 
         guard let _url = url else { throw CommonError.FailedToLocate(file: "\(name)Data.sqlite")}
         guard let _model = model else { throw CommonError.FailedToLocate(file: "\(name).momd") }
 
-        let coordinator = try NSPersistentStoreCoordinator(managedObjectModel: _model).then {
-                try $0.addPersistentStoreWithType(type, configuration: nil, URL: _url, options: nil)
-            } as NSPersistentStoreCoordinator
+        let coordinator: NSPersistentStoreCoordinator = try NSPersistentStoreCoordinator(managedObjectModel: _model)
+            .then { try $0.addPersistentStoreWithType(type, configuration: nil, URL: _url, options: nil) }
 
         return NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType).then {
-            $0.persistentStoreCoordinator = coordinator
-            $0.undoManager = NSUndoManager()
-        }
+                $0.persistentStoreCoordinator = coordinator
+                $0.undoManager = NSUndoManager()
+            }
     }
 }

@@ -39,7 +39,7 @@ public extension UICollectionViewLayout {
             guard let point = newValue else { return snapper = nil }
             snapper = Snapper(point: point)
 
-            // TODO: Scroll collection view to the best possible snapping position
+            // TODO: programmatically scroll collection view to snap the closest cell into the new position.
         }
     }
 
@@ -64,7 +64,7 @@ public extension UICollectionViewLayout {
             targetContentOffset = (self.layoutAttributesForElementsInRect(rect) ?? [])
                 .filter { $0.representedElementCategory == .Cell }.lazy
                 .sort { distance($0) < distance($1) }.lazy.first?
-                .andThen { CGPointMake($0.center.x - snappedPoint.x, $0.center.y - snappedPoint.y) }
+                .then { CGPointMake($0.center.x - snappedPoint.x, $0.center.y - snappedPoint.y) }
                 ?? targetContentOffset
         }
 

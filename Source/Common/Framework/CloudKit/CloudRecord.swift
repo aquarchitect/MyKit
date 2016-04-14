@@ -60,8 +60,8 @@ public class CloudObject: NSObject, CloudRecord {
 
     public func toRecord() -> CKRecord? {
         return metadata?
-            .andThen { CKRecord(data: $0) }?
-            .then { encodeTo($0) }
+            .then { CKRecord(data: $0) }?
+            .then(encodeTo)
     }
 }
 
@@ -82,7 +82,7 @@ public class CloudUser: NSObject, CloudRecord {
 
     public func toRecord() -> CKRecord {
         return metadata
-            .andThen { CKRecord(data: $0) }!
-            .then { encodeTo($0) }
+            .then { CKRecord(data: $0) }!
+            .then(encodeTo)
     }
 }

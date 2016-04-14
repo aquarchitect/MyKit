@@ -1,12 +1,12 @@
 //
-//  MagnifyFluidLayout.swift
+//  MagnifiedFluidLayout.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 4/8/16.
 //  
 //
 
-public class MagnifyFluidLayout: UICollectionViewLayout {
+public class MagnifiedFluidLayout: UICollectionViewLayout {
 
     // MARK: Property
 
@@ -14,7 +14,7 @@ public class MagnifyFluidLayout: UICollectionViewLayout {
     public var gridColumn: Int = 20
     public var iterimSpacing: CGFloat = 10
 
-    public var magnifyConfig = MagnifyLayoutConfig()
+    public var magnifiedConfig = MagnifiedLayoutConfig()
     public var visibleAttributes: [NSIndexPath: UICollectionViewLayoutAttributes] = [:]
 
     private var itemsCount: Int {
@@ -36,14 +36,10 @@ public class MagnifyFluidLayout: UICollectionViewLayout {
             let origin = CGPointMake(x, y)
             let rect = CGRect(origin: origin, size: itemSize)
 
-            CGRectIntersectsRect(rect, self.collectionView?.bounds ?? .zero) ?
-                _ = NSIndexPath(forItem: $0, inSection: 0)
-                    .andThen { UICollectionViewLayoutAttributes(forCellWithIndexPath: $0) }
-                    .then {
-                        $0.frame = rect
-                        visibleAttributes[$0.indexPath] = $0
-                    }
-                : ()
+            !CGRectIntersectsRect(rect, self.collectionView?.bounds ?? .zero) ? () :
+                NSIndexPath(forItem: $0, inSection: 0)
+                    .then { UICollectionViewLayoutAttributes(forCellWithIndexPath: $0) }
+                    .then { $0.frame = rect; visibleAttributes[$0.indexPath] = $0 }
         }
     }
 
@@ -67,7 +63,7 @@ public class MagnifyFluidLayout: UICollectionViewLayout {
             guard let contentOffset = self.collectionView?.contentOffset else { return }
 
             let center = $0.center.shiftToCoordinate(contentOffset)
-            let scale = magnifyConfig.scaleAttributesAt(center)
+            let scale = magnifiedConfig.scaleAttributesAt(center)
 
             $0.transform = CGAffineTransformMakeScale(scale, scale)
         }

@@ -1,16 +1,16 @@
 //
-//  MagnifyFlowLayout.swift
+//  MagnifiedFlowLayout.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 7/3/15.
 //  
 //
 
-public class MagnifyFlowLayout: UICollectionViewFlowLayout {
+public class MagnifiedFlowLayout: UICollectionViewFlowLayout {
 
     // MARK: Property
 
-    public var magnifyConfig = MagnifyLayoutConfig()
+    public var magnifiedConfig = MagnifiedLayoutConfig()
 
     internal private(set) var visibleIndexPaths: [NSIndexPath] = []
 
@@ -45,7 +45,7 @@ public class MagnifyFlowLayout: UICollectionViewFlowLayout {
             guard let contentOffset = self.collectionView?.contentOffset else { return }
 
             let center = $0.center.shiftToCoordinate(contentOffset)
-            let scale = magnifyConfig.scaleAttributesAt(center)
+            let scale = magnifiedConfig.scaleAttributesAt(center)
 
             $0.transform = CGAffineTransformMakeScale(scale, scale)
         }

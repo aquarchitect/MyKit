@@ -1,37 +1,30 @@
 //
-//  TransitionSimpleDelegate.swift
+//  TransitionBasicAnimator.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 12/21/15.
 //
 //
 
-final public class TransitionSimpleDelegate: TransitionRootDelegate {
+final public class TransitionBasicAnimator: TransitionGenericAnimator {
 
-    public enum Kind {
+    // MARK: Property
 
-        case CustomRect(CGRect)
-        case CenterScreen(CGSize)
+    public var animating: (alpha: CGFloat, transform: CGAffineTransform) = (0, CGAffineTransformIdentity)
+
+    // MARK: Initialization
+
+    public convenience init(centeredScreen size: CGSize) {
+        let bounds = UIScreen.mainScreen().bounds
+
+        let x = (bounds.width - size.width) / 2
+        let y = (bounds.height - size.height) / 2
+
+        let rect = CGRectMake(x, y, size.width, size.height)
+        self.init(presentedRect: rect)
     }
 
-    public var animating: (alpha: CGFloat, transform: CGAffineTransform) = (1, CGAffineTransformIdentity)
-
-    public init(kind: Kind) {
-        switch kind {
-
-        case .CustomRect(let rect):
-            super.init(presentedContentRect: rect)
-
-        case .CenterScreen(let size):
-            let bounds = UIScreen.mainScreen().bounds
-
-            let x = (bounds.width - size.width) / 2
-            let y = (bounds.height - size.height) / 2
-
-            let rect = CGRectMake(x, y, size.width, size.height)
-            super.init(presentedContentRect: rect)
-        }
-    }
+    // MARK: System Method
 
     public override func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         guard let fromController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey),

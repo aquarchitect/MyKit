@@ -168,6 +168,11 @@
 		C2A8F34D1CB0596D004504A2 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A8F34B1CB0596D004504A2 /* Schedule.swift */; };
 		C2A8F34F1CB0636E004504A2 /* NSFetchRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A8F34E1CB0636E004504A2 /* NSFetchRequest+.swift */; };
 		C2A8F3501CB0636E004504A2 /* NSFetchRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A8F34E1CB0636E004504A2 /* NSFetchRequest+.swift */; };
+		C2D4629E1CBEE21600BBDA36 /* CenteredFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D4629D1CBEE21600BBDA36 /* CenteredFlowLayout.swift */; };
+		C2D462A21CBEE2F700BBDA36 /* CenteredFlowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D462A11CBEE2F700BBDA36 /* CenteredFlowCell.swift */; };
+		C2D73FA81CC0465900CBE230 /* MagnifiedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D73FA51CC0465900CBE230 /* MagnifiedFlowLayout.swift */; };
+		C2D73FA91CC0465900CBE230 /* MagnifiedFluidLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D73FA61CC0465900CBE230 /* MagnifiedFluidLayout.swift */; };
+		C2D73FAA1CC0465900CBE230 /* MagnifiedLayoutConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D73FA71CC0465900CBE230 /* MagnifiedLayoutConfig.swift */; };
 		C2EAC1071CAEEFB20050B154 /* SequenceType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAC1061CAEEFB20050B154 /* SequenceType+.swift */; };
 		C2EAC1081CAEEFB20050B154 /* SequenceType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAC1061CAEEFB20050B154 /* SequenceType+.swift */; };
 		C2ECCBE31CB86DA100D872E4 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ECCBE21CB86DA100D872E4 /* GrowingTextView.swift */; };
@@ -177,13 +182,8 @@
 		C2ECCBEC1CB86DD700D872E4 /* TableGenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ECCBEA1CB86DD700D872E4 /* TableGenericView.swift */; };
 		C2ECCBED1CB86DD700D872E4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ECCBEB1CB86DD700D872E4 /* TableViewController.swift */; };
 		C2ECCBF11CB86DE800D872E4 /* TransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ECCBEE1CB86DE800D872E4 /* TransitionPresentationController.swift */; };
-		C2ECCBF21CB86DE800D872E4 /* TransitionRootDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ECCBEF1CB86DE800D872E4 /* TransitionRootDelegate.swift */; };
-		C2ECCBF31CB86DE800D872E4 /* TransitionSimpleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ECCBF01CB86DE800D872E4 /* TransitionSimpleDelegate.swift */; };
-		C2ECCBF71CB86DF100D872E4 /* MagnifyFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ECCBF41CB86DF100D872E4 /* MagnifyFlowLayout.swift */; };
-		C2ECCBF81CB86DF100D872E4 /* MagnifyFluidLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ECCBF51CB86DF100D872E4 /* MagnifyFluidLayout.swift */; };
-		C2ECCBF91CB86DF100D872E4 /* MagnifyLayoutConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ECCBF61CB86DF100D872E4 /* MagnifyLayoutConfig.swift */; };
-		C2F22C081CB0DCF40038A8C1 /* Timeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F22C071CB0DCF40038A8C1 /* Timeout.swift */; };
-		C2F22C091CB0DCF40038A8C1 /* Timeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F22C071CB0DCF40038A8C1 /* Timeout.swift */; };
+		C2ECCBF21CB86DE800D872E4 /* TransitionGenericAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ECCBEF1CB86DE800D872E4 /* TransitionGenericAnimator.swift */; };
+		C2ECCBF31CB86DE800D872E4 /* TransitionBasicAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ECCBF01CB86DE800D872E4 /* TransitionBasicAnimator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -356,6 +356,11 @@
 		C2A8F34E1CB0636E004504A2 /* NSFetchRequest+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSFetchRequest+.swift"; path = "Source/Common/Extension/CoreData/NSFetchRequest+.swift"; sourceTree = "<group>"; };
 		C2B9242D1C9A0EFB00C7FCFD /* MyKitQuickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitQuickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2BBFEC61C967AD800E63145 /* MyKitQuickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitQuickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2D4629D1CBEE21600BBDA36 /* CenteredFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenteredFlowLayout.swift; path = Source/iOS/Framework/CenteredLayout/CenteredFlowLayout.swift; sourceTree = SOURCE_ROOT; };
+		C2D462A11CBEE2F700BBDA36 /* CenteredFlowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenteredFlowCell.swift; path = Source/iOS/Framework/CenteredLayout/CenteredFlowCell.swift; sourceTree = SOURCE_ROOT; };
+		C2D73FA51CC0465900CBE230 /* MagnifiedFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifiedFlowLayout.swift; path = Source/iOS/Framework/MagnifiedLayout/MagnifiedFlowLayout.swift; sourceTree = SOURCE_ROOT; };
+		C2D73FA61CC0465900CBE230 /* MagnifiedFluidLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifiedFluidLayout.swift; path = Source/iOS/Framework/MagnifiedLayout/MagnifiedFluidLayout.swift; sourceTree = SOURCE_ROOT; };
+		C2D73FA71CC0465900CBE230 /* MagnifiedLayoutConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifiedLayoutConfig.swift; path = Source/iOS/Framework/MagnifiedLayout/MagnifiedLayoutConfig.swift; sourceTree = SOURCE_ROOT; };
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191591CAB9F8300E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191681CABA16600E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -367,13 +372,9 @@
 		C2ECCBEA1CB86DD700D872E4 /* TableGenericView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableGenericView.swift; path = Source/iOS/Framework/TableView/TableGenericView.swift; sourceTree = SOURCE_ROOT; };
 		C2ECCBEB1CB86DD700D872E4 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = Source/iOS/Framework/TableView/TableViewController.swift; sourceTree = SOURCE_ROOT; };
 		C2ECCBEE1CB86DE800D872E4 /* TransitionPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionPresentationController.swift; path = Source/iOS/Framework/TransitionController/TransitionPresentationController.swift; sourceTree = SOURCE_ROOT; };
-		C2ECCBEF1CB86DE800D872E4 /* TransitionRootDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionRootDelegate.swift; path = Source/iOS/Framework/TransitionController/TransitionRootDelegate.swift; sourceTree = SOURCE_ROOT; };
-		C2ECCBF01CB86DE800D872E4 /* TransitionSimpleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionSimpleDelegate.swift; path = Source/iOS/Framework/TransitionController/TransitionSimpleDelegate.swift; sourceTree = SOURCE_ROOT; };
-		C2ECCBF41CB86DF100D872E4 /* MagnifyFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyFlowLayout.swift; path = Source/iOS/Framework/MagnifyLayout/MagnifyFlowLayout.swift; sourceTree = SOURCE_ROOT; };
-		C2ECCBF51CB86DF100D872E4 /* MagnifyFluidLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyFluidLayout.swift; path = Source/iOS/Framework/MagnifyLayout/MagnifyFluidLayout.swift; sourceTree = SOURCE_ROOT; };
-		C2ECCBF61CB86DF100D872E4 /* MagnifyLayoutConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyLayoutConfig.swift; path = Source/iOS/Framework/MagnifyLayout/MagnifyLayoutConfig.swift; sourceTree = SOURCE_ROOT; };
+		C2ECCBEF1CB86DE800D872E4 /* TransitionGenericAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionGenericAnimator.swift; path = Source/iOS/Framework/TransitionController/TransitionGenericAnimator.swift; sourceTree = SOURCE_ROOT; };
+		C2ECCBF01CB86DE800D872E4 /* TransitionBasicAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionBasicAnimator.swift; path = Source/iOS/Framework/TransitionController/TransitionBasicAnimator.swift; sourceTree = SOURCE_ROOT; };
 		C2EF9F701CAB955100BC205F /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2F22C071CB0DCF40038A8C1 /* Timeout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Timeout.swift; path = Source/Common/Utility/Timeout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -558,7 +559,6 @@
 				C23938E01CAC7D2000526B30 /* Then.swift */,
 				C23938E11CAC7D2000526B30 /* Time.swift */,
 				C2A8F34B1CB0596D004504A2 /* Schedule.swift */,
-				C2F22C071CB0DCF40038A8C1 /* Timeout.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -569,8 +569,9 @@
 				C2ECCBE11CB86D4000D872E4 /* GrowingText */,
 				C2EFDCDB1C8FF8F6000DFB63 /* CollectionView */,
 				C2EFDCDA1C8FF846000DFB63 /* TableView */,
-				C2B924281C99D67700C7FCFD /* TransitionController */,
-				C2D40D901CB460470003A9B6 /* MagnifyLayout */,
+				C2B924281C99D67700C7FCFD /* TransitionAnimator */,
+				C2D40D901CB460470003A9B6 /* MagnifiedLayout */,
+				C2D4629C1CBEE1D400BBDA36 /* CenteredLayout */,
 			);
 			name = Framework;
 			path = MyKitiOS;
@@ -687,24 +688,33 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
-		C2B924281C99D67700C7FCFD /* TransitionController */ = {
+		C2B924281C99D67700C7FCFD /* TransitionAnimator */ = {
 			isa = PBXGroup;
 			children = (
 				C2ECCBEE1CB86DE800D872E4 /* TransitionPresentationController.swift */,
-				C2ECCBEF1CB86DE800D872E4 /* TransitionRootDelegate.swift */,
-				C2ECCBF01CB86DE800D872E4 /* TransitionSimpleDelegate.swift */,
+				C2ECCBEF1CB86DE800D872E4 /* TransitionGenericAnimator.swift */,
+				C2ECCBF01CB86DE800D872E4 /* TransitionBasicAnimator.swift */,
 			);
-			name = TransitionController;
+			name = TransitionAnimator;
 			sourceTree = "<group>";
 		};
-		C2D40D901CB460470003A9B6 /* MagnifyLayout */ = {
+		C2D40D901CB460470003A9B6 /* MagnifiedLayout */ = {
 			isa = PBXGroup;
 			children = (
-				C2ECCBF41CB86DF100D872E4 /* MagnifyFlowLayout.swift */,
-				C2ECCBF51CB86DF100D872E4 /* MagnifyFluidLayout.swift */,
-				C2ECCBF61CB86DF100D872E4 /* MagnifyLayoutConfig.swift */,
+				C2D73FA51CC0465900CBE230 /* MagnifiedFlowLayout.swift */,
+				C2D73FA61CC0465900CBE230 /* MagnifiedFluidLayout.swift */,
+				C2D73FA71CC0465900CBE230 /* MagnifiedLayoutConfig.swift */,
 			);
-			name = MagnifyLayout;
+			name = MagnifiedLayout;
+			sourceTree = "<group>";
+		};
+		C2D4629C1CBEE1D400BBDA36 /* CenteredLayout */ = {
+			isa = PBXGroup;
+			children = (
+				C2D4629D1CBEE21600BBDA36 /* CenteredFlowLayout.swift */,
+				C2D462A11CBEE2F700BBDA36 /* CenteredFlowCell.swift */,
+			);
+			name = CenteredLayout;
 			sourceTree = "<group>";
 		};
 		C2DB0D101C7E31430010B70E /* Foundation */ = {
@@ -1366,7 +1376,6 @@
 				C23939641CAC7DF000526B30 /* NSAttributeDescription+.swift in Sources */,
 				C23939571CAC7DDD00526B30 /* CKDatabase+.swift in Sources */,
 				C239394E1CAC7DC500526B30 /* NSScanner+.swift in Sources */,
-				C2F22C091CB0DCF40038A8C1 /* Timeout.swift in Sources */,
 				C23938F31CAC7D2000526B30 /* Swizzle.swift in Sources */,
 				C23939161CAC7D7000526B30 /* OpenWeather.swift in Sources */,
 				C239394A1CAC7DC500526B30 /* NSNumber+.swift in Sources */,
@@ -1409,7 +1418,6 @@
 				C23939671CAC7DF000526B30 /* NSManagedObject+.swift in Sources */,
 				C23939541CAC7DDD00526B30 /* CKContainer+.swift in Sources */,
 				C23939431CAC7DC500526B30 /* NSDateFormatter+.swift in Sources */,
-				C2ECCBF91CB86DF100D872E4 /* MagnifyLayoutConfig.swift in Sources */,
 				C23939701CAC7E0500526B30 /* CGPoint+.swift in Sources */,
 				C23939561CAC7DDD00526B30 /* CKDatabase+.swift in Sources */,
 				C23939A51CAC7EF600526B30 /* UICollectionViewLayout+.swift in Sources */,
@@ -1434,13 +1442,14 @@
 				C23939721CAC7E0500526B30 /* CGRect+.swift in Sources */,
 				C239396B1CAC7DF000526B30 /* NSRelationshipDescription+.swift in Sources */,
 				C23939581CAC7DDD00526B30 /* CKQuery+.swift in Sources */,
-				C2ECCBF81CB86DF100D872E4 /* MagnifyFluidLayout.swift in Sources */,
 				C23939AB1CAC7EF600526B30 /* UILabel+.swift in Sources */,
 				C23939A11CAC7EF600526B30 /* UIBezierPath+.swift in Sources */,
+				C2D73FAA1CC0465900CBE230 /* MagnifiedLayoutConfig.swift in Sources */,
 				C23938E61CAC7D2000526B30 /* Curry.swift in Sources */,
 				C2ECCBE91CB86DAD00D872E4 /* CollectionViewController.swift in Sources */,
 				C239394D1CAC7DC500526B30 /* NSScanner+.swift in Sources */,
 				C23938E21CAC7D2000526B30 /* Action.swift in Sources */,
+				C2D73FA91CC0465900CBE230 /* MagnifiedFluidLayout.swift in Sources */,
 				C23939451CAC7DC500526B30 /* NSIndexPath+.swift in Sources */,
 				C23939001CAC7D4700526B30 /* CustomFont.swift in Sources */,
 				C2ECCBE31CB86DA100D872E4 /* GrowingTextView.swift in Sources */,
@@ -1451,16 +1460,16 @@
 				C23938F21CAC7D2000526B30 /* Swizzle.swift in Sources */,
 				C23939A31CAC7EF600526B30 /* UICollectionView+.swift in Sources */,
 				C23939B11CAC7EF600526B30 /* UIView+.swift in Sources */,
-				C2ECCBF21CB86DE800D872E4 /* TransitionRootDelegate.swift in Sources */,
+				C2ECCBF21CB86DE800D872E4 /* TransitionGenericAnimator.swift in Sources */,
 				C2ECCBF11CB86DE800D872E4 /* TransitionPresentationController.swift in Sources */,
 				C23938EC1CAC7D2000526B30 /* Promise.swift in Sources */,
 				C23939AF1CAC7EF600526B30 /* UITableView+.swift in Sources */,
 				C2ECCBED1CB86DD700D872E4 /* TableViewController.swift in Sources */,
 				C23939021CAC7D4700526B30 /* DateIndex.swift in Sources */,
+				C2D73FA81CC0465900CBE230 /* MagnifiedFlowLayout.swift in Sources */,
 				C23938F41CAC7D2000526B30 /* Then.swift in Sources */,
 				C23939491CAC7DC500526B30 /* NSNumber+.swift in Sources */,
 				C239391D1CAC7D7E00526B30 /* LoremIpsum.swift in Sources */,
-				C2ECCBF71CB86DF100D872E4 /* MagnifyFlowLayout.swift in Sources */,
 				C2393A221CAC85D400526B30 /* Array+.swift in Sources */,
 				C23939041CAC7D4700526B30 /* PersistentStack.swift in Sources */,
 				C23938EE1CAC7D2000526B30 /* Queue.swift in Sources */,
@@ -1474,10 +1483,11 @@
 				C239395A1CAC7DDD00526B30 /* CKRecord+.swift in Sources */,
 				C2ECCBE81CB86DAD00D872E4 /* CollectionGenericView.swift in Sources */,
 				C239395C1CAC7DDD00526B30 /* CKRecordID+.swift in Sources */,
-				C2F22C081CB0DCF40038A8C1 /* Timeout.swift in Sources */,
-				C2ECCBF31CB86DE800D872E4 /* TransitionSimpleDelegate.swift in Sources */,
+				C2ECCBF31CB86DE800D872E4 /* TransitionBasicAnimator.swift in Sources */,
+				C2D462A21CBEE2F700BBDA36 /* CenteredFlowCell.swift in Sources */,
 				C23939AD1CAC7EF600526B30 /* UIScrollView+.swift in Sources */,
 				C23939261CAC7D8D00526B30 /* CloudStack.swift in Sources */,
+				C2D4629E1CBEE21600BBDA36 /* CenteredFlowLayout.swift in Sources */,
 				C239399F1CAC7EF600526B30 /* Draw+.swift in Sources */,
 				C2A8F34F1CB0636E004504A2 /* NSFetchRequest+.swift in Sources */,
 				C23939411CAC7DC500526B30 /* NSDate+.swift in Sources */,

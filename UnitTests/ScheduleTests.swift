@@ -21,10 +21,9 @@ final class ScheduleTests: XCTestCase {
     }
 
     func testScheduleEvery() {
-        var count = 0
-
         let exepectation = expectationWithDescription(#function)
 
+        var count = 0
         let id = Schedule.every(0.7) { count += 1 }
 
         delay(1.5) {

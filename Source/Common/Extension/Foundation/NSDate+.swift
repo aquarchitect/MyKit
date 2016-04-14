@@ -129,23 +129,19 @@ public extension NSDate {
 public extension NSDate {
 
     public func isSameDayAs(date: NSDate) -> Bool {
-        return date.components([.Year, .Month, .Day])
-            .andThen(isMatchedWith)
+        return date.components([.Year, .Month, .Day]).then(isMatchedWith)
     }
 
     public func isSameWeekAs(date: NSDate) -> Bool {
-        return date.components([.Year, .WeekOfYear])
-            .andThen(isMatchedWith)
+        return date.components([.Year, .WeekOfYear]).then(isMatchedWith)
     }
 
     public func isSameMonthAs(date: NSDate) -> Bool {
-        return date.components([.Year, .Month])
-            .andThen(isMatchedWith)
+        return date.components([.Year, .Month]).then(isMatchedWith)
     }
 
     public func isSameYearAs(date: NSDate) -> Bool {
-        return date.components(.Year)
-            .andThen(isMatchedWith)
+        return date.components(.Year).then(isMatchedWith)
     }
 }
 
@@ -154,11 +150,11 @@ public extension NSDate {
 public extension NSDate {
 
     public func isInFuture() -> Bool {
-        return NSDate.Today.andThen { !isSameDayAs($0) && self.compare($0) == .OrderedDescending }
+        return NSDate.Today.then { !isSameDayAs($0) && self.compare($0) == .OrderedDescending }
     }
 
     public func isInPast() -> Bool {
-        return NSDate.Today.andThen { !isSameDayAs($0) && self.compare($0) == .OrderedAscending }
+        return NSDate.Today.then { !isSameDayAs($0) && self.compare($0) == .OrderedAscending }
     }
 }
 
@@ -171,13 +167,11 @@ public extension NSDate {
     }
 
     public func isTomorrow() -> Bool {
-        return NSDate.Today.dateByAdding(days: 1)
-            .andThen(isSameDayAs)
+        return NSDate.Today.dateByAdding(days: 1).then(isSameDayAs)
     }
 
     public func isYesterday() -> Bool {
-        return NSDate.Today.dateByAdding(days: -1)
-            .andThen(isSameDayAs)
+        return NSDate.Today.dateByAdding(days: -1).then(isSameDayAs)
     }
 }
 
@@ -190,13 +184,11 @@ public extension NSDate {
     }
 
     public func isNextWeek() -> Bool {
-        return NSDate.Today.dateByAdding(weeks: 1)
-            .andThen(isSameWeekAs)
+        return NSDate.Today.dateByAdding(weeks: 1).then(isSameWeekAs)
     }
 
     public func isLastWeek() -> Bool {
-        return NSDate.Today.dateByAdding(weeks: -1)
-            .andThen(isSameWeekAs)
+        return NSDate.Today.dateByAdding(weeks: -1).then(isSameWeekAs)
     }
 }
 
@@ -209,13 +201,11 @@ public extension NSDate {
     }
 
     public func isNextMonth() -> Bool {
-        return NSDate.Today.dateByAdding(months: 1)
-            .andThen(isSameMonthAs)
+        return NSDate.Today.dateByAdding(months: 1).then(isSameMonthAs)
     }
 
     public func isLastMonth() -> Bool {
-        return NSDate.Today.dateByAdding(months: -1)
-            .andThen(isSameMonthAs)
+        return NSDate.Today.dateByAdding(months: -1).then(isSameMonthAs)
     }
 
     public func isThisYear() -> Bool {
@@ -224,12 +214,12 @@ public extension NSDate {
 
     public func isLastYear() -> Bool {
         return NSDate.Today.dateByAdding(years: -1)
-            .andThen(isSameYearAs)
+            .then(isSameYearAs)
     }
 
     public func isNextYear() -> Bool {
         return NSDate.Today.dateByAdding(years: 1)
-            .andThen(isSameYearAs)
+            .then(isSameYearAs)
     }
 }
 
@@ -241,7 +231,7 @@ public extension NSDate {
         return NSDateFormatter.sharedInstance.then {
                 $0.timeStyle = time
                 $0.dateStyle = date
-            }.andThen {
+            }.then {
                 $0.stringFromDate(self)
             }
     }

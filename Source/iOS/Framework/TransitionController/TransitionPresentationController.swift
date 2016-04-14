@@ -8,44 +8,35 @@
 
 public class TransitionPresentationController: UIPresentationController {
 
-    public let presentedContentRect: CGRect
-    internal let managedView = UIView().then{ $0.alpha = 0 }
-
-    public init(presented: UIViewController, presenting: UIViewController, contentRect: CGRect) {
-        self.presentedContentRect = contentRect
-        super.init(presentedViewController: presented, presentingViewController: presenting)
-
-        UITapGestureRecognizer().then {
-            $0.addTarget(self, action: #selector(handleTap(_:)))
-            managedView.addGestureRecognizer($0)
-        }
-    }
-
-    public convenience init(presented: UIViewController, presenting: UIViewController) {
-        let rect = UIScreen.mainScreen().bounds
-        self.init(presented: presented, presenting: presenting, contentRect: rect)
-    }
+    public var presentedRect: CGRect = UIScreen.mainScreen().bounds
+    public var dimmedView: UIView?
 
     public override func presentationTransitionWillBegin() {
-        self.containerView?.insertSubview(managedView, atIndex: 0)
+        dimmedView?.then { self.containerView?.insertSubview($0, atIndex: 0) }
+
+        UITapGestureRecognizer().then {
+            $0.addTarget(self, action: #selector(handleTap))
+            dimmedView?.addGestureRecognizer($0)
+        }
+
         animateDimView(1, completion: nil)
     }
 
     public override func dismissalTransitionWillBegin() {
         self.presentedView()?.endEditing(true)
-        animateDimView(0) { [weak managedView] in managedView?.removeFromSuperview() }
+        animateDimView(0) { [weak dimmedView] in dimmedView?.removeFromSuperview() }
     }
 
     private func animateDimView(alpha: CGFloat, completion: (Void -> Void)?) {
-        self.presentingViewController.transitionCoordinator()?.animateAlongsideTransition({ _ in self.managedView.alpha = alpha }, completion: { _ in completion?() })
+        self.presentingViewController.transitionCoordinator()?.animateAlongsideTransition({ _ in self.dimmedView?.alpha = alpha }, completion: { _ in completion?() })
     }
 
     public override func containerViewWillLayoutSubviews() {
-        self.presentedView()?.frame = presentedContentRect
+        self.presentedView()?.frame = presentedRect
     }
 
     public override func containerViewDidLayoutSubviews() {
-        managedView.frame = self.containerView?.bounds ?? .zero
+        dimmedView?.frame = self.containerView?.bounds ?? .zero
     }
 
     func handleTap(sender: UITapGestureRecognizer) {

@@ -1,12 +1,12 @@
 //
-//  MagnifyLayoutConfig.swift
+//  MagnifiedLayoutConfig.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 3/30/16.
 //  
 //
 
-public final class MagnifyLayoutConfig {
+public final class MagnifiedLayoutConfig {
 
     public typealias Paraboloid = (x: CGFloat, y: CGFloat) -> CGFloat
     public typealias Range = (min: CGFloat, max: CGFloat)
@@ -41,4 +41,4 @@ public final class MagnifyLayoutConfig {
     }
 }
 
-extension MagnifyLayoutConfig: Then {}
+extension MagnifiedLayoutConfig: Then {}
