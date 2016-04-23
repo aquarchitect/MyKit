@@ -38,22 +38,22 @@ public extension NSMutableAttributedString {
         self.addAttribute(NSForegroundColorAttributeName, value: _value, range: range ?? self.range)
     }
 
-    public func addAlignmentAttribute(value: NSTextAlignment, range: NSRange?) {
+    public func addAlignmentAttribute(value: NSTextAlignment, range: NSRange? = nil) {
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = value
 
         self.addParagraphAttribute(paragraph, range: range)
     }
 
-    public func addParagraphAttribute(value: NSParagraphStyle, range: NSRange?) {
+    public func addParagraphAttribute(value: NSParagraphStyle, range: NSRange? = nil) {
         self.addAttribute(NSParagraphStyleAttributeName, value: value, range: range ?? self.range)
     }
 
-    public func addBaselineAttribute(value: Float, range: NSRange?) {
+    public func addBaselineAttribute(value: Float, range: NSRange? = nil) {
         self.addAttribute(NSBaselineOffsetAttributeName, value: NSNumber(float: value), range: range ?? self.range)
     }
 
-    public func addKernAttribute(value: Float, range: NSRange?) {
+    public func addKernAttribute(value: Float, range: NSRange? = nil) {
         self.addAttribute(NSKernAttributeName, value: NSNumber(float: value), range: range ?? self.range)
     }
 }

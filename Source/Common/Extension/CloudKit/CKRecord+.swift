@@ -13,13 +13,15 @@ public extension CKRecord {
     }
 
     public var metadata: NSData {
-        return NSMutableData().then {
-            NSKeyedArchiver(forWritingWithMutableData: $0).then {
-                $0.requiresSecureCoding = true
-                self.encodeSystemFieldsWithCoder($0)
-                $0.finishEncoding()
-            }
+        let data = NSMutableData()
+
+        NSKeyedArchiver(forWritingWithMutableData: data).then {
+            $0.requiresSecureCoding = true
+            self.encodeSystemFieldsWithCoder($0)
+            $0.finishEncoding()
         }
+
+        return data
     }
 
     public convenience init?(data: NSData) {

@@ -6,9 +6,9 @@
 //  
 //
 
-extension SequenceType {
+public extension SequenceType {
 
-    func pair<K: Hashable, V>(@noescape f: Generator.Element throws -> (K, V)) rethrows -> [K: V] {
+    public func pair<K: Hashable, V>(@noescape f: Generator.Element throws -> (K, V)) rethrows -> [K: V] {
         var results: [K: V] = [:]
 
         try self.forEach {

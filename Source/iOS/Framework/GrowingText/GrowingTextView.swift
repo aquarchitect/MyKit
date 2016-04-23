@@ -33,9 +33,7 @@ public class GrowingTextView: UIControl {
 
         textBox.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
 
-        [(.Left, .LeftMargin), (.Right, .Right), (.Top, .TopMargin), (.Bottom, .BottomMargin)].forEach {
-            self.addConstraint(item: textBox, attribute: $0, relatedBy: .Equal, toItem: self, attribute: $1, multiplier: 1, constant: 0, priority: 800)
-        }
+        [(.Left, .LeftMargin), (.Right, .Right), (.Top, .TopMargin), (.Bottom, .BottomMargin)].map { NSLayoutConstraint(view: textBox, attribute: $0, relatedBy: .Equal, toView: self, attribute: $1, multiplier: 1, constant: 0, priority: 800) }.activate()
     }
 
     deinit { textBox.removeObserver(self, forKeyPath: "contentSize") }
@@ -56,10 +54,8 @@ public class GrowingTextView: UIControl {
     public override func layoutSubviews() {
         super.layoutSubviews()
 
-        textBox.then {
-            let diff = $0.contentSize.height - $0.bounds.height
-            if diff < 0 { $0.contentOffset.y = diff / 2 }
-        }
+        let diff = textBox.contentSize.height - textBox.bounds.height
+        if diff < 0 { textBox.contentOffset.y = diff / 2 }
     }
 
     public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {

@@ -10,15 +10,15 @@ public extension CKDatabase {
 
     public func fetchCurrentUser() -> Promise<CKRecord> {
         return Promise({ callback in
-            CKFetchRecordsOperation.fetchCurrentUserRecordOperation().then {
-                $0.perRecordCompletionBlock = {
-                    if let record = $0 {
-                        callback(.Fullfill(record))
-                    } else if let error = $2 {
-                        callback(.Reject(error))
-                    }
+            let operation = CKFetchRecordsOperation.fetchCurrentUserRecordOperation()
+            operation.perRecordCompletionBlock = {
+                if let record = $0 {
+                    callback(.Fullfill(record))
+                } else if let error = $2 {
+                    callback(.Reject(error))
                 }
             }
+            return operation
         } >>> self.addOperation)
     }
 }

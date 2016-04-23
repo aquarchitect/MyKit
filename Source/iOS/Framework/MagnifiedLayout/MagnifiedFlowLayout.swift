@@ -35,9 +35,8 @@ public class MagnifiedFlowLayout: UICollectionViewFlowLayout {
     }
 
     public override func invalidationContextForBoundsChange(newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
-        return super.invalidationContextForBoundsChange(newBounds).then {
-            $0.invalidateItemsAtIndexPaths(visibleIndexPaths)
-        }
+        return super.invalidationContextForBoundsChange(newBounds)
+            .then { $0.invalidateItemsAtIndexPaths(visibleIndexPaths) }
     }
 
     public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {

@@ -106,8 +106,8 @@ public extension Schedule {
         return dispatch(AnyGenerator { interval }, block: block)
     }
 
-    public static func after<G: GeneratorType where G.Element == NSTimeInterval>(intervals: G, block: Void -> Void) -> ID {
-        return dispatch(AnyGenerator(intervals), block: block)
+    public static func after<C: CollectionType where C.Generator.Element == NSTimeInterval>(intervals: C, block: Void -> Void) -> ID {
+        return dispatch(AnyGenerator(intervals.generate()), block: block)
     }
 
     public static func countdown(interval: NSTimeInterval, times: UInt, block: (left: NSTimeInterval) -> Void) -> ID {

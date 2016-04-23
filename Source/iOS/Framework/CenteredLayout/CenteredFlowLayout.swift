@@ -15,16 +15,15 @@ public class CenteredFlowLayout: UICollectionViewFlowLayout {
         var showsSeparator = true
 
         override func copyWithZone(zone: NSZone) -> AnyObject {
-            return (super.copyWithZone(zone) as! Attributes)
-                .then {
+            return (super.copyWithZone(zone) as! Attributes).then {
                     $0.cornerRadii = cornerRadii
                     $0.roundedCorners = roundedCorners
-                    $0.showsSeparator = true
+                    $0.showsSeparator = showsSeparator
                 }
         }
     }
 
-    public var cornerRadii: CGSize = .zero
+    public var cornerRadii = CGSizeMake(5, 5)
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -41,9 +40,8 @@ public class CenteredFlowLayout: UICollectionViewFlowLayout {
 
     public override func prepareLayout() {
         let padding: CGFloat = 15
-        let size = UIScreen.mainScreen().bounds.size
-        let width = min(size.width, size.height) * (UIDevice.currentDevice().userInterfaceIdiom == .Phone ? 1 : 2/3) - 2 * padding
-        let margin = (size.width - width) / 2
+        let width = UIScreen.propotionalWidth - 2 * padding
+        let margin = (UIScreen.mainScreen().bounds.width - width) / 2
         let inset = self.sectionInset
 
         self.sectionInset = UIEdgeInsetsMake(inset.top, margin, inset.bottom, margin)
@@ -56,17 +54,17 @@ public class CenteredFlowLayout: UICollectionViewFlowLayout {
         guard let collectionView = self.collectionView else { return }
 
         for section in 0..<collectionView.numberOfSections() {
-            let range = 0..<collectionView.numberOfItemsInSection(0)
-            
+            let range = 0..<collectionView.numberOfItemsInSection(section)
+
             Set([range.first, range.last].flatMap { $0 }.lazy)
-                .map { NSIndexPath(forItem: $0, inSection: section) }.lazy
-                .flatMap { super.layoutAttributesForItemAtIndexPath($0) as? Attributes }.lazy
+                .map { return NSIndexPath(forItem: $0, inSection: section) }.lazy
+                .flatMap { return super.layoutAttributesForItemAtIndexPath($0) as? Attributes }.lazy
                 .forEach {
                     let (corners, bottomed) = attributesForItemAt($0.indexPath)
-
+                    
                     $0.cornerRadii = cornerRadii
                     $0.roundedCorners = corners
-                    $0.showsSeparator = bottomed
+                    $0.showsSeparator = !bottomed
                 }
         }
     }
