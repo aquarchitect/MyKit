@@ -275,6 +275,6 @@ public extension OpenWeather.Icon {
             let font = NSFont.fontWith(name: name, size: size, fromFile: file)
         #endif
 
-        return NSMutableAttributedString(string: self.description).then { $0.addFontAttribute(font) }
+        return NSMutableAttributedString(string: self.description).then { $0.addFont(font) }
     }
 }

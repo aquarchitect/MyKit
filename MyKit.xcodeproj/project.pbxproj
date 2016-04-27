@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C2048C861CC74B4100A22E66 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2048C851CC74B4100A22E66 /* JSON.swift */; };
-		C2048C871CC74B4100A22E66 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2048C851CC74B4100A22E66 /* JSON.swift */; };
 		C2099CA41CB471F300EA23BA /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2099CA31CB471F300EA23BA /* ScheduleTests.swift */; };
 		C2099CA51CB471F300EA23BA /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2099CA31CB471F300EA23BA /* ScheduleTests.swift */; };
 		C2099CA61CB471F300EA23BA /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2099CA31CB471F300EA23BA /* ScheduleTests.swift */; };
 		C2099CA71CB471F300EA23BA /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2099CA31CB471F300EA23BA /* ScheduleTests.swift */; };
+		C2319FC11CD13A9E003E1EE5 /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2319FC01CD13A9E003E1EE5 /* Diff.swift */; };
+		C2319FC21CD13A9E003E1EE5 /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2319FC01CD13A9E003E1EE5 /* Diff.swift */; };
+		C2319FC41CD172F1003E1EE5 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2319FC31CD172F1003E1EE5 /* Matrix.swift */; };
+		C2319FC51CD172F1003E1EE5 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2319FC31CD172F1003E1EE5 /* Matrix.swift */; };
 		C23938E21CAC7D2000526B30 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23938D71CAC7D2000526B30 /* Action.swift */; };
 		C23938E31CAC7D2000526B30 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23938D71CAC7D2000526B30 /* Action.swift */; };
 		C23938E41CAC7D2000526B30 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23938D81CAC7D2000526B30 /* Box.swift */; };
@@ -157,8 +159,6 @@
 		C2393A1C1CAC81DB00526B30 /* NSControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A161CAC81DB00526B30 /* NSControl+.swift */; };
 		C2393A1E1CAC81DB00526B30 /* NSTableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A171CAC81DB00526B30 /* NSTableView+.swift */; };
 		C2393A201CAC81DB00526B30 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A181CAC81DB00526B30 /* NSText+.swift */; };
-		C2393A221CAC85D400526B30 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A211CAC85D400526B30 /* Array+.swift */; };
-		C2393A231CAC85D400526B30 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2393A211CAC85D400526B30 /* Array+.swift */; };
 		C23DFCED1CADFEF9008EFF34 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
 		C23DFCEE1CADFEF9008EFF34 /* MyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C23DFCF21CAE0EF9008EFF34 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
@@ -177,6 +177,8 @@
 		C2D73FA81CC0465900CBE230 /* MagnifiedFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D73FA51CC0465900CBE230 /* MagnifiedFlowLayout.swift */; };
 		C2D73FA91CC0465900CBE230 /* MagnifiedFluidLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D73FA61CC0465900CBE230 /* MagnifiedFluidLayout.swift */; };
 		C2D73FAA1CC0465900CBE230 /* MagnifiedLayoutConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D73FA71CC0465900CBE230 /* MagnifiedLayoutConfig.swift */; };
+		C2D869C01CCC00100010DCF9 /* Dictionary+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D869BF1CCC00100010DCF9 /* Dictionary+.swift */; };
+		C2D869C11CCC00100010DCF9 /* Dictionary+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D869BF1CCC00100010DCF9 /* Dictionary+.swift */; };
 		C2EAC1071CAEEFB20050B154 /* SequenceType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAC1061CAEEFB20050B154 /* SequenceType+.swift */; };
 		C2EAC1081CAEEFB20050B154 /* SequenceType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAC1061CAEEFB20050B154 /* SequenceType+.swift */; };
 		C2ECCBE31CB86DA100D872E4 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ECCBE21CB86DA100D872E4 /* GrowingTextView.swift */; };
@@ -261,8 +263,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C2048C851CC74B4100A22E66 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSON.swift; path = Source/Common/Utility/JSON.swift; sourceTree = "<group>"; };
 		C2099CA31CB471F300EA23BA /* ScheduleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleTests.swift; path = UnitTests/ScheduleTests.swift; sourceTree = SOURCE_ROOT; };
+		C2319FC01CD13A9E003E1EE5 /* Diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Diff.swift; path = Source/Common/Utility/Diff.swift; sourceTree = "<group>"; };
+		C2319FC31CD172F1003E1EE5 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix.swift; path = Source/Common/Utility/Matrix.swift; sourceTree = "<group>"; };
 		C23938D71CAC7D2000526B30 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Source/Common/Utility/Action.swift; sourceTree = "<group>"; };
 		C23938D81CAC7D2000526B30 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Source/Common/Utility/Box.swift; sourceTree = "<group>"; };
 		C23938D91CAC7D2000526B30 /* Curry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Curry.swift; path = Source/Common/Utility/Curry.swift; sourceTree = "<group>"; };
@@ -350,7 +353,6 @@
 		C2393A161CAC81DB00526B30 /* NSControl+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSControl+.swift"; path = "Source/OSX/Extension/NSControl+.swift"; sourceTree = SOURCE_ROOT; };
 		C2393A171CAC81DB00526B30 /* NSTableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTableView+.swift"; path = "Source/OSX/Extension/NSTableView+.swift"; sourceTree = SOURCE_ROOT; };
 		C2393A181CAC81DB00526B30 /* NSText+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSText+.swift"; path = "Source/OSX/Extension/NSText+.swift"; sourceTree = SOURCE_ROOT; };
-		C2393A211CAC85D400526B30 /* Array+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+.swift"; path = "Source/Common/Extension/Native/Array+.swift"; sourceTree = "<group>"; };
 		C23FD17D1CC34C380060588D /* NSLayoutConstraint+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+.swift"; path = "Source/Common/Extension/Foundation/NSLayoutConstraint+.swift"; sourceTree = "<group>"; };
 		C24AB3521CC1C9E200D7E03F /* UIScreen+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScreen+.swift"; path = "Source/iOS/Extension/UIScreen+.swift"; sourceTree = SOURCE_ROOT; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 		C2D73FA51CC0465900CBE230 /* MagnifiedFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifiedFlowLayout.swift; path = Source/iOS/Framework/MagnifiedLayout/MagnifiedFlowLayout.swift; sourceTree = SOURCE_ROOT; };
 		C2D73FA61CC0465900CBE230 /* MagnifiedFluidLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifiedFluidLayout.swift; path = Source/iOS/Framework/MagnifiedLayout/MagnifiedFluidLayout.swift; sourceTree = SOURCE_ROOT; };
 		C2D73FA71CC0465900CBE230 /* MagnifiedLayoutConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifiedLayoutConfig.swift; path = Source/iOS/Framework/MagnifiedLayout/MagnifiedLayoutConfig.swift; sourceTree = SOURCE_ROOT; };
+		C2D869BF1CCC00100010DCF9 /* Dictionary+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Dictionary+.swift"; path = "Source/Common/Extension/Native/Dictionary+.swift"; sourceTree = "<group>"; };
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191591CAB9F8300E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191681CABA16600E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -565,7 +568,8 @@
 				C23938E01CAC7D2000526B30 /* Then.swift */,
 				C23938E11CAC7D2000526B30 /* Time.swift */,
 				C2A8F34B1CB0596D004504A2 /* Schedule.swift */,
-				C2048C851CC74B4100A22E66 /* JSON.swift */,
+				C2319FC01CD13A9E003E1EE5 /* Diff.swift */,
+				C2319FC31CD172F1003E1EE5 /* Matrix.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -651,7 +655,7 @@
 			isa = PBXGroup;
 			children = (
 				C23939281CAC7DAB00526B30 /* Bool+.swift */,
-				C2393A211CAC85D400526B30 /* Array+.swift */,
+				C2D869BF1CCC00100010DCF9 /* Dictionary+.swift */,
 				C239392A1CAC7DAB00526B30 /* Range+.swift */,
 				C239392B1CAC7DAB00526B30 /* String+.swift */,
 				C2EAC1061CAEEFB20050B154 /* SequenceType+.swift */,
@@ -1364,6 +1368,7 @@
 				C23938EB1CAC7D2000526B30 /* Host.swift in Sources */,
 				C23939591CAC7DDD00526B30 /* CKQuery+.swift in Sources */,
 				C23939011CAC7D4700526B30 /* CustomFont.swift in Sources */,
+				C2319FC21CD13A9E003E1EE5 /* Diff.swift in Sources */,
 				C23939251CAC7D8D00526B30 /* CloudRecord.swift in Sources */,
 				C23939031CAC7D4700526B30 /* DateIndex.swift in Sources */,
 				C23939441CAC7DC500526B30 /* NSDateFormatter+.swift in Sources */,
@@ -1373,7 +1378,6 @@
 				C23938E71CAC7D2000526B30 /* Curry.swift in Sources */,
 				C23939181CAC7D7000526B30 /* OpenWeather+.swift in Sources */,
 				C23939461CAC7DC500526B30 /* NSIndexPath+.swift in Sources */,
-				C2393A231CAC85D400526B30 /* Array+.swift in Sources */,
 				C23939051CAC7D4700526B30 /* PersistentStack.swift in Sources */,
 				C23939731CAC7E0500526B30 /* CGRect+.swift in Sources */,
 				C23938EF1CAC7D2000526B30 /* Queue.swift in Sources */,
@@ -1395,10 +1399,12 @@
 				C23939071CAC7D4700526B30 /* StreamClient.swift in Sources */,
 				C23938F51CAC7D2000526B30 /* Then.swift in Sources */,
 				C23939661CAC7DF000526B30 /* NSEntityDescription+.swift in Sources */,
+				C2319FC51CD172F1003E1EE5 /* Matrix.swift in Sources */,
 				C23938ED1CAC7D2000526B30 /* Promise.swift in Sources */,
 				C23938F71CAC7D2000526B30 /* Time.swift in Sources */,
 				C2EAC1081CAEEFB20050B154 /* SequenceType+.swift in Sources */,
 				C239391E1CAC7D7E00526B30 /* LoremIpsum.swift in Sources */,
+				C2D869C11CCC00100010DCF9 /* Dictionary+.swift in Sources */,
 				C23939401CAC7DC500526B30 /* NSCache+.swift in Sources */,
 				C239393E1CAC7DC500526B30 /* NSBundle+.swift in Sources */,
 				C2393A201CAC81DB00526B30 /* NSText+.swift in Sources */,
@@ -1407,7 +1413,6 @@
 				C23938E91CAC7D2000526B30 /* Draw.swift in Sources */,
 				C2393A1A1CAC81DB00526B30 /* NSColor+.swift in Sources */,
 				C239396C1CAC7DF000526B30 /* NSRelationshipDescription+.swift in Sources */,
-				C2048C871CC74B4100A22E66 /* JSON.swift in Sources */,
 				C239395D1CAC7DDD00526B30 /* CKRecordID+.swift in Sources */,
 				C2393A1E1CAC81DB00526B30 /* NSTableView+.swift in Sources */,
 				C23939681CAC7DF000526B30 /* NSManagedObject+.swift in Sources */,
@@ -1439,6 +1444,7 @@
 				C23939471CAC7DC500526B30 /* NSMutableAttributedString+.swift in Sources */,
 				C24AB3531CC1C9E200D7E03F /* UIScreen+.swift in Sources */,
 				C239390E1CAC7D5D00526B30 /* SymbolIcon.swift in Sources */,
+				C2319FC11CD13A9E003E1EE5 /* Diff.swift in Sources */,
 				C239393F1CAC7DC500526B30 /* NSCache+.swift in Sources */,
 				C23FD17E1CC34C380060588D /* NSLayoutConstraint+.swift in Sources */,
 				C23938E41CAC7D2000526B30 /* Box.swift in Sources */,
@@ -1455,7 +1461,6 @@
 				C239396B1CAC7DF000526B30 /* NSRelationshipDescription+.swift in Sources */,
 				C23939581CAC7DDD00526B30 /* CKQuery+.swift in Sources */,
 				C23939AB1CAC7EF600526B30 /* UILabel+.swift in Sources */,
-				C2048C861CC74B4100A22E66 /* JSON.swift in Sources */,
 				C23939A11CAC7EF600526B30 /* UIBezierPath+.swift in Sources */,
 				C2D73FAA1CC0465900CBE230 /* MagnifiedLayoutConfig.swift in Sources */,
 				C23938E61CAC7D2000526B30 /* Curry.swift in Sources */,
@@ -1471,6 +1476,7 @@
 				C2ECCBEC1CB86DD700D872E4 /* TableGenericView.swift in Sources */,
 				C23939A91CAC7EF600526B30 /* UIEdgeInsets+.swift in Sources */,
 				C23938F21CAC7D2000526B30 /* Swizzle.swift in Sources */,
+				C2D869C01CCC00100010DCF9 /* Dictionary+.swift in Sources */,
 				C23939A31CAC7EF600526B30 /* UICollectionView+.swift in Sources */,
 				C2ECCBF21CB86DE800D872E4 /* TransitionGenericAnimator.swift in Sources */,
 				C2ECCBF11CB86DE800D872E4 /* TransitionPresentationController.swift in Sources */,
@@ -1482,11 +1488,11 @@
 				C23938F41CAC7D2000526B30 /* Then.swift in Sources */,
 				C23939491CAC7DC500526B30 /* NSNumber+.swift in Sources */,
 				C239391D1CAC7D7E00526B30 /* LoremIpsum.swift in Sources */,
-				C2393A221CAC85D400526B30 /* Array+.swift in Sources */,
 				C23939041CAC7D4700526B30 /* PersistentStack.swift in Sources */,
 				C23938EE1CAC7D2000526B30 /* Queue.swift in Sources */,
 				C2EAC1071CAEEFB20050B154 /* SequenceType+.swift in Sources */,
 				C23939A71CAC7EF600526B30 /* UIColor+.swift in Sources */,
+				C2319FC41CD172F1003E1EE5 /* Matrix.swift in Sources */,
 				C23939221CAC7D8D00526B30 /* CloudCategorical.swift in Sources */,
 				C23938E81CAC7D2000526B30 /* Draw.swift in Sources */,
 				C23939151CAC7D7000526B30 /* OpenWeather.swift in Sources */,

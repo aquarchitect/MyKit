@@ -11,55 +11,54 @@ public extension NSMutableAttributedString {
     private var range: NSRange { return NSMakeRange(0, self.length) }
 
     #if os(iOS)
-        public func addFontAttribute(value: UIFont?, range: NSRange? = nil) {
-            self.addFontAttribute(value, range)
+        public func addFont(value: UIFont?, toRange range: NSRange? = nil) {
+            self._addFont(value, range)
         }
 
-        public func addColorAttribute(value: UIColor?, range: NSRange? = nil) {
-            self.addColorAttribute(value, range)
+        public func addColor(value: UIColor?, toRange range: NSRange? = nil) {
+            self._addColor(value, range)
         }
     #elseif os(OSX)
-        public func addFontAttribute(value: NSFont?, range: NSRange? = nil) {
-            self.addFontAttribute(value, range)
+        public func addFont(value: NSFont?, toRange range: NSRange? = nil) {
+            self._addFont(value, range)
         }
 
-        public func addColorAttribute(value: NSColor?, range: NSRange? = nil) {
-            self.addColorAttribute(value, range)
+        public func addColor(value: NSColor?, toRange range: NSRange? = nil) {
+            self._addColor(value, range)
         }
     #endif
 
-    private func addFontAttribute(value: AnyObject?, _ range: NSRange?) {
+    private func _addFont(value: AnyObject?, _ range: NSRange?) {
         guard let _value = value else { return }
         self.addAttribute(NSFontAttributeName, value: _value, range: range ?? self.range)
     }
 
-    private func addColorAttribute(value: AnyObject?, _ range: NSRange?) {
+    private func _addColor(value: AnyObject?, _ range: NSRange?) {
         guard let _value = value else { return }
         self.addAttribute(NSForegroundColorAttributeName, value: _value, range: range ?? self.range)
     }
 
-    public func addAlignmentAttribute(value: NSTextAlignment, range: NSRange? = nil) {
+    public func addAlignment(value: NSTextAlignment, toRange range: NSRange? = nil) {
         let paragraph = NSMutableParagraphStyle()
         paragraph.alignment = value
 
-        self.addParagraphAttribute(paragraph, range: range)
+        self.addParagraph(paragraph, toRange: range)
     }
 
-    public func addParagraphAttribute(value: NSParagraphStyle, range: NSRange? = nil) {
+    public func addParagraph(value: NSParagraphStyle, toRange range: NSRange? = nil) {
         self.addAttribute(NSParagraphStyleAttributeName, value: value, range: range ?? self.range)
     }
 
-    public func addBaselineAttribute(value: Float, range: NSRange? = nil) {
+    public func addBaseline(value: Float, toRange range: NSRange? = nil) {
         self.addAttribute(NSBaselineOffsetAttributeName, value: NSNumber(float: value), range: range ?? self.range)
     }
 
-    public func addKernAttribute(value: Float, range: NSRange? = nil) {
+    public func addKern(value: Float, toRange range: NSRange? = nil) {
         self.addAttribute(NSKernAttributeName, value: NSNumber(float: value), range: range ?? self.range)
     }
 }
 
 public func + (lhs: NSMutableAttributedString, rhs: NSMutableAttributedString) -> NSMutableAttributedString {
-    return NSMutableAttributedString(attributedString: lhs).then {
-        $0.appendAttributedString(rhs)
-    }
+    return NSMutableAttributedString(attributedString: lhs)
+        .then { $0.appendAttributedString(rhs) }
 }

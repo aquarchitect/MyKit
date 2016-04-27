@@ -17,7 +17,7 @@ public struct SymbolIcon {
             let font = NSFont.fontWith(name: name, size: size, fromFile: file)
         #endif
 
-        return NSMutableAttributedString(string: "\(character)").then { $0.addFontAttribute(font) }
+        return NSMutableAttributedString(string: "\(character)").then { $0.addFont(font) }
     }
 
     #if os(iOS)

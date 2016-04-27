@@ -57,8 +57,8 @@ public class CenteredFlowLayout: UICollectionViewFlowLayout {
             let range = 0..<collectionView.numberOfItemsInSection(section)
 
             Set([range.first, range.last].flatMap { $0 }.lazy)
-                .map { return NSIndexPath(forItem: $0, inSection: section) }.lazy
-                .flatMap { return super.layoutAttributesForItemAtIndexPath($0) as? Attributes }.lazy
+                .map { NSIndexPath(forItem: $0, inSection: section) }.lazy
+                .flatMap { super.layoutAttributesForItemAtIndexPath($0) as? Attributes }.lazy
                 .forEach {
                     let (corners, bottomed) = attributesForItemAt($0.indexPath)
                     
