@@ -22,3 +22,10 @@ public struct Diff<T: Equatable> {
         self.insertion = insertion
     }
 }
+
+extension Diff: CustomDebugStringConvertible {
+
+    public var debugDescription: String {
+        return "Deletion: \(deletion.debugDescription)\nInsertion: \(insertion.debugDescription)"
+    }
+}

@@ -13,8 +13,6 @@
 		C2099CA71CB471F300EA23BA /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2099CA31CB471F300EA23BA /* ScheduleTests.swift */; };
 		C2319FC11CD13A9E003E1EE5 /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2319FC01CD13A9E003E1EE5 /* Diff.swift */; };
 		C2319FC21CD13A9E003E1EE5 /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2319FC01CD13A9E003E1EE5 /* Diff.swift */; };
-		C2319FC41CD172F1003E1EE5 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2319FC31CD172F1003E1EE5 /* Matrix.swift */; };
-		C2319FC51CD172F1003E1EE5 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2319FC31CD172F1003E1EE5 /* Matrix.swift */; };
 		C23938E21CAC7D2000526B30 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23938D71CAC7D2000526B30 /* Action.swift */; };
 		C23938E31CAC7D2000526B30 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23938D71CAC7D2000526B30 /* Action.swift */; };
 		C23938E41CAC7D2000526B30 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23938D81CAC7D2000526B30 /* Box.swift */; };
@@ -265,7 +263,6 @@
 /* Begin PBXFileReference section */
 		C2099CA31CB471F300EA23BA /* ScheduleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleTests.swift; path = UnitTests/ScheduleTests.swift; sourceTree = SOURCE_ROOT; };
 		C2319FC01CD13A9E003E1EE5 /* Diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Diff.swift; path = Source/Common/Utility/Diff.swift; sourceTree = "<group>"; };
-		C2319FC31CD172F1003E1EE5 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix.swift; path = Source/Common/Utility/Matrix.swift; sourceTree = "<group>"; };
 		C23938D71CAC7D2000526B30 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Source/Common/Utility/Action.swift; sourceTree = "<group>"; };
 		C23938D81CAC7D2000526B30 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Source/Common/Utility/Box.swift; sourceTree = "<group>"; };
 		C23938D91CAC7D2000526B30 /* Curry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Curry.swift; path = Source/Common/Utility/Curry.swift; sourceTree = "<group>"; };
@@ -569,7 +566,6 @@
 				C23938E11CAC7D2000526B30 /* Time.swift */,
 				C2A8F34B1CB0596D004504A2 /* Schedule.swift */,
 				C2319FC01CD13A9E003E1EE5 /* Diff.swift */,
-				C2319FC31CD172F1003E1EE5 /* Matrix.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1399,7 +1395,6 @@
 				C23939071CAC7D4700526B30 /* StreamClient.swift in Sources */,
 				C23938F51CAC7D2000526B30 /* Then.swift in Sources */,
 				C23939661CAC7DF000526B30 /* NSEntityDescription+.swift in Sources */,
-				C2319FC51CD172F1003E1EE5 /* Matrix.swift in Sources */,
 				C23938ED1CAC7D2000526B30 /* Promise.swift in Sources */,
 				C23938F71CAC7D2000526B30 /* Time.swift in Sources */,
 				C2EAC1081CAEEFB20050B154 /* SequenceType+.swift in Sources */,
@@ -1492,7 +1487,6 @@
 				C23938EE1CAC7D2000526B30 /* Queue.swift in Sources */,
 				C2EAC1071CAEEFB20050B154 /* SequenceType+.swift in Sources */,
 				C23939A71CAC7EF600526B30 /* UIColor+.swift in Sources */,
-				C2319FC41CD172F1003E1EE5 /* Matrix.swift in Sources */,
 				C23939221CAC7D8D00526B30 /* CloudCategorical.swift in Sources */,
 				C23938E81CAC7D2000526B30 /* Draw.swift in Sources */,
 				C23939151CAC7D7000526B30 /* OpenWeather.swift in Sources */,
