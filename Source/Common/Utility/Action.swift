@@ -25,7 +25,7 @@ public protocol ActionBlock: class {}
 
 public extension ActionBlock {
 
-    final private func setAction(block: Self -> Void) {
+    private func setAction(block: Self -> Void) {
         let obj: AnyObject = unsafeBitCast(ActionWrapper(f: block), AnyObject.self)
         objc_setAssociatedObject(self, &Action, obj, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
     }
@@ -39,29 +39,25 @@ internal extension NSObject {
 }
 
 #if os(iOS)
-    // MARK: - Control
+extension UIControl: ActionBlock {}
 
-    extension UIControl: ActionBlock {}
+public extension ActionBlock where Self: UIControl {
 
-    public extension ActionBlock where Self: UIControl {
-
-        public final func addAction(block: Self -> Void, forControlEvents events: UIControlEvents) {
-            self.setAction(block)
-            self.addTarget(self, action: #selector(handleBlock), forControlEvents: events)
-        }
+    public final func addAction(block: Self -> Void, forControlEvents events: UIControlEvents) {
+        self.setAction(block)
+        self.addTarget(self, action: #selector(handleBlock), forControlEvents: events)
     }
+}
 #endif
 
 #if os(iOS)
-    // MARK: - Gesture Recognizer
+extension UIGestureRecognizer: ActionBlock {}
 
-    extension UIGestureRecognizer: ActionBlock {}
+public extension ActionBlock where Self: UIGestureRecognizer {
 
-    public extension ActionBlock where Self: UIGestureRecognizer {
-
-        public final func addAction(block: Self -> Void) {
-            self.setAction(block)
-            self.addTarget(self, action: #selector(handleBlock))
-        }
+    public final func addAction(block: Self -> Void) {
+        self.setAction(block)
+        self.addTarget(self, action: #selector(handleBlock))
     }
+}
 #endif
