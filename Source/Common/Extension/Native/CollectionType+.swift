@@ -6,6 +6,14 @@
 //  
 //
 
+public extension CollectionType {
+
+    public func find(@noescape predicate: Generator.Element throws -> Bool) rethrows -> Generator.Element? {
+        guard let index = try self.indexOf(predicate) else { return nil }
+        return self[index]
+    }
+}
+
 public extension CollectionType where Index.Distance == Int {
 
     private func randomDistance() -> Index.Distance {
