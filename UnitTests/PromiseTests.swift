@@ -37,7 +37,7 @@ final class PromiseTests: XCTestCase {
     func testRejectedArray() {
         let expectation = expectationWithDescription(#function)
 
-        let ps = [(0.5, .Fullfill(5)), (0.5, .Reject(CommonError.NoContent)), (1.0, .Fullfill(15))].map(delayFor)
+        let ps = [(0.5, .Fullfill(5)), (0.5, .Reject(CommonError.NoDataContent)), (1.0, .Fullfill(15))].map(delayFor)
 
         Promise<Int>.when(ps).resolve {
             switch $0 {
@@ -45,7 +45,7 @@ final class PromiseTests: XCTestCase {
             case .Fullfill(let value):
                 XCTFail("Promise callback with value \(value)")
 
-            case .Reject(CommonError.NoContent):
+            case .Reject(CommonError.NoDataContent):
                 XCTAssert(true)
                 expectation.fulfill()
 
@@ -82,7 +82,7 @@ final class PromiseTests: XCTestCase {
         let expectation = expectationWithDescription(#function)
 
         let p1 = delayFor(0.5, result: .Fullfill(true))
-        let p2 = delayFor(1.0, result: Result<String>.Reject(CommonError.NoContent))
+        let p2 = delayFor(1.0, result: Result<String>.Reject(CommonError.NoDataContent))
 
         (p1 +++ p2).resolve {
             switch $0 {
@@ -90,7 +90,7 @@ final class PromiseTests: XCTestCase {
             case .Fullfill(let value):
                 XCTFail("Promise callback with value \(value)")
 
-            case .Reject(CommonError.NoContent):
+            case .Reject(CommonError.NoDataContent):
                 XCTAssert(true)
                 expectation.fulfill()
 
