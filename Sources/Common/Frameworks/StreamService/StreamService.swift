@@ -30,7 +30,7 @@ public class StreamService: NSObject {
 
     // MARK: Property
 
-    public static let EventNotification = "StreamClientEventNotification"
+    public static let EventNotification = "StreamServiceEventNotification"
 
     public private(set) var host: Host?
     private var timeoutID: Schedule.ID?

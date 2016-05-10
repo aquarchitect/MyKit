@@ -6,10 +6,6 @@
 //  
 //
 
-// FIXME: the class description
-
-// because the way of the class structuring, the intervals generates not from one point of time, but an cumulative affect.
-
 final public class Schedule {
 
     public typealias ID = UInt

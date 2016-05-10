@@ -18,7 +18,7 @@ public extension NSLayoutConstraint {
         return NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views)
     }
 #elseif os(OSX)
-    public convenience init(view view1: UIView, attribute attr1: NSLayoutAttribute, relatedBy relation: NSLayoutRelation, toView view2: NSView?, attribute attr2: NSLayoutAttribute, multiplier: CGFloat, constant c: CGFloat, priority: UILayoutPriority = UILayoutPriorityRequired) {
+    public convenience init(view view1: NSView, attribute attr1: NSLayoutAttribute, relatedBy relation: NSLayoutRelation, toView view2: NSView?, attribute attr2: NSLayoutAttribute, multiplier: CGFloat, constant c: CGFloat, priority: NSLayoutPriority = NSLayoutPriorityRequired) {
     self.init(item: view1, attribute: attr1, relatedBy: relation, toItem: view2, attribute: attr2, multiplier: multiplier, constant: c)
     self.priority = priority
     }
