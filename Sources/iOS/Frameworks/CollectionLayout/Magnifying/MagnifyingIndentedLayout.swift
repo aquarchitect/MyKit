@@ -1,12 +1,12 @@
 //
-//  MagnifyingSuperLayout.swift
+//  MagnifyingSampleLayout.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 4/8/16.
 //  
 //
 
-public class MagnifyingSuperLayout: SnappingSuperLayout {
+public class MagnifyingSampleLayout: SnappingSuperLayout {
 
     // MARK: Property
 
@@ -18,7 +18,7 @@ public class MagnifyingSuperLayout: SnappingSuperLayout {
     public var visibleAttributes: [NSIndexPath: UICollectionViewLayoutAttributes] = [:]
 
     private var itemsCount: Int {
-        return (0..<(self.collectionView?.numberOfSections() ?? 0)).reduce(0) { $0 + (self.collectionView?.numberOfItemsInSection($1) ?? 0) }
+        return (0..<(collectionView?.numberOfSections() ?? 0)).reduce(0) { $0 + (collectionView?.numberOfItemsInSection($1) ?? 0) }
     }
 
     // MARK: System Method
