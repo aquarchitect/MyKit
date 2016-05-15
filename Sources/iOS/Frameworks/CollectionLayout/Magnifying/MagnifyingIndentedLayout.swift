@@ -1,12 +1,12 @@
 //
-//  MagnifyingSampleLayout.swift
+//  MagnifyingIndentedLayout.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 4/8/16.
 //  
 //
 
-public class MagnifyingSampleLayout: SnappingSuperLayout {
+public class MagnifyingIndentedLayout: SnappingSuperLayout {
 
     // MARK: Property
 

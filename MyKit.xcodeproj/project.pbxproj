@@ -145,7 +145,7 @@
 		C20166711CE104DE00F7D3E5 /* CenteringFlowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666F1CE104DE00F7D3E5 /* CenteringFlowCell.swift */; };
 		C20166721CE104DE00F7D3E5 /* CenteringFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166701CE104DE00F7D3E5 /* CenteringFlowLayout.swift */; };
 		C20166761CE104EC00F7D3E5 /* MagnifyingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166731CE104EC00F7D3E5 /* MagnifyingFlowLayout.swift */; };
-		C20166771CE104EC00F7D3E5 /* MagnifyingSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166741CE104EC00F7D3E5 /* MagnifyingSuperLayout.swift */; };
+		C20166771CE104EC00F7D3E5 /* MagnifyingIndentedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166741CE104EC00F7D3E5 /* MagnifyingIndentedLayout.swift */; };
 		C20166781CE104EC00F7D3E5 /* MagnifyingLayoutConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166751CE104EC00F7D3E5 /* MagnifyingLayoutConfig.swift */; };
 		C20166831CE1097100F7D3E5 /* SnappingSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166821CE1097100F7D3E5 /* SnappingSuperLayout.swift */; };
 		C201668A1CE10A8300F7D3E5 /* SnappingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166891CE10A8300F7D3E5 /* SnappingFlowLayout.swift */; };
@@ -159,7 +159,7 @@
 		C2099CA61CB471F300EA23BA /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2099CA31CB471F300EA23BA /* ScheduleTests.swift */; };
 		C2099CA71CB471F300EA23BA /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2099CA31CB471F300EA23BA /* ScheduleTests.swift */; };
 		C23939C81CAC7F5900526B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939BB1CAC7F4300526B30 /* AppDelegate.swift */; };
-		C23939C91CAC7F5900526B30 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939BD1CAC7F4300526B30 /* CollectionViewController.swift */; };
+		C23939C91CAC7F5900526B30 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939BD1CAC7F4300526B30 /* NavigationController.swift */; };
 		C23939CA1CAC7F8E00526B30 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23939C41CAC7F4F00526B30 /* Launch.storyboard */; };
 		C23939D41CAC7FB900526B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939CB1CAC7FA300526B30 /* AppDelegate.swift */; };
 		C23939D51CAC7FB900526B30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939CD1CAC7FA300526B30 /* ViewController.swift */; };
@@ -343,7 +343,7 @@
 		C201666F1CE104DE00F7D3E5 /* CenteringFlowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenteringFlowCell.swift; path = Sources/iOS/Frameworks/CollectionLayout/Centering/CenteringFlowCell.swift; sourceTree = "<group>"; };
 		C20166701CE104DE00F7D3E5 /* CenteringFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenteringFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Centering/CenteringFlowLayout.swift; sourceTree = "<group>"; };
 		C20166731CE104EC00F7D3E5 /* MagnifyingFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyingFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Magnifying/MagnifyingFlowLayout.swift; sourceTree = "<group>"; };
-		C20166741CE104EC00F7D3E5 /* MagnifyingSuperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyingSuperLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Magnifying/MagnifyingSuperLayout.swift; sourceTree = "<group>"; };
+		C20166741CE104EC00F7D3E5 /* MagnifyingIndentedLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyingIndentedLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Magnifying/MagnifyingIndentedLayout.swift; sourceTree = "<group>"; };
 		C20166751CE104EC00F7D3E5 /* MagnifyingLayoutConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyingLayoutConfig.swift; path = Sources/iOS/Frameworks/CollectionLayout/Magnifying/MagnifyingLayoutConfig.swift; sourceTree = "<group>"; };
 		C201667A1CE1083C00F7D3E5 /* NSColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSColor+.swift"; path = "Sources/OSX/Extensions/NSColor+.swift"; sourceTree = "<group>"; };
 		C201667B1CE1083C00F7D3E5 /* NSControl+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSControl+.swift"; path = "Sources/OSX/Extensions/NSControl+.swift"; sourceTree = "<group>"; };
@@ -355,7 +355,7 @@
 		C2099CA31CB471F300EA23BA /* ScheduleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleTests.swift; path = UnitTests/ScheduleTests.swift; sourceTree = SOURCE_ROOT; };
 		C23939BB1CAC7F4300526B30 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/iOS/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C23939BC1CAC7F4300526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demos/iOS/Info.plist; sourceTree = SOURCE_ROOT; };
-		C23939BD1CAC7F4300526B30 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = Demos/iOS/CollectionViewController.swift; sourceTree = SOURCE_ROOT; };
+		C23939BD1CAC7F4300526B30 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = Demos/iOS/NavigationController.swift; sourceTree = SOURCE_ROOT; };
 		C23939C51CAC7F4F00526B30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demos/iOS/Base.lproj/Launch.storyboard; sourceTree = SOURCE_ROOT; };
 		C23939CB1CAC7FA300526B30 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/OSX/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C23939CC1CAC7FA300526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demos/OSX/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -611,7 +611,7 @@
 		C201665A1CE1036700F7D3E5 /* Magnifying */ = {
 			isa = PBXGroup;
 			children = (
-				C20166741CE104EC00F7D3E5 /* MagnifyingSuperLayout.swift */,
+				C20166741CE104EC00F7D3E5 /* MagnifyingIndentedLayout.swift */,
 				C20166731CE104EC00F7D3E5 /* MagnifyingFlowLayout.swift */,
 				C20166751CE104EC00F7D3E5 /* MagnifyingLayoutConfig.swift */,
 			);
@@ -857,7 +857,7 @@
 			isa = PBXGroup;
 			children = (
 				C23939BB1CAC7F4300526B30 /* AppDelegate.swift */,
-				C23939BD1CAC7F4300526B30 /* CollectionViewController.swift */,
+				C23939BD1CAC7F4300526B30 /* NavigationController.swift */,
 				C2DC8CAC1CAB4E1000837D9E /* Support */,
 			);
 			name = iOS;
@@ -1514,7 +1514,7 @@
 				C20166451CE1017900F7D3E5 /* UITableView+.swift in Sources */,
 				C20166621CE1041A00F7D3E5 /* TransitionBasicAnimator.swift in Sources */,
 				C201668A1CE10A8300F7D3E5 /* SnappingFlowLayout.swift in Sources */,
-				C20166771CE104EC00F7D3E5 /* MagnifyingSuperLayout.swift in Sources */,
+				C20166771CE104EC00F7D3E5 /* MagnifyingIndentedLayout.swift in Sources */,
 				C20165B51CE0FC6D00F7D3E5 /* NSMutableAttributedString+.swift in Sources */,
 				C20165981CE0FC1100F7D3E5 /* OpenWeather.swift in Sources */,
 				C201666C1CE104CE00F7D3E5 /* CollectionDynamicCell.swift in Sources */,
@@ -1582,7 +1582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C23939C91CAC7F5900526B30 /* CollectionViewController.swift in Sources */,
+				C23939C91CAC7F5900526B30 /* NavigationController.swift in Sources */,
 				C23939C81CAC7F5900526B30 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

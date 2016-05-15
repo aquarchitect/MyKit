@@ -12,31 +12,16 @@ public class MagnifyingFlowLayout: SnappingFlowLayout {
 
     public var magnifyingConfig = MagnifyingLayoutConfig()
 
-    internal private(set) var visibleIndexPaths: [NSIndexPath] = []
-
     // MARK: System Methods
 
     public override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        visibleIndexPaths.removeAll(keepCapacity: true)
-
         return super.layoutAttributesForElementsInRect(rect)?.map {
-            switch $0.representedElementCategory {
-            case .Cell:
-                visibleIndexPaths += [$0.indexPath]
-                return self.layoutAttributesForItemAtIndexPath($0.indexPath) ?? $0
-            default:
-                return $0
-            }
+            $0.representedElementCategory == .Cell ? (self.layoutAttributesForItemAtIndexPath($0.indexPath) ?? $0) : $0
         }
     }
 
     public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
         return true
-    }
-
-    public override func invalidationContextForBoundsChange(newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
-        return super.invalidationContextForBoundsChange(newBounds)
-            .then { $0.invalidateItemsAtIndexPaths(visibleIndexPaths) }
     }
 
     public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
