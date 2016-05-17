@@ -18,7 +18,7 @@ private func registerFont(from file: String, ofBundle bundle: NSBundle) throws {
 
     // get file url
     guard let url = bundle.URLForResource(file, withExtension: ext)
-        else { throw CommonError.FailedToLocateFile(_file) }
+        else { throw Error.FailedToLocate(file: _file) }
 
     let data = NSData(contentsOfURL: url)
     let provider = CGDataProviderCreateWithCFData(data)

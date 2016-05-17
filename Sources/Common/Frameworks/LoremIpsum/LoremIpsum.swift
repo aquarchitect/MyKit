@@ -26,7 +26,7 @@ final class LoremIpsum: CollectionType {
         let name = "LoremIpsum", ext = "txt"
 
         guard let url = NSBundle.defaultBundle?.URLForResource(name, withExtension: ext)
-            else { throw CommonError.FailedToLocateFile("\(name).\(ext)") }
+            else { throw Error.FailedToLocate(file: "\(name).\(ext)") }
 
         let lorem = try String(contentsOfURL: url)
         let range = lorem.startIndex..<lorem.endIndex

@@ -15,9 +15,4 @@ public extension NSColor {
 
         self.init(red: r, green: g, blue: b, alpha: alpha)
     }
-
-    final class func arbitrary() -> NSColor {
-        let rand: Void -> CGFloat = { _ in return CGFloat(drand48()) }
-        return NSColor(red: rand(), green: rand(), blue: rand(), alpha: 1)
-    }
 }

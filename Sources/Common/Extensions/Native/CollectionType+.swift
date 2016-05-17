@@ -8,7 +8,7 @@
 
 public extension CollectionType {
 
-    public func find(@noescape predicate: Generator.Element throws -> Bool) rethrows -> Generator.Element? {
+    func find(@noescape predicate: Generator.Element throws -> Bool) rethrows -> Generator.Element? {
         guard let index = try self.indexOf(predicate) else { return nil }
         return self[index]
     }
@@ -35,10 +35,10 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
         return matrix
     }
 
-    public func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(other: C) -> Diff<Generator.Element> {
+    func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(other: C) -> Diff<Generator.Element> {
         var matrix = self.commonSequenceMatrix(other)
         matrix = matrix.map { $0 + 1 }
-        matrix.pad([.Top, .Left], repeatedValue: 0)
+        matrix.padding([.Top, .Left], repeatedValue: 0)
 
         var i = self.count + 1, j = other.count + 1
 

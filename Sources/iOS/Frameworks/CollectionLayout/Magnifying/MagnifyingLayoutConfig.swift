@@ -9,18 +9,18 @@
 public final class MagnifyingLayoutConfig {
 
     public typealias Paraboloid = CGPoint -> CGFloat
-    public typealias Limit = (min: CGFloat, max: CGFloat)
+    public typealias Limits = (min: CGFloat, max: CGFloat)
 
     // MARK: Property
 
     public let paraboloid: Paraboloid
-    public var scaleLimit: Limit?
+    public var scaleLimits: Limits?
 
     // MARK: Initialization
 
-    public init(paraboloid: Paraboloid, scaleLimit limit: Limit? = nil) {
+    public init(paraboloid: Paraboloid, scaleLimits limits: Limits? = nil) {
         self.paraboloid = paraboloid
-        self.scaleLimit = limit
+        self.scaleLimits = limits
     }
 
     /*
@@ -39,7 +39,7 @@ public final class MagnifyingLayoutConfig {
     // MARK: Support Method
 
     internal func scaleAttributesAt(point: CGPoint) -> CGFloat {
-        if let range = scaleLimit {
+        if let range = scaleLimits {
             return max(min(paraboloid(point), range.max), range.min)
         } else {
             return max(0, paraboloid(point))

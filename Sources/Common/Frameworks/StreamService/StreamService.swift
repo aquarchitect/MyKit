@@ -8,7 +8,7 @@
 
 private enum Exception: ErrorType {
 
-    case IPAddressInvalid
+    case IPInvalid
 }
 
 public class StreamService: NSObject {
@@ -19,8 +19,8 @@ public class StreamService: NSObject {
         public let port: UInt32
 
         public init(ip: String, port: UInt32) throws {
-            guard ip.isValidatedAs(.IPAddress) else {
-                throw Exception.IPAddressInvalid
+            guard ip.isValidAs(.IP) else {
+                throw Exception.IPInvalid
             }
 
             self.ip = ip

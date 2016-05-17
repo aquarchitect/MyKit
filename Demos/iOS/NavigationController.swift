@@ -87,12 +87,12 @@ extension NavigationController: UITableViewDelegate {
             class Controller: UICollectionViewController {
 
                 override func loadView() {
-                    let layout = CenteringFlowLayout(itemHeight: 50).then {
+                    let layout = CenteringGroupedLayout().then {
                         $0.cornerRadii = CGSize(sideLength: 10)
                         $0.sectionInset = UIEdgeInsets(sideLength: 20)
                     }
 
-                    collectionView = CollectionGenericView<Int, CenteringFlowCell>(frame: .zero, collectionViewLayout: layout).then {
+                    collectionView = CollectionGenericView<Int, CenteringRoundedCell>(frame: .zero, collectionViewLayout: layout).then {
                         $0.backgroundColor = .whiteColor()
                         $0.items = Array(count: 3, repeatedValue: Array(count: 10, repeatedValue: 0))
                         $0.config = { $0.0.backgroundColor = Arbitrary.Color.randomValue() }

@@ -1,12 +1,12 @@
 //
-//  CenteringFlowCell.swift
+//  CenteringRoundedCell.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 4/13/16.
 //  
 //
 
-public class CenteringFlowCell: UICollectionViewCell {
+public class CenteringRoundedCell: UICollectionViewCell {
 
     private var separatorLayer = CAShapeLayer().then {
         $0.strokeColor = UIColor.lightGrayColor().CGColor
@@ -42,7 +42,7 @@ public class CenteringFlowCell: UICollectionViewCell {
     public override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
         super.applyLayoutAttributes(layoutAttributes)
 
-        (layoutAttributes as? CenteringFlowLayout.Attributes)?.then {
+        (layoutAttributes as? CenteringGroupedLayout.Attributes)?.then {
             separatorLayer.hidden = !$0.showsSeparator
             (self.layer.mask as? CAShapeLayer)?.path = $0.maskPath.CGPath
         }

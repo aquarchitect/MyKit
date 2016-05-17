@@ -6,76 +6,58 @@
 //  
 //
 
-public struct Arbitrary {
-
-    public struct Number {}
-    public struct Lorem {}
-    public struct Color {}
-}
+public struct Arbitrary {}
 
 public extension Arbitrary {
 
-    static func random<C: CollectionType where C.Index.Distance == Int>(`in` c: C) -> C.Generator.Element {
+    static func element<C: CollectionType where C.Index.Distance == Int>(`in` c: C) -> C.Generator.Element {
         precondition(!c.isEmpty, "No elements for random selecting")
+
         let distance = Int(arc4random_uniform(UInt32(c.count)))
         return c[c.startIndex.advancedBy(distance)]
     }
 
-    static func random<C: CollectionType where C.Index.Distance == Int>(`in` c: C) -> C.SubSequence {
+    static func subsequence<C: CollectionType where C.Index.Distance == Int>(`in` c: C) -> C.SubSequence {
         let startDistance = Int(arc4random_uniform(UInt32(c.count)))
         let startIndex = c.startIndex.advancedBy(startDistance)
 
-        let endDistance = Arbitrary.random(in: startDistance..<c.count) ?? startDistance
+        let endDistance = element(in: startDistance..<c.count)
         let endIndex = c.startIndex.advancedBy(endDistance)
 
         return c[startIndex..<endIndex]
     }
 }
 
-public extension Arbitrary.Number {
+public extension Arbitrary {
 
-    static func randomInt() -> Int {
+    static var bool: Bool {
+        return int % 2 == 0
+    }
+
+    static var int: Int {
         return Int(arc4random())
     }
 
-    static func randomInt(`in` range: Range<Int>) -> Int {
-        return Arbitrary.random(in: range)
+    static func int(`in` range: Range<Int>) -> Int {
+        return element(in: range)
     }
 }
 
-public extension Arbitrary.Lorem {
+public extension Arbitrary {
 
-    static func randomSentence() -> String {
-        return Arbitrary.random(in: LoremIpsum.sharedInstance)
-    }
-
-    static func randomParagraph() -> String {
-        return Arbitrary.random(in: LoremIpsum.sharedInstance).joinWithSeparator(" ")
+    static var hexCode: String {
+        let value = arc4random_uniform(UInt32(UInt16.max))
+        return String(format: "#%06X", value)
     }
 }
 
-public extension Arbitrary.Color {
+public extension Arbitrary {
 
-    static func randomHex() -> String {
-        let hex = arc4random_uniform(UInt32(UInt16.max))
-        return String(format:  "#%06X", hex)
+    static var sentence: String {
+        return element(in: LoremIpsum.sharedInstance)
     }
 
-#if os(iOS)
-    static func randomValue() -> UIColor {
-        let r = drand48()
-        let g = drand48()
-        let b = drand48()
-
-        return UIColor(red: CGFloat(r), green: CGFloat(g), blue: CGFloat(b), alpha: 1)
+    static var paragraph: String {
+        return subsequence(in: LoremIpsum.sharedInstance).joinWithSeparator(". ")
     }
-#elseif os(OSX)
-    static func randomValue() -> NSColor {
-        let r = drand48()
-        let g = drand48()
-        let b = drand48()
-
-        return NSColor(red: CGFloat(r), green: CGFloat(g), blue: CGFloat(b), alpha: 1)
-    }
-#endif
 }
