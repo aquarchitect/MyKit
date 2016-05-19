@@ -8,13 +8,13 @@
 
 final class NSDateTests: XCTestCase {
 
-    func testDateByAddingUnits() {
+    func testAddingUnitsToDate() {
         let components = NSDateComponents().then {
-                $0.calendar = NSDate.Calendar
-                $0.day = 23
-                $0.month = 1
-                $0.year = 1990
-            }
+            $0.calendar = NSDate.Calendar
+            $0.day = 23
+            $0.month = 1
+            $0.year = 1990
+        }
 
         guard let date = components.date else { return XCTFail() }
 
