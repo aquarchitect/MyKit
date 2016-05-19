@@ -8,6 +8,12 @@ branches:
   only:
     - master
 
+before_install:
+  - brew update
+
+install:
+  - gem install xcpretty
+
 env:
   global:
     - FRAMEWORK="MyKit"
@@ -30,7 +36,4 @@ script:
     ONLY_ACTIVE_ARCH=NO
     GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
     GCC_GENERATE_TEST_COVERAGE_FILES=YES
-    "$ACTION"
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+    "$ACTION" | xcpretty
