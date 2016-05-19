@@ -9,12 +9,16 @@
 public protocol HexColoring: class {
 
     init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
+#if os(iOS)
     func getRed(red: UnsafeMutablePointer<CGFloat>, green: UnsafeMutablePointer<CGFloat>, blue: UnsafeMutablePointer<CGFloat>, alpha: UnsafeMutablePointer<CGFloat>) -> Bool
+#elseif os(OSX)
+    func getRed(red: UnsafeMutablePointer<CGFloat>, green: UnsafeMutablePointer<CGFloat>, blue: UnsafeMutablePointer<CGFloat>, alpha: UnsafeMutablePointer<CGFloat>)
+#endif
 }
 
 public extension HexColoring {
 
-    public var hexUInt: UInt {
+    public var hexValue: UInt {
         var r: CGFloat = 0
         var g: CGFloat = 0
         var b: CGFloat = 0
@@ -24,7 +28,7 @@ public extension HexColoring {
         return UInt(r * 255) << 16 | UInt(g * 255) << 8 | UInt(b * 255) << 0
     }
 
-    init(hexUInt value: UInt, alpha: CGFloat = 1) {
+    init(hexValue value: UInt, alpha: CGFloat = 1) {
         let r = CGFloat((value & 0xFF0000) >> 16) / 255
         let g = CGFloat((value & 0x00FF00) >> 8) / 255
         let b = CGFloat((value & 0x0000FF) >> 0) / 255
@@ -35,17 +39,17 @@ public extension HexColoring {
 
 public extension HexColoring {
 
-    var hexString: String {
-        return String(format: "#%06X", hexUInt)
+    var hexCode: String {
+        return String(format: "#%06X", hexValue)
     }
 
-    init?(hexString value: String) {
+    init?(hexCode value: String) {
         guard value.isValidAs(.Hexadecimal) else { return nil }
         let scanner = NSScanner(string: value)
             .then { $0.scanLocation = 1 }
 
         guard let hex = scanner.scanHexUInt32() else { return nil }
-        self.init(hexUInt: UInt(hex), alpha: 1)
+        self.init(hexValue: UInt(hex), alpha: 1)
     }
 }
 

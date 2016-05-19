@@ -32,10 +32,12 @@ public struct Matrix<T: CustomStringConvertible> {
 
     public subscript(row: Int, column: Int) -> T {
         get {
+            // print(row, column, rows, columns)
             precondition(isValidIndex(row, column), "Index out of bounds.")
             return elements[row * columns + column]
         }
         set {
+            // print(row, column, rows, columns)
             precondition(isValidIndex(row, column), "Index out of bounds")
             elements[row * columns + column] = newValue
         }
@@ -56,15 +58,12 @@ public extension Matrix {
             case .Top:
                 rows += 1
                 elements = Array(count: columns, repeatedValue: value) + elements
-
             case .Left:
                 columns += 1
                 (0..<rows).forEach { elements.insert(value, atIndex: $0 * columns) }
-
             case .Bottom:
                 rows += 1
                 elements += Array(count: columns, repeatedValue: value)
-
             case .Right:
                 columns += 1
                 (1...rows).forEach { elements.insert(value, atIndex: $0 * columns) }

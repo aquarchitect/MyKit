@@ -36,9 +36,10 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
     }
 
     func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(other: C) -> Diff<Generator.Element> {
-        var matrix = self.commonSequenceMatrix(other)
-        matrix = matrix.map { $0 + 1 }
-        matrix.padding([.Top, .Left], repeatedValue: 0)
+
+        var matrix = commonSequenceMatrix(other)
+            .map { $0 + 1 }
+            .padding([.Top, .Left], repeatedValue: 0)
 
         var i = self.count + 1, j = other.count + 1
 
@@ -50,11 +51,9 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
             case matrix[i, j-1]:
                 j -= 1
                 insertion += [(j-1, other[j-1])]
-
             case matrix[i-1, j]:
                 i -= 1
                 deletion += [(i-1, self[i-1])]
-
             default:
                 i -= 1
                 j -= 1
