@@ -6,11 +6,20 @@
 //  
 //
 
-public struct Matrix<T: CustomStringConvertible> {
+public struct Matrix<T> {
+
+    // MARK: Property
+
+    public private(set) var elements: [T]
 
     public let rows: Int
     public let columns: Int
-    private var elements: [T]
+
+    public var count: Int {
+        return elements.count
+    }
+
+    // MARK: Initialization
 
     public init(rows: Int, columns: Int, repeatedValue value: T) {
         self.rows = rows
@@ -18,13 +27,23 @@ public struct Matrix<T: CustomStringConvertible> {
         self.elements = Array(count: rows * columns, repeatedValue: value)
     }
 
-    public init?(rows: Int, columns: Int, elements: [T]) {
-        guard elements.count == rows * columns else { return nil }
+    public init(rows: Int, columns: Int, elements: [T]) {
+        precondition(elements.count == rows * columns)
 
         self.rows = rows
         self.columns = columns
         self.elements = elements
     }
+
+    public init(elements: [[T]]) {
+        let columns = elements.minElement { $0.count < $1.count }?.count ?? 0
+
+        self.columns = columns
+        self.rows = elements.count
+        self.elements = elements.flatMap { $0[0..<columns] }
+    }
+
+    // MARK: Support Method
 
     private func isValidIndex(row: Int, _ column: Int) -> Bool {
         return (0..<rows).contains(row) && (0..<columns).contains(column)
@@ -46,10 +65,17 @@ public struct Matrix<T: CustomStringConvertible> {
 
 public extension Matrix {
 
-    public func map<U: CustomStringConvertible>(f: T throws -> U) rethrows -> Matrix<U> {
-        return Matrix<U>(rows: rows, columns: columns, elements: try self.elements.map(f))!
+    @warn_unused_result
+    public func map<U>(f: T throws -> U) rethrows -> Matrix<U> {
+        return Matrix<U>(rows: rows, columns: columns, elements: try self.elements.map(f))
     }
 
+    @warn_unused_result
+    public func transposing() -> Matrix<T> {
+        return Matrix(elements: (0..<columns).map { column in (0..<rows).map { row in self[row, column] }})
+    }
+
+    @warn_unused_result
     public func padding(sides: [Side], repeatedValue value: T) -> Matrix<T> {
         var rows = self.rows, columns = self.columns, elements = self.elements
 
@@ -70,7 +96,7 @@ public extension Matrix {
             }
         }
 
-        return Matrix<T>(rows: rows, columns: columns, elements: elements)!
+        return Matrix<T>(rows: rows, columns: columns, elements: elements)
     }
 }
 

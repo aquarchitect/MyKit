@@ -1188,9 +1188,6 @@
 		C289AD711B62B93800186773 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				KnownAssetTags = (
-					font,
-				);
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				TargetAttributes = {
@@ -1865,6 +1862,7 @@
 				ENABLE_ON_DEMAND_RESOURCES = YES;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = MyKit/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = MyKit;
 				SDKROOT = iphoneos;
@@ -1881,6 +1879,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_ON_DEMAND_RESOURCES = YES;
 				INFOPLIST_FILE = MyKit/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = MyKit;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";

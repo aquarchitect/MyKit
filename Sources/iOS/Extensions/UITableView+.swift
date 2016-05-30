@@ -10,8 +10,12 @@ public extension UITableView {
 
     // MARK: Miscellaneous
 
-    final func isSectionValid(section: Int) -> Bool {
+    final func isSectionValid(`in` section: Int) -> Bool {
         return NSLocationInRange(section, NSMakeRange(0, self.numberOfSections))
+    }
+
+    final func isRowBottomed(at indexPath: NSIndexPath) -> Bool {
+        return indexPath.row ==  self.numberOfRowsInSection(indexPath.section) - 1
     }
 
     // MARK: Transform IndexPath

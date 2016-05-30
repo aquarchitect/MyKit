@@ -43,7 +43,7 @@ extension NavigationController: UITableViewDelegate {
                         $0.backgroundColor = .whiteColor()
                         $0.items = [Array(count: 400, repeatedValue: 0)]
                         $0.config = {
-                            $0.0.backgroundColor = Arbitrary.Color.randomValue()
+                            $0.0.backgroundColor = UIColor(hexCode: Arbitrary.hexCode)
                             $0.0.layer.cornerRadius = 5
                         }
                     }
@@ -74,7 +74,7 @@ extension NavigationController: UITableViewDelegate {
                         $0.backgroundColor = .whiteColor()
                         $0.items = [Array(count: 200, repeatedValue: 0)]
                         $0.config = {
-                            $0.0.backgroundColor = Arbitrary.Color.randomValue()
+                            $0.0.backgroundColor = UIColor(hexCode: Arbitrary.hexCode)
                             $0.0.layer.cornerRadius = 5
                         }
                     }
@@ -95,7 +95,7 @@ extension NavigationController: UITableViewDelegate {
                     collectionView = CollectionGenericView<Int, CenteringRoundedCell>(frame: .zero, collectionViewLayout: layout).then {
                         $0.backgroundColor = .whiteColor()
                         $0.items = Array(count: 3, repeatedValue: Array(count: 10, repeatedValue: 0))
-                        $0.config = { $0.0.backgroundColor = Arbitrary.Color.randomValue() }
+                        $0.config = { $0.0.backgroundColor = UIColor(hexCode: Arbitrary.hexCode) }
                     }
                 }
             }
