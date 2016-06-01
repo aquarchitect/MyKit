@@ -8,11 +8,14 @@
 
 public extension UIScreen {
 
-    public static var propotionalWidth: CGFloat {
-        let size = mainScreen().bounds.size
-        let width = min(size.width, size.height)
-        let ratio: CGFloat = UIDevice.currentDevice().userInterfaceIdiom == .Phone ? 1 : 2/3
+    enum Orientation { case Portrait, Landscape }
 
-        return width * ratio
+    var interfaceOrientation: Orientation {
+        return self.bounds.width <= self.bounds.height ? .Portrait : .Landscape
+    }
+
+    var propotionalWidth: CGFloat {
+        let ratio: CGFloat = UIDevice.currentDevice().userInterfaceIdiom == .Phone ? 1 : 2/3
+        return min(self.bounds.width, self.bounds.height) * ratio
     }
 }

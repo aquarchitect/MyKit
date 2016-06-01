@@ -9,9 +9,10 @@
 public class CenteringFlowLayout: UICollectionViewFlowLayout {
 
     public override func prepareLayout() {
+        let screen: UIScreen = .mainScreen()
         let padding: CGFloat = 15
-        let width = UIScreen.propotionalWidth - 2 * padding
-        let margin = (UIScreen.mainScreen().bounds.width - width) / 2
+        let width = screen.propotionalWidth - 2 * padding
+        let margin = (screen.bounds.width - width) / 2
         let inset = self.sectionInset
 
         self.sectionInset = UIEdgeInsetsMake(inset.top, margin, inset.bottom, margin)

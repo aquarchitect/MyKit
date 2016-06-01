@@ -12,6 +12,7 @@ before_install:
   - brew update
 
 install:
+  - gem install jazzy
   - gem install xcpretty
 
 env:
@@ -20,20 +21,8 @@ env:
     - OSX_SDK=macosx10.11
     - IOS_SDK=iphonesimulator9.3
   matrix:
-    - DESTINATION="arch=x86_64"             SCHEME="OSX"    SDK=$OSX_SDK    ACTION="test"
-    - DESTINATION="OS=9.0,name=iPhone 5S"   SCHEME="iOS"    SDK=$IOS_SDK    ACTION="test"
+    - DESTINATION="arch=x86_64"             SCHEME="OSX"    SDK=$OSX_SDK
+    - DESTINATION="OS=9.0,name=iPhone 5S"   SCHEME="iOS"    SDK=$IOS_SDK
 
 script:
-  - xcodebuild
-    -verbose
-    -project "$FRAMEWORK.xcodeproj"
-    -scheme "$FRAMEWORK-$SCHEME"
-    -sdk "$SDK"
-    -destination "$DESTINATION"
-    -configuration Debug
-    CODE_SIGN_IDENTITY=""
-    CODE_SIGNING_REQUIRED=NO
-    ONLY_ACTIVE_ARCH=NO
-    GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
-    GCC_GENERATE_TEST_COVERAGE_FILES=YES
-    "$ACTION" | xcpretty
+  - make test

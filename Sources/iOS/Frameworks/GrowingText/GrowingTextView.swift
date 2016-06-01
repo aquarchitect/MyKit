@@ -55,7 +55,7 @@ public class GrowingTextView: UIControl {
         super.layoutSubviews()
 
         let diff = textBox.contentSize.height - textBox.bounds.height
-        if diff < 0 { textBox.contentOffset.y = diff / 2 }
+        diff < 0 ? textBox.contentInset.top = diff / 2 : ()
     }
 
     public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
