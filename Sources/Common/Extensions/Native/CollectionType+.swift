@@ -38,9 +38,9 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
     }
 
     func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(other: C) -> Diff<Generator.Element> {
-        var matrix = commonSequenceMatrix(other).map { $0 + 1 }
-
-        // .padding([.Top, .Left], repeatedValue: 0)
+        let matrix = commonSequenceMatrix(other)
+            .map { $0 + 1 }
+            .pad([.Top, .Left])
 
         var i = self.count + 1, j = other.count + 1
 
