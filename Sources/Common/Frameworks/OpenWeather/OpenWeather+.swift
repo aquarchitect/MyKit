@@ -133,9 +133,10 @@ public extension OpenWeather {
 public extension OpenWeather.Icon {
 
     public init?(condition: Int, icon: String) {
-        guard case let condition = "\(condition)" where condition.characters.count == 3 else { return nil}
+        guard 100...999 ~= condition else { return nil}
 
-        self.init(rawValue: (icon.rangeOfString("n") == nil ? "D" : "N") + condition)
+        let initial = icon[icon.startIndex] == "n" ? "N" : "D"
+        self.init(rawValue: initial + "\(condition)")
     }
 }
 
