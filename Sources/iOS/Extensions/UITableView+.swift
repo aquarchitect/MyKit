@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public extension UITableView {
 
     // MARK: Miscellaneous

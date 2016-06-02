@@ -6,6 +6,8 @@
 //  
 //
 
+import CloudKit
+
 public extension CKContainer {
 
     public func fetchCurrentUserID() -> Promise<CKRecordID> {

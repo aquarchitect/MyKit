@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public extension UIScreen {
 
     enum Orientation { case Portrait, Landscape }

@@ -6,6 +6,8 @@
 //  
 //
 
+import CloudKit
+
 public extension CKDatabase {
 
     public func fetchCurrentUser() -> Promise<CKRecord> {

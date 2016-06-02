@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public class CenteringGroupedLayout: CenteringFlowLayout {
 
     class Attributes: UICollectionViewLayoutAttributes {

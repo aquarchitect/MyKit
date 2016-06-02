@@ -6,6 +6,8 @@
 //  
 //
 
+import Foundation
+
 public extension NSIndexPath {
 
     public var indexes: [Int] { return (0..<self.length).map(self.indexAtPosition) }

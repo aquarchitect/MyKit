@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public class SnappingFlowLayout: UICollectionViewFlowLayout {
 
     public var snappingPoint: CGPoint? {

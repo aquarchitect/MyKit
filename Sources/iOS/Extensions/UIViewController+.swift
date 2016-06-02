@@ -6,7 +6,7 @@
 //  
 //
 
-//extension UIViewController: Then {}
+import UIKit
 
 public extension UIViewController {
 

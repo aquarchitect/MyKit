@@ -6,6 +6,8 @@
 //  
 //
 
+import CloudKit
+
 public protocol CloudCategorical {
 
     associatedtype Element

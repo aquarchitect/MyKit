@@ -6,6 +6,8 @@
 //
 //
 
+import UIKit
+
 public class CollectionDynamicCell<V: UIView where V: Then>: UICollectionViewCell {
 
     // MARK: Property

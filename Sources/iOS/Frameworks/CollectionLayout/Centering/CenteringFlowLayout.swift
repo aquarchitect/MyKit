@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public class CenteringFlowLayout: UICollectionViewFlowLayout {
 
     public override func prepareLayout() {

@@ -6,6 +6,8 @@
 //  
 //
 
+import Foundation
+
 final class ActionWrapper<T>: NSObject {
 
     let f: T -> Void

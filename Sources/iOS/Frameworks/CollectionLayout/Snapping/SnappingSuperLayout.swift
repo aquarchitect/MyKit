@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public class SnappingSuperLayout: UICollectionViewLayout {
 
     public var snappingPoint: CGPoint?

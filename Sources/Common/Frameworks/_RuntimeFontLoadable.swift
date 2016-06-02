@@ -52,7 +52,9 @@ extension _RuntimeFontLoadable {
 }
 
 #if os(iOS)
+import UIKit
 extension UIFont: _RuntimeFontLoadable {}
 #elseif os(OSX)
+import AppKit
 extension NSFont: _RuntimeFontLoadable {}
 #endif

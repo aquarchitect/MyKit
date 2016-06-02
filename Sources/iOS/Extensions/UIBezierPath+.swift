@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public extension UIBezierPath {
 
     public convenience init(points: [CGPoint]) {

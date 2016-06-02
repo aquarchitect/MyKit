@@ -6,6 +6,8 @@
 //
 //
 
+import CoreData
+
 public extension NSManagedObject {
 
     public static var entityName: String {

@@ -6,6 +6,8 @@
 //
 //
 
+import UIKit
+
 public extension UIScrollView {
 
     final var limitedContentOffset: (min: CGPoint, max: CGPoint) {

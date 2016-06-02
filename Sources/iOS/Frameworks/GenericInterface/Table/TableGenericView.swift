@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public class TableGenericView<T, C: UITableViewCell>: UITableView, UITableViewDataSource {
 
     public var items: [[T]] = []

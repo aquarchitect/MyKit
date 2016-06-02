@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public extension UICollectionView {
 
     // MARK: Miscellaneous

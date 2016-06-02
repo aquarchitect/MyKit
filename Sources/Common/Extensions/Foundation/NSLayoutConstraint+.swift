@@ -6,6 +6,12 @@
 //  
 //
 
+#if os(iOS)
+import UIKit
+#elseif os(OSX)
+import AppKit
+#endif
+
 public extension NSLayoutConstraint {
 
 #if os(iOS)

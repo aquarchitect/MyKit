@@ -6,6 +6,8 @@
 //
 //
 
+import Foundation
+
 public extension String {
 
     /// Produce a camel case string

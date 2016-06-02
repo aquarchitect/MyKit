@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public class CollectionGenericView<T, C: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
 
     // MARK: Property

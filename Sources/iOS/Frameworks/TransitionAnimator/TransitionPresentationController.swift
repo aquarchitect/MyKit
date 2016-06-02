@@ -6,6 +6,8 @@
 //
 //
 
+import UIKit
+
 public class TransitionPresentationController: UIPresentationController {
 
     public var presentedRect: CGRect = UIScreen.mainScreen().bounds

@@ -6,6 +6,8 @@
 //  
 //
 
+import CoreGraphics
+
 public extension CGRect {
 
     public var center: CGPoint {

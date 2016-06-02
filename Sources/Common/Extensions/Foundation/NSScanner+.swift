@@ -6,6 +6,8 @@
 //  
 //
 
+import Foundation
+
 public extension NSScanner {
 
     // MARK: String

@@ -6,6 +6,8 @@
 //  
 //
 
+import CloudKit
+
 private enum ParseError: ErrorType {
 
     case MissedMatch

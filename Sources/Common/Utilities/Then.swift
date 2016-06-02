@@ -24,6 +24,7 @@ extension NSObject: Then {}
 extension Box: Then {}
 
 #if os(iOS)
+import UIKit
+
 extension UIView: Then {}
-//extension UIViewController: Then {}
 #endif

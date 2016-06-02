@@ -6,6 +6,8 @@
 //  
 //
 
+import Foundation
+
 public extension NSCache {
 
     final public func fetchObjectFor<T>(key: AnyObject, @noescape f: Void -> T) -> T {

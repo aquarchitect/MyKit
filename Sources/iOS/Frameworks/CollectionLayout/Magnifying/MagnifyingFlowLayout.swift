@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public class MagnifyingFlowLayout: SnappingFlowLayout {
 
     // MARK: Property

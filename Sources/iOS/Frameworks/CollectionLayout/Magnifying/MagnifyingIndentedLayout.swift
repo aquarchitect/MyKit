@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public class MagnifyingIndentedLayout: SnappingSuperLayout {
 
     // MARK: Property

@@ -6,6 +6,8 @@
 //  
 //
 
+import Foundation
+
 // MARK: Support Method
 
 public extension NSDate {

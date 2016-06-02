@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public extension UICollectionViewLayout {
 
     public func register<T: UICollectionReusableView>(type: T.Type, forIdentifier identifier: String) {

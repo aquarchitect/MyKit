@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public class CenteringRoundedCell: UICollectionViewCell {
 
     private var separatorLayer = CAShapeLayer().then {

@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public final class MagnifyingLayoutConfig {
 
     public typealias Paraboloid = CGPoint -> CGFloat

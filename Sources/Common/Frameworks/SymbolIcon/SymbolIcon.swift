@@ -8,27 +8,45 @@
 
 public struct SymbolIcon {
 
-    public static func attributedStringOf(character: Character, size: CGFloat) -> NSMutableAttributedString {
-        let name = "Ionicons", file = "SymbolIcon"
+    private let character: Character
+
+    public init(character: Character) {
+        self.character = character
+    }
+}
 
 #if os(iOS)
+import UIKit
+
+public extension SymbolIcon {
+
+    func attributedStringOf(size: CGFloat) -> NSMutableAttributedString {
+        let name = "Ionicons", file = "SymbolIcon"
         let font = UIFont.fontWith(name: name, size: size, fromFile: file)
-#elseif os(OSX)
-        let font = NSFont.fontWith(name: name, size: size, fromFile: file)
-#endif
 
         return NSMutableAttributedString(string: "\(character)").then { $0.addFont(font) }
     }
 
-#if os(iOS)
-    public static func imageOf(character: Character, size: CGFloat) -> UIImage? {
+    func bitmapImageOf(size: CGFloat) -> UIImage? {
         let label = UILabel.dummyInstance.then {
-            let string = SymbolIcon.attributedStringOf(character, size: size)
+            let string = attributedStringOf(size)
             $0.attributedText = string
             $0.sizeToFit()
         }
 
         return renderInContext(label.bounds.size, opaque: false, render: label.layer.renderInContext)
     }
-#endif
 }
+#elseif os(OSX)
+import AppKit
+
+public struct SymbolIcon {
+
+    func attributedStringOf(size: CGFloat) -> NSMutableAttributedString {
+        let name = "Ionicons", file = "SymbolIcon"
+        let font = NSFont.fontWith(name: name, size: size, fromFile: file)
+
+        return NSMutableAttributedString(string: "\(character)").then { $0.addFont(font) }
+    }
+}
+#endif

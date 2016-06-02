@@ -6,6 +6,8 @@
 //
 //
 
+import UIKit
+
 /**
 Return an image from rendering block.
 

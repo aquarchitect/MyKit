@@ -6,6 +6,8 @@
 //
 //
 
+import CoreLocation
+
 public final class OpenWeather {
 
     public typealias Callback = Result<[String: AnyObject]>.Callback

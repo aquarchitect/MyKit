@@ -6,6 +6,8 @@
 //  
 //
 
+import CloudKit
+
 public extension CKQuery {
 
     public convenience init<T: CloudObject>(recordType: T.Type, predicate: NSPredicate) {

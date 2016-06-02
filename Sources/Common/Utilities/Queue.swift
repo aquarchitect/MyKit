@@ -6,6 +6,8 @@
 //  
 //
 
+import Foundation
+
 public struct Queue {
 
     public struct Global {}

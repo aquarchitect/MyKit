@@ -6,6 +6,8 @@
 //  
 //
 
+import CoreGraphics
+
 public extension CGSize {
 
     init(sideLength: CGFloat) {

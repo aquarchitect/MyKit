@@ -6,6 +6,8 @@
 //
 //
 
+import Foundation
+
 private enum Exception: ErrorType {
 
     case IPInvalid

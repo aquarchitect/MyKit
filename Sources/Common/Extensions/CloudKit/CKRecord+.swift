@@ -6,6 +6,8 @@
 //  
 //
 
+import CloudKit
+
 public extension CKRecord {
 
     public convenience init<T: CloudObject>(recordType: T.Type) {

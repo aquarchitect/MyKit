@@ -6,6 +6,8 @@
 //
 //
 
+import CoreData
+
 public extension NSManagedObjectContext {
 
     public func fetch<T: NSManagedObject>(predicate: NSPredicate, sortDescriptos: [NSSortDescriptor]) throws -> [T]? {

@@ -6,6 +6,8 @@
 //
 //
 
+import UIKit
+
 public class TableViewController<T, C: UITableViewCell>: UITableViewController {
 
     public var items: [[T]] {

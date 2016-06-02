@@ -6,6 +6,8 @@
 //  
 //
 
+import Foundation
+
 final public class Schedule {
 
     public typealias ID = UInt

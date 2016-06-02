@@ -6,6 +6,8 @@
 //
 //
 
+import Foundation
+
 public struct DateIndex {
 
     public let value: NSDate

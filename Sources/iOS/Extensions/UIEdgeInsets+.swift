@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public extension UIEdgeInsets {
 
     public static var zero: UIEdgeInsets { return UIEdgeInsetsZero }

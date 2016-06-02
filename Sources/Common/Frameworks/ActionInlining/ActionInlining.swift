@@ -26,6 +26,8 @@ internal extension NSObject {
 }
 
 #if os(iOS)
+import UIKit
+
 extension UIControl: ActionInlining {}
 
 public extension ActionInlining where Self: UIControl {
@@ -35,9 +37,7 @@ public extension ActionInlining where Self: UIControl {
         self.addTarget(self, action: #selector(handleBlock), forControlEvents: events)
     }
 }
-#endif
 
-#if os(iOS)
 extension UIGestureRecognizer: ActionInlining {}
 
 public extension ActionInlining where Self: UIGestureRecognizer {

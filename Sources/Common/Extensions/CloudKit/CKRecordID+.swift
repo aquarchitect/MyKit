@@ -6,6 +6,8 @@
 //  
 //
 
+import CloudKit
+
 extension CKRecordID {
 
     public func targetOf(action: CKReferenceAction) -> CKReference {

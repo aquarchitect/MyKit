@@ -6,6 +6,8 @@
 //  
 //
 
+import CoreGraphics
+
 public protocol HexColoring: class {
 
     init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
@@ -54,7 +56,9 @@ public extension HexColoring {
 }
 
 #if os(iOS)
+import UIKit
 extension UIColor: HexColoring {}
 #elseif os(OSX)
+import AppKit
 extension NSColor: HexColoring {}
 #endif

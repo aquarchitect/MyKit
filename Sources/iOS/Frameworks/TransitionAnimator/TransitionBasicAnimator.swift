@@ -6,6 +6,8 @@
 //
 //
 
+import UIKit
+
 final public class TransitionBasicAnimator: NSObject {
 
     // MARK: Property

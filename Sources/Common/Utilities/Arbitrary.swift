@@ -6,6 +6,8 @@
 //  
 //
 
+import Foundation
+
 public struct Arbitrary {}
 
 public extension Arbitrary {

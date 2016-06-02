@@ -6,6 +6,8 @@
 //  
 //
 
+import CoreGraphics
+
 public let PI = CGFloat(M_PI)
 
 /**

@@ -6,6 +6,8 @@
 //  
 //
 
+import CoreData
+
 public extension NSFetchRequest {
 
     public convenience init<T: NSManagedObject>(type: T.Type) {

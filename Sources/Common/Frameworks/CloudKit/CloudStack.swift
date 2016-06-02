@@ -6,6 +6,8 @@
 //
 //
 
+import CloudKit
+
 public protocol CloudStack: class {
 
     var container: CKContainer { get }

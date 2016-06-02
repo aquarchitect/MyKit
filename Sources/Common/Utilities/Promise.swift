@@ -6,6 +6,8 @@
 //  
 //
 
+import Foundation
+
 public struct Promise<T> {
 
     private let operation: Result<T>.Callback -> Void

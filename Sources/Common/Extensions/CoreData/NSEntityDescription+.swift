@@ -6,6 +6,8 @@
 //
 //
 
+import CoreData
+
 public extension NSEntityDescription {
 
     public convenience init<T: NSManagedObject>(type: T.Type) {

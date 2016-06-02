@@ -6,6 +6,8 @@
 //
 //
 
+import Foundation
+
 public extension NSDateFormatter {
 
     public static var sharedInstance: NSDateFormatter {

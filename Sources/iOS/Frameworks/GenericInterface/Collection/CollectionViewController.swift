@@ -6,6 +6,8 @@
 //  
 //
 
+import UIKit
+
 public class CollectionViewController<T, C: UICollectionViewCell>: UICollectionViewController {
 
     // MARK: Property

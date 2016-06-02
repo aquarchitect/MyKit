@@ -6,6 +6,8 @@
 //
 //
 
+import Foundation
+
 extension NSBundle {
 
     static var defaultBundle: NSBundle? {
