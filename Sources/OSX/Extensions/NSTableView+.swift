@@ -6,6 +6,8 @@
 //  
 //
 
+import Cocoa
+
 public extension NSTableView {
 
     public func addDoubleAction(action: NSControl -> Void) {

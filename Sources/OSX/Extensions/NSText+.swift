@@ -6,6 +6,8 @@
 //  
 //
 
+import Cocoa
+
 public extension NSText {
 
     public static var measureingInstance: NSText {

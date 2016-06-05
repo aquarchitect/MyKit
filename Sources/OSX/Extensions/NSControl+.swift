@@ -6,6 +6,8 @@
 //  
 //
 
+import Cocoa
+
 public extension NSControl {
 
     private struct Key { static var action = "Action" }
