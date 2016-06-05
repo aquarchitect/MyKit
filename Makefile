@@ -27,12 +27,12 @@ docs: $(PUBLIC_ARTIFACTS)
 	jazzy
 	git config --global user.name "Hai Nguyen"
 	git config --global user.email "aquarchitecture@gmail.com"
-	cd $(PUBLIC_ARTIFACTS) && \
+	@ cd $(PUBLIC_ARTIFACTS) && \
 		git add . && git commit -m "Published #$(TRAVIS_BUILD_NUMBER)" && \
 		git push -f https://$(GITHUB_TOKEN)@$(MYKIT_REPOSITORY) && \
 		> /dev/null 2>&1
 
 icons: AppIcon.pdf Demos/Assets.xcassets
-	find folder in $$(find Demos -type d -name "*.appiconset"); do \
-		$(GENERATE_APPICON)/$(GENERATE_APPICON).sh AppIcon.pdf $$folder/Contents.json
+	@ find folder in $$(find Demos -type d -name "*.appiconset"); do \
+		$(GENERATE_APPICON)/$(GENERATE_APPICON).sh AppIcon.pdf $$folder/Contents.json; \
 	done
