@@ -56,10 +56,10 @@ public extension Arbitrary {
 public extension Arbitrary {
 
     static var sentence: String {
-        return element(in: LoremIpsum.sharedInstance)
+        return element(in: _LoremIpsum.sharedInstance)
     }
 
     static var paragraph: String {
-        return subsequence(in: LoremIpsum.sharedInstance).joinWithSeparator(". ")
+        return subsequence(in: _LoremIpsum.sharedInstance).joinWithSeparator(". ")
     }
 }

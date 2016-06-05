@@ -6,6 +6,8 @@
 //
 //
 
+import Foundation
+
 public protocol Then: class {}
 
 public extension Then {
