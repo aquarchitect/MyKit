@@ -9,24 +9,21 @@ branches:
   only:
     - master
 
-before_install:
-  - brew update
-  - make fetch
-
-install:
-  - git submodule init
-  - git submodule update
-  - gem install jazzy
-  - gem install xcpretty
-
 env:
   global:
-    - FRAMEWORK="MyKit"
     - OSX_SDK=macosx10.11
     - IOS_SDK=iphonesimulator9.3
   matrix:
     - DESTINATION="arch=x86_64"             SCHEME="OSX"    SDK=$OSX_SDK
     - DESTINATION="OS=9.0,name=iPhone 5S"   SCHEME="iOS"    SDK=$IOS_SDK
+
+before_install:
+  - brew update
+  - make fetch
+
+install:
+  - gem install jazzy
+  - gem install xcpretty
 
 script:
   - make test
