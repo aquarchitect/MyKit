@@ -6,8 +6,6 @@
 //  
 //
 
-import Surge
-
 public extension CollectionType {
 
     func find(@noescape predicate: Generator.Element throws -> Bool) rethrows -> Generator.Element? {
@@ -18,7 +16,7 @@ public extension CollectionType {
 
 public extension CollectionType where Generator.Element: Equatable, Index == Int {
 
-    internal func commonSequenceMatrix<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(other: C) -> Matrix<Double> {
+    internal func commonSequenceMatrix<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(other: C) -> Matrix<Index> {
         let rows = self.count + 1
         let columns = other.count + 1
 
@@ -40,7 +38,7 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
     func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(other: C) -> Diff<Generator.Element> {
         let matrix = commonSequenceMatrix(other)
             .map { $0 + 1 }
-            .pad([.Top, .Left])
+            .pad([.Top, .Left], repeatedValue: 0)
 
         var i = self.count + 1, j = other.count + 1
 
