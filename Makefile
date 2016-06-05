@@ -1,5 +1,8 @@
-GITHUB_BRANCH = gh_pages
-PUBLIC_ARTIFACTS = docs
+GITHUB_USER = aquarchitect
+
+MYKIT_REPOSITORY = github.com/$(GITHUB_USER)/MyKit.git
+GENERATE_APPICON = generate_appicon
+GIST_TOKEN = a6f09c2cac5dff2c0286e9785dc1db50
 
 test:
 	xcodebuild test \
@@ -17,11 +20,19 @@ test:
     	| xcpretty \
 
 fetch:
-	@ echo "Downloading $(GITHUB_BRANCH) branch..."
-	@ git clone -b $(GITHUB_BRANCH) https://$(GITHUB_TOKEN)@github.com/aquarchitect/MyKit.git $(PUBLIC_ARTIFACTS) >/dev/null 2>&1
+	@ echo "Downloading $(GENERATE_APPICON) script ..."
+	@ git clone https://gist.github.com/$(GIST_TOKEN).git $(GENERATE_APPICON) > /dev/null 2>&1
 
 docs: $(PUBLIC_ARTIFACTS)
 	jazzy
 	git config --global user.name "Hai Nguyen"
 	git config --global user.email "aquarchitecture@gmail.com"
-	cd $(PUBLIC_ARTIFACTS) && git add . && git commit -m "Published $(TRAVIS_BUILD_NUMBER)" && git push
+	cd $(PUBLIC_ARTIFACTS) && \
+		git add . && git commit -m "Published #$(TRAVIS_BUILD_NUMBER)" && \
+		git push -f https://$(GITHUB_TOKEN)@$(MYKIT_REPOSITORY) && \
+		> /dev/null 2>&1
+
+icons: AppIcon.pdf Demos/Assets.xcassets
+	find folder in $$(find Demos -type d -name "*.appiconset"); do \
+		$(GENERATE_APPICON)/$(GENERATE_APPICON).sh AppIcon.pdf $$folder/Contents.json
+	done

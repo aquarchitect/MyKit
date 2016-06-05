@@ -169,11 +169,7 @@
 		C23DFCF31CAE0EF9008EFF34 /* MyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C2446BEE1CEB6D2100957586 /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2446BED1CEB6D2100957586 /* Arbitrary.swift */; };
 		C2446BEF1CEB6D2100957586 /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2446BED1CEB6D2100957586 /* Arbitrary.swift */; };
-		C275E6FE1D000387000118F0 /* Surge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C275E6FA1D000343000118F0 /* Surge.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		C275E7011D000B6F000118F0 /* Matrix+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275E7001D000B6F000118F0 /* Matrix+.swift */; };
-		C275E7161D001977000118F0 /* Matrix+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C275E7001D000B6F000118F0 /* Matrix+.swift */; };
 		C275E7171D00197B000118F0 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165811CE0FA8B00F7D3E5 /* CollectionType+.swift */; };
-		C275E7181D001A9A000118F0 /* Surge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C275E6FA1D000343000118F0 /* Surge.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
 		C2848E061C956A7600707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
 		C2C180921CEBC6E500D00FA4 /* HexColoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C180911CEBC6E500D00FA4 /* HexColoring.swift */; };
@@ -185,6 +181,7 @@
 		C2D5E7CA1CE12FF80049B5C1 /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165901CE0FC0200F7D3E5 /* SymbolIcon.ttf */; };
 		C2D5E7CB1CE12FF90049B5C1 /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165901CE0FC0200F7D3E5 /* SymbolIcon.ttf */; };
 		C2DB81E51CE95F2E00B54948 /* CenteringGroupedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB81E41CE95F2E00B54948 /* CenteringGroupedLayout.swift */; };
+		C2EAD82A1D03F714001D2DC4 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAD8291D03F714001D2DC4 /* Matrix.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,20 +198,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = C289AD7B1B62B95700186773;
 			remoteInfo = "MyKit-OSX";
-		};
-		C275E6F91D000343000118F0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C275E6F41D000343000118F0 /* Surge.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8A1E1AA19917A79009735E2;
-			remoteInfo = Surge;
-		};
-		C275E6FB1D000343000118F0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C275E6F41D000343000118F0 /* Surge.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F84A6AAE19A9A72F007B53E1;
-			remoteInfo = SurgeTests;
 		};
 		C2848DE61C95642E00707F53 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -376,8 +359,6 @@
 		C23939F11CAC806A00526B30 /* PromiseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromiseTests.swift; path = UnitTests/PromiseTests.swift; sourceTree = SOURCE_ROOT; };
 		C2446BED1CEB6D2100957586 /* Arbitrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arbitrary.swift; path = Sources/Common/Utilities/Arbitrary.swift; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
-		C275E6F41D000343000118F0 /* Surge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Surge.xcodeproj; path = ../Surge/Surge.xcodeproj; sourceTree = "<group>"; };
-		C275E7001D000B6F000118F0 /* Matrix+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Matrix+.swift"; path = "Sources/Common/Extensions/Surge/Matrix+.swift"; sourceTree = "<group>"; };
 		C2848DE01C95642E00707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2848E011C956A7600707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7C1B62B95700186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -391,6 +372,7 @@
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191591CAB9F8300E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191681CABA16600E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2EAD8291D03F714001D2DC4 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix.swift; path = Sources/Common/Utilities/Matrix.swift; sourceTree = "<group>"; };
 		C2EF9F701CAB955100BC205F /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -415,7 +397,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C275E6FE1D000387000118F0 /* Surge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +404,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C275E7181D001A9A000118F0 /* Surge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,27 +703,9 @@
 			name = ActionInlining;
 			sourceTree = "<group>";
 		};
-		C275E6F51D000343000118F0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C275E6FA1D000343000118F0 /* Surge.framework */,
-				C275E6FC1D000343000118F0 /* SurgeTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		C275E6FF1D000B49000118F0 /* Surge */ = {
-			isa = PBXGroup;
-			children = (
-				C275E7001D000B6F000118F0 /* Matrix+.swift */,
-			);
-			name = Surge;
-			sourceTree = "<group>";
-		};
 		C289AD701B62B93800186773 = {
 			isa = PBXGroup;
 			children = (
-				C275E6F41D000343000118F0 /* Surge.xcodeproj */,
 				C25877741C742F1400DF1F88 /* MyKit.playground */,
 				C289AD921B62B9AD00186773 /* Sources */,
 				C2DC8B881CAB2EDB00837D9E /* Demos */,
@@ -767,7 +729,6 @@
 		C289AD931B62BA0500186773 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C275E6FF1D000B49000118F0 /* Surge */,
 				C201657B1CE0FA6000F7D3E5 /* Native */,
 				C201657E1CE0FA7600F7D3E5 /* Foundation */,
 				C201657C1CE0FA6B00F7D3E5 /* CoreData */,
@@ -801,6 +762,7 @@
 				C20165421CE0EFC500F7D3E5 /* Box.swift */,
 				C20165431CE0EFC500F7D3E5 /* Curry.swift */,
 				C20165441CE0EFC500F7D3E5 /* Diff.swift */,
+				C2EAD8291D03F714001D2DC4 /* Matrix.swift */,
 				C20165451CE0EFC500F7D3E5 /* Draw.swift */,
 				C20165481CE0EFC500F7D3E5 /* Promise.swift */,
 				C20165491CE0EFC500F7D3E5 /* Queue.swift */,
@@ -1266,12 +1228,6 @@
 			mainGroup = C289AD701B62B93800186773;
 			productRefGroup = C289AD701B62B93800186773;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = C275E6F51D000343000118F0 /* Products */;
-					ProjectRef = C275E6F41D000343000118F0 /* Surge.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				C289AD891B62B97400186773 /* MyKit-iOS */,
@@ -1287,23 +1243,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		C275E6FA1D000343000118F0 /* Surge.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Surge.framework;
-			remoteRef = C275E6F91D000343000118F0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C275E6FC1D000343000118F0 /* SurgeTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SurgeTests.xctest;
-			remoteRef = C275E6FB1D000343000118F0 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C2848DDE1C95642E00707F53 /* Resources */ = {
@@ -1473,7 +1412,6 @@
 				C2C180971CEBC6F000D00FA4 /* ActionInlining.swift in Sources */,
 				C201656E1CE0F01D00F7D3E5 /* Then.swift in Sources */,
 				C20165F11CE0FEE200F7D3E5 /* OpenWeather+.swift in Sources */,
-				C275E7161D001977000118F0 /* Matrix+.swift in Sources */,
 				C20165641CE0F01D00F7D3E5 /* Diff.swift in Sources */,
 				C201660D1CE0FF1C00F7D3E5 /* NSManagedObjectContext+.swift in Sources */,
 				C20166001CE0FF1300F7D3E5 /* NSMutableAttributedString+.swift in Sources */,
@@ -1549,7 +1487,6 @@
 				C20165B21CE0FC6D00F7D3E5 /* NSDateFormatter+.swift in Sources */,
 				C201655F1CE0EFC500F7D3E5 /* Timing.swift in Sources */,
 				C20165D21CE0FCA000F7D3E5 /* CGPoint+.swift in Sources */,
-				C275E7011D000B6F000118F0 /* Matrix+.swift in Sources */,
 				C20165C91CE0FC9400F7D3E5 /* NSAttributeDescription+.swift in Sources */,
 				C201655D1CE0EFC500F7D3E5 /* Swizzle.swift in Sources */,
 				C201655A1CE0EFC500F7D3E5 /* Result.swift in Sources */,
@@ -1598,6 +1535,7 @@
 				C20166671CE104C200F7D3E5 /* TableGenericView.swift in Sources */,
 				C20C62311CEB9AF4000DBD08 /* Miscellaneous.swift in Sources */,
 				C201658D1CE0FAA900F7D3E5 /* StreamService.swift in Sources */,
+				C2EAD82A1D03F714001D2DC4 /* Matrix.swift in Sources */,
 				C201666E1CE104CE00F7D3E5 /* CollectionViewController.swift in Sources */,
 				C201658B1CE0FA8B00F7D3E5 /* String+.swift in Sources */,
 				C20165591CE0EFC500F7D3E5 /* Queue.swift in Sources */,

@@ -1,1 +1,10 @@
-
+author: Hai Nguyen
+author_url: http://aquarchitect.github.io
+github_url: https://github.com/aquarchitect/MyKit.git
+module: MyKit
+readme: README.md
+clean: true
+docset_platform: mykit
+docset_icon: AppIcon.pdf
+copyright: '© 2016 [Hai Nguyen](http://aquarchitect.github.io)'
+xcodebuild_arguments: [-scheme, MyKit-iOS, -toolchain, com.apple.dt.toolchain.XcodeDefault]
