@@ -1,4 +1,4 @@
 [submodule "docs"]
 	path = docs
-	url = git@github.com:aquarchitect/MyKit.git
+	url = https://github.com/aquarchitect/MyKit.git
 	branch = gh-pages
