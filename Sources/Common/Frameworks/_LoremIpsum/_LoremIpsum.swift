@@ -1,5 +1,5 @@
 //
-//  LoremIpsum.swift
+//  _LoremIpsum.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 8/28/15.
@@ -13,9 +13,9 @@ An LorumIpsum object generates random text at different length designed specific
 
 - throws: file corruption error.
 */
-final class LoremIpsum: CollectionType {
+final class _LoremIpsum: CollectionType {
 
-    static let sharedInstance = try! LoremIpsum()
+    static let sharedInstance = try! _LoremIpsum()
 
     private let storage: [String]
 
@@ -50,7 +50,7 @@ final class LoremIpsum: CollectionType {
     }
 }
 
-extension LoremIpsum: CustomDebugStringConvertible {
+extension _LoremIpsum: CustomDebugStringConvertible {
 
     var debugDescription: String {
         return storage.joinWithSeparator(" ")

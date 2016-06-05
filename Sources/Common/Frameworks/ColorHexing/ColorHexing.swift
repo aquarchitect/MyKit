@@ -1,5 +1,5 @@
 //
-//  HexColoringing.swift
+//  ColorHexinging.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 5/17/16.
@@ -8,7 +8,7 @@
 
 import CoreGraphics
 
-public protocol HexColoring: class {
+public protocol ColorHexing: class {
 
     init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
 #if os(iOS)
@@ -18,9 +18,9 @@ public protocol HexColoring: class {
 #endif
 }
 
-public extension HexColoring {
+public extension ColorHexing {
 
-    public var hexValue: UInt {
+    var hexValue: UInt {
         var r: CGFloat = 0
         var g: CGFloat = 0
         var b: CGFloat = 0
@@ -39,7 +39,7 @@ public extension HexColoring {
     }
 }
 
-public extension HexColoring {
+public extension ColorHexing {
 
     var hexCode: String {
         return String(format: "#%06X", hexValue)
@@ -57,8 +57,8 @@ public extension HexColoring {
 
 #if os(iOS)
 import UIKit
-extension UIColor: HexColoring {}
+extension UIColor: ColorHexing {}
 #elseif os(OSX)
 import AppKit
-extension NSColor: HexColoring {}
+extension NSColor: ColorHexing {}
 #endif

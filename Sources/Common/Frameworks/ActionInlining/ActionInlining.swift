@@ -6,6 +6,8 @@
 //  
 //
 
+import Foundation
+
 private var token = "Action"
 
 public protocol ActionInlining: class {}

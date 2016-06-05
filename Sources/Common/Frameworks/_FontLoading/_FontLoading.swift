@@ -1,5 +1,5 @@
 //
-//  _RuntimeFontLoadable.swift
+//  _FontLoading.swift
 //  MyKit
 //
 //  Created by Hai Nguyen on 3/13/16.
@@ -31,12 +31,12 @@ private func registerFont(from file: String, ofBundle bundle: NSBundle) throws {
     }
 }
 
-public protocol _RuntimeFontLoadable: class {
+public protocol _FontLoading: class {
 
     init?(name: String, size: CGFloat)
 }
 
-extension _RuntimeFontLoadable {
+extension _FontLoading {
 
     /// Return a font object from default bundle
     static func fontWith(name name: String, size: CGFloat, fromFile file: String) -> Self? {
@@ -53,8 +53,8 @@ extension _RuntimeFontLoadable {
 
 #if os(iOS)
 import UIKit
-extension UIFont: _RuntimeFontLoadable {}
+extension UIFont: _FontLoading {}
 #elseif os(OSX)
 import AppKit
-extension NSFont: _RuntimeFontLoadable {}
+extension NSFont: _FontLoading {}
 #endif

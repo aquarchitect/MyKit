@@ -40,7 +40,7 @@ public extension SymbolIcon {
 #elseif os(OSX)
 import AppKit
 
-public struct SymbolIcon {
+public extension SymbolIcon {
 
     func attributedStringOf(size: CGFloat) -> NSMutableAttributedString {
         let name = "Ionicons", file = "SymbolIcon"
