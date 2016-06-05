@@ -27,7 +27,7 @@ fetch:
 	@ echo "Downloading $(GENERATE_APPICON) script ..."
 	@ git clone https://gist.github.com/$(GIST_TOKEN).git $(GENERATE_APPICON) > /dev/null 2>&1
 	@ echo "Downloading $(MYKIT_FRAMEWORK) $(GITHUB_PAGES) branch ..."
-	@ git submodule add -b $(GITHUB_PAGES) https://$(GIST_TOKEN)@$(MYKIT_FRAMEWORK) $(MYKIT_DOCUMENTS) > /dev/null 2>&1
+	@ git submodule add -b $(GITHUB_PAGES) https://$(GITHUB_TOKEN)@$(MYKIT_FRAMEWORK) $(MYKIT_DOCUMENTS) > /dev/null 2>&1
 
 docs:
 	jazzy
