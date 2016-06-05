@@ -22,12 +22,12 @@ before_install:
   - make fetch
 
 install:
-  - gem install jazzy
-  - gem install xcpretty
+  - brew install jq
+  - gem install jazzy xcpretty
 
 script:
   - make test
 
 after_success:
+  - if [[ "$SCHEME" == "OSX" ]]; then make icons; fi
   - if [[ "$SCHEME" == "iOS" ]]; then make docs; fi
-  - make icons
