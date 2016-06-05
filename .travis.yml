@@ -31,5 +31,5 @@ script:
   - make test
 
 after_success:
-  - make docs
+  - if [[ "$SCHEME" == "iOS" ]]; then $make docs; fi
   - make icons
