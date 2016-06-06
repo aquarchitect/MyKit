@@ -19,7 +19,6 @@ env:
 
 before_install:
   - brew update
-  - make fetch
 
 install:
   - brew install jq
@@ -29,5 +28,4 @@ script:
   - make test
 
 after_success:
-  - if [[ "$SCHEME" == "OSX" ]]; then make icons; fi
   - if [[ "$SCHEME" == "iOS" ]]; then make docs; fi
