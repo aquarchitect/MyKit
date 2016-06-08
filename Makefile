@@ -32,7 +32,7 @@ docs:
 	jazzy
 
 	@ for file in $$(find docs -type f \( -name "*.html" -or -name "*.css" \)); do \
-		echo "Minifying $$file ..."
+		echo "Minifying $$file ..."; \
 		case $${file##*.} in \
 			html) cat $$file | html-minifier --collapse-whitespace -o $$file;; \
 			css) cat $$file | cleancss --s0 -o $$file;; \
