@@ -21,8 +21,7 @@ before_install:
   - brew update
 
 install:
-  - brew install jq
-  - gem install jazzy xcpretty
+  - make install
 
 script:
   - make test
