@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// :nodoc:
 public extension UILabel {
 
     public static var dummyInstance: UILabel {

@@ -6,6 +6,7 @@
 //  
 //
 
+/// :nodoc:
 public extension Dictionary {
 
     public init<S: SequenceType where S.Generator.Element == Element>(seq: S) {

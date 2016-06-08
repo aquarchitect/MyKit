@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// :nodoc:
 public extension UITableView {
 
     // MARK: Miscellaneous

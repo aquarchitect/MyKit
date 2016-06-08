@@ -49,7 +49,7 @@ extension DateIndex: Hashable {
     }
 }
 
-// :nodoc:
+/// :nodoc:
 public func == (lhs: DateIndex, rhs: DateIndex) -> Bool {
     return lhs.value == rhs.value && lhs.unit == rhs.unit
 }

@@ -1,10 +1,40 @@
+module: MyKit
 author: Hai Nguyen
 author_url: http://aquarchitect.github.io
 github_url: https://github.com/aquarchitect/MyKit.git
-module: MyKit
-readme: README.md
-clean: true
-docset_platform: mykit
-docset_icon: AppIcon.pdf
 copyright: '© 2016 [Hai Nguyen](http://aquarchitect.github.io)'
+
+clean: true
+exclude: []
+
+readme: README.md
+
+skip_undocumented: true
+hide_documentation_coverage: true
+
 xcodebuild_arguments: [-scheme, MyKit-iOS, -toolchain, com.apple.dt.toolchain.XcodeDefault]
+
+custom_categories:
+  - name: Utilities
+    children:
+#     - Arbitrary
+#     - Diff
+#     - Matrix
+#     - Promise
+    - Result
+#     - Then
+#     - Box
+
+  - name: Global Functions
+    children:
+    - measure(_:)
+    - delay(_:queue:block:)
+    - swizzle(_:original:swizzled:)
+    - drawInState(_:render:)
+    - renderInContext(_:opaque:render:)
+
+  - name: Extensions to Foundation
+    children:
+    - Range
+    - String
+    - CollectionType

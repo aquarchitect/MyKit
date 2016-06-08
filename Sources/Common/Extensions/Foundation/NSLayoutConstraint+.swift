@@ -35,6 +35,7 @@ public extension NSLayoutConstraint {
 #endif
 }
 
+/// :nodoc:
 public extension Array where Element: NSLayoutConstraint {
 
     public func activate() {

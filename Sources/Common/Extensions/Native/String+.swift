@@ -29,6 +29,7 @@ public extension String {
         return isMatchedWith(format.pattern)
     }
 
+    /// Return a boolean whether string matches againsts the given pattern
     func isMatchedWith(pattern: String) -> Bool {
         return NSPredicate(format: "SELF MATCHES %@", pattern).evaluateWithObject(self)
     }

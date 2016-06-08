@@ -94,7 +94,7 @@ public extension Promise {
 
 infix operator +++ { associativity left }
 
-/// Convert concurrent promises of 2 different types to a promise of tuple
+// Convert concurrent promises of 2 different types to a promise of tuple
 public func +++ <A, B>(lhs: Promise<A>, rhs: Promise<B>) -> Promise<(A, B)> {
     let queue = dispatch_queue_create("MyKit.Promise.tuple", DISPATCH_QUEUE_CONCURRENT)
     let group = dispatch_group_create()

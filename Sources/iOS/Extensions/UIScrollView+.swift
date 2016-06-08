@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// :nodoc:
 public extension UIScrollView {
 
     final var limitedContentOffset: (min: CGPoint, max: CGPoint) {

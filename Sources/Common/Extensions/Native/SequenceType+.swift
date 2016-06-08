@@ -6,6 +6,7 @@
 //  
 //
 
+/// :nodoc:
 public extension SequenceType {
 
     public func pair<K: Hashable, V>(@noescape f: Generator.Element throws -> (K, V)) rethrows -> [K: V] {

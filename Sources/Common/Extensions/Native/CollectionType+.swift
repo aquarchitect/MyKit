@@ -8,12 +8,14 @@
 
 public extension CollectionType {
 
+    /// Returns the first element where predicate returns true for the corresponding value, or nil if such value is not found.
     func find(@noescape predicate: Generator.Element throws -> Bool) rethrows -> Generator.Element? {
         guard let index = try self.indexOf(predicate) else { return nil }
         return self[index]
     }
 }
 
+/// :nodoc:
 public extension CollectionType where Generator.Element: Equatable, Index == Int {
 
     internal func commonSequenceMatrix<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(other: C) -> Matrix<Index> {

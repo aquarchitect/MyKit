@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// :nodoc:
 public extension UICollectionView {
 
     // MARK: Miscellaneous
@@ -48,6 +49,7 @@ public extension UICollectionView {
     }
 }
 
+/// :nodoc:
 public extension UICollectionView {
 
     private class Dragger: NSObject {
