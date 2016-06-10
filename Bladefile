@@ -1,0 +1,8 @@
+blades:
+  - source: AppIcon.png
+    mount: Demos/Assets.xcassets/AppIcon-iOS.appiconset
+    contents: true
+  - source: AppIcon.png
+    mount: Demos/Assets.xcassets/AppIcon-OSX.appiconset
+    contents: true
+  
