@@ -33,7 +33,7 @@ custom_categories:
     - drawInState(_:render:)
     - renderInContext(_:opaque:render:)
 
-  - name: Extensions to Native
+  - name: Native Extension
     children:
     - Range
     - String
