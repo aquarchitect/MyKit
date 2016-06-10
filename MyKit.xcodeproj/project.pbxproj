@@ -164,8 +164,7 @@
 		C275E7171D00197B000118F0 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165811CE0FA8B00F7D3E5 /* CollectionType+.swift */; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
 		C2848E061C956A7600707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
-		C2C180961CEBC6F000D00FA4 /* ActionInlining.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C180941CEBC6F000D00FA4 /* ActionInlining.swift */; };
-		C2C180971CEBC6F000D00FA4 /* ActionInlining.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C180941CEBC6F000D00FA4 /* ActionInlining.swift */; };
+		C2B3F3491D0B8A9E0055B06E /* ActionTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B3F3481D0B8A9E0055B06E /* ActionTrailing.swift */; };
 		C2C180981CEBC6F000D00FA4 /* ActionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C180951CEBC6F000D00FA4 /* ActionWrapper.swift */; };
 		C2C180991CEBC6F000D00FA4 /* ActionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C180951CEBC6F000D00FA4 /* ActionWrapper.swift */; };
 		C2C25CE81D0B371300AED211 /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C25CE71D0B371300AED211 /* PersistentStack.swift */; };
@@ -358,9 +357,9 @@
 		C2848E011C956A7600707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7C1B62B95700186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD8A1B62B97400186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2B3F3481D0B8A9E0055B06E /* ActionTrailing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionTrailing.swift; path = Sources/Common/Frameworks/ActionTrailing/ActionTrailing.swift; sourceTree = "<group>"; };
 		C2B9242D1C9A0EFB00C7FCFD /* MyKitQuickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitQuickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2BBFEC61C967AD800E63145 /* MyKitQuickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitQuickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2C180941CEBC6F000D00FA4 /* ActionInlining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionInlining.swift; path = Sources/Common/Frameworks/ActionInlining/ActionInlining.swift; sourceTree = "<group>"; };
 		C2C180951CEBC6F000D00FA4 /* ActionWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionWrapper.swift; path = Sources/Common/Frameworks/ActionInlining/ActionWrapper.swift; sourceTree = "<group>"; };
 		C2C25CE71D0B371300AED211 /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStack.swift; path = Sources/Common/Frameworks/PersistentStack/PersistentStack.swift; sourceTree = "<group>"; };
 		C2C62A291D04A36F0009B45F /* ColorHexing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorHexing.swift; path = Sources/Common/Frameworks/ColorHexing/ColorHexing.swift; sourceTree = "<group>"; };
@@ -694,7 +693,7 @@
 		C25A3ED01CEBB87200A68790 /* ActionInlining */ = {
 			isa = PBXGroup;
 			children = (
-				C2C180941CEBC6F000D00FA4 /* ActionInlining.swift */,
+				C2B3F3481D0B8A9E0055B06E /* ActionTrailing.swift */,
 				C2C180951CEBC6F000D00FA4 /* ActionWrapper.swift */,
 			);
 			name = ActionInlining;
@@ -1422,7 +1421,6 @@
 				C20165651CE0F01D00F7D3E5 /* Draw.swift in Sources */,
 				C2C180991CEBC6F000D00FA4 /* ActionWrapper.swift in Sources */,
 				C20165FE1CE0FF1300F7D3E5 /* NSIndexPath+.swift in Sources */,
-				C2C180971CEBC6F000D00FA4 /* ActionInlining.swift in Sources */,
 				C201656E1CE0F01D00F7D3E5 /* Then.swift in Sources */,
 				C20165F11CE0FEE200F7D3E5 /* OpenWeather+.swift in Sources */,
 				C20165641CE0F01D00F7D3E5 /* Diff.swift in Sources */,
@@ -1541,7 +1539,7 @@
 				C201658F1CE0FBF300F7D3E5 /* DateIndex.swift in Sources */,
 				C20165991CE0FC1100F7D3E5 /* OpenWeather+.swift in Sources */,
 				C20165C11CE0FC8800F7D3E5 /* CKRecord+.swift in Sources */,
-				C2C180961CEBC6F000D00FA4 /* ActionInlining.swift in Sources */,
+				C2B3F3491D0B8A9E0055B06E /* ActionTrailing.swift in Sources */,
 				C20165891CE0FA8B00F7D3E5 /* Range+.swift in Sources */,
 				C20165CC1CE0FC9400F7D3E5 /* NSManagedObject+.swift in Sources */,
 				C20165D31CE0FCA000F7D3E5 /* CGRect+.swift in Sources */,
