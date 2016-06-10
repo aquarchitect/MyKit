@@ -1,10 +1,26 @@
-//
-//  OpenWeather.swift
-//  MyKit
-//
-//  Created by Hai Nguyen on 10/21/15.
-//
-//
+/*
+ * OpenWeather.swift
+ *
+ * Copyright (c) 2015–2016 Hai Nguyen (http://aquarchitect.github.io)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 import CoreLocation
 
@@ -81,29 +97,29 @@ public extension OpenWeather {
 
     // MARK: Current Weather Network Calls
 
-    public func fetchCurrentWeatherOf(city name: String) -> Promise<[String: AnyObject]> {
+    func fetchCurrentWeatherOf(city name: String) -> Promise<[String: AnyObject]> {
         return Promise { self.fetch(.CurrentWeather, callback: $0, components: .CityName(name)) }
     }
 
-    public func fetchCurrentWeatherOf(city id: Int) -> Promise<[String: AnyObject]> {
+    func fetchCurrentWeatherOf(city id: Int) -> Promise<[String: AnyObject]> {
         return Promise { self.fetch(.CurrentWeather, callback: $0, components: .CityID(id)) }
     }
 
-    public func fetchCurrentWeatherAt(location coord: CLLocationCoordinate2D) -> Promise<[String: AnyObject]> {
+    func fetchCurrentWeatherAt(location coord: CLLocationCoordinate2D) -> Promise<[String: AnyObject]> {
         return Promise { self.fetch(.CurrentWeather, callback: $0, components: .LocationCoordinate(coord)) }
     }
 
     // MARK: Daily Forecast Network Calls
 
-    public func fetchDailyForecastOf(city name: String, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
+    func fetchDailyForecastOf(city name: String, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
         return Promise { self.fetch(.DailyForecast, callback: $0, components: .CityName(name), .ReturnedDays(count)) }
     }
 
-    public func fetchDailyForecastOf(city id: Int, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
+    func fetchDailyForecastOf(city id: Int, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
         return Promise { self.fetch(.DailyForecast, callback: $0, components: .CityID(id), .ReturnedDays(count)) }
     }
 
-    public func fetchDailyForecastAt(location coord: CLLocationCoordinate2D, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
+    func fetchDailyForecastAt(location coord: CLLocationCoordinate2D, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
         return Promise { self.fetch(.DailyForecast, callback: $0, components: .LocationCoordinate(coord), .ReturnedDays(count)) }
     }
 }
