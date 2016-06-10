@@ -123,11 +123,10 @@
 		C20166711CE104DE00F7D3E5 /* CenteringRoundedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666F1CE104DE00F7D3E5 /* CenteringRoundedCell.swift */; };
 		C20166721CE104DE00F7D3E5 /* CenteringFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166701CE104DE00F7D3E5 /* CenteringFlowLayout.swift */; };
 		C20166761CE104EC00F7D3E5 /* MagnifyingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166731CE104EC00F7D3E5 /* MagnifyingFlowLayout.swift */; };
-		C20166771CE104EC00F7D3E5 /* MagnifyingIndentedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166741CE104EC00F7D3E5 /* MagnifyingIndentedLayout.swift */; };
+		C20166771CE104EC00F7D3E5 /* MagnifyingFluidLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166741CE104EC00F7D3E5 /* MagnifyingFluidLayout.swift */; };
 		C20166781CE104EC00F7D3E5 /* MagnifyingLayoutConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166751CE104EC00F7D3E5 /* MagnifyingLayoutConfig.swift */; };
 		C20166831CE1097100F7D3E5 /* SnappingSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166821CE1097100F7D3E5 /* SnappingSuperLayout.swift */; };
 		C201668A1CE10A8300F7D3E5 /* SnappingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166891CE10A8300F7D3E5 /* SnappingFlowLayout.swift */; };
-		C201668E1CE10C6000F7D3E5 /* NSControl+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201667B1CE1083C00F7D3E5 /* NSControl+.swift */; };
 		C201668F1CE10C6000F7D3E5 /* NSTableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201667C1CE1083C00F7D3E5 /* NSTableView+.swift */; };
 		C20166901CE10C6000F7D3E5 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201667D1CE1083C00F7D3E5 /* NSText+.swift */; };
 		C2099CA41CB471F300EA23BA /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2099CA31CB471F300EA23BA /* ScheduleTests.swift */; };
@@ -327,9 +326,8 @@
 		C201666F1CE104DE00F7D3E5 /* CenteringRoundedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenteringRoundedCell.swift; path = Sources/iOS/Frameworks/CollectionLayout/Centering/CenteringRoundedCell.swift; sourceTree = "<group>"; };
 		C20166701CE104DE00F7D3E5 /* CenteringFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenteringFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Centering/CenteringFlowLayout.swift; sourceTree = "<group>"; };
 		C20166731CE104EC00F7D3E5 /* MagnifyingFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyingFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Magnifying/MagnifyingFlowLayout.swift; sourceTree = "<group>"; };
-		C20166741CE104EC00F7D3E5 /* MagnifyingIndentedLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyingIndentedLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Magnifying/MagnifyingIndentedLayout.swift; sourceTree = "<group>"; };
+		C20166741CE104EC00F7D3E5 /* MagnifyingFluidLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyingFluidLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Magnifying/MagnifyingFluidLayout.swift; sourceTree = "<group>"; };
 		C20166751CE104EC00F7D3E5 /* MagnifyingLayoutConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyingLayoutConfig.swift; path = Sources/iOS/Frameworks/CollectionLayout/Magnifying/MagnifyingLayoutConfig.swift; sourceTree = "<group>"; };
-		C201667B1CE1083C00F7D3E5 /* NSControl+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSControl+.swift"; path = "Sources/OSX/Extensions/NSControl+.swift"; sourceTree = "<group>"; };
 		C201667C1CE1083C00F7D3E5 /* NSTableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTableView+.swift"; path = "Sources/OSX/Extensions/NSTableView+.swift"; sourceTree = "<group>"; };
 		C201667D1CE1083C00F7D3E5 /* NSText+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSText+.swift"; path = "Sources/OSX/Extensions/NSText+.swift"; sourceTree = "<group>"; };
 		C20166821CE1097100F7D3E5 /* SnappingSuperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingSuperLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Snapping/SnappingSuperLayout.swift; sourceTree = "<group>"; };
@@ -601,7 +599,7 @@
 		C201665A1CE1036700F7D3E5 /* Magnifying */ = {
 			isa = PBXGroup;
 			children = (
-				C20166741CE104EC00F7D3E5 /* MagnifyingIndentedLayout.swift */,
+				C20166741CE104EC00F7D3E5 /* MagnifyingFluidLayout.swift */,
 				C20166731CE104EC00F7D3E5 /* MagnifyingFlowLayout.swift */,
 				C20166751CE104EC00F7D3E5 /* MagnifyingLayoutConfig.swift */,
 			);
@@ -649,7 +647,6 @@
 		C20166791CE1083200F7D3E5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C201667B1CE1083C00F7D3E5 /* NSControl+.swift */,
 				C201667C1CE1083C00F7D3E5 /* NSTableView+.swift */,
 				C201667D1CE1083C00F7D3E5 /* NSText+.swift */,
 			);
@@ -1448,7 +1445,6 @@
 				C2C62A341D04A65C0009B45F /* _FontLoading.swift in Sources */,
 				C201656F1CE0F01D00F7D3E5 /* Timing.swift in Sources */,
 				C20165F61CE0FEED00F7D3E5 /* CloudStack.swift in Sources */,
-				C201668E1CE10C6000F7D3E5 /* NSControl+.swift in Sources */,
 				C20166081CE0FF1700F7D3E5 /* CKRecordID+.swift in Sources */,
 				C20166051CE0FF1700F7D3E5 /* CKDatabase+.swift in Sources */,
 				C20165FA1CE0FF1300F7D3E5 /* NSBundle+.swift in Sources */,
@@ -1519,7 +1515,7 @@
 				C20166451CE1017900F7D3E5 /* UITableView+.swift in Sources */,
 				C20166621CE1041A00F7D3E5 /* TransitionBasicAnimator.swift in Sources */,
 				C201668A1CE10A8300F7D3E5 /* SnappingFlowLayout.swift in Sources */,
-				C20166771CE104EC00F7D3E5 /* MagnifyingIndentedLayout.swift in Sources */,
+				C20166771CE104EC00F7D3E5 /* MagnifyingFluidLayout.swift in Sources */,
 				C20165B51CE0FC6D00F7D3E5 /* NSMutableAttributedString+.swift in Sources */,
 				C20165981CE0FC1100F7D3E5 /* OpenWeather.swift in Sources */,
 				C2C180981CEBC6F000D00FA4 /* ActionWrapper.swift in Sources */,

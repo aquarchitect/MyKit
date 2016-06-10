@@ -36,7 +36,7 @@ extension NavigationController: UITableViewDelegate {
             class Controller: UICollectionViewController {
 
                 override func loadView() {
-                    let layout = MagnifyingIndentedLayout()
+                    let layout = MagnifyingFluidLayout()
                         .then { $0.snappingPoint = UIScreen.mainScreen().bounds.center }
 
                     collectionView = CollectionGenericView<Int, UICollectionViewCell>(frame: .zero, collectionViewLayout: layout).then {
