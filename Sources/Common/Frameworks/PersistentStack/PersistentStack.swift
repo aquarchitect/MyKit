@@ -6,6 +6,8 @@
 //
 //
 
+import CoreData
+
 public protocol PersistentStack {
 
     var context: NSManagedObjectContext { get }
@@ -17,17 +19,18 @@ public extension PersistentStack {
         return context.persistentStoreCoordinator
     }
 
-    public static func contextFor(app name: String, withType type: String = NSSQLiteStoreType) throws -> NSManagedObjectContext {
+    // TODO: different set up for core data on OS X - store inside a directionry in Application Support
+    public static func contextFor(app name: String, withType type: String) throws -> NSManagedObjectContext {
         let url = NSFileManager.defaultManager()
             .URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last?
-            .then { $0.URLByAppendingPathComponent("\(name)Data.sqlite") }
+            .then { $0.URLByAppendingPathComponent("\(name)Data") }
 
         let model = NSBundle.mainBundle()
             .URLForResource(name, withExtension: "momd")?
             .then { NSManagedObjectModel(contentsOfURL: $0) }
 
-        guard let _url = url else { throw CommonError.FailedToLocate(file: "\(name)Data.sqlite")}
-        guard let _model = model else { throw CommonError.FailedToLocate(file: "\(name).momd") }
+        guard let _url = url else { throw Error.FailedToLocate(file: "\(name)Data")}
+        guard let _model = model else { throw Error.FailedToLocate(file: "\(name).momd") }
 
         let coordinator: NSPersistentStoreCoordinator = try NSPersistentStoreCoordinator(managedObjectModel: _model)
             .then { try $0.addPersistentStoreWithType(type, configuration: nil, URL: _url, options: nil) }
