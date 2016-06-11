@@ -34,20 +34,10 @@ public protocol ActionTrailing: class {}
 
 private extension ActionTrailing {
 
-#if os(iOS)
     func setAction(block: Self -> Void) {
         let obj: AnyObject = unsafeBitCast(ActionWrapper(f: block), AnyObject.self)
         objc_setAssociatedObject(self, &token, obj, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
     }
-#elseif os(OSX)
-    func addActionForProperty(block: NSControl -> Void, property: String) {
-        let object = unsafeBitCast(ActionWrapper(f: block), AnyObject.self)
-        objc_setAssociatedObject(self, &Key.action, object, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
-
-        self.setValue("handleBlock", forKey: property)
-        self.target = self
-    }
-#endif
 }
 
 extension NSObject {
@@ -62,7 +52,7 @@ extension UIControl: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIControl {
 
-    public final func addAction(block: Self -> Void, forControlEvents events: UIControlEvents) {
+    func addAction(block: Self -> Void, forControlEvents events: UIControlEvents) {
         self.setAction(block)
         self.addTarget(self, action: #selector(handleBlock), forControlEvents: events)
     }
@@ -72,9 +62,20 @@ extension UIGestureRecognizer: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIGestureRecognizer {
 
-    public final func addAction(block: Self -> Void) {
+    func addAction(block: Self -> Void) {
         self.setAction(block)
         self.addTarget(self, action: #selector(handleBlock))
+    }
+}
+#elseif os(OSX)
+extension NSControl: ActionTrailing {}
+
+public extension ActionTrailing where Self: NSControl {
+
+    func addAction(block: Self -> Void, forProperty property: String) {
+        self.setAction(block)
+        self.setValue("handleBlock", forKey: property)
+        self.target = self
     }
 }
 #endif
