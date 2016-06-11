@@ -1,10 +1,26 @@
-//
-//  StreamService.swift
-//  MyKit
-//
-//  Created by Hai Nguyen on 12/25/15.
-//
-//
+/*
+ * StreamService.swift
+ *
+ * Copyright (c) 2015–2016 Hai Nguyen (http://aquarchitect.github.io)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
 import Foundation
 
@@ -56,12 +72,12 @@ public extension StreamService {
 
     // MARK: Action Method
 
-    final public func connectTo(ip: String, port: UInt32, timeout: CFTimeInterval = 3) throws {
+    func connectTo(ip: String, port: UInt32, timeout: CFTimeInterval = 3) throws {
         let host = try Host(ip: ip, port: port)
         connectTo(host, timeout: timeout)
     }
 
-    final public func connectTo(host: Host, timeout: CFTimeInterval = 3) {
+    func connectTo(host: Host, timeout: CFTimeInterval = 3) {
         self.host = host
 
         var readStream: Unmanaged<CFReadStreamRef>?
@@ -83,7 +99,7 @@ public extension StreamService {
         }
     }
 
-    final public func disconnect() {
+    func disconnect() {
         inputStream?.close()
         inputStream = nil
 
@@ -91,7 +107,7 @@ public extension StreamService {
         outputStream = nil
     }
 
-    final public func reconnect() {
+    func reconnect() {
         if let host = self.host { connectTo(host) }
     }
 }
@@ -100,7 +116,7 @@ extension StreamService: NSStreamDelegate {
 
     // MARK: Stream Delegate
 
-    final public func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
+    public func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
         Schedule.cancel(timeoutID ?? 0)
 
         switch eventCode {

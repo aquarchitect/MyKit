@@ -6,8 +6,8 @@ notifications:
   email: false
 
 branches:
-  only:
-    - master
+  except:
+    - gh-pages
 
 env:
   global:
@@ -27,4 +27,4 @@ script:
   - make test
 
 after_success:
-  - if [[ "$SCHEME" == "iOS" ]]; then make docs; fi
+  - if [[ "$TRAVIS_BRANCH" == "master" && "$SCHEME" == "iOS" ]]; then make docs; fi

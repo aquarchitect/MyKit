@@ -1,5 +1,5 @@
 /*
- * Draw.swift
+ * ActionWrapper.swift
  *
  * Copyright (c) 2015–2016 Hai Nguyen (http://aquarchitect.github.io)
  *
@@ -22,18 +22,17 @@
  * THE SOFTWARE.
  */
 
-import CoreGraphics
+import Foundation
 
-public let PI = CGFloat(M_PI)
+final class ActionWrapper<T>: NSObject {
 
-/**
-Encapsulates the graphics state stack for a context.
+    let f: T -> Void
 
-- parameter context: The graphic context whose the graphics state you want to encapsulate.
-- parameter render: Tendering block for the encapsulated graphics state.
-*/
-public func drawInState(context: CGContextRef, render: CGContextRef -> Void) {
-    CGContextSaveGState(context)
-    render(context)
-    CGContextRestoreGState(context)
+    init(f: T -> Void) {
+        self.f = f
+    }
+
+    override func copy() -> AnyObject {
+        return self
+    }
 }
