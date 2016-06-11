@@ -5,11 +5,11 @@ MyKit
 
 #### About
 
-This library was simply a place for me to store and organize all of the common boiler-plate codes. Over the years, it has been growing rapidly and becoming a track record of all APIs that I have ever worked on. Every time there is a possibility for a __generic__ implementation it will end up here. __MyKit__ now covers a wide range of Swift development aspects from data structure to user interface.
+This library was originally for organizing all of the common codes in Swift development. However over the years, it has been growing rapidly and becoming a track record of all APIs that I have ever worked on. Every time there is a possibility of a __generic__ implementation it will end up here. __MyKit__ now covers a wide range of the development aspects from data structure to user interface.
 
-__MyKit__ is more or less an educational diary of mine to the field started out from a nontechnical background; and most importantly it is an essential pocket arsenals that I use in day-to-day tasks.
+The library is more or less an educational diary of mine to the programming world since I started out from a nontechnical background; and most importantly it is an essential pocket arsenals that I use in daily based tasks.
 
-Even though its name sounds personal, I have tried to remove the "I" in this project in order to welcome to everyone to check out and perhaps use it.
+Even though its name sounds personal, I have tried to remove the "I" in this project in order to welcome to everyone to check out and perhaps play with it.
 
 Happy Coding!
 
