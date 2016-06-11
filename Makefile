@@ -8,7 +8,6 @@ GENERATE_APPICON = generate_appicon
 GIST_TOKEN = a6f09c2cac5dff2c0286e9785dc1db50
 
 install:
-	brew install jq
 	brew unlink node && brew install npm
 	npm install -g html-minifier clean-css
 	gem install jazzy xcpretty
