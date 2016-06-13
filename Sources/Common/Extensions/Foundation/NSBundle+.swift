@@ -33,7 +33,6 @@ extension NSBundle {
 #elseif os(OSX)
         let platform = "OSX"
 #endif
-
         return NSBundle(identifier: "HaiNguyen.MyKit-\(platform)")
     }
 }

@@ -679,13 +679,13 @@
 			name = SymbolIcon;
 			sourceTree = "<group>";
 		};
-		C25A3ED01CEBB87200A68790 /* ActionInlining */ = {
+		C25A3ED01CEBB87200A68790 /* ActionTrailing */ = {
 			isa = PBXGroup;
 			children = (
 				C2B3F3481D0B8A9E0055B06E /* ActionTrailing.swift */,
 				C2B3F34A1D0B8AE60055B06E /* ActionWrapper.swift */,
 			);
-			name = ActionInlining;
+			name = ActionTrailing;
 			sourceTree = "<group>";
 		};
 		C289AD701B62B93800186773 = {
@@ -729,7 +729,7 @@
 				C2C62A2D1D04A5E00009B45F /* _FontLoading */,
 				C20F70241C7532EC004C688F /* _LoremIpsum */,
 				C2C180871CEBBF3D00D00FA4 /* ColorHexing */,
-				C25A3ED01CEBB87200A68790 /* ActionInlining */,
+				C25A3ED01CEBB87200A68790 /* ActionTrailing */,
 				C20165771CE0F2C100F7D3E5 /* DateIndex */,
 				C20165761CE0F2B800F7D3E5 /* StreamService */,
 				C20F70261C753309004C688F /* SymbolIcon */,
