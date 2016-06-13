@@ -141,16 +141,16 @@
 		C23939DA1CAC7FCF00526B30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23939D61CAC7FC600526B30 /* Main.storyboard */; };
 		C23939E11CAC7FF000526B30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C23939DB1CAC7FEB00526B30 /* Assets.xcassets */; };
 		C23939E21CAC7FF000526B30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C23939DB1CAC7FEB00526B30 /* Assets.xcassets */; };
-		C2393A011CAC808100526B30 /* CustomFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939ED1CAC806A00526B30 /* CustomFontTests.swift */; };
+		C2393A011CAC808100526B30 /* _FontLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939ED1CAC806A00526B30 /* _FontLoadingTests.swift */; };
 		C2393A031CAC808100526B30 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939F01CAC806A00526B30 /* NSDateTests.swift */; };
 		C2393A041CAC808100526B30 /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939F11CAC806A00526B30 /* PromiseTests.swift */; };
-		C2393A061CAC808100526B30 /* CustomFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939ED1CAC806A00526B30 /* CustomFontTests.swift */; };
+		C2393A061CAC808100526B30 /* _FontLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939ED1CAC806A00526B30 /* _FontLoadingTests.swift */; };
 		C2393A081CAC808100526B30 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939F01CAC806A00526B30 /* NSDateTests.swift */; };
 		C2393A091CAC808100526B30 /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939F11CAC806A00526B30 /* PromiseTests.swift */; };
-		C2393A0B1CAC808200526B30 /* CustomFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939ED1CAC806A00526B30 /* CustomFontTests.swift */; };
+		C2393A0B1CAC808200526B30 /* _FontLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939ED1CAC806A00526B30 /* _FontLoadingTests.swift */; };
 		C2393A0D1CAC808200526B30 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939F01CAC806A00526B30 /* NSDateTests.swift */; };
 		C2393A0E1CAC808200526B30 /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939F11CAC806A00526B30 /* PromiseTests.swift */; };
-		C2393A101CAC808300526B30 /* CustomFontTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939ED1CAC806A00526B30 /* CustomFontTests.swift */; };
+		C2393A101CAC808300526B30 /* _FontLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939ED1CAC806A00526B30 /* _FontLoadingTests.swift */; };
 		C2393A121CAC808300526B30 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939F01CAC806A00526B30 /* NSDateTests.swift */; };
 		C2393A131CAC808300526B30 /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939F11CAC806A00526B30 /* PromiseTests.swift */; };
 		C23DFCED1CADFEF9008EFF34 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
@@ -345,7 +345,7 @@
 		C23939E31CAC801F00526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = UITests/iOS/Info.plist; sourceTree = SOURCE_ROOT; };
 		C23939E61CAC803200526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = UITests/OSX/Info.plist; sourceTree = SOURCE_ROOT; };
 		C23939E91CAC804800526B30 /* Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bridging.h; path = UITests/Bridging.h; sourceTree = SOURCE_ROOT; };
-		C23939ED1CAC806A00526B30 /* CustomFontTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomFontTests.swift; path = UnitTests/CustomFontTests.swift; sourceTree = SOURCE_ROOT; };
+		C23939ED1CAC806A00526B30 /* _FontLoadingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = _FontLoadingTests.swift; path = UnitTests/_FontLoadingTests.swift; sourceTree = SOURCE_ROOT; };
 		C23939EE1CAC806A00526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = UnitTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		C23939F01CAC806A00526B30 /* NSDateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateTests.swift; path = UnitTests/NSDateTests.swift; sourceTree = SOURCE_ROOT; };
 		C23939F11CAC806A00526B30 /* PromiseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromiseTests.swift; path = UnitTests/PromiseTests.swift; sourceTree = SOURCE_ROOT; };
@@ -772,10 +772,10 @@
 		C2B60ACC1B95080800F6D2BB /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				C23939ED1CAC806A00526B30 /* _FontLoadingTests.swift */,
+				C2099CA31CB471F300EA23BA /* ScheduleTests.swift */,
 				C23939F01CAC806A00526B30 /* NSDateTests.swift */,
 				C23939F11CAC806A00526B30 /* PromiseTests.swift */,
-				C2099CA31CB471F300EA23BA /* ScheduleTests.swift */,
-				C23939ED1CAC806A00526B30 /* CustomFontTests.swift */,
 				C2B60AD41B95084E00F6D2BB /* Support */,
 			);
 			name = UnitTests;
@@ -1376,7 +1376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2393A031CAC808100526B30 /* NSDateTests.swift in Sources */,
-				C2393A011CAC808100526B30 /* CustomFontTests.swift in Sources */,
+				C2393A011CAC808100526B30 /* _FontLoadingTests.swift in Sources */,
 				C2099CA41CB471F300EA23BA /* ScheduleTests.swift in Sources */,
 				C2393A041CAC808100526B30 /* PromiseTests.swift in Sources */,
 			);
@@ -1387,7 +1387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2393A081CAC808100526B30 /* NSDateTests.swift in Sources */,
-				C2393A061CAC808100526B30 /* CustomFontTests.swift in Sources */,
+				C2393A061CAC808100526B30 /* _FontLoadingTests.swift in Sources */,
 				C2099CA51CB471F300EA23BA /* ScheduleTests.swift in Sources */,
 				C2393A091CAC808100526B30 /* PromiseTests.swift in Sources */,
 			);
@@ -1550,7 +1550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2393A0D1CAC808200526B30 /* NSDateTests.swift in Sources */,
-				C2393A0B1CAC808200526B30 /* CustomFontTests.swift in Sources */,
+				C2393A0B1CAC808200526B30 /* _FontLoadingTests.swift in Sources */,
 				C2099CA61CB471F300EA23BA /* ScheduleTests.swift in Sources */,
 				C2393A0E1CAC808200526B30 /* PromiseTests.swift in Sources */,
 			);
@@ -1561,7 +1561,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2393A121CAC808300526B30 /* NSDateTests.swift in Sources */,
-				C2393A101CAC808300526B30 /* CustomFontTests.swift in Sources */,
+				C2393A101CAC808300526B30 /* _FontLoadingTests.swift in Sources */,
 				C2099CA71CB471F300EA23BA /* ScheduleTests.swift in Sources */,
 				C2393A131CAC808300526B30 /* PromiseTests.swift in Sources */,
 			);

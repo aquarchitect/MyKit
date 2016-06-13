@@ -1,5 +1,5 @@
 /*
- * AppDelegate.swift
+ * _FontLoadingTests.swift
  * MyKit
  *
  * Copyright (c) 2015–2016 Hai Nguyen
@@ -23,7 +23,23 @@
  * THE SOFTWARE.
  */
 
-@NSApplicationMain
-final class AppDelegate: NSObject {}
+@testable import MyKit
 
-extension AppDelegate: NSApplicationDelegate {}
+final class CustomFontTests: XCTestCase {
+
+    func testsFontInstanceOf<T: _FontLoading>(type: T.Type) {
+        [("Ionicons", "SymbolIcon"), ("Weather Icons", "OpenWeather")].forEach {
+            XCTAssertNotNil(T.fontWith(name: $0.0, size: 17, fromFile: $0.1))
+        }
+    }
+
+    func testsCustomFontRegister() {
+        XCTAssertNotNil(NSBundle.defaultBundle)
+
+#if os(iOS)
+        testsFontInstanceOf(UIFont.self)
+#elseif os(OSX)
+        testsFontInstanceOf(NSFont.self)
+#endif
+    }
+}
