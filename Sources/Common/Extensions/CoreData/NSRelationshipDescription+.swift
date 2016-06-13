@@ -1,5 +1,6 @@
 /*
  * NSRelationshipDescription+.swift
+ * MyKit
  *
  * Copyright (c) 2015–2016 Hai Nguyen
  *
