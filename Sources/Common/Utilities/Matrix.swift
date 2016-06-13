@@ -2,7 +2,7 @@
  * Matrix.swift
  * MyKit
  *
- * Copyright (c) 2015–2016 Hai Nguyen
+ * Copyright (c) 2015 Hai Nguyen
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
