@@ -55,14 +55,10 @@ public extension CloudCategorical where Element: CloudObject {
     }
 
     public static func fetch(cachedMetadata flag: Bool, predicate: NSPredicate) -> (Callback -> CKDatabaseOperation) {
-        return { fetch(cachedMetadata: flag, callback: $0)
-                    .then { $0.query = CKQuery(recordType: Element.self, predicate: predicate) }
-                }
+        return { fetch(cachedMetadata: flag, callback: $0).then { $0.query = CKQuery(recordType: Element.self, predicate: predicate) }}
     }
 
     public static func fetch(cachedMetadata flag: Bool, cursor: CKQueryCursor) -> (Callback -> CKDatabaseOperation) {
-        return { fetch(cachedMetadata: flag, callback: $0)
-                    .then { $0.cursor = cursor }
-                }
+        return { fetch(cachedMetadata: flag, callback: $0).then { $0.cursor = cursor }}
     }
 }

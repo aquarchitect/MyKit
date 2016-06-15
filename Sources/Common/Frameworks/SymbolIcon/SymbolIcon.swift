@@ -33,23 +33,23 @@ public struct SymbolIcon {
 
     private let character: Character
 
-    public init(character: Character) {
+    public init(_ character: Character) {
         self.character = character
     }
 }
 
 public extension SymbolIcon {
 
-    func attributedStringOf(size: CGFloat) -> NSMutableAttributedString {
+    func attributedString(ofSize size: CGFloat) -> NSMutableAttributedString {
         let name = "Ionicons", file = "SymbolIcon"
         return NSMutableAttributedString(string: "\(character)")
             .then { $0.addFont(.fontWith(name: name, size: size, fromFile: file)) }
     }
 
 #if os(iOS)
-    func bitmapImageOf(size: CGFloat) -> UIImage? {
+    func bitmapImage(ofSize size: CGFloat) -> UIImage? {
         let label = UILabel.dummyInstance.then {
-            let string = attributedStringOf(size)
+            let string = attributedString(ofSize: size)
             $0.attributedText = string
             $0.sizeToFit()
         }
