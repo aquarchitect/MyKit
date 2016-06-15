@@ -50,8 +50,8 @@ public class TransitionPresentationController: UIPresentationController {
         self.presentingViewController.transitionCoordinator()?.animateAlongsideTransition({ _ in self.dimmedView?.alpha = alpha }, completion: { _ in completion?() })
     }
 
-    public override func frameOfPresentedViewInContainerView() -> CGRect {
-        return presentedRect
+    public override func containerViewWillLayoutSubviews() {
+        self.presentedView()?.frame = presentedRect
     }
 
     public override func containerViewDidLayoutSubviews() {

@@ -47,8 +47,8 @@ final public class TransitionBasicAnimator: NSObject {
         super.init()
     }
 
-    public override init() {
-        self.presentedRect = UIScreen.mainScreen().bounds
+    public init(customRect rect: CGRect = UIScreen.mainScreen().bounds) {
+        self.presentedRect = rect
         super.init()
     }
 }
@@ -56,7 +56,7 @@ final public class TransitionBasicAnimator: NSObject {
 extension TransitionBasicAnimator: UIViewControllerAnimatedTransitioning {
 
     public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.5
+        return 0.25
     }
 
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
