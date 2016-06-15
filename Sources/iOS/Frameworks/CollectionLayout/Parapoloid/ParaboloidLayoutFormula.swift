@@ -1,5 +1,5 @@
 /*
- * MagnifyingFlowLayout.swift
+ * ParaboloidLayoutFormula.swift
  * MyKit
  *
  * Copyright (c) 2015 Hai Nguyen
@@ -25,32 +25,42 @@
 
 import UIKit
 
-public class MagnifyingFlowLayout: SnappingFlowLayout {
+public struct ParaboloidLayoutFormula {
+
+    public typealias Limits = (min: CGFloat, max: CGFloat)
 
     // MARK: Property
 
-    public var magnifyingConfig = MagnifyingLayoutConfig()
+    private let formula: CGPoint -> CGFloat
+    public var zValueLimits: Limits?
 
-    // MARK: System Methods
+    // MARK: Initialization
 
-    public override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return super.layoutAttributesForElementsInRect(rect)?.map {
-            $0.representedElementCategory == .Cell ? (self.layoutAttributesForItemAtIndexPath($0.indexPath) ?? $0) : $0
+    public init(formula: CGPoint -> CGFloat, zValueLimits limits: Limits? = nil) {
+        self.formula = formula
+        self.zValueLimits = limits
+    }
+
+    /*
+     * Similar to Apple Watch home screen parapoloid function
+     */
+    public init(bounds: CGRect = UIScreen.mainScreen().bounds) {
+        let formula: CGPoint -> CGFloat = {
+            let x = -pow(($0.x - bounds.width / 2) / (2.5 * bounds.width), 2)
+            let y = -pow(($0.y - bounds.height / 2) / (2.5 * bounds.height), 2)
+            return 20 * (x + y) + 1
         }
+
+        self.init(formula: formula)
     }
 
-    public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
-        return true
-    }
+    // MARK: Support Method
 
-    public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        return super.layoutAttributesForItemAtIndexPath(indexPath)?.then {
-            guard let contentOffset = self.collectionView?.contentOffset else { return }
-
-            let center = $0.center.shiftToCoordinate(contentOffset)
-            let scale = magnifyingConfig.scaleAttributesAt(center)
-
-            $0.transform = CGAffineTransformMakeScale(scale, scale)
+    internal func zValue(atPoint point: CGPoint) -> CGFloat {
+        if let range = zValueLimits {
+            return max(min(formula(point), range.max), range.min)
+        } else {
+            return max(0, formula(point))
         }
     }
 }

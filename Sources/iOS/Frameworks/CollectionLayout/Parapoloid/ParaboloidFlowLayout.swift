@@ -1,5 +1,5 @@
 /*
- * MagnifyingLayoutConfig.swift
+ * ParaboloidFlowLayout.swift
  * MyKit
  *
  * Copyright (c) 2015 Hai Nguyen
@@ -25,43 +25,34 @@
 
 import UIKit
 
-public final class MagnifyingLayoutConfig {
-
-    public typealias Paraboloid = CGPoint -> CGFloat
-    public typealias Limits = (min: CGFloat, max: CGFloat)
+public class ParaboloidFlowLayout: SnappingFlowLayout {
 
     // MARK: Property
 
-    public let paraboloid: Paraboloid
-    public var scaleLimits: Limits?
+    public var paraboloidFormula = ParaboloidLayoutFormula()
 
-    // MARK: Initialization
+    // MARK: System Methods
 
-    public init(paraboloid: Paraboloid, scaleLimits limits: Limits? = nil) {
-        self.paraboloid = paraboloid
-        self.scaleLimits = limits
+    public override class func layoutAttributesClass() -> AnyClass {
+        return ParaboloidLayoutAttributes.self
     }
 
-    /*
-     * Similar to Apple Watch home screen parapoloid function
-     */
-    public convenience init(bounds: CGRect = UIScreen.mainScreen().bounds) {
-        let paraboloid: Paraboloid = {
-            let x = -pow(($0.x - bounds.width / 2) / (2.5 * bounds.width), 2)
-            let y = -pow(($0.y - bounds.height / 2) / (2.5 * bounds.height), 2)
-            return 20 * (x + y) + 1
+    public override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        return super.layoutAttributesForElementsInRect(rect)?.map {
+            $0.representedElementCategory == .Cell ? (self.layoutAttributesForItemAtIndexPath($0.indexPath) ?? $0) : $0
         }
-
-        self.init(paraboloid: paraboloid)
     }
 
-    // MARK: Support Method
+    public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+        return true
+    }
 
-    internal func scaleAttributesAt(point: CGPoint) -> CGFloat {
-        if let range = scaleLimits {
-            return max(min(paraboloid(point), range.max), range.min)
-        } else {
-            return max(0, paraboloid(point))
+    public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        return (super.layoutAttributesForItemAtIndexPath(indexPath) as? ParaboloidLayoutAttributes)?.then {
+            guard let contentOffset = self.collectionView?.contentOffset else { return }
+
+            let center = $0.center.shiftToCoordinate(contentOffset)
+            $0.paraboloidValue = paraboloidFormula.zValue(atPoint: center)
         }
     }
 }
