@@ -85,7 +85,7 @@ __MyKit__ is a wide-ranged collection of codes from native APIs extensions to fr
     +-- [GrowingText](Sources/iOS/Frameworks/GrowingText/)
     +-- [TransitionAnimator](Sources/iOS/Frameworks/TransitionAnimator/)
     +-- [GenericInterface](Sources/iOS/Frameworks/GrowingText/): Table and Collection
-    +-- [CollectionLayout](Sources/iOS/Frameworks/CollectionLayout/): Snap, Center, and Magnify
+    +-- [CollectionLayout](Sources/iOS/Frameworks/CollectionLayout/): Snap and Paraboloid
 </pre></big>
 
 ### ABOUT
