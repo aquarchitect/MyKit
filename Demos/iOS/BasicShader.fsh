@@ -1,5 +1,5 @@
 /*
- * Bridging.h
+ * BasicShader.fsh
  * MyKit
  *
  * Copyright (c) 2015 Hai Nguyen
@@ -23,6 +23,7 @@
  * THE SOFTWARE.
  */
 
-@import UIKit;
-@import MyKit;
-@import SpriteKit;
+void main(void) {
+    vec2 uv = gl_FragCoord.xy / size;
+    gl_FragColor = vec4(vec3(uv.x * uv.y), 1.);
+}

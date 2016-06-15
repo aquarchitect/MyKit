@@ -1,8 +1,8 @@
 /*
- * Bridging.h
+ * CollectionLayoutPresentable.swift
  * MyKit
  *
- * Copyright (c) 2015 Hai Nguyen
+ * Copyright (c) 2016 Hai Nguyen.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,9 @@
  * THE SOFTWARE.
  */
 
-@import UIKit;
-@import MyKit;
-@import SpriteKit;
+protocol CollectionLayoutPresentable: class {
+
+    static var name: String { get }
+    static var items: [[Int]] { get }
+    init()
+}

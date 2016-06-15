@@ -1,8 +1,8 @@
 /*
- * Bridging.h
+ * ShaderKind.swift
  * MyKit
  *
- * Copyright (c) 2015 Hai Nguyen
+ * Copyright (c) 2016 Hai Nguyen.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,16 @@
  * THE SOFTWARE.
  */
 
-@import UIKit;
-@import MyKit;
-@import SpriteKit;
+enum ShaderKind: String {
+
+    case Basic = "Basic Shader"
+}
+
+extension ShaderKind {
+
+    var fileName: String {
+        switch self {
+        case .Basic: return "BasicShader.fsh"
+        }
+    }
+}
