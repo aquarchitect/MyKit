@@ -29,15 +29,8 @@ public class CollectionViewController<T, C: UICollectionViewCell>: UICollectionV
 
     // MARK: Property
 
-    public var items: [[T]] {
-        get { return (collectionView as? CollectionGenericView<T, C>)?.items ?? [] }
-        set { (collectionView as? CollectionGenericView<T, C>)?.items = newValue }
-    }
-
-    public var config: ((C, T) -> Void)? {
-        get { return (collectionView as? CollectionGenericView<T, C>)?.config }
-        set { (collectionView as? CollectionGenericView<T, C>)?.config = newValue }
-    }
+    public var items: [[T]] = []
+    public var config: ((C, T) -> Void)?
 
     // MARK: Initialization
 
@@ -45,9 +38,26 @@ public class CollectionViewController<T, C: UICollectionViewCell>: UICollectionV
         super.init(collectionViewLayout: layout)
     }
 
-    // MARK: View LifeCycle
+    // MARK: View Lifecycle
 
-    public override func loadView() {
-        collectionView = CollectionGenericView<T, C>(frame: .zero, collectionViewLayout: self.collectionViewLayout)
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView?.register(C.self, forReuseIdentifier: "Cell")
+    }
+
+    // MARK: Collection View Data Source
+
+    public override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return items.count
+    }
+
+    public override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return items[section].count
+    }
+
+    public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath).then {
+            config?($0 as! C, items[indexPath.section][indexPath.item])
+        }
     }
 }

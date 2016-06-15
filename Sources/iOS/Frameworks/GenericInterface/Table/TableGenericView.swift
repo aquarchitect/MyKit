@@ -27,9 +27,12 @@ import UIKit
 
 public class TableGenericView<T, C: UITableViewCell>: UITableView, UITableViewDataSource {
 
-    public var items: [[T]] = []
+    // MARK: Property
 
+    public var items: [[T]] = []
     public var config: ((C, T) -> Void)?
+
+    // MARK: Initialization
 
     public override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -37,6 +40,8 @@ public class TableGenericView<T, C: UITableViewCell>: UITableView, UITableViewDa
         super.register(C.self, forReuseIdentifier: "Cell")
         super.dataSource = self
     }
+
+    // MARK: Table View Data Source
 
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return items.count

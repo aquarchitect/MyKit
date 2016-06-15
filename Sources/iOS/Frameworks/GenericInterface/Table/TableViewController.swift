@@ -27,24 +27,37 @@ import UIKit
 
 public class TableViewController<T, C: UITableViewCell>: UITableViewController {
 
-    public var items: [[T]] {
-        get { return (tableView as? TableGenericView<T, C>)?.items ?? [] }
-        set { (tableView as? TableGenericView<T, C>)?.items = newValue }
-    }
+    // MARK: Property
 
-    public var config: ((C, T) -> Void)? {
-        get { return (tableView as? TableGenericView<T, C>)?.config }
-        set { (tableView as? TableGenericView<T, C>)?.config = newValue }
-    }
+    public var items: [[T]] = []
+    public var config: ((C, T) -> Void)?
 
-    private let style: UITableViewStyle
+    // MARK: Initialization
 
     public override init(style: UITableViewStyle) {
-        self.style = style
         super.init(style: style)
     }
 
-    public override func loadView() {
-        tableView = TableGenericView<T, C>(frame: .zero, style: style)
+    // MARK: View Lifecycle
+
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.register(C.self, forReuseIdentifier: "Cell")
+    }
+
+    // MARK: Table View Data Source
+
+    public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return items.count
+    }
+
+    public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items[section].count
+    }
+
+    public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath).then {
+            config?($0 as! C, items[indexPath.section][indexPath.row])
+        }
     }
 }
