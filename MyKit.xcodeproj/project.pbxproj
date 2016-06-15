@@ -120,11 +120,6 @@
 		C201666C1CE104CE00F7D3E5 /* CollectionDynamicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166691CE104CE00F7D3E5 /* CollectionDynamicCell.swift */; };
 		C201666D1CE104CE00F7D3E5 /* CollectionGenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666A1CE104CE00F7D3E5 /* CollectionGenericView.swift */; };
 		C201666E1CE104CE00F7D3E5 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666B1CE104CE00F7D3E5 /* CollectionViewController.swift */; };
-		C20166711CE104DE00F7D3E5 /* CenteringRoundedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666F1CE104DE00F7D3E5 /* CenteringRoundedCell.swift */; };
-		C20166721CE104DE00F7D3E5 /* CenteringFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166701CE104DE00F7D3E5 /* CenteringFlowLayout.swift */; };
-		C20166761CE104EC00F7D3E5 /* MagnifyingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166731CE104EC00F7D3E5 /* MagnifyingFlowLayout.swift */; };
-		C20166771CE104EC00F7D3E5 /* MagnifyingFluidLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166741CE104EC00F7D3E5 /* MagnifyingFluidLayout.swift */; };
-		C20166781CE104EC00F7D3E5 /* MagnifyingLayoutConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166751CE104EC00F7D3E5 /* MagnifyingLayoutConfig.swift */; };
 		C20166831CE1097100F7D3E5 /* SnappingSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166821CE1097100F7D3E5 /* SnappingSuperLayout.swift */; };
 		C201668A1CE10A8300F7D3E5 /* SnappingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166891CE10A8300F7D3E5 /* SnappingFlowLayout.swift */; };
 		C2099CA41CB471F300EA23BA /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2099CA31CB471F300EA23BA /* ScheduleTests.swift */; };
@@ -133,8 +128,10 @@
 		C2099CA71CB471F300EA23BA /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2099CA31CB471F300EA23BA /* ScheduleTests.swift */; };
 		C20C62311CEB9AF4000DBD08 /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C62301CEB9AF4000DBD08 /* Miscellaneous.swift */; };
 		C20C62321CEB9AF4000DBD08 /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C62301CEB9AF4000DBD08 /* Miscellaneous.swift */; };
+		C225FA9D1D1113A1008DF565 /* ParaboloidSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FA9C1D1113A1008DF565 /* ParaboloidSuperLayout.swift */; };
+		C225FAA11D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */; };
+		C225FAA41D111803008DF565 /* CollectionLayoutPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA31D111803008DF565 /* CollectionLayoutPresentable.swift */; };
 		C23939C81CAC7F5900526B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939BB1CAC7F4300526B30 /* AppDelegate.swift */; };
-		C23939C91CAC7F5900526B30 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939BD1CAC7F4300526B30 /* NavigationController.swift */; };
 		C23939CA1CAC7F8E00526B30 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23939C41CAC7F4F00526B30 /* Launch.storyboard */; };
 		C23939D41CAC7FB900526B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939CB1CAC7FA300526B30 /* AppDelegate.swift */; };
 		C23939D51CAC7FB900526B30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939CD1CAC7FA300526B30 /* ViewController.swift */; };
@@ -167,6 +164,11 @@
 		C2B3F34C1D0B8AF80055B06E /* ActionTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B3F3481D0B8A9E0055B06E /* ActionTrailing.swift */; };
 		C2B3F34D1D0B8AF80055B06E /* ActionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B3F34A1D0B8AE60055B06E /* ActionWrapper.swift */; };
 		C2B3F34E1D0B8B030055B06E /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C25CE71D0B371300AED211 /* PersistentStack.swift */; };
+		C2BB19AE1D111DBC004F76BA /* PagedCenterCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB19AD1D111DBC004F76BA /* PagedCenterCollectionLayout.swift */; };
+		C2BB19B01D112E1E004F76BA /* ShaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB19AF1D112E1E004F76BA /* ShaderController.swift */; };
+		C2BB19B51D113186004F76BA /* ShaderKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB19B41D113186004F76BA /* ShaderKind.swift */; };
+		C2BB19B71D113433004F76BA /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB19B61D113433004F76BA /* TableController.swift */; };
+		C2BB19B91D1139EC004F76BA /* BasicShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C2BB19B81D1139EC004F76BA /* BasicShader.fsh */; };
 		C2C25CE81D0B371300AED211 /* PersistentStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C25CE71D0B371300AED211 /* PersistentStack.swift */; };
 		C2C62A2A1D04A36F0009B45F /* ColorHexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A291D04A36F0009B45F /* ColorHexing.swift */; };
 		C2C62A2B1D04A3DC0009B45F /* ColorHexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A291D04A36F0009B45F /* ColorHexing.swift */; };
@@ -179,8 +181,10 @@
 		C2C62A361D04A65C0009B45F /* _LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A311D04A6560009B45F /* _LoremIpsum.swift */; };
 		C2D5E7CA1CE12FF80049B5C1 /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165901CE0FC0200F7D3E5 /* SymbolIcon.ttf */; };
 		C2D5E7CB1CE12FF90049B5C1 /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165901CE0FC0200F7D3E5 /* SymbolIcon.ttf */; };
-		C2DB81E51CE95F2E00B54948 /* CenteringGroupedLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB81E41CE95F2E00B54948 /* CenteringGroupedLayout.swift */; };
 		C2EAD82A1D03F714001D2DC4 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAD8291D03F714001D2DC4 /* Matrix.swift */; };
+		C2F0A7501D10D5DC0022FF61 /* ParaboloidFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0A74C1D10D5DC0022FF61 /* ParaboloidFlowLayout.swift */; };
+		C2F0A7521D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0A74E1D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift */; };
+		C2F0A7531D10D5DC0022FF61 /* ParaboloidLayoutFormula.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0A74F1D10D5DC0022FF61 /* ParaboloidLayoutFormula.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -322,19 +326,16 @@
 		C20166691CE104CE00F7D3E5 /* CollectionDynamicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionDynamicCell.swift; path = Sources/iOS/Frameworks/GenericInterface/Collection/CollectionDynamicCell.swift; sourceTree = "<group>"; };
 		C201666A1CE104CE00F7D3E5 /* CollectionGenericView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionGenericView.swift; path = Sources/iOS/Frameworks/GenericInterface/Collection/CollectionGenericView.swift; sourceTree = "<group>"; };
 		C201666B1CE104CE00F7D3E5 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = Sources/iOS/Frameworks/GenericInterface/Collection/CollectionViewController.swift; sourceTree = "<group>"; };
-		C201666F1CE104DE00F7D3E5 /* CenteringRoundedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenteringRoundedCell.swift; path = Sources/iOS/Frameworks/CollectionLayout/Centering/CenteringRoundedCell.swift; sourceTree = "<group>"; };
-		C20166701CE104DE00F7D3E5 /* CenteringFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenteringFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Centering/CenteringFlowLayout.swift; sourceTree = "<group>"; };
-		C20166731CE104EC00F7D3E5 /* MagnifyingFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyingFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Magnifying/MagnifyingFlowLayout.swift; sourceTree = "<group>"; };
-		C20166741CE104EC00F7D3E5 /* MagnifyingFluidLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyingFluidLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Magnifying/MagnifyingFluidLayout.swift; sourceTree = "<group>"; };
-		C20166751CE104EC00F7D3E5 /* MagnifyingLayoutConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagnifyingLayoutConfig.swift; path = Sources/iOS/Frameworks/CollectionLayout/Magnifying/MagnifyingLayoutConfig.swift; sourceTree = "<group>"; };
 		C20166821CE1097100F7D3E5 /* SnappingSuperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingSuperLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Snapping/SnappingSuperLayout.swift; sourceTree = "<group>"; };
 		C20166891CE10A8300F7D3E5 /* SnappingFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Snapping/SnappingFlowLayout.swift; sourceTree = "<group>"; };
 		C20166911CE1141400F7D3E5 /* Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bridging.h; path = UnitTests/Bridging.h; sourceTree = SOURCE_ROOT; };
 		C2099CA31CB471F300EA23BA /* ScheduleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleTests.swift; path = UnitTests/ScheduleTests.swift; sourceTree = SOURCE_ROOT; };
 		C20C62301CEB9AF4000DBD08 /* Miscellaneous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Miscellaneous.swift; path = Sources/Common/Utilities/Miscellaneous.swift; sourceTree = "<group>"; };
+		C225FA9C1D1113A1008DF565 /* ParaboloidSuperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidSuperLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidSuperLayout.swift; sourceTree = "<group>"; };
+		C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppleWatchHomeScreenLayout.swift; path = Demos/iOS/AppleWatchHomeScreenLayout.swift; sourceTree = SOURCE_ROOT; };
+		C225FAA31D111803008DF565 /* CollectionLayoutPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionLayoutPresentable.swift; path = Demos/iOS/CollectionLayoutPresentable.swift; sourceTree = SOURCE_ROOT; };
 		C23939BB1CAC7F4300526B30 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/iOS/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C23939BC1CAC7F4300526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demos/iOS/Info.plist; sourceTree = SOURCE_ROOT; };
-		C23939BD1CAC7F4300526B30 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationController.swift; path = Demos/iOS/NavigationController.swift; sourceTree = SOURCE_ROOT; };
 		C23939C51CAC7F4F00526B30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demos/iOS/Base.lproj/Launch.storyboard; sourceTree = SOURCE_ROOT; };
 		C23939CB1CAC7FA300526B30 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/OSX/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C23939CC1CAC7FA300526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demos/OSX/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -358,18 +359,25 @@
 		C2B3F3481D0B8A9E0055B06E /* ActionTrailing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionTrailing.swift; path = Sources/Common/Frameworks/ActionTrailing/ActionTrailing.swift; sourceTree = "<group>"; };
 		C2B3F34A1D0B8AE60055B06E /* ActionWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionWrapper.swift; path = Sources/Common/Frameworks/ActionTrailing/ActionWrapper.swift; sourceTree = "<group>"; };
 		C2B9242D1C9A0EFB00C7FCFD /* MyKitQuickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitQuickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2BB19AD1D111DBC004F76BA /* PagedCenterCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagedCenterCollectionLayout.swift; path = Demos/iOS/PagedCenterCollectionLayout.swift; sourceTree = SOURCE_ROOT; };
+		C2BB19AF1D112E1E004F76BA /* ShaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShaderController.swift; path = Demos/iOS/ShaderController.swift; sourceTree = SOURCE_ROOT; };
+		C2BB19B41D113186004F76BA /* ShaderKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShaderKind.swift; path = Demos/iOS/ShaderKind.swift; sourceTree = SOURCE_ROOT; };
+		C2BB19B61D113433004F76BA /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableController.swift; path = Demos/iOS/TableController.swift; sourceTree = SOURCE_ROOT; };
+		C2BB19B81D1139EC004F76BA /* BasicShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = BasicShader.fsh; path = Demos/iOS/BasicShader.fsh; sourceTree = SOURCE_ROOT; };
 		C2BBFEC61C967AD800E63145 /* MyKitQuickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitQuickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2C25CE71D0B371300AED211 /* PersistentStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStack.swift; path = Sources/Common/Frameworks/PersistentStack/PersistentStack.swift; sourceTree = "<group>"; };
 		C2C62A291D04A36F0009B45F /* ColorHexing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorHexing.swift; path = Sources/Common/Frameworks/ColorHexing/ColorHexing.swift; sourceTree = "<group>"; };
 		C2C62A2E1D04A6440009B45F /* _FontLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = _FontLoading.swift; path = Sources/Common/Frameworks/_FontLoading/_FontLoading.swift; sourceTree = "<group>"; };
 		C2C62A301D04A6560009B45F /* _LoremIpsum.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = _LoremIpsum.txt; path = Sources/Common/Frameworks/_LoremIpsum/_LoremIpsum.txt; sourceTree = "<group>"; };
 		C2C62A311D04A6560009B45F /* _LoremIpsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = _LoremIpsum.swift; path = Sources/Common/Frameworks/_LoremIpsum/_LoremIpsum.swift; sourceTree = "<group>"; };
-		C2DB81E41CE95F2E00B54948 /* CenteringGroupedLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenteringGroupedLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Centering/CenteringGroupedLayout.swift; sourceTree = "<group>"; };
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191591CAB9F8300E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191681CABA16600E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2EAD8291D03F714001D2DC4 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix.swift; path = Sources/Common/Utilities/Matrix.swift; sourceTree = "<group>"; };
 		C2EF9F701CAB955100BC205F /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2F0A74C1D10D5DC0022FF61 /* ParaboloidFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidFlowLayout.swift; sourceTree = "<group>"; };
+		C2F0A74E1D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidLayoutAttributes.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidLayoutAttributes.swift; sourceTree = "<group>"; };
+		C2F0A74F1D10D5DC0022FF61 /* ParaboloidLayoutFormula.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidLayoutFormula.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidLayoutFormula.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -519,14 +527,14 @@
 			name = Foundation;
 			sourceTree = "<group>";
 		};
-		C201657F1CE0FA7B00F7D3E5 /* CoreGraphic */ = {
+		C201657F1CE0FA7B00F7D3E5 /* CoreGraphics */ = {
 			isa = PBXGroup;
 			children = (
 				C20165CF1CE0FCA000F7D3E5 /* CGPoint+.swift */,
 				C20165D01CE0FCA000F7D3E5 /* CGRect+.swift */,
 				C20165D11CE0FCA000F7D3E5 /* CGSize+.swift */,
 			);
-			name = CoreGraphic;
+			name = CoreGraphics;
 			sourceTree = "<group>";
 		};
 		C201662F1CE1016400F7D3E5 /* Frameworks */ = {
@@ -569,7 +577,6 @@
 			isa = PBXGroup;
 			children = (
 				C201665C1CE1037800F7D3E5 /* Snapping */,
-				C201665B1CE1037300F7D3E5 /* Centering */,
 				C201665A1CE1036700F7D3E5 /* Magnifying */,
 			);
 			name = CollectionLayout;
@@ -596,21 +603,12 @@
 		C201665A1CE1036700F7D3E5 /* Magnifying */ = {
 			isa = PBXGroup;
 			children = (
-				C20166741CE104EC00F7D3E5 /* MagnifyingFluidLayout.swift */,
-				C20166731CE104EC00F7D3E5 /* MagnifyingFlowLayout.swift */,
-				C20166751CE104EC00F7D3E5 /* MagnifyingLayoutConfig.swift */,
+				C2F0A74C1D10D5DC0022FF61 /* ParaboloidFlowLayout.swift */,
+				C225FA9C1D1113A1008DF565 /* ParaboloidSuperLayout.swift */,
+				C2F0A74E1D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift */,
+				C2F0A74F1D10D5DC0022FF61 /* ParaboloidLayoutFormula.swift */,
 			);
 			name = Magnifying;
-			sourceTree = "<group>";
-		};
-		C201665B1CE1037300F7D3E5 /* Centering */ = {
-			isa = PBXGroup;
-			children = (
-				C20166701CE104DE00F7D3E5 /* CenteringFlowLayout.swift */,
-				C2DB81E41CE95F2E00B54948 /* CenteringGroupedLayout.swift */,
-				C201666F1CE104DE00F7D3E5 /* CenteringRoundedCell.swift */,
-			);
-			name = Centering;
 			sourceTree = "<group>";
 		};
 		C201665C1CE1037800F7D3E5 /* Snapping */ = {
@@ -679,6 +677,16 @@
 			name = SymbolIcon;
 			sourceTree = "<group>";
 		};
+		C225FA9E1D11161A008DF565 /* CollectionLayout */ = {
+			isa = PBXGroup;
+			children = (
+				C225FAA31D111803008DF565 /* CollectionLayoutPresentable.swift */,
+				C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */,
+				C2BB19AD1D111DBC004F76BA /* PagedCenterCollectionLayout.swift */,
+			);
+			name = CollectionLayout;
+			sourceTree = "<group>";
+		};
 		C25A3ED01CEBB87200A68790 /* ActionTrailing */ = {
 			isa = PBXGroup;
 			children = (
@@ -717,7 +725,7 @@
 				C201657B1CE0FA6000F7D3E5 /* Native */,
 				C201657E1CE0FA7600F7D3E5 /* Foundation */,
 				C201657C1CE0FA6B00F7D3E5 /* CoreData */,
-				C201657F1CE0FA7B00F7D3E5 /* CoreGraphic */,
+				C201657F1CE0FA7B00F7D3E5 /* CoreGraphics */,
 				C201657D1CE0FA7100F7D3E5 /* CloudKit */,
 			);
 			name = Extensions;
@@ -791,6 +799,15 @@
 			name = Support;
 			sourceTree = "<group>";
 		};
+		C2BB19B11D112FC6004F76BA /* FragmentShader */ = {
+			isa = PBXGroup;
+			children = (
+				C2BB19B41D113186004F76BA /* ShaderKind.swift */,
+				C2BB19B81D1139EC004F76BA /* BasicShader.fsh */,
+			);
+			name = FragmentShader;
+			sourceTree = "<group>";
+		};
 		C2C180871CEBBF3D00D00FA4 /* ColorHexing */ = {
 			isa = PBXGroup;
 			children = (
@@ -856,7 +873,10 @@
 			isa = PBXGroup;
 			children = (
 				C23939BB1CAC7F4300526B30 /* AppDelegate.swift */,
-				C23939BD1CAC7F4300526B30 /* NavigationController.swift */,
+				C2BB19AF1D112E1E004F76BA /* ShaderController.swift */,
+				C2BB19B61D113433004F76BA /* TableController.swift */,
+				C2BB19B11D112FC6004F76BA /* FragmentShader */,
+				C225FA9E1D11161A008DF565 /* CollectionLayout */,
 				C2DC8CAC1CAB4E1000837D9E /* Support */,
 			);
 			name = iOS;
@@ -1300,6 +1320,7 @@
 			files = (
 				C23939E11CAC7FF000526B30 /* Assets.xcassets in Resources */,
 				C23939CA1CAC7F8E00526B30 /* Launch.storyboard in Resources */,
+				C2BB19B91D1139EC004F76BA /* BasicShader.fsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1463,12 +1484,12 @@
 				C20166441CE1017900F7D3E5 /* UIScrollView+.swift in Sources */,
 				C20165881CE0FA8B00F7D3E5 /* Dictionary+.swift in Sources */,
 				C20165D41CE0FCA000F7D3E5 /* CGSize+.swift in Sources */,
+				C225FA9D1D1113A1008DF565 /* ParaboloidSuperLayout.swift in Sources */,
 				C20165CA1CE0FC9400F7D3E5 /* NSEntityDescription+.swift in Sources */,
 				C20165551CE0EFC500F7D3E5 /* Draw.swift in Sources */,
 				C201655E1CE0EFC500F7D3E5 /* Then.swift in Sources */,
 				C201658A1CE0FA8B00F7D3E5 /* SequenceType+.swift in Sources */,
 				C20166461CE1017900F7D3E5 /* UIViewController+.swift in Sources */,
-				C20166711CE104DE00F7D3E5 /* CenteringRoundedCell.swift in Sources */,
 				C20165541CE0EFC500F7D3E5 /* Diff.swift in Sources */,
 				C201663F1CE1017900F7D3E5 /* UICollectionViewLayout+.swift in Sources */,
 				C20165B31CE0FC6D00F7D3E5 /* NSIndexPath+.swift in Sources */,
@@ -1481,8 +1502,8 @@
 				C20166641CE1041A00F7D3E5 /* TransitionPresentationController.swift in Sources */,
 				C201655B1CE0EFC500F7D3E5 /* Schedule.swift in Sources */,
 				C20165A11CE0FC2800F7D3E5 /* CloudCategorical.swift in Sources */,
-				C20166781CE104EC00F7D3E5 /* MagnifyingLayoutConfig.swift in Sources */,
 				C20165531CE0EFC500F7D3E5 /* Curry.swift in Sources */,
+				C2F0A7531D10D5DC0022FF61 /* ParaboloidLayoutFormula.swift in Sources */,
 				C20165C01CE0FC8800F7D3E5 /* CKQuery+.swift in Sources */,
 				C20165B21CE0FC6D00F7D3E5 /* NSDateFormatter+.swift in Sources */,
 				C201655F1CE0EFC500F7D3E5 /* Timing.swift in Sources */,
@@ -1497,18 +1518,17 @@
 				C201666D1CE104CE00F7D3E5 /* CollectionGenericView.swift in Sources */,
 				C20165B81CE0FC6D00F7D3E5 /* NSScanner+.swift in Sources */,
 				C20166411CE1017900F7D3E5 /* UIEdgeInsets+.swift in Sources */,
+				C2F0A7501D10D5DC0022FF61 /* ParaboloidFlowLayout.swift in Sources */,
 				C20165AF1CE0FC6D00F7D3E5 /* NSBundle+.swift in Sources */,
 				C20166451CE1017900F7D3E5 /* UITableView+.swift in Sources */,
 				C20166621CE1041A00F7D3E5 /* TransitionBasicAnimator.swift in Sources */,
 				C201668A1CE10A8300F7D3E5 /* SnappingFlowLayout.swift in Sources */,
-				C20166771CE104EC00F7D3E5 /* MagnifyingFluidLayout.swift in Sources */,
 				C20165B51CE0FC6D00F7D3E5 /* NSMutableAttributedString+.swift in Sources */,
 				C2B3F34B1D0B8AE60055B06E /* ActionWrapper.swift in Sources */,
 				C20165981CE0FC1100F7D3E5 /* OpenWeather.swift in Sources */,
 				C201666C1CE104CE00F7D3E5 /* CollectionDynamicCell.swift in Sources */,
 				C20165C21CE0FC8800F7D3E5 /* CKRecordID+.swift in Sources */,
 				C2C62A2A1D04A36F0009B45F /* ColorHexing.swift in Sources */,
-				C2DB81E51CE95F2E00B54948 /* CenteringGroupedLayout.swift in Sources */,
 				C20166681CE104C200F7D3E5 /* TableViewController.swift in Sources */,
 				C20166431CE1017900F7D3E5 /* UIScreen+.swift in Sources */,
 				C20165CD1CE0FC9400F7D3E5 /* NSManagedObjectContext+.swift in Sources */,
@@ -1520,10 +1540,8 @@
 				C2C25CE81D0B371300AED211 /* PersistentStack.swift in Sources */,
 				C20165A31CE0FC2800F7D3E5 /* CloudStack.swift in Sources */,
 				C20165B41CE0FC6D00F7D3E5 /* NSLayoutConstraint+.swift in Sources */,
-				C20166761CE104EC00F7D3E5 /* MagnifyingFlowLayout.swift in Sources */,
 				C201663E1CE1017900F7D3E5 /* UICollectionView+.swift in Sources */,
 				C20165CB1CE0FC9400F7D3E5 /* NSFetchRequest+.swift in Sources */,
-				C20166721CE104DE00F7D3E5 /* CenteringFlowLayout.swift in Sources */,
 				C201658F1CE0FBF300F7D3E5 /* DateIndex.swift in Sources */,
 				C20165991CE0FC1100F7D3E5 /* OpenWeather+.swift in Sources */,
 				C20165C11CE0FC8800F7D3E5 /* CKRecord+.swift in Sources */,
@@ -1533,6 +1551,7 @@
 				C20165D31CE0FCA000F7D3E5 /* CGRect+.swift in Sources */,
 				C20165B11CE0FC6D00F7D3E5 /* NSDate+.swift in Sources */,
 				C20166671CE104C200F7D3E5 /* TableGenericView.swift in Sources */,
+				C2F0A7521D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift in Sources */,
 				C20C62311CEB9AF4000DBD08 /* Miscellaneous.swift in Sources */,
 				C201658D1CE0FAA900F7D3E5 /* StreamService.swift in Sources */,
 				C2EAD82A1D03F714001D2DC4 /* Matrix.swift in Sources */,
@@ -1571,7 +1590,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C23939C91CAC7F5900526B30 /* NavigationController.swift in Sources */,
+				C225FAA11D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift in Sources */,
+				C2BB19B51D113186004F76BA /* ShaderKind.swift in Sources */,
+				C2BB19AE1D111DBC004F76BA /* PagedCenterCollectionLayout.swift in Sources */,
+				C225FAA41D111803008DF565 /* CollectionLayoutPresentable.swift in Sources */,
+				C2BB19B71D113433004F76BA /* TableController.swift in Sources */,
+				C2BB19B01D112E1E004F76BA /* ShaderController.swift in Sources */,
 				C23939C81CAC7F5900526B30 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
