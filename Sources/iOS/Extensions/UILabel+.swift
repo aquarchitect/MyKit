@@ -29,8 +29,8 @@ import UIKit
 public extension UILabel {
 
     public static var dummyInstance: UILabel {
-        struct Cache { static let label = UILabel() }
-        return Cache.label
+        struct Singleton { static let label = UILabel() }
+        return Singleton.label
     }
 
     public func heightOf(width: CGFloat, font: UIFont, text: String) -> CGFloat {

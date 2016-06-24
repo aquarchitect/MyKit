@@ -42,7 +42,7 @@ final class _LoremIpsum: CollectionType {
     }
 
     private init() throws {
-        let name = "LoremIpsum", ext = "txt"
+        let name = "_LoremIpsum", ext = "txt"
 
         guard let url = NSBundle.defaultBundle?.URLForResource(name, withExtension: ext)
             else { throw Error.FailedToLocate(file: "\(name).\(ext)") }

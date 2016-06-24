@@ -27,6 +27,7 @@ import UIKit
 
 public class TransitionPresentationController: UIPresentationController {
 
+    // TODO: Fix rotation
     public var presentedRect: CGRect = UIScreen.mainScreen().bounds
     public var dimmedView: UIView?
 

@@ -108,7 +108,6 @@
 		C201663F1CE1017900F7D3E5 /* UICollectionViewLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166341CE1017900F7D3E5 /* UICollectionViewLayout+.swift */; };
 		C20166411CE1017900F7D3E5 /* UIEdgeInsets+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166361CE1017900F7D3E5 /* UIEdgeInsets+.swift */; };
 		C20166421CE1017900F7D3E5 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166371CE1017900F7D3E5 /* UILabel+.swift */; };
-		C20166431CE1017900F7D3E5 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166381CE1017900F7D3E5 /* UIScreen+.swift */; };
 		C20166441CE1017900F7D3E5 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166391CE1017900F7D3E5 /* UIScrollView+.swift */; };
 		C20166451CE1017900F7D3E5 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201663A1CE1017900F7D3E5 /* UITableView+.swift */; };
 		C20166461CE1017900F7D3E5 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201663B1CE1017900F7D3E5 /* UIViewController+.swift */; };
@@ -314,7 +313,6 @@
 		C20166341CE1017900F7D3E5 /* UICollectionViewLayout+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionViewLayout+.swift"; path = "Sources/iOS/Extensions/UICollectionViewLayout+.swift"; sourceTree = "<group>"; };
 		C20166361CE1017900F7D3E5 /* UIEdgeInsets+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIEdgeInsets+.swift"; path = "Sources/iOS/Extensions/UIEdgeInsets+.swift"; sourceTree = "<group>"; };
 		C20166371CE1017900F7D3E5 /* UILabel+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILabel+.swift"; path = "Sources/iOS/Extensions/UILabel+.swift"; sourceTree = "<group>"; };
-		C20166381CE1017900F7D3E5 /* UIScreen+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScreen+.swift"; path = "Sources/iOS/Extensions/UIScreen+.swift"; sourceTree = "<group>"; };
 		C20166391CE1017900F7D3E5 /* UIScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScrollView+.swift"; path = "Sources/iOS/Extensions/UIScrollView+.swift"; sourceTree = "<group>"; };
 		C201663A1CE1017900F7D3E5 /* UITableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+.swift"; path = "Sources/iOS/Extensions/UITableView+.swift"; sourceTree = "<group>"; };
 		C201663B1CE1017900F7D3E5 /* UIViewController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+.swift"; path = "Sources/iOS/Extensions/UIViewController+.swift"; sourceTree = "<group>"; };
@@ -557,7 +555,6 @@
 				C20166341CE1017900F7D3E5 /* UICollectionViewLayout+.swift */,
 				C20166361CE1017900F7D3E5 /* UIEdgeInsets+.swift */,
 				C20166371CE1017900F7D3E5 /* UILabel+.swift */,
-				C20166381CE1017900F7D3E5 /* UIScreen+.swift */,
 				C20166391CE1017900F7D3E5 /* UIScrollView+.swift */,
 				C201663A1CE1017900F7D3E5 /* UITableView+.swift */,
 				C201663B1CE1017900F7D3E5 /* UIViewController+.swift */,
@@ -1530,7 +1527,6 @@
 				C20165C21CE0FC8800F7D3E5 /* CKRecordID+.swift in Sources */,
 				C2C62A2A1D04A36F0009B45F /* ColorHexing.swift in Sources */,
 				C20166681CE104C200F7D3E5 /* TableViewController.swift in Sources */,
-				C20166431CE1017900F7D3E5 /* UIScreen+.swift in Sources */,
 				C20165CD1CE0FC9400F7D3E5 /* NSManagedObjectContext+.swift in Sources */,
 				C20166421CE1017900F7D3E5 /* UILabel+.swift in Sources */,
 				C20165BF1CE0FC8800F7D3E5 /* CKDatabase+.swift in Sources */,

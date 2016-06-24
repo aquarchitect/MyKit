@@ -37,7 +37,7 @@ public extension NSLayoutConstraint {
         self.priority = priority
     }
 
-    public static func constraint(format format: String, views: [String: UIView], metrics: [String: CGFloat]? = nil) -> [NSLayoutConstraint] {
+    public static func constraints(withFormat format: String, views: [String: UIView], metrics: [String: CGFloat]? = nil) -> [NSLayoutConstraint] {
         return NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views)
     }
 #elseif os(OSX)
@@ -46,7 +46,7 @@ public extension NSLayoutConstraint {
     self.priority = priority
     }
 
-    public static func constraint(format format: String, views: [String: NSView], metrics: [String: CGFloat]? = nil) -> [NSLayoutConstraint] {
+    public static func constraints(withFormat format: String, views: [String: NSView], metrics: [String: CGFloat]? = nil) -> [NSLayoutConstraint] {
     return NSLayoutConstraint.constraintsWithVisualFormat(format, options: [], metrics: metrics, views: views)
     }
 #endif
