@@ -48,7 +48,7 @@ public class ParaboloidFlowLayout: SnappingFlowLayout {
     }
 
     public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        return (super.layoutAttributesForItemAtIndexPath(indexPath) as? ParaboloidLayoutAttributes)?.then {
+        return (super.layoutAttributesForItemAtIndexPath(indexPath)?.copy() as? ParaboloidLayoutAttributes)?.then {
             guard let contentOffset = self.collectionView?.contentOffset else { return }
 
             let center = $0.center.shiftToCoordinate(contentOffset)
