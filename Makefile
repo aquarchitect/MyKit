@@ -41,9 +41,8 @@ package:
     	ONLY_ACTIVE_ARCH=NO								\
     	| xcpretty
 
-	mv build/Release OSX
-	mv build/Release-iphoneos iOS
-	zip -r $(MYKIT_FRAMEWORK).zip OSX iOS
+	mv build/Release OSX && zip -r $(MYKIT_FRAMEWORK)-OSX.zip OSX
+	mv build/Release-iphoneos iOS && zip -r $(MYKIT_FRAMEWORK)-iOS.zip iOS
 
 jazzy:
 	jazzy
