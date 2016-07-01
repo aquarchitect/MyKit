@@ -5,6 +5,11 @@ MYKIT_FRAMEWORK = MyKit
 MYKIT_REPOSITORY = github.com/$(GITHUB_USER)/$(MYKIT_FRAMEWORK).git
 MYKIT_SCHEME=$(MYKIT_FRAMEWORK)-$(SCHEME)
 
+install:
+	brew unlink node && brew install npm
+  	npm install -g html-minifier clean-css
+  	gem install jazzy
+
 xcodebuild:
 	@ xcodebuild clean $(ACTION) \
 		-verbose \
