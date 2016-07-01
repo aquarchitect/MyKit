@@ -9,7 +9,7 @@ install:
 	npm install -g html-minifier clean-css
 	gem install jazzy
 
-xcodebuild:
+test:
 	@ xcodebuild clean test								\
 		-verbose										\
 		-project $(MYKIT_FRAMEWORK).xcodeproj			\

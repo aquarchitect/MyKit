@@ -29,7 +29,7 @@ public class ParaboloidFlowLayout: SnappingFlowLayout {
 
     // MARK: Property
 
-    public var paraboloidFormula = ParaboloidLayoutFormula()
+    public var paraboloidFormula: ParaboloidLayoutFormula?
 
     // MARK: System Methods
 
@@ -52,7 +52,7 @@ public class ParaboloidFlowLayout: SnappingFlowLayout {
             guard let contentOffset = self.collectionView?.contentOffset else { return }
 
             let center = $0.center.shiftToCoordinate(contentOffset)
-            $0.paraboloidValue = paraboloidFormula.zValue(atPoint: center)
+            $0.paraboloidValue = paraboloidFormula?.zValue(atPoint: center)
         }
     }
 }

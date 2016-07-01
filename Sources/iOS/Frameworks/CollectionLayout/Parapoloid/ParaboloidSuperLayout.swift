@@ -27,7 +27,7 @@ import UIKit
 
 public class ParaboloidSuperLayout: SnappingSuperLayout {
 
-    public var paraboloidFormula = ParaboloidLayoutFormula()
+    public var paraboloidFormula: ParaboloidLayoutFormula?
     public var visibleAttributes: [NSIndexPath: UICollectionViewLayoutAttributes] = [:]
 
     public override class func layoutAttributesClass() -> AnyClass {
@@ -47,7 +47,7 @@ public class ParaboloidSuperLayout: SnappingSuperLayout {
             guard let contentOffset = self.collectionView?.contentOffset else { return }
 
             let center = $0.center.shiftToCoordinate(contentOffset)
-            $0.paraboloidValue = paraboloidFormula.zValue(atPoint: center)
+            $0.paraboloidValue = paraboloidFormula?.zValue(atPoint: center)
         }
     }
 }
