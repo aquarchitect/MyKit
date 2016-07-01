@@ -94,6 +94,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "MyKit"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

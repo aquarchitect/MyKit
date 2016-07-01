@@ -7,24 +7,34 @@ notifications:
 
 branches:
   except:
-    - gh-pages
+  - gh-pages
 
 env:
-  global:
-    - OSX_SDK=macosx10.11
-    - IOS_SDK=iphonesimulator9.3
   matrix:
-    - DESTINATION="arch=x86_64"             SCHEME="OSX"    SDK=$OSX_SDK
-    - DESTINATION="OS=9.0,name=iPhone 5S"   SCHEME="iOS"    SDK=$IOS_SDK
+  - DESTINATION="arch=x86_64"             SCHEME="OSX"    SDK=macosx10.11           PRODUCT=Release
+  - DESTINATION="OS=9.0,name=iPhone 5s"   SCHEME="iOS"    SDK=iphonesimulator9.3    PRODUCT=Release-iphonesimulator
 
 before_install:
   - brew update
 
 install:
-  - make install
+  - brew unlink node && brew install npm
+  - npm install -g html-minifier clean-css
+  - gem install jazzy
 
 script:
-  - make test
+  - make xcodebuild ACTION=test CONFIGURATION=Debug DESTINATION_OPTION="-destination $DESTINATION"
 
 after_success:
-  - if [[ "$TRAVIS_BRANCH" == "master" && "$SCHEME" == "iOS" ]]; then make docs; fi
+  - if [[ "$TRAVIS_BRANCH" == "master" && "$SCHEME" == "iOS" ]]; then make jazzy; fi
+
+before_deploy:
+  - if [[ "$SCHEME" == "iOS" ]]; then SDK=iphoneos9.3 && PRODUCT=Release-iphoneos; fi
+  - make xcodebuild ACTION=build CONFIGURATION=Release DESTINATION_OPTION=""
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  file: '*.zip'
+  on:
+    tags: true
