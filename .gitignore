@@ -1,1 +1,3 @@
 *.playground
+build
+docs

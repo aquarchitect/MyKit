@@ -7,11 +7,11 @@ MYKIT_SCHEME=$(MYKIT_FRAMEWORK)-$(SCHEME)
 
 install:
 	brew unlink node && brew install npm
-  	npm install -g html-minifier clean-css
-  	gem install jazzy
+	npm install -g html-minifier clean-css
+	gem install jazzy
 
 xcodebuild:
-	@ xcodebuild clean $(ACTION) \
+	xcodebuild clean $(ACTION) \
 		-verbose \
 		-project $(MYKIT_FRAMEWORK).xcodeproj \
     	-scheme $(MYKIT_SCHEME) \
