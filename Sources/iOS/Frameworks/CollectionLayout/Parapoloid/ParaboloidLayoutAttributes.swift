@@ -27,12 +27,7 @@ import UIKit
 
 public class ParaboloidLayoutAttributes: UICollectionViewLayoutAttributes {
 
-    public var paraboloidValue: CGFloat? {
-        didSet {
-            let scale = paraboloidValue ?? 1
-            self.transform = CGAffineTransformMakeScale(scale, scale)
-        }
-    }
+    public var paraboloidValue: CGFloat?
 
     public override func copyWithZone(zone: NSZone) -> AnyObject {
         let attributes = super.copyWithZone(zone)

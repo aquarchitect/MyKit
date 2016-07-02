@@ -7,32 +7,32 @@ xcodetest:
 	@ xcodebuild clean test								\
 		-verbose										\
 		-project MyKit.xcodeproj						\
-    	-scheme MyKit-$(SCHEME)							\
-    	-sdk $(SDK)										\
-    	-toolchain com.apple.dt.toolchain.XcodeDefault	\
-    	-configuration Debug							\
-    	-destination $(DESTINATION)						\
-    	CODE_SIGN_IDENTITY=""							\
-    	CODE_SIGNING_REQUIRED=NO						\
-    	ONLY_ACTIVE_ARCH=NO								\
-    	GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES			\
-    	GCC_GENERATE_TEST_COVERAGE_FILES=YES			\
-    	| xcpretty
+		-scheme "MyKit-$(SCHEME)"						\
+		-sdk "$(SDK)"									\
+		-toolchain com.apple.dt.toolchain.XcodeDefault	\
+		-configuration Debug							\
+		-destination "$(DESTINATION)"					\
+		CODE_SIGN_IDENTITY=""							\
+		CODE_SIGNING_REQUIRED=NO						\
+		ONLY_ACTIVE_ARCH=NO								\
+		GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES			\
+		GCC_GENERATE_TEST_COVERAGE_FILES=YES			\
+		| xcpretty
 
 xcodebuild:
 	@ xcodebuild clean build							\
 		-verbose										\
 		-project MyKit.xcodeproj						\
-		-target $(TARGET)			 					\
-		-sdk $(SDK)										\
+		-target "$(TARGET)"			 					\
+		-sdk "$(SDK)"									\
 		-toolchain com.apple.dt.toolchain.XcodeDefault	\
 		-configuration Release							\
 		OBJROOT=$$(pwd)/build							\
 		SYMROOT=$$(pwd)/build							\
 		CODE_SIGN_IDENTITY=""							\
-    	CODE_SIGNING_REQUIRED=NO						\
-    	ONLY_ACTIVE_ARCH=NO								\
-    	| xcpretty
+		CODE_SIGNING_REQUIRED=NO						\
+		ONLY_ACTIVE_ARCH=NO								\
+		| xcpretty
 
 packages:
 	@ echo ">>> Packaging MyKit framework for iOS plateform..."

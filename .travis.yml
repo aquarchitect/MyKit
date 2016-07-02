@@ -11,8 +11,8 @@ branches:
 
 env:
   matrix:
-  - DESTINATION="arch=x86_64"             SCHEME="OSX"    SDK=macosx10.11
-  - DESTINATION="OS=9.0,name=iPhone 5s"   SCHEME="iOS"    SDK=iphonesimulator9.3
+  - DESTINATION="arch=x86_64"             SCHEME=OSX    SDK=macosx10.11
+  - DESTINATION="OS=9.3,name=iPhone 5s"   SCHEME=iOS    SDK=iphonesimulator9.3
 
 before_install:
   - brew update
@@ -21,13 +21,13 @@ install:
   - make install
 
 script:
-  - make xcodebuild
+  - make xcodetest
 
 after_success:
-  - if [[ "$TRAVIS_BRANCH" == "master" && "$SCHEME" == "iOS" ]]; then make jazzy; fi
+  - if [[ "$TRAVIS_TAG" != "" && "$SCHEME" == "iOS" ]]; then make jazzy; fi
 
 before_deploy:
-  - if [[ "$TRAVIS_BRANCH" == "master" && "$SCHEME" == "OSX" ]]; then make package; fi
+  - if [[ "$SCHEME" == "OSX" ]]; then make packages; fi
 
 deploy:
   provider: releases
