@@ -1,3 +1,6 @@
 *.playground
 build
 docs
+
+iOS
+OSX

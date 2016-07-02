@@ -1,19 +1,13 @@
-GITHUB_USER = aquarchitect
-GITHUB_PAGES = gh-pages
-
-MYKIT_FRAMEWORK = MyKit
-MYKIT_REPOSITORY = github.com/$(GITHUB_USER)/$(MYKIT_FRAMEWORK).git
-
 install:
 	brew unlink node && brew install npm
 	npm install -g html-minifier clean-css
 	gem install jazzy
 
-test:
+xcodetest:
 	@ xcodebuild clean test								\
 		-verbose										\
-		-project $(MYKIT_FRAMEWORK).xcodeproj			\
-    	-scheme $(MYKIT_FRAMEWORK)-$(SCHEME)			\
+		-project MyKit.xcodeproj						\
+    	-scheme MyKit-$(SCHEME)							\
     	-sdk $(SDK)										\
     	-toolchain com.apple.dt.toolchain.XcodeDefault	\
     	-configuration Debug							\
@@ -25,15 +19,14 @@ test:
     	GCC_GENERATE_TEST_COVERAGE_FILES=YES			\
     	| xcpretty
 
-package:
+xcodebuild:
 	@ xcodebuild clean build							\
 		-verbose										\
-		-project $(MYKIT_FRAMEWORK).xcodeproj			\
-		-target $(MYKIT_FRAMEWORK)-iOS 					\
-		-target $(MYKIT_FRAMEWORK)-OSX					\
+		-project MyKit.xcodeproj						\
+		-target $(TARGET)			 					\
+		-sdk $(SDK)										\
 		-toolchain com.apple.dt.toolchain.XcodeDefault	\
 		-configuration Release							\
-		-parallelizeTargets								\
 		OBJROOT=$$(pwd)/build							\
 		SYMROOT=$$(pwd)/build							\
 		CODE_SIGN_IDENTITY=""							\
@@ -41,8 +34,26 @@ package:
     	ONLY_ACTIVE_ARCH=NO								\
     	| xcpretty
 
-	mv build/Release OSX && zip -r $(MYKIT_FRAMEWORK)-OSX.zip OSX
-	mv build/Release-iphoneos iOS && zip -r $(MYKIT_FRAMEWORK)-iOS.zip iOS
+packages:
+	@ echo ">>> Packaging MyKit framework for iOS plateform..."
+	@ $(MAKE) xcodebuild TARGET=MyKit-iOS SDK=iphoneos9.3
+	@ $(MAKE) xcodebuild TARGET=MyKit-iOS SDK=iphonesimulator9.3
+
+	cp -r build/Release-iphoneos iOS
+	cp -r build/Release-iphonesimulator/MyKit.framework/Modules/MyKit.swiftmodule/ \
+		iOS/MyKit.framework/Modules/MyKit.swiftmodule
+
+	lipo -create -output iOS/MyKit.framework/MyKit 			\
+		build/Release-iphoneos/MyKit.framework/MyKit 		\
+		build/Release-iphonesimulator/MyKit.framework/MyKit \
+
+	zip -r MyKit-iOS.zip iOS
+
+	@ echo ">>> Packaging MyKit framework for OSX plateform..."
+	@ $(MAKE) xcodebuild TARGET=MyKit-OSX SDK=macosx10.11
+
+	cp -r build/Release OSX
+	zip -r MyKit-OSX.zip OSX
 
 jazzy:
 	jazzy
@@ -59,10 +70,10 @@ jazzy:
 	git config --global user.email "aquarchitecture@gmail.com"
 
 	@ echo ">>> Pushing to gh-pages branch ..."
-	@ cd docs &&																\
-		git init &&																\
-		git add . &&															\
-		git commit -m "Published on $$(date +%D)" &&							\
-		git remote add origin https://$(GITHUB_TOKEN)@$(MYKIT_REPOSITORY) &&	\
-		git push -f origin master:$(GITHUB_PAGES)								\
+	@ cd docs &&																			\
+		git init &&																			\
+		git add . &&																		\
+		git commit -m "Published on $$(date +%D)" &&										\
+		git remote add origin https://$(GITHUB_TOKEN)@github.com/aquarchitect/MyKit.git &&	\
+		git push -f origin master:gh-pages													\
 		> /dev/null 2>&1
