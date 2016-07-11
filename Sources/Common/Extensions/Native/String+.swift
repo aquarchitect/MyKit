@@ -57,7 +57,7 @@ private extension String.Format {
     var pattern: String {
         switch self {
         case .IP: return [String](count: 4, repeatedValue: "([01]?\\d\\d?|2[0-4]\\d|25[0-5])").joinWithSeparator("\\.")
-        case .Hexadecimal: return "#[0-9A-F]{2,6}"
+        case .Hexadecimal: return "#[0-9A-Fa-f]{2,6}"
         }
     }
 }
