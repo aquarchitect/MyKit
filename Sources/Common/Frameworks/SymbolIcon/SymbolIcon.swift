@@ -45,16 +45,4 @@ public extension SymbolIcon {
         return NSMutableAttributedString(string: "\(character)")
             .then { $0.addFont(.fontWith(name: name, size: size, fromFile: file)) }
     }
-
-#if os(iOS)
-    func bitmapImage(ofSize size: CGFloat) -> UIImage? {
-        let label = UILabel.dummyInstance.then {
-            let string = attributedString(ofSize: size)
-            $0.attributedText = string
-            $0.sizeToFit()
-        }
-
-        return renderInContext(label.bounds.size, opaque: false, render: label.layer.renderInContext)
-    }
-#endif
 }

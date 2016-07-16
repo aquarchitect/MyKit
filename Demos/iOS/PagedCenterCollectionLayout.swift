@@ -28,7 +28,12 @@ final class PagedCenterCollectionLayout: ParaboloidFlowLayout {
     private class Attributes: ParaboloidLayoutAttributes {
 
         override var paraboloidValue: CGFloat? {
-            didSet { self.zIndex = (paraboloidValue ?? 1) > 1.3 ? 2 : 1 }
+            didSet {
+                let value = paraboloidValue ?? 1
+
+                self.zIndex = value > 1.3 ? 2 : 1
+                self.transform = CGAffineTransformMakeScale(value, value)
+            }
         }
     }
 
@@ -41,21 +46,21 @@ final class PagedCenterCollectionLayout: ParaboloidFlowLayout {
 
     override init() {
         let screen = UIScreen.mainScreen()
-        let length = screen.traitCollection.displayScale * 100
+        let length = screen.traitCollection.displayScale * 50
 
         super.init()
         super.itemSize = CGSizeMake(length, length)
-        super.minimumLineSpacing = 30
-        super.minimumInteritemSpacing = 30
+        super.minimumLineSpacing = 40
+        super.minimumInteritemSpacing = 40
         super.scrollDirection = .Horizontal
 
         let formula: CGPoint -> CGFloat = {
             let x = -pow(($0.x - screen.bounds.width / 2) / (2.5 * screen.bounds.width), 2)
             let y = -pow(($0.y - screen.bounds.height / 2) / (2.5 * screen.bounds.height), 2)
-            return 20 * (x + y) + 1.4
+            return 20 * (x + y) + 1.5
         }
 
-        paraboloidFormula = ParaboloidLayoutFormula(formula: formula, zValueLimits: (1, 1.4))
+        paraboloidFormula = ParaboloidLayoutFormula(formula: formula, zValueLimits: (1, 1.5))
         snappingPoint = screen.bounds.center
     }
 
@@ -74,6 +79,11 @@ final class PagedCenterCollectionLayout: ParaboloidFlowLayout {
     override class func layoutAttributesClass() -> AnyClass {
         return Attributes.self
     }
+
+    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint) -> CGPoint {
+        print(proposedContentOffset)
+        return super.targetContentOffsetForProposedContentOffset(proposedContentOffset)
+    }
 }
 
-extension PagedCenterCollectionLayout: CollectionLayoutPresentable {}
+extension PagedCenterCollectionLayout: LayoutPresentable {}

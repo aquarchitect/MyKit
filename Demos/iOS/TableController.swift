@@ -23,9 +23,9 @@
  * THE SOFTWARE.
  */
 
-final class TableController: TableViewController<String, UITableViewCell> {
+final class TableController: TableViewController<String, UITableViewCell>, UICollectionViewDelegate {
 
-    private let layouts: [CollectionLayoutPresentable.Type] = [AppleWatchHomeScreenLayout.self, PagedCenterCollectionLayout.self]
+    private let layouts: [LayoutPresentable.Type] = [AppleWatchHomeScreenLayout.self, PagedCenterCollectionLayout.self]
     private let shaders: [ShaderKind] = [.Basic]
 
     init() {
@@ -64,10 +64,12 @@ final class TableController: TableViewController<String, UITableViewCell> {
                         $0.0.backgroundColor = UIColor(hexCode: Arbitrary.hexCode)
                         $0.0.layer.cornerRadius = 20
                     }
+
                     $0.collectionView?.then {
                         $0.showsVerticalScrollIndicator = false
                         $0.showsHorizontalScrollIndicator = false
                         $0.backgroundColor = .whiteColor()
+                        $0.delegate = $0.collectionViewLayout is PagedCenterCollectionLayout ? self : nil
                     }
                 }.then {
                     self.navigationController?.pushViewController($0, animated: true)
@@ -79,5 +81,9 @@ final class TableController: TableViewController<String, UITableViewCell> {
             }
         default: break
         }
+    }
+
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
     }
 }

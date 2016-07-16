@@ -1,5 +1,5 @@
 /*
- * CollectionLayoutPresentable.swift
+ * LayoutPresentable.swift
  * MyKit
  *
  * Copyright (c) 2016 Hai Nguyen.
@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  */
 
-protocol CollectionLayoutPresentable: class {
+protocol LayoutPresentable: class {
 
     static var name: String { get }
     static var items: [[Int]] { get }

@@ -107,7 +107,6 @@
 		C201663E1CE1017900F7D3E5 /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166331CE1017900F7D3E5 /* UICollectionView+.swift */; };
 		C201663F1CE1017900F7D3E5 /* UICollectionViewLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166341CE1017900F7D3E5 /* UICollectionViewLayout+.swift */; };
 		C20166411CE1017900F7D3E5 /* UIEdgeInsets+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166361CE1017900F7D3E5 /* UIEdgeInsets+.swift */; };
-		C20166421CE1017900F7D3E5 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166371CE1017900F7D3E5 /* UILabel+.swift */; };
 		C20166441CE1017900F7D3E5 /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166391CE1017900F7D3E5 /* UIScrollView+.swift */; };
 		C20166451CE1017900F7D3E5 /* UITableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201663A1CE1017900F7D3E5 /* UITableView+.swift */; };
 		C20166461CE1017900F7D3E5 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201663B1CE1017900F7D3E5 /* UIViewController+.swift */; };
@@ -127,9 +126,10 @@
 		C2099CA71CB471F300EA23BA /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2099CA31CB471F300EA23BA /* ScheduleTests.swift */; };
 		C20C62311CEB9AF4000DBD08 /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C62301CEB9AF4000DBD08 /* Miscellaneous.swift */; };
 		C20C62321CEB9AF4000DBD08 /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C62301CEB9AF4000DBD08 /* Miscellaneous.swift */; };
+		C217DD6F1D3AD9FD0047DFBF /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C217DD6E1D3AD9FD0047DFBF /* UILabel+.swift */; };
 		C225FA9D1D1113A1008DF565 /* ParaboloidSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FA9C1D1113A1008DF565 /* ParaboloidSuperLayout.swift */; };
 		C225FAA11D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */; };
-		C225FAA41D111803008DF565 /* CollectionLayoutPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA31D111803008DF565 /* CollectionLayoutPresentable.swift */; };
+		C225FAA41D111803008DF565 /* LayoutPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA31D111803008DF565 /* LayoutPresentable.swift */; };
 		C23939C81CAC7F5900526B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939BB1CAC7F4300526B30 /* AppDelegate.swift */; };
 		C23939CA1CAC7F8E00526B30 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23939C41CAC7F4F00526B30 /* Launch.storyboard */; };
 		C23939D41CAC7FB900526B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939CB1CAC7FA300526B30 /* AppDelegate.swift */; };
@@ -313,7 +313,6 @@
 		C20166331CE1017900F7D3E5 /* UICollectionView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionView+.swift"; path = "Sources/iOS/Extensions/UICollectionView+.swift"; sourceTree = "<group>"; };
 		C20166341CE1017900F7D3E5 /* UICollectionViewLayout+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UICollectionViewLayout+.swift"; path = "Sources/iOS/Extensions/UICollectionViewLayout+.swift"; sourceTree = "<group>"; };
 		C20166361CE1017900F7D3E5 /* UIEdgeInsets+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIEdgeInsets+.swift"; path = "Sources/iOS/Extensions/UIEdgeInsets+.swift"; sourceTree = "<group>"; };
-		C20166371CE1017900F7D3E5 /* UILabel+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILabel+.swift"; path = "Sources/iOS/Extensions/UILabel+.swift"; sourceTree = "<group>"; };
 		C20166391CE1017900F7D3E5 /* UIScrollView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScrollView+.swift"; path = "Sources/iOS/Extensions/UIScrollView+.swift"; sourceTree = "<group>"; };
 		C201663A1CE1017900F7D3E5 /* UITableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+.swift"; path = "Sources/iOS/Extensions/UITableView+.swift"; sourceTree = "<group>"; };
 		C201663B1CE1017900F7D3E5 /* UIViewController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+.swift"; path = "Sources/iOS/Extensions/UIViewController+.swift"; sourceTree = "<group>"; };
@@ -330,9 +329,10 @@
 		C20166911CE1141400F7D3E5 /* Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bridging.h; path = UnitTests/Bridging.h; sourceTree = SOURCE_ROOT; };
 		C2099CA31CB471F300EA23BA /* ScheduleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleTests.swift; path = UnitTests/ScheduleTests.swift; sourceTree = SOURCE_ROOT; };
 		C20C62301CEB9AF4000DBD08 /* Miscellaneous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Miscellaneous.swift; path = Sources/Common/Utilities/Miscellaneous.swift; sourceTree = "<group>"; };
+		C217DD6E1D3AD9FD0047DFBF /* UILabel+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILabel+.swift"; path = "Sources/iOS/Extensions/UILabel+.swift"; sourceTree = "<group>"; };
 		C225FA9C1D1113A1008DF565 /* ParaboloidSuperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidSuperLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidSuperLayout.swift; sourceTree = "<group>"; };
 		C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppleWatchHomeScreenLayout.swift; path = Demos/iOS/AppleWatchHomeScreenLayout.swift; sourceTree = SOURCE_ROOT; };
-		C225FAA31D111803008DF565 /* CollectionLayoutPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionLayoutPresentable.swift; path = Demos/iOS/CollectionLayoutPresentable.swift; sourceTree = SOURCE_ROOT; };
+		C225FAA31D111803008DF565 /* LayoutPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutPresentable.swift; path = Demos/iOS/LayoutPresentable.swift; sourceTree = SOURCE_ROOT; };
 		C23939BB1CAC7F4300526B30 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/iOS/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C23939BC1CAC7F4300526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demos/iOS/Info.plist; sourceTree = SOURCE_ROOT; };
 		C23939C51CAC7F4F00526B30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demos/iOS/Base.lproj/Launch.storyboard; sourceTree = SOURCE_ROOT; };
@@ -555,8 +555,8 @@
 				C20166321CE1017900F7D3E5 /* UIBezierPath+.swift */,
 				C20166331CE1017900F7D3E5 /* UICollectionView+.swift */,
 				C20166341CE1017900F7D3E5 /* UICollectionViewLayout+.swift */,
+				C217DD6E1D3AD9FD0047DFBF /* UILabel+.swift */,
 				C20166361CE1017900F7D3E5 /* UIEdgeInsets+.swift */,
-				C20166371CE1017900F7D3E5 /* UILabel+.swift */,
 				C2F566AA1D242AD800DCEC45 /* UIScreen+.swift */,
 				C20166391CE1017900F7D3E5 /* UIScrollView+.swift */,
 				C201663A1CE1017900F7D3E5 /* UITableView+.swift */,
@@ -680,7 +680,6 @@
 		C225FA9E1D11161A008DF565 /* CollectionLayout */ = {
 			isa = PBXGroup;
 			children = (
-				C225FAA31D111803008DF565 /* CollectionLayoutPresentable.swift */,
 				C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */,
 				C2BB19AD1D111DBC004F76BA /* PagedCenterCollectionLayout.swift */,
 			);
@@ -875,6 +874,7 @@
 				C23939BB1CAC7F4300526B30 /* AppDelegate.swift */,
 				C2BB19AF1D112E1E004F76BA /* ShaderController.swift */,
 				C2BB19B61D113433004F76BA /* TableController.swift */,
+				C225FAA31D111803008DF565 /* LayoutPresentable.swift */,
 				C2BB19B11D112FC6004F76BA /* FragmentShader */,
 				C225FA9E1D11161A008DF565 /* CollectionLayout */,
 				C2DC8CAC1CAB4E1000837D9E /* Support */,
@@ -1483,6 +1483,7 @@
 			files = (
 				C20166441CE1017900F7D3E5 /* UIScrollView+.swift in Sources */,
 				C20165881CE0FA8B00F7D3E5 /* Dictionary+.swift in Sources */,
+				C217DD6F1D3AD9FD0047DFBF /* UILabel+.swift in Sources */,
 				C20165D41CE0FCA000F7D3E5 /* CGSize+.swift in Sources */,
 				C225FA9D1D1113A1008DF565 /* ParaboloidSuperLayout.swift in Sources */,
 				C20165CA1CE0FC9400F7D3E5 /* NSEntityDescription+.swift in Sources */,
@@ -1531,7 +1532,6 @@
 				C2C62A2A1D04A36F0009B45F /* ColorHexing.swift in Sources */,
 				C20166681CE104C200F7D3E5 /* TableViewController.swift in Sources */,
 				C20165CD1CE0FC9400F7D3E5 /* NSManagedObjectContext+.swift in Sources */,
-				C20166421CE1017900F7D3E5 /* UILabel+.swift in Sources */,
 				C2F566AB1D242AD800DCEC45 /* UIScreen+.swift in Sources */,
 				C20165BF1CE0FC8800F7D3E5 /* CKDatabase+.swift in Sources */,
 				C20165931CE0FC0200F7D3E5 /* SymbolIcon.swift in Sources */,
@@ -1593,7 +1593,7 @@
 				C225FAA11D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift in Sources */,
 				C2BB19B51D113186004F76BA /* ShaderKind.swift in Sources */,
 				C2BB19AE1D111DBC004F76BA /* PagedCenterCollectionLayout.swift in Sources */,
-				C225FAA41D111803008DF565 /* CollectionLayoutPresentable.swift in Sources */,
+				C225FAA41D111803008DF565 /* LayoutPresentable.swift in Sources */,
 				C2BB19B71D113433004F76BA /* TableController.swift in Sources */,
 				C2BB19B01D112E1E004F76BA /* ShaderController.swift in Sources */,
 				C23939C81CAC7F5900526B30 /* AppDelegate.swift in Sources */,

@@ -2,7 +2,7 @@
  * UILabel+.swift
  * MyKit
  *
- * Copyright (c) 2015 Hai Nguyen
+ * Copyright (c) 2016 Hai Nguyen.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -28,17 +28,22 @@ import UIKit
 /// :nodoc:
 public extension UILabel {
 
-    public static var dummyInstance: UILabel {
-        struct Singleton { static let label = UILabel() }
-        return Singleton.label
-    }
+    func boundingRectForCharacters(`in` range: NSRange) -> CGRect {
+        guard let attributedText = self.attributedText else { return CGRectNull }
+        let layoutManager = NSLayoutManager()
 
-    public func heightOf(width: CGFloat, font: UIFont, text: String) -> CGFloat {
-        self.frame.size.width = width
-        self.font = font
-        self.text = text
-        self.sizeToFit()
+        // unable to use `then` because of text storage reference
+        let textStorage = NSTextStorage(attributedString: attributedText)
+            .then { $0.addLayoutManager(layoutManager) }
 
-        return self.bounds.height
+        let textContainer = NSTextContainer(size: bounds.size)
+            .then { $0.lineFragmentPadding = 0 }
+            .then(layoutManager.addTextContainer)
+
+        var glyphRange = NSRange()
+
+        // Convert the range for glyphs.
+        layoutManager.characterRangeForGlyphRange(range, actualGlyphRange: &glyphRange)
+        return layoutManager.boundingRectForGlyphRange(glyphRange, inTextContainer: textContainer)
     }
 }
