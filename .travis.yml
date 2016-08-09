@@ -15,24 +15,36 @@ env:
     - DESTINATION="OS=9.3,name=iPhone 5s"   SCHEME=iOS      SDK=iphonesimulator9.3
     - DESTINATION="arch=x86_64"             SCHEME=macOS    SDK=macosx10.11
 
-# before_install:
-#   - brew update
+before_install:
+  - export JOB=$(git log --oneline -1 | awk -F '[][]' '{print $2}')
+  - brew update
 
-# install:
-#   - make install
+install:
+  - if [[ "$SCHEME" == "macOS" && ("$JOB" == "doc" || "$JOB" == "release") ]]; then make install; fi
 
 before_script:
   - git config --global user.name "Hai Nguyen"
   - git config --global user.email "aquarchitecture@gmail.com"
-  - export JOB="$(git log --oneline -1 | awk -F '[][]' '{print $2}')"
-  - make todo;
 
-# script:
-#   - make test
+script:
+  - make xtest
 
-# after_success:
-#   - export JOB="$(git log --oneline -1 | awk -F '[][]' '{print $2}')"
-#   - if [ "$SCHEME" == "macOS" ]; then make todo; fi
+after_success:
+  - if [ "$SCHEME" == "iOS" ]; then
+        if [ "$JOB" == "tag" ]; then
+            make tag STRING="$(git log --oneline -1)";
+        elif [ "$JOB" == "release" ]; then
+            make packages;
+        fi
+    fi
+  - if [ "$SCHEME" == "macOS" ]; then
+        if [ "$JOB" == "doc" ]; then
+            make jazzy;
+        elif [ "$JOB" == "release" ]; then
+            make tag STRING="$(git log --oneline -1)";
+            make jazzy;
+        fi
+    fi
 
 deploy:
   provider: releases
@@ -44,4 +56,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: aquarchitect/MyKit
-    condition: $SCHEME = macOS && $JOB = release
+    condition: $SCHEME = iOS && $JOB = release
