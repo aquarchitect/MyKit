@@ -1,8 +1,8 @@
 /*
- * UILabel+.swift
+ * Bridging.h
  * MyKit
  *
- * Copyright (c) 2016 Hai Nguyen.
+ * Copyright (c) 2015 Hai Nguyen
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,28 +23,5 @@
  * THE SOFTWARE.
  */
 
-import UIKit
-
-/// :nodoc:
-public extension UILabel {
-
-    // FIXME: unable to make it work in an app
-
-    func boundingRectForCharacters(`in` range: NSRange) -> CGRect {
-        guard let attributedText = self.attributedText else { return CGRectNull }
-        let layoutManager = NSLayoutManager()
-
-        // unable to use `then` because of text storage reference
-        NSTextStorage(attributedString: attributedText).addLayoutManager(layoutManager)
-
-        let textContainer = NSTextContainer(size: bounds.size)
-            .then { $0.lineFragmentPadding = 0 }
-            .then(layoutManager.addTextContainer)
-
-        var glyphRange = NSRange()
-
-        // Convert the range for glyphs.
-        layoutManager.characterRangeForGlyphRange(range, actualGlyphRange: &glyphRange)
-        return layoutManager.boundingRectForGlyphRange(glyphRange, inTextContainer: textContainer)
-    }
-}
+@import AppKit;
+@import MyKit;

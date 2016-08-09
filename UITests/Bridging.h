@@ -23,4 +23,4 @@
  * THE SOFTWARE.
  */
 
-@import XCTest;
+@import AppKit;
