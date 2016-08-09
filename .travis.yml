@@ -24,7 +24,7 @@ script:
   - export JOB=$(git log --oneline -1 | awk -F '[][]' '{print $2}')
   - git config --global user.name "Hai Nguyen"
   - git config --global user.email "aquarchitecture@gmail.com"
-  - echo $(JOB) && git tag -l
+  - echo $JOB && git tag -l
 
 after_success:
   - if [ "$TRAVIS_TAG" != "" && "$SCHEME" == "iOS" ]; then make jazzy; fi
