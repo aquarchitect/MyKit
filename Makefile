@@ -27,17 +27,17 @@ define minify-web
 endef
 
 define commit-pages
-	git init;									\
-	git add .;									\
-	git commit -m "$(1)";						\
+	git init;										\
+	git add .;										\
+	git commit -m $(1);								\
 	git remote add upstream $(GITHUB_SECURE_URL);	\
 	git push -f upstream master:gh-pages
 endef
 
 define commit-tag
 	git remote add upstream $(GITHUB_SECURE_URL);	\
-	git tag -a $(1) -m $(2);						\
-	git push upstream $$version
+	git tag -a $(1) -m "$(2)";						\
+	git push upstream $(1)
 endef
 
 install:
@@ -83,35 +83,41 @@ packages:
 	@ $(call package-platform,macOS)
 
 jazzy:
+	@ echo ">>> Generating documentation ... "
 	@ jazzy
-	@ export DOCS=$$(find docs \( -name "*.html" -or -name "*.css" \))
-	@ for file in $(DOCS); do 				\
-		echo ">>> Minifying $$file ... ";	\
-		$(call minify-web,$$file);			\
-	  done
-	@ echo ">>> Push generated documentation to gh-pages branch ..."
-	@ cd docs && $(call commit-pages,"Publish from TravisCI on $$(date +%D)") > /dev/null 2>&1
+	@ if true; then 												\
+		doc=$$(find docs \( -name "*.html" -or -name "*.css" \));	\
+		for file in $$doc; do 										\
+			echo ">>> Minifying $$file ... ";						\
+			$(call minify-web,$$file);								\
+	    done;														\
+	  fi
+	@ if true; then														\
+		echo ">>> Pushing generated documentation to gh-pages branch ...";	\
+		msg="Publish from TravisCI on $$(date +%D)";					\
+		cd docs && $(call commit-pages,$$msg) > /dev/null 2>&1;			\
+	  fi
 
 tag:
-	@ if [ $$(echo $(STRING) | awk -F '[][]' '{print $$2}') == "tag" ]; then	\
+	@ if [ "$$(echo $(STRING) | awk -F '[][]' '{print $$2}')" == "tag" ]; then	\
 		version=$$(echo $(STRING) | awk -F '[][]' '{print $$4}');				\
 		message=$$(echo $(STRING) | awk -F '[][]' '{print $$5}');				\
 		if [[ ! $$version =~ ^([0-9]+\.){2}[0-9]+ ]]; then						\
 			echo "Error: Invalid version!" >&2 && exit 1;						\
 		else																	\
+			echo ">>> Pushing generated tag to main branch ... ";				\
 			$(call commit-tag,$$version,$$message);								\
 		fi;																		\
 	  fi
 
 todo:
-	@ if [ "$(JOB)" == "doc" ]; then		\
-		echo $(JOB);\
-	  elif [ "$(JOB)" == "tag" ]; then		\
-	    echo $(JOB);\
-	  elif [ "$(JOB)" == "release" ]; then	\
-	  	echo $(JOB);\
-	  else									\
-	  	echo $(git log --oneline -1 | awk -F '[][]' '{print $2}');\
+	@ if [ "$(JOB)" == "doc" ]; then					\
+		$(MAKE) jazzy;									\
+	  elif [ "$(JOB)" == "tag" ]; then					\
+	    $(MAKE) tag STRING="$$(git log --oneline -1)";	\
+	  elif [ "$(JOB)" == "release" ]; then				\
+		$(MAKE) tag STRING="$$(git log --oneline -1)";	\
+	  	$(MAKE) jazzy;									\
 	  fi
 
 clean:

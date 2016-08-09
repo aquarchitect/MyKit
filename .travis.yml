@@ -15,24 +15,22 @@ env:
     - DESTINATION="OS=9.3,name=iPhone 5s"   SCHEME=iOS      SDK=iphonesimulator9.3
     - DESTINATION="arch=x86_64"             SCHEME=macOS    SDK=macosx10.11
 
-# before_install:
-#   - brew update
+before_install:
+  - brew update
 
-# install:
-#   - make install
+install:
+  - make install
 
 before_script:
   - git config --global user.name "Hai Nguyen"
   - git config --global user.email "aquarchitecture@gmail.com"
-  - export JOB="$(git log --oneline -1 | awk -F '[][]' '{print $2}')"
-  - make todo;
 
-# script:
-#   - make test
+script:
+  - make test
 
-# after_success:
-#   - export JOB="$(git log --oneline -1 | awk -F '[][]' '{print $2}')"
-#   - if [ "$SCHEME" == "macOS" ]; then make todo; fi
+after_success:
+  - export JOB=$(git log --oneline -1 | awk -F '[][]' '{print $2}')
+  - if [ "$SCHEME" == "macOS" ]; then make todo; fi
 
 deploy:
   provider: releases
