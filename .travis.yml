@@ -10,7 +10,6 @@ branches:
   - gh-pages
 
 env:
-  - JOB=$(git log --oneline -1 | awk -F '[][]' '{print $2}')
   matrix:
     - DESTINATION="arch=x86_64"             SCHEME=OSX    SDK=macosx10.11
     - DESTINATION="OS=9.3,name=iPhone 5s"   SCHEME=iOS    SDK=iphonesimulator9.3
@@ -22,9 +21,10 @@ install:
   - make install
 
 script:
+  - export JOB=$(git log --oneline -1 | awk -F '[][]' '{print $2}')
   - git config --global user.name "Hai Nguyen"
   - git config --global user.email "aquarchitecture@gmail.com"
-  - git tag -l
+  - echo $(JOB) && git tag -l
 
 after_success:
   - if [ "$TRAVIS_TAG" != "" && "$SCHEME" == "iOS" ]; then make jazzy; fi
