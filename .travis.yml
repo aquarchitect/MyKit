@@ -8,29 +8,31 @@ notifications:
 branches:
   except:
   - gh-pages
+  - /^v?[0-9]+\./ # eclude tags
 
 env:
   matrix:
-    - DESTINATION="arch=x86_64"             SCHEME=OSX    SDK=macosx10.11
-    - DESTINATION="OS=9.3,name=iPhone 5s"   SCHEME=iOS    SDK=iphonesimulator9.3
+    - DESTINATION="OS=9.3,name=iPhone 5s"   SCHEME=iOS      SDK=iphonesimulator9.3
+    - DESTINATION="arch=x86_64"             SCHEME=macOS    SDK=macosx10.11
 
-before_install:
-  - brew update
+# before_install:
+#   - brew update
 
-install:
-  - make install
+# install:
+#   - make install
 
-script:
-  - export JOB=$(git log --oneline -1 | awk -F '[][]' '{print $2}')
+before_script:
   - git config --global user.name "Hai Nguyen"
   - git config --global user.email "aquarchitecture@gmail.com"
-  - echo $JOB && git tag -l
+  - export JOB="$(git log --oneline -1 | awk -F '[][]' '{print $2}')"
+  - make todo;
 
-after_success:
-  - if [ "$TRAVIS_TAG" != "" && "$SCHEME" == "iOS" ]; then make jazzy; fi
+# script:
+#   - make test
 
-before_deploy:
-  - if [ "$SCHEME" == "OSX" ]; then make packages; fi
+# after_success:
+#   - export JOB="$(git log --oneline -1 | awk -F '[][]' '{print $2}')"
+#   - if [ "$SCHEME" == "macOS" ]; then make todo; fi
 
 deploy:
   provider: releases
@@ -38,9 +40,8 @@ deploy:
     secure: sSWWXodyA0HQXkJE99L7GObRtwadZ0eNIozJ2Pej1mm43OuRQtb40ZMMffcHPp14+o+cIATwXfGQr8tMBrf8R6SM1OX7SY6cm6mFFHgsI24bYKt0f+mpirhdMA01neeEr062Qrh6raEZFYBGXRRb1ZrRKJ2uCORlgPZV1Fcn9JIziajS4hzFhZ1mDK8qur+wiCAG5LWG1k1ktkD3OK7Ws87IiZgt69DavodZrHfHc6fw6gQo4ugO5yIVW7Zt1wd1p0Q/i1EaemGUD+wSYlMDS7V7yNjjUj0tzWBH/ow2ae5WB+g/LzJa/B6CVbEdnd1FrMzgnOSXpTlyekv05iyh9CF919/i/m6Q/x23Zhq688PVyjqg3P6fuU4yZZ5evTtt2djLbYYait3VI4+QWZ1SzvCspX5k2U+KTB/4SnYvVKDqgF/vrh7WZz5dSAJg+dKFs63eZXd+5mQuaQvBYpIeuw2KDC0d80pjXp0aBxWoruuiMN9OuOd9iOezmSXDjv29YzkpLLhYFmxJxLXHp3L1KC020dDoUoAOGDoT8d711j80UDapVvAR7d2rwjP84qJQMdlBjaMpWoThvtRz/jjQHITEP3v82BHH2+ZMm38SM3VBitCmxu+mv9iMPmlw+8Z8T8JfegcGb9+M3nMnNfS4w6rsFiUy3S1j2TCzsZIyuA4=
   file:
     - "MyKit-iOS.zip"
-    - "MyKit-OSX.zip"
+    - "MyKit-macOS.zip"
   skip_cleanup: true
   on:
     repo: aquarchitect/MyKit
-    condition: $SCHEME = OSX
-    tags: true
+    condition: $SCHEME = macOS && $JOB = release

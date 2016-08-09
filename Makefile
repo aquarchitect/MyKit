@@ -1,3 +1,5 @@
+GITHUB_SECURE_URL = https://$(GITHUB_TOKEN)@github.com/aquarchitect/MyKit.git
+
 define package-platform
 	if [ "$(1)" == "iOS" ]; then 														\
 		$(MAKE) xcodebuild TARGET=MyKit-iOS SDK=iphoneos9.3;							\
@@ -9,10 +11,10 @@ define package-platform
 			build/Release-iphoneos/MyKit.framework/MyKit 								\
 			build/Release-iphonesimulator/MyKit.framework/MyKit;						\
 		zip -r MyKit-iOS.zip iOS;														\
-	elif [ "$(1)" == "OSX" ]; then														\
-		$(MAKE) xcodebuild TARGET=MyKit-OSX SDK=macosx10.11;							\
-		cp -r build/Release OSX;														\
-		zip -r MyKit-OSX.zip OSX;														\
+	elif [ "$(1)" == "macOS" ]; then													\
+		$(MAKE) xcodebuild TARGET=MyKit-macOS SDK=macosx10.11;							\
+		cp -r build/Release macOS;														\
+		zip -r MyKit-macOS.zip macOS;													\
 	fi
 endef
 
@@ -25,11 +27,17 @@ define minify-web
 endef
 
 define commit-pages
-	git init;																			\
-	git add .;																			\
-	git commit -m "$(1)";																\
-	git remote add origin https://$(GITHUB_TOKEN)@github.com/aquarchitect/MyKit.git;	\
-	git push -f origin master:gh-pages
+	git init;									\
+	git add .;									\
+	git commit -m "$(1)";						\
+	git remote add upstream $(GITHUB_SECURE_URL);	\
+	git push -f upstream master:gh-pages
+endef
+
+define commit-tag
+	git remote add upstream $(GITHUB_SECURE_URL);	\
+	git tag -a $(1) -m $(2);						\
+	git push upstream $$version
 endef
 
 install:
@@ -71,8 +79,8 @@ build:
 packages:
 	@ echo ">>> Packaging MyKit for iOS ... "
 	@ $(call package-platform,iOS)
-	@ echo ">>> Packaging MyKit for OSX ... "
-	@ $(call package-platform,OSX)
+	@ echo ">>> Packaging MyKit for macOS ... "
+	@ $(call package-platform,macOS)
 
 jazzy:
 	@ jazzy
@@ -84,7 +92,29 @@ jazzy:
 	@ echo ">>> Push generated documentation to gh-pages branch ..."
 	@ cd docs && $(call commit-pages,"Publish from TravisCI on $$(date +%D)") > /dev/null 2>&1
 
+tag:
+	@ if [ $$(echo $(STRING) | awk -F '[][]' '{print $$2}') == "tag" ]; then	\
+		version=$$(echo $(STRING) | awk -F '[][]' '{print $$4}');				\
+		message=$$(echo $(STRING) | awk -F '[][]' '{print $$5}');				\
+		if [[ ! $$version =~ ^([0-9]+\.){2}[0-9]+ ]]; then						\
+			echo "Error: Invalid version!" >&2 && exit 1;						\
+		else																	\
+			$(call commit-tag,$$version,$$message);								\
+		fi;																		\
+	  fi
+
+todo:
+	@ if [ "$(JOB)" == "doc" ]; then		\
+		echo $(JOB);\
+	  elif [ "$(JOB)" == "tag" ]; then		\
+	    echo $(JOB);\
+	  elif [ "$(JOB)" == "release" ]; then	\
+	  	echo $(JOB);\
+	  else									\
+	  	echo $(git log --oneline -1 | awk -F '[][]' '{print $2}');\
+	  fi
+
 clean:
 	@ if [ -d build ]; then rm -fr build; fi
 	@ if [ -d iOS ]; then rm -fr iOS; fi
-	@ if [ -d OSX ]; then rm -fr OSX; fi
+	@ if [ -d macOS ]; then rm -fr macOS; fi
