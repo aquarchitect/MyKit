@@ -1,5 +1,5 @@
 /*
- * UIBezierPath+.swift
+ * MyKit.h
  * MyKit
  *
  * Copyright (c) 2015 Hai Nguyen
@@ -23,40 +23,10 @@
  * THE SOFTWARE.
  */
 
-import UIKit
+@import Foundation;
 
-public extension UIBezierPath {
+//! Project version number for MyKit.
+FOUNDATION_EXPORT double MyKitVersionNumber;
 
-    convenience init(points: [CGPoint]) {
-        self.init()
-        drawLines(points)
-    }
-
-    convenience init(points: CGPoint...) {
-        self.init(points: points)
-    }
-
-    func drawLines(points: [CGPoint]) {
-        precondition(points.count > 1, "Invalid number of points!")
-
-        self.moveToPoint(points.first!)
-        points.dropFirst().forEach(self.addLineToPoint)
-    }
-
-    func drawLines(points: CGPoint...) {
-        drawLines(points)
-    }
-}
-
-public extension UIBezierPath {
-
-    final func outlineStroke() -> UIBezierPath {
-        let path = CGPathCreateCopyByStrokingPath(self.CGPath,
-                                                  nil,
-                                                  self.lineWidth,
-                                                  self.lineCapStyle,
-                                                  self.lineJoinStyle,
-                                                  self.miterLimit)
-        return UIBezierPath(CGPath: path!)
-    }
-}
+//! Project version string for MyKit.
+FOUNDATION_EXPORT const unsigned char MyKitVersionString[];

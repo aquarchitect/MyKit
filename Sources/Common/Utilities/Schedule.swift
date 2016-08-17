@@ -29,12 +29,12 @@ final public class Schedule {
 
     public typealias ID = UInt
 
-    struct Task {
+    public struct Task {
 
-        var intervals: AnyGenerator<NSTimeInterval>
+        public var intervals: AnyGenerator<NSTimeInterval>
 
-        var suspended = false
-        let block: Void -> Void
+        public var isSuspended = false
+        let block: () -> Void
     }
 
     private static let sharedInstance = Schedule()
@@ -46,7 +46,7 @@ final public class Schedule {
         objc_sync_enter(Schedule.sharedInstance)
         defer { objc_sync_exit(Schedule.sharedInstance) }
 
-        guard let task = Schedule.subscribers[id] where !task.suspended else { return }
+        guard let task = Schedule.subscribers[id] where !task.isSuspended else { return }
         task.block()
 
         if let interval = task.intervals.next() {
@@ -81,51 +81,55 @@ private extension Schedule {
 
 public extension Schedule {
 
-    public static func cancel(ids: ID...) -> [Bool] {
+    static func task(`for` id: ID) -> Task? {
+        return subscribers[id]
+    }
+
+    static func cancel(ids: ID...) -> [Bool] {
         objc_sync_enter(sharedInstance)
         defer { objc_sync_exit(sharedInstance) }
 
         return ids.map { subscribers.removeValueForKey($0) != nil }
     }
 
-    public static func suspend(ids: ID...) -> [Bool] {
+    static func suspend(ids: ID...) -> [Bool] {
         objc_sync_enter(sharedInstance)
         defer { objc_sync_exit(sharedInstance) }
 
         return ids.map {
-            subscribers[$0]?.suspended = true
-            return subscribers[$0]?.suspended ?? false
+            subscribers[$0]?.isSuspended = true
+            return subscribers[$0]?.isSuspended ?? false
         }
     }
 
-    public static func resume(ids: ID...) -> [Bool] {
+    static func resume(ids: ID...) -> [Bool] {
         return ids.map {
-            subscribers[$0]?.suspended = false
+            subscribers[$0]?.isSuspended = false
             sharedInstance.runTask($0)
-            return subscribers[$0]?.suspended == false
+            return subscribers[$0]?.isSuspended == false
         }
     }
 }
 
 public extension Schedule {
 
-    public static func once(interval: NSTimeInterval, block: Void -> Void) -> ID {
+    static func once(interval: NSTimeInterval, block: Void -> Void) -> ID {
         return dispatch(AnyGenerator(GeneratorOfOne(interval)), block: block)
     }
 
-    public static func timeout(interval: NSTimeInterval, block: Void -> Void) -> ID {
+    static func timeout(interval: NSTimeInterval, block: Void -> Void) -> ID {
         return once(interval, block: block)
     }
 
-    public static func every(interval: NSTimeInterval, block: Void -> Void) -> ID {
+    static func every(interval: NSTimeInterval, block: Void -> Void) -> ID {
         return dispatch(AnyGenerator { interval }, block: block)
     }
 
-    public static func after<C: CollectionType where C.Generator.Element == NSTimeInterval>(intervals: C, block: Void -> Void) -> ID {
+    static func after<C: CollectionType where C.Generator.Element == NSTimeInterval>(intervals: C, block: Void -> Void) -> ID {
         return dispatch(AnyGenerator(intervals.generate()), block: block)
     }
 
-    public static func countdown(interval: NSTimeInterval, times: UInt, block: (left: NSTimeInterval) -> Void) -> ID {
+    static func countdown(interval: NSTimeInterval, times: UInt, block: (left: NSTimeInterval) -> Void) -> ID {
         var count = times + 1
 
         let intervals = AnyGenerator<NSTimeInterval> {

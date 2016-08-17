@@ -1,8 +1,7 @@
 blades:
   - source: AppIcon.png
     mount: Demos/Assets.xcassets/AppIcon-iOS.appiconset
-    contents: true
+    contents: false
   - source: AppIcon.png
-    mount: Demos/Assets.xcassets/AppIcon-OSX.appiconset
-    contents: true
-  
+    mount: Demos/Assets.xcassets/AppIcon-macOS.appiconset
+    contents: false

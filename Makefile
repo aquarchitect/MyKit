@@ -1,25 +1,36 @@
 GITHUB_SECURE_URL = https://$(GITHUB_TOKEN)@github.com/aquarchitect/MyKit.git
 
+define error-platform
+	echo "Err: Unsupportive platform - $(1)";										\
+	echo "Only support iOS and macOS!";												\
+	exit 1
+endef
+
 define package-platform
 	if [ "$(1)" == "iOS" ]; then 														\
-		$(MAKE) xbuild TARGET=MyKit-iOS SDK=iphoneos9.3;								\
-		$(MAKE) xbuild TARGET=MyKit-iOS SDK=iphonesimulator9.3;							\
+		echo ">>> Packaging MyKit for iOS ... ";										\
+		$(MAKE) xcbuild SCHEME=iOS SDK=iphoneos9.3;										\
+		$(MAKE) xcbuild SCHEME=iOS SDK=iphonesimulator9.3;								\
 		cp -r Build/Release-iphoneos iOS;												\
 		cp -r Build/Release-iphonesimulator/MyKit.framework/Modules/MyKit.swiftmodule/ 	\
 			iOS/MyKit.framework/Modules/MyKit.swiftmodule;								\
 		lipo -create -output iOS/MyKit.framework/MyKit 									\
 			Build/Release-iphoneos/MyKit.framework/MyKit 								\
 			Build/Release-iphonesimulator/MyKit.framework/MyKit;						\
-		zip -r MyKit-iOS.zip iOS;														\
+		zip -rq MyKit-iOS.zip iOS;														\
 	elif [ "$(1)" == "macOS" ]; then													\
-		$(MAKE) xbuild TARGET=MyKit-macOS SDK=macosx10.11;								\
+		echo ">>> Packaging MyKit for macOS ... ";										\
+		$(MAKE) xcbuild SCHEME=macOS SDK=macosx10.11;									\
 		cp -r Build/Release macOS;														\
-		zip -r MyKit-macOS.zip macOS;													\
+		zip -rq MyKit-macOS.zip macOS;													\
+	else																				\
+		$(call error-platform,$(1));													\
 	fi
 endef
 
 define minify-web
 	file=$(1);																\
+	echo ">>> Minifying $$file ... ";										\
 	case $${file##*.} in													\
 		html) cat $$file | html-minifier --collapse-whitespace -o $$file;;	\
 		css) cat $$file | cleancss --s0 -o $$file;;							\
@@ -27,17 +38,27 @@ define minify-web
 endef
 
 define commit-pages
-	git init;										\
-	git add .;										\
-	git commit -m "$(1)";							\
-	git remote add upstream $(GITHUB_SECURE_URL);	\
+	echo ">>> Commiting generated documentation ...";	\
+	git init;											\
+	git add .;											\
+	git commit -m "$(1)";								\
+	git remote add upstream $(GITHUB_SECURE_URL);		\
 	git push -f upstream master:gh-pages
 endef
 
 define commit-tag
+	echo ">>> Commiting $(1) tag ... ";				\
 	git remote add upstream $(GITHUB_SECURE_URL);	\
 	git tag -a $(1) -m "$(2)";						\
 	git push upstream $(1)
+endef
+
+define invalidate-tag
+	if [[ ! $(1) =~ ^([0-9]+\.){2}[0-9]+ ]]; then		\
+		echo "Error: Invalid version!" >&2 && exit 1;	\
+	elif [ -z $(2) ]; then								\
+		echo "Error: Invalid message!" >&2 && exit 2;	\
+	fi
 endef
 
 install:
@@ -45,7 +66,7 @@ install:
 	npm install -g html-minifier clean-css
 	gem install jazzy
 
-xtest:
+xctest:
 	@ xcodebuild clean test								\
 		-verbose										\
 		-project MyKit.xcodeproj						\
@@ -61,11 +82,11 @@ xtest:
 		GCC_GENERATE_TEST_COVERAGE_FILES=YES			\
 		| xcpretty
 
-xbuild:
+xcbuild:
 	@ xcodebuild clean build							\
 		-verbose										\
 		-project MyKit.xcodeproj						\
-		-target "$(TARGET)"			 					\
+		-target "MyKit-$(SCHEME)"			 			\
 		-sdk "$(SDK)"									\
 		-toolchain com.apple.dt.toolchain.XcodeDefault	\
 		-configuration Release							\
@@ -77,37 +98,32 @@ xbuild:
 		| xcpretty
 
 packages:
-	@ echo ">>> Packaging MyKit for iOS ... "
-	@ $(call package-platform,iOS)
-	@ echo ">>> Packaging MyKit for macOS ... "
-	@ $(call package-platform,macOS)
+	@ if [ -z "$(PLATFORM)" ]; then				\
+		$(call package-platform,iOS);			\
+		$(call package-platform,macOS);			\
+	  else										\
+	  	$(call package-platform,$(PLATFORM));	\
+	  fi
+	$ $(MAKE) clean
 
 jazzy:
 	@ echo ">>> Generating documentation ... "
 	@ jazzy
 	@ if true; then 												\
 		doc=$$(find docs \( -name "*.html" -or -name "*.css" \));	\
-		for file in $$doc; do 										\
-			echo ">>> Minifying $$file ... ";						\
-			$(call minify-web,$$file);								\
-	    done;														\
+		for file in $$doc; do $(call minify-web,$$file); done;		\
 	  fi
-	@ if true; then															\
-		echo ">>> Pushing generated documentation to gh-pages branch ...";	\
-		msg="Publish from TravisCI on $$(date +%D)";						\
-		cd docs && $(call commit-pages,$$msg) > /dev/null 2>&1;				\
+	@ if true; then													\
+		msg="Publish from TravisCI on $$(date +%D)";				\
+		cd docs && $(call commit-pages,$$msg) > /dev/null 2>&1;		\
 	  fi
 
 tag:
-	@ if [ "$$(echo $(STRING) | awk -F '[][]' '{print $$2}')" == "tag" ]; then	\
-		version=$$(echo $(STRING) | awk -F '[][]' '{print $$4}');				\
-		message=$$(echo $(STRING) | awk -F '[][]' '{print $$5}');				\
-		if [[ ! $$version =~ ^([0-9]+\.){2}[0-9]+ ]]; then						\
-			echo "Error: Invalid version!" >&2 && exit 1;						\
-		else																	\
-			echo ">>> Pushing generated tag to main branch ... ";				\
-			$(call commit-tag,$$version,$$message) > /dev/null 2>&1;			\
-		fi;																		\
+	@ if true; then	\
+		version=$$(echo $(MESSAGE) | awk -F '[][]' '{print $$4}');	\
+		message=$$(echo $(MESSAGE) | awk -F '[][]' '{print $$5}');	\
+		$(call invalidate-tag,$$version,$$message);					\
+		$(call commit-tag,$$version,$$message) > /dev/null 2>&1;	\
 	  fi
 
 clean:

@@ -8,42 +8,41 @@ notifications:
 branches:
   except:
   - gh-pages
-  - /^v?[0-9]+\./ # eclude tags
 
 env:
   matrix:
     - DESTINATION="OS=9.3,name=iPhone 5s"   SCHEME=iOS      SDK=iphonesimulator9.3
     - DESTINATION="arch=x86_64"             SCHEME=macOS    SDK=macosx10.11
+  global:
+    - MESSAGE=$(git log --oneline -1)
+    - JOB=$(echo $MESSAGE | awk -F '[][]' '{print $2}')
 
 before_install:
-  - export JOB=$(git log --oneline -1 | awk -F '[][]' '{print $2}')
   - brew update
 
 install:
-  - if [[ "$SCHEME" == "macOS" && ("$JOB" == "doc" || "$JOB" == "release") ]]; then make install; fi
+  - if [[ "$JOB" == "doc" || "$JOB" == "release" ]]; then
+        if [ "$SCHEME" == "macOS" ]; then make install; fi
+    fi
 
 before_script:
   - git config --global user.name "Hai Nguyen"
   - git config --global user.email "aquarchitecture@gmail.com"
 
 script:
-  - make xtest
+  - if [ "$TRAVIS_TAG" == "" ]; then make xctest; fi
 
 after_success:
-  - if [ "$SCHEME" == "iOS" ]; then
-        if [ "$JOB" == "tag" ]; then
-            make tag STRING="$(git log --oneline -1)";
-        elif [ "$JOB" == "release" ]; then
-            make packages;
-        fi
+  - if [[ "$TRAVIS_TAG" == "" && "$SCHEME" == "iOS" ]]; then
+        if [[ "$JOB" == "tag" || "$JOB" == "release" ]]; then make tag; fi
     fi
-  - if [ "$SCHEME" == "macOS" ]; then
-        if [ "$JOB" == "doc" ]; then
-            make jazzy;
-        elif [ "$JOB" == "release" ]; then
-            make tag STRING="$(git log --oneline -1)";
-            make jazzy;
-        fi
+  - if [[ "$TRAVIS_TAG" == "" && "$SCHEME" == "macOS" ]]; then
+        if [[ "$JOB" == "doc" || "$JOB" == "release" ]]; then make jazzy; fi
+    fi
+
+before_deploy:
+  - if [[ "$TRAVIS_TAG" != "" && "$JOB" == "release" ]]; then
+        if [ "$SCHEME" == "iOS" ]; then make packages; fi
     fi
 
 deploy:
@@ -55,5 +54,6 @@ deploy:
     - "MyKit-macOS.zip"
   skip_cleanup: true
   on:
+    tags: true
     repo: aquarchitect/MyKit
     condition: $SCHEME = iOS && $JOB = release
