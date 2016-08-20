@@ -90,8 +90,12 @@ public extension Promise {
         }
     }
 
+    static func when(promises: Promise...) -> Promise<[T]> {
+        return when(promises)
+    }
+
     /// Convert concurrent promises of a same type to a promise of an array
-    static public func when(promises: [Promise]) -> Promise<[T]> {
+    static func when(promises: [Promise]) -> Promise<[T]> {
         let queue = dispatch_queue_create("MyKit.Promise.array", DISPATCH_QUEUE_CONCURRENT)
         let group = dispatch_group_create()
 

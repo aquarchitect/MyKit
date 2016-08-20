@@ -31,7 +31,7 @@ final public class Schedule {
 
     public struct Task {
 
-        public var intervals: AnyGenerator<NSTimeInterval>
+        public private(set) var intervals: AnyGenerator<NSTimeInterval>
 
         public var isSuspended = false
         let block: () -> Void

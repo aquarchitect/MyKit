@@ -26,12 +26,18 @@
 /// :nodoc:
 public extension Dictionary {
 
-    public init<S: SequenceType where S.Generator.Element == Element>(seq: S) {
+    init<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
         self.init()
-        self.merge(seq)
+        self.merge(sequence)
     }
 
-    mutating public func merge<S: SequenceType where S.Generator.Element == Element>(seq: S) {
-        seq.forEach { self[$0] = $1 }
+    mutating func merge<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
+        sequence.forEach { self[$0] = $1 }
+    }
+
+    func merging<S: SequenceType where S.Generator.Element == Element>(sequence: S) -> Dictionary {
+        var result = self
+        result.merge(sequence)
+        return result
     }
 }
