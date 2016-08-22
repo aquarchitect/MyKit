@@ -29,7 +29,7 @@ public struct Promise<T> {
 
     private let operation: Result<T>.Callback -> Void
 
-    init(_ operation: Result<T>.Callback -> Void) {
+    public init(_ operation: Result<T>.Callback -> Void) {
         self.operation = operation
     }
 }

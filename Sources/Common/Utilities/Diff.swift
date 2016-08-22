@@ -42,30 +42,22 @@ public struct Diff<T: Equatable> {
 
 public extension Diff {
 
-    var updateIndexes: [Int] {
-        let deletes = Set(self.deletes.map { $0.0 })
-        let inserts = Set(self.inserts.map { $0.0 })
-        return deletes.intersect(inserts).sort(<)
-    }
+    var indexes: (update: [Int], deletion: [Int], insertion: [Int]) {
+        let updateIndexSet: Set<Int> = {
+            let deletes = Set(self.deletes.map { $0.0 })
+            let inserts = Set(self.inserts.map { $0.0 })
+            return deletes.intersect(inserts)
+        }()
 
-    /**
-     * Delete indexes excluded updates
-     */
-    var exclusiveDeleteIndexes: [Int] {
-        let updates = Set(updateIndexes)
-        return deletes
-            .filter { !updates.contains($0.0) }
-            .lazy.map { $0.0 }
-    }
+        let deleteIndexes = deletes
+            .filter { !updateIndexSet.contains($0.0) }
+            .map { $0.0 }
 
-    /**
-     * Insert indexes excluded updates
-     */
-    var exclusiveInsertIndexes: [Int] {
-        let updates = Set(updateIndexes)
-        return inserts
-            .filter { !updates.contains($0.0) }
-            .lazy.map { $0.0 }
+        let insertIndexes = inserts
+            .filter { !updateIndexSet.contains($0.0) }
+            .map { $0.0 }
+
+        return (updateIndexSet.sort(<), deleteIndexes, insertIndexes)
     }
 }
 
