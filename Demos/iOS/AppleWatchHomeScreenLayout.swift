@@ -36,7 +36,7 @@ final class AppleWatchHomeScreenLayout: ParaboloidSuperLayout {
     }
 
     static let name = "Apple Watch Home Screen Layout"
-    static let items = [Array(count: 400, repeatedValue: 0)]
+    static let items = Array(count: 400, repeatedValue: 0)
 
     private var gridColumn: Int = 20
     private var iterimSpacing: CGFloat = 10

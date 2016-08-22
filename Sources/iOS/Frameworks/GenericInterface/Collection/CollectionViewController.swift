@@ -25,15 +25,20 @@
 
 import UIKit
 
-public class CollectionViewController<T, C: CellStyling where C: UICollectionViewCell, C.DataType == T>: UICollectionViewController {
+public class CollectionViewController<T, C: UICollectionViewCell>: UICollectionViewController {
 
     // MARK: Property
 
-    public var items: [[T]] = []
+    public typealias Styling = (C, T) -> Void
+    public let items: [T]
+    public let styling: Styling
 
     // MARK: Initialization
 
-    public override init(collectionViewLayout layout: UICollectionViewLayout) {
+    public init(layout: UICollectionViewLayout, items: [T], styling: Styling) {
+        self.items = items
+        self.styling = styling
+
         super.init(collectionViewLayout: layout)
     }
 
@@ -42,21 +47,17 @@ public class CollectionViewController<T, C: CellStyling where C: UICollectionVie
     public override func loadView() {
         super.loadView()
 
-        collectionView?.register(C.self, forReuseIdentifier: C.identifier)
+        collectionView?.register(C.self, forReuseIdentifier: "Cell")
     }
 
     // MARK: Collection View Data Source
 
-    public override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    public override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
 
-    public override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items[section].count
-    }
-
     public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier(C.identifier, forIndexPath: indexPath)
-            .then { ($0 as? C)?.style(items[indexPath.section][indexPath.item]) }
+        return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
+            .then { styling($0 as! C, items[indexPath.item]) }
     }
 }

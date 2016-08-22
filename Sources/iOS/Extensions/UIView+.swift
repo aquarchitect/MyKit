@@ -27,5 +27,5 @@ import UIKit
 
 public extension UIView {
 
-    typealias AnimationCompletionBlock = (Bool) -> Void
+    typealias AnimatingCompletion = (Bool) -> Void
 }

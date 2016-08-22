@@ -164,7 +164,6 @@
 		C2C62A361D04A65C0009B45F /* _LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A311D04A6560009B45F /* _LoremIpsum.swift */; };
 		C2D5E7CA1CE12FF80049B5C1 /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165901CE0FC0200F7D3E5 /* SymbolIcon.ttf */; };
 		C2D5E7CB1CE12FF90049B5C1 /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165901CE0FC0200F7D3E5 /* SymbolIcon.ttf */; };
-		C2E01CF31D6AADAB00FE089A /* CellStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E01CF21D6AADAB00FE089A /* CellStyling.swift */; };
 		C2EAD82A1D03F714001D2DC4 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAD8291D03F714001D2DC4 /* Matrix.swift */; };
 		C2F0A7501D10D5DC0022FF61 /* ParaboloidFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0A74C1D10D5DC0022FF61 /* ParaboloidFlowLayout.swift */; };
 		C2F0A7521D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0A74E1D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift */; };
@@ -334,6 +333,7 @@
 		C225FA9C1D1113A1008DF565 /* ParaboloidSuperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidSuperLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidSuperLayout.swift; sourceTree = "<group>"; };
 		C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppleWatchHomeScreenLayout.swift; path = Demos/iOS/AppleWatchHomeScreenLayout.swift; sourceTree = SOURCE_ROOT; };
 		C225FAA31D111803008DF565 /* LayoutPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutPresentable.swift; path = Demos/iOS/LayoutPresentable.swift; sourceTree = SOURCE_ROOT; };
+		C22619A21D6B6FA7008F779D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = Sources/iOS/Frameworks/GenericInterface/README.md; sourceTree = "<group>"; };
 		C23939BB1CAC7F4300526B30 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/iOS/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C23939BC1CAC7F4300526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demos/iOS/Info.plist; sourceTree = SOURCE_ROOT; };
 		C23939C51CAC7F4F00526B30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demos/iOS/Base.lproj/Launch.storyboard; sourceTree = SOURCE_ROOT; };
@@ -362,7 +362,6 @@
 		C2C62A301D04A6560009B45F /* _LoremIpsum.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = _LoremIpsum.txt; path = Sources/Common/Frameworks/_LoremIpsum/_LoremIpsum.txt; sourceTree = "<group>"; };
 		C2C62A311D04A6560009B45F /* _LoremIpsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = _LoremIpsum.swift; path = Sources/Common/Frameworks/_LoremIpsum/_LoremIpsum.swift; sourceTree = "<group>"; };
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2E01CF21D6AADAB00FE089A /* CellStyling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellStyling.swift; path = Sources/iOS/Frameworks/GenericInterface/CellStyling.swift; sourceTree = "<group>"; };
 		C2E191591CAB9F8300E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191681CABA16600E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2EAD8291D03F714001D2DC4 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix.swift; path = Sources/Common/Utilities/Matrix.swift; sourceTree = "<group>"; };
@@ -602,7 +601,7 @@
 		C20166591CE1035B00F7D3E5 /* GenericInterface */ = {
 			isa = PBXGroup;
 			children = (
-				C2E01CF21D6AADAB00FE089A /* CellStyling.swift */,
+				C22619A21D6B6FA7008F779D /* README.md */,
 				C201665E1CE1038100F7D3E5 /* Table */,
 				C201665D1CE1037C00F7D3E5 /* Collection */,
 			);
@@ -1342,7 +1341,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\nTAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\n\nfind \"${SRCROOT}\" -name \"*.swift\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -pe \"s/($TAGS)/ warning: \\$1/\" | perl -pe \"s/($ERRORTAG)/ error: \\$1/\"\n";
+			shellScript = "\nTAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\n\nfind ${SRCROOT}/Sources/{Common,iOS} -name \"*.swift\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -pe \"s/($TAGS)/ warning: \\$1/\" | perl -pe \"s/($ERRORTAG)/ error: \\$1/\"\n";
 		};
 		C2DC8B811CAB2A0D00837D9E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1355,7 +1354,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\nTAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\n\nfind \"${SRCROOT}\" -name \"*.swift\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -pe \"s/($TAGS)/ warning: \\$1/\" | perl -pe \"s/($ERRORTAG)/ error: \\$1/\"\n";
+			shellScript = "\nTAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\n\nfind ${SRCROOT}/Sources/{Common,macOS} -name \"*.swift\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -pe \"s/($TAGS)/ warning: \\$1/\" | perl -pe \"s/($ERRORTAG)/ error: \\$1/\"\n";
 		};
 		C2DC8B851CAB2EDB00837D9E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1368,7 +1367,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\nTAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\n\nfind \"${SRCROOT}\" -name \"*.swift\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -pe \"s/($TAGS)/ warning: \\$1/\" | perl -pe \"s/($ERRORTAG)/ error: \\$1/\"\n                    ";
+			shellScript = "\nTAGS=\"TODO:|FIXME:\"\nERRORTAG=\"ERROR:\"\n\nfind \"${SRCROOT}/Demos/iOS\" -name \"*.swift\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$|($ERRORTAG).*\\$\" | perl -pe \"s/($TAGS)/ warning: \\$1/\" | perl -pe \"s/($ERRORTAG)/ error: \\$1/\"\n                    ";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1468,7 +1467,6 @@
 				C20165D41CE0FCA000F7D3E5 /* CGSize+.swift in Sources */,
 				C225FA9D1D1113A1008DF565 /* ParaboloidSuperLayout.swift in Sources */,
 				C20165CA1CE0FC9400F7D3E5 /* NSEntityDescription+.swift in Sources */,
-				C2E01CF31D6AADAB00FE089A /* CellStyling.swift in Sources */,
 				C20165551CE0EFC500F7D3E5 /* Draw.swift in Sources */,
 				C201655E1CE0EFC500F7D3E5 /* Then.swift in Sources */,
 				C201658A1CE0FA8B00F7D3E5 /* SequenceType+.swift in Sources */,

@@ -38,7 +38,7 @@ final class PagedCenterCollectionLayout: ParaboloidFlowLayout {
     }
 
     static let name = "Paged Center Collection Layout"
-    static let items = [Array(count: 20, repeatedValue: 0)]
+    static let items = Array(count: 20, repeatedValue: 0)
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

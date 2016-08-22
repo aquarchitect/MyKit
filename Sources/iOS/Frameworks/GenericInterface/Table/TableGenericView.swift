@@ -25,34 +25,40 @@
 
 import UIKit
 
-public class TableGenericView<T, C: CellStyling where C: UITableViewCell, C.DataType == T>: UITableView, UITableViewDataSource, UITableViewDelegate {
+/*
+ * Generic static table view
+ */
+
+public class TableGenericView<T, C: UITableViewCell>: UITableView, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: Property
 
-    public var items: [[T]] = []
+    public typealias Styling = (C, T) -> Void
+    public let items: [T]
+    public let styling: Styling
 
     // MARK: Initialization
 
-    public override init(frame: CGRect, style: UITableViewStyle) {
-        super.init(frame: frame, style: style)
+    public init(style: UITableViewStyle, items: [T], styling: Styling) {
+        self.items = items
+        self.styling = styling
+
+        super.init(frame: .zero, style: style)
         super.showsHorizontalScrollIndicator = false
-        super.register(C.self, forReuseIdentifier: C.identifier)
+        super.register(C.self, forReuseIdentifier: "Cell")
         super.dataSource = self
         super.delegate = self
     }
 
     // MARK: Table View Data Source
 
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
 
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items[section].count
-    }
-
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier(C.identifier, forIndexPath: indexPath)
-            .then { ($0 as? C)?.style(items[indexPath.section][indexPath.row]) }
+        return tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath).then {
+            styling($0 as! C, items[indexPath.row])
+        }
     }
 }

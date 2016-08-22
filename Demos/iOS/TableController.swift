@@ -23,41 +23,42 @@
  * THE SOFTWARE.
  */
 
-final class ItemRow: UITableViewCell, CellStyling {
+//final class ItemRow: UITableViewCell, CellStyling {
+//
+//    typealias DataType = String
+//    static let identifier = "Cell"
+//
+//    func style(data: String) {
+//        self.textLabel?.text = data
+//        self.accessoryType = .DisclosureIndicator
+//    }
+//}
+//
+//final class ItemCell: UICollectionViewCell, CellStyling {
+//
+//    typealias DataType = Int
+//    static let identifier = "Cell"
+//
+//    func style(data: Int) {
+//        self.backgroundColor = UIColor(hexCode: Arbitrary.hexCode)
+//        self.layer.cornerRadius = 20
+//    }
+//}
 
-    typealias DataType = String
-    static let identifier = "Cell"
-
-    func style(data: String) {
-        self.textLabel?.text = data
-        self.accessoryType = .DisclosureIndicator
-    }
-}
-
-final class ItemCell: UICollectionViewCell, CellStyling {
-
-    typealias DataType = Int
-    static let identifier = "Cell"
-
-    func style(data: Int) {
-        self.backgroundColor = UIColor(hexCode: Arbitrary.hexCode)
-        self.layer.cornerRadius = 20
-    }
-}
-
-final class TableController: TableViewController<String, ItemRow>, UICollectionViewDelegate {
+final class TableController: TableViewController<String, UITableViewCell>, UICollectionViewDelegate {
 
     private let layouts: [LayoutPresentable.Type] = [AppleWatchHomeScreenLayout.self, PagedCenterCollectionLayout.self]
     private let shaders: [ShaderKind] = [.Basic]
 
     init() {
-        super.init(style: .Grouped)
-        super.title = "Graphic Experiment"
-    }
+        let items = layouts.map { $0.name } + shaders.map { $0.rawValue }
+        let styling: Styling = {
+            $0.textLabel?.text = $1
+            $0.accessoryType = .DisclosureIndicator
+        }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        items = [layouts.map { $0.name }, shaders.map { $0.rawValue }]
+        super.init(style: .Grouped, items: items, styling: styling)
+        super.title = "Graphic Experiment"
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -72,12 +73,15 @@ final class TableController: TableViewController<String, ItemRow>, UICollectionV
         switch indexPath.section {
         case 0:
             let layout = layouts[indexPath.row]
+            let styling: (UICollectionViewCell, Int) -> Void = {
+                $0.0.backgroundColor = UIColor(hexCode: Arbitrary.hexCode)
+                $0.0.layer.cornerRadius = 20
+            }
 
             (layout.init() as? UICollectionViewLayout)?
-                .then(CollectionViewController<Int, ItemCell>.init)
                 .then {
-                    $0.items = layout.items
-
+                    CollectionViewController<Int, UICollectionViewCell>(layout: $0, items: layout.items, styling: styling)
+                }.then {
                     $0.collectionView?.then {
                         $0.showsVerticalScrollIndicator = false
                         $0.showsHorizontalScrollIndicator = false
@@ -86,7 +90,7 @@ final class TableController: TableViewController<String, ItemRow>, UICollectionV
                     }
                 }.then {
                     self.navigationController?.pushViewController($0, animated: true)
-            }
+                }
         case 1:
             let shader = shaders[indexPath.row]
             ShaderController(shaderNamed: shader.fileName).then {

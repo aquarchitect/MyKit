@@ -26,6 +26,6 @@
 protocol LayoutPresentable: class {
 
     static var name: String { get }
-    static var items: [[Int]] { get }
+    static var items: [Int] { get }
     init()
 }

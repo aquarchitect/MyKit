@@ -25,32 +25,34 @@
 
 import UIKit
 
-public class CollectionGenericView<T, C: CellStyling where C: UICollectionViewCell, C.DataType == T>: UICollectionView, UICollectionViewDataSource {
+public class CollectionGenericView<T, C: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
 
     // MARK: Property
 
-    public var items: [[T]] = []
+    public typealias Styling = (C, T) -> Void
+    public let items: [T]
+    public let styling: Styling
 
     // MARK: Initialization
 
-    public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: layout)
-        super.register(C.self, forReuseIdentifier: C.identifier)
+    public init(layout: UICollectionViewLayout, items: [T], styling: Styling) {
+        self.items = items
+        self.styling = styling
+
+        super.init(frame: .zero, collectionViewLayout: layout)
+        super.register(C.self, forReuseIdentifier: "Cell")
         super.dataSource = self
     }
 
     // MARK: Data Source
 
-    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
 
-    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items[section].count
-    }
-
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
-            .then { ($0 as? C)?.style(items[indexPath.section][indexPath.item]) }
+        return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath).then {
+            styling($0 as! C, items[indexPath.item])
+        }
     }
 }

@@ -54,6 +54,10 @@ private func registerFont(from file: String, ofBundle bundle: NSBundle) throws {
     }
 }
 
+/*
+ * Public scope lets the test module to recognize the protocol;
+ * but it's designed only for internal usage.
+ */
 public protocol _FontLoading: class {
 
     init?(name: String, size: CGFloat)
