@@ -25,20 +25,20 @@
 
 import UIKit
 
-public class TableGenericView<T, C: UITableViewCell>: UITableView, UITableViewDataSource {
+public class TableGenericView<T, C: CellStyling where C: UITableViewCell, C.DataType == T>: UITableView, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: Property
 
     public var items: [[T]] = []
-    public var config: ((C, T) -> Void)?
 
     // MARK: Initialization
 
     public override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
         super.showsHorizontalScrollIndicator = false
-        super.register(C.self, forReuseIdentifier: "Cell")
+        super.register(C.self, forReuseIdentifier: C.identifier)
         super.dataSource = self
+        super.delegate = self
     }
 
     // MARK: Table View Data Source
@@ -52,8 +52,7 @@ public class TableGenericView<T, C: UITableViewCell>: UITableView, UITableViewDa
     }
 
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath).then {
-            config?($0 as! C, items[indexPath.section][indexPath.row])
-        }
+        return tableView.dequeueReusableCellWithIdentifier(C.identifier, forIndexPath: indexPath)
+            .then { ($0 as? C)?.style(items[indexPath.section][indexPath.row]) }
     }
 }

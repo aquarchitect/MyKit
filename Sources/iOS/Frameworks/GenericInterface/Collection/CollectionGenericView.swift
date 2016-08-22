@@ -25,18 +25,17 @@
 
 import UIKit
 
-public class CollectionGenericView<T, C: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
+public class CollectionGenericView<T, C: CellStyling where C: UICollectionViewCell, C.DataType == T>: UICollectionView, UICollectionViewDataSource {
 
     // MARK: Property
 
     public var items: [[T]] = []
-    public var config: ((C, T) -> Void)?
 
     // MARK: Initialization
 
     public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        super.register(C.self, forReuseIdentifier: "Cell")
+        super.register(C.self, forReuseIdentifier: C.identifier)
         super.dataSource = self
     }
 
@@ -51,8 +50,7 @@ public class CollectionGenericView<T, C: UICollectionViewCell>: UICollectionView
     }
 
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath).then {
-            config?($0 as! C, items[indexPath.section][indexPath.item])
-        }
+        return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
+            .then { ($0 as? C)?.style(items[indexPath.section][indexPath.item]) }
     }
 }

@@ -1,5 +1,5 @@
 /*
- * CollectionDynamicCell.swift
+ * CollectionContainerCell.swift
  * MyKit
  *
  * Copyright (c) 2015 Hai Nguyen
@@ -25,7 +25,7 @@
 
 import UIKit
 
-public class CollectionDynamicCell<V: UIView where V: Then>: UICollectionViewCell {
+public class CollectionContainerCell<V: UIView where V: Then>: UICollectionViewCell {
 
     // MARK: Property
 

@@ -23,7 +23,29 @@
  * THE SOFTWARE.
  */
 
-final class TableController: TableViewController<String, UITableViewCell>, UICollectionViewDelegate {
+final class ItemRow: UITableViewCell, CellStyling {
+
+    typealias DataType = String
+    static let identifier = "Cell"
+
+    func style(data: String) {
+        self.textLabel?.text = data
+        self.accessoryType = .DisclosureIndicator
+    }
+}
+
+final class ItemCell: UICollectionViewCell, CellStyling {
+
+    typealias DataType = Int
+    static let identifier = "Cell"
+
+    func style(data: Int) {
+        self.backgroundColor = UIColor(hexCode: Arbitrary.hexCode)
+        self.layer.cornerRadius = 20
+    }
+}
+
+final class TableController: TableViewController<String, ItemRow>, UICollectionViewDelegate {
 
     private let layouts: [LayoutPresentable.Type] = [AppleWatchHomeScreenLayout.self, PagedCenterCollectionLayout.self]
     private let shaders: [ShaderKind] = [.Basic]
@@ -35,12 +57,7 @@ final class TableController: TableViewController<String, UITableViewCell>, UICol
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         items = [layouts.map { $0.name }, shaders.map { $0.rawValue }]
-        config = {
-            $0.textLabel?.text = $1
-            $0.accessoryType = .DisclosureIndicator
-        }
     }
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -57,13 +74,9 @@ final class TableController: TableViewController<String, UITableViewCell>, UICol
             let layout = layouts[indexPath.row]
 
             (layout.init() as? UICollectionViewLayout)?
-                .then(CollectionViewController<Int, UICollectionViewCell>.init)
+                .then(CollectionViewController<Int, ItemCell>.init)
                 .then {
                     $0.items = layout.items
-                    $0.config =  {
-                        $0.0.backgroundColor = UIColor(hexCode: Arbitrary.hexCode)
-                        $0.0.layer.cornerRadius = 20
-                    }
 
                     $0.collectionView?.then {
                         $0.showsVerticalScrollIndicator = false

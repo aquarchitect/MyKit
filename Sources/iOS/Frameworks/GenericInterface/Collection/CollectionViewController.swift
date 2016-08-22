@@ -25,12 +25,11 @@
 
 import UIKit
 
-public class CollectionViewController<T, C: UICollectionViewCell>: UICollectionViewController {
+public class CollectionViewController<T, C: CellStyling where C: UICollectionViewCell, C.DataType == T>: UICollectionViewController {
 
     // MARK: Property
 
     public var items: [[T]] = []
-    public var config: ((C, T) -> Void)?
 
     // MARK: Initialization
 
@@ -40,9 +39,10 @@ public class CollectionViewController<T, C: UICollectionViewCell>: UICollectionV
 
     // MARK: View Lifecycle
 
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        collectionView?.register(C.self, forReuseIdentifier: "Cell")
+    public override func loadView() {
+        super.loadView()
+
+        collectionView?.register(C.self, forReuseIdentifier: C.identifier)
     }
 
     // MARK: Collection View Data Source
@@ -56,8 +56,7 @@ public class CollectionViewController<T, C: UICollectionViewCell>: UICollectionV
     }
 
     public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath).then {
-            config?($0 as! C, items[indexPath.section][indexPath.item])
-        }
+        return collectionView.dequeueReusableCellWithReuseIdentifier(C.identifier, forIndexPath: indexPath)
+            .then { ($0 as? C)?.style(items[indexPath.section][indexPath.item]) }
     }
 }

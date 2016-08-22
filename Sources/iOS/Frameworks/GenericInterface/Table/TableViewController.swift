@@ -25,12 +25,11 @@
 
 import UIKit
 
-public class TableViewController<T, C: UITableViewCell>: UITableViewController {
+public class TableViewController<T, C: CellStyling where C: UITableViewCell, C.DataType == T>: UITableViewController {
 
     // MARK: Property
 
     public var items: [[T]] = []
-    public var config: ((C, T) -> Void)?
 
     // MARK: Initialization
 
@@ -40,9 +39,9 @@ public class TableViewController<T, C: UITableViewCell>: UITableViewController {
 
     // MARK: View Lifecycle
 
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.register(C.self, forReuseIdentifier: "Cell")
+    public override func loadView() {
+        super.loadView()
+        tableView.register(C.self, forReuseIdentifier: C.identifier)
     }
 
     // MARK: Table View Data Source
@@ -56,8 +55,7 @@ public class TableViewController<T, C: UITableViewCell>: UITableViewController {
     }
 
     public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath).then {
-            config?($0 as! C, items[indexPath.section][indexPath.row])
-        }
+        return tableView.dequeueReusableCellWithIdentifier(C.identifier, forIndexPath: indexPath)
+            .then { ($0 as? C)?.style(items[indexPath.section][indexPath.row]) }
     }
 }

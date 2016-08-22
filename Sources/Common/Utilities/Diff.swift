@@ -27,22 +27,51 @@ public struct Diff<T: Equatable> {
 
     public typealias Step = (Int, T)
 
-    public let deletion: [Step]
-    public let insertion: [Step]
+    public let deletes: [Step]
+    public let inserts: [Step]
 
     public var isEmpty: Bool {
-        return insertion.isEmpty && deletion.isEmpty
+        return inserts.isEmpty && deletes.isEmpty
     }
 
-    internal init(deletion: [Step] = [], insertion: [Step] = []) {
-        self.deletion = deletion
-        self.insertion = insertion
+    internal init(deletes: [Step] = [], inserts: [Step] = []) {
+        self.deletes = deletes
+        self.inserts = inserts
+    }
+}
+
+public extension Diff {
+
+    var updateIndexes: [Int] {
+        let deletes = Set(self.deletes.map { $0.0 })
+        let inserts = Set(self.inserts.map { $0.0 })
+        return deletes.intersect(inserts).sort(<)
+    }
+
+    /**
+     * Delete indexes excluded updates
+     */
+    var exclusiveDeleteIndexes: [Int] {
+        let updates = Set(updateIndexes)
+        return deletes
+            .filter { !updates.contains($0.0) }
+            .lazy.map { $0.0 }
+    }
+
+    /**
+     * Insert indexes excluded updates
+     */
+    var exclusiveInsertIndexes: [Int] {
+        let updates = Set(updateIndexes)
+        return inserts
+            .filter { !updates.contains($0.0) }
+            .lazy.map { $0.0 }
     }
 }
 
 extension Diff: CustomDebugStringConvertible {
 
     public var debugDescription: String {
-        return "Deletion: \(deletion.debugDescription)\nInsertion: \(insertion.debugDescription)"
+        return "Deletes: \(deletes.debugDescription)\nInserts: \(inserts.debugDescription)"
     }
 }

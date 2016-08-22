@@ -29,34 +29,44 @@ public struct Promise<T> {
 
     private let operation: Result<T>.Callback -> Void
 
-    public init(_ operation: Result<T>.Callback -> Void) {
+    init(_ operation: Result<T>.Callback -> Void) {
         self.operation = operation
     }
 }
 
+// MARK: - Support Methods
+
 public extension Promise {
 
-    /// Execute promise operation with a callback
-    public func resolve(callback: Result<T>.Callback) {
+    /** 
+     * Execute promise with a callback
+     */
+    func resolve(callback: Result<T>.Callback) {
         self.operation(callback)
     }
 
-    /// Transform the promise from one type to another
-    public func then<U>(f: T -> U) -> Promise<U> {
+    /** 
+     * Transform to another type
+     */
+    func then<U>(f: T -> U) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { callback($0.then(f)) }
         }
     }
 
-    /// Transform the promise from one type to another with a potential error
-    public func then<U>(f: T throws -> U) -> Promise<U> {
+    /**
+     * Transform to another type with error
+     */
+    func then<U>(f: T throws -> U) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { callback($0.then(f)) }
         }
     }
 
-    /// Transform to another promise
-    public func andThen<U>(f: T -> Promise<U>) -> Promise<U> {
+    /**
+     * Transform to another type of promise
+     */
+    func andThen<U>(f: T -> Promise<U>) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve {
                 do { try ($0.resolve >>> f)().resolve(callback) }
@@ -65,8 +75,10 @@ public extension Promise {
         }
     }
 
-    /// Transform to another promise with a potential error
-    public func andThen<U>(f: T throws -> Promise<U>) -> Promise<U> {
+    /**
+     * Transform to another promise with a potential error
+     */
+    func andThen<U>(f: T throws -> Promise<U>) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve {
                 do { try ($0.resolve >>> f)().resolve(callback) }
@@ -76,11 +88,13 @@ public extension Promise {
     }
 }
 
-// MARK: Multiple Promises
+// MARK: - Multiple Promises
 
 public extension Promise {
 
-    // execute promises concurrently with a group-dispatch monitoring
+    /*
+     * execute promises concurrently and monitor with a group dispatch
+     */
     private func joint<U>(queue: dispatch_queue_t, _ group: dispatch_group_t, f: ((T throws -> U) -> Result<U>) -> Void) {
         dispatch_group_enter(group)
 
@@ -90,11 +104,9 @@ public extension Promise {
         }
     }
 
-    static func when(promises: Promise...) -> Promise<[T]> {
-        return when(promises)
-    }
-
-    /// Convert concurrent promises of a same type to a promise of an array
+    /**
+     * Tranform concurrent promises of a same type to a promise of an array
+     */
     static func when(promises: [Promise]) -> Promise<[T]> {
         let queue = dispatch_queue_create("MyKit.Promise.array", DISPATCH_QUEUE_CONCURRENT)
         let group = dispatch_group_create()
@@ -111,12 +123,18 @@ public extension Promise {
             }
         }
     }
+
+    static func when(promises: Promise...) -> Promise<[T]> {
+        return when(promises)
+    }
 }
 
 infix operator +++ { associativity left }
 
-// Convert concurrent promises of 2 different types to a promise of tuple
-public func +++ <A, B>(lhs: Promise<A>, rhs: Promise<B>) -> Promise<(A, B)> {
+/* 
+ * Transform concurrent promises of 2 different types to a promise of tuple
+ */
+func +++ <A, B>(lhs: Promise<A>, rhs: Promise<B>) -> Promise<(A, B)> {
     let queue = dispatch_queue_create("MyKit.Promise.tuple", DISPATCH_QUEUE_CONCURRENT)
     let group = dispatch_group_create()
 
