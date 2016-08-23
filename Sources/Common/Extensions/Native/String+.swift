@@ -52,6 +52,18 @@ public extension String {
     }
 }
 
+public extension String {
+
+    func toHexUInt() -> UInt? {
+        guard self.isValidAs(.Hexadecimal) else { return nil }
+        let scanner = NSScanner(string: self)
+            .then { $0.scanLocation = 1 }
+
+        guard let hex = scanner.scanHexUInt32() else { return nil }
+        return UInt(hex)
+    }
+}
+
 private extension String.Format {
 
     var pattern: String {

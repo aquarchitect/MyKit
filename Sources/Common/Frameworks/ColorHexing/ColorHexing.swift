@@ -41,7 +41,7 @@ public protocol ColorHexing: class {
 
 public extension ColorHexing {
 
-    var hexValue: UInt {
+    var hexUInt: UInt {
         var r: CGFloat = 0
         var g: CGFloat = 0
         var b: CGFloat = 0
@@ -51,7 +51,7 @@ public extension ColorHexing {
         return UInt(r * 255) << 16 | UInt(g * 255) << 8 | UInt(b * 255) << 0
     }
 
-    init(hexValue value: UInt, alpha: CGFloat = 1) {
+    init(hexUInt value: UInt, alpha: CGFloat = 1) {
         let r = CGFloat((value & 0xFF0000) >> 16) / 255
         let g = CGFloat((value & 0x00FF00) >> 8) / 255
         let b = CGFloat((value & 0x0000FF) >> 0) / 255
@@ -62,17 +62,13 @@ public extension ColorHexing {
 
 public extension ColorHexing {
 
-    var hexCode: String {
-        return String(format: "#%06X", hexValue)
+    var hexString: String {
+        return String(format: "#%06X", hexUInt)
     }
 
-    init?(hexCode value: String) {
-        guard value.isValidAs(.Hexadecimal) else { return nil }
-        let scanner = NSScanner(string: value)
-            .then { $0.scanLocation = 1 }
-
-        guard let hex = scanner.scanHexUInt32() else { return nil }
-        self.init(hexValue: UInt(hex), alpha: 1)
+    init?(hexString value: String) {
+        guard let hex = value.toHexUInt() else { return nil }
+        self.init(hexUInt: hex, alpha: 1)
     }
 }
 

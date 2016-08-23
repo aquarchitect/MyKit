@@ -23,28 +23,6 @@
  * THE SOFTWARE.
  */
 
-//final class ItemRow: UITableViewCell, CellStyling {
-//
-//    typealias DataType = String
-//    static let identifier = "Cell"
-//
-//    func style(data: String) {
-//        self.textLabel?.text = data
-//        self.accessoryType = .DisclosureIndicator
-//    }
-//}
-//
-//final class ItemCell: UICollectionViewCell, CellStyling {
-//
-//    typealias DataType = Int
-//    static let identifier = "Cell"
-//
-//    func style(data: Int) {
-//        self.backgroundColor = UIColor(hexCode: Arbitrary.hexCode)
-//        self.layer.cornerRadius = 20
-//    }
-//}
-
 final class TableController: TableViewController<String, UITableViewCell>, UICollectionViewDelegate {
 
     private let layouts: [LayoutPresentable.Type] = [AppleWatchHomeScreenLayout.self, PagedCenterCollectionLayout.self]
@@ -74,7 +52,7 @@ final class TableController: TableViewController<String, UITableViewCell>, UICol
         case 0:
             let layout = layouts[indexPath.row]
             let styling: (UICollectionViewCell, Int) -> Void = {
-                $0.0.backgroundColor = UIColor(hexCode: Arbitrary.hexCode)
+                $0.0.backgroundColor = UIColor(hexString: Arbitrary.hexString)
                 $0.0.layer.cornerRadius = 20
             }
 

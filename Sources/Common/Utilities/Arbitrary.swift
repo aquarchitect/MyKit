@@ -64,7 +64,7 @@ public extension Arbitrary {
 
 public extension Arbitrary {
 
-    static var hexCode: String {
+    static var hexString: String {
         let value = arc4random_uniform(UInt32(UInt16.max))
         return String(format: "#%06X", value)
     }
