@@ -60,10 +60,10 @@ public extension UITableView {
     }
 
     final func serialize(indexPath: NSIndexPath) -> Int {
-        return (0..<self.numberOfSections)
+        return (0..<indexPath.section)
             .map { self.numberOfRowsInSection($0) }
             .lazy
-            .reduce(0, combine: +)
+            .reduce(indexPath.row, combine: +)
     }
 
     final func deserialize(index: Int) -> NSIndexPath {
