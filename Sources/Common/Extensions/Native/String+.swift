@@ -30,7 +30,9 @@ public extension String {
     /// Produce a camel case string
     func camelcased() -> String {
         return NSCharacterSet(charactersInString: " -_")
-            .then { self.componentsSeparatedByCharactersInSet($0) }.enumerate()
+            .andThen { self.componentsSeparatedByCharactersInSet($0) }
+            .lazy
+            .enumerate()
             .map { $0 == 0 ? $1.lowercaseString : $1.capitalizedString }
             .joinWithSeparator("")
     }

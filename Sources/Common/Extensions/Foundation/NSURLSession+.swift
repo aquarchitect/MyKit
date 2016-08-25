@@ -1,8 +1,8 @@
 /*
- * CollectionContainerCell.swift
+ * NSURLSession+.swift
  * MyKit
  *
- * Copyright (c) 2015 Hai Nguyen
+ * Copyright (c) 2016 Hai Nguyen.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,21 +23,24 @@
  * THE SOFTWARE.
  */
 
-import UIKit
+public extension NSURLSession {
 
-public class CollectionContainerCell<V: UIView where V: Then>: UICollectionViewCell {
+    func data(`from` url: NSURL) -> Promise<[String: AnyObject]> {
+        return Promise { callback in
+            self.dataTaskWithURL(url) { data, _, error in
+                // return immediately if error occurs
+                if let _error = error { return callback(.Reject(_error)) }
 
-    // MARK: Property
+                // return empty result if optional binding fails
+                guard let _data = data else { return callback(.Fullfill([:])) }
 
-    public let mainView = V().then {
-        $0.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-    }
-
-    // MARK: Initialization
-
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        super.contentView.addSubview(mainView)
-        mainView.frame = self.bounds
+                do {
+                    let results = try NSJSONSerialization.JSONObjectWithData(_data, options: [])
+                    callback(.Fullfill(results as? [String: AnyObject] ?? [:]))
+                } catch {
+                    callback(.Reject(error))
+                }
+            }.resume()
+        }
     }
 }

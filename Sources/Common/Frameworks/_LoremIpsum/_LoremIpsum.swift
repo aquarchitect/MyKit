@@ -45,7 +45,7 @@ final class _LoremIpsum: CollectionType {
         let name = "_LoremIpsum", ext = "txt"
 
         guard let url = NSBundle.defaultBundle?.URLForResource(name, withExtension: ext)
-            else { throw Error.FailedToLocate(file: "\(name).\(ext)") }
+            else { throw FileIOError.UnableToOpen(file: "\(name).\(ext)") }
 
         let lorem = try String(contentsOfURL: url)
         let range = lorem.startIndex..<lorem.endIndex

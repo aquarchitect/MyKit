@@ -1,5 +1,5 @@
 /*
- * TableGenericView.swift
+ * GenericTableView.swift
  * MyKit
  *
  * Copyright (c) 2015 Hai Nguyen
@@ -25,29 +25,24 @@
 
 import UIKit
 
-/*
- * Generic static table view
- */
-
-public class TableGenericView<T, C: UITableViewCell>: UITableView, UITableViewDataSource, UITableViewDelegate {
+public class GenericTableView<T, C: UITableViewCell>: UITableView, UITableViewDataSource {
 
     // MARK: Property
 
     public typealias Styling = (C, T) -> Void
-    public let items: [T]
-    public let styling: Styling
+    public private(set) var items: [T] = []
+
+    public var styling: Styling? {
+        didSet { self.reloadData() }
+    }
 
     // MARK: Initialization
 
-    public init(style: UITableViewStyle, items: [T], styling: Styling) {
-        self.items = items
-        self.styling = styling
-
-        super.init(frame: .zero, style: style)
+    public override init(frame: CGRect, style: UITableViewStyle) {
+        super.init(frame: frame, style: style)
         super.showsHorizontalScrollIndicator = false
-        super.register(C.self, forReuseIdentifier: "Cell")
+        super.register(C.self, forReuseIdentifier: String(C.self))
         super.dataSource = self
-        super.delegate = self
     }
 
     // MARK: Table View Data Source
@@ -57,8 +52,26 @@ public class TableGenericView<T, C: UITableViewCell>: UITableView, UITableViewDa
     }
 
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath).then {
-            styling($0 as! C, items[indexPath.row])
+        return tableView.dequeueReusableCellWithIdentifier(String(C.self), forIndexPath: indexPath).then {
+            styling?($0 as! C, items[indexPath.row])
         }
+    }
+}
+
+public extension GenericTableView where T: Equatable {
+
+    func style(newItems items: [T], automaticAnimation flag: Bool) {
+        let oldItems = self.items
+        self.items = items
+
+        guard flag else { return }
+        let (reloads, deletes, inserts) = oldItems.compare(items).updates
+        let mapper = { NSIndexPath(forRow: $0, inSection: 0) }
+
+        self.beginUpdates()
+        self.reloadRowsAtIndexPaths(reloads.map(mapper), withRowAnimation: .Automatic)
+        self.deleteRowsAtIndexPaths(deletes.map(mapper), withRowAnimation: .Automatic)
+        self.insertRowsAtIndexPaths(inserts.map(mapper), withRowAnimation: .Automatic)
+        self.endUpdates()
     }
 }

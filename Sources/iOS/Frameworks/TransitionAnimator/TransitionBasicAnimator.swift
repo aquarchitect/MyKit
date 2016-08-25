@@ -25,15 +25,19 @@
 
 import UIKit
 
+/**
+ * `TransitionBasicAnimator` simplify a basic transition between view controllers.
+ * When the device rotates, `viewWillTransitionToSize` gives you an opportunity 
+ * to correct presented view frame.
+ */
 final public class TransitionBasicAnimator: NSObject {
 
     // MARK: Property
 
-    public private(set) var isPresenting = true
+    internal private(set) var isPresenting = true
     public let presentedRect: CGRect
 
-    public var dimming: (transparent: CGFloat, dismissal: Bool)?
-    public var animating: (alpha: CGFloat, transform: CGAffineTransform) = (0, CGAffineTransformIdentity)
+    public var animations: ((presentedView: UIView) -> Void)?
 
     // MARK: Initialization
 
@@ -44,11 +48,6 @@ final public class TransitionBasicAnimator: NSObject {
         let y = (bounds.height - size.height) / 2
 
         self.presentedRect = CGRectMake(x, y, size.width, size.height)
-        super.init()
-    }
-
-    public init(customRect rect: CGRect = UIScreen.mainScreen().bounds) {
-        self.presentedRect = rect
         super.init()
     }
 }
@@ -68,16 +67,10 @@ extension TransitionBasicAnimator: UIViewControllerAnimatedTransitioning {
         let options: UIViewAnimationOptions = [.AllowUserInteraction, .BeginFromCurrentState, isPresenting ? .CurveEaseIn : .CurveEaseOut]
         let duration = transitionDuration(transitionContext)
 
-        let controller = (isPresenting ? toController : fromController).then {
-            $0.view.alpha = isPresenting ? animating.alpha : 1
-            $0.view.transform = isPresenting ? animating.transform : CGAffineTransformIdentity
-        }
-
-        UIView.animateWithDuration(duration, delay: 0, options: options, animations: { [unowned self, unowned controller] in
-            controller.view.then {
-                $0.alpha = self.isPresenting ? 1 : self.animating.alpha
-                $0.transform = self.isPresenting ? CGAffineTransformIdentity : self.animating.transform
-            }
+        UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
+            [unowned self] in
+            let controller = self.isPresenting ? toController : fromController
+            self.animations?(presentedView: controller.view)
             }, completion: { [weak self, weak fromController, weak transitionContext] _ in
                 if self?.isPresenting == false { fromController?.view.removeFromSuperview() }
                 transitionContext?.completeTransition(!(transitionContext?.transitionWasCancelled() == true))
@@ -88,16 +81,11 @@ extension TransitionBasicAnimator: UIViewControllerAnimatedTransitioning {
 extension TransitionBasicAnimator: UIViewControllerTransitioningDelegate {
 
     public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        return TransitionPresentationController(presentedViewController: presented, presentingViewController: source).then {
-            $0.presentedRect = presentedRect
+        guard presentedRect == UIScreen.mainScreen().bounds else { return nil }
 
-            guard let (transparent, dismissal) = dimming else { return }
-            $0.dimmedView = UIView().then {
-                $0.alpha = 0
-                $0.backgroundColor = UIColor(white: 0, alpha: transparent)
-                $0.userInteractionEnabled = dismissal
-            }
-        }
+        return TransitionPresentationController(presentedRect: presentedRect,
+                                                presentedViewController: presented,
+                                                presentingViewController: source)
     }
 
     public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

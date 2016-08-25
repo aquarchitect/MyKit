@@ -1,5 +1,5 @@
-/*
- * CollectionGenericView.swift
+/* 
+ * Miscellaneous.swift
  * MyKit
  *
  * Copyright (c) 2015 Hai Nguyen
@@ -23,36 +23,8 @@
  * THE SOFTWARE.
  */
 
-import UIKit
 
-public class CollectionGenericView<T, C: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
+enum FileIOError: ErrorType {
 
-    // MARK: Property
-
-    public typealias Styling = (C, T) -> Void
-    public let items: [T]
-    public let styling: Styling
-
-    // MARK: Initialization
-
-    public init(layout: UICollectionViewLayout, items: [T], styling: Styling) {
-        self.items = items
-        self.styling = styling
-
-        super.init(frame: .zero, collectionViewLayout: layout)
-        super.register(C.self, forReuseIdentifier: "Cell")
-        super.dataSource = self
-    }
-
-    // MARK: Data Source
-
-    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
-    }
-
-    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath).then {
-            styling($0 as! C, items[indexPath.item])
-        }
-    }
+    case UnableToOpen(file: String)
 }

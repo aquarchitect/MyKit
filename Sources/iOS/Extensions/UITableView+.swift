@@ -25,22 +25,27 @@
 
 import UIKit
 
+// MARK: - Miscellaneous
+
 /// :nodoc:
 public extension UITableView {
 
-    // MARK: Miscellaneous
+    var bottomedIndexPath: NSIndexPath {
+        let section = self.numberOfSections - 1
+        let row = self.numberOfRowsInSection(section)
+        return NSIndexPath(forRow: row, inSection: section)
+    }
 
-    final func validate(section section: Int) -> Bool {
+    final func validates(section section: Int) -> Bool {
         return NSLocationInRange(section, NSMakeRange(0, self.numberOfSections))
     }
+}
 
-    final func isRowBottomed(at indexPath: NSIndexPath) -> Bool {
-        return indexPath.row ==  self.numberOfRowsInSection(indexPath.section) - 1
-    }
+// MARK: - Transform IndexPath
 
-    // MARK: Transform IndexPath
+public extension UITableView {
 
-    final func formSuccessorOf(indexPath: NSIndexPath) -> NSIndexPath? {
+    final func successorOf(indexPath: NSIndexPath) -> NSIndexPath? {
         if indexPath.row < self.numberOfRowsInSection(indexPath.section) - 1 {
             return NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
         } else if indexPath.section < self.numberOfSections - 1 {
@@ -48,7 +53,7 @@ public extension UITableView {
         } else { return nil }
     }
 
-    final func fromPredecessorOf(indexPath: NSIndexPath) -> NSIndexPath? {
+    final func predecessorOf(indexPath: NSIndexPath) -> NSIndexPath? {
         if indexPath.row > 0 {
             return NSIndexPath(forRow: indexPath.row - 1, inSection: indexPath.section)
         } else if indexPath.section > 0 {
@@ -59,14 +64,14 @@ public extension UITableView {
         } else { return nil }
     }
 
-    final func serialize(indexPath: NSIndexPath) -> Int {
+    final func index(bySerializing indexPath: NSIndexPath) -> Int {
         return (0..<indexPath.section)
             .map { self.numberOfRowsInSection($0) }
             .lazy
             .reduce(indexPath.row, combine: +)
     }
 
-    final func deserialize(index: Int) -> NSIndexPath {
+    final func indexPath(byDeserializing index: Int) -> NSIndexPath {
         var (section, count) = (0, 0)
 
         while case let rows = self.numberOfRowsInSection(section) where count + rows < index {
@@ -76,8 +81,11 @@ public extension UITableView {
 
         return NSIndexPath(forRow: index - count, inSection: section)
     }
+}
 
-    // MARK: Register Views
+// MARK: - Register Reusable Identifier
+
+public extension UITableView {
 
     public func register<T: UITableViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
         self.registerClass(type, forCellReuseIdentifier: identifier)

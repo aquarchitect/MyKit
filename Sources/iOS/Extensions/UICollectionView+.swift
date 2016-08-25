@@ -55,6 +55,24 @@ public extension UICollectionView {
         } else { return nil }
     }
 
+    final func serialize(indexPath: NSIndexPath) -> Int {
+        return (0..<indexPath.section)
+            .map { self.numberOfItemsInSection($0) }
+            .lazy
+            .reduce(indexPath.row, combine: +)
+    }
+
+    final func deserialize(index: Int) -> NSIndexPath {
+        var (section, count) = (0, 0)
+
+        while case let rows = self.numberOfItemsInSection(section) where count + rows < index {
+            count += rows
+            section += 1
+        }
+
+        return NSIndexPath(forRow: index - count, inSection: section)
+    }
+
     // MARK: Register Views
 
     public func register<T: UICollectionViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
@@ -69,14 +87,18 @@ public extension UICollectionView {
 /// :nodoc:
 public extension UICollectionView {
 
+    /*
+     * Dragger needs to be an object
+     * in order to user with associatedObject.
+     */
     private class Dragger: NSObject {
 
         static var Key = String(self.dynamicType)
 
         let gesture = UILongPressGestureRecognizer()
 
-        var anchorIndexPath: NSIndexPath?
-        var trackedIndexPath: NSIndexPath?
+        var anchor: NSIndexPath?
+        var tracker: NSIndexPath?
 
         override func copy() -> AnyObject {
             return self
@@ -97,7 +119,7 @@ public extension UICollectionView {
         }
     }
 
-    public var allowsMultipleSelectionWithDragging: Bool {
+    public var allowsMultipleSelectionByDragging: Bool {
         get { return dragger != nil }
         set { dragger = newValue ? Dragger() : nil }
     }
@@ -111,53 +133,55 @@ public extension UICollectionView {
 
         case .Began:
             self.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: .None)
-            dragger.anchorIndexPath = indexPath
-            dragger.trackedIndexPath = indexPath
+            dragger.anchor = indexPath
+            dragger.tracker = indexPath
 
         case .Changed:
-            guard indexPath != dragger.trackedIndexPath else { return }
-            selectItemsRecursivelyTo(indexPath)
+            guard indexPath != dragger.tracker else { return }
+            selectItemsRecursively(indexPath)
 
         default:
-            dragger.anchorIndexPath = nil
-            dragger.trackedIndexPath = nil
+            dragger.anchor = nil
+            dragger.tracker = nil
         }
     }
 
-    private final func selectItemsRecursivelyTo(destination: NSIndexPath) {
+    private final func selectItemsRecursively(destination: NSIndexPath) {
         guard let dragger = self.dragger,
-            anchorIndexPath = dragger.anchorIndexPath,
-            trackedIndexPath = dragger.trackedIndexPath
+            anchor = dragger.anchor,
+            tracker = dragger.tracker
             else { return }
 
-        guard let frontIndexPath = successorOf(trackedIndexPath),
-            backIndexPath = predecessorOf(trackedIndexPath)
+        guard let frontIndexPath = successorOf(tracker),
+            backIndexPath = predecessorOf(tracker)
             else { return }
 
-        switch trackedIndexPath.compare(destination) {
+        switch tracker.compare(destination) {
 
         case .OrderedAscending:
             guard let cell = self.cellForItemAtIndexPath(backIndexPath) else { return }
 
-            if trackedIndexPath != anchorIndexPath {
-                cell.selected ? self.selectItemAtIndexPath(trackedIndexPath, animated: false, scrollPosition: .None) : self.deselectItemAtIndexPath(trackedIndexPath, animated: false)
+            if tracker != anchor {
+                cell.selected
+                    ? self.selectItemAtIndexPath(tracker, animated: false, scrollPosition: .None)
+                    : self.deselectItemAtIndexPath(tracker, animated: false)
             }
 
-            dragger.trackedIndexPath = frontIndexPath
-            selectItemsRecursivelyTo(destination)
-
+            dragger.tracker = frontIndexPath
+            selectItemsRecursively(destination)
         case .OrderedDescending:
             guard let cell = self.cellForItemAtIndexPath(frontIndexPath) else { return }
 
-            if trackedIndexPath != anchorIndexPath {
-                cell.selected ? self.selectItemAtIndexPath(trackedIndexPath, animated: false, scrollPosition: .None) : self.deselectItemAtIndexPath(trackedIndexPath, animated: false)
+            if tracker != anchor {
+                cell.selected
+                    ? self.selectItemAtIndexPath(tracker, animated: false, scrollPosition: .None)
+                    : self.deselectItemAtIndexPath(tracker, animated: false)
             }
 
-            dragger.trackedIndexPath = backIndexPath
-            selectItemsRecursivelyTo(destination)
-
+            dragger.tracker = backIndexPath
+            selectItemsRecursively(destination)
         case .OrderedSame:
-            self.selectItemAtIndexPath(trackedIndexPath, animated: true, scrollPosition: .None)
+            self.selectItemAtIndexPath(tracker, animated: true, scrollPosition: .None)
         }
     }
 }

@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  */
 
-final class TableController: TableViewController<String, UITableViewCell>, UICollectionViewDelegate {
+final class TableController: GenericTableController<String, UITableViewCell>, UICollectionViewDelegate {
 
     private let layouts: [LayoutPresentable.Type] = [AppleWatchHomeScreenLayout.self, PagedCenterCollectionLayout.self]
     private let shaders: [ShaderKind] = [.Basic]
@@ -58,7 +58,7 @@ final class TableController: TableViewController<String, UITableViewCell>, UICol
 
             (layout.init() as? UICollectionViewLayout)?
                 .then {
-                    CollectionViewController<Int, UICollectionViewCell>(layout: $0, items: layout.items, styling: styling)
+                    GenericCollectionController<Int, UICollectionViewCell>(layout: $0, items: layout.items, styling: styling)
                 }.then {
                     $0.collectionView?.then {
                         $0.showsVerticalScrollIndicator = false

@@ -1,5 +1,5 @@
 /*
- * CollectionViewController.swift
+ * GenericCollectionController.swift
  * MyKit
  *
  * Copyright (c) 2015 Hai Nguyen
@@ -25,21 +25,15 @@
 
 import UIKit
 
-public class CollectionViewController<T, C: UICollectionViewCell>: UICollectionViewController {
+public class GenericCollectionController<T, C: UICollectionViewCell>: UICollectionViewController {
 
     // MARK: Property
 
     public typealias Styling = (C, T) -> Void
-    public let items: [T]
-    public let styling: Styling
+    public private(set) var items: [T] = []
 
-    // MARK: Initialization
-
-    public init(layout: UICollectionViewLayout, items: [T], styling: Styling) {
-        self.items = items
-        self.styling = styling
-
-        super.init(collectionViewLayout: layout)
+    public var styling: Styling? {
+        didSet { collectionView?.reloadData() }
     }
 
     // MARK: View Lifecycle
@@ -58,6 +52,26 @@ public class CollectionViewController<T, C: UICollectionViewCell>: UICollectionV
 
     public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
-            .then { styling($0 as! C, items[indexPath.item]) }
+            .then { styling?($0 as! C, items[indexPath.item]) }
+    }
+}
+
+public extension GenericCollectionController where T: Equatable {
+
+    func styleCollectionView(newItems items: [T], automaticAnimation flag: Bool, completion: ((Bool) -> Void)?) {
+        let oldItems = self.items
+        self.items = items
+
+        guard flag else { return }
+        let (reloads, deletes, inserts) = oldItems.compare(items).updates
+        let mapper = { NSIndexPath(forRow: $0, inSection: 0) }
+
+        collectionView?.performBatchUpdates({ [unowned self] in
+            self.collectionView?.then {
+                $0.reloadItemsAtIndexPaths(reloads.map(mapper))
+                $0.deleteItemsAtIndexPaths(deletes.map(mapper))
+                $0.insertItemsAtIndexPaths(inserts.map(mapper))
+            }
+            }, completion: completion)
     }
 }

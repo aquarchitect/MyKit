@@ -27,6 +27,8 @@ infix operator +++ { associativity left }
 
 final class PromiseTests: XCTestCase {
 
+    private enum Error: ErrorType { case Failed }
+
     private func delayFor<T>(interval: CFTimeInterval, result: Result<T>) -> Promise<T> {
         return Promise { callback in delay(interval) { callback(result) }}
     }
@@ -34,7 +36,10 @@ final class PromiseTests: XCTestCase {
     func testFullfilledArray() {
         let expectation = expectationWithDescription(#function)
 
-        let ps = [(0.5, .Fullfill(5)), (0.5, .Fullfill(10)), (1.0, .Fullfill(15))].map(delayFor)
+        let ps = [(0.5, .Fullfill(5)),
+                  (0.5, .Fullfill(10)),
+                  (1.0, .Fullfill(15))]
+                    .map(delayFor)
 
         Promise<Int>.when(ps).resolve {
             switch $0 {
@@ -46,19 +51,23 @@ final class PromiseTests: XCTestCase {
             }
         }
 
+
         waitForExpectationsWithTimeout(3) { XCTAssertNil($0) }
     }
 
     func testRejectedArray() {
         let expectation = expectationWithDescription(#function)
 
-        let ps = [(0.5, .Fullfill(5)), (0.5, .Reject(Error.NoDataContent)), (1.0, .Fullfill(15))].map(delayFor)
+        let ps = [(0.5, .Fullfill(5)),
+                  (0.5, .Reject(Error.Failed)),
+                  (1.0, .Fullfill(15))]
+                    .map(delayFor)
 
         Promise<Int>.when(ps).resolve {
             switch $0 {
             case .Fullfill(let value):
                 XCTFail("Promise callback with value \(value)")
-            case .Reject(Error.NoDataContent):
+            case .Reject(Error.Failed):
                 XCTAssert(true)
                 expectation.fulfill()
             case .Reject(let error):
@@ -92,13 +101,13 @@ final class PromiseTests: XCTestCase {
         let expectation = expectationWithDescription(#function)
 
         let p1 = delayFor(0.5, result: .Fullfill(true))
-        let p2 = delayFor(1.0, result: Result<String>.Reject(Error.NoDataContent))
+        let p2 = delayFor(1.0, result: Result<String>.Reject(Error.Failed))
 
         (p1 +++ p2).resolve {
             switch $0 {
             case .Fullfill(let value):
                 XCTFail("Promise callback with value \(value)")
-            case .Reject(Error.NoDataContent):
+            case .Reject(Error.Failed):
                 XCTAssert(true)
                 expectation.fulfill()
             case .Reject(let error):

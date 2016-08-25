@@ -54,7 +54,7 @@ public class SnappingSuperLayout: UICollectionViewLayout {
 
     private func snappedContentOffsetForProposedContentOffset(contentOffset: CGPoint, atSnappingPoint point: CGPoint) -> CGPoint {
         return snappedLayoutAttributeForProposedContentOffset(contentOffset, atSnappingPoint: point)?
-            .then { CGPointMake($0.center.x - point.x, $0.center.y - point.y) }
+            .andThen { CGPointMake($0.center.x - point.x, $0.center.y - point.y) }
             ?? contentOffset
     }
 }

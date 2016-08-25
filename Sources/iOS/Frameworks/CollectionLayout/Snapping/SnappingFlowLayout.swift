@@ -31,9 +31,7 @@ public class SnappingFlowLayout: UICollectionViewFlowLayout {
         didSet {
             guard let point = snappingPoint else { return }
 
-            dispatch_async(Queue.Main) { [weak self] in
-                guard let `self` = self else { return }
-
+            dispatch_async(Queue.Main) { [unowned self] in
                 let proposedContentOffset = self.collectionView?.contentOffset ?? .zero
                 let targetContentOffset = self.snappedContentOffsetForProposedContentOffset(proposedContentOffset, atSnappingPoint: point)
 
@@ -67,7 +65,7 @@ public class SnappingFlowLayout: UICollectionViewFlowLayout {
 
     private func snappedContentOffsetForProposedContentOffset(contentOffset: CGPoint, atSnappingPoint point: CGPoint) -> CGPoint {
         return snappedLayoutAttributeForProposedContentOffset(contentOffset, atSnappingPoint: point)?
-            .then { CGPointMake($0.center.x - point.x, $0.center.y - point.y) }
+            .andThen { CGPointMake($0.center.x - point.x, $0.center.y - point.y) }
             ?? contentOffset
     }
 }

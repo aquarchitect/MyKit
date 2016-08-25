@@ -113,15 +113,15 @@
 		C201664F1CE1026800F7D3E5 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201664E1CE1026800F7D3E5 /* GrowingTextView.swift */; };
 		C20166621CE1041A00F7D3E5 /* TransitionBasicAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201665F1CE1041A00F7D3E5 /* TransitionBasicAnimator.swift */; };
 		C20166641CE1041A00F7D3E5 /* TransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166611CE1041A00F7D3E5 /* TransitionPresentationController.swift */; };
-		C20166671CE104C200F7D3E5 /* TableGenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166651CE104C200F7D3E5 /* TableGenericView.swift */; };
-		C20166681CE104C200F7D3E5 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166661CE104C200F7D3E5 /* TableViewController.swift */; };
-		C201666C1CE104CE00F7D3E5 /* CollectionContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166691CE104CE00F7D3E5 /* CollectionContainerCell.swift */; };
-		C201666D1CE104CE00F7D3E5 /* CollectionGenericView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666A1CE104CE00F7D3E5 /* CollectionGenericView.swift */; };
-		C201666E1CE104CE00F7D3E5 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666B1CE104CE00F7D3E5 /* CollectionViewController.swift */; };
+		C20166671CE104C200F7D3E5 /* GenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166651CE104C200F7D3E5 /* GenericTableView.swift */; };
+		C20166681CE104C200F7D3E5 /* GenericTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166661CE104C200F7D3E5 /* GenericTableController.swift */; };
+		C201666C1CE104CE00F7D3E5 /* GenericCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166691CE104CE00F7D3E5 /* GenericCollectionCell.swift */; };
+		C201666D1CE104CE00F7D3E5 /* GenericCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666A1CE104CE00F7D3E5 /* GenericCollectionView.swift */; };
+		C201666E1CE104CE00F7D3E5 /* GenericCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666B1CE104CE00F7D3E5 /* GenericCollectionController.swift */; };
 		C20166831CE1097100F7D3E5 /* SnappingSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166821CE1097100F7D3E5 /* SnappingSuperLayout.swift */; };
 		C201668A1CE10A8300F7D3E5 /* SnappingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166891CE10A8300F7D3E5 /* SnappingFlowLayout.swift */; };
-		C20C62311CEB9AF4000DBD08 /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C62301CEB9AF4000DBD08 /* Miscellaneous.swift */; };
-		C20C62321CEB9AF4000DBD08 /* Miscellaneous.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C62301CEB9AF4000DBD08 /* Miscellaneous.swift */; };
+		C20C62311CEB9AF4000DBD08 /* _Minor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C62301CEB9AF4000DBD08 /* _Minor.swift */; };
+		C20C62321CEB9AF4000DBD08 /* _Minor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C62301CEB9AF4000DBD08 /* _Minor.swift */; };
 		C217DD6F1D3AD9FD0047DFBF /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C217DD6E1D3AD9FD0047DFBF /* UILabel+.swift */; };
 		C225FA9D1D1113A1008DF565 /* ParaboloidSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FA9C1D1113A1008DF565 /* ParaboloidSuperLayout.swift */; };
 		C225FAA11D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */; };
@@ -142,6 +142,8 @@
 		C275E7171D00197B000118F0 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165811CE0FA8B00F7D3E5 /* CollectionType+.swift */; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
 		C2848E061C956A7600707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
+		C2B280441D6F9B49008293EF /* NSURLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B280431D6F9B49008293EF /* NSURLSession+.swift */; };
+		C2B280451D6F9B49008293EF /* NSURLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B280431D6F9B49008293EF /* NSURLSession+.swift */; };
 		C2B3F3491D0B8A9E0055B06E /* ActionTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B3F3481D0B8A9E0055B06E /* ActionTrailing.swift */; };
 		C2B3F34B1D0B8AE60055B06E /* ActionWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B3F34A1D0B8AE60055B06E /* ActionWrapper.swift */; };
 		C2B3F34C1D0B8AF80055B06E /* ActionTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B3F3481D0B8A9E0055B06E /* ActionTrailing.swift */; };
@@ -321,14 +323,14 @@
 		C201664E1CE1026800F7D3E5 /* GrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GrowingTextView.swift; path = Sources/iOS/Frameworks/GrowingText/GrowingTextView.swift; sourceTree = "<group>"; };
 		C201665F1CE1041A00F7D3E5 /* TransitionBasicAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionBasicAnimator.swift; path = Sources/iOS/Frameworks/TransitionAnimator/TransitionBasicAnimator.swift; sourceTree = "<group>"; };
 		C20166611CE1041A00F7D3E5 /* TransitionPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionPresentationController.swift; path = Sources/iOS/Frameworks/TransitionAnimator/TransitionPresentationController.swift; sourceTree = "<group>"; };
-		C20166651CE104C200F7D3E5 /* TableGenericView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableGenericView.swift; path = Sources/iOS/Frameworks/GenericInterface/Table/TableGenericView.swift; sourceTree = "<group>"; };
-		C20166661CE104C200F7D3E5 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = Sources/iOS/Frameworks/GenericInterface/Table/TableViewController.swift; sourceTree = "<group>"; };
-		C20166691CE104CE00F7D3E5 /* CollectionContainerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionContainerCell.swift; path = Sources/iOS/Frameworks/GenericInterface/Collection/CollectionContainerCell.swift; sourceTree = "<group>"; };
-		C201666A1CE104CE00F7D3E5 /* CollectionGenericView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionGenericView.swift; path = Sources/iOS/Frameworks/GenericInterface/Collection/CollectionGenericView.swift; sourceTree = "<group>"; };
-		C201666B1CE104CE00F7D3E5 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = Sources/iOS/Frameworks/GenericInterface/Collection/CollectionViewController.swift; sourceTree = "<group>"; };
+		C20166651CE104C200F7D3E5 /* GenericTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericTableView.swift; path = Sources/iOS/Frameworks/GenericInterface/Table/GenericTableView.swift; sourceTree = "<group>"; };
+		C20166661CE104C200F7D3E5 /* GenericTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericTableController.swift; path = Sources/iOS/Frameworks/GenericInterface/Table/GenericTableController.swift; sourceTree = "<group>"; };
+		C20166691CE104CE00F7D3E5 /* GenericCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericCollectionCell.swift; path = Sources/iOS/Frameworks/GenericInterface/Collection/GenericCollectionCell.swift; sourceTree = "<group>"; };
+		C201666A1CE104CE00F7D3E5 /* GenericCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericCollectionView.swift; path = Sources/iOS/Frameworks/GenericInterface/Collection/GenericCollectionView.swift; sourceTree = "<group>"; };
+		C201666B1CE104CE00F7D3E5 /* GenericCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericCollectionController.swift; path = Sources/iOS/Frameworks/GenericInterface/Collection/GenericCollectionController.swift; sourceTree = "<group>"; };
 		C20166821CE1097100F7D3E5 /* SnappingSuperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingSuperLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Snapping/SnappingSuperLayout.swift; sourceTree = "<group>"; };
 		C20166891CE10A8300F7D3E5 /* SnappingFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Snapping/SnappingFlowLayout.swift; sourceTree = "<group>"; };
-		C20C62301CEB9AF4000DBD08 /* Miscellaneous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Miscellaneous.swift; path = Sources/Common/Utilities/Miscellaneous.swift; sourceTree = "<group>"; };
+		C20C62301CEB9AF4000DBD08 /* _Minor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = _Minor.swift; path = Sources/Common/Utilities/_Minor.swift; sourceTree = "<group>"; };
 		C217DD6E1D3AD9FD0047DFBF /* UILabel+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UILabel+.swift"; path = "Sources/iOS/Extensions/UILabel+.swift"; sourceTree = "<group>"; };
 		C225FA9C1D1113A1008DF565 /* ParaboloidSuperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidSuperLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidSuperLayout.swift; sourceTree = "<group>"; };
 		C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppleWatchHomeScreenLayout.swift; path = Demos/iOS/AppleWatchHomeScreenLayout.swift; sourceTree = SOURCE_ROOT; };
@@ -347,6 +349,7 @@
 		C2848E011C956A7600707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7C1B62B95700186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD8A1B62B97400186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2B280431D6F9B49008293EF /* NSURLSession+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSURLSession+.swift"; path = "Sources/Common/Extensions/Foundation/NSURLSession+.swift"; sourceTree = "<group>"; };
 		C2B3F3481D0B8A9E0055B06E /* ActionTrailing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionTrailing.swift; path = Sources/Common/Frameworks/ActionTrailing/ActionTrailing.swift; sourceTree = "<group>"; };
 		C2B3F34A1D0B8AE60055B06E /* ActionWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionWrapper.swift; path = Sources/Common/Frameworks/ActionTrailing/ActionWrapper.swift; sourceTree = "<group>"; };
 		C2B9242D1C9A0EFB00C7FCFD /* MyKitQuickTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitQuickTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -529,6 +532,7 @@
 				C20165AB1CE0FC6D00F7D3E5 /* NSMutableAttributedString+.swift */,
 				C20165AD1CE0FC6D00F7D3E5 /* NSRange+.swift */,
 				C20165AE1CE0FC6D00F7D3E5 /* NSScanner+.swift */,
+				C2B280431D6F9B49008293EF /* NSURLSession+.swift */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -631,9 +635,9 @@
 		C201665D1CE1037C00F7D3E5 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				C201666B1CE104CE00F7D3E5 /* CollectionViewController.swift */,
-				C201666A1CE104CE00F7D3E5 /* CollectionGenericView.swift */,
-				C20166691CE104CE00F7D3E5 /* CollectionContainerCell.swift */,
+				C201666B1CE104CE00F7D3E5 /* GenericCollectionController.swift */,
+				C201666A1CE104CE00F7D3E5 /* GenericCollectionView.swift */,
+				C20166691CE104CE00F7D3E5 /* GenericCollectionCell.swift */,
 			);
 			name = Collection;
 			sourceTree = "<group>";
@@ -641,8 +645,8 @@
 		C201665E1CE1038100F7D3E5 /* Table */ = {
 			isa = PBXGroup;
 			children = (
-				C20166661CE104C200F7D3E5 /* TableViewController.swift */,
-				C20166651CE104C200F7D3E5 /* TableGenericView.swift */,
+				C20166661CE104C200F7D3E5 /* GenericTableController.swift */,
+				C20166651CE104C200F7D3E5 /* GenericTableView.swift */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -758,7 +762,7 @@
 		C289AD951B62BA1700186773 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				C20C62301CEB9AF4000DBD08 /* Miscellaneous.swift */,
+				C20C62301CEB9AF4000DBD08 /* _Minor.swift */,
 				C2446BED1CEB6D2100957586 /* Arbitrary.swift */,
 				C20165421CE0EFC500F7D3E5 /* Box.swift */,
 				C20165431CE0EFC500F7D3E5 /* Curry.swift */,
@@ -1441,7 +1445,7 @@
 				C20166041CE0FF1700F7D3E5 /* CKContainer+.swift in Sources */,
 				C20165EB1CE0FED500F7D3E5 /* DateIndex.swift in Sources */,
 				C201656A1CE0F01D00F7D3E5 /* Result.swift in Sources */,
-				C20C62321CEB9AF4000DBD08 /* Miscellaneous.swift in Sources */,
+				C20C62321CEB9AF4000DBD08 /* _Minor.swift in Sources */,
 				C20165F81CE0FF0E00F7D3E5 /* CGRect+.swift in Sources */,
 				C20166071CE0FF1700F7D3E5 /* CKRecord+.swift in Sources */,
 				C20166091CE0FF1C00F7D3E5 /* NSAttributeDescription+.swift in Sources */,
@@ -1452,6 +1456,7 @@
 				C2446BEF1CEB6D2100957586 /* Arbitrary.swift in Sources */,
 				C20165691CE0F01D00F7D3E5 /* Queue.swift in Sources */,
 				C20166131CE0FF2100F7D3E5 /* SequenceType+.swift in Sources */,
+				C2B280451D6F9B49008293EF /* NSURLSession+.swift in Sources */,
 				C2C62A2C1D04A4200009B45F /* Matrix.swift in Sources */,
 				C20165681CE0F01D00F7D3E5 /* Promise.swift in Sources */,
 			);
@@ -1486,6 +1491,7 @@
 				C20165531CE0EFC500F7D3E5 /* Curry.swift in Sources */,
 				C2F0A7531D10D5DC0022FF61 /* ParaboloidLayoutFormula.swift in Sources */,
 				C20165C01CE0FC8800F7D3E5 /* CKQuery+.swift in Sources */,
+				C2B280441D6F9B49008293EF /* NSURLSession+.swift in Sources */,
 				C20165B21CE0FC6D00F7D3E5 /* NSDateFormatter+.swift in Sources */,
 				C201655F1CE0EFC500F7D3E5 /* Timing.swift in Sources */,
 				C20165D21CE0FCA000F7D3E5 /* CGPoint+.swift in Sources */,
@@ -1496,7 +1502,7 @@
 				C20165A21CE0FC2800F7D3E5 /* CloudRecord.swift in Sources */,
 				C20165B71CE0FC6D00F7D3E5 /* NSRange+.swift in Sources */,
 				C20165B01CE0FC6D00F7D3E5 /* NSCache+.swift in Sources */,
-				C201666D1CE104CE00F7D3E5 /* CollectionGenericView.swift in Sources */,
+				C201666D1CE104CE00F7D3E5 /* GenericCollectionView.swift in Sources */,
 				C20165B81CE0FC6D00F7D3E5 /* NSScanner+.swift in Sources */,
 				C20166411CE1017900F7D3E5 /* UIEdgeInsets+.swift in Sources */,
 				C2F0A7501D10D5DC0022FF61 /* ParaboloidFlowLayout.swift in Sources */,
@@ -1507,10 +1513,10 @@
 				C20165B51CE0FC6D00F7D3E5 /* NSMutableAttributedString+.swift in Sources */,
 				C2B3F34B1D0B8AE60055B06E /* ActionWrapper.swift in Sources */,
 				C20165981CE0FC1100F7D3E5 /* OpenWeather.swift in Sources */,
-				C201666C1CE104CE00F7D3E5 /* CollectionContainerCell.swift in Sources */,
+				C201666C1CE104CE00F7D3E5 /* GenericCollectionCell.swift in Sources */,
 				C20165C21CE0FC8800F7D3E5 /* CKRecordID+.swift in Sources */,
 				C2C62A2A1D04A36F0009B45F /* ColorHexing.swift in Sources */,
-				C20166681CE104C200F7D3E5 /* TableViewController.swift in Sources */,
+				C20166681CE104C200F7D3E5 /* GenericTableController.swift in Sources */,
 				C20165CD1CE0FC9400F7D3E5 /* NSManagedObjectContext+.swift in Sources */,
 				C2F566AB1D242AD800DCEC45 /* UIScreen+.swift in Sources */,
 				C20165BF1CE0FC8800F7D3E5 /* CKDatabase+.swift in Sources */,
@@ -1531,12 +1537,12 @@
 				C20165D31CE0FCA000F7D3E5 /* CGRect+.swift in Sources */,
 				C20165B11CE0FC6D00F7D3E5 /* NSDate+.swift in Sources */,
 				C23D6ECF1D6A66660086A3C7 /* UIView+.swift in Sources */,
-				C20166671CE104C200F7D3E5 /* TableGenericView.swift in Sources */,
+				C20166671CE104C200F7D3E5 /* GenericTableView.swift in Sources */,
 				C2F0A7521D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift in Sources */,
-				C20C62311CEB9AF4000DBD08 /* Miscellaneous.swift in Sources */,
+				C20C62311CEB9AF4000DBD08 /* _Minor.swift in Sources */,
 				C201658D1CE0FAA900F7D3E5 /* StreamService.swift in Sources */,
 				C2EAD82A1D03F714001D2DC4 /* Matrix.swift in Sources */,
-				C201666E1CE104CE00F7D3E5 /* CollectionViewController.swift in Sources */,
+				C201666E1CE104CE00F7D3E5 /* GenericCollectionController.swift in Sources */,
 				C201658B1CE0FA8B00F7D3E5 /* String+.swift in Sources */,
 				C20165591CE0EFC500F7D3E5 /* Queue.swift in Sources */,
 				C20165581CE0EFC500F7D3E5 /* Promise.swift in Sources */,

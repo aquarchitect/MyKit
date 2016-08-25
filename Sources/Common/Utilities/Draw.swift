@@ -28,7 +28,7 @@ import CoreGraphics
 public let PI = CGFloat(M_PI)
 
 /**
-Encapsulates the graphics state stack for a context.
+Encapsulates the graphics state
 
 - parameter context: The graphic context whose the graphics state you want to encapsulate.
 - parameter render: Tendering block for the encapsulated graphics state.

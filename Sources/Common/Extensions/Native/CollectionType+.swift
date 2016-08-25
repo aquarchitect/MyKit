@@ -72,14 +72,17 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
             default:
                 i -= 1
                 j -= 1
-                common.append(self[i])
+                common += [self[i]]
             }
         }
 
         return common
     }
 
-    func differentElements<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C) -> Diff<Generator.Element> {
+    /*
+     * Return untreated Diff instance (for optimization purposes), which has `deletes` and `insert` in a revered order.
+     */
+    func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(other: C) -> Diff<Generator.Element> {
         let matrix = commonMatrix(byComparing: other)
         var i = self.count + 1, j = other.count + 1
 
@@ -100,6 +103,6 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
             }
         }
 
-        return Diff(deletes: deletes.reverse(), inserts: inserts.reverse())
+        return Diff(deletes: deletes, inserts: inserts)
     }
 }

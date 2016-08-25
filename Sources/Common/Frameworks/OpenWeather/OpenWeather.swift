@@ -73,24 +73,11 @@ public final class OpenWeather {
 
     // MARK: Support Method
 
-    private func fetch(method: Method, callback: Callback, components comps: Component...) {
+    private func fetch(method: Method, components comps: Component...) -> Promise<[String: AnyObject]> {
         let baseComps: [Component] = [.APIKey(apiKey), .Language(language), .Units(format)]
         let fullURL = baseURL + String(version) + (method + Component.Compound(baseComps + comps))
 
-        NSURL(string: fullURL)?.then {
-            NSURLSession.sharedSession().dataTaskWithURL($0) { data, _, error in
-                if let _error = error { return callback(.Reject(_error)) }
-                guard let _data = data else { return }
-
-                do {
-                    let results = try NSJSONSerialization.JSONObjectWithData(_data, options: .MutableContainers)
-                    callback(.Fullfill( results as? [String: AnyObject] ?? [:]))
-                } catch {
-                    callback(.Reject(error))
-                }
-            }
-        }.resume()
-
+        return NSURL(string: fullURL)?.andThen(NSURLSession.sharedSession().data) ?? Promise { $0(.Fullfill([:])) }
     }
 }
 
@@ -99,29 +86,29 @@ public extension OpenWeather {
     // MARK: Current Weather Network Calls
 
     func fetchCurrentWeatherOf(city name: String) -> Promise<[String: AnyObject]> {
-        return Promise { self.fetch(.CurrentWeather, callback: $0, components: .CityName(name)) }
+        return fetch(.CurrentWeather, components: .CityName(name))
     }
 
     func fetchCurrentWeatherOf(city id: Int) -> Promise<[String: AnyObject]> {
-        return Promise { self.fetch(.CurrentWeather, callback: $0, components: .CityID(id)) }
+        return fetch(.CurrentWeather, components: .CityID(id))
     }
 
     func fetchCurrentWeatherAt(location coord: CLLocationCoordinate2D) -> Promise<[String: AnyObject]> {
-        return Promise { self.fetch(.CurrentWeather, callback: $0, components: .LocationCoordinate(coord)) }
+        return fetch(.CurrentWeather, components: .LocationCoordinate(coord))
     }
 
     // MARK: Daily Forecast Network Calls
 
     func fetchDailyForecastOf(city name: String, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
-        return Promise { self.fetch(.DailyForecast, callback: $0, components: .CityName(name), .ReturnedDays(count)) }
+        return fetch(.DailyForecast, components: .CityName(name), .ReturnedDays(count))
     }
 
     func fetchDailyForecastOf(city id: Int, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
-        return Promise { self.fetch(.DailyForecast, callback: $0, components: .CityID(id), .ReturnedDays(count)) }
+        return fetch(.DailyForecast, components: .CityID(id), .ReturnedDays(count))
     }
 
     func fetchDailyForecastAt(location coord: CLLocationCoordinate2D, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
-        return Promise { self.fetch(.DailyForecast, callback: $0, components: .LocationCoordinate(coord), .ReturnedDays(count)) }
+        return fetch(.DailyForecast, components: .LocationCoordinate(coord), .ReturnedDays(count))
     }
 }
 

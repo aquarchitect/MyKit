@@ -26,6 +26,7 @@
 public struct Diff<T: Equatable> {
 
     public typealias Step = (Int, T)
+    public typealias Indexes = Set<Int>
 
     public let deletes: [Step]
     public let inserts: [Step]
@@ -42,22 +43,17 @@ public struct Diff<T: Equatable> {
 
 public extension Diff {
 
-    var indexes: (update: [Int], deletion: [Int], insertion: [Int]) {
-        let updateIndexSet: Set<Int> = {
-            let deletes = Set(self.deletes.map { $0.0 })
-            let inserts = Set(self.inserts.map { $0.0 })
-            return deletes.intersect(inserts)
-        }()
+    typealias Updates = (reload: Indexes, delete: Indexes, insert: Indexes)
 
-        let deleteIndexes = deletes
-            .filter { !updateIndexSet.contains($0.0) }
-            .map { $0.0 }
+    var updates: Updates {
+        let deleteIndexesSet = Set(self.deletes.map { $0.0 })
+        let insertIndexesSet = Set(self.inserts.map { $0.0 })
 
-        let insertIndexes = inserts
-            .filter { !updateIndexSet.contains($0.0) }
-            .map { $0.0 }
+        let reloads = deleteIndexesSet.intersect(insertIndexesSet)
+        let deletes = deleteIndexesSet.subtract(insertIndexesSet)
+        let inserts = insertIndexesSet.subtract(deleteIndexesSet)
 
-        return (updateIndexSet.sort(<), deleteIndexes, insertIndexes)
+        return (reloads, deletes, inserts)
     }
 }
 

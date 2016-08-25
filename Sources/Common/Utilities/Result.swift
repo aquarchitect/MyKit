@@ -35,7 +35,7 @@ public extension Result {
     typealias Callback = Result -> Void
 
     /// Tranform the result of one type to another
-    public func then<U>(f: T -> U) -> Result<U> {
+    func then<U>(f: T -> U) -> Result<U> {
         switch self {
 
         case .Fullfill(let value): return .Fullfill(f(value))
@@ -44,7 +44,7 @@ public extension Result {
     }
 
     /// Transfrom the result of one type to another with a potential error
-    public func then<U>(f: T throws -> U) -> Result<U> {
+    func then<U>(f: T throws -> U) -> Result<U> {
         switch self {
 
         case .Fullfill(let value):
@@ -57,7 +57,7 @@ public extension Result {
     }
 
     /// Unwrap in result into values
-    public func resolve() throws -> T {
+    func resolve() throws -> T {
         switch self {
 
         case .Fullfill(let value): return value

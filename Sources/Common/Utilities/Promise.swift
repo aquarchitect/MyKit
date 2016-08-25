@@ -45,17 +45,8 @@ public extension Promise {
         self.operation(callback)
     }
 
-    /** 
-     * Transform to another type
-     */
-    func then<U>(f: T -> U) -> Promise<U> {
-        return Promise<U> { callback in
-            self.resolve { callback($0.then(f)) }
-        }
-    }
-
     /**
-     * Transform to another type with error
+     * Transform value type
      */
     func then<U>(f: T throws -> U) -> Promise<U> {
         return Promise<U> { callback in
@@ -64,19 +55,7 @@ public extension Promise {
     }
 
     /**
-     * Transform to another type of promise
-     */
-    func andThen<U>(f: T -> Promise<U>) -> Promise<U> {
-        return Promise<U> { callback in
-            self.resolve {
-                do { try ($0.resolve >>> f)().resolve(callback) }
-                catch { callback(.Reject(error)) }
-            }
-        }
-    }
-
-    /**
-     * Transform to another promise with a potential error
+     * Transform promise type
      */
     func andThen<U>(f: T throws -> Promise<U>) -> Promise<U> {
         return Promise<U> { callback in
@@ -86,16 +65,23 @@ public extension Promise {
             }
         }
     }
+
+    /**
+     * Transform promise type in a raw way
+     */
+    func andThen<U>(f: T throws -> Result<U>.Callback -> Void) -> Promise<U> {
+        return andThen { value in Promise<U>(try f(value)) }
+    }
 }
 
 // MARK: - Multiple Promises
 
 public extension Promise {
 
-    /*
-     * execute promises concurrently and monitor with a group dispatch
+    /**
+     * Execute promises concurrently
      */
-    private func joint<U>(queue: dispatch_queue_t, _ group: dispatch_group_t, f: ((T throws -> U) -> Result<U>) -> Void) {
+    internal func joint<U>(queue: dispatch_queue_t, _ group: dispatch_group_t, f: ((T throws -> U) -> Result<U>) -> Void) {
         dispatch_group_enter(group)
 
         resolve { result in
@@ -105,7 +91,7 @@ public extension Promise {
     }
 
     /**
-     * Tranform concurrent promises of a same type to a promise of an array
+     * Queue up promises asynchronously
      */
     static func when(promises: [Promise]) -> Promise<[T]> {
         let queue = dispatch_queue_create("MyKit.Promise.array", DISPATCH_QUEUE_CONCURRENT)
@@ -131,10 +117,10 @@ public extension Promise {
 
 infix operator +++ { associativity left }
 
-/* 
- * Transform concurrent promises of 2 different types to a promise of tuple
+/**
+ * Queue up promises of 2 dirrent types aysnchronously
  */
-func +++ <A, B>(lhs: Promise<A>, rhs: Promise<B>) -> Promise<(A, B)> {
+public func +++ <A, B>(lhs: Promise<A>, rhs: Promise<B>) -> Promise<(A, B)> {
     let queue = dispatch_queue_create("MyKit.Promise.tuple", DISPATCH_QUEUE_CONCURRENT)
     let group = dispatch_group_create()
 
@@ -149,7 +135,7 @@ func +++ <A, B>(lhs: Promise<A>, rhs: Promise<B>) -> Promise<(A, B)> {
 
             case .Fullfill(let a?, let b?)?: callback(.Fullfill((a, b)))
             case .Reject(let error)?: callback(.Reject(error))
-            default: callback(.Reject(Error.NoDataContent))
+            default: return
             }
         }
     }

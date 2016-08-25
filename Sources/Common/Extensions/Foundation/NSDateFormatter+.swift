@@ -32,12 +32,12 @@ public extension NSDateFormatter {
         return Cache.formatter
     }
 
-    public func stringFromDateWithFormat(date: NSDate, format: String) -> String {
+    public func string(from date: NSDate, format: String) -> String {
         self.dateFormat = format
         return self.stringFromDate(date)
     }
 
-    public func dateFromStringWithFormat(string: String, format: String) -> NSDate? {
+    public func date(from string: String, format: String) -> NSDate? {
         self.dateFormat = format
         return self.dateFromString(string)
     }

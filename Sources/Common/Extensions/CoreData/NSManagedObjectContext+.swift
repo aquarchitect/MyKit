@@ -32,7 +32,7 @@ public extension NSManagedObjectContext {
             .then {
                 $0.predicate = predicate
                 $0.sortDescriptors = sortDescriptos
-            }.then {
+            }.andThen {
                 try self.executeFetchRequest($0) as? [T]
             }
     }

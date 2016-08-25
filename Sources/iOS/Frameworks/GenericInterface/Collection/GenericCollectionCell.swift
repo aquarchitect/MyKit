@@ -1,5 +1,5 @@
-/* 
- * Miscellaneous.swift
+/*
+ * GenericCollectionCell.swift
  * MyKit
  *
  * Copyright (c) 2015 Hai Nguyen
@@ -23,13 +23,22 @@
  * THE SOFTWARE.
  */
 
-public enum Error: ErrorType {
+import UIKit
 
-    case FailedToLocate(file: String)
-    case NoDataContent
-}
+public class GenericCollectionCell<V: UIView where V: Then>: UICollectionViewCell {
 
-public enum Side {
+    // MARK: Property
 
-    case Top, Left, Bottom, Right
+    public let mainView = V().then {
+        $0.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+    }
+
+    // MARK: Initialization
+
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        mainView.frame = self.bounds
+        self.contentView.addSubview(mainView)
+    }
 }
