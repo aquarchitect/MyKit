@@ -291,7 +291,7 @@ extension OpenWeather.Icon: CustomStringConvertible {
 
 public extension OpenWeather.Icon {
 
-    func attributedStringOf(size: CGFloat) -> NSMutableAttributedString {
+    func attributedStringOf(size size: CGFloat) -> NSMutableAttributedString {
         let name = "Weather Icons", file = "OpenWeather"
 
         return NSMutableAttributedString(string: self.description).then {

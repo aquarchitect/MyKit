@@ -40,7 +40,7 @@ public struct SymbolIcon {
 
 public extension SymbolIcon {
 
-    func attributedStringOf(size: CGFloat) -> NSMutableAttributedString {
+    func attributedStringOf(size size: CGFloat) -> NSMutableAttributedString {
         let name = "Ionicons", file = "SymbolIcon"
         
         return NSMutableAttributedString(string: "\(character)").then {
