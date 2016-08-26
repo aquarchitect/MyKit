@@ -5,7 +5,7 @@ MyKit
 
 ### INTRODUCTION
 
-__MyKit__ is a wide-ranged collection of codes from extensions to small modular frameworks that are covering from data structure to user interface. For record purposes, everything is listed below in a directory tree, and the most exciting features will have an embedded link to the source codes.
+__MyKit__ is a wide-ranged collection of codes from extensions to small modular frameworks that are covering from data structure to user interface. For record purposes, everything is listed below in a directory tree, and the most exciting features have an embedded link directly to the source codes.
 
 Thanks for checking out, and Happy coding!
 
