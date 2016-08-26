@@ -27,11 +27,14 @@ import CloudKit
 
 public extension CKRecord {
 
-    public convenience init<T: CloudObject>(recordType: T.Type) {
+    convenience init<T: CloudObject>(recordType: T.Type) {
         self.init(recordType: String(recordType))
     }
+}
 
-    public var metadata: NSData {
+public extension CKRecord {
+
+    var metadata: NSData {
         let data = NSMutableData()
 
         NSKeyedArchiver(forWritingWithMutableData: data).then {
@@ -43,7 +46,7 @@ public extension CKRecord {
         return data
     }
 
-    public convenience init?(data: NSData) {
+    convenience init?(data: NSData) {
         let coder = NSKeyedUnarchiver(forReadingWithData: data)
         self.init(coder: coder)
         coder.finishDecoding()

@@ -27,14 +27,21 @@ import CoreGraphics
 
 public extension CGRect {
 
-    public var center: CGPoint {
+    var center: CGPoint {
         return CGPointMake(self.midX, self.midY)
     }
 
-    public init(center: CGPoint, sideLength: CGFloat) {
+    init(center: CGPoint, sideLength: CGFloat) {
         let radius = sideLength / 2
+        let origin = CGPointMake(center.x - radius, center.y - radius)
+        let size = CGSizeMake(sideLength, sideLength)
 
-        self.origin = CGPointMake(center.x - radius, center.y - radius)
-        self.size = CGSizeMake(sideLength, sideLength)
+        self.init(origin: origin, size: size)
+    }
+
+    init(center: CGPoint, size: CGSize) {
+        let origin = CGPointMake(center.x - size.width/2, center.y - size.height/2)
+
+        self.init(origin: origin, size: size)
     }
 }

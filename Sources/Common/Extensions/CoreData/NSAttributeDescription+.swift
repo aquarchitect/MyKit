@@ -27,7 +27,7 @@ import CoreData
 
 public extension NSAttributeDescription {
 
-    public convenience init(name: String, type: NSAttributeType, optional: Bool = false) {
+    convenience init(name: String, type: NSAttributeType, optional: Bool = false) {
         self.init()
         self.name = name
         self.optional = optional

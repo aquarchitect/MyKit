@@ -25,11 +25,6 @@
 
 import Foundation
 
-private enum Exception: ErrorType {
-
-    case IPInvalid
-}
-
 public class StreamService: NSObject {
 
     public struct Host {
@@ -39,6 +34,7 @@ public class StreamService: NSObject {
 
         public init(ip: String, port: UInt32) throws {
             guard ip.isValidAs(.IP) else {
+                enum Exception: ErrorType { case IPInvalid }
                 throw Exception.IPInvalid
             }
 
@@ -49,13 +45,13 @@ public class StreamService: NSObject {
 
     // MARK: Property
 
-    public static let EventNotification = "StreamServiceEventNotification"
-
     public private(set) var host: Host?
     private var timeoutID: Schedule.ID?
 
-    private var inputStream: NSInputStream?
-    private var outputStream: NSOutputStream?
+    internal var inputStream: NSInputStream?
+    internal var outputStream: NSOutputStream?
+
+    public var onEvent: ((NSStreamEvent) -> Void)?
 
     // MARK: Override Method
 
@@ -121,7 +117,8 @@ extension StreamService: NSStreamDelegate {
         Schedule.cancel(timeoutID ?? 0)
 
         switch eventCode {
-        case _ where !eventCode.isDisjointWith([.EndEncountered, .ErrorOccurred]): disconnect()
+        case _ where !eventCode.isDisjointWith([.EndEncountered, .ErrorOccurred]):
+            disconnect()
         case [.HasBytesAvailable] where (aStream as? NSInputStream)?.then { $0.hasBytesAvailable } == true:
             var buffer = [UInt8](count: 8, repeatedValue: 0)
 
@@ -129,7 +126,5 @@ extension StreamService: NSStreamDelegate {
             NSData(bytes: buffer, length: result).then(read)
         default: break
         }
-
-        NSNotificationCenter.defaultCenter().postNotificationName(self.dynamicType.EventNotification, object: Box(eventCode))
     }
 }

@@ -49,7 +49,7 @@ endef
 define commit-tag
 	echo ">>> Commiting $(1) tag ... ";				\
 	git remote add upstream $(GITHUB_SECURE_URL);	\
-	git tag -a $(1) -m "$(2)";						\
+	git tag -af $(1) -m "$(2)";						\
 	git push upstream $(1)
 endef
 

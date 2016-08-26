@@ -25,6 +25,8 @@
 
 import CloudKit
 
+// TODO: Redesign CloudKit
+
 public protocol CloudCategorical {
 
     associatedtype Element
@@ -34,9 +36,9 @@ public protocol CloudCategorical {
 
 public extension CloudCategorical where Element: CloudObject {
 
-    public typealias Callback = Result<([Self], CKQueryCursor?)>.Callback
+    typealias Callback = Result<([Self], CKQueryCursor?)>.Callback
 
-    private static func fetch(cachedMetadata flag: Bool, callback: Callback) -> CKQueryOperation {
+    static func fetch(cachedMetadata flag: Bool, callback: Callback) -> CKQueryOperation {
         var results: [Self] = []
 
         let operation = CKQueryOperation()
@@ -54,11 +56,11 @@ public extension CloudCategorical where Element: CloudObject {
         return operation
     }
 
-    public static func fetch(cachedMetadata flag: Bool, predicate: NSPredicate) -> (Callback -> CKDatabaseOperation) {
+    static func fetch(cachedMetadata flag: Bool, predicate: NSPredicate) -> (Callback -> CKDatabaseOperation) {
         return { fetch(cachedMetadata: flag, callback: $0).then { $0.query = CKQuery(recordType: Element.self, predicate: predicate) }}
     }
 
-    public static func fetch(cachedMetadata flag: Bool, cursor: CKQueryCursor) -> (Callback -> CKDatabaseOperation) {
+    static func fetch(cachedMetadata flag: Bool, cursor: CKQueryCursor) -> (Callback -> CKDatabaseOperation) {
         return { fetch(cachedMetadata: flag, callback: $0).then { $0.cursor = cursor }}
     }
 }

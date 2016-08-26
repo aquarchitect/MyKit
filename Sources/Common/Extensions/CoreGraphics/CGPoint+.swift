@@ -34,7 +34,7 @@ public extension CGPoint {
     /**
      * Return a point by shifting origins toward self
      */
-    public func shiftToCoordinate(point: CGPoint) -> CGPoint {
-        return CGPointMake(self.x - point.x, self.y - point.y)
+    func convertToCoordinate(origin origin: CGPoint) -> CGPoint {
+        return CGPointMake(self.x - origin.x, self.y - origin.y)
     }
 }

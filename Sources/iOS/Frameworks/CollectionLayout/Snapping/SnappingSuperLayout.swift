@@ -41,7 +41,7 @@ public class SnappingSuperLayout: UICollectionViewLayout {
         guard let collectionView = self.collectionView else { return nil }
 
         let distance: UICollectionViewLayoutAttributes -> CGFloat = {
-            let center = $0.center.shiftToCoordinate(contentOffset)
+            let center = $0.center.convertToCoordinate(origin: contentOffset)
             return CGPointDistanceToPoint(center, point)
         }
 

@@ -27,7 +27,7 @@ import CoreData
 
 public extension NSRelationshipDescription {
 
-    public convenience init(name: String, destination: NSEntityDescription, range: Range<Int> = 0...0) {
+    convenience init(name: String, destination: NSEntityDescription, range: Range<Int> = 0...0) {
         self.init()
         self.name = name
         self.destinationEntity = destination

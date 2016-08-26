@@ -40,9 +40,11 @@ public struct SymbolIcon {
 
 public extension SymbolIcon {
 
-    func attributedString(ofSize size: CGFloat) -> NSMutableAttributedString {
+    func attributedStringOf(size: CGFloat) -> NSMutableAttributedString {
         let name = "Ionicons", file = "SymbolIcon"
-        return NSMutableAttributedString(string: "\(character)")
-            .then { $0.addFont(.fontWith(name: name, size: size, fromFile: file)) }
+        
+        return NSMutableAttributedString(string: "\(character)").then {
+            $0.addFont(.fontWith(name: name, size: size, fromFile: file))
+        }
     }
 }

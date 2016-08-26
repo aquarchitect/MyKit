@@ -27,13 +27,13 @@ import CloudKit
 
 public extension CKContainer {
 
-    public func fetchCurrentUserID() -> Promise<CKRecordID> {
+    func fetchCurrentUserID() -> Promise<CKRecordID> {
         return Promise { callback in
             self.fetchUserRecordIDWithCompletionHandler {
-                if let recordID = $0 {
-                    callback(.Fullfill(recordID))
-                } else if let error = $1 {
+                if let error = $1 {
                     callback(.Reject(error))
+                } else if let recordID = $0 {
+                    callback(.Fullfill(recordID))
                 }
             }
         }

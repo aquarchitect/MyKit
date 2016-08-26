@@ -26,7 +26,7 @@
 public extension Range {
 
     /// Shift range by specified value
-    public func offseted(by n: Element.Distance) -> Range {
+    public func offset(by n: Element.Distance) -> Range {
         let start = self.startIndex.advancedBy(n)
         let end = self.endIndex.advancedBy(n)
         return start..<end

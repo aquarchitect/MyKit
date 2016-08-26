@@ -23,22 +23,22 @@
  * THE SOFTWARE.
  */
 
+import Foundation
+
 public extension NSURLSession {
 
     func data(`from` url: NSURL) -> Promise<[String: AnyObject]> {
         return Promise { callback in
-            self.dataTaskWithURL(url) { data, _, error in
-                // return immediately if error occurs
-                if let _error = error { return callback(.Reject(_error)) }
-
-                // return empty result if optional binding fails
-                guard let _data = data else { return callback(.Fullfill([:])) }
-
-                do {
-                    let results = try NSJSONSerialization.JSONObjectWithData(_data, options: [])
-                    callback(.Fullfill(results as? [String: AnyObject] ?? [:]))
-                } catch {
-                    callback(.Reject(error))
+            self.dataTaskWithURL(url) {
+                if let error = $0.2 {
+                    return callback(.Reject(error))
+                } else if let data = $0.0 {
+                    do {
+                        let results = try NSJSONSerialization.JSONObjectWithData(data, options: [])
+                        callback(.Fullfill(results as? [String: AnyObject] ?? [:]))
+                    } catch {
+                        callback(.Reject(error))
+                    }
                 }
             }.resume()
         }

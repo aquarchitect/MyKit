@@ -27,14 +27,14 @@ import CloudKit
 
 public extension CKDatabase {
 
-    public func fetchCurrentUser() -> Promise<CKRecord> {
+    func fetchCurrentUser() -> Promise<CKRecord> {
         return Promise({ callback in
             let operation = CKFetchRecordsOperation.fetchCurrentUserRecordOperation()
             operation.perRecordCompletionBlock = {
-                if let record = $0 {
-                    callback(.Fullfill(record))
-                } else if let error = $2 {
+                if let error = $2 {
                     callback(.Reject(error))
+                } else if let record = $0 {
+                    callback(.Fullfill(record))
                 }
             }
             return operation
@@ -46,10 +46,10 @@ public extension CKDatabase {
 
     private func transform<T>(callback: Result<T>.Callback) -> (T?, NSError?) -> Void {
         return {
-            if let result = $0 {
-                callback(.Fullfill(result))
-            } else if let error = $1 {
+            if let error = $1 {
                 callback(.Reject(error))
+            } else if let result = $0 {
+                callback(.Fullfill(result))
             }
         }
     }
