@@ -25,14 +25,14 @@
 
 import UIKit
 
-public class GenericTableView<T, C: UITableViewCell>: UITableView, UITableViewDataSource {
+public class GenericTableView<T, R: UITableViewCell>: UITableView, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: Property
 
-    public typealias Styling = (C, T) -> Void
+    public typealias RowRenderer = (R, T) -> Void
     public private(set) var items: [T] = []
 
-    public var styling: Styling? {
+    public var rowRenderer: RowRenderer? {
         didSet { self.reloadData() }
     }
 
@@ -41,8 +41,9 @@ public class GenericTableView<T, C: UITableViewCell>: UITableView, UITableViewDa
     public override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
         super.showsHorizontalScrollIndicator = false
-        super.register(C.self, forReuseIdentifier: String(C.self))
+        super.register(R.self, forReuseIdentifier: String(R.self))
         super.dataSource = self
+        super.delegate = self
     }
 
     // MARK: Table View Data Source
@@ -52,26 +53,41 @@ public class GenericTableView<T, C: UITableViewCell>: UITableView, UITableViewDa
     }
 
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier(String(C.self), forIndexPath: indexPath).then {
-            styling?($0 as! C, items[indexPath.row])
+        return tableView.dequeueReusableCellWithIdentifier(String(R.self), forIndexPath: indexPath).then {
+            $0.tag = tableView.serialize(indexPath)
+            rowRenderer?($0 as! R, items[indexPath.row])
         }
     }
 }
 
 public extension GenericTableView where T: Equatable {
 
-    func style(newItems items: [T], automaticAnimation flag: Bool) {
+    func render(items: [T], update: Update) {
         let oldItems = self.items
         self.items = items
 
-        guard flag else { return }
-        let (reloads, deletes, inserts) = oldItems.compare(items).updates
-        let mapper = { NSIndexPath(forRow: $0, inSection: 0) }
+        let changeGenerator: AnyGenerator<Change<Int>>
+        switch update {
+        case .Automatic: changeGenerator = oldItems.generateDiffIndexes(byComparing: items)
+        case .Patch(let generator): changeGenerator = generator
+        }
+
+        var reloadIndexPaths: [NSIndexPath] = []
+        var deleteIndexPaths: [NSIndexPath] = []
+        var insertIndexPaths: [NSIndexPath] = []
+
+        changeGenerator.forEach {
+            switch ($0.then { NSIndexPath(forRow: $0, inSection: 0) }) {
+            case .Reload(let value): reloadIndexPaths += [value]
+            case .Delete(let value): deleteIndexPaths += [value]
+            case .Insert(let value): insertIndexPaths += [value]
+            }
+        }
 
         self.beginUpdates()
-        self.reloadRowsAtIndexPaths(reloads.map(mapper), withRowAnimation: .Automatic)
-        self.deleteRowsAtIndexPaths(deletes.map(mapper), withRowAnimation: .Automatic)
-        self.insertRowsAtIndexPaths(inserts.map(mapper), withRowAnimation: .Automatic)
+        self.reloadRowsAtIndexPaths(reloadIndexPaths, withRowAnimation: .Automatic)
+        self.deleteRowsAtIndexPaths(deleteIndexPaths, withRowAnimation: .Automatic)
+        self.insertRowsAtIndexPaths(insertIndexPaths, withRowAnimation: .Automatic)
         self.endUpdates()
     }
 }

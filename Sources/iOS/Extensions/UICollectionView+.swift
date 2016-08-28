@@ -25,16 +25,21 @@
 
 import UIKit
 
+// MARK: - Miscellaneous
+
 /// :nodoc:
 public extension UICollectionView {
 
-    // MARK: Miscellaneous
+    enum Update { case Patch(AnyGenerator<Change<Int>>), Automatic }
 
-    final func isSectionValid(section: Int) -> Bool {
+    final func validates(section: Int) -> Bool {
         return NSLocationInRange(section, NSMakeRange(0, self.numberOfSections()))
     }
+}
 
-    // MARK: Transform IndexPath
+// MARK: Transform IndexPath
+
+public extension UICollectionView {
 
     final func successorOf(indexPath: NSIndexPath) -> NSIndexPath? {
         if indexPath.item < self.numberOfItemsInSection(indexPath.section) - 1 {
@@ -72,14 +77,17 @@ public extension UICollectionView {
 
         return NSIndexPath(forRow: index - count, inSection: section)
     }
+}
 
-    // MARK: Register Views
+// MARK: Register Reusable View
 
-    public func register<T: UICollectionViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
+public extension UICollectionView {
+
+    final func register<T: UICollectionViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
         self.registerClass(T.self, forCellWithReuseIdentifier: identifier)
     }
 
-    public func register<T: UICollectionReusableView>(type: T.Type, forKind kind: String, withReuseIdentifier identifier: String) {
+    final func register<T: UICollectionReusableView>(type: T.Type, forKind kind: String, withReuseIdentifier identifier: String) {
         self.registerClass(type, forSupplementaryViewOfKind: kind, withReuseIdentifier: identifier)
     }
 }

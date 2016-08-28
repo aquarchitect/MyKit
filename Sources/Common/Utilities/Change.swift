@@ -1,8 +1,8 @@
 /*
- * Diff.swift
+ * Change.swift
  * MyKit
  *
- * Copyright (c) 2015 Hai Nguyen
+ * Copyright (c) 2016 Hai Nguyen.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,43 +23,52 @@
  * THE SOFTWARE.
  */
 
-public struct Diff<T: Equatable> {
+public enum Change<T> {
 
-    public typealias Step = (Int, T)
-    public typealias Indexes = Set<Int>
+    case Reload(T)
+    case Insert(T)
+    case Delete(T)
+}
 
-    public let deletes: [Step]
-    public let inserts: [Step]
+public extension Change {
 
-    public var isEmpty: Bool {
-        return inserts.isEmpty && deletes.isEmpty
+    var value: T {
+        switch self {
+        case .Reload(let value): return value
+        case .Delete(let value): return value
+        case .Insert(let value): return value
+        }
     }
 
-    internal init(deletes: [Step] = [], inserts: [Step] = []) {
-        self.deletes = deletes
-        self.inserts = inserts
+    func then<U>(f: T throws -> U) rethrows -> Change<U> {
+        switch self {
+        case .Reload(let value): return try .Reload(f(value))
+        case .Delete(let value): return try .Delete(f(value))
+        case .Insert(let value): return try .Insert(f(value))
+        }
     }
 }
 
-public extension Diff {
+public extension Change {
 
-    typealias Updates = (reload: Indexes, delete: Indexes, insert: Indexes)
-
-    var updates: Updates {
-        let deleteIndexesSet = Set(self.deletes.map { $0.0 })
-        let insertIndexesSet = Set(self.inserts.map { $0.0 })
-
-        let reloads = deleteIndexesSet.intersect(insertIndexesSet)
-        let deletes = deleteIndexesSet.subtract(insertIndexesSet)
-        let inserts = insertIndexesSet.subtract(deleteIndexesSet)
-
-        return (reloads, deletes, inserts)
+    var isReload: Bool {
+        switch self {
+        case .Reload(_): return true
+        default: return false
+        }
     }
-}
 
-extension Diff: CustomDebugStringConvertible {
+    var isDelete: Bool {
+        switch self {
+        case .Delete(_): return true
+        default: return false
+        }
+    }
 
-    public var debugDescription: String {
-        return "Deletes: \(deletes.debugDescription)\nInserts: \(inserts.debugDescription)"
+    var isInsert: Bool {
+        switch self {
+        case .Insert(_): return true
+        default: return false
+        }
     }
 }

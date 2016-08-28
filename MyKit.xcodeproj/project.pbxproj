@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C20165521CE0EFC500F7D3E5 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165421CE0EFC500F7D3E5 /* Box.swift */; };
 		C20165531CE0EFC500F7D3E5 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165431CE0EFC500F7D3E5 /* Curry.swift */; };
-		C20165541CE0EFC500F7D3E5 /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165441CE0EFC500F7D3E5 /* Diff.swift */; };
 		C20165551CE0EFC500F7D3E5 /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165451CE0EFC500F7D3E5 /* Draw.swift */; };
 		C20165581CE0EFC500F7D3E5 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165481CE0EFC500F7D3E5 /* Promise.swift */; };
 		C20165591CE0EFC500F7D3E5 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165491CE0EFC500F7D3E5 /* Queue.swift */; };
@@ -20,7 +19,6 @@
 		C201655F1CE0EFC500F7D3E5 /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654F1CE0EFC500F7D3E5 /* Timing.swift */; };
 		C20165621CE0F01D00F7D3E5 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165421CE0EFC500F7D3E5 /* Box.swift */; };
 		C20165631CE0F01D00F7D3E5 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165431CE0EFC500F7D3E5 /* Curry.swift */; };
-		C20165641CE0F01D00F7D3E5 /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165441CE0EFC500F7D3E5 /* Diff.swift */; };
 		C20165651CE0F01D00F7D3E5 /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165451CE0EFC500F7D3E5 /* Draw.swift */; };
 		C20165681CE0F01D00F7D3E5 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165481CE0EFC500F7D3E5 /* Promise.swift */; };
 		C20165691CE0F01D00F7D3E5 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165491CE0EFC500F7D3E5 /* Queue.swift */; };
@@ -40,8 +38,6 @@
 		C20165971CE0FC1100F7D3E5 /* OpenWeather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165941CE0FC1100F7D3E5 /* OpenWeather.ttf */; };
 		C20165981CE0FC1100F7D3E5 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165951CE0FC1100F7D3E5 /* OpenWeather.swift */; };
 		C20165991CE0FC1100F7D3E5 /* OpenWeather+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165961CE0FC1100F7D3E5 /* OpenWeather+.swift */; };
-		C20165A11CE0FC2800F7D3E5 /* CloudCategorical.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201659E1CE0FC2800F7D3E5 /* CloudCategorical.swift */; };
-		C20165A21CE0FC2800F7D3E5 /* CloudRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201659F1CE0FC2800F7D3E5 /* CloudRecord.swift */; };
 		C20165A31CE0FC2800F7D3E5 /* CloudStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165A01CE0FC2800F7D3E5 /* CloudStack.swift */; };
 		C20165AF1CE0FC6D00F7D3E5 /* NSBundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165A51CE0FC6D00F7D3E5 /* NSBundle+.swift */; };
 		C20165B01CE0FC6D00F7D3E5 /* NSCache+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165A61CE0FC6D00F7D3E5 /* NSCache+.swift */; };
@@ -54,7 +50,6 @@
 		C20165B81CE0FC6D00F7D3E5 /* NSScanner+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165AE1CE0FC6D00F7D3E5 /* NSScanner+.swift */; };
 		C20165BE1CE0FC8800F7D3E5 /* CKContainer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165B91CE0FC8800F7D3E5 /* CKContainer+.swift */; };
 		C20165BF1CE0FC8800F7D3E5 /* CKDatabase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165BA1CE0FC8800F7D3E5 /* CKDatabase+.swift */; };
-		C20165C01CE0FC8800F7D3E5 /* CKQuery+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165BB1CE0FC8800F7D3E5 /* CKQuery+.swift */; };
 		C20165C11CE0FC8800F7D3E5 /* CKRecord+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165BC1CE0FC8800F7D3E5 /* CKRecord+.swift */; };
 		C20165C21CE0FC8800F7D3E5 /* CKRecordID+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165BD1CE0FC8800F7D3E5 /* CKRecordID+.swift */; };
 		C20165C91CE0FC9400F7D3E5 /* NSAttributeDescription+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165C31CE0FC9400F7D3E5 /* NSAttributeDescription+.swift */; };
@@ -72,8 +67,6 @@
 		C20165EF1CE0FEE200F7D3E5 /* OpenWeather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165941CE0FC1100F7D3E5 /* OpenWeather.ttf */; };
 		C20165F01CE0FEE200F7D3E5 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165951CE0FC1100F7D3E5 /* OpenWeather.swift */; };
 		C20165F11CE0FEE200F7D3E5 /* OpenWeather+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165961CE0FC1100F7D3E5 /* OpenWeather+.swift */; };
-		C20165F41CE0FEED00F7D3E5 /* CloudCategorical.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201659E1CE0FC2800F7D3E5 /* CloudCategorical.swift */; };
-		C20165F51CE0FEED00F7D3E5 /* CloudRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201659F1CE0FC2800F7D3E5 /* CloudRecord.swift */; };
 		C20165F61CE0FEED00F7D3E5 /* CloudStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165A01CE0FC2800F7D3E5 /* CloudStack.swift */; };
 		C20165F71CE0FF0E00F7D3E5 /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165CF1CE0FCA000F7D3E5 /* CGPoint+.swift */; };
 		C20165F81CE0FF0E00F7D3E5 /* CGRect+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165D01CE0FCA000F7D3E5 /* CGRect+.swift */; };
@@ -89,7 +82,6 @@
 		C20166031CE0FF1300F7D3E5 /* NSScanner+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165AE1CE0FC6D00F7D3E5 /* NSScanner+.swift */; };
 		C20166041CE0FF1700F7D3E5 /* CKContainer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165B91CE0FC8800F7D3E5 /* CKContainer+.swift */; };
 		C20166051CE0FF1700F7D3E5 /* CKDatabase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165BA1CE0FC8800F7D3E5 /* CKDatabase+.swift */; };
-		C20166061CE0FF1700F7D3E5 /* CKQuery+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165BB1CE0FC8800F7D3E5 /* CKQuery+.swift */; };
 		C20166071CE0FF1700F7D3E5 /* CKRecord+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165BC1CE0FC8800F7D3E5 /* CKRecord+.swift */; };
 		C20166081CE0FF1700F7D3E5 /* CKRecordID+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165BD1CE0FC8800F7D3E5 /* CKRecordID+.swift */; };
 		C20166091CE0FF1C00F7D3E5 /* NSAttributeDescription+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165C31CE0FC9400F7D3E5 /* NSAttributeDescription+.swift */; };
@@ -113,11 +105,7 @@
 		C201664F1CE1026800F7D3E5 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201664E1CE1026800F7D3E5 /* GrowingTextView.swift */; };
 		C20166621CE1041A00F7D3E5 /* TransitionBasicAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201665F1CE1041A00F7D3E5 /* TransitionBasicAnimator.swift */; };
 		C20166641CE1041A00F7D3E5 /* TransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166611CE1041A00F7D3E5 /* TransitionPresentationController.swift */; };
-		C20166671CE104C200F7D3E5 /* GenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166651CE104C200F7D3E5 /* GenericTableView.swift */; };
-		C20166681CE104C200F7D3E5 /* GenericTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166661CE104C200F7D3E5 /* GenericTableController.swift */; };
 		C201666C1CE104CE00F7D3E5 /* GenericCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166691CE104CE00F7D3E5 /* GenericCollectionCell.swift */; };
-		C201666D1CE104CE00F7D3E5 /* GenericCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666A1CE104CE00F7D3E5 /* GenericCollectionView.swift */; };
-		C201666E1CE104CE00F7D3E5 /* GenericCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666B1CE104CE00F7D3E5 /* GenericCollectionController.swift */; };
 		C20166831CE1097100F7D3E5 /* SnappingSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166821CE1097100F7D3E5 /* SnappingSuperLayout.swift */; };
 		C201668A1CE10A8300F7D3E5 /* SnappingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166891CE10A8300F7D3E5 /* SnappingFlowLayout.swift */; };
 		C20C62311CEB9AF4000DBD08 /* _Minor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C62301CEB9AF4000DBD08 /* _Minor.swift */; };
@@ -137,11 +125,17 @@
 		C23DFCF31CAE0EF9008EFF34 /* MyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C2446BEE1CEB6D2100957586 /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2446BED1CEB6D2100957586 /* Arbitrary.swift */; };
 		C2446BEF1CEB6D2100957586 /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2446BED1CEB6D2100957586 /* Arbitrary.swift */; };
+		C24A0AE31D72143B00F94F08 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24A0AE01D7211D800F94F08 /* Change.swift */; };
+		C24A0AE41D72143B00F94F08 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24A0AE01D7211D800F94F08 /* Change.swift */; };
 		C2692FD01D6502D300A29897 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2692FCF1D6502D300A29897 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2692FD11D6502D300A29897 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2692FCF1D6502D300A29897 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C275E7171D00197B000118F0 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165811CE0FA8B00F7D3E5 /* CollectionType+.swift */; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
 		C2848E061C956A7600707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
+		C2940D141D7258AD00AE06D7 /* GenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166651CE104C200F7D3E5 /* GenericTableView.swift */; };
+		C2940D171D7261C100AE06D7 /* GenericTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166661CE104C200F7D3E5 /* GenericTableController.swift */; };
+		C2940D181D72626000AE06D7 /* GenericCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666A1CE104CE00F7D3E5 /* GenericCollectionView.swift */; };
+		C2940D191D72640200AE06D7 /* GenericCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666B1CE104CE00F7D3E5 /* GenericCollectionController.swift */; };
 		C2B280441D6F9B49008293EF /* NSURLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B280431D6F9B49008293EF /* NSURLSession+.swift */; };
 		C2B280451D6F9B49008293EF /* NSURLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B280431D6F9B49008293EF /* NSURLSession+.swift */; };
 		C2B3F3491D0B8A9E0055B06E /* ActionTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B3F3481D0B8A9E0055B06E /* ActionTrailing.swift */; };
@@ -265,7 +259,6 @@
 /* Begin PBXFileReference section */
 		C20165421CE0EFC500F7D3E5 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Common/Utilities/Box.swift; sourceTree = "<group>"; };
 		C20165431CE0EFC500F7D3E5 /* Curry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Curry.swift; path = Sources/Common/Utilities/Curry.swift; sourceTree = "<group>"; };
-		C20165441CE0EFC500F7D3E5 /* Diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Diff.swift; path = Sources/Common/Utilities/Diff.swift; sourceTree = "<group>"; };
 		C20165451CE0EFC500F7D3E5 /* Draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Draw.swift; path = Sources/Common/Utilities/Draw.swift; sourceTree = "<group>"; };
 		C20165481CE0EFC500F7D3E5 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = Sources/Common/Utilities/Promise.swift; sourceTree = "<group>"; };
 		C20165491CE0EFC500F7D3E5 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Queue.swift; path = Sources/Common/Utilities/Queue.swift; sourceTree = "<group>"; };
@@ -286,8 +279,6 @@
 		C20165941CE0FC1100F7D3E5 /* OpenWeather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = OpenWeather.ttf; path = Sources/Common/Frameworks/OpenWeather/OpenWeather.ttf; sourceTree = "<group>"; };
 		C20165951CE0FC1100F7D3E5 /* OpenWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenWeather.swift; path = Sources/Common/Frameworks/OpenWeather/OpenWeather.swift; sourceTree = "<group>"; };
 		C20165961CE0FC1100F7D3E5 /* OpenWeather+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "OpenWeather+.swift"; path = "Sources/Common/Frameworks/OpenWeather/OpenWeather+.swift"; sourceTree = "<group>"; };
-		C201659E1CE0FC2800F7D3E5 /* CloudCategorical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudCategorical.swift; path = Sources/Common/Frameworks/CloudKit/CloudCategorical.swift; sourceTree = "<group>"; };
-		C201659F1CE0FC2800F7D3E5 /* CloudRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudRecord.swift; path = Sources/Common/Frameworks/CloudKit/CloudRecord.swift; sourceTree = "<group>"; };
 		C20165A01CE0FC2800F7D3E5 /* CloudStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudStack.swift; path = Sources/Common/Frameworks/CloudKit/CloudStack.swift; sourceTree = "<group>"; };
 		C20165A51CE0FC6D00F7D3E5 /* NSBundle+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSBundle+.swift"; path = "Sources/Common/Extensions/Foundation/NSBundle+.swift"; sourceTree = "<group>"; };
 		C20165A61CE0FC6D00F7D3E5 /* NSCache+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSCache+.swift"; path = "Sources/Common/Extensions/Foundation/NSCache+.swift"; sourceTree = "<group>"; };
@@ -300,7 +291,6 @@
 		C20165AE1CE0FC6D00F7D3E5 /* NSScanner+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSScanner+.swift"; path = "Sources/Common/Extensions/Foundation/NSScanner+.swift"; sourceTree = "<group>"; };
 		C20165B91CE0FC8800F7D3E5 /* CKContainer+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKContainer+.swift"; path = "Sources/Common/Extensions/CloudKit/CKContainer+.swift"; sourceTree = "<group>"; };
 		C20165BA1CE0FC8800F7D3E5 /* CKDatabase+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKDatabase+.swift"; path = "Sources/Common/Extensions/CloudKit/CKDatabase+.swift"; sourceTree = "<group>"; };
-		C20165BB1CE0FC8800F7D3E5 /* CKQuery+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKQuery+.swift"; path = "Sources/Common/Extensions/CloudKit/CKQuery+.swift"; sourceTree = "<group>"; };
 		C20165BC1CE0FC8800F7D3E5 /* CKRecord+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecord+.swift"; path = "Sources/Common/Extensions/CloudKit/CKRecord+.swift"; sourceTree = "<group>"; };
 		C20165BD1CE0FC8800F7D3E5 /* CKRecordID+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CKRecordID+.swift"; path = "Sources/Common/Extensions/CloudKit/CKRecordID+.swift"; sourceTree = "<group>"; };
 		C20165C31CE0FC9400F7D3E5 /* NSAttributeDescription+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSAttributeDescription+.swift"; path = "Sources/Common/Extensions/CoreData/NSAttributeDescription+.swift"; sourceTree = "<group>"; };
@@ -343,6 +333,7 @@
 		C23A58D81D5BE003003A3C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = Info.plist; path = MyKit/Info.plist; sourceTree = "<group>"; };
 		C23D6ECE1D6A66660086A3C7 /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+.swift"; path = "Sources/iOS/Extensions/UIView+.swift"; sourceTree = "<group>"; };
 		C2446BED1CEB6D2100957586 /* Arbitrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arbitrary.swift; path = Sources/Common/Utilities/Arbitrary.swift; sourceTree = "<group>"; };
+		C24A0AE01D7211D800F94F08 /* Change.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Change.swift; path = Sources/Common/Utilities/Change.swift; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C2692FCF1D6502D300A29897 /* MyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyKit.h; path = MyKit/MyKit.h; sourceTree = "<group>"; };
 		C2848DE01C95642E00707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -367,6 +358,9 @@
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191591CAB9F8300E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191681CABA16600E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2E48B471D7015AF00F36B2A /* ColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPickerView.swift; path = Sources/iOS/Frameworks/ColorPicker/ColorPickerView.swift; sourceTree = "<group>"; };
+		C2E48B491D7015D400F36B2A /* ColorCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorCollectionLayout.swift; path = Sources/iOS/Frameworks/ColorPicker/ColorCollectionLayout.swift; sourceTree = "<group>"; };
+		C2E48B4B1D70160600F36B2A /* ColorItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorItemCell.swift; path = Sources/iOS/Frameworks/ColorPicker/ColorItemCell.swift; sourceTree = "<group>"; };
 		C2EAD8291D03F714001D2DC4 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix.swift; path = Sources/Common/Utilities/Matrix.swift; sourceTree = "<group>"; };
 		C2EF9F701CAB955100BC205F /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F0A74C1D10D5DC0022FF61 /* ParaboloidFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidFlowLayout.swift; sourceTree = "<group>"; };
@@ -513,7 +507,6 @@
 			children = (
 				C20165B91CE0FC8800F7D3E5 /* CKContainer+.swift */,
 				C20165BA1CE0FC8800F7D3E5 /* CKDatabase+.swift */,
-				C20165BB1CE0FC8800F7D3E5 /* CKQuery+.swift */,
 				C20165BC1CE0FC8800F7D3E5 /* CKRecord+.swift */,
 				C20165BD1CE0FC8800F7D3E5 /* CKRecordID+.swift */,
 			);
@@ -550,6 +543,7 @@
 		C201662F1CE1016400F7D3E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2E48B461D70157100F36B2A /* ColorPicker */,
 				C201664D1CE1025C00F7D3E5 /* GrowingText */,
 				C20166591CE1035B00F7D3E5 /* GenericInterface */,
 				C20166581CE1034800F7D3E5 /* TransitionAnimator */,
@@ -654,8 +648,6 @@
 		C20F70231C753284004C688F /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
-				C201659E1CE0FC2800F7D3E5 /* CloudCategorical.swift */,
-				C201659F1CE0FC2800F7D3E5 /* CloudRecord.swift */,
 				C20165A01CE0FC2800F7D3E5 /* CloudStack.swift */,
 			);
 			name = CloudKit;
@@ -766,7 +758,7 @@
 				C2446BED1CEB6D2100957586 /* Arbitrary.swift */,
 				C20165421CE0EFC500F7D3E5 /* Box.swift */,
 				C20165431CE0EFC500F7D3E5 /* Curry.swift */,
-				C20165441CE0EFC500F7D3E5 /* Diff.swift */,
+				C24A0AE01D7211D800F94F08 /* Change.swift */,
 				C2EAD8291D03F714001D2DC4 /* Matrix.swift */,
 				C20165451CE0EFC500F7D3E5 /* Draw.swift */,
 				C20165481CE0EFC500F7D3E5 /* Promise.swift */,
@@ -938,6 +930,16 @@
 				C2E191681CABA16600E4EAB2 /* MyKitUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C2E48B461D70157100F36B2A /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				C2E48B471D7015AF00F36B2A /* ColorPickerView.swift */,
+				C2E48B4B1D70160600F36B2A /* ColorItemCell.swift */,
+				C2E48B491D7015D400F36B2A /* ColorCollectionLayout.swift */,
+			);
+			name = ColorPicker;
 			sourceTree = "<group>";
 		};
 		C2EF9F871CAB96D400BC205F /* Support */ = {
@@ -1404,7 +1406,6 @@
 			files = (
 				C20165EC1CE0FED900F7D3E5 /* StreamService.swift in Sources */,
 				C201660A1CE0FF1C00F7D3E5 /* NSEntityDescription+.swift in Sources */,
-				C20165F51CE0FEED00F7D3E5 /* CloudRecord.swift in Sources */,
 				C201660E1CE0FF1C00F7D3E5 /* NSRelationshipDescription+.swift in Sources */,
 				C2C62A2B1D04A3DC0009B45F /* ColorHexing.swift in Sources */,
 				C20166021CE0FF1300F7D3E5 /* NSRange+.swift in Sources */,
@@ -1415,23 +1416,21 @@
 				C20165FE1CE0FF1300F7D3E5 /* NSIndexPath+.swift in Sources */,
 				C201656E1CE0F01D00F7D3E5 /* Then.swift in Sources */,
 				C20165F11CE0FEE200F7D3E5 /* OpenWeather+.swift in Sources */,
-				C20165641CE0F01D00F7D3E5 /* Diff.swift in Sources */,
 				C201660D1CE0FF1C00F7D3E5 /* NSManagedObjectContext+.swift in Sources */,
 				C20166001CE0FF1300F7D3E5 /* NSMutableAttributedString+.swift in Sources */,
 				C20165FF1CE0FF1300F7D3E5 /* NSLayoutConstraint+.swift in Sources */,
 				C2B3F34E1D0B8B030055B06E /* PersistentStack.swift in Sources */,
-				C20165F41CE0FEED00F7D3E5 /* CloudCategorical.swift in Sources */,
 				C20165F01CE0FEE200F7D3E5 /* OpenWeather.swift in Sources */,
 				C275E7171D00197B000118F0 /* CollectionType+.swift in Sources */,
 				C20165EE1CE0FEDE00F7D3E5 /* SymbolIcon.swift in Sources */,
 				C20165FB1CE0FF1300F7D3E5 /* NSCache+.swift in Sources */,
 				C2B3F34D1D0B8AF80055B06E /* ActionWrapper.swift in Sources */,
+				C24A0AE41D72143B00F94F08 /* Change.swift in Sources */,
 				C20166031CE0FF1300F7D3E5 /* NSScanner+.swift in Sources */,
 				C20165621CE0F01D00F7D3E5 /* Box.swift in Sources */,
 				C201660C1CE0FF1C00F7D3E5 /* NSManagedObject+.swift in Sources */,
 				C20165FD1CE0FF1300F7D3E5 /* NSDateFormatter+.swift in Sources */,
 				C201656B1CE0F01D00F7D3E5 /* Schedule.swift in Sources */,
-				C20166061CE0FF1700F7D3E5 /* CKQuery+.swift in Sources */,
 				C2C62A361D04A65C0009B45F /* _LoremIpsum.swift in Sources */,
 				C20165631CE0F01D00F7D3E5 /* Curry.swift in Sources */,
 				C2C62A341D04A65C0009B45F /* _FontLoading.swift in Sources */,
@@ -1466,6 +1465,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2940D191D72640200AE06D7 /* GenericCollectionController.swift in Sources */,
+				C2940D181D72626000AE06D7 /* GenericCollectionView.swift in Sources */,
+				C2940D171D7261C100AE06D7 /* GenericTableController.swift in Sources */,
 				C20166441CE1017900F7D3E5 /* UIScrollView+.swift in Sources */,
 				C20165881CE0FA8B00F7D3E5 /* Dictionary+.swift in Sources */,
 				C217DD6F1D3AD9FD0047DFBF /* UILabel+.swift in Sources */,
@@ -1476,21 +1478,19 @@
 				C201655E1CE0EFC500F7D3E5 /* Then.swift in Sources */,
 				C201658A1CE0FA8B00F7D3E5 /* SequenceType+.swift in Sources */,
 				C20166461CE1017900F7D3E5 /* UIViewController+.swift in Sources */,
-				C20165541CE0EFC500F7D3E5 /* Diff.swift in Sources */,
 				C201663F1CE1017900F7D3E5 /* UICollectionViewLayout+.swift in Sources */,
 				C20165B31CE0FC6D00F7D3E5 /* NSIndexPath+.swift in Sources */,
 				C201664F1CE1026800F7D3E5 /* GrowingTextView.swift in Sources */,
 				C20165BE1CE0FC8800F7D3E5 /* CKContainer+.swift in Sources */,
 				C20165521CE0EFC500F7D3E5 /* Box.swift in Sources */,
 				C20166831CE1097100F7D3E5 /* SnappingSuperLayout.swift in Sources */,
+				C24A0AE31D72143B00F94F08 /* Change.swift in Sources */,
 				C201663D1CE1017900F7D3E5 /* UIBezierPath+.swift in Sources */,
 				C2C62A2F1D04A6440009B45F /* _FontLoading.swift in Sources */,
 				C20166641CE1041A00F7D3E5 /* TransitionPresentationController.swift in Sources */,
 				C201655B1CE0EFC500F7D3E5 /* Schedule.swift in Sources */,
-				C20165A11CE0FC2800F7D3E5 /* CloudCategorical.swift in Sources */,
 				C20165531CE0EFC500F7D3E5 /* Curry.swift in Sources */,
 				C2F0A7531D10D5DC0022FF61 /* ParaboloidLayoutFormula.swift in Sources */,
-				C20165C01CE0FC8800F7D3E5 /* CKQuery+.swift in Sources */,
 				C2B280441D6F9B49008293EF /* NSURLSession+.swift in Sources */,
 				C20165B21CE0FC6D00F7D3E5 /* NSDateFormatter+.swift in Sources */,
 				C201655F1CE0EFC500F7D3E5 /* Timing.swift in Sources */,
@@ -1499,10 +1499,9 @@
 				C201655D1CE0EFC500F7D3E5 /* Swizzle.swift in Sources */,
 				C201655A1CE0EFC500F7D3E5 /* Result.swift in Sources */,
 				C20165871CE0FA8B00F7D3E5 /* CollectionType+.swift in Sources */,
-				C20165A21CE0FC2800F7D3E5 /* CloudRecord.swift in Sources */,
 				C20165B71CE0FC6D00F7D3E5 /* NSRange+.swift in Sources */,
 				C20165B01CE0FC6D00F7D3E5 /* NSCache+.swift in Sources */,
-				C201666D1CE104CE00F7D3E5 /* GenericCollectionView.swift in Sources */,
+				C2940D141D7258AD00AE06D7 /* GenericTableView.swift in Sources */,
 				C20165B81CE0FC6D00F7D3E5 /* NSScanner+.swift in Sources */,
 				C20166411CE1017900F7D3E5 /* UIEdgeInsets+.swift in Sources */,
 				C2F0A7501D10D5DC0022FF61 /* ParaboloidFlowLayout.swift in Sources */,
@@ -1516,7 +1515,6 @@
 				C201666C1CE104CE00F7D3E5 /* GenericCollectionCell.swift in Sources */,
 				C20165C21CE0FC8800F7D3E5 /* CKRecordID+.swift in Sources */,
 				C2C62A2A1D04A36F0009B45F /* ColorHexing.swift in Sources */,
-				C20166681CE104C200F7D3E5 /* GenericTableController.swift in Sources */,
 				C20165CD1CE0FC9400F7D3E5 /* NSManagedObjectContext+.swift in Sources */,
 				C2F566AB1D242AD800DCEC45 /* UIScreen+.swift in Sources */,
 				C20165BF1CE0FC8800F7D3E5 /* CKDatabase+.swift in Sources */,
@@ -1537,12 +1535,10 @@
 				C20165D31CE0FCA000F7D3E5 /* CGRect+.swift in Sources */,
 				C20165B11CE0FC6D00F7D3E5 /* NSDate+.swift in Sources */,
 				C23D6ECF1D6A66660086A3C7 /* UIView+.swift in Sources */,
-				C20166671CE104C200F7D3E5 /* GenericTableView.swift in Sources */,
 				C2F0A7521D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift in Sources */,
 				C20C62311CEB9AF4000DBD08 /* _Minor.swift in Sources */,
 				C201658D1CE0FAA900F7D3E5 /* StreamService.swift in Sources */,
 				C2EAD82A1D03F714001D2DC4 /* Matrix.swift in Sources */,
-				C201666E1CE104CE00F7D3E5 /* GenericCollectionController.swift in Sources */,
 				C201658B1CE0FA8B00F7D3E5 /* String+.swift in Sources */,
 				C20165591CE0EFC500F7D3E5 /* Queue.swift in Sources */,
 				C20165581CE0EFC500F7D3E5 /* Promise.swift in Sources */,

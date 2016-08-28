@@ -29,10 +29,10 @@ public class GenericCollectionView<T, C: UICollectionViewCell>: UICollectionView
 
     // MARK: Property
 
-    public typealias Styling = (C, T) -> Void
+    public typealias CellRenderer = (C, T) -> Void
     public private(set) var items: [T] = []
 
-    public var styling: Styling? {
+    public var cellRenderer: CellRenderer? {
         didSet { self.reloadData() }
     }
 
@@ -52,25 +52,40 @@ public class GenericCollectionView<T, C: UICollectionViewCell>: UICollectionView
 
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCellWithReuseIdentifier(String(C.self), forIndexPath: indexPath).then {
-            styling?($0 as! C, items[indexPath.item])
+            $0.tag = collectionView.serialize(indexPath)
+            cellRenderer?($0 as! C, items[indexPath.item])
         }
     }
 }
 
 public extension GenericCollectionView where T: Equatable {
 
-    func style(newItems items: [T], automaticAnimation flag: Bool, completion: ((Bool) -> Void)?) {
+    func render(items: [T], update: Update, completion: ((Bool) -> Void)?) {
         let oldItems = self.items
         self.items = items
 
-        guard flag else { return }
-        let (reloads, deletes, inserts) = oldItems.compare(items).updates
-        let mapper = { NSIndexPath(forRow: $0, inSection: 0) }
+        let changeGenerator: AnyGenerator<Change<Int>>
+        switch update {
+        case .Automatic: changeGenerator = oldItems.generateDiffIndexes(byComparing: items)
+        case .Patch(let generator): changeGenerator = generator
+        }
+
+        var reloadIndexPaths: [NSIndexPath] = []
+        var deleteIndexPaths: [NSIndexPath] = []
+        var insertIndexPaths: [NSIndexPath] = []
+
+        changeGenerator.forEach {
+            switch ($0.then { NSIndexPath(forRow: $0, inSection: 0) }) {
+            case .Reload(let value): reloadIndexPaths += [value]
+            case .Delete(let value): deleteIndexPaths += [value]
+            case .Insert(let value): insertIndexPaths += [value]
+            }
+        }
 
         self.performBatchUpdates({ [unowned self] in
-            self.reloadItemsAtIndexPaths(reloads.map(mapper))
-            self.deleteItemsAtIndexPaths(deletes.map(mapper))
-            self.insertItemsAtIndexPaths(inserts.map(mapper))
+            self.reloadItemsAtIndexPaths(reloadIndexPaths)
+            self.deleteItemsAtIndexPaths(deleteIndexPaths)
+            self.insertItemsAtIndexPaths(insertIndexPaths)
             }, completion: completion)
     }
 }

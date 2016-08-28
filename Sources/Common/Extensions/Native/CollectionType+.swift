@@ -35,9 +35,12 @@ public extension CollectionType {
 }
 
 /// :nodoc:
-public extension CollectionType where Generator.Element: Equatable, Index == Int {
+internal extension CollectionType where Generator.Element: Equatable, Index == Int {
 
-    internal func commonMatrix<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C) -> Matrix<Index> {
+    /*
+     * Longest Common Sequence
+     */
+    func lcsMatrix<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C) -> Matrix<Index> {
         let rows = self.count + 2
         let columns = other.count + 2
 
@@ -57,9 +60,12 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
 
         return matrix
     }
+}
+
+public extension CollectionType where Generator.Element: Equatable, Index == Int {
 
     func repeatingElements<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C) -> [Generator.Element] {
-        let matrix = commonMatrix(byComparing: other)
+        let matrix = lcsMatrix(byComparing: other)
         var i = self.count, j = other.count
         var common: [Generator.Element] = []
 
@@ -78,31 +84,56 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
 
         return common
     }
+}
+
+public extension CollectionType where Generator.Element: Equatable, Index == Int {
+
+    typealias Step = (index: Index, element: Generator.Element)
 
     /*
-     * Return untreated Diff instance (for optimization purposes), which has `deletes` and `insert` in a revered order.
+     * Return untreated Diff instance (for optimization purposes), which has `deletes` and `inserts` in a revered order.
      */
-    func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(other: C) -> Diff<Generator.Element> {
-        let matrix = commonMatrix(byComparing: other)
+    func generateDiffSteps<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C) -> AnyGenerator<Change<Step>> {
+        let matrix = lcsMatrix(byComparing: other)
         var i = self.count + 1, j = other.count + 1
 
-        var inserts: [Diff<Generator.Element>.Step] = []
-        var deletes: [Diff<Generator.Element>.Step] = []
+        return AnyGenerator {
+            while i >= 1 && j >= 1 {
+                switch matrix[i, j] {
+                case matrix[i, j-1]:
+                    j -= 1
+                    let step: Step = (j-1, other[j-1])
+                    return .Insert(step)
+                case matrix[i-1, j]:
+                    i -= 1
+                    let step: Step = (i-1, self[i-1])
+                    return .Delete(step)
+                default:
+                    i -= 1
+                    j -= 1
+                }
+            }
 
-        while i >= 1 && j >= 1 {
-            switch matrix[i, j] {
-            case matrix[i, j-1]:
-                j -= 1
-                inserts += [(j-1, other[j-1])]
-            case matrix[i-1, j]:
-                i -= 1
-                deletes += [(i-1, self[i-1])]
+            return nil
+        }
+    }
+
+    func generateDiffIndexes<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C) -> AnyGenerator<Change<Index>> {
+        var insertIndex: Index?
+        let stepsGenerator = generateDiffSteps(byComparing: other)
+
+        return AnyGenerator {
+            switch stepsGenerator.next() {
+            case .Insert(let value)?:
+                insertIndex = value.index
+                return .Insert(value.index)
+            case .Delete(let value)?:
+                return insertIndex == value.index ? .Reload(value.index) : .Delete(value.index)
+            case .Reload(let value)?:
+                return .Reload(value.index)
             default:
-                i -= 1
-                j -= 1
+                return nil
             }
         }
-
-        return Diff(deletes: deletes, inserts: inserts)
     }
 }

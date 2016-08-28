@@ -30,6 +30,8 @@ import UIKit
 /// :nodoc:
 public extension UITableView {
 
+    enum Update { case Patch(AnyGenerator<Change<Int>>), Automatic }
+
     var bottomedIndexPath: NSIndexPath {
         let section = self.numberOfSections - 1
         let row = self.numberOfRowsInSection(section)
@@ -64,14 +66,14 @@ public extension UITableView {
         } else { return nil }
     }
 
-    final func index(bySerializing indexPath: NSIndexPath) -> Int {
+    final func serialize(indexPath: NSIndexPath) -> Int {
         return (0..<indexPath.section)
             .map { self.numberOfRowsInSection($0) }
             .lazy
             .reduce(indexPath.row, combine: +)
     }
 
-    final func indexPath(byDeserializing index: Int) -> NSIndexPath {
+    final func deserialize(index: Int) -> NSIndexPath {
         var (section, count) = (0, 0)
 
         while case let rows = self.numberOfRowsInSection(section) where count + rows < index {
@@ -83,15 +85,15 @@ public extension UITableView {
     }
 }
 
-// MARK: - Register Reusable Identifier
+// MARK: - Register Reusable View
 
 public extension UITableView {
 
-    public func register<T: UITableViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
+    final func register<T: UITableViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
         self.registerClass(type, forCellReuseIdentifier: identifier)
     }
 
-    public func register<T: UITableViewHeaderFooterView>(type: T.Type, forReuseIdentifier identifier: String) {
+    final func register<T: UITableViewHeaderFooterView>(type: T.Type, forReuseIdentifier identifier: String) {
         self.registerClass(type, forHeaderFooterViewReuseIdentifier: identifier)
     }
 }

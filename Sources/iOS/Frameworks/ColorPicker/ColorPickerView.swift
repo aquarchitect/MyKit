@@ -1,8 +1,8 @@
 /*
- * CKQuery+.swift
+ * ColorPickerView.swift
  * MyKit
  *
- * Copyright (c) 2015 Hai Nguyen
+ * Copyright (c) 2016 Hai Nguyen.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +23,6 @@
  * THE SOFTWARE.
  */
 
-import CloudKit
+public class ColorPickerView {
 
-public extension CKQuery {
-
-    convenience init<T: CloudObject>(recordType: T.Type, predicate: NSPredicate) {
-        self.init(recordType: String(recordType), predicate: predicate)
-    }
 }

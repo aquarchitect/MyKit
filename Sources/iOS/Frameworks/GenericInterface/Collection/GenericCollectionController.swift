@@ -29,10 +29,10 @@ public class GenericCollectionController<T, C: UICollectionViewCell>: UICollecti
 
     // MARK: Property
 
-    public typealias Styling = (C, T) -> Void
+    public typealias CellRenderer = (C, T) -> Void
     public private(set) var items: [T] = []
 
-    public var styling: Styling? {
+    public var cellRenderer: CellRenderer? {
         didSet { collectionView?.reloadData() }
     }
 
@@ -51,26 +51,42 @@ public class GenericCollectionController<T, C: UICollectionViewCell>: UICollecti
     }
 
     public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
-            .then { styling?($0 as! C, items[indexPath.item]) }
+        return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath).then {
+            $0.tag = collectionView.serialize(indexPath)
+            cellRenderer?($0 as! C, items[indexPath.item])
+        }
     }
 }
 
 public extension GenericCollectionController where T: Equatable {
 
-    func styleCollectionView(newItems items: [T], automaticAnimation flag: Bool, completion: ((Bool) -> Void)?) {
+    func renderCollectionView(items: [T], update: UICollectionView.Update, completion: ((Bool) -> Void)?) {
         let oldItems = self.items
         self.items = items
 
-        guard flag else { return }
-        let (reloads, deletes, inserts) = oldItems.compare(items).updates
-        let mapper = { NSIndexPath(forRow: $0, inSection: 0) }
+        let changeGenerator: AnyGenerator<Change<Int>>
+        switch update {
+        case .Automatic: changeGenerator = oldItems.generateDiffIndexes(byComparing: items)
+        case .Patch(let generator): changeGenerator = generator
+        }
+
+        var reloadIndexPaths: [NSIndexPath] = []
+        var deleteIndexPaths: [NSIndexPath] = []
+        var insertIndexPaths: [NSIndexPath] = []
+
+        changeGenerator.forEach {
+            switch ($0.then { NSIndexPath(forRow: $0, inSection: 0) }) {
+            case .Reload(let value): reloadIndexPaths += [value]
+            case .Delete(let value): deleteIndexPaths += [value]
+            case .Insert(let value): insertIndexPaths += [value]
+            }
+        }
 
         collectionView?.performBatchUpdates({ [unowned self] in
             self.collectionView?.then {
-                $0.reloadItemsAtIndexPaths(reloads.map(mapper))
-                $0.deleteItemsAtIndexPaths(deletes.map(mapper))
-                $0.insertItemsAtIndexPaths(inserts.map(mapper))
+                $0.reloadItemsAtIndexPaths(reloadIndexPaths)
+                $0.deleteItemsAtIndexPaths(deleteIndexPaths)
+                $0.insertItemsAtIndexPaths(insertIndexPaths)
             }
             }, completion: completion)
     }
