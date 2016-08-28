@@ -86,13 +86,15 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
     }
 }
 
+/*
+    Diff methods returns a generator in order to minimize
+    the number of iteration for transforming, such as 
+    mapping index to indexPath. This approach seems optimized.
+ */
 public extension CollectionType where Generator.Element: Equatable, Index == Int {
 
     typealias Step = (index: Index, element: Generator.Element)
 
-    /*
-     * Return untreated Diff instance (for optimization purposes), which has `deletes` and `inserts` in a revered order.
-     */
     func generateDiffSteps<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C) -> AnyGenerator<Change<Step>> {
         let matrix = lcsMatrix(byComparing: other)
         var i = self.count + 1, j = other.count + 1
@@ -118,22 +120,5 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
         }
     }
 
-    func generateDiffIndexes<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C) -> AnyGenerator<Change<Index>> {
-        var insertIndex: Index?
-        let stepsGenerator = generateDiffSteps(byComparing: other)
-
-        return AnyGenerator {
-            switch stepsGenerator.next() {
-            case .Insert(let value)?:
-                insertIndex = value.index
-                return .Insert(value.index)
-            case .Delete(let value)?:
-                return insertIndex == value.index ? .Reload(value.index) : .Delete(value.index)
-            case .Reload(let value)?:
-                return .Reload(value.index)
-            default:
-                return nil
-            }
-        }
-    }
+    // TODO: generateDiffIndexes
 }
