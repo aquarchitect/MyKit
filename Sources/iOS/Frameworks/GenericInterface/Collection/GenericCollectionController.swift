@@ -25,12 +25,12 @@
 
 import UIKit
 
-public class GenericCollectionController<S, C: UICollectionViewCell>: UICollectionViewController {
+public class GenericCollectionController<T, C: UICollectionViewCell>: UICollectionViewController {
 
     // MARK: Property
 
-    public typealias CellRenderer = (C, S) -> Void
-    public private(set) var cellStates: [S] = []
+    public typealias CellRenderer = (C, T) -> Void
+    public private(set) var items: [T] = []
 
     public var cellRenderer: CellRenderer? {
         didSet { collectionView?.reloadData() }
@@ -47,29 +47,29 @@ public class GenericCollectionController<S, C: UICollectionViewCell>: UICollecti
     // MARK: Collection View Data Source
 
     public override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellStates.count
+        return items.count
     }
 
     public override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath).then {
             $0.tag = collectionView.serialize(indexPath)
-            cellRenderer?($0 as! C, cellStates[indexPath.item])
+            cellRenderer?($0 as! C, items[indexPath.item])
         }
     }
 }
 
-public extension GenericCollectionController where S: Equatable {
+public extension GenericCollectionController where T: Equatable {
 
-    func renderCollectionView(cellStates: [S], completion: UIView.AnimatingCompletion?) {
-        let changes = self.cellStates.compare(byComparing: cellStates)
-        self.cellStates = cellStates
+    func renderCollectionView(items: [T], completion: UIView.AnimatingCompletion?) {
+        let changes = self.items.compare(byComparing: items)
+        self.items = items
 
         let patch = changes.lazy.map { $0.then { $0.index }}
         collectionView?.update(patch.generate(), inSection: 0, completion: completion)
     }
 
-    func applyToCollectionView(changes: [Change<Array<S>.Step>], automaticAnimation flag: Bool = true, completion: UIView.AnimatingCompletion?) {
-        self.cellStates.apply(changes)
+    func applyToCollectionView(changes: [Change<Array<T>.Step>], automatic flag: Bool = true, completion: UIView.AnimatingCompletion?) {
+        self.items.apply(changes)
 
         guard flag else { return }
         let patch = changes.lazy.map { $0.then { $0.index }}

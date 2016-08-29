@@ -28,7 +28,10 @@ import UIKit
 public class TransitionPresentationController: UIPresentationController {
 
     public var presentedRect: CGRect
-    internal let dimView = UIView(frame: UIScreen.mainScreen().bounds)
+    internal let dimView = UIView().then {
+        $0.frame = UIScreen.mainScreen().bounds
+        $0.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+    }
 
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

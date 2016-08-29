@@ -25,12 +25,12 @@
 
 import UIKit
 
-public class GenericTableView<S, R: UITableViewCell>: UITableView, UITableViewDataSource, UITableViewDelegate {
+public class GenericTableView<T, R: UITableViewCell>: UITableView, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: Property
 
-    public typealias RowRenderer = (R, S) -> Void
-    public private(set) var rowStates: [S] = []
+    public typealias RowRenderer = (R, T) -> Void
+    public private(set) var items: [T] = []
 
     public var rowRenderer: RowRenderer? {
         didSet { self.reloadData() }
@@ -49,29 +49,29 @@ public class GenericTableView<S, R: UITableViewCell>: UITableView, UITableViewDa
     // MARK: Table View Data Source
 
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowStates.count
+        return items.count
     }
 
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCellWithIdentifier(String(R.self), forIndexPath: indexPath).then {
             $0.tag = tableView.serialize(indexPath)
-            rowRenderer?($0 as! R, rowStates[indexPath.row])
+            rowRenderer?($0 as! R, items[indexPath.row])
         }
     }
 }
 
-public extension GenericTableView where S: Equatable {
+public extension GenericTableView where T: Equatable {
 
-    func render(rowStates: [S]) {
-        let changes = self.rowStates.compare(byComparing: rowStates)
-        self.rowStates = rowStates
+    func render(items: [T]) {
+        let changes = self.items.compare(byComparing: items)
+        self.items = items
 
         let patch = changes.lazy.map { $0.then { $0.index }}
         update(patch.generate(), inSection: 0)
     }
 
-    func apply(changes: [Change<Array<S>.Step>], automaticAnimation flag: Bool = true) {
-        self.rowStates.apply(changes)
+    func apply(changes: [Change<Array<T>.Step>], automatic flag: Bool = true) {
+        self.items.apply(changes)
 
         guard flag else { return }
         let patch = changes.lazy.map { $0.then { $0.index }}
