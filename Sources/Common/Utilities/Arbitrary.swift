@@ -68,6 +68,10 @@ public extension Arbitrary {
         let value = arc4random_uniform(UInt32(UInt16.max))
         return String(format: "#%06X", value)
     }
+
+    static var hexUInt: UInt {
+        return UInt(arc4random_uniform(UInt32(UInt16.max)))
+    }
 }
 
 public extension Arbitrary {

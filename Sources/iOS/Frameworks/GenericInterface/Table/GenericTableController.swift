@@ -61,20 +61,48 @@ public class GenericTableController<T, R: UITableViewCell>: UITableViewControlle
     }
 }
 
-public extension GenericTableController where T: Equatable {
+public extension GenericTableController {
 
-    func renderTableView(items: [T]) {
-        let changes = self.items.compare(byComparing: items)
-        self.items = items
+    /**
+     Apply changes to the state data set.
 
-        let patch = changes.lazy.map { $0.then { $0.index }}
-        tableView.update(patch.generate(), inSection: 0)
-    }
-
+     - parameter automatic: if true table view will handle animation according to the changes; if false you gain back animation control.
+     */
     func applyToTableView(changes: [Change<Array<T>.Step>], automatic flag: Bool = true) {
         self.items.apply(changes)
 
         guard flag else { return }
+        let patch = changes.lazy.map { $0.then { $0.index }}
+        tableView.update(patch.generate(), inSection: 0)
+    }
+}
+
+public extension GenericTableController {
+
+    /**
+     Render table view rows with new states without animation.
+
+     This method is equivalent to `reloadData` of `UITableView`.
+     */
+    func renderTableViewStatically(items: [T]) {
+        self.items = items
+        tableView.reloadData()
+    }
+}
+
+public extension GenericTableController where T: Equatable {
+
+    /**
+     Render table view rows with new states with animation.
+
+     This method uses __LCS__ (Longest Common Sequence) under the hood
+     to figure out the difference between 2 data set, and
+     render table view accordingly.
+     */
+    func renderTableViewDynamically(items: [T]) {
+        let changes = self.items.compare(byComparing: items)
+        self.items = items
+
         let patch = changes.lazy.map { $0.then { $0.index }}
         tableView.update(patch.generate(), inSection: 0)
     }

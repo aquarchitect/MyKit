@@ -140,6 +140,9 @@
 		C275E7171D00197B000118F0 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165811CE0FA8B00F7D3E5 /* CollectionType+.swift */; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
 		C2848E061C956A7600707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
+		C2991C6E1D748EA5005EC608 /* ColorCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E48B4B1D70160600F36B2A /* ColorCollectionCell.swift */; };
+		C2991C6F1D749482005EC608 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E48B471D7015AF00F36B2A /* ColorPickerView.swift */; };
+		C2991C721D74A863005EC608 /* ColorCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E48B491D7015D400F36B2A /* ColorCollectionLayout.swift */; };
 		C2B280441D6F9B49008293EF /* NSURLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B280431D6F9B49008293EF /* NSURLSession+.swift */; };
 		C2B280451D6F9B49008293EF /* NSURLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B280431D6F9B49008293EF /* NSURLSession+.swift */; };
 		C2B3F3491D0B8A9E0055B06E /* ActionTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B3F3481D0B8A9E0055B06E /* ActionTrailing.swift */; };
@@ -366,7 +369,7 @@
 		C2E191681CABA16600E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E48B471D7015AF00F36B2A /* ColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPickerView.swift; path = Sources/iOS/Frameworks/ColorPicker/ColorPickerView.swift; sourceTree = "<group>"; };
 		C2E48B491D7015D400F36B2A /* ColorCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorCollectionLayout.swift; path = Sources/iOS/Frameworks/ColorPicker/ColorCollectionLayout.swift; sourceTree = "<group>"; };
-		C2E48B4B1D70160600F36B2A /* ColorItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorItemCell.swift; path = Sources/iOS/Frameworks/ColorPicker/ColorItemCell.swift; sourceTree = "<group>"; };
+		C2E48B4B1D70160600F36B2A /* ColorCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorCollectionCell.swift; path = Sources/iOS/Frameworks/ColorPicker/ColorCollectionCell.swift; sourceTree = "<group>"; };
 		C2EAD8291D03F714001D2DC4 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix.swift; path = Sources/Common/Utilities/Matrix.swift; sourceTree = "<group>"; };
 		C2EF9F701CAB955100BC205F /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F0A74C1D10D5DC0022FF61 /* ParaboloidFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidFlowLayout.swift; sourceTree = "<group>"; };
@@ -944,7 +947,7 @@
 			isa = PBXGroup;
 			children = (
 				C2E48B471D7015AF00F36B2A /* ColorPickerView.swift */,
-				C2E48B4B1D70160600F36B2A /* ColorItemCell.swift */,
+				C2E48B4B1D70160600F36B2A /* ColorCollectionCell.swift */,
 				C2E48B491D7015D400F36B2A /* ColorCollectionLayout.swift */,
 			);
 			name = ColorPicker;
@@ -1505,6 +1508,7 @@
 				C20165C91CE0FC9400F7D3E5 /* NSAttributeDescription+.swift in Sources */,
 				C201655D1CE0EFC500F7D3E5 /* Swizzle.swift in Sources */,
 				C201655A1CE0EFC500F7D3E5 /* Result.swift in Sources */,
+				C2991C6F1D749482005EC608 /* ColorPickerView.swift in Sources */,
 				C20165871CE0FA8B00F7D3E5 /* CollectionType+.swift in Sources */,
 				C20165B71CE0FC6D00F7D3E5 /* NSRange+.swift in Sources */,
 				C20165B01CE0FC6D00F7D3E5 /* NSCache+.swift in Sources */,
@@ -1543,6 +1547,7 @@
 				C20165CC1CE0FC9400F7D3E5 /* NSManagedObject+.swift in Sources */,
 				C20165D31CE0FCA000F7D3E5 /* CGRect+.swift in Sources */,
 				C20165B11CE0FC6D00F7D3E5 /* NSDate+.swift in Sources */,
+				C2991C6E1D748EA5005EC608 /* ColorCollectionCell.swift in Sources */,
 				C23D6ECF1D6A66660086A3C7 /* UIView+.swift in Sources */,
 				C25478481D73D92700F00C38 /* GenericTableView.swift in Sources */,
 				C2F0A7521D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift in Sources */,
@@ -1552,6 +1557,7 @@
 				C254784B1D73F05F00F00C38 /* GenericTableController.swift in Sources */,
 				C2EAD82A1D03F714001D2DC4 /* Matrix.swift in Sources */,
 				C201658B1CE0FA8B00F7D3E5 /* String+.swift in Sources */,
+				C2991C721D74A863005EC608 /* ColorCollectionLayout.swift in Sources */,
 				C20165591CE0EFC500F7D3E5 /* Queue.swift in Sources */,
 				C20165581CE0EFC500F7D3E5 /* Promise.swift in Sources */,
 				C2446BEE1CEB6D2100957586 /* Arbitrary.swift in Sources */,

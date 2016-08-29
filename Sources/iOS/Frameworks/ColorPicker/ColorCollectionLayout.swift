@@ -23,6 +23,72 @@
  * THE SOFTWARE.
  */
 
-<#Type#> ColorCollectionLayout {
+import UIKit
 
+public class ColorCollectionLayout: UICollectionViewFlowLayout {
+
+    // MARK: Initialization
+
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    public override init() {
+        super.init()
+        super.itemSize.width = 30
+        super.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10)
+        super.scrollDirection = .Horizontal
+    }
+
+    // MARK: System Methods
+
+    public override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        var elements: [UICollectionViewLayoutAttributes] = []
+
+        for attributes in super.layoutAttributesForElementsInRect(rect) ?? [] {
+            switch attributes.representedElementCategory {
+            case .Cell:
+                elements += [self.layoutAttributesForItemAtIndexPath(attributes.indexPath)].flatMap { $0 }
+            default:
+                elements += [attributes]
+            }
+        }
+
+        return elements
+    }
+
+    public override func invalidationContextForBoundsChange(newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
+        let selectedIndexPaths = [self.collectionView?.indexPathsForSelectedItems()?.first].flatMap { $0 }
+
+        return super.invalidationContextForBoundsChange(newBounds).then {
+            $0.invalidateItemsAtIndexPaths(selectedIndexPaths)
+        }
+    }
+
+    public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+        return true
+    }
+
+    public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        guard let attributes = super.layoutAttributesForItemAtIndexPath(indexPath)
+            else { return nil }
+
+        guard self.collectionView?.indexPathsForSelectedItems()?.first == indexPath
+            else { return attributes }
+
+        let padding: CGFloat = 25
+
+        guard (self.collectionView?.andThen {
+            let low = attributes.center.x < $0.contentOffset.x + padding
+            let high = attributes.center.x > $0.contentOffset.x + $0.bounds.width - padding
+            return low || high
+            } ?? false) else { return attributes }
+
+        attributes.center.x = self.collectionView?.andThen { max(attributes.center.x, $0.contentOffset.x + padding) } ?? 0
+        attributes.center.x = self.collectionView?.andThen { min(attributes.center.x, $0.contentOffset.x + $0.bounds.width - padding) } ?? 0
+        attributes.bounds.size.width = 2 * padding
+        attributes.zIndex = 6
+        
+        return attributes
+    }
 }

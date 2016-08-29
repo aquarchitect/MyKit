@@ -27,7 +27,7 @@ define package-platform
 		$(call error-platform,$(1));													\
 	fi
 endef
-
+s
 define minify-web
 	file=$(1);																\
 	echo ">>> Minifying $$file ... ";										\
@@ -49,7 +49,7 @@ endef
 define commit-tag
 	echo ">>> Commiting $(1) tag ... ";				\
 	git remote add upstream $(GITHUB_SECURE_URL);	\
-	git tag -af $(1) -m "$(2)";						\
+	git tag -a $(1) -m "$(2)";						\
 	git push upstream $(1)
 endef
 

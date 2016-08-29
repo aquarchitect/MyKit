@@ -25,12 +25,12 @@
 
 import UIKit
 
-public class GenericCollectionView<T, C: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
+public class GenericCollectionView<Item, Cell: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
 
     // MARK: Property
 
-    public typealias CellRenderer = (C, T) -> Void
-    public private(set) var items: [T] = []
+    public typealias CellRenderer = (Cell, Item) -> Void
+    public private(set) var items: [Item] = []
 
     public var cellRenderer: CellRenderer? {
         didSet { self.reloadData() }
@@ -40,7 +40,7 @@ public class GenericCollectionView<T, C: UICollectionViewCell>: UICollectionView
 
     public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        super.register(C.self, forReuseIdentifier: String(C.self))
+        super.register(Cell.self, forReuseIdentifier: String(Cell.self))
         super.dataSource = self
     }
 
@@ -51,27 +51,55 @@ public class GenericCollectionView<T, C: UICollectionViewCell>: UICollectionView
     }
 
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier(String(C.self), forIndexPath: indexPath).then {
+        return collectionView.dequeueReusableCellWithReuseIdentifier(String(Cell.self), forIndexPath: indexPath).then {
             $0.tag = collectionView.serialize(indexPath)
-            cellRenderer?($0 as! C, items[indexPath.item])
+            cellRenderer?($0 as! Cell, items[indexPath.item])
         }
     }
 }
 
-public extension GenericCollectionView where T: Equatable {
+public extension GenericCollectionView {
 
-    func render(items: [T], completion: AnimatingCompletion?) {
-        let changes = self.items.compare(byComparing: items)
-        self.items = items
+    /**
+     Apply changes to the state data set.
 
-        let patch = changes.lazy.map { $0.then { $0.index }}
-        update(patch.generate(), inSection: 0, completion: completion)
-    }
-
-    func apply(changes: [Change<Array<T>.Step>], automatic flag: Bool = true, completion: AnimatingCompletion?) {
+     - parameter automatic: if true collection view will handle animation according to the changes; if false you gain back animation control.
+     */
+    func apply(changes: [Change<Array<Item>.Step>], automatic flag: Bool = true, completion: AnimatingCompletion?) {
         self.items.apply(changes)
 
         guard flag else { return }
+        let patch = changes.lazy.map { $0.then { $0.index }}
+        update(patch.generate(), inSection: 0, completion: completion)
+    }
+}
+
+public extension GenericCollectionView {
+
+    /**
+     Render collection view rows with new states without animation.
+
+     This method is equivalent to `reloadData` of `UICollectionView`.
+     */
+    func renderStatically(items: [Item]) {
+        self.items = items
+        self.reloadData()
+    }
+}
+
+public extension GenericCollectionView where Item: Equatable {
+
+    /**
+     Render collection view rows with new states with animation.
+
+     This method uses __LCS__ (Longest Common Sequence) under the hood
+     to figure out the differences between 2 data set, and
+     render table view accordingly.
+     */
+    func renderDynamically(items: [Item], completion: AnimatingCompletion?) {
+        let changes = self.items.compare(byComparing: items)
+        self.items = items
+
         let patch = changes.lazy.map { $0.then { $0.index }}
         update(patch.generate(), inSection: 0, completion: completion)
     }

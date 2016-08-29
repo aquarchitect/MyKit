@@ -58,20 +58,48 @@ public class GenericCollectionController<T, C: UICollectionViewCell>: UICollecti
     }
 }
 
-public extension GenericCollectionController where T: Equatable {
+public extension GenericCollectionController {
 
-    func renderCollectionView(items: [T], completion: UIView.AnimatingCompletion?) {
-        let changes = self.items.compare(byComparing: items)
-        self.items = items
+    /**
+     Apply changes to the state data set.
 
-        let patch = changes.lazy.map { $0.then { $0.index }}
-        collectionView?.update(patch.generate(), inSection: 0, completion: completion)
-    }
-
+     - parameter automatic: if true collection view will handle animation according to the changes; if false you gain back animation control.
+     */
     func applyToCollectionView(changes: [Change<Array<T>.Step>], automatic flag: Bool = true, completion: UIView.AnimatingCompletion?) {
         self.items.apply(changes)
 
         guard flag else { return }
+        let patch = changes.lazy.map { $0.then { $0.index }}
+        collectionView?.update(patch.generate(), inSection: 0, completion: completion)
+    }
+}
+
+public extension GenericCollectionController {
+
+    /**
+     Render collection view rows with new states without animation.
+
+     This method is equivalent to `reloadData` of `UICollectionView`.
+     */
+    func renderCollectionViewStatically(items: [T]) {
+        self.items = items
+        collectionView?.reloadData()
+    }
+}
+
+public extension GenericCollectionController where T: Equatable {
+
+    /**
+     Render collection view rows with new states with animation.
+
+     This method uses __LCS__ (Longest Common Sequence) under the hood
+     to figure out the differences between 2 data set, and
+     render table view accordingly.
+     */
+    func renderCollectionViewDynamically(items: [T], completion: UIView.AnimatingCompletion?) {
+        let changes = self.items.compare(byComparing: items)
+        self.items = items
+
         let patch = changes.lazy.map { $0.then { $0.index }}
         collectionView?.update(patch.generate(), inSection: 0, completion: completion)
     }

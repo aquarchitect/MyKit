@@ -1,7 +1,9 @@
 MyKit
 =====
 
-[![Swift Version](https://img.shields.io/badge/swift-2.2-orange.svg?style=flat-square)](https://swift.org)  [![Build Status](https://img.shields.io/travis/aquarchitect/MyKit.svg?style=flat-square)](https://travis-ci.org/aquarchitect/MyKit/)  [![Platform Support](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20-lightgrey.svg?style=flat-square)](https://developer.apple.com/xcode/download/)  [![Documentation Page](https://img.shields.io/badge/docs-6%-green.svg?style=flat-square)](http://aquarchitect.github.io/MyKit/)
+[![Swift Version](https://img.shields.io/badge/swift-2.2-orange.svg?style=flat-square)](https://swift.org)  [![Build Status](https://img.shields.io/travis/aquarchitect/MyKit.svg?style=flat-square)](https://travis-ci.org/aquarchitect/MyKit/)  [![Platform Support](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20-lightgrey.svg?style=flat-square)](https://developer.apple.com/xcode/download/)
+
+Documentation: [http://aquarchitect.github.io/MyKit/](http://aquarchitect.github.io/MyKit/)
 
 ### INTRODUCTION
 
