@@ -25,12 +25,12 @@
 
 import UIKit
 
-public class GenericCollectionView<T, C: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
+public class GenericCollectionView<S, C: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
 
     // MARK: Property
 
-    public typealias CellRenderer = (C, T) -> Void
-    public private(set) var items: [T] = []
+    public typealias CellRenderer = (C, S) -> Void
+    public private(set) var cellStates: [S] = []
 
     public var cellRenderer: CellRenderer? {
         didSet { self.reloadData() }
@@ -47,45 +47,32 @@ public class GenericCollectionView<T, C: UICollectionViewCell>: UICollectionView
     // MARK: Data Source
 
     public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return cellStates.count
     }
 
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCellWithReuseIdentifier(String(C.self), forIndexPath: indexPath).then {
             $0.tag = collectionView.serialize(indexPath)
-            cellRenderer?($0 as! C, items[indexPath.item])
+            cellRenderer?($0 as! C, cellStates[indexPath.item])
         }
     }
 }
 
-public extension GenericCollectionView where T: Equatable {
+public extension GenericCollectionView where S: Equatable {
 
-    func render(items: [T], update: Update, completion: ((Bool) -> Void)?) {
-        let oldItems = self.items
-        self.items = items
+    func render(cellStates: [S], completion: AnimatingCompletion?) {
+        let changes = self.cellStates.compare(byComparing: cellStates)
+        self.cellStates = cellStates
 
-        let changeGenerator: AnyGenerator<Change<Int>>
-        switch update {
-        case .Automatic: changeGenerator = oldItems.generateDiffIndexes(byComparing: items)
-        case .Patch(let generator): changeGenerator = generator
-        }
+        let patch = changes.lazy.map { $0.then { $0.index }}
+        update(patch.generate(), inSection: 0, completion: completion)
+    }
 
-        var reloadIndexPaths: [NSIndexPath] = []
-        var deleteIndexPaths: [NSIndexPath] = []
-        var insertIndexPaths: [NSIndexPath] = []
+    func apply(changes: [Change<Array<S>.Step>], automaticAnimation flag: Bool = true, completion: AnimatingCompletion?) {
+        self.cellStates.apply(changes)
 
-        changeGenerator.forEach {
-            switch ($0.then { NSIndexPath(forRow: $0, inSection: 0) }) {
-            case .Reload(let value): reloadIndexPaths += [value]
-            case .Delete(let value): deleteIndexPaths += [value]
-            case .Insert(let value): insertIndexPaths += [value]
-            }
-        }
-
-        self.performBatchUpdates({ [unowned self] in
-            self.reloadItemsAtIndexPaths(reloadIndexPaths)
-            self.deleteItemsAtIndexPaths(deleteIndexPaths)
-            self.insertItemsAtIndexPaths(insertIndexPaths)
-            }, completion: completion)
+        guard flag else { return }
+        let patch = changes.lazy.map { $0.then { $0.index }}
+        update(patch.generate(), inSection: 0, completion: completion)
     }
 }

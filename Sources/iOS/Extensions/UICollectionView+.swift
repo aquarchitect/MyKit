@@ -30,8 +30,6 @@ import UIKit
 /// :nodoc:
 public extension UICollectionView {
 
-    enum Update { case Patch(AnyGenerator<Change<Int>>), Automatic }
-
     final func validates(section: Int) -> Bool {
         return NSLocationInRange(section, NSMakeRange(0, self.numberOfSections()))
     }
@@ -76,6 +74,28 @@ public extension UICollectionView {
         }
 
         return NSIndexPath(forRow: index - count, inSection: section)
+    }
+}
+
+public extension UICollectionView {
+
+    func update<G: GeneratorType where G.Element == Change<Int>>(patch: G, inSection section: Int, completion: AnimatingCompletion?) {
+        let indexPathMapper = { NSIndexPath(forRow: $0, inSection: section) }
+
+        var deleteIndexPaths: [NSIndexPath] = []
+        var insertIndexPaths: [NSIndexPath] = []
+
+        AnyGenerator(patch).forEach {
+            switch $0.then(indexPathMapper) {
+            case .Delete(let value): deleteIndexPaths += [value]
+            case .Insert(let value): insertIndexPaths += [value]
+            }
+        }
+
+        self.performBatchUpdates({ [unowned self] in
+            self.deleteItemsAtIndexPaths(deleteIndexPaths)
+            self.insertItemsAtIndexPaths(insertIndexPaths)
+            }, completion: completion)
     }
 }
 

@@ -129,6 +129,12 @@
 		C2446BEF1CEB6D2100957586 /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2446BED1CEB6D2100957586 /* Arbitrary.swift */; };
 		C24A0AE31D72143B00F94F08 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24A0AE01D7211D800F94F08 /* Change.swift */; };
 		C24A0AE41D72143B00F94F08 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24A0AE01D7211D800F94F08 /* Change.swift */; };
+		C25478461D73D8F400F00C38 /* RangeReplaceableCollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25478451D73D8F400F00C38 /* RangeReplaceableCollectionType+.swift */; };
+		C25478471D73D8F400F00C38 /* RangeReplaceableCollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25478451D73D8F400F00C38 /* RangeReplaceableCollectionType+.swift */; };
+		C25478481D73D92700F00C38 /* GenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166651CE104C200F7D3E5 /* GenericTableView.swift */; };
+		C254784B1D73F05F00F00C38 /* GenericTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166661CE104C200F7D3E5 /* GenericTableController.swift */; };
+		C254784C1D73F21300F00C38 /* GenericCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666A1CE104CE00F7D3E5 /* GenericCollectionView.swift */; };
+		C254784D1D73F74B00F00C38 /* GenericCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201666B1CE104CE00F7D3E5 /* GenericCollectionController.swift */; };
 		C2692FD01D6502D300A29897 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2692FCF1D6502D300A29897 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2692FD11D6502D300A29897 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2692FCF1D6502D300A29897 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C275E7171D00197B000118F0 /* CollectionType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165811CE0FA8B00F7D3E5 /* CollectionType+.swift */; };
@@ -333,6 +339,7 @@
 		C23F09061D73519F003211D3 /* AnyGenerator+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AnyGenerator+.swift"; path = "Sources/Common/Extensions/Native/AnyGenerator+.swift"; sourceTree = "<group>"; };
 		C2446BED1CEB6D2100957586 /* Arbitrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arbitrary.swift; path = Sources/Common/Utilities/Arbitrary.swift; sourceTree = "<group>"; };
 		C24A0AE01D7211D800F94F08 /* Change.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Change.swift; path = Sources/Common/Utilities/Change.swift; sourceTree = "<group>"; };
+		C25478451D73D8F400F00C38 /* RangeReplaceableCollectionType+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RangeReplaceableCollectionType+.swift"; path = "Sources/Common/Extensions/Native/RangeReplaceableCollectionType+.swift"; sourceTree = "<group>"; };
 		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C2692FCF1D6502D300A29897 /* MyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyKit.h; path = MyKit/MyKit.h; sourceTree = "<group>"; };
 		C2848DE01C95642E00707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -485,6 +492,7 @@
 				C20165811CE0FA8B00F7D3E5 /* CollectionType+.swift */,
 				C20165841CE0FA8B00F7D3E5 /* SequenceType+.swift */,
 				C23F09061D73519F003211D3 /* AnyGenerator+.swift */,
+				C25478451D73D8F400F00C38 /* RangeReplaceableCollectionType+.swift */,
 			);
 			name = Native;
 			sourceTree = "<group>";
@@ -1434,6 +1442,7 @@
 				C23F09081D73519F003211D3 /* AnyGenerator+.swift in Sources */,
 				C2C62A361D04A65C0009B45F /* _LoremIpsum.swift in Sources */,
 				C20165631CE0F01D00F7D3E5 /* Curry.swift in Sources */,
+				C25478471D73D8F400F00C38 /* RangeReplaceableCollectionType+.swift in Sources */,
 				C2C62A341D04A65C0009B45F /* _FontLoading.swift in Sources */,
 				C2B3F34C1D0B8AF80055B06E /* ActionTrailing.swift in Sources */,
 				C201656F1CE0F01D00F7D3E5 /* Timing.swift in Sources */,
@@ -1510,9 +1519,11 @@
 				C2B3F34B1D0B8AE60055B06E /* ActionWrapper.swift in Sources */,
 				C20165981CE0FC1100F7D3E5 /* OpenWeather.swift in Sources */,
 				C201666C1CE104CE00F7D3E5 /* GenericCollectionCell.swift in Sources */,
+				C25478461D73D8F400F00C38 /* RangeReplaceableCollectionType+.swift in Sources */,
 				C20165C21CE0FC8800F7D3E5 /* CKRecordID+.swift in Sources */,
 				C2C62A2A1D04A36F0009B45F /* ColorHexing.swift in Sources */,
 				C20165CD1CE0FC9400F7D3E5 /* NSManagedObjectContext+.swift in Sources */,
+				C254784D1D73F74B00F00C38 /* GenericCollectionController.swift in Sources */,
 				C2F566AB1D242AD800DCEC45 /* UIScreen+.swift in Sources */,
 				C20165BF1CE0FC8800F7D3E5 /* CKDatabase+.swift in Sources */,
 				C20165931CE0FC0200F7D3E5 /* SymbolIcon.swift in Sources */,
@@ -1523,6 +1534,7 @@
 				C20165B41CE0FC6D00F7D3E5 /* NSLayoutConstraint+.swift in Sources */,
 				C201663E1CE1017900F7D3E5 /* UICollectionView+.swift in Sources */,
 				C20165CB1CE0FC9400F7D3E5 /* NSFetchRequest+.swift in Sources */,
+				C254784C1D73F21300F00C38 /* GenericCollectionView.swift in Sources */,
 				C201658F1CE0FBF300F7D3E5 /* DateIndex.swift in Sources */,
 				C20165991CE0FC1100F7D3E5 /* OpenWeather+.swift in Sources */,
 				C20165C11CE0FC8800F7D3E5 /* CKRecord+.swift in Sources */,
@@ -1532,10 +1544,12 @@
 				C20165D31CE0FCA000F7D3E5 /* CGRect+.swift in Sources */,
 				C20165B11CE0FC6D00F7D3E5 /* NSDate+.swift in Sources */,
 				C23D6ECF1D6A66660086A3C7 /* UIView+.swift in Sources */,
+				C25478481D73D92700F00C38 /* GenericTableView.swift in Sources */,
 				C2F0A7521D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift in Sources */,
 				C20C62311CEB9AF4000DBD08 /* _Minor.swift in Sources */,
 				C23F09071D73519F003211D3 /* AnyGenerator+.swift in Sources */,
 				C201658D1CE0FAA900F7D3E5 /* StreamService.swift in Sources */,
+				C254784B1D73F05F00F00C38 /* GenericTableController.swift in Sources */,
 				C2EAD82A1D03F714001D2DC4 /* Matrix.swift in Sources */,
 				C201658B1CE0FA8B00F7D3E5 /* String+.swift in Sources */,
 				C20165591CE0EFC500F7D3E5 /* Queue.swift in Sources */,

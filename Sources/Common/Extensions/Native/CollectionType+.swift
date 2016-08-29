@@ -25,6 +25,8 @@
 
 public extension CollectionType {
 
+//    typealias Step = (index: Index, element: Generator.Element)
+
     /**
      * Returns the first element where predicate returns true for the corresponding value, or nil if such value is not found.
      */
@@ -78,7 +80,7 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
             default:
                 i -= 1
                 j -= 1
-                common += [self[i]]
+                common.insert(self[i], atIndex: 0)
             }
         }
 
@@ -86,39 +88,38 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
     }
 }
 
-/*
-    Diff methods returns a generator in order to minimize
-    the number of iteration for transforming, such as 
-    mapping index to indexPath. This approach seems optimized.
- */
 public extension CollectionType where Generator.Element: Equatable, Index == Int {
 
     typealias Step = (index: Index, element: Generator.Element)
 
-    func generateDiffSteps<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C) -> AnyGenerator<Change<Step>> {
+    func enumerateReversedChanges<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C, @noescape block: Change<Step> -> Void) {
         let matrix = lcsMatrix(byComparing: other)
         var i = self.count + 1, j = other.count + 1
 
-        return AnyGenerator {
-            while i >= 1 && j >= 1 {
-                switch matrix[i, j] {
-                case matrix[i, j-1]:
-                    j -= 1
-                    let step: Step = (j-1, other[j-1])
-                    return .Insert(step)
-                case matrix[i-1, j]:
-                    i -= 1
-                    let step: Step = (i-1, self[i-1])
-                    return .Delete(step)
-                default:
-                    i -= 1
-                    j -= 1
-                }
+        while i >= 1 && j >= 1 {
+            switch matrix[i, j] {
+            case matrix[i, j-1]:
+                j -= 1
+                let step: Step = (j-1, other[j-1])
+                block(.Insert(step))
+            case matrix[i-1, j]:
+                i -= 1
+                let step: Step = (i-1, self[i-1])
+                block(.Delete(step))
+            default:
+                i -= 1
+                j -= 1
             }
-
-            return nil
         }
     }
 
-    // TODO: generateDiffIndexes
+    func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C) -> [Change<Step>] {
+        var results: [Change<Step>] = []
+
+        enumerateReversedChanges(byComparing: other) {
+            results.insert($0, atIndex: 0)
+        }
+
+        return results
+    }
 }

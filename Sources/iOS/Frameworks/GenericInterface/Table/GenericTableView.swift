@@ -25,12 +25,12 @@
 
 import UIKit
 
-public class GenericTableView<T, R: UITableViewCell>: UITableView, UITableViewDataSource, UITableViewDelegate {
+public class GenericTableView<S, R: UITableViewCell>: UITableView, UITableViewDataSource, UITableViewDelegate {
 
     // MARK: Property
 
-    public typealias RowRenderer = (R, T) -> Void
-    public private(set) var items: [T] = []
+    public typealias RowRenderer = (R, S) -> Void
+    public private(set) var rowStates: [S] = []
 
     public var rowRenderer: RowRenderer? {
         didSet { self.reloadData() }
@@ -49,45 +49,32 @@ public class GenericTableView<T, R: UITableViewCell>: UITableView, UITableViewDa
     // MARK: Table View Data Source
 
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return rowStates.count
     }
 
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCellWithIdentifier(String(R.self), forIndexPath: indexPath).then {
             $0.tag = tableView.serialize(indexPath)
-            rowRenderer?($0 as! R, items[indexPath.row])
+            rowRenderer?($0 as! R, rowStates[indexPath.row])
         }
     }
 }
 
-public extension GenericTableView where T: Equatable {
+public extension GenericTableView where S: Equatable {
 
-    func render(items: [T], update: Update) {
-        let oldItems = self.items
-        self.items = items
+    func render(rowStates: [S]) {
+        let changes = self.rowStates.compare(byComparing: rowStates)
+        self.rowStates = rowStates
 
-        let changeGenerator: AnyGenerator<Change<Int>>
-        switch update {
-        case .Automatic: changeGenerator = oldItems.generateDiffIndexes(byComparing: items)
-        case .Patch(let generator): changeGenerator = generator
-        }
+        let patch = changes.lazy.map { $0.then { $0.index }}
+        update(patch.generate(), inSection: 0)
+    }
 
-        var reloadIndexPaths: [NSIndexPath] = []
-        var deleteIndexPaths: [NSIndexPath] = []
-        var insertIndexPaths: [NSIndexPath] = []
+    func apply(changes: [Change<Array<S>.Step>], automaticAnimation flag: Bool = true) {
+        self.rowStates.apply(changes)
 
-        changeGenerator.forEach {
-            switch ($0.then { NSIndexPath(forRow: $0, inSection: 0) }) {
-            case .Reload(let value): reloadIndexPaths += [value]
-            case .Delete(let value): deleteIndexPaths += [value]
-            case .Insert(let value): insertIndexPaths += [value]
-            }
-        }
-
-        self.beginUpdates()
-        self.reloadRowsAtIndexPaths(reloadIndexPaths, withRowAnimation: .Automatic)
-        self.deleteRowsAtIndexPaths(deleteIndexPaths, withRowAnimation: .Automatic)
-        self.insertRowsAtIndexPaths(insertIndexPaths, withRowAnimation: .Automatic)
-        self.endUpdates()
+        guard flag else { return }
+        let patch = changes.lazy.map { $0.then { $0.index }}
+        update(patch.generate(), inSection: 0)
     }
 }

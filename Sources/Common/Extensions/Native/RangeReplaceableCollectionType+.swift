@@ -1,5 +1,5 @@
 /*
- * Change.swift
+ * RangeReplaceableCollectionType+.swift
  * MyKit
  *
  * Copyright (c) 2016 Hai Nguyen.
@@ -23,42 +23,21 @@
  * THE SOFTWARE.
  */
 
-public enum Change<T> {
+public extension RangeReplaceableCollectionType where Index == Int {
 
-    case Insert(T)
-    case Delete(T)
-}
-
-public extension Change {
-
-    var value: T {
-        switch self {
-        case .Delete(let value): return value
-        case .Insert(let value): return value
+    mutating func apply(changes: [Change<(index: Index, element: Generator.Element)>]) {
+        for change in changes {
+            switch change {
+            case .Delete(let step): self.removeAtIndex(step.index)
+            case .Insert(let step): self.insert(step.element, atIndex: step.index)
+            }
         }
     }
 
-    func then<U>(f: T throws -> U) rethrows -> Change<U> {
-        switch self {
-        case .Delete(let value): return try .Delete(f(value))
-        case .Insert(let value): return try .Insert(f(value))
-        }
-    }
-}
-
-public extension Change {
-
-    var isDelete: Bool {
-        switch self {
-        case .Delete(_): return true
-        default: return false
-        }
-    }
-
-    var isInsert: Bool {
-        switch self {
-        case .Insert(_): return true
-        default: return false
-        }
+    @warn_unused_result
+    func applying(changes: [Change<(index: Index, element: Generator.Element)>]) -> Self {
+        var result = self
+        result.apply(changes)
+        return result
     }
 }
