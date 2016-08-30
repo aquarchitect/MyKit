@@ -77,28 +77,6 @@ public extension UICollectionView {
     }
 }
 
-public extension UICollectionView {
-
-    func update<G: GeneratorType where G.Element == Change<Int>>(patch: G, inSection section: Int, completion: AnimatingCompletion?) {
-        let indexPathMapper = { NSIndexPath(forRow: $0, inSection: section) }
-
-        var deleteIndexPaths: [NSIndexPath] = []
-        var insertIndexPaths: [NSIndexPath] = []
-
-        AnyGenerator(patch).forEach {
-            switch $0.then(indexPathMapper) {
-            case .Delete(let value): deleteIndexPaths += [value]
-            case .Insert(let value): insertIndexPaths += [value]
-            }
-        }
-
-        self.performBatchUpdates({ [unowned self] in
-            self.deleteItemsAtIndexPaths(deleteIndexPaths)
-            self.insertItemsAtIndexPaths(insertIndexPaths)
-            }, completion: completion)
-    }
-}
-
 // MARK: Register Reusable View
 
 public extension UICollectionView {

@@ -70,6 +70,11 @@ public class ColorCollectionLayout: UICollectionViewFlowLayout {
     }
 
     public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+        let selectedCell: UICollectionViewCell? = self.collectionView?.andThen {
+            guard let indexPath = $0.indexPathsForSelectedItems()?.first else { return nil }
+            return $0.cellForItemAtIndexPath(indexPath)
+        }
+
         guard let attributes = super.layoutAttributesForItemAtIndexPath(indexPath)
             else { return nil }
 
@@ -78,17 +83,24 @@ public class ColorCollectionLayout: UICollectionViewFlowLayout {
 
         let padding: CGFloat = 25
 
-        guard (self.collectionView?.andThen {
+        let outOfBounds = self.collectionView?.andThen {
             let low = attributes.center.x < $0.contentOffset.x + padding
             let high = attributes.center.x > $0.contentOffset.x + $0.bounds.width - padding
             return low || high
-            } ?? false) else { return attributes }
+            } ?? false
+
+        guard outOfBounds else {
+            selectedCell?.backgroundView = nil
+            return attributes
+        }
 
         attributes.center.x = self.collectionView?.andThen { max(attributes.center.x, $0.contentOffset.x + padding) } ?? 0
         attributes.center.x = self.collectionView?.andThen { min(attributes.center.x, $0.contentOffset.x + $0.bounds.width - padding) } ?? 0
         attributes.bounds.size.width = 2 * padding
         attributes.zIndex = 6
-        
+
+        selectedCell?.backgroundView = (self.collectionView as? ColorPickerView)?.pinnedCellBackgroundView
+
         return attributes
     }
 }

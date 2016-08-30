@@ -66,12 +66,28 @@ public extension GenericTableView {
 
      - parameter automatic: if true table view will handle animation according to the changes; if false you gain back animation control.
      */
-    func apply(changes: [Change<Array<Item>.Step>], automatic flag: Bool = true) {
-        self.items.apply(changes)
+    func apply<G: GeneratorType where G.Element == Change<Array<Item>.Step>>(changes: G, automatic flag: Bool = true) {
+        let indexPathMapper = { NSIndexPath(forRow: $0, inSection: 0) }
+
+        var deleteIndexPaths: [NSIndexPath] = []
+        var insertIndexPaths: [NSIndexPath] = []
+
+        AnyGenerator(changes).forEach {
+            switch $0 {
+            case .Delete(let index, _):
+                deleteIndexPaths += [index].map(indexPathMapper)
+                self.items.removeAtIndex(index)
+            case .Insert(let index, let element):
+                insertIndexPaths += [index].map(indexPathMapper)
+                self.items.insert(element, atIndex: index)
+            }
+        }
 
         guard flag else { return }
-        let patch = changes.lazy.map { $0.then { $0.index }}
-        update(patch.generate(), inSection: 0)
+        self.beginUpdates()
+        self.deleteRowsAtIndexPaths(deleteIndexPaths, withRowAnimation: .Automatic)
+        self.insertRowsAtIndexPaths(insertIndexPaths, withRowAnimation: .Automatic)
+        self.endUpdates()
     }
 }
 
@@ -98,10 +114,26 @@ public extension GenericTableView where Item: Equatable {
      render table view accordingly.
      */
     func renderDynamically(items: [Item]) {
-        let changes = self.items.compare(byComparing: items)
+        let indexPathMapper = { NSIndexPath(forRow: $0, inSection: 0) }
+
+        var deleteIndexPaths: [NSIndexPath] = []
+        var insertIndexPaths: [NSIndexPath] = []
+
+        self.items.enumerateReversedChanges(byComparing: items) {
+            let change = $0
+                .then { $0.index }
+                .then(indexPathMapper)
+            switch change {
+            case .Delete(let indexPath): deleteIndexPaths.insert(indexPath, atIndex: 0)
+            case .Insert(let indexPath): insertIndexPaths.insert(indexPath, atIndex: 0)
+            }
+        }
+
         self.items = items
 
-        let patch = changes.lazy.map { $0.then { $0.index }}
-        update(patch.generate(), inSection: 0)
+        self.beginUpdates()
+        self.deleteRowsAtIndexPaths(deleteIndexPaths, withRowAnimation: .Automatic)
+        self.insertRowsAtIndexPaths(insertIndexPaths, withRowAnimation: .Automatic)
+        self.endUpdates()
     }
 }

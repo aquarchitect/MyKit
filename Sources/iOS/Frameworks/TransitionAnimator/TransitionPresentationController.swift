@@ -30,6 +30,7 @@ public class TransitionPresentationController: UIPresentationController {
     public var presentedRect: CGRect
     internal let dimView = UIView().then {
         $0.frame = UIScreen.mainScreen().bounds
+        $0.backgroundColor = UIColor(white: 0, alpha: 0.7)
         $0.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
     }
 
@@ -43,27 +44,29 @@ public class TransitionPresentationController: UIPresentationController {
 
         UITapGestureRecognizer()
             .then { $0.addTarget(self, action: #selector(handleTap)) }
-            .andThen(dimView.addGestureRecognizer)
+            .then(dimView.addGestureRecognizer)
 
     }
 
     public override func presentationTransitionWillBegin() {
         self.containerView?.insertSubview(dimView, atIndex: 0)
-        animateDimView(1, completion: nil)
+        fadeDim(appearing: true, completion: nil)
     }
 
     public override func dismissalTransitionWillBegin() {
         self.presentedView()?.endEditing(true)
-        animateDimView(0) {
+        fadeDim(appearing: false) {
             [weak dimView] in
             dimView?.removeFromSuperview()
         }
     }
 
-    private func animateDimView(alpha: CGFloat, completion: (Void -> Void)?) {
+    private func fadeDim(appearing flag: Bool, completion: (Void -> Void)?) {
+        dimView.alpha = flag ? 0 : 1
+
         self.presentingViewController.transitionCoordinator()?.animateAlongsideTransition({
             [unowned dimView] _ in
-            dimView.alpha = alpha
+            dimView.alpha = flag ? 1 : 0
         }, completion: { _ in completion?() })
     }
 

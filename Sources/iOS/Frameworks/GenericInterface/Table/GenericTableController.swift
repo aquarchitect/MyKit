@@ -25,39 +25,29 @@
 
 import UIKit
 
-public class GenericTableController<T, R: UITableViewCell>: UITableViewController {
+public class GenericTableController<Item, Row: UITableViewCell>: UITableViewController {
 
     // MARK: Property
 
-    public typealias RowRenderer = (R, T) -> Void
-    public private(set) var items: [T] = []
+    public typealias RowRenderer = (Row, Item) -> Void
+
+    private var _tableView: GenericTableView<Item, Row>? {
+        return tableView as? GenericTableView<Item, Row>
+    }
+
+    public var items: [Item] {
+        return _tableView?.items ?? []
+    }
 
     public var rowRenderer: RowRenderer? {
-        didSet { tableView.reloadData() }
+        get { return _tableView?.rowRenderer }
+        set { _tableView?.rowRenderer = newValue }
     }
 
     // MARK: View Lifecycle
 
     public override func loadView() {
-        super.loadView()
-
-        tableView.then {
-            $0.showsHorizontalScrollIndicator = false
-            $0.register(R.self, forReuseIdentifier: String(R.self))
-        }
-    }
-
-    // MARK: Table View Data Source
-
-    public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
-    }
-
-    public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier(String(R.self), forIndexPath: indexPath).then {
-            $0.tag = tableView.serialize(indexPath)
-            rowRenderer?($0 as! R, items[indexPath.row])
-        }
+        tableView = GenericTableView<Item, Row>(frame: .zero, style: .Plain)
     }
 }
 
@@ -68,12 +58,8 @@ public extension GenericTableController {
 
      - parameter automatic: if true table view will handle animation according to the changes; if false you gain back animation control.
      */
-    func applyToTableView(changes: [Change<Array<T>.Step>], automatic flag: Bool = true) {
-        self.items.apply(changes)
-
-        guard flag else { return }
-        let patch = changes.lazy.map { $0.then { $0.index }}
-        tableView.update(patch.generate(), inSection: 0)
+    func applyToTableView<G: GeneratorType where G.Element == Change<Array<Item>.Step>>(changes: G, automatic flag: Bool = true) {
+        _tableView?.apply(changes, automatic: flag)
     }
 }
 
@@ -84,13 +70,12 @@ public extension GenericTableController {
 
      This method is equivalent to `reloadData` of `UITableView`.
      */
-    func renderTableViewStatically(items: [T]) {
-        self.items = items
-        tableView.reloadData()
+    func renderTableViewStatically(items: [Item]) {
+        _tableView?.renderStatically(items)
     }
 }
 
-public extension GenericTableController where T: Equatable {
+public extension GenericTableController where Item: Equatable {
 
     /**
      Render table view rows with new states with animation.
@@ -99,11 +84,7 @@ public extension GenericTableController where T: Equatable {
      to figure out the difference between 2 data set, and
      render table view accordingly.
      */
-    func renderTableViewDynamically(items: [T]) {
-        let changes = self.items.compare(byComparing: items)
-        self.items = items
-
-        let patch = changes.lazy.map { $0.then { $0.index }}
-        tableView.update(patch.generate(), inSection: 0)
+    func renderTableViewDynamically(items: [Item]) {
+        _tableView?.renderDynamically(items)
     }
 }

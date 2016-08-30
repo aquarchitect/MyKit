@@ -37,17 +37,13 @@ final public class TransitionBasicAnimator: NSObject {
     internal private(set) var isPresenting = true
     public let presentedRect: CGRect
 
-    public var animations: ((presentedView: UIView) -> Void)?
+    public var animations: ((presentedView: UIView, isPresenting: Bool) -> Void)?
 
     // MARK: Initialization
 
     public init(centeredScreen size: CGSize) {
         let bounds = UIScreen.mainScreen().bounds
-
-        let x = (bounds.width - size.width) / 2
-        let y = (bounds.height - size.height) / 2
-
-        self.presentedRect = CGRectMake(x, y, size.width, size.height)
+        self.presentedRect = CGRect(center: bounds.center, size: size)
         super.init()
     }
 }
@@ -70,7 +66,7 @@ extension TransitionBasicAnimator: UIViewControllerAnimatedTransitioning {
         UIView.animateWithDuration(duration, delay: 0, options: options, animations: {
             [unowned self] in
             let controller = self.isPresenting ? toController : fromController
-            self.animations?(presentedView: controller.view)
+            self.animations?(presentedView: controller.view, isPresenting: self.isPresenting)
             }, completion: { [weak self, weak fromController, weak transitionContext] _ in
                 if self?.isPresenting == false { fromController?.view.removeFromSuperview() }
                 transitionContext?.completeTransition(!(transitionContext?.transitionWasCancelled() == true))
@@ -81,7 +77,7 @@ extension TransitionBasicAnimator: UIViewControllerAnimatedTransitioning {
 extension TransitionBasicAnimator: UIViewControllerTransitioningDelegate {
 
     public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
-        guard presentedRect == UIScreen.mainScreen().bounds else { return nil }
+        guard presentedRect != UIScreen.mainScreen().bounds else { return nil }
 
         return TransitionPresentationController(presentedRect: presentedRect,
                                                 presentedViewController: presented,

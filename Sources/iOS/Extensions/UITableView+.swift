@@ -83,28 +83,6 @@ public extension UITableView {
     }
 }
 
-public extension UITableView {
-
-    func update<G: GeneratorType where G.Element == Change<Int>>(patch: G, inSection section: Int) {
-        let indexPathMapper = { NSIndexPath(forRow: $0, inSection: section) }
-
-        var deleteIndexPaths: [NSIndexPath] = []
-        var insertIndexPaths: [NSIndexPath] = []
-
-        AnyGenerator(patch).forEach {
-            switch $0.then(indexPathMapper) {
-            case .Delete(let value): deleteIndexPaths += [value]
-            case .Insert(let value): insertIndexPaths += [value]
-            }
-        }
-
-        self.beginUpdates()
-        self.deleteRowsAtIndexPaths(deleteIndexPaths, withRowAnimation: .Automatic)
-        self.insertRowsAtIndexPaths(insertIndexPaths, withRowAnimation: .Automatic)
-        self.endUpdates()
-    }
-}
-
 // MARK: - Register Reusable View
 
 public extension UITableView {

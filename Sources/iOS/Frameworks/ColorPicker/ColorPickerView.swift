@@ -36,13 +36,26 @@ public class ColorPickerView: GenericCollectionView<ColorCollectionCell.Item, Co
 
     public weak var actionSubscriber: ColorPickerViewActionSubscribable?
 
+    /**
+     * The view will be assigned to the `backgroundView` of the selected cell
+     * that is pinned to the left/right edge while scrolling.
+     */
+    public var pinnedCellBackgroundView: UIView? = UIView().then {
+        $0.backgroundColor = UIColor(white: 0.3, alpha: 0.9)
+    }
+
     private var contentCentered = false
+
+    public var selectedHexUInt: UInt? {
+        guard let index = self.indexPathsForSelectedItems()?.first?.item else { return nil }
+        return items[index].hexUInt
+    }
 
     public override var contentSize: CGSize {
         didSet {
             let sideInset = contentCentered ? max(0, (self.bounds.width - self.contentSize.width)/2) : 0
             self.contentInset.left = sideInset
-            self.contentInset.right = contentCentered ? sideInset : max(self.bounds.width - self.contentSize.width, 100)
+            self.contentInset.right = sideInset
         }
     }
 
@@ -67,7 +80,17 @@ public class ColorPickerView: GenericCollectionView<ColorCollectionCell.Item, Co
     }
 
     public func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return items[indexPath.item].enabled
+        guard !items[indexPath.item].enabled else { return true }
+
+        /*
+         * Even though false is returned, somehow collectionView still deselect current
+         * selected cell. dispatch_asynce ensures selected cell in a proper state.
+         */
+        dispatch_async(Queue.Main) {
+            guard let selectedIndexPath = self.indexPathsForSelectedItems()?.first else { return }
+            self.selectItemAtIndexPath(selectedIndexPath, animated: false, scrollPosition: .None)
+        }
+        return false
     }
 
     public func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
