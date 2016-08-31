@@ -92,7 +92,7 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
 
     typealias Step = (index: Index, element: Generator.Element)
 
-    func enumerateReversedChanges<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C, @noescape block: Change<Step> -> Void) {
+    func backtrackChanges<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C, @noescape block: Change<Step> -> Void) {
         let matrix = lcsMatrix(byComparing: other)
         var i = self.count + 1, j = other.count + 1
 
@@ -113,13 +113,31 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
         }
     }
 
-    func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(byComparing other: C) -> [Change<Step>] {
+    func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(other: C) -> [Change<Step>] {
         var results: [Change<Step>] = []
 
-        enumerateReversedChanges(byComparing: other) {
+        backtrackChanges(byComparing: other) {
             results.insert($0, atIndex: 0)
         }
 
         return results
+    }
+
+    func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(other: C, inSection section: Int) -> (deletes: [NSIndexPath], inserts: [NSIndexPath]) {
+        let indexPathMapper = { NSIndexPath(forRow: $0, inSection: section) }
+        var deletes: [NSIndexPath] = [], inserts: [NSIndexPath] = []
+
+        backtrackChanges(byComparing: other) {
+            let change = $0
+                .then { $0.index }
+                .then(indexPathMapper)
+
+            switch change {
+            case .Delete(let value): deletes.insert(value, atIndex: 0)
+            case .Insert(let value): inserts.insert(value, atIndex: 0)
+            }
+        }
+
+        return (deletes, inserts)
     }
 }

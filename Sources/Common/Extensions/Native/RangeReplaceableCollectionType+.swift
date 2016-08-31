@@ -40,4 +40,22 @@ public extension RangeReplaceableCollectionType where Index == Int {
         result.apply(changes)
         return result
     }
+
+    mutating func apply(changes: [Change<(index: Index, element: Generator.Element)>], inSection section: Int) -> (deletes: [NSIndexPath], inserts: [NSIndexPath]) {
+        let indexPathMapper = { NSIndexPath(forRow: $0, inSection: section) }
+        var deletes: [NSIndexPath] = [], inserts: [NSIndexPath] = []
+
+        for change in changes {
+            switch change {
+            case .Delete(let step):
+                self.removeAtIndex(step.index)
+                deletes += [step.index].map(indexPathMapper)
+            case .Insert(let step):
+                self.insert(step.element, atIndex: step.index)
+                inserts += [step.index].map(indexPathMapper)
+            }
+        }
+
+        return (deletes, inserts)
+    }
 }

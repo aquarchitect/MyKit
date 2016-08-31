@@ -36,8 +36,8 @@ public extension UITableView {
         return NSIndexPath(forRow: row, inSection: section)
     }
 
-    final func validates(section section: Int) -> Bool {
-        return NSLocationInRange(section, NSMakeRange(0, self.numberOfSections))
+    final func hasSesction(section: Int) -> Bool {
+        return 0..<self.numberOfSections ~= section
     }
 }
 

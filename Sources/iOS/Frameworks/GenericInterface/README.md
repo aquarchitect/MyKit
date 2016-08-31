@@ -1,3 +1,0 @@
-<!--Generic Interface-->
-
-## Generic Interface

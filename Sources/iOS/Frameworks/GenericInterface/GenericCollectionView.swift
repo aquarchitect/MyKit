@@ -65,27 +65,12 @@ public extension GenericCollectionView {
 
      - parameter automatic: if true collection view will handle animation according to the changes; if false you gain back animation control.
      */
-    func apply<G: GeneratorType where G.Element == Change<Array<Item>.Step>>(changes: G, automatic flag: Bool = true, completion: AnimatingCompletion?) {
-        let indexPathMapper = { NSIndexPath(forRow: $0, inSection: 0) }
+    func apply(changes: [Change<Array<Item>.Step>], completion: AnimatingCompletion?) {
+        let (deletes, inserts) = items.apply(changes, inSection: 0)
 
-        var deleteIndexPaths: [NSIndexPath] = []
-        var insertIndexPaths: [NSIndexPath] = []
-
-        AnyGenerator(changes).forEach {
-            switch $0 {
-            case .Delete(let index, _):
-                deleteIndexPaths += [index].map(indexPathMapper)
-                self.items.removeAtIndex(index)
-            case .Insert(let index, let element):
-                insertIndexPaths += [index].map(indexPathMapper)
-                self.items.insert(element, atIndex: index)
-            }
-        }
-
-        guard flag else { return }
         self.performBatchUpdates({
-            self.deleteItemsAtIndexPaths(deleteIndexPaths)
-            self.insertItemsAtIndexPaths(insertIndexPaths)
+            self.deleteItemsAtIndexPaths(deletes)
+            self.insertItemsAtIndexPaths(inserts)
             }, completion: completion)
     }
 }
@@ -97,9 +82,25 @@ public extension GenericCollectionView {
 
      This method is equivalent to `reloadData` of `UICollectionView`.
      */
-    func renderStatically(items: [Item]) {
+    func render<G: GeneratorType where G.Element == Change<NSIndexPath>>(items: [Item], changes: G, completion: AnimatingCompletion?) {
         self.items = items
-        self.reloadData()
+
+        var deletes: [NSIndexPath] = [], inserts: [NSIndexPath] = []
+        for change in AnyGenerator(changes) {
+            switch change {
+            case .Delete(let indexPath): deletes += [indexPath]
+            case .Insert(let indexPath): inserts += [indexPath]
+            }
+        }
+
+        self.performBatchUpdates({
+            self.deleteItemsAtIndexPaths(deletes)
+            self.insertItemsAtIndexPaths(inserts)
+            }, completion: completion)
+    }
+
+    func render(items: [Item], changes: Change<NSIndexPath>..., completion: AnimatingCompletion?) {
+        render(items, changes: changes.generate(), completion: completion)
     }
 }
 
@@ -112,26 +113,13 @@ public extension GenericCollectionView where Item: Equatable {
      to figure out the differences between 2 data set, and
      render table view accordingly.
      */
-    func renderDynamically(items: [Item], completion: AnimatingCompletion?) {
-        let indexPathMapper = { NSIndexPath(forRow: $0, inSection: 0) }
-
-        var deleteIndexPaths: [NSIndexPath] = []
-        var insertIndexPaths: [NSIndexPath] = []
-
-        self.items.enumerateReversedChanges(byComparing: items) {
-            let change = $0
-                .then { $0.index }
-                .then(indexPathMapper)
-            switch change {
-            case .Delete(let indexPath): deleteIndexPaths.insert(indexPath, atIndex: 0)
-            case .Insert(let indexPath): insertIndexPaths.insert(indexPath, atIndex: 0)
-            }
-        }
-
+    func renderAutomatically(items: [Item], completion: AnimatingCompletion?) {
+        let (deletes, inserts) = self.items.compare(items, inSection: 0)
         self.items = items
 
         self.performBatchUpdates({
-            self.deleteItemsAtIndexPaths(deleteIndexPaths)
-            self.insertItemsAtIndexPaths(insertIndexPaths)
-            }, completion: completion)    }
+            self.deleteItemsAtIndexPaths(deletes)
+            self.insertItemsAtIndexPaths(inserts)
+            }, completion: completion)
+    }
 }

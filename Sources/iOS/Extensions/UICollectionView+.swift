@@ -30,8 +30,8 @@ import UIKit
 /// :nodoc:
 public extension UICollectionView {
 
-    final func validates(section: Int) -> Bool {
-        return NSLocationInRange(section, NSMakeRange(0, self.numberOfSections()))
+    final func hasSection(section: Int) -> Bool {
+        return 0..<self.numberOfSections() ~= section
     }
 }
 
