@@ -25,14 +25,13 @@
 
 import UIKit
 
-public class GenericTableView<Item, Row: UITableViewCell>: UITableView, UITableViewDataSource {
+public class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableView, UITableViewDataSource {
 
     // MARK: Property
 
-    public typealias RowRenderer = (Row, Item) -> Void
-    public private(set) var items: [Item] = []
+    public private(set) var rowModels: [Model] = []
 
-    public var rowRenderer: RowRenderer? {
+    public var rowRenderer: ((Row, Model) -> Void)? {
         didSet { self.reloadData() }
     }
 
@@ -48,13 +47,13 @@ public class GenericTableView<Item, Row: UITableViewCell>: UITableView, UITableV
     // MARK: Table View Data Source
 
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return rowModels.count
     }
 
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCellWithIdentifier(String(Row.self), forIndexPath: indexPath).then {
             $0.tag = tableView.serialize(indexPath)
-            rowRenderer?($0 as! Row, items[indexPath.row])
+            rowRenderer?($0 as! Row, rowModels[indexPath.row])
         }
     }
 }
@@ -63,61 +62,52 @@ public extension GenericTableView {
 
     /**
      Apply changes to the state data set.
-
-     - parameter automatic: if true table view will handle animation according to the changes; if false you gain back animation control.
      */
-    func apply(changes: [Change<Array<Item>.Step>], withRowAnimation animation: UITableViewRowAnimation) {
-        let (deletes, inserts) = items.apply(changes, inSection: 0)
+    func apply(changes changes: [Change<Array<Model>.Step>], animation: UITableViewRowAnimation) {
+        let (deletes, inserts) = rowModels.apply(changes, inSection: 0)
 
         self.beginUpdates()
         self.deleteRowsAtIndexPaths(deletes, withRowAnimation: animation)
         self.insertRowsAtIndexPaths(inserts, withRowAnimation: animation)
         self.endUpdates()
     }
-
-    /**
-     Render table view rows with new states without animation.
-
-     This method is equivalent to `reloadData` of `UITableView`.
-     */
-    func render<G: GeneratorType where G.Element == Change<NSIndexPath>>(items: [Item], changes: G) {
-        self.items = items
-
-        var deletes: [NSIndexPath] = [], inserts: [NSIndexPath] = []
-        for change in AnyGenerator(changes) {
-            switch change {
-            case .Delete(let indexPath): deletes += [indexPath]
-            case .Insert(let indexPath): inserts += [indexPath]
-            }
-        }
-
-        self.beginUpdates()
-        self.deleteRowsAtIndexPaths(deletes, withRowAnimation: .Automatic)
-        self.insertRowsAtIndexPaths(inserts, withRowAnimation: .Automatic)
-        self.endUpdates()
-    }
-
-    func render(items: [Item], changes: Change<NSIndexPath>...) {
-        render(items, changes: changes.generate())
-    }
 }
 
-public extension GenericTableView where Item: Equatable {
+public extension GenericTableView {
 
     /**
-     Render table view rows with new states with animation.
-     
-     This method uses __LCS__ (Longest Common Sequence) under the hood
-     to figure out the difference between 2 data set, and
-     render table view accordingly.
+     Render table view rows with animation. If changes are not specified,
+     table view will compute the differences between 2 set and animate
+     the changes accordingly.
      */
-    func renderAutomatically(items: [Item]) {
-        let (deletes, inserts) = self.items.compare(items, inSection: 0)
-        self.items = items
+    func render(rowModels models: [Model], animation: UITableViewRowAnimation = .Automatic) {
+        guard rowModels != models else { return }
+
+        if animation == .None {
+            rowModels = models
+            self.reloadData()
+            return
+        }
+
+        let indexes = self.indexPathsForVisibleRows?.flatMap {
+            $0.section == 0 ? nil : $0.row
+            } ?? []
+
+        let range: Range<Int>?
+        if !indexes.isEmpty {
+            let startIndex = indexes.minElement() ?? 0
+            let endIndex = indexes.maxElement() ?? 0
+            range = startIndex...endIndex
+        } else {
+            range = nil
+        }
+
+        let (deletes, inserts) = self.rowModels.compare(models, range: range, inSection: 0)
+        rowModels = models
 
         self.beginUpdates()
-        self.deleteRowsAtIndexPaths(deletes, withRowAnimation: .Automatic)
-        self.insertRowsAtIndexPaths(inserts, withRowAnimation: .Automatic)
+        self.deleteRowsAtIndexPaths(deletes, withRowAnimation: animation)
+        self.insertRowsAtIndexPaths(inserts, withRowAnimation: animation)
         self.endUpdates()
     }
 }

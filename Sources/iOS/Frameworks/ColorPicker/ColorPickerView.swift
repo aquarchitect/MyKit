@@ -30,7 +30,7 @@ public protocol ColorPickerViewActionSubscribable: class {
     func userDidPickerColor(hexUInt hexUInt: UInt)
 }
 
-public class ColorPickerView: GenericCollectionView<ColorCollectionCell.Item, ColorCollectionCell>, UICollectionViewDelegate {
+public final class ColorPickerView: GenericCollectionView<ColorCollectionCell.Model, ColorCollectionCell>, UICollectionViewDelegate {
 
     // MARK: Properties
 
@@ -48,7 +48,7 @@ public class ColorPickerView: GenericCollectionView<ColorCollectionCell.Item, Co
 
     public var selectedHexUInt: UInt? {
         guard let index = self.indexPathsForSelectedItems()?.first?.item else { return nil }
-        return items[index].hexUInt
+        return cellModels[index].hexUInt
     }
 
     public override var contentSize: CGSize {
@@ -79,16 +79,18 @@ public class ColorPickerView: GenericCollectionView<ColorCollectionCell.Item, Co
         cellRenderer = { $0.render($1) }
     }
 
+    // MARK: Collection View Delegate
+
     public func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        guard !items[indexPath.item].enabled else { return true }
+        guard !cellModels[indexPath.item].enabled else { return true }
 
         /*
          * Even though false is returned, somehow collectionView still deselect current
          * selected cell. dispatch_asynce ensures selected cell in a proper state.
          */
-        dispatch_async(Queue.Main) {
-            guard let selectedIndexPath = self.indexPathsForSelectedItems()?.first else { return }
-            self.selectItemAtIndexPath(selectedIndexPath, animated: false, scrollPosition: .None)
+        dispatch_async(Queue.Main) { [weak self] in
+            guard let selectedIndexPath = self?.indexPathsForSelectedItems()?.first else { return }
+            self?.selectItemAtIndexPath(selectedIndexPath, animated: false, scrollPosition: .None)
         }
         return false
     }
@@ -100,9 +102,11 @@ public class ColorPickerView: GenericCollectionView<ColorCollectionCell.Item, Co
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         (self.cellForItemAtIndexPath(indexPath) as? ColorCollectionCell)?.animateStateChanged()
 
-        actionSubscriber?.userDidPickerColor(hexUInt: items[indexPath.item].hexUInt)
+        actionSubscriber?.userDidPickerColor(hexUInt: cellModels[indexPath.item].hexUInt)
         collectionView.collectionViewLayout.invalidateLayout()
     }
+
+    // MARK: Collection View Layout Delegate
 
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let width = (collectionViewLayout as? ColorCollectionLayout)?.itemSize.width ?? 30
@@ -115,11 +119,21 @@ public class ColorPickerView: GenericCollectionView<ColorCollectionCell.Item, Co
 public extension ColorPickerView {
 
     func select(hexUInt hexUInt: UInt) {
-        guard let index = (items.indexOf { $0.hexUInt == hexUInt })
-            where items[index].enabled else { return }
+        guard hexUInt != selectedHexUInt else { return }
+
+        guard let index = (cellModels.indexOf { $0.hexUInt == hexUInt })
+            where cellModels[index].enabled else { return }
 
         let indexPath = NSIndexPath(forItem: index, inSection: 0)
-        self.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
-        self.collectionViewLayout.invalidateLayout()
+        
+        /*
+         * In case the collection view has yet initialized,
+         * the selecting operation with be pushed to the next
+         * view cycle.
+         */
+        dispatch_async(Queue.Main) { [weak self] in
+            self?.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+            self?.collectionViewLayout.invalidateLayout()
+        }
     }
 }

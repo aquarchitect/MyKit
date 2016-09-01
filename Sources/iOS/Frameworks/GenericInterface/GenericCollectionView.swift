@@ -25,14 +25,13 @@
 
 import UIKit
 
-public class GenericCollectionView<Item, Cell: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
+public class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
 
     // MARK: Property
 
-    public typealias CellRenderer = (Cell, Item) -> Void
-    public private(set) var items: [Item] = []
+    public private(set) var cellModels: [Model] = []
 
-    public var cellRenderer: CellRenderer? {
+    public var cellRenderer: ((Cell, Model) -> Void)? {
         didSet { self.reloadData() }
     }
 
@@ -47,13 +46,13 @@ public class GenericCollectionView<Item, Cell: UICollectionViewCell>: UICollecti
     // MARK: Data Source
 
     public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return cellModels.count
     }
 
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCellWithReuseIdentifier(String(Cell.self), forIndexPath: indexPath).then {
             $0.tag = collectionView.serialize(indexPath)
-            cellRenderer?($0 as! Cell, items[indexPath.item])
+            cellRenderer?($0 as! Cell, cellModels[indexPath.item])
         }
     }
 }
@@ -62,11 +61,9 @@ public extension GenericCollectionView {
 
     /**
      Apply changes to the state data set.
-
-     - parameter automatic: if true collection view will handle animation according to the changes; if false you gain back animation control.
      */
-    func apply(changes: [Change<Array<Item>.Step>], completion: AnimatingCompletion?) {
-        let (deletes, inserts) = items.apply(changes, inSection: 0)
+    func apply(changes changes: [Change<Array<Model>.Step>], completion: AnimatingCompletion?) {
+        let (deletes, inserts) = cellModels.apply(changes, inSection: 0)
 
         self.performBatchUpdates({
             self.deleteItemsAtIndexPaths(deletes)
@@ -75,47 +72,37 @@ public extension GenericCollectionView {
     }
 }
 
-public extension GenericCollectionView {
+public extension GenericCollectionView where Model: Equatable {
 
     /**
-     Render collection view rows with new states without animation.
-
-     This method is equivalent to `reloadData` of `UICollectionView`.
+     Render collection view rows with animation. If changes are not specified,
+     collection view will compute the differences between 2 set and animate
+     the changes accordingly.
      */
-    func render<G: GeneratorType where G.Element == Change<NSIndexPath>>(items: [Item], changes: G, completion: AnimatingCompletion?) {
-        self.items = items
+    func render(cellModels models: [Model], animated: Bool = true, completion: AnimatingCompletion? = nil) {
+        guard cellModels != models else { return }
 
-        var deletes: [NSIndexPath] = [], inserts: [NSIndexPath] = []
-        for change in AnyGenerator(changes) {
-            switch change {
-            case .Delete(let indexPath): deletes += [indexPath]
-            case .Insert(let indexPath): inserts += [indexPath]
-            }
+        if !animated {
+            cellModels = models
+            self.reloadData()
+            return
         }
 
-        self.performBatchUpdates({
-            self.deleteItemsAtIndexPaths(deletes)
-            self.insertItemsAtIndexPaths(inserts)
-            }, completion: completion)
-    }
+        let indexes = (self.indexPathsForSelectedItems() ?? []).flatMap {
+            $0.section == 0 ? nil : $0.item
+            } ?? []
 
-    func render(items: [Item], changes: Change<NSIndexPath>..., completion: AnimatingCompletion?) {
-        render(items, changes: changes.generate(), completion: completion)
-    }
-}
+        let range: Range<Int>?
+        if !indexes.isEmpty {
+            let startIndex = indexes.minElement() ?? 0
+            let endIndex = indexes.maxElement() ?? 0
+            range = startIndex...endIndex
+        } else {
+            range = nil
+        }
 
-public extension GenericCollectionView where Item: Equatable {
-
-    /**
-     Render collection view rows with new states with animation.
-
-     This method uses __LCS__ (Longest Common Sequence) under the hood
-     to figure out the differences between 2 data set, and
-     render table view accordingly.
-     */
-    func renderAutomatically(items: [Item], completion: AnimatingCompletion?) {
-        let (deletes, inserts) = self.items.compare(items, inSection: 0)
-        self.items = items
+        let (deletes, inserts) = self.cellModels.compare(models, range: range, inSection: 0)
+        cellModels = models
 
         self.performBatchUpdates({
             self.deleteItemsAtIndexPaths(deletes)

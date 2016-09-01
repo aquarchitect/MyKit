@@ -27,8 +27,6 @@ import UIKit
 
 public class ColorCollectionCell: UICollectionViewCell {
 
-    public typealias Item = (hexUInt: UInt, enabled: Bool)
-
     // MARK: Properties
 
     public override var selected: Bool {
@@ -115,16 +113,26 @@ public extension ColorCollectionCell {
     }
 }
 
-// MARK: - Support Methods
+public extension ColorCollectionCell {
 
-extension ColorCollectionCell {
+    struct Model {
 
-    func render(item: Item) {
-        textLabel.textColor = UIColor(hexUInt: item.hexUInt)
+        let hexUInt: UInt
+        let enabled: Bool
+    }
+
+    func render(model: Model) {
+        textLabel.textColor = UIColor(hexUInt: model.hexUInt)
 
         self.contentView.layer.backgroundColor = {
-            let alpha: CGFloat = item.enabled ? 1 : 0.2
-            return UIColor(hexUInt: item.hexUInt).colorWithAlphaComponent(alpha).CGColor
+            let alpha: CGFloat = model.enabled ? 1 : 0.2
+            return UIColor(hexUInt: model.hexUInt).colorWithAlphaComponent(alpha).CGColor
         }()
     }
+}
+
+extension ColorCollectionCell.Model: Equatable {}
+
+public func == (lhs: ColorCollectionCell.Model, rhs: ColorCollectionCell.Model) -> Bool {
+    return lhs.hexUInt == rhs.hexUInt && lhs.enabled == rhs.enabled
 }

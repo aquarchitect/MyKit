@@ -29,3 +29,45 @@ public extension UIView {
 
     typealias AnimatingCompletion = (Bool) -> Void
 }
+
+public extension UIView {
+
+    enum Axis { case Horizontal, Vertical }
+
+    func fillSubviewsEqually(`in` axis: Axis) {
+        var axisFormat: String = "\(axis.initial):|"
+        var subviews: [String: UIView] = [:]
+        var otherFormat: [String] = []
+
+        for (index, subview) in self.subviews.enumerate() {
+            let key = "subview\(index)"
+            subviews[key] = subview
+
+            otherFormat += ["\(axis.reversed.initial):|[key]|"]
+            axisFormat += "[" + key + (index == 0 ? "" : "(==subview0)") + "]"
+        }
+
+        axisFormat += "|"
+
+        (otherFormat + [axisFormat])
+            .reduce([]) { $0 + NSLayoutConstraint.constraints(withFormat: $1, views: subviews) }
+            .activate()
+    }
+}
+
+private extension UIView.Axis {
+
+    var initial: Character {
+        switch self {
+        case .Horizontal: return "H"
+        case .Vertical: return "V"
+        }
+    }
+
+    var reversed: UIView.Axis {
+        switch self {
+        case .Horizontal: return .Vertical
+        case .Vertical: return .Horizontal
+        }
+    }
+}

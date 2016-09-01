@@ -25,8 +25,6 @@
 
 public extension CollectionType {
 
-//    typealias Step = (index: Index, element: Generator.Element)
-
     /**
      * Returns the first element where predicate returns true for the corresponding value, or nil if such value is not found.
      */
@@ -122,12 +120,20 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
 
         return results
     }
+}
 
-    func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index>(other: C, inSection section: Int) -> (deletes: [NSIndexPath], inserts: [NSIndexPath]) {
+public extension CollectionType where Generator.Element: Equatable, Index == Int, SubSequence: CollectionType, SubSequence.Generator.Element: Equatable, SubSequence.Index == Int {
+
+    /**
+     * This is designed with `UITableView` and `UICollecitonView` in mind.
+     */
+    func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index, C.SubSequence: CollectionType, C.SubSequence.Generator.Element == SubSequence.Generator.Element, C.SubSequence.Index == SubSequence.Index>(other: C, range: Range<Int>? = nil, inSection section: Int) -> (deletes: [NSIndexPath], inserts: [NSIndexPath]) {
+        let _range = range ?? self.indices
+
         let indexPathMapper = { NSIndexPath(forRow: $0, inSection: section) }
         var deletes: [NSIndexPath] = [], inserts: [NSIndexPath] = []
 
-        backtrackChanges(byComparing: other) {
+        (self[_range]).backtrackChanges(byComparing: other[_range]) {
             let change = $0
                 .then { $0.index }
                 .then(indexPathMapper)
