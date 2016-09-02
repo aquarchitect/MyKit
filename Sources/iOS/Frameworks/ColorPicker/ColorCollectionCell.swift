@@ -119,6 +119,11 @@ public extension ColorCollectionCell {
 
         let hexUInt: UInt
         let enabled: Bool
+
+        public init(hexUInt: UInt, enabled: Bool) {
+            self.hexUInt = hexUInt
+            self.enabled = enabled
+        }
     }
 
     func render(model: Model) {

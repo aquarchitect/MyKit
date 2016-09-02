@@ -43,7 +43,7 @@ public extension UIView {
             let key = "subview\(index)"
             subviews[key] = subview
 
-            otherFormat += ["\(axis.reversed.initial):|[key]|"]
+            otherFormat += ["\(axis.reversed.initial):|[\(key)]|"]
             axisFormat += "[" + key + (index == 0 ? "" : "(==subview0)") + "]"
         }
 
