@@ -61,48 +61,20 @@ public class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableVi
 public extension GenericTableView {
 
     /**
-     Apply changes to the state data set.
-     */
-    func apply(changes changes: [Change<Array<Model>.Step>], animation: UITableViewRowAnimation) {
-        let (deletes, inserts) = rowModels.apply(changes, inSection: 0)
-
-        self.beginUpdates()
-        self.deleteRowsAtIndexPaths(deletes, withRowAnimation: animation)
-        self.insertRowsAtIndexPaths(inserts, withRowAnimation: animation)
-        self.endUpdates()
-    }
-}
-
-public extension GenericTableView {
-
-    /**
      Render table view rows with animation. If changes are not specified,
      table view will compute the differences between 2 set and animate
      the changes accordingly.
      */
-    func render(rowModels models: [Model], animation: UITableViewRowAnimation = .Automatic) {
+    func render(rowModels models: [Model], manual: Bool = false, animation: UITableViewRowAnimation = .Automatic) {
         guard rowModels != models else { return }
+        if manual { rowModels = models; return }
 
-        if animation == .None {
-            rowModels = models
-            self.reloadData()
-            return
-        }
+        /*
+         * TODO: Optimize diff computing by estimating the possible amount of
+         * rows can be displayed on screen at once.
+         */
 
-        let indexes = self.indexPathsForVisibleRows?.flatMap {
-            $0.section == 0 ? nil : $0.row
-            } ?? []
-
-        let range: Range<Int>?
-        if !indexes.isEmpty {
-            let startIndex = indexes.minElement() ?? 0
-            let endIndex = indexes.maxElement() ?? 0
-            range = startIndex...endIndex
-        } else {
-            range = nil
-        }
-
-        let (deletes, inserts) = self.rowModels.compare(models, range: range, inSection: 0)
+        let (deletes, inserts) = rowModels.compare(models, inSection: 0)
         rowModels = models
 
         self.beginUpdates()

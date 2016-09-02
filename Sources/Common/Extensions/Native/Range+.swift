@@ -26,9 +26,18 @@
 public extension Range {
 
     /// Shift range by specified value
-    public func offset(by n: Element.Distance) -> Range {
+    func offsets(by n: Element.Distance) -> Range {
         let start = self.startIndex.advancedBy(n)
         let end = self.endIndex.advancedBy(n)
         return start..<end
+    }
+}
+
+public extension Range where Element: Comparable {
+
+    func intersects(other: Range<Element>) -> Range<Element> {
+        let startIndex = max(self.startIndex, other.startIndex)
+        let endIndex = min(self.endIndex, other.endIndex)
+        return startIndex..<endIndex
     }
 }

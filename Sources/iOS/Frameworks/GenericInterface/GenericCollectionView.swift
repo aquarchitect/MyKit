@@ -57,21 +57,6 @@ public class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollect
     }
 }
 
-public extension GenericCollectionView {
-
-    /**
-     Apply changes to the state data set.
-     */
-    func apply(changes changes: [Change<Array<Model>.Step>], completion: AnimatingCompletion?) {
-        let (deletes, inserts) = cellModels.apply(changes, inSection: 0)
-
-        self.performBatchUpdates({
-            self.deleteItemsAtIndexPaths(deletes)
-            self.insertItemsAtIndexPaths(inserts)
-            }, completion: completion)
-    }
-}
-
 public extension GenericCollectionView where Model: Equatable {
 
     /**
@@ -79,29 +64,16 @@ public extension GenericCollectionView where Model: Equatable {
      collection view will compute the differences between 2 set and animate
      the changes accordingly.
      */
-    func render(cellModels models: [Model], animated: Bool = true, completion: AnimatingCompletion? = nil) {
+    func render(cellModels models: [Model], manual: Bool = false, completion: AnimatingCompletion? = nil) {
         guard cellModels != models else { return }
+        if manual { cellModels = models; return }
 
-        if !animated {
-            cellModels = models
-            self.reloadData()
-            return
-        }
+        /*
+         * TODO: Optimize diff computing by estimating the possible amount of
+         * rows can be displayed on screen at once.
+         */
 
-        let indexes = (self.indexPathsForSelectedItems() ?? []).flatMap {
-            $0.section == 0 ? nil : $0.item
-            } ?? []
-
-        let range: Range<Int>?
-        if !indexes.isEmpty {
-            let startIndex = indexes.minElement() ?? 0
-            let endIndex = indexes.maxElement() ?? 0
-            range = startIndex...endIndex
-        } else {
-            range = nil
-        }
-
-        let (deletes, inserts) = self.cellModels.compare(models, range: range, inSection: 0)
+        let (deletes, inserts) = self.cellModels.compare(models, inSection: 0)
         cellModels = models
 
         self.performBatchUpdates({

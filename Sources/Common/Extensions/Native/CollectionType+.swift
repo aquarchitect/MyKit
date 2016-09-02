@@ -125,18 +125,16 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
 public extension CollectionType where Generator.Element: Equatable, Index == Int, SubSequence: CollectionType, SubSequence.Generator.Element: Equatable, SubSequence.Index == Int {
 
     /**
-     * This is designed with `UITableView` and `UICollecitonView` in mind.
+     * This is designed for `UITableView` and `UICollecitonView`.
      */
-    func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index, C.SubSequence: CollectionType, C.SubSequence.Generator.Element == SubSequence.Generator.Element, C.SubSequence.Index == SubSequence.Index>(other: C, range: Range<Int>? = nil, inSection section: Int) -> (deletes: [NSIndexPath], inserts: [NSIndexPath]) {
-        let _range = range ?? self.indices
+    func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index, C.SubSequence: CollectionType, C.SubSequence.Generator.Element == SubSequence.Generator.Element, C.SubSequence.Index == SubSequence.Index>(other: C, range: Range<Index>? = nil, inSection section: Int) -> (deletes: [NSIndexPath], inserts: [NSIndexPath]) {
+        let oldRange = range?.intersects(self.indices) ?? self.indices
+        let newRange = range?.intersects(other.indices) ?? other.indices
 
-        let indexPathMapper = { NSIndexPath(forRow: $0, inSection: section) }
         var deletes: [NSIndexPath] = [], inserts: [NSIndexPath] = []
 
-        (self[_range]).backtrackChanges(byComparing: other[_range]) {
-            let change = $0
-                .then { $0.index }
-                .then(indexPathMapper)
+        (self[oldRange]).backtrackChanges(byComparing: other[newRange]) {
+            let change = $0.then { NSIndexPath(indexes: 0, $0.index) }
 
             switch change {
             case .Delete(let value): deletes.insert(value, atIndex: 0)

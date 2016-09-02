@@ -131,9 +131,7 @@ public extension ColorPickerView {
          * the selecting operation with be pushed to the next
          * view cycle.
          */
-        dispatch_async(Queue.Main) { [weak self] in
-            self?.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
-            self?.collectionViewLayout.invalidateLayout()
-        }
+        self.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
+        self.collectionViewLayout.invalidateLayout()
     }
 }
