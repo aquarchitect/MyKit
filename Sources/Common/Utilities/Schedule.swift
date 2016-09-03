@@ -131,17 +131,22 @@ public extension Schedule {
     }
 
     static func countdown(interval: NSTimeInterval, count: UInt, block: (left: NSTimeInterval) -> Void) -> ID {
-        var count = count + 1
+        var _count = count + 1
 
         let intervals = AnyGenerator<NSTimeInterval> {
-            switch count {
-            case count + 1: count -= 1; return 0
-            case 0: return nil
-            default: count -= 1; return interval
+            switch _count {
+            case count + 1:
+                _count -= 1;
+                return 0
+            case 0:
+                return nil
+            default:
+                _count -= 1;
+                return interval
             }
         }
 
-        return dispatch(intervals) { block(left: Double(count) * interval) }
+        return dispatch(intervals) { block(left: Double(_count) * interval) }
     }
 }
 
