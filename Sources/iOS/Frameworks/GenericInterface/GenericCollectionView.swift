@@ -65,7 +65,6 @@ public extension GenericCollectionView where Model: Equatable {
      the changes accordingly.
      */
     func render(cellModels models: [Model], manual: Bool = false, completion: AnimatingCompletion? = nil) {
-        guard cellModels != models else { return }
         if manual { cellModels = models; return }
 
         /*

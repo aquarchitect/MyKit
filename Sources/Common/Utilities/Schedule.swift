@@ -32,8 +32,9 @@ final public class Schedule {
     public struct Task {
 
         public private(set) var intervals: AnyGenerator<NSTimeInterval>
+        public private(set) var isSuspended = false
+        public private(set) var isCanceled = false
 
-        public var isSuspended = false
         let block: () -> Void
     }
 
@@ -46,7 +47,10 @@ final public class Schedule {
         objc_sync_enter(Schedule.sharedInstance)
         defer { objc_sync_exit(Schedule.sharedInstance) }
 
-        guard let task = Schedule.subscribers[id] where !task.isSuspended else { return }
+        guard let task = Schedule.subscribers[id]
+            where !task.isSuspended
+            else { return }
+
         task.block()
 
         if let interval = task.intervals.next() {
@@ -86,29 +90,26 @@ public extension Schedule {
         return subscribers[id]
     }
 
-    static func cancel(ids: ID...) -> [Bool] {
+    static func cancel(id: ID) -> Task? {
         objc_sync_enter(sharedInstance)
         defer { objc_sync_exit(sharedInstance) }
 
-        return ids.map { subscribers.removeValueForKey($0) != nil }
+        subscribers[id]?.isCanceled = true
+        return subscribers.removeValueForKey(id)
     }
 
-    static func suspend(ids: ID...) -> [Bool] {
+    static func suspend(id: ID) -> Task? {
         objc_sync_enter(sharedInstance)
         defer { objc_sync_exit(sharedInstance) }
 
-        return ids.map {
-            subscribers[$0]?.isSuspended = true
-            return subscribers[$0]?.isSuspended ?? false
-        }
+        subscribers[id]?.isSuspended = true
+        return subscribers[id]
     }
 
-    static func resume(ids: ID...) -> [Bool] {
-        return ids.map {
-            subscribers[$0]?.isSuspended = false
-            sharedInstance.runTask($0)
-            return subscribers[$0]?.isSuspended == false
-        }
+    static func resume(id: ID) -> Task? {
+        subscribers[id]?.isSuspended = false
+        sharedInstance.runTask(id)
+        return subscribers[id]
     }
 }
 

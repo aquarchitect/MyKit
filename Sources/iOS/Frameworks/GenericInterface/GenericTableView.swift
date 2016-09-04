@@ -66,7 +66,6 @@ public extension GenericTableView {
      the changes accordingly.
      */
     func render(rowModels models: [Model], manual: Bool = false, animation: UITableViewRowAnimation = .Automatic) {
-        guard rowModels != models else { return }
         if manual { rowModels = models; return }
 
         /*
