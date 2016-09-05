@@ -81,12 +81,14 @@ public extension Promise {
     /**
      * Execute promises concurrently
      */
-    internal func joint<U>(queue: dispatch_queue_t, _ group: dispatch_group_t, f: ((T throws -> U) -> Result<U>) -> Void) {
+    internal func joint<U>(group: dispatch_group_t, f: ((T throws -> U) -> Result<U>) -> Void) {
         dispatch_group_enter(group)
 
         resolve { result in
-            dispatch_barrier_sync(queue) { f(result.then) }
-            dispatch_group_leave(group)
+            dispatch_barrier_async(Queue.Main) {
+                f(result.then)
+                dispatch_group_leave(group)
+            }
         }
     }
 
@@ -94,17 +96,16 @@ public extension Promise {
      * Queue up promises asynchronously
      */
     static func when(promises: [Promise]) -> Promise<[T]> {
-        let queue = dispatch_queue_create("MyKit.Promise.array", DISPATCH_QUEUE_CONCURRENT)
         let group = dispatch_group_create()
 
         var output: Result<[T]>?
 
         return Promise<[T]> { callback in
-            promises.forEach { $0.joint(queue, group) {
+            promises.forEach { $0.joint(group) {
                 output = $0 { (try output?.resolve() ?? []) + [$0] }
             }}
 
-            dispatch_group_notify(group, queue) {
+            dispatch_group_notify(group, Queue.Main) {
                 if let result = output { callback(result) }
             }
         }
@@ -121,16 +122,15 @@ infix operator +++ { associativity left }
  * Queue up promises of 2 dirrent types aysnchronously
  */
 public func +++ <A, B>(lhs: Promise<A>, rhs: Promise<B>) -> Promise<(A, B)> {
-    let queue = dispatch_queue_create("MyKit.Promise.tuple", DISPATCH_QUEUE_CONCURRENT)
     let group = dispatch_group_create()
 
     var output: Result<(A?, B?)>?
 
     return Promise<(A, B)> { callback in
-        lhs.joint(queue, group) { output = $0 { ($0, try output?.resolve().1) }}
-        rhs.joint(queue, group) { output = $0 { (try output?.resolve().0, $0) }}
+        lhs.joint(group) { output = $0 { ($0, try output?.resolve().1) }}
+        rhs.joint(group) { output = $0 { (try output?.resolve().0, $0) }}
 
-        dispatch_group_notify(group, queue) {
+        dispatch_group_notify(group, Queue.Main) {
             switch output {
 
             case .Fullfill(let a?, let b?)?: callback(.Fullfill((a, b)))

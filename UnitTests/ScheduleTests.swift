@@ -45,7 +45,7 @@ final class ScheduleTests: XCTestCase {
 
         delay(2) {
             exepectation.fulfill()
-            XCTAssertEqual(Schedule.cancel(id), [true])
+            XCTAssertNotNil(Schedule.cancel(id))
             XCTAssertEqual(count, 2)
         }
 
