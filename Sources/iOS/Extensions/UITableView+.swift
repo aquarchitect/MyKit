@@ -39,6 +39,12 @@ public extension UITableView {
     final func hasSesction(section: Int) -> Bool {
         return 0..<self.numberOfSections ~= section
     }
+
+    final func recalibrateRowTagsWithIndexPaths() {
+        self.indexPathsForVisibleRows?.forEach {
+            self.cellForRowAtIndexPath($0)?.tag = serialize($0)
+        }
+    }
 }
 
 // MARK: - Transform IndexPath

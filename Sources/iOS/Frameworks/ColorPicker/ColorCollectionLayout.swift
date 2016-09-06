@@ -57,29 +57,15 @@ public class ColorCollectionLayout: UICollectionViewFlowLayout {
         return elements
     }
 
-    public override func invalidationContextForBoundsChange(newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
-        let selectedIndexPaths = [self.collectionView?.indexPathsForSelectedItems()?.first].flatMap { $0 }
-
-        return super.invalidationContextForBoundsChange(newBounds).then {
-            $0.invalidateItemsAtIndexPaths(selectedIndexPaths)
-        }
-    }
-
     public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
         return true
     }
 
     public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        let selectedCell: UICollectionViewCell? = self.collectionView?.andThen {
-            guard let indexPath = $0.indexPathsForSelectedItems()?.first else { return nil }
-            return $0.cellForItemAtIndexPath(indexPath)
-        }
-
         guard let attributes = super.layoutAttributesForItemAtIndexPath(indexPath)
             else { return nil }
-
-        guard self.collectionView?.indexPathsForSelectedItems()?.first == indexPath
-            else { return attributes }
+        guard hasItemSelected(at: indexPath.item) else { return attributes }
+        let cell = self.collectionView?.cellForItemAtIndexPath(indexPath)
 
         let padding: CGFloat = 25
 
@@ -90,7 +76,7 @@ public class ColorCollectionLayout: UICollectionViewFlowLayout {
             } ?? false
 
         guard outOfBounds else {
-            selectedCell?.backgroundView = nil
+            cell?.backgroundView = nil
             return attributes
         }
 
@@ -99,8 +85,17 @@ public class ColorCollectionLayout: UICollectionViewFlowLayout {
         attributes.bounds.size.width = 2 * padding
         attributes.zIndex = 6
 
-        selectedCell?.backgroundView = (self.collectionView as? ColorPickerView)?.pinnedCellBackgroundView
+        cell?.backgroundView = (self.collectionView as? ColorPickerView)?.pinnedCellBackgroundView
 
         return attributes
+    }
+}
+
+extension ColorCollectionLayout {
+
+    func hasItemSelected(at index: Int) -> Bool {
+        guard let collectionView = self.collectionView as? ColorPickerView else { return false }
+
+        return collectionView.cellModels[index].state == ColorCollectionCell.Model.State.Selected
     }
 }

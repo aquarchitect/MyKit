@@ -33,6 +33,12 @@ public extension UICollectionView {
     final func hasSection(section: Int) -> Bool {
         return 0..<self.numberOfSections() ~= section
     }
+
+    final func recalibrateRowTagsWithIndexPaths() {
+        self.indexPathsForVisibleItems().forEach {
+            self.cellForItemAtIndexPath($0)?.tag = serialize($0)
+        }
+    }
 }
 
 // MARK: Transform IndexPath

@@ -47,3 +47,7 @@ import UIKit
 
 extension UIView: Then {}
 #endif
+
+public func firstly<T>(f: (Void) -> T) -> T {
+    return f()
+}

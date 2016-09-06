@@ -61,12 +61,15 @@ public class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableVi
 public extension GenericTableView {
 
     /**
-     Render table view rows with animation. If changes are not specified,
-     table view will compute the differences between 2 set and animate
+     Render table view rows with new models.
+     
+     If animation is not specified, table view only updates
+     the view models property without upgrading the view.
+     Otherwise, LSC is used to compute the diff and animate
      the changes accordingly.
      */
-    func render(rowModels models: [Model], manual: Bool = false, animation: UITableViewRowAnimation = .Automatic) {
-        if manual { rowModels = models; return }
+    func render(rowModels models: [Model], animation: UITableViewRowAnimation?) {
+        guard let _animation = animation else { return rowModels = models }
 
         /*
          * TODO: Optimize diff computing by estimating the possible amount of
@@ -77,8 +80,8 @@ public extension GenericTableView {
         rowModels = models
 
         self.beginUpdates()
-        self.deleteRowsAtIndexPaths(deletes, withRowAnimation: animation)
-        self.insertRowsAtIndexPaths(inserts, withRowAnimation: animation)
+        self.deleteRowsAtIndexPaths(deletes, withRowAnimation: _animation)
+        self.insertRowsAtIndexPaths(inserts, withRowAnimation: _animation)
         self.endUpdates()
     }
 }

@@ -27,10 +27,12 @@ import UIKit
 
 public protocol TableHoldeGestureActionSubscribable: class {
 
-    func userDidFinishMovingCell(fromIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath)
+    func userDidMoveRow(from fromIndexPath: NSIndexPath, to toIndexPath: NSIndexPath)
 }
 
 public class TableHoldGesture: UILongPressGestureRecognizer {
+
+    public weak var actionSubscriber: TableHoldeGestureActionSubscribable?
 
     internal private(set) var cellSnapshot: UIView?
     internal private(set) var sourceIndexPath: NSIndexPath?
@@ -40,13 +42,15 @@ public class TableHoldGesture: UILongPressGestureRecognizer {
         return self.view as? UITableView
     }
 
-    public weak var actionSubscriber: TableHoldeGestureActionSubscribable?
-    public var allowedSecionRange: Range<Int>?
-
     public func handleGesture() {
-        guard case let point = self.locationInView(tableView),
-            let trackingIndexPath = tableView?.indexPathForRowAtPoint(point)
-            where allowedSecionRange?.contains(trackingIndexPath.section) ?? true
+        let optionalTrackingIndexPath = tableView?.andThen {
+            (self.locationInView >>> $0.indexPathForRowAtPoint)($0)
+        }
+
+        guard let trackingIndexPath = optionalTrackingIndexPath
+            where (tableView?.andThen {
+                $0.dataSource?.tableView?($0, canMoveRowAtIndexPath: trackingIndexPath)
+            }) ?? false
             else { return }
 
         switch self.state {
@@ -57,17 +61,17 @@ public class TableHoldGesture: UILongPressGestureRecognizer {
             }
 
             sourceIndexPath = trackingIndexPath
-            originalIndexPath = trackingIndexPath
 
             cellSnapshot = cell?.snapshotViewAfterScreenUpdates(true).then {
+                $0.backgroundColor = .blueColor()
+                $0.frame = tableView?.convertRect(cell?.frame ?? .zero, toView: nil) ?? .zero
                 $0.alpha = 0
-                $0.center = cell?.center ?? .zero
                 $0.clipsToBounds = false
                 $0.layer.shadowOffset = CGSizeMake(-5, 0)
                 $0.layer.shadowRadius = 5
                 $0.layer.shadowOpacity = 0.4
             }.then {
-                tableView?.addSubview($0)
+                UIApplication.sharedApplication().keyWindow?.addSubview($0)
             }
 
             UIView.animateWithDuration(0.25, delay: 0, options: .CurveEaseOut, animations: {
@@ -75,14 +79,14 @@ public class TableHoldGesture: UILongPressGestureRecognizer {
 
                 self.cellSnapshot?.then {
                     $0.alpha = 0.98
-                    $0.center.y = point.y
+                    $0.center.y = self.locationInView(nil).y
                     $0.transform = CGAffineTransformMakeScale(1.05, 1.05)
                 }
                 }, completion: { [weak cell] _ in
                     cell?.hidden = true
                 })
         case .Changed:
-            cellSnapshot?.center.y = point.y
+            cellSnapshot?.center.y = self.locationInView(nil).y
 
             guard let sourceIndexPath = self.sourceIndexPath
                 where cellSnapshot != trackingIndexPath
@@ -109,15 +113,14 @@ public class TableHoldGesture: UILongPressGestureRecognizer {
 
                 self.cellSnapshot?.then {
                     $0.alpha = 0
-                    $0.center.y = cell?.center.y ?? 0
+                    $0.center.y = self.locationInView(nil).y
                     $0.transform = CGAffineTransformIdentity
                 }
                 }, completion: { [weak self] _ in
                     self?.cellSnapshot?.removeFromSuperview()
 
-                    if let fromIndexPath = self?.originalIndexPath,
-                           toIndexPath = self?.sourceIndexPath {
-                        self?.actionSubscriber?.userDidFinishMovingCell(fromIndexPath: fromIndexPath, toIndexPath: toIndexPath)
+                    if let fromIndexPath = self?.originalIndexPath, toIndexPath = self?.sourceIndexPath {
+                        self?.actionSubscriber?.userDidMoveRow(from: fromIndexPath, to: toIndexPath)
                     }
 
                     self?.sourceIndexPath = nil

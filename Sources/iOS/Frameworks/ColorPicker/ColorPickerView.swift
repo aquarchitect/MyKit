@@ -82,17 +82,7 @@ public final class ColorPickerView: GenericCollectionView<ColorCollectionCell.Mo
     // MARK: Collection View Delegate
 
     public func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        guard !cellModels[indexPath.item].enabled else { return true }
-
-        /*
-         * Even though false is returned, somehow collectionView still deselect current
-         * selected cell. dispatch_asynce ensures selected cell in a proper state.
-         */
-        dispatch_async(Queue.Main) { [weak self] in
-            guard let selectedIndexPath = self?.indexPathsForSelectedItems()?.first else { return }
-            self?.selectItemAtIndexPath(selectedIndexPath, animated: false, scrollPosition: .None)
-        }
-        return false
+        return cellModels[indexPath.item].state == ColorCollectionCell.Model.State.Disabled
     }
 
     public func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
@@ -103,6 +93,7 @@ public final class ColorPickerView: GenericCollectionView<ColorCollectionCell.Mo
         (self.cellForItemAtIndexPath(indexPath) as? ColorCollectionCell)?.animateStateChanged()
 
         actionSubscriber?.userDidPickerColor(hexUInt: cellModels[indexPath.item].hexUInt)
+        collectionView.deselectItemAtIndexPath(indexPath, animated: false)
         collectionView.collectionViewLayout.invalidateLayout()
     }
 
@@ -111,27 +102,5 @@ public final class ColorPickerView: GenericCollectionView<ColorCollectionCell.Mo
     public func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let width = (collectionViewLayout as? ColorCollectionLayout)?.itemSize.width ?? 30
         return CGSizeMake(width, collectionView.bounds.height)
-    }
-}
-
-// MARK: - Support Methods
-
-public extension ColorPickerView {
-
-    func select(hexUInt hexUInt: UInt) {
-        guard hexUInt != selectedHexUInt else { return }
-
-        guard let index = (cellModels.indexOf { $0.hexUInt == hexUInt })
-            where cellModels[index].enabled else { return }
-
-        let indexPath = NSIndexPath(forItem: index, inSection: 0)
-        
-        /*
-         * In case the collection view has yet initialized,
-         * the selecting operation with be pushed to the next
-         * view cycle.
-         */
-        self.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: .None)
-        self.collectionViewLayout.invalidateLayout()
     }
 }

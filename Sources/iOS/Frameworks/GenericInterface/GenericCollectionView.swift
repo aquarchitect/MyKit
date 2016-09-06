@@ -60,12 +60,16 @@ public class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollect
 public extension GenericCollectionView where Model: Equatable {
 
     /**
-     Render collection view rows with animation. If changes are not specified,
-     collection view will compute the differences between 2 set and animate
+     Render collection view rows with new models.
+
+     If animating completion is not specified, collection view 
+     only updates the view models property without upgrading the view.
+     Otherwise, LSC is used to compute the diff and animate
      the changes accordingly.
+    
      */
-    func render(cellModels models: [Model], manual: Bool = false, completion: AnimatingCompletion? = nil) {
-        if manual { cellModels = models; return }
+    func render(cellModels models: [Model], completion: AnimatingCompletion?) {
+        if completion == nil { cellModels = models; return }
 
         /*
          * TODO: Optimize diff computing by estimating the possible amount of
@@ -78,6 +82,6 @@ public extension GenericCollectionView where Model: Equatable {
         self.performBatchUpdates({
             self.deleteItemsAtIndexPaths(deletes)
             self.insertItemsAtIndexPaths(inserts)
-            }, completion: completion)
+        }, completion: completion)
     }
 }

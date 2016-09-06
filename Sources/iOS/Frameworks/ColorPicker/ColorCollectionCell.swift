@@ -29,21 +29,7 @@ public class ColorCollectionCell: UICollectionViewCell {
 
     // MARK: Properties
 
-    public override var selected: Bool {
-        didSet {
-            textLabel.hidden = !selected
-
-            /*
-             * textLabel has captured the solid color to display.
-             */
-            let color = textLabel.textColor
-            let alpha: CGFloat = selected ? 0.2 : 1
-            self.contentView.backgroundColor = color.colorWithAlphaComponent(alpha)
-        }
-    }
-
     private let textLabel = UILabel().then {
-        $0.hidden = true
         $0.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         $0.backgroundColor = .clearColor()
         $0.attributedText = SymbolIcon("\u{F122}")
@@ -117,21 +103,23 @@ public extension ColorCollectionCell {
 
     struct Model {
 
-        let hexUInt: UInt
-        let enabled: Bool
+        enum State { case Normal, Disabled, Selected }
 
-        public init(hexUInt: UInt, enabled: Bool) {
-            self.hexUInt = hexUInt
-            self.enabled = enabled
-        }
+        let hexUInt: UInt
+        let state: State
     }
 
     func render(model: Model) {
-        textLabel.textColor = UIColor(hexUInt: model.hexUInt)
+        let color = UIColor(hexUInt: model.hexUInt)
+
+        textLabel.then {
+            $0.textColor = UIColor(hexUInt: model.hexUInt)
+            $0.hidden = [.Normal, .Disabled].contains(model.state)
+        }
 
         self.contentView.layer.backgroundColor = {
-            let alpha: CGFloat = model.enabled ? 1 : 0.2
-            return UIColor(hexUInt: model.hexUInt).colorWithAlphaComponent(alpha).CGColor
+            let alpha: CGFloat = [.Disabled, .Selected].contains(model.state) ? 1 : 0.2
+            return color.colorWithAlphaComponent(alpha).CGColor
         }()
     }
 }
@@ -139,5 +127,5 @@ public extension ColorCollectionCell {
 extension ColorCollectionCell.Model: Equatable {}
 
 public func == (lhs: ColorCollectionCell.Model, rhs: ColorCollectionCell.Model) -> Bool {
-    return lhs.hexUInt == rhs.hexUInt && lhs.enabled == rhs.enabled
+    return lhs.hexUInt == rhs.hexUInt && lhs.state == rhs.state
 }
