@@ -34,3 +34,18 @@ public extension UIViewController {
         }
     }
 }
+
+public extension UIViewController {
+
+    func presentViewController(controller: UIViewController, animated flag: Bool) -> Promise<Void> {
+        return Promise { callback in
+            self.presentViewController(controller, animated: flag) { callback(.Fullfill()) }
+        }
+    }
+
+    func dismissViewController(animated flag: Bool) -> Promise<Void> {
+        return Promise { callback in
+            self.dismissViewControllerAnimated(flag) { callback(.Fullfill()) }
+        }
+    }
+}

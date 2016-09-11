@@ -68,20 +68,20 @@ public extension GenericCollectionView where Model: Equatable {
      the changes accordingly.
     
      */
-    func render(cellModels models: [Model], completion: AnimatingCompletion?) {
-        if completion == nil { cellModels = models; return }
+    func render(cellModels models: [Model], update: Update) {
+        switch update {
+        case .Automatic(let completion):
+            let (reloads, inserts, deletes) = self.cellModels.compare(models, inSection: 0)
+            cellModels = models
 
-        /*
-         * TODO: Optimize diff computing by estimating the possible amount of
-         * rows can be displayed on screen at once.
-         */
-
-        let (deletes, inserts) = self.cellModels.compare(models, inSection: 0)
-        cellModels = models
-
-        self.performBatchUpdates({
-            self.deleteItemsAtIndexPaths(deletes)
-            self.insertItemsAtIndexPaths(inserts)
-        }, completion: completion)
+            self.performBatchUpdates({
+                self.reloadItemsAtIndexPaths(reloads)
+                self.deleteItemsAtIndexPaths(deletes)
+                self.insertItemsAtIndexPaths(inserts)
+                }, completion: completion)
+        case .Manual(let block):
+            cellModels = models
+            block(self)
+        }
     }
 }

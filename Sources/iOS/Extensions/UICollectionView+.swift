@@ -25,6 +25,18 @@
 
 import UIKit
 
+public extension UICollectionView {
+
+    enum Update {
+
+        case Automatic(completion: UIView.AnimatingCompletion)
+        /**
+         * Only update view models
+         */
+        case Manual(block: (UICollectionView) -> Void)
+    }
+}
+
 // MARK: - Miscellaneous
 
 /// :nodoc:

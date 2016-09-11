@@ -139,9 +139,6 @@
 		C2973FF71D7747BC005C73A0 /* GenericCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF41D7747BC005C73A0 /* GenericCollectionCell.swift */; };
 		C2973FF81D7747BC005C73A0 /* GenericCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF51D7747BC005C73A0 /* GenericCollectionView.swift */; };
 		C2973FF91D7747BC005C73A0 /* GenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF61D7747BC005C73A0 /* GenericTableView.swift */; };
-		C2991C6E1D748EA5005EC608 /* ColorCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E48B4B1D70160600F36B2A /* ColorCollectionCell.swift */; };
-		C2991C6F1D749482005EC608 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E48B471D7015AF00F36B2A /* ColorPickerView.swift */; };
-		C2991C721D74A863005EC608 /* ColorCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E48B491D7015D400F36B2A /* ColorCollectionLayout.swift */; };
 		C2B280441D6F9B49008293EF /* NSURLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B280431D6F9B49008293EF /* NSURLSession+.swift */; };
 		C2B280451D6F9B49008293EF /* NSURLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B280431D6F9B49008293EF /* NSURLSession+.swift */; };
 		C2B3F3491D0B8A9E0055B06E /* ActionTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B3F3481D0B8A9E0055B06E /* ActionTrailing.swift */; };
@@ -364,9 +361,6 @@
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191591CAB9F8300E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E191681CABA16600E4EAB2 /* MyKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2E48B471D7015AF00F36B2A /* ColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPickerView.swift; path = Sources/iOS/Frameworks/ColorPicker/ColorPickerView.swift; sourceTree = "<group>"; };
-		C2E48B491D7015D400F36B2A /* ColorCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorCollectionLayout.swift; path = Sources/iOS/Frameworks/ColorPicker/ColorCollectionLayout.swift; sourceTree = "<group>"; };
-		C2E48B4B1D70160600F36B2A /* ColorCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorCollectionCell.swift; path = Sources/iOS/Frameworks/ColorPicker/ColorCollectionCell.swift; sourceTree = "<group>"; };
 		C2EAD8291D03F714001D2DC4 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix.swift; path = Sources/Common/Utilities/Matrix.swift; sourceTree = "<group>"; };
 		C2EF9F701CAB955100BC205F /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F0A74C1D10D5DC0022FF61 /* ParaboloidFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidFlowLayout.swift; sourceTree = "<group>"; };
@@ -552,7 +546,6 @@
 			isa = PBXGroup;
 			children = (
 				C231CAA61D790A48007A895E /* TableGesture */,
-				C2E48B461D70157100F36B2A /* ColorPicker */,
 				C201664D1CE1025C00F7D3E5 /* GrowingText */,
 				C20166591CE1035B00F7D3E5 /* GenericInterface */,
 				C20166581CE1034800F7D3E5 /* TransitionAnimator */,
@@ -928,16 +921,6 @@
 				C2E191681CABA16600E4EAB2 /* MyKitUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		C2E48B461D70157100F36B2A /* ColorPicker */ = {
-			isa = PBXGroup;
-			children = (
-				C2E48B471D7015AF00F36B2A /* ColorPickerView.swift */,
-				C2E48B4B1D70160600F36B2A /* ColorCollectionCell.swift */,
-				C2E48B491D7015D400F36B2A /* ColorCollectionLayout.swift */,
-			);
-			name = ColorPicker;
 			sourceTree = "<group>";
 		};
 		C2EF9F871CAB96D400BC205F /* Support */ = {
@@ -1496,8 +1479,6 @@
 				C20165C91CE0FC9400F7D3E5 /* NSAttributeDescription+.swift in Sources */,
 				C201655D1CE0EFC500F7D3E5 /* Swizzle.swift in Sources */,
 				C201655A1CE0EFC500F7D3E5 /* Result.swift in Sources */,
-				C2991C6E1D748EA5005EC608 /* ColorCollectionCell.swift in Sources */,
-				C2991C6F1D749482005EC608 /* ColorPickerView.swift in Sources */,
 				C2973FF71D7747BC005C73A0 /* GenericCollectionCell.swift in Sources */,
 				C20165871CE0FA8B00F7D3E5 /* CollectionType+.swift in Sources */,
 				C20165B71CE0FC6D00F7D3E5 /* NSRange+.swift in Sources */,
@@ -1543,7 +1524,6 @@
 				C201658D1CE0FAA900F7D3E5 /* StreamService.swift in Sources */,
 				C2EAD82A1D03F714001D2DC4 /* Matrix.swift in Sources */,
 				C201658B1CE0FA8B00F7D3E5 /* String+.swift in Sources */,
-				C2991C721D74A863005EC608 /* ColorCollectionLayout.swift in Sources */,
 				C20165591CE0EFC500F7D3E5 /* Queue.swift in Sources */,
 				C20165581CE0EFC500F7D3E5 /* Promise.swift in Sources */,
 				C2446BEE1CEB6D2100957586 /* Arbitrary.swift in Sources */,

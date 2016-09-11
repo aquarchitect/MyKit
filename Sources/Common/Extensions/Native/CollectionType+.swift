@@ -127,21 +127,25 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
     /**
      * This is designed for `UITableView` and `UICollecitonView`.
      */
-    func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index, C.SubSequence: CollectionType, C.SubSequence.Generator.Element == SubSequence.Generator.Element, C.SubSequence.Index == SubSequence.Index>(other: C, range: Range<Index>? = nil, inSection section: Int) -> (deletes: [NSIndexPath], inserts: [NSIndexPath]) {
-        let oldRange = range?.intersects(self.indices) ?? self.indices
-        let newRange = range?.intersects(other.indices) ?? other.indices
+    func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index, C.SubSequence: CollectionType, C.SubSequence.Generator.Element == SubSequence.Generator.Element, C.SubSequence.Index == SubSequence.Index>(other: C, range: Range<Index>? = nil, inSection section: Int) -> (reloads: [NSIndexPath], deletes: [NSIndexPath], inserts: [NSIndexPath]) {
+        var reloads: [NSIndexPath] = []
+        var deletes: [NSIndexPath] = []
+        var inserts: [NSIndexPath] = []
 
-        var deletes: [NSIndexPath] = [], inserts: [NSIndexPath] = []
-
-        (self[oldRange]).backtrackChanges(byComparing: other[newRange]) {
+        self.backtrackChanges(byComparing: other) {
             let change = $0.then { NSIndexPath(indexes: 0, $0.index) }
 
             switch change {
-            case .Delete(let value): deletes.insert(value, atIndex: 0)
-            case .Insert(let value): inserts.insert(value, atIndex: 0)
+            case .Delete(let value) where inserts.first?.compare(value) == .OrderedSame:
+                inserts.removeFirst()
+                reloads.insert(value, atIndex: 0)
+            case .Delete(let value):
+                deletes.insert(value, atIndex: 0)
+            case .Insert(let value):
+                inserts.insert(value, atIndex: 0)
             }
         }
 
-        return (deletes, inserts)
+        return (reloads, deletes, inserts)
     }
 }

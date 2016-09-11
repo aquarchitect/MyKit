@@ -25,6 +25,12 @@
 
 import UIKit
 
+public enum TableUpdate {
+
+    case Automatic(animation: UITableViewRowAnimation)
+    case Manual(block: (UITableView) -> Void)
+}
+
 // MARK: - Miscellaneous
 
 /// :nodoc:

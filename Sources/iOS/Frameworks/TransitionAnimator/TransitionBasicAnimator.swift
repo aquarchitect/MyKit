@@ -79,9 +79,10 @@ extension TransitionBasicAnimator: UIViewControllerTransitioningDelegate {
     public func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
         guard presentedRect != UIScreen.mainScreen().bounds else { return nil }
 
-        return TransitionPresentationController(presentedRect: presentedRect,
-                                                presentedViewController: presented,
-                                                presentingViewController: source)
+        return TransitionPresentationController(presentedViewController: presented, presentingViewController: source).then {
+            $0.presentedRect = presentedRect
+            $0.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        }
     }
 
     public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

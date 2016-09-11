@@ -27,10 +27,16 @@ import UIKit
 
 public class TransitionPresentationController: UIPresentationController {
 
-    public var presentedRect: CGRect
+    public var presentedRect = UIScreen.mainScreen().bounds
+
+    public var backgroundColor: UIColor? {
+        didSet {
+            dimView.backgroundColor = backgroundColor
+        }
+    }
+
     internal let dimView = UIView().then {
         $0.frame = UIScreen.mainScreen().bounds
-        $0.backgroundColor = UIColor(white: 0, alpha: 0.7)
         $0.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
     }
 
@@ -38,14 +44,12 @@ public class TransitionPresentationController: UIPresentationController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public init(presentedRect: CGRect, presentedViewController: UIViewController, presentingViewController: UIViewController) {
-        self.presentedRect = presentedRect
+    public override init(presentedViewController: UIViewController, presentingViewController: UIViewController) {
         super.init(presentedViewController: presentedViewController, presentingViewController: presentingViewController)
 
         UITapGestureRecognizer()
             .then { $0.addTarget(self, action: #selector(handleTap)) }
             .then(dimView.addGestureRecognizer)
-
     }
 
     public override func presentationTransitionWillBegin() {

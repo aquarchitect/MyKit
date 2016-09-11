@@ -68,20 +68,25 @@ public extension GenericTableView {
      Otherwise, LSC is used to compute the diff and animate
      the changes accordingly.
      */
-    func render(rowModels models: [Model], animation: UITableViewRowAnimation?) {
-        guard let _animation = animation else { return rowModels = models }
-
+    func render(rowModels models: [Model], update: TableUpdate) {
         /*
          * TODO: Optimize diff computing by estimating the possible amount of
          * rows can be displayed on screen at once.
          */
 
-        let (deletes, inserts) = rowModels.compare(models, inSection: 0)
-        rowModels = models
+        switch update {
+        case .Automatic(let animation):
+            let (reloads, inserts, deletes) = rowModels.compare(models, inSection: 0)
+            rowModels = models
 
-        self.beginUpdates()
-        self.deleteRowsAtIndexPaths(deletes, withRowAnimation: _animation)
-        self.insertRowsAtIndexPaths(inserts, withRowAnimation: _animation)
-        self.endUpdates()
+            self.beginUpdates()
+            self.reloadRowsAtIndexPaths(reloads, withRowAnimation: animation)
+            self.deleteRowsAtIndexPaths(deletes, withRowAnimation: animation)
+            self.insertRowsAtIndexPaths(inserts, withRowAnimation: animation)
+            self.endUpdates()
+        case .Manual(let block):
+            rowModels = models
+            block(self)
+        }
     }
 }

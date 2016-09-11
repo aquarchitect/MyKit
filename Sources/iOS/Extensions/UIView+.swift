@@ -30,6 +30,16 @@ public extension UIView {
     typealias AnimatingCompletion = (Bool) -> Void
 }
 
+
+public extension UIView {
+
+    static func animate(duration duration: NSTimeInterval, animations: () -> Void) -> Promise<Bool> {
+        return Promise { callback in
+            self.animateWithDuration(duration, animations: animations) { callback(.Fullfill($0)) }
+        }
+    }
+}
+
 public extension UIView {
 
     enum Axis { case Horizontal, Vertical }

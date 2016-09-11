@@ -25,18 +25,10 @@
 
 import UIKit
 
-public protocol TableHoldeGestureActionSubscribable: class {
-
-    func userDidMoveRow(from fromIndexPath: NSIndexPath, to toIndexPath: NSIndexPath)
-}
-
 public class TableHoldGesture: UILongPressGestureRecognizer {
-
-    public weak var actionSubscriber: TableHoldeGestureActionSubscribable?
 
     internal private(set) var cellSnapshot: UIView?
     internal private(set) var sourceIndexPath: NSIndexPath?
-    internal private(set) var originalIndexPath: NSIndexPath?
 
     internal var tableView: UITableView? {
         return self.view as? UITableView
@@ -118,11 +110,6 @@ public class TableHoldGesture: UILongPressGestureRecognizer {
                 }
                 }, completion: { [weak self] _ in
                     self?.cellSnapshot?.removeFromSuperview()
-
-                    if let fromIndexPath = self?.originalIndexPath, toIndexPath = self?.sourceIndexPath {
-                        self?.actionSubscriber?.userDidMoveRow(from: fromIndexPath, to: toIndexPath)
-                    }
-
                     self?.sourceIndexPath = nil
                 })
         }
