@@ -71,7 +71,9 @@ public extension GenericCollectionView where Model: Equatable {
     func render(cellModels models: [Model], update: Update) {
         switch update {
         case .Automatic(let completion):
-            let (reloads, inserts, deletes) = self.cellModels.compare(models, inSection: 0)
+
+
+            let (reloads, inserts, deletes) = cellModels.compare(models, inSection: 0)
             cellModels = models
 
             self.performBatchUpdates({

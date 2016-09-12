@@ -27,7 +27,7 @@ define package-platform
 		$(call error-platform,$(1));													\
 	fi
 endef
-s
+
 define minify-web
 	file=$(1);																\
 	echo ">>> Minifying $$file ... ";										\

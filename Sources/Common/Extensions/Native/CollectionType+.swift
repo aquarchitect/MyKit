@@ -23,6 +23,8 @@
  * THE SOFTWARE.
  */
 
+import Foundation
+
 public extension CollectionType {
 
     /**
@@ -128,23 +130,37 @@ public extension CollectionType where Generator.Element: Equatable, Index == Int
      * This is designed for `UITableView` and `UICollecitonView`.
      */
     func compare<C: CollectionType where C.Generator.Element == Generator.Element, C.Index == Index, C.SubSequence: CollectionType, C.SubSequence.Generator.Element == SubSequence.Generator.Element, C.SubSequence.Index == SubSequence.Index>(other: C, range: Range<Index>? = nil, inSection section: Int) -> (reloads: [NSIndexPath], deletes: [NSIndexPath], inserts: [NSIndexPath]) {
-        var reloads: [NSIndexPath] = []
-        var deletes: [NSIndexPath] = []
-        var inserts: [NSIndexPath] = []
+        let count = max(self.count, other.count)
+
+        let _deletes = NSMutableOrderedSet(capacity: count)
+        let _inserts = NSMutableOrderedSet(capacity: count)
 
         self.backtrackChanges(byComparing: other) {
-            let change = $0.then { NSIndexPath(indexes: 0, $0.index) }
+            let change = $0.then { NSIndexPath(indexes: section, $0.index) }
 
             switch change {
-            case .Delete(let value) where inserts.first?.compare(value) == .OrderedSame:
-                inserts.removeFirst()
-                reloads.insert(value, atIndex: 0)
-            case .Delete(let value):
-                deletes.insert(value, atIndex: 0)
-            case .Insert(let value):
-                inserts.insert(value, atIndex: 0)
+            case .Delete(let value): _deletes.insertObject(value, atIndex: 0)
+            case .Insert(let value): _inserts.insertObject(value, atIndex: 0)
             }
         }
+
+        let reloads: [NSIndexPath] = {
+            let deletes = NSMutableOrderedSet(orderedSet: _deletes, copyItems: true)
+            deletes.intersectOrderedSet(_inserts)
+            return deletes.array as? [NSIndexPath] ?? []
+        }()
+
+        let deletes: [NSIndexPath] = {
+            let deletes = NSMutableOrderedSet(orderedSet: _deletes, copyItems: true)
+            deletes.minusOrderedSet(_inserts)
+            return deletes.array as? [NSIndexPath] ?? []
+        }()
+
+        let inserts: [NSIndexPath] = {
+            let inserts = NSMutableOrderedSet(orderedSet: _inserts, copyItems: true)
+            inserts.minusOrderedSet(_deletes)
+            return inserts.array as? [NSIndexPath] ?? []
+        }()
 
         return (reloads, deletes, inserts)
     }

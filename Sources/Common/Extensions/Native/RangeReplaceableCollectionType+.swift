@@ -23,6 +23,8 @@
  * THE SOFTWARE.
  */
 
+import Foundation
+
 public extension RangeReplaceableCollectionType where Index == Int {
 
     mutating func apply(changes: [Change<(index: Index, element: Generator.Element)>]) {
@@ -42,7 +44,7 @@ public extension RangeReplaceableCollectionType where Index == Int {
     }
 
     mutating func apply(changes: [Change<(index: Index, element: Generator.Element)>], inSection section: Int) -> (deletes: [NSIndexPath], inserts: [NSIndexPath]) {
-        let indexPathMapper = { NSIndexPath(forRow: $0, inSection: section) }
+        let indexPathMapper = { NSIndexPath(indexes: section, $0) }
         var deletes: [NSIndexPath] = [], inserts: [NSIndexPath] = []
 
         for change in changes {
