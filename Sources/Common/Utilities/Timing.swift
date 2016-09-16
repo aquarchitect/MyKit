@@ -25,10 +25,16 @@
 
 import Foundation
 
+public func delay(dt: NSTimeInterval, block: () -> Void) {
+    let poptime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * dt))
+    dispatch_after(poptime, Queue.Main, block)
+}
+
 /// Delays block execution on sepefic queue
-public func delay(interval: NSTimeInterval, queue: dispatch_queue_t = Queue.Main, block: Void -> Void) {
-    let poptime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * interval))
-    dispatch_after(poptime, queue, block)
+public func delay(dt: NSTimeInterval) -> Promise<Void> {
+    return Promise { callback in
+        delay(dt) { callback(.Fullfill(())) }
+    }
 }
 
 /// Measures and print execution elapsed time
