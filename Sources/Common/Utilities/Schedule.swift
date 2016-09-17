@@ -31,7 +31,8 @@ final public class Schedule {
 
     public struct Task {
 
-        public private(set) var intervals: AnyGenerator<NSTimeInterval>
+        private(set) var intervals: AnyGenerator<NSTimeInterval>
+
         public private(set) var isSuspended = false
         public private(set) var isCanceled = false
 
@@ -63,7 +64,7 @@ final public class Schedule {
 
 private extension Schedule {
 
-    static func dispatch<G: GeneratorType where G.Element == NSTimeInterval>(intervals: G, block: Void -> Void) -> ID {
+    static func dispatch<G: GeneratorType where G.Element == NSTimeInterval>(intervals: G, block: () -> Void) -> ID {
         objc_sync_enter(sharedInstance)
         defer { objc_sync_exit(sharedInstance) }
 
@@ -115,19 +116,19 @@ public extension Schedule {
 
 public extension Schedule {
 
-    static func once(interval: NSTimeInterval, block: Void -> Void) -> ID {
+    static func once(interval: NSTimeInterval, block: () -> Void) -> ID {
         return dispatch(GeneratorOfOne(interval), block: block)
     }
 
-    static func timeout(interval: NSTimeInterval, block: Void -> Void) -> ID {
+    static func timeout(interval: NSTimeInterval, block: () -> Void) -> ID {
         return once(interval, block: block)
     }
 
-    static func every(interval: NSTimeInterval, block: Void -> Void) -> ID {
+    static func every(interval: NSTimeInterval, block: () -> Void) -> ID {
         return dispatch(AnyGenerator { interval }, block: block)
     }
 
-    static func after<C: CollectionType where C.Generator.Element == NSTimeInterval>(intervals: C, block: Void -> Void) -> ID {
+    static func after<C: CollectionType where C.Generator.Element == NSTimeInterval>(intervals: C, block: () -> Void) -> ID {
         return dispatch(intervals.generate(), block: block)
     }
 
@@ -136,25 +137,27 @@ public extension Schedule {
 
         let intervals = AnyGenerator<NSTimeInterval> {
             switch _count {
-            case count + 1:
-                _count -= 1;
-                return 0
-            case 0:
-                return nil
-            default:
-                _count -= 1;
-                return interval
+            case count + 1: _count -= 1; return 0
+            case 0: return nil
+            default: _count -= 1; return interval
             }
         }
 
-        return dispatch(intervals) { block(left: Double(_count) * interval) }
+        return dispatch(intervals, block: { block(left: Double(_count) * interval) })
     }
 }
 
 private extension Schedule.Task {
 
-    init<G: GeneratorType where G.Element == NSTimeInterval>(intervals: G, block: Void -> Void) {
+    init<G: GeneratorType where G.Element == NSTimeInterval>(intervals: G, block: () -> Void) {
         self.intervals = AnyGenerator(intervals)
         self.block = block
+    }
+
+    /**
+     * Warning: proceed with cautious of infinite sequence.
+     */
+    var timeRemaining: NSTimeInterval {
+        return intervals.reduce(0, combine: +)
     }
 }
