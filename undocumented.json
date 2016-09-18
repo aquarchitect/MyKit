@@ -1,0 +1,838 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/CoreGraphics/CGPoint+.swift",
+      "line": 28,
+      "symbol": "CGPointDistanceToPoint(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/Foundation/NSMutableAttributedString+.swift",
+      "line": 93,
+      "symbol": "+(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/Foundation/NSRange+.swift",
+      "line": 29,
+      "symbol": "==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/Native/AnyGenerator+.swift",
+      "line": 26,
+      "symbol": "+(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/Native/CollectionType+.swift",
+      "line": 69,
+      "symbol": "CollectionType.repeatingElements(byComparing:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/Native/CollectionType+.swift",
+      "line": 95,
+      "symbol": "CollectionType.backtrackChanges(byComparing:block:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/Native/CollectionType+.swift",
+      "line": 116,
+      "symbol": "CollectionType.compare(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/Native/Range+.swift",
+      "line": 38,
+      "symbol": "Range.intersects(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/Native/RangeReplaceableCollectionType+.swift",
+      "line": 30,
+      "symbol": "RangeReplaceableCollectionType.apply(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/Native/RangeReplaceableCollectionType+.swift",
+      "line": 40,
+      "symbol": "RangeReplaceableCollectionType.applying(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/Native/RangeReplaceableCollectionType+.swift",
+      "line": 46,
+      "symbol": "RangeReplaceableCollectionType.apply(_:inSection:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/Native/String+.swift",
+      "line": 44,
+      "symbol": "String.Format.Hexadecimal",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/Native/String+.swift",
+      "line": 44,
+      "symbol": "String.Format.IP",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Extensions/Native/String+.swift",
+      "line": 59,
+      "symbol": "String.toHexUInt()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/ActionTrailing/ActionTrailing.swift",
+      "line": null,
+      "symbol": "ActionTrailing",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/ActionTrailing/ActionTrailing.swift",
+      "line": null,
+      "symbol": "ActionTrailing",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/ActionTrailing/ActionTrailing.swift",
+      "line": 33,
+      "symbol": "ActionTrailing",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/CloudKit/CloudStack.swift",
+      "line": null,
+      "symbol": "CloudStack",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/CloudKit/CloudStack.swift",
+      "line": 28,
+      "symbol": "CloudStack",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/ColorHexing/ColorHexing.swift",
+      "line": null,
+      "symbol": "ColorHexing",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/ColorHexing/ColorHexing.swift",
+      "line": null,
+      "symbol": "ColorHexing",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/ColorHexing/ColorHexing.swift",
+      "line": 32,
+      "symbol": "ColorHexing",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/DateIndex/DateIndex.swift",
+      "line": null,
+      "symbol": "DateIndex",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/DateIndex/DateIndex.swift",
+      "line": null,
+      "symbol": "DateIndex",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/DateIndex/DateIndex.swift",
+      "line": null,
+      "symbol": "DateIndex",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/DateIndex/DateIndex.swift",
+      "line": 28,
+      "symbol": "DateIndex",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/OpenWeather/OpenWeather.swift",
+      "line": null,
+      "symbol": "OpenWeather",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/OpenWeather/OpenWeather.swift",
+      "line": null,
+      "symbol": "OpenWeather",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/OpenWeather/OpenWeather.swift",
+      "line": null,
+      "symbol": "OpenWeather",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/OpenWeather/OpenWeather.swift",
+      "line": null,
+      "symbol": "OpenWeather",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/OpenWeather/OpenWeather.swift",
+      "line": null,
+      "symbol": "OpenWeather",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/OpenWeather/OpenWeather.swift",
+      "line": 28,
+      "symbol": "OpenWeather",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/PersistentStack/PersistentStack.swift",
+      "line": null,
+      "symbol": "PersistentStack",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/PersistentStack/PersistentStack.swift",
+      "line": null,
+      "symbol": "PersistentStack",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/PersistentStack/PersistentStack.swift",
+      "line": 28,
+      "symbol": "PersistentStack",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/StreamService/StreamService.swift",
+      "line": null,
+      "symbol": "StreamService",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/StreamService/StreamService.swift",
+      "line": null,
+      "symbol": "StreamService",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/StreamService/StreamService.swift",
+      "line": 28,
+      "symbol": "StreamService",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/SymbolIcon/SymbolIcon.swift",
+      "line": null,
+      "symbol": "SymbolIcon",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/SymbolIcon/SymbolIcon.swift",
+      "line": 32,
+      "symbol": "SymbolIcon",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Frameworks/_FontLoading/_FontLoading.swift",
+      "line": 61,
+      "symbol": "_FontLoading",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Arbitrary.swift",
+      "line": null,
+      "symbol": "Arbitrary",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Arbitrary.swift",
+      "line": null,
+      "symbol": "Arbitrary",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Arbitrary.swift",
+      "line": null,
+      "symbol": "Arbitrary",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Arbitrary.swift",
+      "line": null,
+      "symbol": "Arbitrary",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Arbitrary.swift",
+      "line": 28,
+      "symbol": "Arbitrary",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Box.swift",
+      "line": 26,
+      "symbol": "Box",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Change.swift",
+      "line": null,
+      "symbol": "Change",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Change.swift",
+      "line": null,
+      "symbol": "Change",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Change.swift",
+      "line": 26,
+      "symbol": "Change",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Curry.swift",
+      "line": 28,
+      "symbol": ">>>(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Curry.swift",
+      "line": 32,
+      "symbol": ">>>(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Curry.swift",
+      "line": 36,
+      "symbol": ">>>(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Draw.swift",
+      "line": 28,
+      "symbol": "PI",
+      "symbol_kind": "source.lang.swift.decl.var.global",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Matrix.swift",
+      "line": 36,
+      "symbol": "Matrix.rows",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Matrix.swift",
+      "line": 37,
+      "symbol": "Matrix.columns",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Matrix.swift",
+      "line": 39,
+      "symbol": "Matrix.count",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Matrix.swift",
+      "line": 45,
+      "symbol": "Matrix.init(rows:columns:repeatedValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Matrix.swift",
+      "line": 107,
+      "symbol": "Matrix.debugDescription",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Promise.swift",
+      "line": null,
+      "symbol": "Promise",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Promise.swift",
+      "line": null,
+      "symbol": "Promise",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Promise.swift",
+      "line": null,
+      "symbol": "Promise",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Promise.swift",
+      "line": null,
+      "symbol": "Promise",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Promise.swift",
+      "line": null,
+      "symbol": "Promise",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Promise.swift",
+      "line": null,
+      "symbol": "Promise",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Promise.swift",
+      "line": 34,
+      "symbol": "Promise",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Queue.swift",
+      "line": null,
+      "symbol": "Queue",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Queue.swift",
+      "line": null,
+      "symbol": "Queue",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Queue.swift",
+      "line": 28,
+      "symbol": "Queue",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Result.swift",
+      "line": 31,
+      "symbol": "Result.Fullfill",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Result.swift",
+      "line": 32,
+      "symbol": "Result.Reject",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Result.swift",
+      "line": 34,
+      "symbol": "Result.init(f:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Result.swift",
+      "line": 67,
+      "symbol": "Result.andThen(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Result.swift",
+      "line": 78,
+      "symbol": "Result.zip(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Result.swift",
+      "line": 90,
+      "symbol": "zip(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Schedule.swift",
+      "line": null,
+      "symbol": "Schedule",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Schedule.swift",
+      "line": 28,
+      "symbol": "Schedule",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Then.swift",
+      "line": null,
+      "symbol": "Then",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/Then.swift",
+      "line": 28,
+      "symbol": "Then",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/Common/Utilities/_Minor.swift",
+      "line": 32,
+      "symbol": "ViewModelType",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UICollectionView+.swift",
+      "line": 30,
+      "symbol": "UICollectionView.Update",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UICollectionView+.swift",
+      "line": 60,
+      "symbol": "UICollectionView.successorOf(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UICollectionView+.swift",
+      "line": 68,
+      "symbol": "UICollectionView.predecessorOf(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UICollectionView+.swift",
+      "line": 79,
+      "symbol": "UICollectionView.serialize(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UICollectionView+.swift",
+      "line": 86,
+      "symbol": "UICollectionView.deserialize(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UICollectionView+.swift",
+      "line": 102,
+      "symbol": "UICollectionView.register(_:forReuseIdentifier:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UICollectionView+.swift",
+      "line": 106,
+      "symbol": "UICollectionView.register(_:forKind:withReuseIdentifier:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UITableView+.swift",
+      "line": 28,
+      "symbol": "TableUpdate",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UITableView+.swift",
+      "line": 60,
+      "symbol": "UITableView.successorOf(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UITableView+.swift",
+      "line": 68,
+      "symbol": "UITableView.predecessorOf(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UITableView+.swift",
+      "line": 79,
+      "symbol": "UITableView.serialize(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UITableView+.swift",
+      "line": 86,
+      "symbol": "UITableView.deserialize(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UITableView+.swift",
+      "line": 102,
+      "symbol": "UITableView.register(_:forReuseIdentifier:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UITableView+.swift",
+      "line": 106,
+      "symbol": "UITableView.register(_:forReuseIdentifier:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UIView+.swift",
+      "line": 36,
+      "symbol": "UIView.animate(duration:animations:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UIView+.swift",
+      "line": 45,
+      "symbol": "UIView.Axis",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Extensions/UIView+.swift",
+      "line": 47,
+      "symbol": "UIView.fillSubviewsEqually(in:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidFlowLayout.swift",
+      "line": 28,
+      "symbol": "ParaboloidFlowLayout",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidLayoutAttributes.swift",
+      "line": 28,
+      "symbol": "ParaboloidLayoutAttributes",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidLayoutFormula.swift",
+      "line": 28,
+      "symbol": "ParaboloidLayoutFormula",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidSuperLayout.swift",
+      "line": 28,
+      "symbol": "ParaboloidSuperLayout",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/CollectionLayout/Snapping/SnappingFlowLayout.swift",
+      "line": 28,
+      "symbol": "SnappingFlowLayout",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/CollectionLayout/Snapping/SnappingSuperLayout.swift",
+      "line": 28,
+      "symbol": "SnappingSuperLayout",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/GenericInterface/GenericCollectionCell.swift",
+      "line": 28,
+      "symbol": "GenericCollectionCell",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/GenericInterface/GenericCollectionView.swift",
+      "line": null,
+      "symbol": "GenericCollectionView",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/GenericInterface/GenericCollectionView.swift",
+      "line": 28,
+      "symbol": "GenericCollectionView",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/GenericInterface/GenericTableView.swift",
+      "line": null,
+      "symbol": "GenericTableView",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/GenericInterface/GenericTableView.swift",
+      "line": 28,
+      "symbol": "GenericTableView",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/GrowingText/GrowingTextView.swift",
+      "line": 28,
+      "symbol": "GrowingTextView",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/TableGesture/TableHoldGesture.swift",
+      "line": 28,
+      "symbol": "TableHoldGesture",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/TransitionAnimator/TransitionBasicAnimator.swift",
+      "line": 38,
+      "symbol": "TransitionBasicAnimator.presentedRect",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/TransitionAnimator/TransitionBasicAnimator.swift",
+      "line": 40,
+      "symbol": "TransitionBasicAnimator.animations",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/TransitionAnimator/TransitionBasicAnimator.swift",
+      "line": 44,
+      "symbol": "TransitionBasicAnimator.init(centeredScreen:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/TransitionAnimator/TransitionBasicAnimator.swift",
+      "line": 53,
+      "symbol": "TransitionBasicAnimator.transitionDuration(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/TransitionAnimator/TransitionBasicAnimator.swift",
+      "line": 57,
+      "symbol": "TransitionBasicAnimator.animateTransition(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/TransitionAnimator/TransitionBasicAnimator.swift",
+      "line": 79,
+      "symbol": "TransitionBasicAnimator.presentationControllerForPresentedViewController(_:presentingViewController:sourceViewController:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/TransitionAnimator/TransitionBasicAnimator.swift",
+      "line": 88,
+      "symbol": "TransitionBasicAnimator.animationControllerForPresentedController(_:presentingController:sourceController:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/TransitionAnimator/TransitionBasicAnimator.swift",
+      "line": 93,
+      "symbol": "TransitionBasicAnimator.animationControllerForDismissedController(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/travis/build/aquarchitect/MyKit/Sources/iOS/Frameworks/TransitionAnimator/TransitionPresentationController.swift",
+      "line": 28,
+      "symbol": "TransitionPresentationController",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/travis/build/aquarchitect/MyKit"
+}
