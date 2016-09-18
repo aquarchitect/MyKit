@@ -35,6 +35,8 @@ public extension CKDatabase {
                     callback(.Reject(error))
                 } else if let record = $0 {
                     callback(.Fullfill(record))
+                } else {
+                    callback(.Reject(PromiseError.NoData))
                 }
             }
             return operation
@@ -50,6 +52,8 @@ public extension CKDatabase {
                 callback(.Reject(error))
             } else if let result = $0 {
                 callback(.Fullfill(result))
+            } else {
+                callback(.Reject(PromiseError.NoData))
             }
         }
     }

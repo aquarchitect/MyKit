@@ -34,6 +34,8 @@ public extension CKContainer {
                     callback(.Reject(error))
                 } else if let recordID = $0 {
                     callback(.Fullfill(recordID))
+                } else {
+                    callback(.Reject(PromiseError.NoData))
                 }
             }
         }

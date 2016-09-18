@@ -39,6 +39,8 @@ public extension NSURLSession {
                     } catch {
                         callback(.Reject(error))
                     }
+                } else {
+                    callback(.Reject(PromiseError.NoData))
                 }
             }.resume()
         }

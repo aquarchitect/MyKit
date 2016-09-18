@@ -29,13 +29,15 @@ public struct Schedule {}
 
 public extension Schedule {
 
-    static func once(dt: NSTimeInterval) -> Promise<Void> {
+    static func once(dt: NSTimeInterval, block: () -> Void) {
         let poptime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * dt))
 
+        dispatch_after(poptime, Queue.Main, block)
+    }
+
+    static func once(dt: NSTimeInterval) -> Promise<Void> {
         return Promise { callback in
-            dispatch_after(poptime, Queue.Main) {
-                callback(.Fullfill(()))
-            }
+            once(dt) { callback(.Fullfill(())) }
         }
     }
 
@@ -45,28 +47,14 @@ public extension Schedule {
             .andThen { every(dt, block: block) }
     }
 
-    static func after<C: CollectionType where C.SubSequence == C, C.Generator.Element == NSTimeInterval, C.Index: BidirectionalIndexType>(dts: C, block: () throws -> Void) -> Promise<Void> {
-        guard let dt = dts.first else {
-            return Promise { $0(.Fullfill(())) }
-        }
-
-        let promise = once(dt).then(block)
-
-        guard dts.count > 1 else { return promise }
-        return promise.andThen {
-            after(dts.dropFirst(), block: block)
-        }
-    }
-
     static func countdown(dt: NSTimeInterval, count: UInt, block: (remaining: NSTimeInterval) throws -> Void) -> Promise<Void> {
-        let remaining = Double(count) * dt
-        let promise = once(dt).then {
-            try block(remaining: remaining)
+        let promise = Promise<Void>.lift {
+            try block(remaining: Double(count) * dt)
         }
 
         guard count != 0 else { return promise }
-        return promise.andThen {
-            countdown(dt, count: count - 1, block: block)
-        }
+        return promise
+            .andThen { once(dt) }
+            .andThen { countdown(dt, count: count - 1, block: block) }
     }
 }

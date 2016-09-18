@@ -25,11 +25,7 @@
 
 import Foundation
 
-enum PromiseError: ErrorType {
-
-    case NoContent
-    case Cancelled
-}
+public enum PromiseError: ErrorType { case NoData }
 
 public struct Promise<T> {
 
@@ -89,25 +85,24 @@ public extension Promise {
 
 public extension Promise {
 
-    func onSuccess(f: T -> Void) -> Promise {
+    func onResult(f: Result<T> -> Void) -> Promise {
         return Promise { callback in
             self.resolve { result in
-                if case .Fullfill(let value) = result {
-                    f(value)
-                }
+                f(result)
                 callback(result)
             }
         }
     }
 
+    func onSuccess(f: T -> Void) -> Promise {
+        return onResult {
+            if case .Fullfill(let value) = $0 { f(value) }
+        }
+    }
+
     func onFailure(f: ErrorType -> Void) -> Promise {
-        return Promise { callback in
-            self.resolve { result in
-                if case .Reject(let error) = result {
-                    f(error)
-                }
-                callback(result)
-            }
+        return onResult {
+            if case .Reject(let error) = $0 { f(error) }
         }
     }
 }
@@ -190,6 +185,16 @@ public extension Promise {
             dispatch_group_notify(group, Queue.Main) {
                 callback(Result<T>.zip(outputs))
             }
+        }
+    }
+
+    static func when(promises: Promise...) -> Promise<[T]> {
+        return when(promises)
+    }
+
+    static func lift(f: () throws -> T) -> Promise {
+        return Promise { callback in
+            callback(.init(f: f))
         }
     }
 }
