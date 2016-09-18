@@ -26,42 +26,73 @@
 /// Constant that helps define results of a callback
 public enum Result<T> {
 
+    public typealias Callback = Result -> Void
+
     case Fullfill(T)
     case Reject(ErrorType)
+
+    public init(@noescape f: () throws -> T) {
+        do { self = .Fullfill(try f()) }
+        catch { self = .Reject(error) }
+    }
 }
 
 public extension Result {
 
-    typealias Callback = Result -> Void
-
-    /// Tranform the result of one type to another
-    func then<U>(f: T -> U) -> Result<U> {
+    /// Unwrap in result into values
+    func resolve() throws -> T {
         switch self {
-
-        case .Fullfill(let value): return .Fullfill(f(value))
-        case .Reject(let error): return .Reject(error)
+        case .Fullfill(let value): return value
+        case .Reject(let error): throw error
         }
     }
+}
+
+public extension Result {
 
     /// Transfrom the result of one type to another with a potential error
     func then<U>(f: T throws -> U) -> Result<U> {
         switch self {
-
         case .Fullfill(let value):
-            do { return .Fullfill(try f(value)) }
-            catch { return .Reject(error) }
-
+            do {
+                return .Fullfill(try f(value))
+            } catch {
+                return .Reject(error)
+            }
         case .Reject(let error):
             return .Reject(error)
         }
     }
 
-    /// Unwrap in result into values
-    func resolve() throws -> T {
-        switch self {
-
-        case .Fullfill(let value): return value
-        case .Reject(let error): throw error
+    func andThen<U>(f: T -> Result<U>) -> Result<U> {
+        do {
+            return try (resolve >>> f)()
+        } catch {
+            return Result<U>.Reject(error)
         }
+    }
+}
+
+public extension Result {
+
+    static func zip(results: [Result]) -> Result<[T]> {
+        return results.reduce(.Fullfill([])) {
+            do {
+                let result = (try $0.resolve()) + [try $1.resolve()]
+                return .Fullfill(result)
+            } catch {
+                return .Reject(error)
+            }
+        }
+    }
+}
+
+public func zip<A, B>(resultA: Result<A>, _ resultB: Result<B>) -> Result<(A, B)> {
+    do {
+        let a = try resultA.resolve()
+        let b = try resultB.resolve()
+        return .Fullfill((a, b))
+    } catch {
+        return .Reject(error)
     }
 }

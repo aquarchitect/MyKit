@@ -25,6 +25,12 @@
 
 import Foundation
 
+enum PromiseError: ErrorType {
+
+    case NoContent
+    case Cancelled
+}
+
 public struct Promise<T> {
 
     private let operation: Result<T>.Callback -> Void
@@ -45,32 +51,120 @@ public extension Promise {
         self.operation(callback)
     }
 
+    func resolve(callback: Result<T>.Callback? = nil) {
+        self.operation { result in
+            callback?(result)
+        }
+    }
+}
+
+public extension Promise {
+
     /**
      * Transform value type
      */
     func then<U>(f: T throws -> U) -> Promise<U> {
         return Promise<U> { callback in
-            self.resolve { callback($0.then(f)) }
+            self.resolve { result in
+                callback(result.then(f))
+            }
         }
     }
 
     /**
      * Transform promise type
      */
-    func andThen<U>(f: T throws -> Promise<U>) -> Promise<U> {
+    func andThen<U>(f: T -> Promise<U>) -> Promise<U> {
         return Promise<U> { callback in
-            self.resolve {
-                do { try ($0.resolve >>> f)().resolve(callback) }
-                catch { callback(.Reject(error)) }
+            self.resolve { result in
+                do {
+                    try (result.resolve >>> f)().resolve(callback)
+                } catch {
+                    callback(.Reject(error))
+                }
+            }
+        }
+    }
+}
+
+public extension Promise {
+
+    func onSuccess(f: T -> Void) -> Promise {
+        return Promise { callback in
+            self.resolve { result in
+                if case .Fullfill(let value) = result {
+                    f(value)
+                }
+                callback(result)
             }
         }
     }
 
-    /**
-     * Transform promise type in a raw way
-     */
-    func andThen<U>(f: T throws -> Result<U>.Callback -> Void) -> Promise<U> {
-        return andThen { value in Promise<U>(try f(value)) }
+    func onFailure(f: ErrorType -> Void) -> Promise {
+        return Promise { callback in
+            self.resolve { result in
+                if case .Reject(let error) = result {
+                    f(error)
+                }
+                callback(result)
+            }
+        }
+    }
+}
+
+public extension Promise {
+
+    func recover(f: ErrorType -> Promise) -> Promise {
+        return Promise { callback in
+            self.resolve { result in
+                do {
+                    callback(.Fullfill(try result.resolve()))
+                } catch {
+                    f(error).resolve(callback)
+                }
+            }
+        }
+    }
+
+    func retry(attempCount count: Int) -> Promise {
+        return Promise { callback in
+            self.resolve { result in
+                do {
+                    callback(.Fullfill(try result.resolve()))
+                } catch {
+                    if count == 0 {
+                        callback(.Reject(error))
+                    } else {
+                        self.retry(attempCount: count - 1).resolve(callback)
+                    }
+                }
+            }
+        }
+    }
+}
+
+public extension Promise {
+
+    func inBackground() -> Promise {
+        return Promise { callback in
+            dispatch_async(Queue.Global.Background) {
+                self.resolve { result in
+                    dispatch_async(Queue.Main) {
+                        callback(result)
+                    }
+                }
+            }
+        }
+    }
+
+    func inDispatchGroup(group: dispatch_group_t) -> Promise {
+        return Promise { callback in
+            dispatch_group_enter(group)
+            self.resolve { result in
+                callback(result)
+                dispatch_group_leave(group)
+            }
+        }
     }
 }
 
@@ -79,64 +173,46 @@ public extension Promise {
 public extension Promise {
 
     /**
-     * Execute promises concurrently
-     */
-    internal func joint<U>(group: dispatch_group_t, f: ((T throws -> U) -> Result<U>) -> Void) {
-        dispatch_group_enter(group)
-
-        resolve { result in
-            dispatch_barrier_async(Queue.Main) {
-                f(result.then)
-                dispatch_group_leave(group)
-            }
-        }
-    }
-
-    /**
      * Queue up promises asynchronously
      */
     static func when(promises: [Promise]) -> Promise<[T]> {
         let group = dispatch_group_create()
 
-        var output: Result<[T]>?
-
         return Promise<[T]> { callback in
-            promises.forEach { $0.joint(group) {
-                output = $0 { (try output?.resolve() ?? []) + [$0] }
-            }}
+            var outputs: [Result<T>] = []
+
+            for promise in promises {
+                promise.inDispatchGroup(group).resolve { result in
+                    outputs.append(result)
+                }
+            }
 
             dispatch_group_notify(group, Queue.Main) {
-                if let result = output { callback(result) }
+                callback(Result<T>.zip(outputs))
             }
         }
     }
-
-    static func when(promises: Promise...) -> Promise<[T]> {
-        return when(promises)
-    }
 }
-
-infix operator +++ { associativity left }
 
 /**
  * Queue up promises of 2 dirrent types aysnchronously
  */
-public func +++ <A, B>(lhs: Promise<A>, rhs: Promise<B>) -> Promise<(A, B)> {
+public func when<A, B>(promiseA: Promise<A>, _ promiseB: Promise<B>) -> Promise<(A, B)> {
     let group = dispatch_group_create()
 
-    var output: Result<(A?, B?)>?
-
     return Promise<(A, B)> { callback in
-        lhs.joint(group) { output = $0 { ($0, try output?.resolve().1) }}
-        rhs.joint(group) { output = $0 { (try output?.resolve().0, $0) }}
+        var resultA: Result<A>!, resultB: Result<B>!
+
+        promiseA.inDispatchGroup(group).resolve { result in
+            resultA = result
+        }
+
+        promiseB.inDispatchGroup(group).resolve { result in
+            resultB = result
+        }
 
         dispatch_group_notify(group, Queue.Main) {
-            switch output {
-
-            case .Fullfill(let a?, let b?)?: callback(.Fullfill((a, b)))
-            case .Reject(let error)?: callback(.Reject(error))
-            default: return
-            }
+            callback(zip(resultA, resultB))
         }
     }
 }

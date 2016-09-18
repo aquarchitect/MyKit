@@ -25,18 +25,6 @@
 
 import Foundation
 
-public func delay(dt: NSTimeInterval, block: () -> Void) {
-    let poptime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * dt))
-    dispatch_after(poptime, Queue.Main, block)
-}
-
-/// Delays block execution on sepefic queue
-public func delay(dt: NSTimeInterval) -> Promise<Void> {
-    return Promise { callback in
-        delay(dt) { callback(.Fullfill(())) }
-    }
-}
-
 /// Measures and print execution elapsed time
 public func measure(@noescape block: Void -> Void) {
     let start = CFAbsoluteTimeGetCurrent()

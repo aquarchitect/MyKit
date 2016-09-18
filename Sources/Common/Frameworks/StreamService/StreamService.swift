@@ -46,7 +46,7 @@ public class StreamService: NSObject {
     // MARK: Property
 
     public private(set) var host: Host?
-    private var timeoutID: Schedule.ID?
+    private var isTimeout = false
 
     internal var inputStream: NSInputStream?
     internal var outputStream: NSOutputStream?
@@ -91,8 +91,10 @@ public extension StreamService {
             $0?.open()
         }
 
-        timeoutID = Schedule.timeout(timeout) {
-            self.stream(NSStream(), handleEvent: .ErrorOccurred)
+        isTimeout = true
+        Schedule.once(timeout).resolve { [weak self] _ in
+            guard self?.isTimeout ?? false else { return }
+            self?.stream(NSStream(), handleEvent: .ErrorOccurred)
         }
     }
 
@@ -114,7 +116,7 @@ extension StreamService: NSStreamDelegate {
     // MARK: Stream Delegate
 
     public func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
-        Schedule.cancel(timeoutID ?? 0)
+        isTimeout = false
 
         switch eventCode {
         case _ where !eventCode.isDisjointWith([.EndEncountered, .ErrorOccurred]):
