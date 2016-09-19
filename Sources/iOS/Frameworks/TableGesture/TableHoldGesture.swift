@@ -35,6 +35,7 @@ public class TableHoldGesture: UILongPressGestureRecognizer {
     }
 
     public func handleGesture() {
+
         let optionalTrackingIndexPath = tableView?.andThen {
             (self.locationInView >>> $0.indexPathForRowAtPoint)($0)
         }
@@ -54,7 +55,7 @@ public class TableHoldGesture: UILongPressGestureRecognizer {
 
             sourceIndexPath = trackingIndexPath
 
-            cellSnapshot = cell?.snapshotViewAfterScreenUpdates(true).then {
+            cellSnapshot = cell?.snapshotViewAfterScreenUpdates(true)?.then {
                 $0.backgroundColor = .blueColor()
                 $0.frame = tableView?.convertRect(cell?.frame ?? .zero, toView: nil) ?? .zero
                 $0.alpha = 0

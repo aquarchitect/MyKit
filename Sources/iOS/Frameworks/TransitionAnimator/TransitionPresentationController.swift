@@ -44,7 +44,7 @@ public class TransitionPresentationController: UIPresentationController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public override init(presentedViewController: UIViewController, presentingViewController: UIViewController) {
+    public override init(presentedViewController: UIViewController, presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presentingViewController: presentingViewController)
 
         UITapGestureRecognizer()

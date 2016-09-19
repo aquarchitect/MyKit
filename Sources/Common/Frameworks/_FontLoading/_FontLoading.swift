@@ -40,17 +40,16 @@ private func registerFont(from file: String, ofBundle bundle: NSBundle) throws {
 
 
     // get file url
-    guard let url = bundle.URLForResource(file, withExtension: ext)
+    guard let url = bundle.URLForResource(file, withExtension: ext),
+        let data = NSData(contentsOfURL: url),
+        let provider = CGDataProviderCreateWithCFData(data)
         else { throw FileIOError.UnableToOpen(file: _file) }
 
-    let data = NSData(contentsOfURL: url)
-    let provider = CGDataProviderCreateWithCFData(data)
-
+    let font = CGFontCreateWithDataProvider(provider)
     // register font
-    guard let font = CGFontCreateWithDataProvider(provider)
-        where CTFontManagerRegisterGraphicsFont(font, nil) else {
-            enum Exception: ErrorType { case FailedToRegisterFont(String) }
-            throw Exception.FailedToRegisterFont(_file)
+    guard CTFontManagerRegisterGraphicsFont(font, nil) else {
+        enum Exception: ErrorType { case FailedToRegisterFont(String) }
+        throw Exception.FailedToRegisterFont(_file)
     }
 }
 

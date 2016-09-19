@@ -34,9 +34,4 @@ public extension NSManagedObject {
             .last?
             .map { $0 } ?? [])
     }
-
-    convenience init?(context: NSManagedObjectContext) {
-        guard let entity = NSEntityDescription.entityFor(self.dynamicType, context: context) else { return nil }
-        self.init(entity: entity, insertIntoManagedObjectContext: context)
-    }
 }

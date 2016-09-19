@@ -39,8 +39,9 @@ public extension Then {
     }
 }
 
-extension NSObject: Then {}
 extension Box: Then {}
+extension NSObject: Then {}
+
 
 #if os(iOS)
 import UIKit
