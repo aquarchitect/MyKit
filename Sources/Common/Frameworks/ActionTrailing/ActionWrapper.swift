@@ -25,15 +25,15 @@
 
 import Foundation
 
-final class ActionWrapper<T>: NSObject {
+final class ActionWrapper<T>: NSCopying {
 
-    let f: T -> Void
+    let block: (T) -> Void
 
-    init(f: T -> Void) {
-        self.f = f
+    init(_ block: @escaping (T) -> Void) {
+        self.block = block
     }
 
-    override func copy() -> AnyObject {
-        return self
+    func copy(with zone: NSZone? = nil) -> Any {
+        return ActionWrapper(self.block)
     }
 }

@@ -25,15 +25,19 @@
 
 import UIKit
 
-public class GenericCollectionCell<V: UIView where V: Then>: UICollectionViewCell {
+public class GenericCollectionCell<V: UIView>: UICollectionViewCell where V: Then {
 
     // MARK: Property
 
     public let mainView = V().then {
-        $0.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        $0.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
 
     // MARK: Initialization
+
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     public override init(frame: CGRect) {
         super.init(frame: frame)

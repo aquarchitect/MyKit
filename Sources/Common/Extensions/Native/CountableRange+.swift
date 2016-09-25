@@ -1,5 +1,5 @@
 /*
- * NSManagedObject+.swift
+ * CountableRange+.swift
  * MyKit
  *
  * Copyright (c) 2015 Hai Nguyen
@@ -23,15 +23,12 @@
  * THE SOFTWARE.
  */
 
-import CoreData
+public extension CountableRange {
 
-public extension NSManagedObject {
-
-    static var entityName: String {
-        return String(String(self.dynamicType)
-            .characters
-            .split(".")
-            .last?
-            .map { $0 } ?? [])
+    /// Shift range by specified value
+    func offsets(by n: IndexDistance) -> CountableRange {
+        let start = self.index(self.lowerBound, offsetBy: n)
+        let end = self.index(self.upperBound, offsetBy: n)
+        return start..<end
     }
 }

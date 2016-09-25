@@ -35,8 +35,8 @@ public protocol ActionTrailing: class {}
 
 private extension ActionTrailing {
 
-    func setAction(block: Self -> Void) {
-        let obj: AnyObject = unsafeBitCast(ActionWrapper(f: block), AnyObject.self)
+    func setAction(_ block: @escaping (Self) -> Void) {
+        let obj: AnyObject = unsafeBitCast(ActionWrapper(block), to: AnyObject.self)
         objc_setAssociatedObject(self, &token, obj, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
     }
 }
@@ -44,7 +44,7 @@ private extension ActionTrailing {
 extension NSObject {
 
     func handleBlock() {
-        unsafeBitCast(objc_getAssociatedObject(self, &token), ActionWrapper.self).f(self)
+        unsafeBitCast(objc_getAssociatedObject(self, &token), to: ActionWrapper.self).block(self)
     }
 }
 
@@ -53,9 +53,9 @@ extension UIControl: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIControl {
 
-    func addAction(block: Self -> Void, forControlEvents events: UIControlEvents) {
+    func addAction(block: @escaping (Self) -> Void, for controlEvents: UIControlEvents) {
         self.setAction(block)
-        self.addTarget(self, action: #selector(handleBlock), forControlEvents: events)
+        self.addTarget(self, action: #selector(handleBlock), for: controlEvents)
     }
 }
 
@@ -63,7 +63,7 @@ extension UIGestureRecognizer: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIGestureRecognizer {
 
-    func addAction(block: Self -> Void) {
+    func addAction(block: @escaping (Self) -> Void) {
         self.setAction(block)
         self.addTarget(self, action: #selector(handleBlock))
     }
@@ -73,7 +73,7 @@ extension NSControl: ActionTrailing {}
 
 public extension ActionTrailing where Self: NSControl {
 
-    func addAction(block: Self -> Void, forProperty property: String) {
+    func addAction(block: @escaping (Self) -> Void, for property: String) {
         self.setAction(block)
         self.setValue("handleBlock", forKey: property)
         self.target = self

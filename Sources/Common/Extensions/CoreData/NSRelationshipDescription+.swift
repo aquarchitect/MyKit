@@ -27,11 +27,11 @@ import CoreData
 
 public extension NSRelationshipDescription {
 
-    convenience init(name: String, destination: NSEntityDescription, range: Range<Int> = 0...0) {
+    convenience init(name: String, destination: NSEntityDescription, range: CountableRange<Int> = .init(0...0)) {
         self.init()
         self.name = name
         self.destinationEntity = destination
-        self.minCount = range.startIndex
-        self.maxCount = range.endIndex - 1
+        self.minCount = range.lowerBound
+        self.maxCount = range.upperBound - 1
     }
 }

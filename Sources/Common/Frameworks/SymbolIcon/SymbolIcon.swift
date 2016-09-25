@@ -31,7 +31,7 @@ import AppKit
 
 public struct SymbolIcon {
 
-    private let character: Character
+    fileprivate let character: Character
 
     public init(_ character: Character) {
         self.character = character
@@ -40,11 +40,11 @@ public struct SymbolIcon {
 
 public extension SymbolIcon {
 
-    func attributedStringOf(size size: CGFloat) -> NSMutableAttributedString {
+    func attributedString(ofSize size: CGFloat) -> NSMutableAttributedString {
         let name = "Ionicons", file = "SymbolIcon"
         
         return NSMutableAttributedString(string: "\(character)").then {
-            $0.addFont(.fontWith(name: name, size: size, fromFile: file))
+            $0.add(font: .font(withName: name, size: size, fromFile: file))
         }
     }
 }

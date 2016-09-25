@@ -71,5 +71,7 @@ public func swizzle(type: AnyClass, original originalSelector: Selector, swizzle
     // check whether original method has been swizzlled
     if class_addMethod(type, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod)) {
         class_replaceMethod(type, swizzledSelector, originalMethod, method_getTypeEncoding(originalMethod))
-    } else { method_exchangeImplementations(originalMethod, swizzledMethod) }
+    } else {
+        method_exchangeImplementations(originalMethod, swizzledMethod)
+    }
 }

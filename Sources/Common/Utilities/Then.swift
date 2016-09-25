@@ -23,28 +23,21 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-
 public protocol Then: class {}
 
 public extension Then {
 
-    func then(@noescape f: Self throws -> Void) rethrows -> Self {
-        try f(self)
+    @discardableResult
+    func then(_ perform: (Self) throws -> Void) rethrows -> Self {
+        try perform(self)
         return self
     }
 
-    func andThen<U>(@noescape f: Self throws -> U) rethrows -> U {
-        return try f(self)
+    @discardableResult
+    func andThen<U>(_ transform: (Self) throws -> U) rethrows -> U {
+        return try transform(self)
     }
 }
 
 extension Box: Then {}
 extension NSObject: Then {}
-
-
-#if os(iOS)
-import UIKit
-
-extension UIView: Then {}
-#endif

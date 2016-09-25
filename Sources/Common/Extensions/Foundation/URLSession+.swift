@@ -1,8 +1,8 @@
 /*
- * NSIndexPath+.swift
+ * URLSession+.swift
  * MyKit
  *
- * Copyright (c) 2015 Hai Nguyen
+ * Copyright (c) 2016 Hai Nguyen.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,25 +23,24 @@
  * THE SOFTWARE.
  */
 
-import Foundation
+public extension URLSession {
 
-public extension NSIndexPath {
-
-    public var indexes: [Int] { return (0..<self.length).map(self.indexAtPosition) }
-
-    public override var debugDescription: String {
-        return "NSIndexPath: " + indexes.map(String.init).joinWithSeparator("-")
-    }
-
-    public convenience init(indexes: Int...) {
-        self.init(indexes: indexes, length: indexes.count)
-    }
-
-    public convenience init(indexes: Array<Int>) {
-        self.init(indexes: indexes, length: indexes.count)
-    }
-
-    public func doubleIndices() -> NSIndexPath {
-        return NSIndexPath(indexes: (0...1).map(self.indexAtPosition))
+    func dataTask(with url: URL) -> Promise<[String: AnyObject]> {
+        return Promise { callback in
+            self.dataTask(with: url) { data, _, error in
+                if let _error = error {
+                    return callback(.reject(_error))
+                } else if let _data = data {
+                    do {
+                        let results = try JSONSerialization.jsonObject(with: _data, options: [])
+                        callback(.fullfill(results as? [String: AnyObject] ?? [:]))
+                    } catch {
+                        callback(.reject(error))
+                    }
+                } else {
+                    callback(.reject(PromiseError.noData))
+                }
+            }.resume()
+        }
     }
 }

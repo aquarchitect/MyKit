@@ -27,27 +27,29 @@ import UIKit
 
 public class ParaboloidSuperLayout: SnappingSuperLayout {
 
-    public var paraboloidFormula: ParaboloidLayoutFormula?
-    public var visibleAttributes: [NSIndexPath: UICollectionViewLayoutAttributes] = [:]
-
-    public override class func layoutAttributesClass() -> AnyClass {
+    public override class var layoutAttributesClass: AnyClass {
         return ParaboloidLayoutAttributes.self
     }
 
-    public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    public var paraboloidController: ParaboloidLayoutController?
+    public var visibleAttributes: [IndexPath: UICollectionViewLayoutAttributes] = [:]
+
+    public override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
 
-    public override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return visibleAttributes.keys.flatMap(self.layoutAttributesForItemAtIndexPath)
+    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        return visibleAttributes.keys.flatMap(self.layoutAttributesForItem)
     }
 
-    public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        return (visibleAttributes[indexPath] as? ParaboloidLayoutAttributes)?.then {
-            guard let contentOffset = self.collectionView?.contentOffset else { return }
+    public override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return (visibleAttributes[indexPath] as? ParaboloidLayoutAttributes).flatMap {
+            guard let contentOffset = self.collectionView?.contentOffset else { return nil }
 
-            let center = $0.center.convertToCoordinate(origin: contentOffset)
-            $0.paraboloidValue = paraboloidFormula?.zValue(atPoint: center)
+            let center = $0.center.convertToCoordinate(withOrigin: contentOffset)
+            $0.paraboloidValue = paraboloidController?.zValue(atPoint: center)
+
+            return $0
         }
     }
 }

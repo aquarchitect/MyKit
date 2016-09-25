@@ -28,14 +28,14 @@ import UIKit
 /// :nodoc:
 public extension UIScrollView {
 
-    final var limitedContentOffset: (min: CGPoint, max: CGPoint) {
+    var contentOffsetRange: (lowerBound: CGPoint, upperBound: CGPoint) {
         let minX = -self.contentInset.left
         let minY = -self.contentInset.top
-        let minContentOffset = CGPointMake(minX, minY)
+        let minContentOffset = CGPoint(x: minX, y: minY)
 
         let maxX = max(self.contentSize.width - self.bounds.width + self.contentInset.right, 0)
         let maxY = max(self.contentSize.height - self.bounds.height + self.contentInset.bottom, 0)
-        let maxContentOffset = CGPointMake(maxX, maxY)
+        let maxContentOffset = CGPoint(x: maxX, y: maxY)
 
         return (minContentOffset, maxContentOffset)
     }

@@ -1,5 +1,5 @@
 /*
- * NSScanner+.swift
+ * Scanner+.swift
  * MyKit
  *
  * Copyright (c) 2015 Hai Nguyen
@@ -25,28 +25,28 @@
 
 import Foundation
 
-public extension NSScanner {
+public extension Scanner {
 
     // MARK: String
 
-    public func scanCharactersFrom(set: NSCharacterSet) -> String? {
+    public func scan(characters: CharacterSet) -> String? {
         var result: NSString? = ""
-        return self.scanCharactersFromSet(set, intoString: &result) ? result as? String : nil
+        return self.scanCharacters(from: characters, into: &result) ? (result as? String) : nil
     }
 
-    public func scanUpToCharactersFrom(set: NSCharacterSet) -> String? {
+    public func scan(upto characters: CharacterSet) -> String? {
         var result: NSString? = ""
-        return self.scanUpToCharactersFromSet(set, intoString: &result) ? result as? String : nil
+        return self.scanUpToCharacters(from: characters, into: &result) ? (result as? String) : nil
     }
 
-    public func scanString(string: String) -> String? {
+    public func scan(string: String) -> String? {
         var result: NSString? = ""
-        return self.scanString(string, intoString: &result) ? result as? String : nil
+        return self.scanString(string, into: &result) ? result as? String : nil
     }
 
-    public func scanUpToString(string: String) -> String? {
+    public func scanUpTo(string: String) -> String? {
         var result: NSString? = ""
-        return self.scanUpToString(string, intoString: &result) ? result as? String : nil
+        return self.scanUpTo(string, into: &result) ? result as? String : nil
     }
 
     // MARK: Number
@@ -63,17 +63,17 @@ public extension NSScanner {
 
     public func scanInt() -> Int? {
         var result: Int = 0
-        return self.scanInteger(&result) ? result : nil
+        return self.scanInt(&result) ? result : nil
     }
 
     public func scanInt32() -> Int32? {
         var result: Int32 = 0
-        return self.scanInt(&result) ? result : nil
+        return self.scanInt32(&result) ? result : nil
     }
 
     public func scanInt64() -> Int64? {
         var result: Int64 = 0
-        return self.scanLongLong(&result) ? result : nil
+        return self.scanInt64(&result) ? result : nil
     }
 
     public func scanUInt64() -> UInt64? {
@@ -81,8 +81,8 @@ public extension NSScanner {
         return self.scanUnsignedLongLong(&result) ? result : nil
     }
 
-    public func scanDecimal() -> NSDecimal? {
-        var result = NSDecimal()
+    public func scanDecimal() -> Decimal? {
+        var result = Decimal()
         return self.scanDecimal(&result) ? result : nil
     }
 
@@ -100,11 +100,11 @@ public extension NSScanner {
 
     public func scanHexUInt32() -> UInt32? {
         var result: UInt32 = 0
-        return self.scanHexInt(&result) ? result : nil
+        return self.scanHexInt32(&result) ? result : nil
     }
 
     public func scanHexUInt64() -> UInt64? {
         var result: UInt64 = 0
-        return self.scanHexLongLong(&result) ? result : nil
+        return self.scanHexInt64(&result) ? result : nil
     }
 }

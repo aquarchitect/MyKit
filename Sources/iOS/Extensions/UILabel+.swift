@@ -30,8 +30,8 @@ public extension UILabel {
 
     // FIXME: unable to make it work in an app
 
-    func boundingRectForCharacters(`in` range: NSRange) -> CGRect {
-        guard let attributedText = self.attributedText else { return CGRectNull }
+    func boundingRectForCharacters(in range: NSRange) -> CGRect {
+        guard let attributedText = self.attributedText else { return CGRect.null }
         let layoutManager = NSLayoutManager()
 
         // unable to use `then` because of text storage reference
@@ -44,7 +44,7 @@ public extension UILabel {
         var glyphRange = NSRange()
 
         // Convert the range for glyphs.
-        layoutManager.characterRangeForGlyphRange(range, actualGlyphRange: &glyphRange)
-        return layoutManager.boundingRectForGlyphRange(glyphRange, inTextContainer: textContainer)
+        layoutManager.characterRange(forGlyphRange: range, actualGlyphRange: &glyphRange)
+        return layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
     }
 }

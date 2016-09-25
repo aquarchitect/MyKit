@@ -45,10 +45,10 @@ renderInContext(label.bounds.size, opaque: true, render: label.layer.renderInCon
 
 - returns: An image object from rendering block
 */
-public func renderInContext(size: CGSize, opaque: Bool, render: CGContextRef -> Void) -> UIImage? {
+public func render(size: CGSize, opaque: Bool, handle: (CGContext) -> Void) -> UIImage? {
     UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
 
-    if let context = UIGraphicsGetCurrentContext() { render(context) }
+    if let context = UIGraphicsGetCurrentContext() { handle(context) }
     let image = UIGraphicsGetImageFromCurrentImageContext()
 
     UIGraphicsEndImageContext()

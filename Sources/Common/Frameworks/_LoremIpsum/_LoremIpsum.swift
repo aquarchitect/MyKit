@@ -23,43 +23,46 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-
 /**
 An LorumIpsum object generates random text at different length designed specifically for robust testing.
 
 - throws: file corruption error.
 */
-final class _LoremIpsum: CollectionType {
+struct _LoremIpsum: Collection {
 
-    static let sharedInstance = try! _LoremIpsum()
-
-    private let storage: [String]
+    fileprivate let storage: [String]
 
     let startIndex = 0
     var endIndex: Int {
         return storage.count
     }
 
-    private init() throws {
+    fileprivate init() throws {
         let name = "_LoremIpsum", ext = "txt"
 
-        guard let url = NSBundle.defaultBundle?.URLForResource(name, withExtension: ext)
-            else { throw FileIOError.UnableToOpen(file: "\(name).\(ext)") }
+        guard let url = Bundle.`default`?.url(forResource: name, withExtension: ext) else {
+            enum FileIOError: Error { case unableToOpen(file: String) }
+            throw FileIOError.unableToOpen(file: "\(name).\(ext)")
+        }
 
-        let lorem = try String(contentsOfURL: url)
+        let lorem = try String(contentsOf: url)
         let range = lorem.startIndex..<lorem.endIndex
         var storage = [String]()
 
-        lorem.enumerateSubstringsInRange(range, options: .BySentences) {
-            var string = ($0.0 ?? "").stringByReplacingOccurrencesOfString("\\n", withString: "")
-            string = string.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
+        lorem.enumerateSubstrings(in: range, options: .bySentences) { substring, _, _, _ in
+            let string = (substring ?? "")
+                .replacingOccurrences(of: "\\n", with: "")
+                .trimmingCharacters(in: .whitespacesAndNewlines)
 
-            guard !string.isEmpty else { return }
-            storage.append(string)
+            if !string.isEmpty { storage.append(string) }
         }
 
         self.storage = storage
+    }
+
+    func index(after i: Int) -> Int {
+        precondition(i + 1 >= self.count, "Out of bounds.")
+        return i + 1
     }
 
     subscript(index: Int) -> String {
@@ -70,6 +73,17 @@ final class _LoremIpsum: CollectionType {
 extension _LoremIpsum: CustomDebugStringConvertible {
 
     var debugDescription: String {
-        return storage.joinWithSeparator(" ")
+        return storage.joined(separator: " ")
+    }
+}
+
+extension _LoremIpsum {
+
+    static var shared: _LoremIpsum {
+        struct Singleton {
+            static var value = try! _LoremIpsum()
+        }
+
+        return Singleton.value
     }
 }

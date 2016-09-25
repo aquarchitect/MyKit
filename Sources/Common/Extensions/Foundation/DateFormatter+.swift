@@ -1,5 +1,5 @@
 /*
- * NSDateFormatter+.swift
+ * DateFormatter+.swift
  * MyKit
  *
  * Copyright (c) 2015 Hai Nguyen
@@ -23,22 +23,26 @@
  * THE SOFTWARE.
  */
 
-import Foundation
+public extension DateFormatter {
 
-public extension NSDateFormatter {
+    static var shared: DateFormatter {
+        struct Singleton {
+            static let value = DateFormatter()
+        }
+        
+        return Singleton.value
+    }
+}
 
-    public static var sharedInstance: NSDateFormatter {
-        struct Cache { static let formatter = NSDateFormatter() }
-        return Cache.formatter
+public extension DateFormatter {
+
+    func string(from date: Date, format: String) -> String {
+        self.dateFormat = format
+        return self.string(from: date)
     }
 
-    public func string(from date: NSDate, format: String) -> String {
+    func date(from string: String, format: String) -> Date? {
         self.dateFormat = format
-        return self.stringFromDate(date)
-    }
-
-    public func date(from string: String, format: String) -> NSDate? {
-        self.dateFormat = format
-        return self.dateFromString(string)
+        return self.date(from: string)
     }
 }

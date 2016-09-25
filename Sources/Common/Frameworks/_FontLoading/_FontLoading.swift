@@ -29,27 +29,28 @@ import UIKit
 import AppKit
 #endif
 
-private func registerFont(from file: String, ofBundle bundle: NSBundle) throws {
+private func registerFont(from file: String, of bundle: Bundle) throws {
     let ext = "ttf"
 
     let _file = !file.hasSuffix(ext) ? file : {
         let endIndex = file.endIndex
-        let startIndex = file.endIndex.advancedBy(-ext.characters.count)
+        let startIndex = file.index(file.endIndex, offsetBy: -ext.characters.count)
         return file[startIndex..<endIndex]
         }()
 
 
     // get file url
-    guard let url = bundle.URLForResource(file, withExtension: ext),
-        let data = NSData(contentsOfURL: url),
-        let provider = CGDataProviderCreateWithCFData(data)
-        else { throw FileIOError.UnableToOpen(file: _file) }
+    guard let url = bundle.url(forResource: file, withExtension: ext),
+        let provider = NSData(contentsOf: url).flatMap(CGDataProvider.init)
+        else {
+            enum FileIOError: Error { case unableToOpen(file: String) }
+            throw FileIOError.unableToOpen(file: _file)
+    }
 
-    let font = CGFontCreateWithDataProvider(provider)
     // register font
-    guard CTFontManagerRegisterGraphicsFont(font, nil) else {
-        enum Exception: ErrorType { case FailedToRegisterFont(String) }
-        throw Exception.FailedToRegisterFont(_file)
+    guard CTFontManagerRegisterGraphicsFont(.init(provider), nil) else {
+        enum Exception: Error { case failedToRegisterFont(String) }
+        throw Exception.failedToRegisterFont(_file)
     }
 }
 
@@ -65,11 +66,11 @@ public protocol _FontLoading: class {
 extension _FontLoading {
 
     /// Return a font object from default bundle
-    static func fontWith(name name: String, size: CGFloat, fromFile file: String) -> Self? {
+    static func font(withName name: String, size: CGFloat, fromFile file: String) -> Self? {
         return Self(name: name, size: size) ?? {
-            guard let bundle = NSBundle.defaultBundle else { return nil }
+            guard let bundle = Bundle.`default` else { return nil }
 
-            do { try registerFont(from: file, ofBundle: bundle) }
+            do { try registerFont(from: file, of: bundle) }
             catch { print(error) }
 
             return Self(name: name, size: size)

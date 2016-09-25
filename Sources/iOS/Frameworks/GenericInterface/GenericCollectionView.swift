@@ -29,7 +29,7 @@ public class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollect
 
     // MARK: Property
 
-    public private(set) var cellModels: [Model] = []
+    public fileprivate(set) var cellModels: [Model] = []
 
     public var cellRenderer: ((Cell, Model) -> Void)? {
         didSet { self.reloadData() }
@@ -37,21 +37,24 @@ public class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollect
 
     // MARK: Initialization
 
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
-        super.register(Cell.self, forReuseIdentifier: String(Cell.self))
+        super.register(Cell.self, forCellWithReuseIdentifier: "\(type(of: Cell.self))")
         super.dataSource = self
     }
 
     // MARK: Data Source
 
-    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cellModels.count
     }
 
-    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier(String(Cell.self), forIndexPath: indexPath).then {
-            $0.tag = collectionView.serialize(indexPath)
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "\(type(of: Cell.self))", for: indexPath).then {
             cellRenderer?($0 as! Cell, cellModels[indexPath.item])
         }
     }
@@ -59,31 +62,20 @@ public class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollect
 
 public extension GenericCollectionView where Model: Equatable {
 
-    /**
-     Render collection view rows with new models.
-
-     If animating completion is not specified, collection view 
-     only updates the view models property without upgrading the view.
-     Otherwise, LSC is used to compute the diff and animate
-     the changes accordingly.
-    
-     */
-    func render(cellModels models: [Model], update: Update) {
+    func render(cellModels: [Model], update: Update) {
         switch update {
-        case .Automatic(let completion):
-
-
-            let (reloads, inserts, deletes) = cellModels.compare(models, inSection: 0)
-            cellModels = models
+        case .lscWithAnimation(let completion):
+            let updates = cellModels.compare(cellModels, section: 0)
+            self.cellModels = cellModels
 
             self.performBatchUpdates({
-                self.reloadItemsAtIndexPaths(reloads)
-                self.deleteItemsAtIndexPaths(deletes)
-                self.insertItemsAtIndexPaths(inserts)
+                self.reloadItems(at: updates.reloads)
+                self.deleteItems(at: updates.deletes)
+                self.insertItems(at: updates.inserts)
                 }, completion: completion)
-        case .Manual(let block):
-            cellModels = models
-            block(self)
+        case .manualHandling(let handle):
+            self.cellModels = cellModels
+            handle(self)
         }
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Draw.swift
+ * Bundle+.swift
  * MyKit
  *
  * Copyright (c) 2015 Hai Nguyen
@@ -23,18 +23,14 @@
  * THE SOFTWARE.
  */
 
-import CoreGraphics
+extension Bundle {
 
-public let PI = CGFloat(M_PI)
-
-/**
-Encapsulates the graphics state
-
-- parameter context: The graphic context whose the graphics state you want to encapsulate.
-- parameter render: Tendering block for the encapsulated graphics state.
-*/
-public func drawInState(context: CGContextRef, render: CGContextRef -> Void) {
-    CGContextSaveGState(context)
-    render(context)
-    CGContextRestoreGState(context)
+    static var `default`: Bundle? {
+#if os(iOS)
+        let platform = "iOS"
+#elseif os(OSX)
+        let platform = "macOS"
+#endif
+        return Bundle(identifier: "HaiNguyen.MyKit-\(platform)")
+    }
 }

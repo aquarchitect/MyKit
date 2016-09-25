@@ -27,8 +27,6 @@ import UIKit
 
 public extension UIEdgeInsets {
 
-    public static var zero: UIEdgeInsets { return UIEdgeInsetsZero }
-
     public var vertical: CGFloat { return self.top + self.bottom }
     public var horizontal: CGFloat { return self.left + self.right }
 

@@ -29,32 +29,28 @@ public struct Schedule {}
 
 public extension Schedule {
 
-    static func once(dt: NSTimeInterval, block: () -> Void) {
-        let poptime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * dt))
-
-        dispatch_after(poptime, Queue.Main, block)
-    }
-
-    static func once(dt: NSTimeInterval) -> Promise<Void> {
+    static func once(_ dt: TimeInterval) -> Promise<Void> {
         return Promise { callback in
-            once(dt) { callback(.Fullfill(())) }
+            DispatchQueue.main.asyncAfter(deadline: .now() + dt) {
+                callback(.fullfill())
+            }
         }
     }
 
-    static func every(dt: NSTimeInterval, block: () throws -> Void) -> Promise<Void> {
-        return once(dt)
-            .then(block)
-            .andThen { every(dt, block: block) }
-    }
-
-    static func countdown(dt: NSTimeInterval, count: UInt, block: (remaining: NSTimeInterval) throws -> Void) -> Promise<Void> {
+    static func countdown(_ dt: TimeInterval, count: UInt, handle: @escaping (TimeInterval) throws -> Void) -> Promise<Void> {
         let promise = Promise<Void>.lift {
-            try block(remaining: Double(count) * dt)
+            try handle(Double(count) * dt)
         }
 
         guard count != 0 else { return promise }
         return promise
             .andThen { once(dt) }
-            .andThen { countdown(dt, count: count - 1, block: block) }
+            .andThen { countdown(dt, count: count - 1, handle: handle) }
+    }
+
+    static func every(_ dt: TimeInterval, handle: @escaping (TimeInterval) throws -> Void) -> Promise<Void> {
+        return countdown(dt, count: UInt.max) {
+            try handle(dt * Double(UInt.max) - $0)
+        }
     }
 }

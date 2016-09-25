@@ -29,8 +29,8 @@ public class ParaboloidLayoutAttributes: UICollectionViewLayoutAttributes {
 
     public var paraboloidValue: CGFloat?
 
-    public override func copyWithZone(zone: NSZone) -> AnyObject {
-        let attributes = super.copyWithZone(zone)
+    public override func copy(with zone: NSZone? = nil) -> Any {
+        let attributes = super.copy(with: zone)
 
         return (attributes as? ParaboloidLayoutAttributes)?
             .then { $0.paraboloidValue = paraboloidValue }

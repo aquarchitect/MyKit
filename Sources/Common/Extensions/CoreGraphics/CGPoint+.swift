@@ -25,16 +25,16 @@
 
 import CoreGraphics
 
-public func CGPointDistanceToPoint(p1: CGPoint, _ p2: CGPoint) -> CGFloat {
-    return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2))
-}
-
 public extension CGPoint {
+
+    func distance(to point: CGPoint) -> CGFloat {
+        return sqrt(pow(self.x - point.x, 2) + pow(self.y - point.y, 2))
+    }
 
     /**
      * Return a point by shifting origins toward self
      */
-    func convertToCoordinate(origin origin: CGPoint) -> CGPoint {
-        return CGPointMake(self.x - origin.x, self.y - origin.y)
+    func convertToCoordinate(withOrigin point: CGPoint) -> CGPoint {
+        return CGPoint(x: self.x - point.x, y: self.y - point.y)
     }
 }

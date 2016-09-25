@@ -1,8 +1,8 @@
 /*
- * AnyGenerator+.swift
+ * Sequence+.swift
  * MyKit
  *
- * Copyright (c) 2016 Hai Nguyen.
+ * Copyright (c) 2015 Hai Nguyen
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,17 @@
  * THE SOFTWARE.
  */
 
-public func + <T>(lhs: AnyGenerator<T>, rhs: AnyGenerator<T>) -> AnyGenerator<T> {
-    return AnyGenerator { lhs.next() ?? rhs.next() }
+/// :nodoc:
+public extension Sequence {
+
+    public func pair<Key: Hashable, Value>(_ transform: (Iterator.Element) throws -> (Key, Value)) rethrows -> Dictionary<Key, Value> {
+        var results: [Key: Value] = Dictionary(minimumCapacity: self.underestimatedCount)
+
+        try self.forEach {
+            let element = try transform($0)
+            results[element.0] = element.1
+        }
+
+        return results
+    }
 }

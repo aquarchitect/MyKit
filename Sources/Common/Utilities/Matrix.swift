@@ -31,7 +31,7 @@ public struct Matrix<T> {
 
     // MARK: Property
 
-    private var elements: [T]
+    fileprivate var elements: [T]
 
     public let rows: Int
     public let columns: Int
@@ -42,10 +42,10 @@ public struct Matrix<T> {
 
     // MARK: Initialization
 
-    public init(rows: Int, columns: Int, repeatedValue value: T) {
+    public init(repeating value: T, rows: Int, columns: Int) {
         self.rows = rows
         self.columns = columns
-        self.elements = Array(count: rows * columns, repeatedValue: value)
+        self.elements = Array(repeating: value, count: rows * columns)
     }
 }
 
@@ -53,7 +53,7 @@ public struct Matrix<T> {
 
 private extension Matrix {
 
-    func isValidIndex(row: Int, _ column: Int) -> Bool {
+    func isValid(row: Int, column: Int) -> Bool {
         return (0..<rows).contains(row) && (0..<columns).contains(column)
     }
 }
@@ -64,11 +64,11 @@ public extension Matrix {
 
     subscript(row: Int, column: Int) -> T {
         get {
-            assert(isValidIndex(row, column), "Index out of bounds.")
+            assert(isValid(row: row, column: column), "Index out of bounds.")
             return elements[row * columns + column]
         }
         set {
-            assert(isValidIndex(row, column), "Index out of bounds")
+            assert(isValid(row: row, column: column), "Index out of bounds")
             elements[row * columns + column] = newValue
         }
     }
@@ -78,6 +78,7 @@ public extension Matrix {
             assert(row < rows, "Row out of bounds.")
             let startIndex = row * columns
             let endIndex = startIndex + columns
+
             return Array(elements[startIndex..<endIndex])
         }
         set {
@@ -85,7 +86,8 @@ public extension Matrix {
             assert(newValue.count == columns, "Column out of bounds")
             let startIndex = row * columns
             let endIndex = startIndex + columns
-            elements.replaceRange(startIndex..<endIndex, with: newValue)
+            
+            elements.replaceSubrange(startIndex..<endIndex, with: newValue)
         }
     }
 
@@ -105,14 +107,14 @@ public extension Matrix {
 extension Matrix: CustomDebugStringConvertible {
 
     public var debugDescription: String {
-        let displayRow: Int -> String = { row in
+        let displayRow: (Int) -> String = { row in
             (0..<self.columns)
                 .map { column in "\(self[row, column])" }
-                .joinWithSeparator(" ")
+                .joined(separator: " ")
         }
 
         return (0..<rows)
             .map(displayRow)
-            .joinWithSeparator("\n")
+            .joined(separator: "\n")
     }
 }

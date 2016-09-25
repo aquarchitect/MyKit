@@ -29,36 +29,35 @@ public extension String {
 
     /// Produce a camel case string
     func camelcased() -> String {
-        return NSCharacterSet(charactersInString: " -_")
-            .andThen { self.componentsSeparatedByCharactersInSet($0) }
+        return (CharacterSet.init(charactersIn:) >>> self.components)(" -_")
             .lazy
-            .enumerate()
-            .map { $0 == 0 ? $1.lowercaseString : $1.capitalizedString }
-            .joinWithSeparator("")
+            .enumerated()
+            .map { $0 == 0 ? $1.lowercased() : $1.capitalized }
+            .joined(separator: "")
     }
 }
 
 public extension String {
 
     /// Known format for string
-    enum Format { case IP, Hexadecimal }
+    enum Format { case ip, hexadecimal }
 
     /// Validate the receiver with format
-    func isValidAs(format: Format) -> Bool {
-        return isMatchedWith(format.pattern)
+    func isValidAs(_ format: Format) -> Bool {
+        return isMatched(withPattern: format.pattern)
     }
 
     /// Return a boolean whether string matches againsts the given pattern
-    func isMatchedWith(pattern: String) -> Bool {
-        return NSPredicate(format: "SELF MATCHES %@", pattern).evaluateWithObject(self)
+    func isMatched(withPattern pattern: String) -> Bool {
+        return NSPredicate(format: "SELF MATCHES %@", pattern).evaluate(with: self)
     }
 }
 
 public extension String {
 
     func toHexUInt() -> UInt? {
-        guard self.isValidAs(.Hexadecimal) else { return nil }
-        let scanner = NSScanner(string: self)
+        guard self.isValidAs(.hexadecimal) else { return nil }
+        let scanner = Scanner(string: self)
             .then { $0.scanLocation = 1 }
 
         guard let hex = scanner.scanHexUInt32() else { return nil }
@@ -70,8 +69,8 @@ private extension String.Format {
 
     var pattern: String {
         switch self {
-        case .IP: return [String](count: 4, repeatedValue: "([01]?\\d\\d?|2[0-4]\\d|25[0-5])").joinWithSeparator("\\.")
-        case .Hexadecimal: return "#[0-9A-Fa-f]{2,6}"
+        case .ip: return [String](repeating: "([01]?\\d\\d?|2[0-4]\\d|25[0-5])", count: 4).joined(separator: "\\.")
+        case .hexadecimal: return "#[0-9A-Fa-f]{2,6}"
         }
     }
 }

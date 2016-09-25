@@ -34,7 +34,7 @@ public extension UIScreen {
     }
 
     var propotionalWidth: CGFloat {
-        let ratio: CGFloat = UIDevice.currentDevice().userInterfaceIdiom == .Phone ? 1 : 2/3
+        let ratio: CGFloat = UIDevice.current.userInterfaceIdiom == .phone ? 1 : 2/3
         return min(self.bounds.width, self.bounds.height) * ratio
     }
 }

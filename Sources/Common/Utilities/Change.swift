@@ -25,23 +25,23 @@
 
 public enum Change<T> {
 
-    case Insert(T)
-    case Delete(T)
+    case insert(T)
+    case delete(T)
 }
 
 public extension Change {
 
     var value: T {
         switch self {
-        case .Delete(let value): return value
-        case .Insert(let value): return value
+        case .delete(let value): return value
+        case .insert(let value): return value
         }
     }
 
-    func then<U>(f: T throws -> U) rethrows -> Change<U> {
+    func then<U>(_ transform: (T) throws -> U) rethrows -> Change<U> {
         switch self {
-        case .Delete(let value): return try .Delete(f(value))
-        case .Insert(let value): return try .Insert(f(value))
+        case .delete(let value): return try .delete(transform(value))
+        case .insert(let value): return try .insert(transform(value))
         }
     }
 }
@@ -50,14 +50,14 @@ public extension Change {
 
     var isDelete: Bool {
         switch self {
-        case .Delete(_): return true
+        case .delete(_): return true
         default: return false
         }
     }
 
     var isInsert: Bool {
         switch self {
-        case .Insert(_): return true
+        case .insert(_): return true
         default: return false
         }
     }

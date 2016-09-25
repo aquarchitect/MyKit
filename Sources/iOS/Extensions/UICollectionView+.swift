@@ -29,11 +29,8 @@ public extension UICollectionView {
 
     enum Update {
 
-        case Automatic(completion: UIView.AnimatingCompletion)
-        /**
-         * Only update view models
-         */
-        case Manual(block: (UICollectionView) -> Void)
+        case lscWithAnimation(UIView.AnimatingCompletion)
+        case manualHandling((UICollectionView) -> Void)
     }
 }
 
@@ -43,13 +40,7 @@ public extension UICollectionView {
 public extension UICollectionView {
 
     final func hasSection(section: Int) -> Bool {
-        return 0..<self.numberOfSections() ~= section
-    }
-
-    final func recalibrateRowTagsWithIndexPaths() {
-        self.indexPathsForVisibleItems().forEach {
-            self.cellForItemAtIndexPath($0)?.tag = serialize($0)
-        }
+        return 0..<self.numberOfSections ~= section
     }
 }
 
@@ -57,155 +48,41 @@ public extension UICollectionView {
 
 public extension UICollectionView {
 
-    final func successorOf(indexPath: NSIndexPath) -> NSIndexPath? {
-        if indexPath.item < self.numberOfItemsInSection(indexPath.section) - 1 {
-            return NSIndexPath(forItem: indexPath.item + 1, inSection: indexPath.section)
-        } else if indexPath.section < self.numberOfSections() - 1 {
-            return NSIndexPath(forItem: 0, inSection: indexPath.section + 1)
+    final func formIndexPath(after indexPath: IndexPath) -> IndexPath? {
+        if indexPath.item < self.numberOfItems(inSection: indexPath.section) - 1 {
+            return IndexPath(item: indexPath.item + 1, section: indexPath.section)
+        } else if indexPath.section < self.numberOfSections - 1 {
+            return IndexPath(item: 0, section: indexPath.section + 1)
         } else { return nil }
     }
 
-    final func predecessorOf(indexPath: NSIndexPath) -> NSIndexPath? {
+    final func formIndexPath(before indexPath: IndexPath) -> IndexPath? {
         if indexPath.item > 0 {
-            return NSIndexPath(forItem: indexPath.item - 1, inSection: indexPath.section)
+            return IndexPath(item: indexPath.item - 1, section: indexPath.section)
         } else if indexPath.section > 0 {
             let section = indexPath.section - 1
-            let item = self.numberOfItemsInSection(section) - 1
+            let item = self.numberOfItems(inSection: section) - 1
 
-            return NSIndexPath(forItem: item, inSection: section)
+            return IndexPath(item: item, section: section)
         } else { return nil }
     }
 
-    final func serialize(indexPath: NSIndexPath) -> Int {
+    final func serialize(indexPath: IndexPath) -> Int {
         return (0..<indexPath.section)
-            .map { self.numberOfItemsInSection($0) }
+            .map { self.numberOfItems(inSection: $0) }
             .lazy
-            .reduce(indexPath.row, combine: +)
+            .reduce(indexPath.row, +)
     }
 
-    final func deserialize(index: Int) -> NSIndexPath {
+    final func deserialize(index: Int) -> IndexPath {
         var (section, count) = (0, 0)
 
-        while case let rows = self.numberOfItemsInSection(section) where count + rows < index {
+        while case let rows = self.numberOfItems(inSection: section),
+            count + rows < index {
             count += rows
             section += 1
         }
 
-        return NSIndexPath(forRow: index - count, inSection: section)
-    }
-}
-
-// MARK: Register Reusable View
-
-public extension UICollectionView {
-
-    final func register<T: UICollectionViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
-        self.registerClass(T.self, forCellWithReuseIdentifier: identifier)
-    }
-
-    final func register<T: UICollectionReusableView>(type: T.Type, forKind kind: String, withReuseIdentifier identifier: String) {
-        self.registerClass(type, forSupplementaryViewOfKind: kind, withReuseIdentifier: identifier)
-    }
-}
-
-/// :nodoc:
-public extension UICollectionView {
-
-    /*
-     * Dragger needs to be an object
-     * in order to user with associatedObject.
-     */
-    private class Dragger: NSObject {
-
-        static var Key = String(self.dynamicType)
-
-        let gesture = UILongPressGestureRecognizer()
-
-        var anchor: NSIndexPath?
-        var tracker: NSIndexPath?
-
-        override func copy() -> AnyObject {
-            return self
-        }
-    }
-
-    private var dragger: Dragger? {
-        get { return objc_getAssociatedObject(self, &Dragger.Key) as? Dragger }
-        set {
-            dragger?.gesture.then(self.removeGestureRecognizer)
-
-            newValue?.gesture.then {
-                $0.addTarget(self, action: #selector(handleMultipleSelectionByDragging(_:)))
-                self.addGestureRecognizer($0)
-            }
-
-            objc_setAssociatedObject(self, &Dragger.Key, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
-        }
-    }
-
-    public var allowsMultipleSelectionByDragging: Bool {
-        get { return dragger != nil }
-        set { dragger = newValue ? Dragger() : nil }
-    }
-
-    internal final func handleMultipleSelectionByDragging(sender: UILongPressGestureRecognizer) {
-        guard case let location = sender.locationInView(self),
-            let indexPath = self.indexPathForItemAtPoint(location),
-            dragger = self.dragger else { return }
-
-        switch sender.state {
-
-        case .Began:
-            self.selectItemAtIndexPath(indexPath, animated: true, scrollPosition: .None)
-            dragger.anchor = indexPath
-            dragger.tracker = indexPath
-
-        case .Changed:
-            guard indexPath != dragger.tracker else { return }
-            selectItemsRecursively(indexPath)
-
-        default:
-            dragger.anchor = nil
-            dragger.tracker = nil
-        }
-    }
-
-    private final func selectItemsRecursively(destination: NSIndexPath) {
-        guard let dragger = self.dragger,
-            anchor = dragger.anchor,
-            tracker = dragger.tracker
-            else { return }
-
-        guard let frontIndexPath = successorOf(tracker),
-            backIndexPath = predecessorOf(tracker)
-            else { return }
-
-        switch tracker.compare(destination) {
-
-        case .OrderedAscending:
-            guard let cell = self.cellForItemAtIndexPath(backIndexPath) else { return }
-
-            if tracker != anchor {
-                cell.selected
-                    ? self.selectItemAtIndexPath(tracker, animated: false, scrollPosition: .None)
-                    : self.deselectItemAtIndexPath(tracker, animated: false)
-            }
-
-            dragger.tracker = frontIndexPath
-            selectItemsRecursively(destination)
-        case .OrderedDescending:
-            guard let cell = self.cellForItemAtIndexPath(frontIndexPath) else { return }
-
-            if tracker != anchor {
-                cell.selected
-                    ? self.selectItemAtIndexPath(tracker, animated: false, scrollPosition: .None)
-                    : self.deselectItemAtIndexPath(tracker, animated: false)
-            }
-
-            dragger.tracker = backIndexPath
-            selectItemsRecursively(destination)
-        case .OrderedSame:
-            self.selectItemAtIndexPath(tracker, animated: true, scrollPosition: .None)
-        }
+        return IndexPath(row: index - count, section: section)
     }
 }

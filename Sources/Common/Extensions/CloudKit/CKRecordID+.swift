@@ -27,7 +27,7 @@ import CloudKit
 
 extension CKRecordID {
 
-    public func targetOf(action: CKReferenceAction) -> CKReference {
+    public func target(of action: CKReferenceAction) -> CKReference {
         return CKReference(recordID: self, action: action)
     }
 }

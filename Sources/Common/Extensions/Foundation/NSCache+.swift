@@ -23,12 +23,11 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-
 public extension NSCache {
 
-    final public func fetchObjectFor<T>(key: AnyObject, @noescape f: Void -> T) -> T {
-        return (self.objectForKey(key) as? Box<T> ??
-                Box(f()).then { self.setObject($0, forKey: key) }).value
+    // FIXME: bug
+
+    func fetchObject(forKey key: KeyType, construct: () -> ObjectType) -> ObjectType {
+        return (self.object(forKey: key) as? Box<ObjectType>)!.value
     }
 }

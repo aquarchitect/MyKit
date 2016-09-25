@@ -29,10 +29,17 @@ public class GrowingTextView: UIControl {
 
     // MARK: Property
 
+    public override var intrinsicContentSize: CGSize {
+        let width = textBox.contentSize.width + self.layoutMargins.horizontal
+        let height = textBox.contentSize.height + self.layoutMargins.vertical
+
+        return CGSize(width: width, height: height)
+    }
+
     public let textBox = UITextView().then {
         $0.showsHorizontalScrollIndicator = false
         $0.textContainer.lineFragmentPadding = 0
-        $0.textContainerInset = UIEdgeInsetsZero
+        $0.textContainerInset = .zero
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -47,26 +54,19 @@ public class GrowingTextView: UIControl {
         super.preservesSuperviewLayoutMargins = true
         super.addSubview(textBox)
 
-        textBox.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
+        textBox.addObserver(self, forKeyPath: "contentSize", options: [.initial, .new], context: nil)
 
-        [(.Left, .LeftMargin),
-         (.Right, .Right),
-         (.Top, .TopMargin),
-         (.Bottom, .BottomMargin)]
-            .map { NSLayoutConstraint(view: textBox, attribute: $0, relatedBy: .Equal, toView: self, attribute: $1, multiplier: 1, constant: 0, priority: 800) }
+        [(.left, .leftMargin),
+         (.right, .right),
+         (.top, .topMargin),
+         (.bottom, .bottomMargin)]
+            .map { NSLayoutConstraint(item: textBox, attribute: $0, relatedBy: .equal, toItem: self, attribute: $1, multiplier: 1, constant: 0).then { $0.priority = 800 }}
             .activate()
     }
 
     deinit { textBox.removeObserver(self, forKeyPath: "contentSize") }
 
     // MARK: System Method
-
-    public override func intrinsicContentSize() -> CGSize {
-        let width = textBox.contentSize.width + self.layoutMargins.horizontal
-        let height = textBox.contentSize.height + self.layoutMargins.vertical
-
-        return CGSize(width: width, height: height)
-    }
 
     public override func layoutMarginsDidChange() {
         self.invalidateIntrinsicContentSize()
@@ -82,7 +82,7 @@ public class GrowingTextView: UIControl {
         }
     }
 
-    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         self.invalidateIntrinsicContentSize()
         self.setNeedsLayout()
     }

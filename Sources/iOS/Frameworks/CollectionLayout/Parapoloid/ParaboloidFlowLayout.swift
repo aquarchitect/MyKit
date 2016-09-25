@@ -29,30 +29,33 @@ public class ParaboloidFlowLayout: SnappingFlowLayout {
 
     // MARK: Property
 
-    public var paraboloidFormula: ParaboloidLayoutFormula?
+    public var paraboloidControler: ParaboloidLayoutController?
 
-    // MARK: System Methods
-
-    public override class func layoutAttributesClass() -> AnyClass {
+    public override class var layoutAttributesClass: AnyClass {
         return ParaboloidLayoutAttributes.self
     }
 
-    public override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        return super.layoutAttributesForElementsInRect(rect)?.map {
-            $0.representedElementCategory == .Cell ? (self.layoutAttributesForItemAtIndexPath($0.indexPath) ?? $0) : $0
+    // MARK: System Methods
+
+
+    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        return super.layoutAttributesForElements(in: rect)?.map {
+            $0.representedElementCategory == .cell ? (self.layoutAttributesForItem(at: $0.indexPath) ?? $0) : $0
         }
     }
 
-    public override func shouldInvalidateLayoutForBoundsChange(newBounds: CGRect) -> Bool {
+    public override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
 
-    public override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        return (super.layoutAttributesForItemAtIndexPath(indexPath)?.copy() as? ParaboloidLayoutAttributes)?.then {
-            guard let contentOffset = self.collectionView?.contentOffset else { return }
+    public override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return (super.layoutAttributesForItem(at: indexPath as IndexPath)?.copy() as? ParaboloidLayoutAttributes).flatMap {
+            guard let contentOffset = self.collectionView?.contentOffset else { return nil }
 
-            let center = $0.center.convertToCoordinate(origin: contentOffset)
-            $0.paraboloidValue = paraboloidFormula?.zValue(atPoint: center)
+            let center = $0.center.convertToCoordinate(withOrigin: contentOffset)
+            $0.paraboloidValue = paraboloidControler?.zValue(atPoint: center)
+
+            return $0
         }
     }
 }

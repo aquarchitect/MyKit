@@ -25,6 +25,11 @@
 
 import CoreData
 
+fileprivate enum FileIOError: Error {
+
+    case unableToOpen(file: String)
+}
+
 public protocol PersistentStack {
 
     var context: NSManagedObjectContext { get }
@@ -39,25 +44,26 @@ public extension PersistentStack {
 
 public  extension PersistentStack {
 
-    static func contextFor(app name: String, type: String, at directory: NSSearchPathDirectory = .DocumentDirectory) throws -> NSManagedObjectContext {
-        let url = NSFileManager.defaultManager()
-            .URLsForDirectory(directory, inDomains: .UserDomainMask)
+    static func context(forApp name: String, type: String, at directory: FileManager.SearchPathDirectory = .documentDirectory) throws -> NSManagedObjectContext {
+        let url = FileManager.`default`
+            .urls(for: directory, in: .userDomainMask)
             .last?
-            .then { $0.URLByAppendingPathComponent("\(name)Data") }
+            .appendingPathComponent("\(name)Data")
 
-        let model = NSBundle.mainBundle()
-            .URLForResource(name, withExtension: "momd")?
-            .andThen { NSManagedObjectModel(contentsOfURL: $0) }
+        let model = Bundle.main
+            .url(forResource: name, withExtension: "momd")
+            .flatMap(NSManagedObjectModel.init(contentsOf:))
 
-        guard let _url = url else { throw FileIOError.UnableToOpen(file: "\(name)Data")}
-        guard let _model = model else { throw FileIOError.UnableToOpen(file: "\(name).momd") }
+
+        guard let _url = url else { throw FileIOError.unableToOpen(file: "\(name)Data")}
+        guard let _model = model else { throw FileIOError.unableToOpen(file: "\(name).momd") }
 
         let coordinator: NSPersistentStoreCoordinator = try NSPersistentStoreCoordinator(managedObjectModel: _model)
-            .then { try $0.addPersistentStoreWithType(type, configuration: nil, URL: _url, options: nil) }
+            .then { try $0.addPersistentStore(ofType: type, configurationName: nil, at: _url, options: nil) }
 
-        return NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType).then {
+        return NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType).then {
             $0.persistentStoreCoordinator = coordinator
-            $0.undoManager = NSUndoManager()
+            $0.undoManager = UndoManager()
         }
     }
 }

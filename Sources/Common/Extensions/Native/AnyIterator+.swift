@@ -1,8 +1,8 @@
 /*
- * Timing.swift
+ * AnyIterator+.swift
  * MyKit
  *
- * Copyright (c) 2015 Hai Nguyen
+ * Copyright (c) 2016 Hai Nguyen.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,13 +23,6 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-
-/// Measures and print execution elapsed time
-public func measure(@noescape block: Void -> Void) {
-    let start = CFAbsoluteTimeGetCurrent()
-    block()
-    let end = CFAbsoluteTimeGetCurrent()
-
-    print("Elapsed time is \(end - start) seconds.")
+public func + <T>(lhs: AnyIterator<T>, rhs: AnyIterator<T>) -> AnyIterator<T> {
+    return AnyIterator { lhs.next() ?? rhs.next() }
 }

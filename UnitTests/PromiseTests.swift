@@ -36,17 +36,17 @@ final class PromiseTests: XCTestCase {
     func testFullfilledArray() {
         let expectation = expectationWithDescription(#function)
 
-        let ps = [(0.5, .Fullfill(5)),
-                  (0.5, .Fullfill(10)),
-                  (1.0, .Fullfill(15))]
+        let ps = [(0.5, .fullfill(5)),
+                  (0.5, .fullfill(10)),
+                  (1.0, .fullfill(15))]
                     .map(delayFor)
 
         Promise<Int>.when(ps).resolve {
             switch $0 {
-            case .Fullfill(let value):
+            case .fullfill(let value):
                 XCTAssertEqual(value, [5, 10, 15])
                 expectation.fulfill()
-            case .Reject(let error):
+            case .reject(let error):
                 XCTFail("Error \(error) Occurred")
             }
         }
@@ -58,19 +58,19 @@ final class PromiseTests: XCTestCase {
     func testRejectedArray() {
         let expectation = expectationWithDescription(#function)
 
-        let ps = [(0.5, .Fullfill(5)),
-                  (0.5, .Reject(Error.Failed)),
-                  (1.0, .Fullfill(15))]
+        let ps = [(0.5, .fullfill(5)),
+                  (0.5, .reject(Error.Failed)),
+                  (1.0, .fullfill(15))]
                     .map(delayFor)
 
         Promise<Int>.when(ps).resolve {
             switch $0 {
-            case .Fullfill(let value):
+            case .fullfill(let value):
                 XCTFail("Promise callback with value \(value)")
-            case .Reject(Error.Failed):
+            case .reject(Error.Failed):
                 XCTAssert(true)
                 expectation.fulfill()
-            case .Reject(let error):
+            case .reject(let error):
                 XCTFail("Error \(error) Occurred")
             }
         }
@@ -81,15 +81,15 @@ final class PromiseTests: XCTestCase {
     func testFullfilledTuple() {
         let expectation = expectationWithDescription(#function)
 
-        let p1 = delayFor(0.5, result: .Fullfill(true))
-        let p2 = delayFor(1.0, result: .Fullfill("Success"))
+        let p1 = delayFor(0.5, result: .fullfill(true))
+        let p2 = delayFor(1.0, result: .fullfill("Success"))
 
         (p1 +++ p2).resolve {
             switch $0 {
-            case .Fullfill(let value):
+            case .fullfill(let value):
                 XCTAssert(value.0 && value.1 == "Success")
                 expectation.fulfill()
-            case .Reject(let error):
+            case .reject(let error):
                 XCTFail("Error \(error) Occurred")
             }
         }
@@ -100,17 +100,17 @@ final class PromiseTests: XCTestCase {
     func testRejectedTuple() {
         let expectation = expectationWithDescription(#function)
 
-        let p1 = delayFor(0.5, result: .Fullfill(true))
-        let p2 = delayFor(1.0, result: Result<String>.Reject(Error.Failed))
+        let p1 = delayFor(0.5, result: .fullfill(true))
+        let p2 = delayFor(1.0, result: Result<String>.reject(Error.Failed))
 
         (p1 +++ p2).resolve {
             switch $0 {
-            case .Fullfill(let value):
+            case .fullfill(let value):
                 XCTFail("Promise callback with value \(value)")
-            case .Reject(Error.Failed):
+            case .reject(Error.Failed):
                 XCTAssert(true)
                 expectation.fulfill()
-            case .Reject(let error):
+            case .reject(let error):
                 XCTFail("Error \(error) Occurred")
             }
         }

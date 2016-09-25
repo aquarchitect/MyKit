@@ -1,8 +1,8 @@
 /*
- * NSEntityDescription+.swift
+ * RangeReplaceableCollection+.swift
  * MyKit
  *
- * Copyright (c) 2015 Hai Nguyen
+ * Copyright (c) 2016 Hai Nguyen.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,19 +23,22 @@
  * THE SOFTWARE.
  */
 
-import CoreData
+import Foundation
 
-public extension NSEntityDescription {
+public extension RangeReplaceableCollection where Index == Int {
 
-    convenience init<T: NSManagedObject>(type: T.Type) {
-        let name = type.entityName
-
-        self.init()
-        self.name = name
-        self.managedObjectClassName = name
+    mutating func apply(changes: [Change<(index: Index, element: Iterator.Element)>]) {
+        for change in changes {
+            switch change {
+            case .delete(let step): self.remove(at: step.index)
+            case .insert(let step): self.insert(step.element, at: step.index)
+            }
+        }
     }
 
-    static func entityFor<T: NSManagedObject>(type: T.Type, context: NSManagedObjectContext) -> NSEntityDescription? {
-        return NSEntityDescription.entityForName(type.entityName, inManagedObjectContext: context)
+    func applying(changes: [Change<(index: Index, element: Iterator.Element)>]) -> Self {
+        var result = self
+        result.apply(changes: changes)
+        return result
     }
 }

@@ -25,31 +25,29 @@
 
 import UIKit
 
-public enum TableUpdate {
-
-    case Automatic(animation: UITableViewRowAnimation)
-    case Manual(block: (UITableView) -> Void)
-}
-
 // MARK: - Miscellaneous
 
 /// :nodoc:
 public extension UITableView {
 
-    var bottomedIndexPath: NSIndexPath {
+    var bottomedIndexPath: IndexPath {
         let section = self.numberOfSections - 1
-        let row = self.numberOfRowsInSection(section)
-        return NSIndexPath(forRow: row, inSection: section)
+        let row = self.numberOfRows(inSection: section)
+
+        return .init(row: row, section: section)
     }
 
-    final func hasSesction(section: Int) -> Bool {
+    final func hasSection(section: Int) -> Bool {
         return 0..<self.numberOfSections ~= section
     }
+}
 
-    final func recalibrateRowTagsWithIndexPaths() {
-        self.indexPathsForVisibleRows?.forEach {
-            self.cellForRowAtIndexPath($0)?.tag = serialize($0)
-        }
+public extension UITableView {
+
+    enum Update {
+
+        case lscWithAnimation(UITableViewRowAnimation)
+        case manualHandling((UITableView) -> Void)
     }
 }
 
@@ -57,53 +55,41 @@ public extension UITableView {
 
 public extension UITableView {
 
-    final func successorOf(indexPath: NSIndexPath) -> NSIndexPath? {
-        if indexPath.row < self.numberOfRowsInSection(indexPath.section) - 1 {
-            return NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
+    final func formIndexPath(after indexPath: IndexPath) -> IndexPath? {
+        if indexPath.row < self.numberOfRows(inSection: indexPath.section) - 1 {
+            return IndexPath(row: indexPath.row + 1, section: indexPath.section)
         } else if indexPath.section < self.numberOfSections - 1 {
-            return NSIndexPath(forRow: 0, inSection: indexPath.section + 1)
+            return IndexPath(row: 0, section: indexPath.section + 1)
         } else { return nil }
     }
 
-    final func predecessorOf(indexPath: NSIndexPath) -> NSIndexPath? {
+    final func formIndexPath(before indexPath: IndexPath) -> IndexPath? {
         if indexPath.row > 0 {
-            return NSIndexPath(forRow: indexPath.row - 1, inSection: indexPath.section)
+            return IndexPath(row: indexPath.row - 1, section: indexPath.section)
         } else if indexPath.section > 0 {
             let section = indexPath.section - 1
-            let row = self.numberOfRowsInSection(section) - 1
+            let row = self.numberOfRows(inSection: section) - 1
 
-            return NSIndexPath(forRow: row, inSection: section)
+            return IndexPath(row: row, section: section)
         } else { return nil }
     }
 
     final func serialize(indexPath: NSIndexPath) -> Int {
         return (0..<indexPath.section)
-            .map { self.numberOfRowsInSection($0) }
+            .map { self.numberOfRows(inSection: $0) }
             .lazy
-            .reduce(indexPath.row, combine: +)
+            .reduce(indexPath.row, +)
     }
 
-    final func deserialize(index: Int) -> NSIndexPath {
+    final func deserialize(index: Int) -> IndexPath {
         var (section, count) = (0, 0)
 
-        while case let rows = self.numberOfRowsInSection(section) where count + rows < index {
+        while case let rows = self.numberOfRows(inSection: section),
+            count + rows < index {
             count += rows
             section += 1
         }
 
-        return NSIndexPath(forRow: index - count, inSection: section)
-    }
-}
-
-// MARK: - Register Reusable View
-
-public extension UITableView {
-
-    final func register<T: UITableViewCell>(type: T.Type, forReuseIdentifier identifier: String) {
-        self.registerClass(type, forCellReuseIdentifier: identifier)
-    }
-
-    final func register<T: UITableViewHeaderFooterView>(type: T.Type, forReuseIdentifier identifier: String) {
-        self.registerClass(type, forHeaderFooterViewReuseIdentifier: identifier)
+        return IndexPath(row: index - count, section: section)
     }
 }

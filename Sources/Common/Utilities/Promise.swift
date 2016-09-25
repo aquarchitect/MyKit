@@ -25,13 +25,13 @@
 
 import Foundation
 
-public enum PromiseError: ErrorType { case NoData }
+public enum PromiseError: Error { case noData }
 
 public struct Promise<T> {
 
-    private let operation: Result<T>.Callback -> Void
+    fileprivate let operation: (@escaping Result<T>.Callback) -> Void
 
-    public init(_ operation: Result<T>.Callback -> Void) {
+    public init(_ operation: @escaping (@escaping Result<T>.Callback) -> Void) {
         self.operation = operation
     }
 }
@@ -43,11 +43,7 @@ public extension Promise {
     /** 
      * Execute promise with a callback
      */
-    func resolve(callback: Result<T>.Callback) {
-        self.operation(callback)
-    }
-
-    func resolve(callback: Result<T>.Callback? = nil) {
+    func resolve(_ callback: Result<T>.Callback? = nil) {
         self.operation { result in
             callback?(result)
         }
@@ -59,10 +55,10 @@ public extension Promise {
     /**
      * Transform value type
      */
-    func then<U>(f: T throws -> U) -> Promise<U> {
+    func then<U>(_ transform: @escaping (T) throws -> U) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { result in
-                callback(result.then(f))
+                callback(result.then(transform))
             }
         }
     }
@@ -70,13 +66,13 @@ public extension Promise {
     /**
      * Transform promise type
      */
-    func andThen<U>(f: T -> Promise<U>) -> Promise<U> {
+    func andThen<U>(_ transform: @escaping (T) -> Promise<U>) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { result in
                 do {
-                    try (result.resolve >>> f)().resolve(callback)
+                    try (result.resolve >>> transform)().resolve(callback)
                 } catch {
-                    callback(.Reject(error))
+                    callback(.reject(error))
                 }
             }
         }
@@ -85,37 +81,37 @@ public extension Promise {
 
 public extension Promise {
 
-    func onResult(f: Result<T> -> Void) -> Promise {
+    func onResult(_ execute: @escaping (Result<T>) -> Void) -> Promise {
         return Promise { callback in
             self.resolve { result in
-                f(result)
+                execute(result)
                 callback(result)
             }
         }
     }
 
-    func onSuccess(f: T -> Void) -> Promise {
+    func onSuccess(_ execute: @escaping (T) -> Void) -> Promise {
         return onResult {
-            if case .Fullfill(let value) = $0 { f(value) }
+            if case .fullfill(let value) = $0 { execute(value) }
         }
     }
 
-    func onFailure(f: ErrorType -> Void) -> Promise {
+    func onFailure(_ execute: @escaping (Error) -> Void) -> Promise {
         return onResult {
-            if case .Reject(let error) = $0 { f(error) }
+            if case .reject(let error) = $0 { execute(error) }
         }
     }
 }
 
 public extension Promise {
 
-    func recover(f: ErrorType -> Promise) -> Promise {
+    func recover(_ transform: @escaping (Error) -> Promise) -> Promise {
         return Promise { callback in
             self.resolve { result in
                 do {
-                    callback(.Fullfill(try result.resolve()))
+                    callback(.fullfill(try result.resolve()))
                 } catch {
-                    f(error).resolve(callback)
+                    transform(error).resolve(callback)
                 }
             }
         }
@@ -125,10 +121,10 @@ public extension Promise {
         return Promise { callback in
             self.resolve { result in
                 do {
-                    callback(.Fullfill(try result.resolve()))
+                    callback(.fullfill(try result.resolve()))
                 } catch {
                     if count == 0 {
-                        callback(.Reject(error))
+                        callback(.reject(error))
                     } else {
                         self.retry(attempCount: count - 1).resolve(callback)
                     }
@@ -142,9 +138,9 @@ public extension Promise {
 
     func inBackground() -> Promise {
         return Promise { callback in
-            dispatch_async(Queue.Global.Background) {
+            DispatchQueue.global(qos: .background).async {
                 self.resolve { result in
-                    dispatch_async(Queue.Main) {
+                    DispatchQueue.main.sync {
                         callback(result)
                     }
                 }
@@ -152,12 +148,12 @@ public extension Promise {
         }
     }
 
-    func inDispatchGroup(group: dispatch_group_t) -> Promise {
+    func inDispatchGroup(_ group: DispatchGroup) -> Promise {
         return Promise { callback in
-            dispatch_group_enter(group)
+            group.enter()
             self.resolve { result in
                 callback(result)
-                dispatch_group_leave(group)
+                group.leave()
             }
         }
     }
@@ -170,8 +166,8 @@ public extension Promise {
     /**
      * Queue up promises asynchronously
      */
-    static func when(promises: [Promise]) -> Promise<[T]> {
-        let group = dispatch_group_create()
+    static func when(_ promises: [Promise]) -> Promise<[T]> {
+        let group = DispatchGroup()
 
         return Promise<[T]> { callback in
             var outputs: [Result<T>] = []
@@ -182,19 +178,19 @@ public extension Promise {
                 }
             }
 
-            dispatch_group_notify(group, Queue.Main) {
+            group.notify(queue: .main) {
                 callback(Result<T>.zip(outputs))
             }
         }
     }
 
-    static func when(promises: Promise...) -> Promise<[T]> {
+    static func when(_ promises: Promise...) -> Promise<[T]> {
         return when(promises)
     }
 
-    static func lift(f: () throws -> T) -> Promise {
+    static func lift(_ construct: @escaping () throws -> T) -> Promise {
         return Promise { callback in
-            callback(.init(f: f))
+            callback(.init(construct: construct))
         }
     }
 }
@@ -202,8 +198,8 @@ public extension Promise {
 /**
  * Queue up promises of 2 dirrent types aysnchronously
  */
-public func when<A, B>(promiseA: Promise<A>, _ promiseB: Promise<B>) -> Promise<(A, B)> {
-    let group = dispatch_group_create()
+public func when<A, B>(_ promiseA: Promise<A>, _ promiseB: Promise<B>) -> Promise<(A, B)> {
+    let group = DispatchGroup()
 
     return Promise<(A, B)> { callback in
         var resultA: Result<A>!, resultB: Result<B>!
@@ -216,7 +212,7 @@ public func when<A, B>(promiseA: Promise<A>, _ promiseB: Promise<B>) -> Promise<
             resultB = result
         }
 
-        dispatch_group_notify(group, Queue.Main) {
+        group.notify(queue: .main) {
             callback(zip(resultA, resultB))
         }
     }

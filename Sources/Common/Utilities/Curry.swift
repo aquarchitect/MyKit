@@ -23,16 +23,20 @@
  * THE SOFTWARE.
  */
 
-infix operator >>> { associativity left }
+precedencegroup Currying {
+    associativity: left
+}
 
-public func >>> <A, B, C>(lhs: A -> B, rhs: B -> C) -> (A -> C) {
+infix operator >>>: Currying
+
+public func >>> <A, B, C>(lhs: @escaping (A) -> B, rhs: @escaping (B) -> C) -> (A) -> C {
     return { rhs(lhs($0)) }
 }
 
-public func >>> <A, B, C>(lhs: A throws -> B, rhs: B throws -> C) -> (A throws -> C) {
+public func >>> <A, B, C>(lhs: @escaping (A) throws -> B, rhs: @escaping (B) throws -> C) -> (A) throws -> C {
     return { try rhs(try lhs($0)) }
 }
 
-public func >>> <T>(@autoclosure lhs: Void -> T, rhs: T -> Void) {
+public func >>> <T>(lhs: () -> T, rhs: (T) -> Void) {
     rhs(lhs())
 }

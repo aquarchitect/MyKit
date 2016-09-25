@@ -27,10 +27,10 @@ import CoreData
 
 public extension NSAttributeDescription {
 
-    convenience init(name: String, type: NSAttributeType, optional: Bool = false) {
+    convenience init(name: String, type: NSAttributeType, isOptional: Bool = false) {
         self.init()
         self.name = name
-        self.optional = optional
+        self.isOptional = isOptional
         self.attributeType = type
     }
 }

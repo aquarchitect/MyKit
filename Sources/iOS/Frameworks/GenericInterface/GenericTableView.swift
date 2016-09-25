@@ -29,7 +29,7 @@ public class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableVi
 
     // MARK: Property
 
-    public private(set) var rowModels: [Model] = []
+    public fileprivate(set) var rowModels: [Model] = []
 
     public var rowRenderer: ((Row, Model) -> Void)? {
         didSet { self.reloadData() }
@@ -37,22 +37,25 @@ public class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableVi
 
     // MARK: Initialization
 
+    public required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     public override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
         super.showsHorizontalScrollIndicator = false
-        super.register(Row.self, forReuseIdentifier: String(Row.self))
+        super.register(Row.self, forCellReuseIdentifier: "\(type(of: Row.self))")
         super.dataSource = self
     }
 
     // MARK: Table View Data Source
 
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rowModels.count
     }
 
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier(String(Row.self), forIndexPath: indexPath).then {
-            $0.tag = tableView.serialize(indexPath)
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(withIdentifier: "\(type(of: Row.self))", for: indexPath).then {
             rowRenderer?($0 as! Row, rowModels[indexPath.row])
         }
     }
@@ -60,33 +63,24 @@ public class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableVi
 
 public extension GenericTableView {
 
-    /**
-     Render table view rows with new models.
-     
-     If animation is not specified, table view only updates
-     the view models property without upgrading the view.
-     Otherwise, LSC is used to compute the diff and animate
-     the changes accordingly.
-     */
-    func render(rowModels models: [Model], update: TableUpdate) {
+    func render(rowModels: [Model], update: Update) {
         /*
          * TODO: Optimize diff computing by estimating the possible amount of
          * rows can be displayed on screen at once.
          */
-
         switch update {
-        case .Automatic(let animation):
-            let (reloads, inserts, deletes) = rowModels.compare(models, inSection: 0)
-            rowModels = models
+        case .lscWithAnimation(let animation):
+            let updates = rowModels.compare(rowModels, section: 0)
+            self.rowModels = rowModels
 
             self.beginUpdates()
-            self.reloadRowsAtIndexPaths(reloads, withRowAnimation: animation)
-            self.deleteRowsAtIndexPaths(deletes, withRowAnimation: animation)
-            self.insertRowsAtIndexPaths(inserts, withRowAnimation: animation)
+            self.reloadRows(at: updates.reloads, with: animation)
+            self.deleteRows(at: updates.deletes, with: animation)
+            self.insertRows(at: updates.inserts, with: animation)
             self.endUpdates()
-        case .Manual(let block):
-            rowModels = models
-            block(self)
+        case .manualHandling(let handle):
+            self.rowModels = rowModels
+            handle(self)
         }
     }
 }

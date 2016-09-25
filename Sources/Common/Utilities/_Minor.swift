@@ -24,9 +24,4 @@
  */
 
 
-enum FileIOError: ErrorType {
-
-    case UnableToOpen(file: String)
-}
-
 public protocol ViewModelType {}

@@ -32,45 +32,45 @@ public extension CKDatabase {
             let operation = CKFetchRecordsOperation.fetchCurrentUserRecordOperation()
             operation.perRecordCompletionBlock = {
                 if let error = $2 {
-                    callback(.Reject(error))
+                    callback(.reject(error))
                 } else if let record = $0 {
-                    callback(.Fullfill(record))
+                    callback(.fullfill(record))
                 } else {
-                    callback(.Reject(PromiseError.NoData))
+                    callback(.reject(PromiseError.noData))
                 }
             }
             return operation
-        } >>> self.addOperation)
+        } >>> self.add)
     }
 }
 
 public extension CKDatabase {
 
-    private func transform<T>(callback: Result<T>.Callback) -> (T?, NSError?) -> Void {
+    private func transform<T>(_ callback: @escaping Result<T>.Callback) -> (T?, Error?) -> Void {
         return {
             if let error = $1 {
-                callback(.Reject(error))
+                callback(.reject(error))
             } else if let result = $0 {
-                callback(.Fullfill(result))
+                callback(.fullfill(result))
             } else {
-                callback(.Reject(PromiseError.NoData))
+                callback(.reject(PromiseError.noData))
             }
         }
     }
 
     public func save(record: CKRecord) -> Promise<CKRecord> {
-        return Promise(transform >>> { self.saveRecord(record, completionHandler: $0) })
+        return Promise(transform >>> { self.save(record, completionHandler: $0) })
     }
 
     public func delete(recordID: CKRecordID) -> Promise<CKRecordID> {
-        return Promise(transform >>> { self.deleteRecordWithID(recordID, completionHandler: $0) })
+        return Promise(transform >>> { self.delete(withRecordID: recordID, completionHandler: $0) })
     }
 
     public func fetch(recordID: CKRecordID) -> Promise<CKRecord> {
-        return Promise(transform >>> { self.fetchRecordWithID(recordID, completionHandler: $0) })
+        return Promise(transform >>> { self.fetch(withRecordID: recordID, completionHandler: $0) })
     }
 
     public func perform(query: CKQuery, zone: CKRecordZoneID? = nil) -> Promise<[CKRecord]> {
-        return Promise(transform >>> { self.performQuery(query, inZoneWithID: zone, completionHandler: $0) })
+        return Promise(transform >>> { self.perform(query, inZoneWith: zone, completionHandler: $0) })
     }
 }

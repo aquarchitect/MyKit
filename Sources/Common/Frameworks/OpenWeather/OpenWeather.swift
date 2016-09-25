@@ -31,26 +31,26 @@ public final class OpenWeather {
 
     public enum Format: String {
 
-        case Celsius = "metric"
-        case Fahrenheit = "imperial"
+        case celsius = "metric"
+        case fahrenheit = "imperial"
     }
 
-    private enum Method: String {
+    fileprivate enum Method: String {
 
-        case CurrentWeather = "/weather?"
-        case DailyForecast = "/forecast/daily?"
+        case currentWeather = "/weather?"
+        case dailyForecast = "/forecast/daily?"
     }
 
-    private indirect enum Component {
+    fileprivate indirect enum Component {
 
-        case APIKey(String)
-        case Language(String)
-        case Units(Format)
-        case ReturnedDays(Int)
-        case CityName(String)
-        case CityID(Int)
-        case LocationCoordinate(CLLocationCoordinate2D)
-        case Compound([Component])
+        case apiKey(String)
+        case language(String)
+        case units(Format)
+        case returnedDays(Int)
+        case cityName(String)
+        case cityID(Int)
+        case locationCoordinate(CLLocationCoordinate2D)
+        case compound([Component])
     }
 
     // MARK: Property
@@ -64,7 +64,7 @@ public final class OpenWeather {
 
     // MARK: Initialization
 
-    public init(apiKey: String, version: Double = 2.5, language: String = "en", format: Format = .Celsius) {
+    public init(apiKey: String, version: Double = 2.5, language: String = "en", format: Format = .celsius) {
         self.apiKey = apiKey
         self.version = version
         self.language = language
@@ -73,11 +73,13 @@ public final class OpenWeather {
 
     // MARK: Support Method
 
-    private func fetch(method: Method, components comps: Component...) -> Promise<[String: AnyObject]> {
-        let baseComps: [Component] = [.APIKey(apiKey), .Language(language), .Units(format)]
-        let fullURL = baseURL + String(version) + (method + Component.Compound(baseComps + comps))
+    fileprivate func fetch(method: Method, components comps: Component...) -> Promise<[String: AnyObject]> {
+        let baseComps: [Component] = [.apiKey(apiKey),
+                                      .language(language),
+                                      .units(format)]
+        let fullURL = baseURL + String(version) + (method + Component.compound(baseComps + comps))
 
-        return NSURL(string: fullURL)?.andThen(NSURLSession.sharedSession().data) ?? Promise { $0(.Fullfill([:])) }
+        return URL(string: fullURL).map(URLSession.shared.dataTask as (URL) -> Promise<[String: AnyObject]>) ?? Promise { $0(.fullfill([:])) }
     }
 }
 
@@ -85,30 +87,30 @@ public extension OpenWeather {
 
     // MARK: Current Weather Network Calls
 
-    func fetchCurrentWeatherOf(city name: String) -> Promise<[String: AnyObject]> {
-        return fetch(.CurrentWeather, components: .CityName(name))
+    func fetchcurrentWeatherOf(city name: String) -> Promise<[String: AnyObject]> {
+        return fetch(method: .currentWeather, components: .cityName(name))
     }
 
-    func fetchCurrentWeatherOf(city id: Int) -> Promise<[String: AnyObject]> {
-        return fetch(.CurrentWeather, components: .CityID(id))
+    func fetchcurrentWeatherOf(city id: Int) -> Promise<[String: AnyObject]> {
+        return fetch(method: .currentWeather, components: .cityID(id))
     }
 
-    func fetchCurrentWeatherAt(location coord: CLLocationCoordinate2D) -> Promise<[String: AnyObject]> {
-        return fetch(.CurrentWeather, components: .LocationCoordinate(coord))
+    func fetchcurrentWeatherAt(location coord: CLLocationCoordinate2D) -> Promise<[String: AnyObject]> {
+        return fetch(method: .currentWeather, components: .locationCoordinate(coord))
     }
 
     // MARK: Daily Forecast Network Calls
 
-    func fetchDailyForecastOf(city name: String, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
-        return fetch(.DailyForecast, components: .CityName(name), .ReturnedDays(count))
+    func fetchdailyForecastOf(city name: String, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
+        return fetch(method: .dailyForecast, components: .cityName(name), .returnedDays(count))
     }
 
-    func fetchDailyForecastOf(city id: Int, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
-        return fetch(.DailyForecast, components: .CityID(id), .ReturnedDays(count))
+    func fetchdailyForecastOf(city id: Int, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
+        return fetch(method: .dailyForecast, components: .cityID(id), .returnedDays(count))
     }
 
-    func fetchDailyForecastAt(location coord: CLLocationCoordinate2D, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
-        return fetch(.DailyForecast, components: .LocationCoordinate(coord), .ReturnedDays(count))
+    func fetchdailyForecastAt(location coord: CLLocationCoordinate2D, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
+        return fetch(method: .dailyForecast, components: .locationCoordinate(coord), .returnedDays(count))
     }
 }
 
@@ -120,14 +122,14 @@ private extension OpenWeather.Component {
 
     var query: String {
         switch self {
-        case .APIKey(let key): return "APPID=\(key)"
-        case .Language(let language): return "lang=\(language)"
-        case .Units(let format): return "units=\(format.rawValue)"
-        case .ReturnedDays(let count): return "cnt=\(count)"
-        case .CityName(let name): return "q=\(name)"
-        case .CityID(let id): return "id=\(id)"
-        case .LocationCoordinate(let coord): return "lat=\(coord.latitude)&lon=\(coord.longitude)"
-        case .Compound(let comps): return comps.map { $0.query }.joinWithSeparator("&")
+        case .apiKey(let key): return "APPID=\(key)"
+        case .language(let language): return "lang=\(language)"
+        case .units(let format): return "units=\(format.rawValue)"
+        case .returnedDays(let count): return "cnt=\(count)"
+        case .cityName(let name): return "q=\(name)"
+        case .cityID(let id): return "id=\(id)"
+        case .locationCoordinate(let coord): return "lat=\(coord.latitude)&lon=\(coord.longitude)"
+        case .compound(let comps): return comps.map { $0.query }.joined(separator: "&")
         }
     }
 }

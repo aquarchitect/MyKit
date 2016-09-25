@@ -26,14 +26,14 @@
 /// Constant that helps define results of a callback
 public enum Result<T> {
 
-    public typealias Callback = Result -> Void
+    public typealias Callback = (Result) -> Void
 
-    case Fullfill(T)
-    case Reject(ErrorType)
+    case fullfill(T)
+    case reject(Error)
 
-    public init(@noescape f: () throws -> T) {
-        do { self = .Fullfill(try f()) }
-        catch { self = .Reject(error) }
+    public init(construct: () throws -> T) {
+        do { self = .fullfill(try construct()) }
+        catch { self = .reject(error) }
     }
 }
 
@@ -42,8 +42,8 @@ public extension Result {
     /// Unwrap in result into values
     func resolve() throws -> T {
         switch self {
-        case .Fullfill(let value): return value
-        case .Reject(let error): throw error
+        case .fullfill(let value): return value
+        case .reject(let error): throw error
         }
     }
 }
@@ -51,48 +51,48 @@ public extension Result {
 public extension Result {
 
     /// Transfrom the result of one type to another with a potential error
-    func then<U>(f: T throws -> U) -> Result<U> {
+    func then<U>(_ transform: (T) throws -> U) -> Result<U> {
         switch self {
-        case .Fullfill(let value):
+        case .fullfill(let value):
             do {
-                return .Fullfill(try f(value))
+                return .fullfill(try transform(value))
             } catch {
-                return .Reject(error)
+                return .reject(error)
             }
-        case .Reject(let error):
-            return .Reject(error)
+        case .reject(let error):
+            return .reject(error)
         }
     }
 
-    func andThen<U>(f: T -> Result<U>) -> Result<U> {
+    func andThen<U>(_ transform: (T) -> Result<U>) -> Result<U> {
         do {
-            return try (resolve >>> f)()
+            return transform(try resolve())
         } catch {
-            return Result<U>.Reject(error)
+            return Result<U>.reject(error)
         }
     }
 }
 
 public extension Result {
 
-    static func zip(results: [Result]) -> Result<[T]> {
-        return results.reduce(.Fullfill([])) {
+    static func zip(_ results: [Result]) -> Result<[T]> {
+        return results.reduce(.fullfill([])) {
             do {
                 let result = (try $0.resolve()) + [try $1.resolve()]
-                return .Fullfill(result)
+                return .fullfill(result)
             } catch {
-                return .Reject(error)
+                return .reject(error)
             }
         }
     }
 }
 
-public func zip<A, B>(resultA: Result<A>, _ resultB: Result<B>) -> Result<(A, B)> {
+public func zip<A, B>(_ resultA: Result<A>, _ resultB: Result<B>) -> Result<(A, B)> {
     do {
         let a = try resultA.resolve()
         let b = try resultB.resolve()
-        return .Fullfill((a, b))
+        return .fullfill((a, b))
     } catch {
-        return .Reject(error)
+        return .reject(error)
     }
 }

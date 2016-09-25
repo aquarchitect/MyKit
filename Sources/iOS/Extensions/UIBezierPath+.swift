@@ -24,6 +24,7 @@
  */
 
 import UIKit
+import CoreGraphics
 
 public extension UIBezierPath {
 
@@ -36,14 +37,14 @@ public extension UIBezierPath {
         self.init(points: points)
     }
 
-    func drawLines(points: [CGPoint]) {
+    func drawLines(_ points: [CGPoint]) {
         precondition(points.count > 1, "Invalid number of points!")
 
-        self.moveToPoint(points.first!)
-        points.dropFirst().forEach(self.addLineToPoint)
+        self.move(to: points.first!)
+        points.dropFirst().forEach(self.addLine)
     }
 
-    func drawLines(points: CGPoint...) {
+    func drawLines(_ points: CGPoint...) {
         drawLines(points)
     }
 }
@@ -51,12 +52,13 @@ public extension UIBezierPath {
 public extension UIBezierPath {
 
     final func outlineStroke() -> UIBezierPath {
-        let path = CGPathCreateCopyByStrokingPath(self.CGPath,
-                                                  nil,
-                                                  self.lineWidth,
-                                                  self.lineCapStyle,
-                                                  self.lineJoinStyle,
-                                                  self.miterLimit)
-        return UIBezierPath(CGPath: path!)
+        return CGPath(__byStroking: self.cgPath,
+                      transform: nil,
+                      lineWidth: self.lineWidth,
+                      lineCap: self.lineCapStyle,
+                      lineJoin: self.lineJoinStyle,
+                      miterLimit: self.miterLimit)
+            .flatMap(UIBezierPath.init(cgPath:))
+            ?? UIBezierPath()
     }
 }

@@ -30,17 +30,17 @@ public extension CKRecord {
     var metadata: NSData {
         let data = NSMutableData()
 
-        NSKeyedArchiver(forWritingWithMutableData: data).then {
+        NSKeyedArchiver(forWritingWith: data).then {
             $0.requiresSecureCoding = true
-            self.encodeSystemFieldsWithCoder($0)
+            self.encodeSystemFields(with: $0)
             $0.finishEncoding()
         }
 
         return data
     }
 
-    convenience init?(data: NSData) {
-        let coder = NSKeyedUnarchiver(forReadingWithData: data)
+    convenience init?(metadata: Data) {
+        let coder = NSKeyedUnarchiver(forReadingWith: metadata)
         self.init(coder: coder)
         coder.finishDecoding()
     }

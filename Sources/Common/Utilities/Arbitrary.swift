@@ -23,25 +23,25 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-
 public struct Arbitrary {}
 
 public extension Arbitrary {
 
-    static func element<C: CollectionType where C.Index.Distance == Int>(`in` c: C) -> C.Generator.Element {
+    static func element<C: Collection>(in c: C) -> C.Iterator.Element
+    where C.IndexDistance == Int {
         precondition(!c.isEmpty, "No elements for random selecting")
 
         let distance = Int(arc4random_uniform(UInt32(c.count)))
-        return c[c.startIndex.advancedBy(distance)]
+        return c[c.index(c.startIndex, offsetBy: distance)]
     }
 
-    static func subsequence<C: CollectionType where C.Index.Distance == Int>(`in` c: C) -> C.SubSequence {
+    static func subsequence<C: Collection>(in c: C) -> C.SubSequence
+    where C.IndexDistance == Int {
         let startDistance = Int(arc4random_uniform(UInt32(c.count)))
-        let startIndex = c.startIndex.advancedBy(startDistance)
+        let startIndex = c.index(c.startIndex, offsetBy: startDistance)
 
         let endDistance = element(in: startDistance..<c.count)
-        let endIndex = c.startIndex.advancedBy(endDistance)
+        let endIndex = c.index(c.startIndex, offsetBy: endDistance)
 
         return c[startIndex..<endIndex]
     }
@@ -57,7 +57,7 @@ public extension Arbitrary {
         return Int(arc4random())
     }
 
-    static func int(`in` range: Range<Int>) -> Int {
+    static func int(in range: CountableRange<Int>) -> Int {
         return element(in: range)
     }
 }
@@ -77,10 +77,10 @@ public extension Arbitrary {
 public extension Arbitrary {
 
     static var sentence: String {
-        return element(in: _LoremIpsum.sharedInstance)
+        return element(in: _LoremIpsum.shared)
     }
 
     static var paragraph: String {
-        return subsequence(in: _LoremIpsum.sharedInstance).joinWithSeparator(". ")
+        return subsequence(in: _LoremIpsum.shared).joined(separator: ". ")
     }
 }
