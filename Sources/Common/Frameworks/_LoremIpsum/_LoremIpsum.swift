@@ -23,6 +23,8 @@
  * THE SOFTWARE.
  */
 
+import Foundation
+
 /**
 An LorumIpsum object generates random text at different length designed specifically for robust testing.
 

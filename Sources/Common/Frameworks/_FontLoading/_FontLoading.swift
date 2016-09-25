@@ -25,7 +25,7 @@
 
 #if os(iOS)
 import UIKit
-#elseif os(OSX)
+#elseif os(macOS)
 import AppKit
 #endif
 
@@ -38,20 +38,22 @@ private func registerFont(from file: String, of bundle: Bundle) throws {
         return file[startIndex..<endIndex]
         }()
 
+    enum Exception: Error {
+
+        case unableToOpen(file: String)
+        case failedToRegisterFont(String)
+    }
+
+
 
     // get file url
     guard let url = bundle.url(forResource: file, withExtension: ext),
-        let provider = NSData(contentsOf: url).flatMap(CGDataProvider.init)
-        else {
-            enum FileIOError: Error { case unableToOpen(file: String) }
-            throw FileIOError.unableToOpen(file: _file)
-    }
+        let provider = (NSData(contentsOf: url).flatMap { CGDataProvider(data: $0) })
+        else { throw Exception.unableToOpen(file: _file) }
 
     // register font
-    guard CTFontManagerRegisterGraphicsFont(.init(provider), nil) else {
-        enum Exception: Error { case failedToRegisterFont(String) }
-        throw Exception.failedToRegisterFont(_file)
-    }
+    guard CTFontManagerRegisterGraphicsFont(.init(provider), nil)
+        else { throw Exception.failedToRegisterFont(_file) }
 }
 
 /*
@@ -80,6 +82,6 @@ extension _FontLoading {
 
 #if os(iOS)
 extension UIFont: _FontLoading {}
-#elseif os(OSX)
+#elseif os(macOS)
 extension NSFont: _FontLoading {}
 #endif

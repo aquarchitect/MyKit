@@ -23,6 +23,8 @@
  * THE SOFTWARE.
  */
 
+import Foundation
+
 public extension URLSession {
 
     func dataTask(with url: URL) -> Promise<[String: AnyObject]> {

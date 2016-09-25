@@ -23,8 +23,6 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-
 public extension RangeReplaceableCollection where Index == Int {
 
     mutating func apply(changes: [Change<(index: Index, element: Iterator.Element)>]) {

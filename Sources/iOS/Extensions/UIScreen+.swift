@@ -27,14 +27,8 @@ import UIKit
 
 public extension UIScreen {
 
-    enum Orientation { case Portrait, Landscape }
-
-    var interfaceOrientation: Orientation {
-        return self.bounds.width <= self.bounds.height ? .Portrait : .Landscape
-    }
-
     var propotionalWidth: CGFloat {
         let ratio: CGFloat = UIDevice.current.userInterfaceIdiom == .phone ? 1 : 2/3
-        return min(self.bounds.width, self.bounds.height) * ratio
+        return fmin(self.bounds.width, self.bounds.height) * ratio
     }
 }

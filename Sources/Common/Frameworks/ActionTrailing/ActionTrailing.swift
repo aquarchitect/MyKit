@@ -23,11 +23,7 @@
  * THE SOFTWARE.
  */
 
-#if os(iOS)
-import UIKit
-#elseif os(OSX)
-import AppKit
-#endif
+import Foundation.NSObject
 
 private var token = String(#file)
 public protocol ActionTrailing: class {}
@@ -49,6 +45,8 @@ extension NSObject {
 }
 
 #if os(iOS)
+import UIKit.UIControl
+
 extension UIControl: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIControl {
@@ -59,6 +57,8 @@ public extension ActionTrailing where Self: UIControl {
     }
 }
 
+import UIKit.UIGestureRecognizer
+
 extension UIGestureRecognizer: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIGestureRecognizer {
@@ -68,7 +68,9 @@ public extension ActionTrailing where Self: UIGestureRecognizer {
         self.addTarget(self, action: #selector(handleBlock))
     }
 }
-#elseif os(OSX)
+#elseif os(macOS)
+import AppKit.NSControl
+
 extension NSControl: ActionTrailing {}
 
 public extension ActionTrailing where Self: NSControl {

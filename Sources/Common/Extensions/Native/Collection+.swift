@@ -23,8 +23,6 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-
 /// :nodoc:
 internal extension Collection where Iterator.Element: Equatable, Index == Int {
 
@@ -123,6 +121,10 @@ public extension Collection where Iterator.Element: Equatable, Index == Int {
     }
 }
 
+#if os(Linux)
+#else
+import Foundation
+
 public extension Collection where Iterator.Element: Equatable, Index == Int, SubSequence: Collection, SubSequence.Iterator.Element: Equatable, SubSequence.Index == Int {
 
     /**
@@ -160,7 +162,8 @@ public extension Collection where Iterator.Element: Equatable, Index == Int, Sub
             inserts.minus(_deletes)
             return inserts.array as? [IndexPath] ?? []
         }()
-
+        
         return (reloads, deletes, inserts)
     }
 }
+#endif

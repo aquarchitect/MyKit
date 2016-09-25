@@ -24,7 +24,6 @@
  */
 
 import UIKit
-import CoreGraphics
 
 public extension UIBezierPath {
 

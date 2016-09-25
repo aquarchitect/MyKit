@@ -23,11 +23,8 @@
  * THE SOFTWARE.
  */
 
-#if os(iOS)
-import UIKit
-#elseif os(OSX)
-import AppKit
-#endif
+import Foundation.NSAttributedString
+import CoreGraphics
 
 public struct SymbolIcon {
 

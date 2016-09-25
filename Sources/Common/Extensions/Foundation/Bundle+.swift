@@ -23,12 +23,14 @@
  * THE SOFTWARE.
  */
 
+import Foundation
+
 extension Bundle {
 
     static var `default`: Bundle? {
 #if os(iOS)
         let platform = "iOS"
-#elseif os(OSX)
+#elseif os(macOS)
         let platform = "macOS"
 #endif
         return Bundle(identifier: "HaiNguyen.MyKit-\(platform)")

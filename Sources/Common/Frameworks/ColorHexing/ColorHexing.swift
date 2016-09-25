@@ -23,11 +23,7 @@
  * THE SOFTWARE.
  */
 
-#if os(iOS)
-import UIKit
-#elseif os(OSX)
-import AppKit
-#endif
+import CoreGraphics
 
 public protocol ColorHexing: class {
 
@@ -35,7 +31,7 @@ public protocol ColorHexing: class {
 #if os(iOS)
     @discardableResult
     func getRed(_ red: UnsafeMutablePointer<CGFloat>?, green: UnsafeMutablePointer<CGFloat>?, blue: UnsafeMutablePointer<CGFloat>?, alpha: UnsafeMutablePointer<CGFloat>?) -> Bool
-#elseif os(OSX)
+#elseif os(macOS)
     @discardableResult
     func getRed(_ red: UnsafeMutablePointer<CGFloat>?, green: UnsafeMutablePointer<CGFloat>?, blue: UnsafeMutablePointer<CGFloat>?, alpha: UnsafeMutablePointer<CGFloat>?)
 #endif
@@ -75,7 +71,9 @@ public extension ColorHexing {
 }
 
 #if os(iOS)
+import UIKit.UIColor
 extension UIColor: ColorHexing {}
-#elseif os(OSX)
+#elseif os(macOS)
+import AppKit.NSColor
 extension NSColor: ColorHexing {}
 #endif

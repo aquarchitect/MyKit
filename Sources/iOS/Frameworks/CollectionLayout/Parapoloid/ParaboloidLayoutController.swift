@@ -58,9 +58,9 @@ public struct ParaboloidLayoutController {
 
     internal func zValue(atPoint point: CGPoint) -> CGFloat {
         if let range = zValueLimits {
-            return max(min(formula(point), range.max), range.min)
+            return fmax(fmin(formula(point), range.max), range.min)
         } else {
-            return max(0, formula(point))
+            return fmax(0, formula(point))
         }
     }
 }

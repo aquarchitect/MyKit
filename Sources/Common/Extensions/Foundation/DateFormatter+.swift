@@ -23,6 +23,8 @@
  * THE SOFTWARE.
  */
 
+import Foundation
+
 public extension DateFormatter {
 
     static var shared: DateFormatter {

@@ -23,6 +23,8 @@
  * THE SOFTWARE.
  */
 
+import Darwin
+
 public struct Arbitrary {}
 
 public extension Arbitrary {

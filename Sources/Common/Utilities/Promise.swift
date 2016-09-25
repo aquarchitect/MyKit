@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  */
 
-import Foundation
+import Dispatch
 
 public enum PromiseError: Error { case noData }
 

@@ -26,10 +26,8 @@
 		C20165891CE0FA8B00F7D3E5 /* CountableRange+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165831CE0FA8B00F7D3E5 /* CountableRange+.swift */; };
 		C201658A1CE0FA8B00F7D3E5 /* Sequence+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165841CE0FA8B00F7D3E5 /* Sequence+.swift */; };
 		C201658B1CE0FA8B00F7D3E5 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165851CE0FA8B00F7D3E5 /* String+.swift */; };
-		C20165931CE0FC0200F7D3E5 /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165911CE0FC0200F7D3E5 /* SymbolIcon.swift */; };
 		C20165971CE0FC1100F7D3E5 /* OpenWeather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165941CE0FC1100F7D3E5 /* OpenWeather.ttf */; };
 		C20165981CE0FC1100F7D3E5 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165951CE0FC1100F7D3E5 /* OpenWeather.swift */; };
-		C20165991CE0FC1100F7D3E5 /* OpenWeather+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165961CE0FC1100F7D3E5 /* OpenWeather+.swift */; };
 		C20165A31CE0FC2800F7D3E5 /* CloudStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165A01CE0FC2800F7D3E5 /* CloudStack.swift */; };
 		C20165AF1CE0FC6D00F7D3E5 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165A51CE0FC6D00F7D3E5 /* Bundle+.swift */; };
 		C20165B11CE0FC6D00F7D3E5 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165A71CE0FC6D00F7D3E5 /* Date+.swift */; };
@@ -47,10 +45,8 @@
 		C20165D21CE0FCA000F7D3E5 /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165CF1CE0FCA000F7D3E5 /* CGPoint+.swift */; };
 		C20165D31CE0FCA000F7D3E5 /* CGRect+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165D01CE0FCA000F7D3E5 /* CGRect+.swift */; };
 		C20165D41CE0FCA000F7D3E5 /* CGSize+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165D11CE0FCA000F7D3E5 /* CGSize+.swift */; };
-		C20165EE1CE0FEDE00F7D3E5 /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165911CE0FC0200F7D3E5 /* SymbolIcon.swift */; };
 		C20165EF1CE0FEE200F7D3E5 /* OpenWeather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165941CE0FC1100F7D3E5 /* OpenWeather.ttf */; };
 		C20165F01CE0FEE200F7D3E5 /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165951CE0FC1100F7D3E5 /* OpenWeather.swift */; };
-		C20165F11CE0FEE200F7D3E5 /* OpenWeather+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165961CE0FC1100F7D3E5 /* OpenWeather+.swift */; };
 		C20165F61CE0FEED00F7D3E5 /* CloudStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165A01CE0FC2800F7D3E5 /* CloudStack.swift */; };
 		C20165F71CE0FF0E00F7D3E5 /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165CF1CE0FCA000F7D3E5 /* CGPoint+.swift */; };
 		C20165F81CE0FF0E00F7D3E5 /* CGRect+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165D01CE0FCA000F7D3E5 /* CGRect+.swift */; };
@@ -88,6 +84,10 @@
 		C225FA9D1D1113A1008DF565 /* ParaboloidSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FA9C1D1113A1008DF565 /* ParaboloidSuperLayout.swift */; };
 		C225FAA11D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */; };
 		C225FAA41D111803008DF565 /* LayoutPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA31D111803008DF565 /* LayoutPresentable.swift */; };
+		C22EA03A1D98800E003A490A /* _FontLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A2E1D04A6440009B45F /* _FontLoading.swift */; };
+		C22EA03B1D98800F003A490A /* _FontLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A2E1D04A6440009B45F /* _FontLoading.swift */; };
+		C22EA03C1D98801B003A490A /* OpenWeather+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165961CE0FC1100F7D3E5 /* OpenWeather+.swift */; };
+		C22EA03D1D98801C003A490A /* OpenWeather+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165961CE0FC1100F7D3E5 /* OpenWeather+.swift */; };
 		C23939C81CAC7F5900526B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939BB1CAC7F4300526B30 /* AppDelegate.swift */; };
 		C23939CA1CAC7F8E00526B30 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23939C41CAC7F4F00526B30 /* Launch.storyboard */; };
 		C23939E11CAC7FF000526B30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C23939DB1CAC7FEB00526B30 /* Assets.xcassets */; };
@@ -132,10 +132,8 @@
 		C2C62A2A1D04A36F0009B45F /* ColorHexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A291D04A36F0009B45F /* ColorHexing.swift */; };
 		C2C62A2B1D04A3DC0009B45F /* ColorHexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A291D04A36F0009B45F /* ColorHexing.swift */; };
 		C2C62A2C1D04A4200009B45F /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAD8291D03F714001D2DC4 /* Matrix.swift */; };
-		C2C62A2F1D04A6440009B45F /* _FontLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A2E1D04A6440009B45F /* _FontLoading.swift */; };
 		C2C62A321D04A6560009B45F /* _LoremIpsum.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2C62A301D04A6560009B45F /* _LoremIpsum.txt */; };
 		C2C62A331D04A6560009B45F /* _LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A311D04A6560009B45F /* _LoremIpsum.swift */; };
-		C2C62A341D04A65C0009B45F /* _FontLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A2E1D04A6440009B45F /* _FontLoading.swift */; };
 		C2C62A351D04A65C0009B45F /* _LoremIpsum.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2C62A301D04A6560009B45F /* _LoremIpsum.txt */; };
 		C2C62A361D04A65C0009B45F /* _LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A311D04A6560009B45F /* _LoremIpsum.swift */; };
 		C2D5E7CA1CE12FF80049B5C1 /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165901CE0FC0200F7D3E5 /* SymbolIcon.ttf */; };
@@ -608,6 +606,15 @@
 			name = CollectionLayout;
 			sourceTree = "<group>";
 		};
+		C22EA0371D987DA2003A490A /* MyKit */ = {
+			isa = PBXGroup;
+			children = (
+				C23A58D81D5BE003003A3C6D /* Info.plist */,
+				C2692FCF1D6502D300A29897 /* MyKit.h */,
+			);
+			name = MyKit;
+			sourceTree = "<group>";
+		};
 		C231CAA61D790A48007A895E /* LongPress */ = {
 			isa = PBXGroup;
 			children = (
@@ -630,7 +637,8 @@
 			isa = PBXGroup;
 			children = (
 				C25877741C742F1400DF1F88 /* MyKit.playground */,
-				C289AD921B62B9AD00186773 /* MyKit */,
+				C22EA0371D987DA2003A490A /* MyKit */,
+				C289AD921B62B9AD00186773 /* Source */,
 				C2DC8B881CAB2EDB00837D9E /* Demos */,
 				C2F3D6A71CAB5733002E8F1A /* UITests */,
 				C2B60ACC1B95080800F6D2BB /* UnitTests */,
@@ -638,15 +646,14 @@
 			);
 			sourceTree = "<group>";
 		};
-		C289AD921B62B9AD00186773 /* MyKit */ = {
+		C289AD921B62B9AD00186773 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				C2DC8C3C1CAB4C1600837D9E /* Common */,
 				C2DC8C3D1CAB4C2700837D9E /* iOS */,
 				C2DC8C3E1CAB4C2C00837D9E /* macOS */,
-				C289ADEA1B62BBF400186773 /* Support */,
 			);
-			name = MyKit;
+			name = Source;
 			sourceTree = "<group>";
 		};
 		C289AD931B62BA0500186773 /* Extensions */ = {
@@ -692,15 +699,6 @@
 				C201654E1CE0EFC500F7D3E5 /* Then.swift */,
 			);
 			name = Utilities;
-			sourceTree = "<group>";
-		};
-		C289ADEA1B62BBF400186773 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				C23A58D81D5BE003003A3C6D /* Info.plist */,
-				C2692FCF1D6502D300A29897 /* MyKit.h */,
-			);
-			name = Support;
 			sourceTree = "<group>";
 		};
 		C2B60ACC1B95080800F6D2BB /* UnitTests */ = {
@@ -1322,13 +1320,12 @@
 				C20166111CE0FF2100F7D3E5 /* Dictionary+.swift in Sources */,
 				C20165F91CE0FF0E00F7D3E5 /* CGSize+.swift in Sources */,
 				C201656E1CE0F01D00F7D3E5 /* Then.swift in Sources */,
-				C20165F11CE0FEE200F7D3E5 /* OpenWeather+.swift in Sources */,
 				C20166001CE0FF1300F7D3E5 /* NSMutableAttributedString+.swift in Sources */,
 				C20165FF1CE0FF1300F7D3E5 /* NSLayoutConstraint+.swift in Sources */,
 				C2B3F34E1D0B8B030055B06E /* PersistentStack.swift in Sources */,
 				C20165F01CE0FEE200F7D3E5 /* OpenWeather.swift in Sources */,
 				C275E7171D00197B000118F0 /* Collection+.swift in Sources */,
-				C20165EE1CE0FEDE00F7D3E5 /* SymbolIcon.swift in Sources */,
+				C22EA03B1D98800F003A490A /* _FontLoading.swift in Sources */,
 				C2B3F34D1D0B8AF80055B06E /* ActionWrapper.swift in Sources */,
 				C24A0AE41D72143B00F94F08 /* Change.swift in Sources */,
 				C20166031CE0FF1300F7D3E5 /* Scanner+.swift in Sources */,
@@ -1339,7 +1336,6 @@
 				C2C62A361D04A65C0009B45F /* _LoremIpsum.swift in Sources */,
 				C20165631CE0F01D00F7D3E5 /* Curry.swift in Sources */,
 				C25478471D73D8F400F00C38 /* RangeReplaceableCollection+.swift in Sources */,
-				C2C62A341D04A65C0009B45F /* _FontLoading.swift in Sources */,
 				C2B3F34C1D0B8AF80055B06E /* ActionTrailing.swift in Sources */,
 				C20165F61CE0FEED00F7D3E5 /* CloudStack.swift in Sources */,
 				C20166081CE0FF1700F7D3E5 /* CKRecordID+.swift in Sources */,
@@ -1355,6 +1351,7 @@
 				C20165FC1CE0FF1300F7D3E5 /* Date+.swift in Sources */,
 				C20166121CE0FF2100F7D3E5 /* CountableRange+.swift in Sources */,
 				C20165F71CE0FF0E00F7D3E5 /* CGPoint+.swift in Sources */,
+				C22EA03D1D98801C003A490A /* OpenWeather+.swift in Sources */,
 				C2446BEF1CEB6D2100957586 /* Arbitrary.swift in Sources */,
 				C20166131CE0FF2100F7D3E5 /* Sequence+.swift in Sources */,
 				C2B280451D6F9B49008293EF /* URLSession+.swift in Sources */,
@@ -1380,9 +1377,9 @@
 				C20165BE1CE0FC8800F7D3E5 /* CKContainer+.swift in Sources */,
 				C20165521CE0EFC500F7D3E5 /* Box.swift in Sources */,
 				C20166831CE1097100F7D3E5 /* SnappingSuperLayout.swift in Sources */,
+				C22EA03C1D98801B003A490A /* OpenWeather+.swift in Sources */,
 				C24A0AE31D72143B00F94F08 /* Change.swift in Sources */,
 				C201663D1CE1017900F7D3E5 /* UIBezierPath+.swift in Sources */,
-				C2C62A2F1D04A6440009B45F /* _FontLoading.swift in Sources */,
 				C201655B1CE0EFC500F7D3E5 /* Schedule.swift in Sources */,
 				C20165531CE0EFC500F7D3E5 /* Curry.swift in Sources */,
 				C2F0A7531D10D5DC0022FF61 /* ParaboloidLayoutController.swift in Sources */,
@@ -1411,14 +1408,13 @@
 				C2C62A2A1D04A36F0009B45F /* ColorHexing.swift in Sources */,
 				C2F566AB1D242AD800DCEC45 /* UIScreen+.swift in Sources */,
 				C20165BF1CE0FC8800F7D3E5 /* CKDatabase+.swift in Sources */,
-				C20165931CE0FC0200F7D3E5 /* SymbolIcon.swift in Sources */,
 				C2C62A331D04A6560009B45F /* _LoremIpsum.swift in Sources */,
 				C20165CE1CE0FC9400F7D3E5 /* NSRelationshipDescription+.swift in Sources */,
 				C2C25CE81D0B371300AED211 /* PersistentStack.swift in Sources */,
 				C20165A31CE0FC2800F7D3E5 /* CloudStack.swift in Sources */,
 				C20165B41CE0FC6D00F7D3E5 /* NSLayoutConstraint+.swift in Sources */,
 				C201663E1CE1017900F7D3E5 /* UICollectionView+.swift in Sources */,
-				C20165991CE0FC1100F7D3E5 /* OpenWeather+.swift in Sources */,
+				C22EA03A1D98800E003A490A /* _FontLoading.swift in Sources */,
 				C20165C11CE0FC8800F7D3E5 /* CKRecord+.swift in Sources */,
 				C2B3F3491D0B8A9E0055B06E /* ActionTrailing.swift in Sources */,
 				C20165891CE0FA8B00F7D3E5 /* CountableRange+.swift in Sources */,

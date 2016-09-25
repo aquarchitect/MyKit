@@ -23,6 +23,8 @@
  * THE SOFTWARE.
  */
 
+import Foundation
+
 // MARK: Support Method
 
 public extension Date {

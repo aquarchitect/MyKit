@@ -23,6 +23,8 @@
  * THE SOFTWARE.
  */
 
+import Foundation.NSObject
+
 public protocol Then: class {}
 
 public extension Then {

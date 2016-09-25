@@ -25,7 +25,7 @@
 
 #if os(iOS)
 import UIKit
-#elseif os(OSX)
+#elseif os(macOS)
 import AppKit
 #endif
 
@@ -53,15 +53,15 @@ public extension NSMutableAttributedString {
         self._add(color: color, to: range)
     }
 }
-#elseif os(OSX)
+#elseif os(macOS)
 public extension NSMutableAttributedString {
 
     func add(font: NSFont?, to range: NSRange? = nil) {
-        self._add(font, to: range)
+        self._add(font: font, to: range)
     }
 
     func add(color: NSColor?, to range: NSRange? = nil) {
-        self._add(color, to: range)
+        self._add(color: color, to: range)
     }
 }
 #endif
