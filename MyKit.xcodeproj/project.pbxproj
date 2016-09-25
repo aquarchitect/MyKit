@@ -285,11 +285,15 @@
 		C225FA9C1D1113A1008DF565 /* ParaboloidSuperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidSuperLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidSuperLayout.swift; sourceTree = "<group>"; };
 		C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppleWatchHomeScreenLayout.swift; path = Demos/iOS/AppleWatchHomeScreenLayout.swift; sourceTree = SOURCE_ROOT; };
 		C225FAA31D111803008DF565 /* LayoutPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutPresentable.swift; path = Demos/iOS/LayoutPresentable.swift; sourceTree = SOURCE_ROOT; };
+		C22EA03E1D9888B1003A490A /* Bridging-UITests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-UITests.h"; path = "MyKit/Bridging-UITests.h"; sourceTree = "<group>"; };
+		C22EA03F1D9888B1003A490A /* Bridging-UnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-UnitTests.h"; path = "MyKit/Bridging-UnitTests.h"; sourceTree = "<group>"; };
+		C22EA0401D9888B1003A490A /* Info-UITests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-UITests.plist"; path = "MyKit/Info-UITests.plist"; sourceTree = "<group>"; };
+		C22EA0411D9888B1003A490A /* Info-UnitTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-UnitTests.plist"; path = "MyKit/Info-UnitTests.plist"; sourceTree = "<group>"; };
 		C23939BB1CAC7F4300526B30 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/iOS/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C23939BC1CAC7F4300526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demos/iOS/Info.plist; sourceTree = SOURCE_ROOT; };
 		C23939C51CAC7F4F00526B30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demos/iOS/Base.lproj/Launch.storyboard; sourceTree = SOURCE_ROOT; };
 		C23939DB1CAC7FEB00526B30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Demos/Assets.xcassets; sourceTree = SOURCE_ROOT; };
-		C23A58D81D5BE003003A3C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = Info.plist; path = MyKit/Info.plist; sourceTree = "<group>"; };
+		C23A58D81D5BE003003A3C6D /* Info-Framework.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = "Info-Framework.plist"; path = "MyKit/Info-Framework.plist"; sourceTree = "<group>"; };
 		C23D6ECE1D6A66660086A3C7 /* UIView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+.swift"; path = "Sources/iOS/Extensions/UIView+.swift"; sourceTree = "<group>"; };
 		C23F09061D73519F003211D3 /* AnyIterator+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AnyIterator+.swift"; path = "Sources/Common/Extensions/Native/AnyIterator+.swift"; sourceTree = "<group>"; };
 		C2446BED1CEB6D2100957586 /* Arbitrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arbitrary.swift; path = Sources/Common/Utilities/Arbitrary.swift; sourceTree = "<group>"; };
@@ -336,10 +340,6 @@
 		C2F3170A1D5A5959009B0F42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demos/macOS/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		C2F3170C1D5A596E009B0F42 /* Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bridging.h; path = Demos/iOS/Bridging.h; sourceTree = SOURCE_ROOT; };
 		C2F317101D5A59F4009B0F42 /* Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bridging.h; path = Demos/macOS/Bridging.h; sourceTree = SOURCE_ROOT; };
-		C2F3173E1D5A5ED4009B0F42 /* Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bridging.h; path = UITests/Bridging.h; sourceTree = SOURCE_ROOT; };
-		C2F3173F1D5A5ED4009B0F42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = UITests/Info.plist; sourceTree = SOURCE_ROOT; };
-		C2F317421D5A5EE5009B0F42 /* Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bridging.h; path = UnitTests/Bridging.h; sourceTree = SOURCE_ROOT; };
-		C2F317431D5A5EE5009B0F42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = UnitTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		C2F317461D5A5EF1009B0F42 /* _FontLoadingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = _FontLoadingTests.swift; path = UnitTests/_FontLoadingTests.swift; sourceTree = SOURCE_ROOT; };
 		C2F317471D5A5EF1009B0F42 /* NSDateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateTests.swift; path = UnitTests/NSDateTests.swift; sourceTree = SOURCE_ROOT; };
 		C2F317481D5A5EF1009B0F42 /* PromiseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PromiseTests.swift; path = UnitTests/PromiseTests.swift; sourceTree = SOURCE_ROOT; };
@@ -609,8 +609,12 @@
 		C22EA0371D987DA2003A490A /* MyKit */ = {
 			isa = PBXGroup;
 			children = (
-				C23A58D81D5BE003003A3C6D /* Info.plist */,
 				C2692FCF1D6502D300A29897 /* MyKit.h */,
+				C22EA03E1D9888B1003A490A /* Bridging-UITests.h */,
+				C22EA03F1D9888B1003A490A /* Bridging-UnitTests.h */,
+				C22EA0401D9888B1003A490A /* Info-UITests.plist */,
+				C22EA0411D9888B1003A490A /* Info-UnitTests.plist */,
+				C23A58D81D5BE003003A3C6D /* Info-Framework.plist */,
 			);
 			name = MyKit;
 			sourceTree = "<group>";
@@ -708,19 +712,9 @@
 				C2F317471D5A5EF1009B0F42 /* NSDateTests.swift */,
 				C2F317481D5A5EF1009B0F42 /* PromiseTests.swift */,
 				C2F317491D5A5EF1009B0F42 /* ScheduleTests.swift */,
-				C2B60AD41B95084E00F6D2BB /* Support */,
 			);
 			name = UnitTests;
 			path = MyKitTests;
-			sourceTree = "<group>";
-		};
-		C2B60AD41B95084E00F6D2BB /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				C2F317421D5A5EE5009B0F42 /* Bridging.h */,
-				C2F317431D5A5EE5009B0F42 /* Info.plist */,
-			);
-			name = Support;
 			sourceTree = "<group>";
 		};
 		C2BB19B11D112FC6004F76BA /* FragmentShader */ = {
@@ -865,19 +859,9 @@
 		C2F3D6A71CAB5733002E8F1A /* UITests */ = {
 			isa = PBXGroup;
 			children = (
-				C2F3D6B71CAB5B04002E8F1A /* Support */,
 			);
 			name = UITests;
 			path = "MyKit-iOSUITest";
-			sourceTree = "<group>";
-		};
-		C2F3D6B71CAB5B04002E8F1A /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				C2F3173E1D5A5ED4009B0F42 /* Bridging.h */,
-				C2F3173F1D5A5ED4009B0F42 /* Info.plist */,
-			);
-			name = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1583,14 +1567,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = UnitTests/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-iOSUnitTests";
 				PRODUCT_NAME = MyKitUnitTests;
-				SWIFT_OBJC_BRIDGING_HEADER = UnitTests/Bridging.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "MyKit/Bridging-UnitTests.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
 			};
@@ -1626,14 +1610,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = UnitTests/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-iOSUnitTests";
 				PRODUCT_NAME = MyKitUnitTests;
-				SWIFT_OBJC_BRIDGING_HEADER = UnitTests/Bridging.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "MyKit/Bridging-UnitTests.h";
 				SWIFT_VERSION = 2.3;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1676,7 +1660,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = UnitTests/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1685,7 +1669,7 @@
 				PRODUCT_NAME = MyKitUnitTests;
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = UnitTests/Bridging.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "MyKit/Bridging-UnitTests.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
 			};
@@ -1723,7 +1707,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = UnitTests/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -1732,7 +1716,7 @@
 				PRODUCT_NAME = MyKitUnitTests;
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = UnitTests/Bridging.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "MyKit/Bridging-UnitTests.h";
 				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
@@ -1854,7 +1838,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = MyKit/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-Framework.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -1918,7 +1902,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = MyKit/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-Framework.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -1987,7 +1971,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = MyKit/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-Framework.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2051,7 +2035,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = MyKit/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-Framework.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2109,14 +2093,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = UnitTests/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-iOSQuickTests";
 				PRODUCT_NAME = MyKitQuickTests;
-				SWIFT_OBJC_BRIDGING_HEADER = UnitTests/Bridging.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "MyKit/Bridging-UnitTests.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
 			};
@@ -2152,14 +2136,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = UnitTests/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-iOSQuickTests";
 				PRODUCT_NAME = MyKitQuickTests;
-				SWIFT_OBJC_BRIDGING_HEADER = UnitTests/Bridging.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "MyKit/Bridging-UnitTests.h";
 				SWIFT_VERSION = 2.3;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2202,7 +2186,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = UnitTests/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -2211,7 +2195,7 @@
 				PRODUCT_NAME = MyKitQuickTests;
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = UnitTests/Bridging.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "MyKit/Bridging-UnitTests.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
 			};
@@ -2249,7 +2233,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = UnitTests/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -2257,7 +2241,7 @@
 				PRODUCT_NAME = MyKitQuickTests;
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
-				SWIFT_OBJC_BRIDGING_HEADER = UnitTests/Bridging.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "MyKit/Bridging-UnitTests.h";
 				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
@@ -2400,7 +2384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = UITests/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-UITests.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -2445,7 +2429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = UITests/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-UITests.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -2496,7 +2480,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = UITests/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-UITests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -2545,7 +2529,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = UITests/Info.plist;
+				INFOPLIST_FILE = "MyKit/Info-UITests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;

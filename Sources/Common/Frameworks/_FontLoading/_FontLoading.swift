@@ -23,11 +23,7 @@
  * THE SOFTWARE.
  */
 
-#if os(iOS)
-import UIKit
-#elseif os(macOS)
-import AppKit
-#endif
+import Foundation
 
 private func registerFont(from file: String, of bundle: Bundle) throws {
     let ext = "ttf"
@@ -43,8 +39,6 @@ private func registerFont(from file: String, of bundle: Bundle) throws {
         case unableToOpen(file: String)
         case failedToRegisterFont(String)
     }
-
-
 
     // get file url
     guard let url = bundle.url(forResource: file, withExtension: ext),
@@ -81,7 +75,9 @@ extension _FontLoading {
 }
 
 #if os(iOS)
+import UIKit.UIFont
 extension UIFont: _FontLoading {}
 #elseif os(macOS)
+import AppKit.NSFont
 extension NSFont: _FontLoading {}
 #endif
