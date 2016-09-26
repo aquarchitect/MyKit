@@ -1,7 +1,7 @@
 fastlane_version "1.104.0"
 
 before_all do
-  ENV["SLACK_URL"] = "https://hooks.slack.com/#{ENV["SLACK_TOKEN"]}"
+  is_ci ? nil : ENV["SLACK_URL"] = "https://hooks.slack.com/services/#{ENV["SLACK_TOKEN"]}"
 end
 
 desc "Tag repository"
@@ -11,11 +11,6 @@ if !lane[:version]
 end
 add_git_tag(tag: "#{lane[:version]}")
 push_git_tags(force: true)
-end
-
-desc "Package binaries"
-lane :package do
-
 end
 
 desc "Generate documetation set"
