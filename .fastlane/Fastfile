@@ -1,0 +1,46 @@
+fastlane_version "1.104.0"
+
+default_platform :ios
+
+platform :ios do
+  before_all do
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+  end
+
+  lane :test do
+    sh("pwd")
+  end
+
+  lane :doc do
+    jazzy(config: "../.jazzy.yaml")
+    sh("cd ../docs && git init")
+    
+    git_add(path: ".")
+    git_commit(
+      path: ".",
+      message: "Travis upload"
+    )
+    push_to_git_remote(
+      remote_branch:,
+      force: true,
+      tags: false,
+      remote: "origin"
+    )
+  end
+
+  desc "Testing"
+  lane :tag do |lane|
+    if !lane[:version]
+      raise "No version specified!".red
+    end
+
+    add_git_tag(tag: "#{lane[:version]}")
+    push_git_tags
+
+
+  end
+
+  error do |lane, exception|
+    # slack(message: exception.message, success: false)
+  end
+end

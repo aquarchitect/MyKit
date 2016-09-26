@@ -585,12 +585,12 @@
 		C22EA0371D987DA2003A490A /* MyKit */ = {
 			isa = PBXGroup;
 			children = (
-				C2692FCF1D6502D300A29897 /* MyKit.h */,
 				C23A58D81D5BE003003A3C6D /* Info.plist */,
-				C22EA03E1D9888B1003A490A /* Bridging-UITests.h */,
-				C22EA03F1D9888B1003A490A /* Bridging-UnitTests.h */,
+				C2692FCF1D6502D300A29897 /* MyKit.h */,
 				C22EA0401D9888B1003A490A /* Info-UITests.plist */,
+				C22EA03E1D9888B1003A490A /* Bridging-UITests.h */,
 				C22EA0411D9888B1003A490A /* Info-UnitTests.plist */,
+				C22EA03F1D9888B1003A490A /* Bridging-UnitTests.h */,
 			);
 			name = MyKit;
 			sourceTree = "<group>";
