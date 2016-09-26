@@ -5,22 +5,26 @@ fastlane documentation
 sudo gem install fastlane
 ```
 # Available Actions
-## iOS
-### ios test
+### tag
 ```
-fastlane ios test
+fastlane tag
 ```
-
-### ios doc
+Tag repository
+### package
 ```
-fastlane ios doc
+fastlane package
 ```
-
-### ios tag
+Package binaries
+### doc
 ```
-fastlane ios tag
+fastlane doc
 ```
-Testing
+Generate documetation set
+### test
+```
+fastlane test
+```
+Test targets
 
 ----
 

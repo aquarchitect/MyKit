@@ -1,48 +1,44 @@
 fastlane_version "1.104.0"
 
-default_platform :ios
+before_all do
+  ENV["SLACK_URL"] = "https://hooks.slack.com/#{ENV["SLACK_TOKEN"]}"
+end
 
-platform :ios do
-  before_all do
-    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
-  end
+desc "Tag repository"
+lane :tag do |lane|
+if !lane[:version]
+  raise "No version specified!".red
+end
+add_git_tag(tag: "#{lane[:version]}")
+push_git_tags(force: true)
+end
 
-  lane :test do
-    sh("cd .. && pwd")
-    # sh("pwd")
-  end
+desc "Package binaries"
+lane :package do
 
-  lane :doc do
-    sh("")
-    jazzy(config: "../.jazzy.yaml")
-    sh("")
+end
 
-    git_add(path: ".")
-    git_commit(
-      path: ".",
-      message: "Travis upload"
-    )
-    push_to_git_remote(
-      remote_branch: "",
-      force: true,
-      tags: false,
-      remote: "origin"
-    )
-  end
+desc "Generate documetation set"
+lane :doc do
+  sh("cd ../ && bash Scripts/build_docs_set.sh")
+end
 
-  desc "Testing"
-  lane :tag do |lane|
-    if !lane[:version]
-      raise "No version specified!".red
-    end
+desc "Test targets"
+lane :test do
+  scan(
+    scheme: "MyKit-iOS",
+    output_directory: "./.fastlane/test_output",
+    custom_report_file_name: "report_ios",
+    clean: true
+  )
+  scan(
+    scheme: "MyKit-macOS",
+    output_directory: "./.fastlane/test_output",
+    custom_report_file_name: "report_macos",
+    clean: true
+  )
+end
 
-    add_git_tag(tag: "#{lane[:version]}")
-    push_git_tags
-
-
-  end
-
-  error do |lane, exception|
-    # slack(message: exception.message, success: false)
-  end
+error do |lane, exception|
+  slack(message: exception.message, success: false)
 end
