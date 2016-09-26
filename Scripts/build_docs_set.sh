@@ -24,7 +24,8 @@ for file in $(find docs \( -name "*.html" -or -name "*.css" \)); do
 done
 
 echo ">>> Commiting generated documentation ..."
+GITHUB_URL=https://$GITHUB_TOKEN@github.com/aquarchitect/MyKit.git
 git add .
 git commit -m "Travis update on $(date +%D)"
-git remote add upstream https://$GITHUB_TOKEN@github.com/aquarchitect/MyKit.git
+git remote add upstream $GITHUB_URL > /dev/null 2>&1
 git push upstream gh-pages
