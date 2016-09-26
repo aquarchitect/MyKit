@@ -23,23 +23,25 @@
  * THE SOFTWARE.
  */
 
-infix operator +++ { associativity left }
-
 final class PromiseTests: XCTestCase {
 
-    private enum Error: ErrorType { case Failed }
+    private enum Exception: Error { case failed }
 
-    private func delayFor<T>(interval: CFTimeInterval, result: Result<T>) -> Promise<T> {
-        return Promise { callback in delay(interval) { callback(result) }}
+    private func delay<T>(dt: TimeInterval, result: Result<T>) -> Promise<T> {
+        return Promise { callback in
+            DispatchQueue.main.asyncAfter(deadline: .now() + dt) {
+                callback(result)
+            }
+        }
     }
 
     func testFullfilledArray() {
-        let expectation = expectationWithDescription(#function)
+        let expectation = self.expectation(description: #function)
 
         let ps = [(0.5, .fullfill(5)),
                   (0.5, .fullfill(10)),
                   (1.0, .fullfill(15))]
-                    .map(delayFor)
+            .map(delay)
 
         Promise<Int>.when(ps).resolve {
             switch $0 {
@@ -51,23 +53,22 @@ final class PromiseTests: XCTestCase {
             }
         }
 
-
-        waitForExpectationsWithTimeout(3) { XCTAssertNil($0) }
+        waitForExpectations(timeout: 3) { XCTAssertNil($0) }
     }
 
     func testRejectedArray() {
-        let expectation = expectationWithDescription(#function)
+        let expectation = self.expectation(description: #function)
 
         let ps = [(0.5, .fullfill(5)),
-                  (0.5, .reject(Error.Failed)),
+                  (0.5, .reject(Exception.failed)),
                   (1.0, .fullfill(15))]
-                    .map(delayFor)
+                    .map(delay)
 
         Promise<Int>.when(ps).resolve {
             switch $0 {
             case .fullfill(let value):
                 XCTFail("Promise callback with value \(value)")
-            case .reject(Error.Failed):
+            case .reject(Exception.failed):
                 XCTAssert(true)
                 expectation.fulfill()
             case .reject(let error):
@@ -75,16 +76,16 @@ final class PromiseTests: XCTestCase {
             }
         }
 
-        waitForExpectationsWithTimeout(3) { XCTAssertNil($0) }
+        waitForExpectations(timeout: 3) { XCTAssertNil($0) }
     }
 
     func testFullfilledTuple() {
-        let expectation = expectationWithDescription(#function)
+        let expectation = self.expectation(description: #function)
 
-        let p1 = delayFor(0.5, result: .fullfill(true))
-        let p2 = delayFor(1.0, result: .fullfill("Success"))
+        let p1 = delay(dt: 0.5, result: .fullfill(true))
+        let p2 = delay(dt: 1.0, result: .fullfill("Success"))
 
-        (p1 +++ p2).resolve {
+        when(p1, p2).resolve {
             switch $0 {
             case .fullfill(let value):
                 XCTAssert(value.0 && value.1 == "Success")
@@ -94,20 +95,20 @@ final class PromiseTests: XCTestCase {
             }
         }
 
-        waitForExpectationsWithTimeout(3) { XCTAssertNil($0) }
+        waitForExpectations(timeout: 3) { XCTAssertNil($0) }
     }
 
     func testRejectedTuple() {
-        let expectation = expectationWithDescription(#function)
+        let expectation = self.expectation(description: #function)
 
-        let p1 = delayFor(0.5, result: .fullfill(true))
-        let p2 = delayFor(1.0, result: Result<String>.reject(Error.Failed))
+        let p1 = delay(dt: 0.5, result: .fullfill(true))
+        let p2 = delay(dt: 1.0, result: Result<String>.reject(Exception.failed))
 
-        (p1 +++ p2).resolve {
+        when(p1, p2).resolve {
             switch $0 {
             case .fullfill(let value):
                 XCTFail("Promise callback with value \(value)")
-            case .reject(Error.Failed):
+            case .reject(Exception.failed):
                 XCTAssert(true)
                 expectation.fulfill()
             case .reject(let error):
@@ -115,6 +116,6 @@ final class PromiseTests: XCTestCase {
             }
         }
 
-        waitForExpectationsWithTimeout(3) { XCTAssertNil($0) }
+        waitForExpectations(timeout: 3) { XCTAssertNil($0) }
     }
 }

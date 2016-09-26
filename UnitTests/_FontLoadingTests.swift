@@ -29,17 +29,17 @@ final class CustomFontTests: XCTestCase {
 
     func testsFontInstanceOf<T: _FontLoading>(type: T.Type) {
         [("Ionicons", "SymbolIcon"), ("Weather Icons", "OpenWeather")].forEach {
-            XCTAssertNotNil(T.fontWith(name: $0.0, size: 17, fromFile: $0.1))
+            XCTAssertNotNil(T.font(withName: $0.0, size: 17, fromFile: $0.1))
         }
     }
 
     func testsCustomFontRegister() {
-        XCTAssertNotNil(NSBundle.defaultBundle)
+        XCTAssertNotNil(Bundle.`default`)
 
 #if os(iOS)
-        testsFontInstanceOf(UIFont.self)
+        testsFontInstanceOf(type: UIFont.self)
 #elseif os(macOS)
-        testsFontInstanceOf(NSFont.self)
+        testsFontInstanceOf(type: NSFont.self)
 #endif
     }
 }

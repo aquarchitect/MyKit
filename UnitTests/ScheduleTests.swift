@@ -27,31 +27,36 @@
 
 final class ScheduleTests: XCTestCase {
 
-    func testScheduleOnce() {
-        let expectation = expectationWithDescription(#function)
-        Schedule.once(0.5) { expectation.fulfill() }
+    private enum Exception: Error { case interupted }
 
-        waitForExpectationsWithTimeout(0.6) {
-            XCTAssertNil($0)
-            XCTAssertTrue(Schedule.subscribers.isEmpty)
-        }
+    func testScheduleOnce() {
+        let expectation = self.expectation(description: #function)
+        Schedule.once(0.5)
+            .onSuccess { expectation.fulfill() }
+            .resolve()
+
+        waitForExpectations(timeout: 0.6) { XCTAssertNil($0) }
     }
 
     func testScheduleEvery() {
-        let exepectation = expectationWithDescription(#function)
-
+        let expectation = self.expectation(description: #function)
         var count = 0
-        let id = Schedule.every(0.8) { count += 1 }
 
-        delay(2) {
-            exepectation.fulfill()
-            XCTAssertNotNil(Schedule.cancel(id))
-            XCTAssertEqual(count, 2)
+        Schedule.every(0.8, handle: { _ in
+            if count < 5 {
+                count += 1
+            } else {
+                throw Exception.interupted
+            }
+        }).resolve()
+
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            expectation.fulfill()
         }
 
-        waitForExpectationsWithTimeout(2.2) {
+        waitForExpectations(timeout: 7) {
             XCTAssertNil($0)
-            XCTAssertTrue(Schedule.subscribers.isEmpty)
         }
     }
 }
