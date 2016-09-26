@@ -20,7 +20,7 @@ fastlane ios doc
 ```
 fastlane ios tag
 ```
-Testin
+Testing
 
 ----
 

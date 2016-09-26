@@ -8,20 +8,22 @@ platform :ios do
   end
 
   lane :test do
-    sh("pwd")
+    sh("cd .. && pwd")
+    # sh("pwd")
   end
 
   lane :doc do
+    sh("")
     jazzy(config: "../.jazzy.yaml")
-    sh("cd ../docs && git init")
-    
+    sh("")
+
     git_add(path: ".")
     git_commit(
       path: ".",
       message: "Travis upload"
     )
     push_to_git_remote(
-      remote_branch:,
+      remote_branch: "",
       force: true,
       tags: false,
       remote: "origin"
