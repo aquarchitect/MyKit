@@ -1,7 +1,7 @@
 fastlane_version "1.104.0"
 
 before_all do
-  is_ci ? nil : ENV["SLACK_URL"] = "https://hooks.slack.com/services/#{ENV["SLACK_TOKEN"]}"
+  ENV["SLACK_URL"] = "https://hooks.slack.com/services/#{ENV["SLACK_TOKEN"]}" if is_ci
 end
 
 desc "Tag repository"

@@ -5,16 +5,16 @@ fastlane documentation
 sudo gem install fastlane
 ```
 # Available Actions
+### dump
+```
+fastlane dump
+```
+
 ### tag
 ```
 fastlane tag
 ```
 Tag repository
-### package
-```
-fastlane package
-```
-Package binaries
 ### doc
 ```
 fastlane doc

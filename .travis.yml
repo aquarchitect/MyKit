@@ -29,7 +29,6 @@ install:
 before_script:
   - git config --global user.name "Hai Nguyen"
   - git config --global user.email "aquarchitecture@gmail.com"
-  - fastlane run carthage command:update
 
 script:
   - if [ "$TRAVIS_TAG" == "" ]; then fastlane test; fi
