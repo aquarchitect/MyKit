@@ -22,9 +22,9 @@ before_install:
 install:
   - gem install fastlane
   - if [[ "$JOB" == "doc" || "$JOB" == "release" ]]; then
-        brew unlink node && brew install
-        npm; npm install -g html-minifier clean-css
-        gem install jazzy
+        brew unlink node && brew install npm;
+        npm install -g html-minifier clean-css;
+        gem install jazzy;
     fi
 
 before_script:
@@ -36,7 +36,7 @@ script:
 
 after_success:
   - if [[ "$TRAVIS_TAG" == "" ]]; then
-        if [[ "$JOB" == "tag" || "$JOB" == "release" ]]; then fastlane tag; fi
+        if [[ "$JOB" == "tag" || "$JOB" == "release" ]]; then fastlane tag; fi;
         if [[ "$JOB" == "doc" || "$JOB" == "release" ]]; then fastlane doc; fi;
     fi
 
