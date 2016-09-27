@@ -4,7 +4,8 @@ sudo: required
 
 notifications:
   email: false
-  slack: true
+  slack:
+    secure: j5tcmS6wQ8Mzydmv/0xJwNizb2zGewvFi7olkpfWQ/hgXmxCKioGdxertYJJwnJNMbK6s4KLW0fOOQjfuexIXLiAOP637i5B5FIVEb2ZoYoSbE9WowYC7b8yZQBwkvu94V3v7CBqPd0E2wM8NlkTxVI0ZlPKMpv6DY0mWX83PyH9J8KRbMVcL9uNebGppotNsCV77tBCzkNl7H7rkixRpCnkgVGWjDez7OzIijf94/kSgQ6T1Bm6mtlFh3UkJCRTSyDyo5pPKO073dduc9pCRgee2bqlzC2m3Orpgj6Onavb8USMbfge57VdxhkQt6mN85MxJqfRzyTtQZpia4jLn/Og364+pSCgUVSW2QB2+DgKNk2KRCM025/x37jdKbxgiAdBX+QjXnNa+iXRyfmQolHlDSAYYB593o6gQtyxhS8DCCzqdSfvLbKJT79iQStIogY6xLsPy1zHmV1n1N6ZBvuhHkbTBInYew/4kYm2/BOt+wWXH12LUEO5T3cildAT3fHvwdW27R1tPLW2mM174J411Ad71el3JlwbZj+IPls4abn043vRSywvP/s85RGVcrc+mq1fcEfvczCRzX/kLhBnCtfi7bhCBn+vUYhxBskaOsIjstx/7v8sK8WnF0MbEWyUzNXkCfefsKAxmSksuGv+vExolTkuU14N+UhZf/8=
 
 branches:
   except:
@@ -12,8 +13,8 @@ branches:
 
 env:
   global:
-    - MESSAGE=$(git log --oneline -1)
-    - JOB=$(echo $MESSAGE | awk -F '[][]' '{print $2}')
+  - MESSAGE=$(git log --oneline -1)
+  - JOB=$(echo $MESSAGE | awk -F '[][]' '{print $2}')
 
 before_install:
   - brew update
@@ -21,9 +22,9 @@ before_install:
 install:
   - gem install fastlane
   - if [[ "$JOB" == "doc" || "$JOB" == "release" ]]; then
-        brew unlink node && brew install npm;
-        npm install -g html-minifier clean-css;
-        gem install jazzy;
+        brew unlink node && brew install
+        npm; npm install -g html-minifier clean-css
+        gem install jazzy
     fi
 
 before_script:
@@ -35,7 +36,7 @@ script:
 
 after_success:
   - if [[ "$TRAVIS_TAG" == "" ]]; then
-        if [[ "$JOB" == "tag" || "$JOB" == "release" ]]; then fastlane tag; fi;
+        if [[ "$JOB" == "tag" || "$JOB" == "release" ]]; then fastlane tag; fi
         if [[ "$JOB" == "doc" || "$JOB" == "release" ]]; then fastlane doc; fi;
     fi
 
@@ -47,4 +48,4 @@ deploy:
   on:
     tags: true
     repo: aquarchitect/MyKit
-    condition: $SCHEME = iOS && $JOB = release
+    condition: $JOB = release
