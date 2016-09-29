@@ -1,65 +1,57 @@
 MyKit
 =====
 
-[![Swift Version](https://img.shields.io/badge/swift-2.2-orange.svg?style=flat-square)](https://swift.org)  [![Build Status](https://img.shields.io/travis/aquarchitect/MyKit.svg?style=flat-square)](https://travis-ci.org/aquarchitect/MyKit/)  [![Platform Support](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20-lightgrey.svg?style=flat-square)](https://developer.apple.com/xcode/download/)
+[![Swift Version](https://img.shields.io/badge/swift-3.0-orange.svg?style=flat-square)](https://swift.org)  [![Build Status](https://img.shields.io/travis/aquarchitect/MyKit.svg?style=flat-square)](https://travis-ci.org/aquarchitect/MyKit/)  [![Platform Support](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20-lightgrey.svg?style=flat-square)](https://developer.apple.com/xcode/download/)
 
 Documentation: [http://aquarchitect.github.io/MyKit/](http://aquarchitect.github.io/MyKit/)
 
 ### INTRODUCTION
 
-__MyKit__ is a wide-ranged collection of codes from extensions to small modular frameworks that are covering from data structure to user interface. For record purposes, everything is listed below in a directory tree, and the most exciting features have an embedded link directly to the source codes.
+__MyKit__ is a wide-ranged collection of codes from extensions to small modular frameworks covering from data structure to user interface. For record purposes, everything is listed in a directory tree below, and the exciting features are highlighted with an embedded link directly to the source codes.
 
 Thanks for checking out, and Happy coding!
 
 <big><pre>
 Common/
 ├── Utilities/
-|   ├── _Minor
 |   ├── [Arbitrary](Sources/Common/Utilities/Arbitrary.swift)
 |   ├── Box
 |   ├── [Curry](Sources/Common/Utilities/Curry.swift)
-|   ├── [Diff](Sources/Common/Utilities/Diff.swift)
+|   ├── [Change](Sources/Common/Utilities/Change.swift)
 |   ├── [Draw](Sources/Common/Utilities/Draw.swift)
 |   ├── [Matrix](Sources/Common/Utilities/Matrix.swift)
 |   ├── [Promise](Sources/Common/Utilities/Promise.swift)
-|   ├── Queue
 |   ├── [Result](Sources/Common/Utilities/Result.swift)
 |   ├── [Schedule](Sources/Common/Utilities/Schedule.swift)
 |   ├── [Swizzle](Sources/Common/Utilities/Swizzle.swift)
-|   ├── [Then](Sources/Common/Utilities/Then.swift)
-|   ├── [Timing](Sources/Common/Utilities/Timing.swift)
+|   └── [Then](Sources/Common/Utilities/Then.swift)
 ├── Extensions/
 |   ├── Native/
-|   |   ├── Range+
+|   |   ├── CountableRange+
 |   |   ├── [String+](Sources/Common/Extensions/Native/String+.swift)
 |   |   ├── [Dictionary+](Sources/Common/Extensions/Native/Dictionary+.swift)
-|   |   ├── [CollectionType+](Sources/Common/Extensions/Native/CollectionType+.swift)
-|   |   └── [SequenceType+](Sources/Common/Extensions/Native/SequenceType+.swift)
+|   |   ├── [Collection+](Sources/Common/Extensions/Native/Collection+.swift)
+|   |   ├── AnyIterator+
+|   |   └── RangeReplaceableCollection+
 |   ├── Foundation/
-|   |   ├── NSBundle+
-|   |   ├── [NSCache+](Sources/Common/Extensions/Foundation/NSCache+.swift)
-|   |   ├── [NSDate+](Sources/Common/Extensions/Foundation/NSDate+.swift)
-|   |   ├── [NSDateFormatter+](Sources/Common/Extensions/Foundation/NSDateFormatter+.swift)
-|   |   ├── [NSIndexPath+](Sources/Common/Extensions/Foundation/NSIndexPath+.swift)
+|   |   ├── Bundle+
+|   |   ├── [Date+](Sources/Common/Extensions/Foundation/Date+.swift)
+|   |   ├── [DateFormatter+](Sources/Common/Extensions/Foundation/DateFormatter+.swift)
+|   |   ├── [Scanner+](Sources/Common/Extensions/Foundation/Scanner+.swift)
+|   |   ├── [URLSession+](Sources/Common/Extensions/Foundation/URLSession+.swift)
 |   |   ├── [NSLayoutConstraint+](Sources/Common/Extensions/Foundation/NSLayoutConstraint+.swift)
 |   |   ├── [NSMutableAttributedString+](Sources/Common/Extensions/Foundation/NSMutableAttributedString+.swift)
-|   |   ├── NSRange+
-|   |   └── [NSScanner+](Sources/Common/Extensions/Foundation/NSScanner+.swift)
+|   |   └── NSRange+
 |   ├── CoreGraphics/
 |   |   ├── CGPoint+
 |   |   ├── CGRect+
 |   |   └── CGSize+
 |   ├── CoreData/
 |   |   ├── NSAttributeDescription+
-|   |   ├── NSEntityDescription+
-|   |   ├── NSFetchRequest+
-|   |   ├── NSManagedObject+
-|   |   ├── [NSManagedObjectContext+](Sources/Common/Extensions/CoreData/NSManagedObjectContext+.swift)
 |   |   └── NSRelationshipDescription+
 |   └── CloudKit/
 |       ├── [CKContainer+](Sources/Common/Extensions/CloudKit/CKContainer+.swift)
 |       ├── [CKDatabase+](Sources/Common/Extensions/CloudKit/CKDatabase+.swift)
-|       ├── [CKQuery+](Sources/Common/Extensions/CloudKit/CKQuery+.swift)
 |       ├── [CKRecord+](Sources/Common/Extensions/CloudKit/CKRecord+.swift)
 |       └── [CKRecordID+](Sources/Common/Extensions/CloudKit/CKRecordID+.swift)
 └── Frameworks/
@@ -68,33 +60,31 @@ Common/
     ├── [ActionTrailing](Sources/Common/Frameworks/ActionTrailing/)
     ├── [ColorHexing](Sources/Common/Frameworks/ColorHexing/)
     ├── [CloudKit](Sources/Common/Frameworks/CloudKit/)
-    ├── [DateIndex](Sources/Common/Frameworks/DataIndex/)
     ├── [OpenWeather](Sources/Common/Frameworks/OpenWeather/)
     ├── [SymbolIcon](Sources/Common/Frameworks/SymbolIcon/)
-    ├── [StreamService](Sources/Common/Frameworks/StreamService/)
     └── [PersistentStack](Sources/Common/Frameworks/PersistentStack/)
 iOS/
 ├── Extensions/
-|   ├── [Draw+](Sources/iOS/Extensions/Draw+.swift)
+|   ├── Draw+
 |   ├── [UIBezierPath+](Sources/iOS/Extensions/UIBezierPath+.swift)
 |   ├── [UICollectionView+](Sources/iOS/Extensions/UICollectionView+.swift)
-|   ├── [UICollectionViewLayout+](Sources/iOS/Extensions/UICollectionViewLayout+.swift)
 |   ├── UIEdgeInsets+
 |   ├── UILabel+
 |   ├── UIScreen+
-|   ├── [UIScrollView+](Sources/iOS/Extensions/UIScreenView+.swift)
+|   ├── UIScrollView+
 |   ├── [UITableView+](Sources/iOS/Extensions/UITableView+.swift)
+|   ├── UIView+
 |   └── UIViewController+
 └── Frameworks/
+    ├── [LongPress](Sources/iOS/Frameworks/LongPress/)
     ├── [GrowingText](Sources/iOS/Frameworks/GrowingText/)
-    ├── [TransitionAnimator](Sources/iOS/Frameworks/TransitionAnimator/)
-    ├── [GenericInterface](Sources/iOS/Frameworks/GrowingText/)
-    └── [CollectionLayout](Sources/iOS/Frameworks/CollectionLayout/)
+    ├── [GenericInterface](Sources/iOS/Frameworks/GenericInterface/) - including table/collection view
+    └── [CollectionLayout](Sources/iOS/Frameworks/CollectionLayout/) - including Paraboloid and Snapping
 </pre></big>
 
 ### ABOUT
 
-This library was originally just for organizing the common boilerplate codes in my Swift development workflow; and if has been growing larger over years. If there is a __generic__ implementation's possibility it likely will end up here.
+This library was originally just for organizing the common boilerplate codes in my Swift development workflow; and it has been growing larger over years. If there is a __generic__ solution for an implementation, it likely will end up here.
 
 This is more or less an educational diary of mine to programming; but most importantly it is an essential arsenal for any of my Swift project.
 

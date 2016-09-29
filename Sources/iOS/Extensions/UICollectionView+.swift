@@ -50,14 +50,14 @@ public extension UICollectionView {
         } else { return nil }
     }
 
-    final func serialize(indexPath: IndexPath) -> Int {
+    final func formIndex(bySerializing indexPath: IndexPath) -> Int {
         return (0..<indexPath.section)
             .map { self.numberOfItems(inSection: $0) }
             .lazy
             .reduce(indexPath.row, +)
     }
 
-    final func deserialize(index: Int) -> IndexPath {
+    final func formIndexPath(byDeserializing index: Int) -> IndexPath {
         var (section, count) = (0, 0)
 
         while case let rows = self.numberOfItems(inSection: section),

@@ -19,6 +19,9 @@ public extension Schedule {
             }
         }
     }
+}
+
+public extension Schedule {
 
     static func countdown(_ dt: TimeInterval, count: UInt, handle: @escaping (TimeInterval) throws -> Void) -> Promise<Void> {
         let promise = Promise<Void>.lift {
@@ -30,10 +33,17 @@ public extension Schedule {
             .andThen { once(dt) }
             .andThen { countdown(dt, count: count - 1, handle: handle) }
     }
+}
+
+public extension Schedule {
+
+    private static func every(_ dt: TimeInterval, count: UInt, handle: @escaping (TimeInterval) throws -> Void) -> Promise<Void> {
+        return once(dt)
+            .then { try handle(Double(count) * dt) }
+            .andThen { every(dt, count: count + 1, handle: handle) }
+    }
 
     static func every(_ dt: TimeInterval, handle: @escaping (TimeInterval) throws -> Void) -> Promise<Void> {
-        return countdown(dt, count: UInt.max) {
-            try handle(dt * Double(UInt.max) - $0)
-        }
+        return every(dt, count: 0, handle: handle)
     }
 }

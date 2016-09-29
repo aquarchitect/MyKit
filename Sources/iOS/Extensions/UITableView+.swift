@@ -57,14 +57,14 @@ public extension UITableView {
         } else { return nil }
     }
 
-    final func serialize(indexPath: NSIndexPath) -> Int {
+    final func formIndex(bySerializing indexPath: NSIndexPath) -> Int {
         return (0..<indexPath.section)
             .map { self.numberOfRows(inSection: $0) }
             .lazy
             .reduce(indexPath.row, +)
     }
 
-    final func deserialize(index: Int) -> IndexPath {
+    final func formIndexPath(byDeserializing index: Int) -> IndexPath {
         var (section, count) = (0, 0)
 
         while case let rows = self.numberOfRows(inSection: section),

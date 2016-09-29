@@ -26,10 +26,12 @@ public extension Promise {
     /** 
      * Execute promise with a callback
      */
-    func resolve(_ callback: Result<T>.Callback? = nil) {
-        self.operation { result in
-            callback?(result)
-        }
+    fileprivate func resolve(_ callback: @escaping Result<T>.Callback) {
+        self.operation(callback)
+    }
+
+    func resolve() {
+        self.operation { _ in }
     }
 }
 
@@ -64,7 +66,7 @@ public extension Promise {
 
 public extension Promise {
 
-    func onResult(_ execute: @escaping (Result<T>) -> Void) -> Promise {
+    private func onResult(_ execute: @escaping (Result<T>) -> Void) -> Promise {
         return Promise { callback in
             self.resolve { result in
                 execute(result)
