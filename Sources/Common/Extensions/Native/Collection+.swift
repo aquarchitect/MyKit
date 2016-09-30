@@ -15,26 +15,25 @@ internal extension Collection where Iterator.Element: Comparable, Index == Int, 
      * core team rejects this proposal to the language. Therefore,
      * this extension will be kept internal for the time being.
      */
-    private func _binarySearch(element: Iterator.Element, range: Range<Index>) -> Index? {
-        guard range.lowerBound < range.upperBound else { return nil }
-
-        let midIndex = self.index(range.lowerBound, offsetBy: (range.upperBound - range.lowerBound)/2)
-
-        switch self[midIndex] {
-        case _ where element < self[midIndex]:
-            let _range = Range(range.lowerBound..<midIndex)
-            return _binarySearch(element: element, range: _range)
-        case _ where element > self[midIndex]:
-            let _range = Range((midIndex+1)..<range.upperBound)
-            return _binarySearch(element: element, range: _range)
-        default:
-            return midIndex
-        }
-    }
-
     func binarySearch(element: Iterator.Element) -> Index? {
-        let range = Range(self.startIndex..<self.endIndex)
-        return _binarySearch(element: element, range: range)
+        func binarySearch(range: Range<Index>) -> Index? {
+            guard range.lowerBound < range.upperBound else { return nil }
+
+            let midIndex = self.index(range.lowerBound, offsetBy: (range.upperBound - range.lowerBound)/2)
+
+            switch self[midIndex] {
+            case _ where element < self[midIndex]:
+                let _range = Range(range.lowerBound..<midIndex)
+                return binarySearch(range: _range)
+            case _ where element > self[midIndex]:
+                let _range = Range((midIndex+1)..<range.upperBound)
+                return binarySearch(range: _range)
+            default:
+                return midIndex
+            }
+        }
+
+        return binarySearch(range: self.startIndex..<self.endIndex)
     }
 }
 

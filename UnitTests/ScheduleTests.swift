@@ -49,8 +49,8 @@ final class ScheduleTests: XCTestCase {
 
     func testEvery() {
         let expectation = self.expectation(description: #function)
-        Schedule.every(0.8, handle: {
-            guard $0 > 5 else { return }
+        Schedule.every(1, handle: {
+            guard $0 > 2 else { return }
             throw Exception.interupted
         }).onFailure { _ in
             expectation.fulfill()

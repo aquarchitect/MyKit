@@ -37,13 +37,13 @@ public extension Schedule {
 
 public extension Schedule {
 
-    private static func every(_ dt: TimeInterval, count: UInt, handle: @escaping (TimeInterval) throws -> Void) -> Promise<Void> {
-        return once(dt)
-            .then { try handle(Double(count) * dt) }
-            .andThen { every(dt, count: count + 1, handle: handle) }
-    }
-
     static func every(_ dt: TimeInterval, handle: @escaping (TimeInterval) throws -> Void) -> Promise<Void> {
-        return every(dt, count: 0, handle: handle)
+        func every(count: UInt) -> Promise<Void> {
+            return once(dt)
+                .then { try handle(Double(count + 1) * dt) }
+                .andThen { every(count: count + 1) }
+        }
+
+        return every(count: 0)
     }
 }

@@ -7,14 +7,16 @@
  */
 
 import Dispatch
+//import Foundation
 
 public enum PromiseError: Error { case noData }
 
 public struct Promise<T> {
 
-    fileprivate let operation: (@escaping Result<T>.Callback) -> Void
+    public typealias Operation = (@escaping Result<T>.Callback) -> Void
+    fileprivate let operation: Operation
 
-    public init(_ operation: @escaping (@escaping Result<T>.Callback) -> Void) {
+    public init(_ operation: @escaping Operation) {
         self.operation = operation
     }
 }
@@ -73,6 +75,10 @@ public extension Promise {
                 callback(result)
             }
         }
+    }
+
+    func always(_ execute: @escaping () -> Void) -> Promise {
+        return onResult { _ in execute() }
     }
 
     func onSuccess(_ execute: @escaping (T) -> Void) -> Promise {
@@ -189,13 +195,13 @@ public func when<A, B>(_ promiseA: Promise<A>, _ promiseB: Promise<B>) -> Promis
     return Promise<(A, B)> { callback in
         var resultA: Result<A>!, resultB: Result<B>!
 
-        promiseA.inDispatchGroup(group).resolve { result in
-            resultA = result
-        }
+        promiseA
+            .inDispatchGroup(group)
+            .resolve { resultA = $0 }
 
-        promiseB.inDispatchGroup(group).resolve { result in
-            resultB = result
-        }
+        promiseB
+            .inDispatchGroup(group)
+            .resolve { resultB = $0 }
 
         group.notify(queue: .main) {
             callback(zip(resultA, resultB))
