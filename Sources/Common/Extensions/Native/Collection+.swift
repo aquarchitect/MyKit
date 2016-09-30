@@ -8,6 +8,36 @@
 
 import Foundation
 
+internal extension Collection where Iterator.Element: Comparable, Index == Int, IndexDistance == Int {
+
+    /*
+     * Due to the complexity of binary search implementation, the
+     * core team rejects this proposal to the language. Therefore,
+     * this extension will be kept internal for the time being.
+     */
+    private func _binarySearch(element: Iterator.Element, range: Range<Index>) -> Index? {
+        guard range.lowerBound < range.upperBound else { return nil }
+
+        let midIndex = self.index(range.lowerBound, offsetBy: (range.upperBound - range.lowerBound)/2)
+
+        switch self[midIndex] {
+        case _ where element < self[midIndex]:
+            let _range = Range(range.lowerBound..<midIndex)
+            return _binarySearch(element: element, range: _range)
+        case _ where element > self[midIndex]:
+            let _range = Range((midIndex+1)..<range.upperBound)
+            return _binarySearch(element: element, range: _range)
+        default:
+            return midIndex
+        }
+    }
+
+    func binarySearch(element: Iterator.Element) -> Index? {
+        let range = Range(self.startIndex..<self.endIndex)
+        return _binarySearch(element: element, range: range)
+    }
+}
+
 /// :nodoc:
 internal extension Collection where Iterator.Element: Equatable, Index == Int {
 
@@ -43,10 +73,10 @@ public extension Collection where Iterator.Element: Equatable, Index == Int {
         let matrix = lcsMatrix(byComparing: other)
         var common: [Iterator.Element] = []
 
-        var i = Int(self.count.toIntMax())
-        var j = Int(other.count.toIntMax())
+        var i = Int((self.count + 1).toIntMax())
+        var j = Int((other.count + 1).toIntMax())
 
-        while i >= 1 && j >= 1 {
+        while i >= 2 && j >= 2 {
             switch matrix[i, j] {
             case matrix[i, j-1]:
                 j -= 1
@@ -55,8 +85,7 @@ public extension Collection where Iterator.Element: Equatable, Index == Int {
             default:
                 i -= 1
                 j -= 1
-                print(i)
-                common.insert(self[i], at: 0)
+                common.insert(self[i-1], at: 0)
             }
         }
 
@@ -92,7 +121,7 @@ public extension Collection where Iterator.Element: Equatable, Index == Int {
         }
     }
 
-    func compare(other: Self) -> [Change<Step>] {
+    func compare(_ other: Self) -> [Change<Step>] {
         let count = Swift.max(self.count, other.count).toIntMax()
 
         var results: [Change<Step>] = []
@@ -106,33 +135,48 @@ public extension Collection where Iterator.Element: Equatable, Index == Int {
     }
 }
 
-public extension Collection where Iterator.Element: Equatable, Index == Int, SubSequence: Collection, SubSequence.Iterator.Element: Equatable, SubSequence.Index == Int {
+public extension Collection where Iterator.Element: Equatable, Index == Int, SubSequence.Iterator.Element: Equatable {
 
     /**
      * This is designed for `UITableView` and `UICollecitonView`.
-     * Warning: results are not in an order.
      */
-    func compare(_ other: Self, section: Int) -> (reloads: [IndexPath], deletes: [IndexPath], inserts: [IndexPath]) {
+    private func _compare(_ other: Self, section: Int) -> (reloads: [IndexPath], deletes: [IndexPath], inserts: [IndexPath]) {
         let count = Swift.max(self.count, other.count).toIntMax()
 
-        var deletes = Set<IndexPath>(minimumCapacity: Int(count))
-        var inserts = Set<IndexPath>(minimumCapacity: Int(count))
-        var reloads = Set<IndexPath>(minimumCapacity: Int(count))
+        var inserts: [IndexPath] = []; inserts.reserveCapacity(Int(count))
+        var deletes: [IndexPath] = []; deletes.reserveCapacity(Int(count))
+        var reloads: [IndexPath] = []; reloads.reserveCapacity(Int(count))
 
         backtrackChanges(byComparing: other).forEach {
             let change = $0.then { IndexPath(arrayLiteral: section, $0.index) }
 
             switch change {
-            case .delete(let value) where inserts.contains(value):
-                inserts.remove(value)
-                reloads.insert(value)
             case .delete(let value):
-                deletes.insert(value)
+                if let index = inserts.binarySearch(element: value) {
+                    inserts.remove(at: index)
+                    reloads.insert(value, at: 0)
+                } else {
+                    deletes.insert(value, at: 0)
+                }
             case .insert(let value):
-                inserts.insert(value)
+                inserts.insert(value, at: 0)
             }
         }
 
         return (Array(reloads), Array(deletes), Array(inserts))
+    }
+
+    func compare(_ other: Self, range: CountableRange<Index>? = nil, section: Int) -> (reloads: [IndexPath], deletes: [IndexPath], inserts: [IndexPath]) {
+        var thisRange = CountableRange(self.startIndex..<self.endIndex)
+        var otherRange = CountableRange(other.startIndex..<other.endIndex)
+
+        if let _range = range {
+            thisRange = thisRange.clamped(to: _range)
+            otherRange = otherRange.clamped(to: _range)
+        }
+
+        let thisCollection = self[thisRange].map { $0 }
+        let otherColelction = other[otherRange].map { $0 }
+        return thisCollection._compare(otherColelction, section: section)
     }
 }

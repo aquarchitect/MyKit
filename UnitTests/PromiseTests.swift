@@ -26,17 +26,16 @@ final class PromiseTests: XCTestCase {
                   (1.0, .fullfill(15))]
             .map(delay)
 
-        Promise<Int>.when(ps).resolve {
-            switch $0 {
-            case .fullfill(let value):
-                XCTAssertEqual(value, [5, 10, 15])
-                expectation.fulfill()
-            case .reject(let error):
-                XCTFail("Error \(error) Occurred")
-            }
-        }
+        Promise<Int>.when(ps).onSuccess {
+            XCTAssertEqual($0, [5, 10, 15])
+            expectation.fulfill()
+        }.onFailure {
+            XCTFail("Error \($0) Occurred")
+        }.resolve()
 
-        waitForExpectations(timeout: 3) { XCTAssertNil($0) }
+        waitForExpectations(timeout: 3) {
+            XCTAssertNil($0)
+        }
     }
 
     func testRejectedArray() {
@@ -47,19 +46,16 @@ final class PromiseTests: XCTestCase {
                   (1.0, .fullfill(15))]
                     .map(delay)
 
-        Promise<Int>.when(ps).resolve {
-            switch $0 {
-            case .fullfill(let value):
-                XCTFail("Promise callback with value \(value)")
-            case .reject(Exception.failed):
-                XCTAssert(true)
-                expectation.fulfill()
-            case .reject(let error):
-                XCTFail("Error \(error) Occurred")
-            }
-        }
+        Promise<Int>.when(ps).onSuccess {
+            XCTFail("Promise callback with value \($0)")
+        }.onFailure {
+            XCTAssert(($0 as? Exception) == .failed, "Error \($0) occurred")
+            expectation.fulfill()
+        }.resolve()
 
-        waitForExpectations(timeout: 3) { XCTAssertNil($0) }
+        waitForExpectations(timeout: 3) {
+            XCTAssertNil($0)
+        }
     }
 
     func testFullfilledTuple() {
@@ -68,17 +64,16 @@ final class PromiseTests: XCTestCase {
         let p1 = delay(dt: 0.5, result: .fullfill(true))
         let p2 = delay(dt: 1.0, result: .fullfill("Success"))
 
-        when(p1, p2).resolve {
-            switch $0 {
-            case .fullfill(let value):
-                XCTAssert(value.0 && value.1 == "Success")
-                expectation.fulfill()
-            case .reject(let error):
-                XCTFail("Error \(error) Occurred")
-            }
-        }
+        when(p1, p2).onSuccess {
+            XCTAssert($0 && $1 == "Success")
+            expectation.fulfill()
+        }.onFailure {
+            XCTFail("Error \($0) Occurred")
+        }.resolve()
 
-        waitForExpectations(timeout: 3) { XCTAssertNil($0) }
+        waitForExpectations(timeout: 3) {
+            XCTAssertNil($0)
+        }
     }
 
     func testRejectedTuple() {
@@ -87,18 +82,16 @@ final class PromiseTests: XCTestCase {
         let p1 = delay(dt: 0.5, result: .fullfill(true))
         let p2 = delay(dt: 1.0, result: Result<String>.reject(Exception.failed))
 
-        when(p1, p2).resolve {
-            switch $0 {
-            case .fullfill(let value):
-                XCTFail("Promise callback with value \(value)")
-            case .reject(Exception.failed):
-                XCTAssert(true)
-                expectation.fulfill()
-            case .reject(let error):
-                XCTFail("Error \(error) Occurred")
-            }
+        when(p1, p2).onSuccess {
+            XCTFail("Promise callback with value \($0)")
+        }.onFailure {
+            XCTAssert(($0 as? Exception) == .failed, "Error \($0) occurred")
+            expectation.fulfill()
+        }.resolve()
+
+        waitForExpectations(timeout: 3) {
+            XCTAssertNil($0)
         }
 
-        waitForExpectations(timeout: 3) { XCTAssertNil($0) }
     }
 }

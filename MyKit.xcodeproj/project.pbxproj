@@ -113,6 +113,8 @@
 		C2973FF71D7747BC005C73A0 /* GenericCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF41D7747BC005C73A0 /* GenericCollectionCell.swift */; };
 		C2973FF81D7747BC005C73A0 /* GenericCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF51D7747BC005C73A0 /* GenericCollectionView.swift */; };
 		C2973FF91D7747BC005C73A0 /* GenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF61D7747BC005C73A0 /* GenericTableView.swift */; };
+		C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
+		C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2AFF8991D9847BD00431639 /* ReorderingLongPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AFF8981D9847BD00431639 /* ReorderingLongPress.swift */; };
 		C2AFF89B1D9849E400431639 /* SelectingLongPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AFF89A1D9849E400431639 /* SelectingLongPress.swift */; };
 		C2B280441D6F9B49008293EF /* URLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B280431D6F9B49008293EF /* URLSession+.swift */; };
@@ -246,7 +248,6 @@
 		C20165961CE0FC1100F7D3E5 /* OpenWeather+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "OpenWeather+.swift"; path = "Sources/Common/Frameworks/OpenWeather/OpenWeather+.swift"; sourceTree = "<group>"; };
 		C20165A01CE0FC2800F7D3E5 /* CloudStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudStack.swift; path = Sources/Common/Frameworks/CloudKit/CloudStack.swift; sourceTree = "<group>"; };
 		C20165A51CE0FC6D00F7D3E5 /* Bundle+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bundle+.swift"; path = "Sources/Common/Extensions/Foundation/Bundle+.swift"; sourceTree = "<group>"; };
-		C20165A61CE0FC6D00F7D3E5 /* NSCache+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSCache+.swift"; path = "Sources/Common/Extensions/Foundation/NSCache+.swift"; sourceTree = "<group>"; };
 		C20165A71CE0FC6D00F7D3E5 /* Date+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+.swift"; path = "Sources/Common/Extensions/Foundation/Date+.swift"; sourceTree = "<group>"; };
 		C20165A81CE0FC6D00F7D3E5 /* DateFormatter+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DateFormatter+.swift"; path = "Sources/Common/Extensions/Foundation/DateFormatter+.swift"; sourceTree = "<group>"; };
 		C20165AA1CE0FC6D00F7D3E5 /* NSLayoutConstraint+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+.swift"; path = "Sources/Common/Extensions/Foundation/NSLayoutConstraint+.swift"; sourceTree = "<group>"; };
@@ -290,8 +291,8 @@
 		C23F09061D73519F003211D3 /* AnyIterator+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AnyIterator+.swift"; path = "Sources/Common/Extensions/Native/AnyIterator+.swift"; sourceTree = "<group>"; };
 		C2446BED1CEB6D2100957586 /* Arbitrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arbitrary.swift; path = Sources/Common/Utilities/Arbitrary.swift; sourceTree = "<group>"; };
 		C24A0AE01D7211D800F94F08 /* Change.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Change.swift; path = Sources/Common/Utilities/Change.swift; sourceTree = "<group>"; };
+		C250EB771D9C78C6008FC9D0 /* QuickTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = QuickTest.playground; sourceTree = "<group>"; };
 		C25478451D73D8F400F00C38 /* RangeReplaceableCollection+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RangeReplaceableCollection+.swift"; path = "Sources/Common/Extensions/Native/RangeReplaceableCollection+.swift"; sourceTree = "<group>"; };
-		C25877741C742F1400DF1F88 /* MyKit.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyKit.playground; sourceTree = "<group>"; };
 		C2692FCF1D6502D300A29897 /* MyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyKit.h; path = MyKit/MyKit.h; sourceTree = "<group>"; };
 		C2848DE01C95642E00707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2848E011C956A7600707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,6 +301,7 @@
 		C2973FF41D7747BC005C73A0 /* GenericCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericCollectionCell.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericCollectionCell.swift; sourceTree = "<group>"; };
 		C2973FF51D7747BC005C73A0 /* GenericCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericCollectionView.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericCollectionView.swift; sourceTree = "<group>"; };
 		C2973FF61D7747BC005C73A0 /* GenericTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericTableView.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericTableView.swift; sourceTree = "<group>"; };
+		C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensionTests.swift; path = UnitTests/CollectionExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		C2AFF8981D9847BD00431639 /* ReorderingLongPress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReorderingLongPress.swift; path = Sources/iOS/Frameworks/LongPress/ReorderingLongPress.swift; sourceTree = "<group>"; };
 		C2AFF89A1D9849E400431639 /* SelectingLongPress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectingLongPress.swift; path = Sources/iOS/Frameworks/LongPress/SelectingLongPress.swift; sourceTree = "<group>"; };
 		C2B280431D6F9B49008293EF /* URLSession+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URLSession+.swift"; path = "Sources/Common/Extensions/Foundation/URLSession+.swift"; sourceTree = "<group>"; };
@@ -443,7 +445,6 @@
 				C20165A81CE0FC6D00F7D3E5 /* DateFormatter+.swift */,
 				C20165AE1CE0FC6D00F7D3E5 /* Scanner+.swift */,
 				C2B280431D6F9B49008293EF /* URLSession+.swift */,
-				C20165A61CE0FC6D00F7D3E5 /* NSCache+.swift */,
 				C20165AA1CE0FC6D00F7D3E5 /* NSLayoutConstraint+.swift */,
 				C20165AB1CE0FC6D00F7D3E5 /* NSMutableAttributedString+.swift */,
 				C20165AD1CE0FC6D00F7D3E5 /* NSRange+.swift */,
@@ -616,7 +617,7 @@
 		C289AD701B62B93800186773 = {
 			isa = PBXGroup;
 			children = (
-				C25877741C742F1400DF1F88 /* MyKit.playground */,
+				C250EB771D9C78C6008FC9D0 /* QuickTest.playground */,
 				C22EA0371D987DA2003A490A /* MyKit */,
 				C289AD921B62B9AD00186773 /* Source */,
 				C2DC8B881CAB2EDB00837D9E /* Demos */,
@@ -684,6 +685,7 @@
 		C2B60ACC1B95080800F6D2BB /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */,
 				C2F317461D5A5EF1009B0F42 /* _FontLoadingTests.swift */,
 				C2F317471D5A5EF1009B0F42 /* NSDateTests.swift */,
 				C2F317481D5A5EF1009B0F42 /* PromiseTests.swift */,
@@ -1015,7 +1017,7 @@
 		C289AD711B62B93800186773 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				TargetAttributes = {
 					C2848DDF1C95642E00707F53 = {
@@ -1195,6 +1197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2F317501D5A5EF6009B0F42 /* PromiseTests.swift in Sources */,
+				C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */,
 				C2F3174F1D5A5EF6009B0F42 /* NSDateTests.swift in Sources */,
 				C2F317511D5A5EF6009B0F42 /* ScheduleTests.swift in Sources */,
 				C2F3174E1D5A5EF6009B0F42 /* _FontLoadingTests.swift in Sources */,
@@ -1206,6 +1209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2F317541D5A5EF7009B0F42 /* PromiseTests.swift in Sources */,
+				C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */,
 				C2F317531D5A5EF7009B0F42 /* NSDateTests.swift in Sources */,
 				C2F317551D5A5EF7009B0F42 /* ScheduleTests.swift in Sources */,
 				C2F317521D5A5EF7009B0F42 /* _FontLoadingTests.swift in Sources */,
