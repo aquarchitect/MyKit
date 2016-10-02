@@ -20,18 +20,15 @@ end
 
 desc "Test targets"
 lane :test do
-  scan(
-    scheme: "MyKit-iOS",
-    output_directory: "./.fastlane/test_output",
-    custom_report_file_name: "report_ios",
-    clean: true
-  )
-  scan(
-    scheme: "MyKit-macOS",
-    output_directory: "./.fastlane/test_output",
-    custom_report_file_name: "report_macos",
-    clean: true
-  )
+  ["iOS", "macOS"].each do |platform|
+    scan(
+      scheme: "MyKit-#{platform}",
+      output_directory: "./.fastlane/test_output",
+      custom_report_file_name: "report_#{platform}.html",
+      output_types: "html",
+      clean: true
+    )
+  end
 end
 
 error do |lane, exception|
