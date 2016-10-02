@@ -29,19 +29,19 @@ public extension UIView {
     func constraints(subviews: [UIView], equallyAlong axis: Axis) {
         var axisFormat: String = "\(axis.initial):|"
         var dictionaryViews: [String: UIView] = [:]
-        var constraintsFormat: [String] = []
+        var oppositeFormat: [String] = []
 
         for (index, subview) in subviews.enumerated() {
             let key = "subview\(index)"
             dictionaryViews[key] = subview
 
-            constraintsFormat += ["\(axis.reversed.initial):|[\(key)]|"]
+            oppositeFormat += ["\(axis.reversed.initial):|[\(key)]|"]
             axisFormat += "[" + key + (index == 0 ? "" : "(==subview0)") + "]"
         }
 
         axisFormat += "|"
 
-        (constraintsFormat + [axisFormat])
+        (oppositeFormat + [axisFormat])
             .reduce([]) { $0 + NSLayoutConstraint.constraints(withVisualFormat: $1, options: [], metrics: nil, views: dictionaryViews) }
             .activate()
     }

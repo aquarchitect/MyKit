@@ -101,6 +101,8 @@
 		C23F09081D73519F003211D3 /* AnyIterator+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23F09061D73519F003211D3 /* AnyIterator+.swift */; };
 		C2446BEE1CEB6D2100957586 /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2446BED1CEB6D2100957586 /* Arbitrary.swift */; };
 		C2446BEF1CEB6D2100957586 /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2446BED1CEB6D2100957586 /* Arbitrary.swift */; };
+		C245DFD61DA1CB9C004D9F18 /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165911CE0FC0200F7D3E5 /* SymbolIcon.swift */; };
+		C245DFD71DA1CB9D004D9F18 /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165911CE0FC0200F7D3E5 /* SymbolIcon.swift */; };
 		C24A0AE31D72143B00F94F08 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24A0AE01D7211D800F94F08 /* Change.swift */; };
 		C24A0AE41D72143B00F94F08 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24A0AE01D7211D800F94F08 /* Change.swift */; };
 		C25478461D73D8F400F00C38 /* RangeReplaceableCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25478451D73D8F400F00C38 /* RangeReplaceableCollection+.swift */; };
@@ -1222,6 +1224,7 @@
 				C20166021CE0FF1300F7D3E5 /* NSRange+.swift in Sources */,
 				C20166141CE0FF2100F7D3E5 /* String+.swift in Sources */,
 				C20166111CE0FF2100F7D3E5 /* Dictionary+.swift in Sources */,
+				C245DFD71DA1CB9D004D9F18 /* SymbolIcon.swift in Sources */,
 				C20165F91CE0FF0E00F7D3E5 /* CGSize+.swift in Sources */,
 				C201656E1CE0F01D00F7D3E5 /* Then.swift in Sources */,
 				C20166001CE0FF1300F7D3E5 /* NSMutableAttributedString+.swift in Sources */,
@@ -1330,6 +1333,7 @@
 				C201658B1CE0FA8B00F7D3E5 /* String+.swift in Sources */,
 				C2BD802E1D98703300F3D34F /* SnappingLayoutDelegate.swift in Sources */,
 				C20165581CE0EFC500F7D3E5 /* Promise.swift in Sources */,
+				C245DFD61DA1CB9C004D9F18 /* SymbolIcon.swift in Sources */,
 				C2446BEE1CEB6D2100957586 /* Arbitrary.swift in Sources */,
 				C201663C1CE1017900F7D3E5 /* Draw+.swift in Sources */,
 			);

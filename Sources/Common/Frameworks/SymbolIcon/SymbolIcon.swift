@@ -24,7 +24,7 @@ public extension SymbolIcon {
         let name = "Ionicons", file = "SymbolIcon"
         
         return NSMutableAttributedString(string: "\(character)").then {
-            $0.add(font: .font(withName: name, size: size, fromFile: file))
+            $0.addFont(.font(withName: name, size: size, fromFile: file))
         }
     }
 }
