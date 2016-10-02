@@ -23,6 +23,7 @@ lane :test do
   ["iOS", "macOS"].each do |platform|
     scan(
       scheme: "MyKit-#{platform}",
+      xcargs: "CODE_SIGN_IDENTITY='' CODE_SIGNING_REQUIRED='NO'",
       output_directory: "./.fastlane/test_output",
       custom_report_file_name: "report_#{platform}.html",
       output_types: "html",
@@ -32,5 +33,5 @@ lane :test do
 end
 
 error do |lane, exception|
-  slack(message: exception.message, success: false)
+  slack(message: exception.message, success: false) unless is_ci
 end

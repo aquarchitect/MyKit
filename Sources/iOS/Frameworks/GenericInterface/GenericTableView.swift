@@ -47,13 +47,20 @@ public class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableVi
 public extension GenericTableView {
 
     func render(rowModels: [Model], update: Update) {
-        /*
-         * TODO: Optimize diff computing by estimating the possible amount of
-         * rows can be displayed on screen at once.
-         */
         switch update {
         case .lscWithAnimation(let animation):
-            let updates = rowModels.compare(rowModels, section: 0)
+            /*
+             * Giving an estimated range of possibly visible row 
+             * will speed up the diff computation on a much narrow
+             * subset of elements.
+             */
+            let range: CountableRange<Int> = {
+                let startIndex = self.indexPathsForVisibleRows?.first?.row ?? 0
+                let endIndex = startIndex + estimatedNumberOfVisibleRows
+                return .init(startIndex ... endIndex)
+            }()
+
+            let updates = rowModels.compare(rowModels, range: range, section: 0)
             self.rowModels = rowModels
 
             self.beginUpdates()

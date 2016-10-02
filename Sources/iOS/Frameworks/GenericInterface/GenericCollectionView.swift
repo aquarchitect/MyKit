@@ -14,6 +14,16 @@ public class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollect
 
     public fileprivate(set) var cellModels: [Model] = []
 
+    /*
+     * Providing an estimated of number of visible row will
+     * speed up the diff computation.
+     *
+     * Unlike table view, it is impossible to calculate a 
+     * possible range for diff computation because of the
+     * nature of dynamic cell layout.
+     */
+    public var estimatedNumberOfVisibleCells = 0
+
     public var cellRenderer: ((Cell, Model) -> Void)? {
         didSet { self.reloadData() }
     }
@@ -48,7 +58,13 @@ public extension GenericCollectionView where Model: Equatable {
     func render(cellModels: [Model], update: Update) {
         switch update {
         case .lscWithAnimation(let completion):
-            let updates = cellModels.compare(cellModels, section: 0)
+            let range: CountableRange<Int> = {
+                let startIndex = self.indexPathsForVisibleItems.first?.item ?? 0
+                let endIndex = startIndex + estimatedNumberOfVisibleCells
+                return .init(startIndex ... endIndex)
+            }()
+
+            let updates = cellModels.compare(cellModels, range: range, section: 0)
             self.cellModels = cellModels
 
             self.performBatchUpdates({

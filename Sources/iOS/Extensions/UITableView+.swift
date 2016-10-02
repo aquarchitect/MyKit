@@ -8,6 +8,15 @@
 
 import UIKit
 
+public extension UITableView {
+
+    enum Update {
+
+        case lscWithAnimation(UITableViewRowAnimation)
+        case manualHandling((UITableView) -> Void)
+    }
+}
+
 // MARK: - Miscellaneous
 
 /// :nodoc:
@@ -20,17 +29,22 @@ public extension UITableView {
         return .init(row: row, section: section)
     }
 
+    var estimatedNumberOfVisibleRows: Int {
+        let height: CGFloat
+
+        if self.visibleCells.isEmpty {
+            height = UIScreen.main.bounds.height
+        } else if self.estimatedRowHeight == 0 {
+            height = self.bounds.height
+        } else {
+            height = self.estimatedRowHeight
+        }
+
+        return Int(height/self.rowHeight)
+    }
+
     final func hasSection(section: Int) -> Bool {
         return 0..<self.numberOfSections ~= section
-    }
-}
-
-public extension UITableView {
-
-    enum Update {
-
-        case lscWithAnimation(UITableViewRowAnimation)
-        case manualHandling((UITableView) -> Void)
     }
 }
 
