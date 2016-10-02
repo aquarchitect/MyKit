@@ -21,3 +21,45 @@ public extension UIView {
         }
     }
 }
+
+public extension UIView {
+
+    enum Axis { case x, y }
+
+    func constraints(subviews: [UIView], equallyAlong axis: Axis) {
+        var axisFormat: String = "\(axis.initial):|"
+        var dictionaryViews: [String: UIView] = [:]
+        var constraintsFormat: [String] = []
+
+        for (index, subview) in subviews.enumerated() {
+            let key = "subview\(index)"
+            dictionaryViews[key] = subview
+
+            constraintsFormat += ["\(axis.reversed.initial):|[\(key)]|"]
+            axisFormat += "[" + key + (index == 0 ? "" : "(==subview0)") + "]"
+        }
+
+        axisFormat += "|"
+
+        (constraintsFormat + [axisFormat])
+            .reduce([]) { $0 + NSLayoutConstraint.constraints(withVisualFormat: $1, options: [], metrics: nil, views: dictionaryViews) }
+            .activate()
+    }
+}
+
+fileprivate extension UIView.Axis {
+
+    var initial: Character {
+        switch self {
+        case .x: return "H"
+        case .y: return "V"
+        }
+    }
+
+    var reversed: UIView.Axis {
+        switch self {
+        case .x: return .y
+        case .y: return .x
+        }
+    }
+}

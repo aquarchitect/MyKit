@@ -11,6 +11,7 @@ import UIKit
 /**
  * Warning: this class has no effect on other than Table/Collection view
  */
+@available(iOS 9.0, *)
 public class ReorderingLongPress: UILongPressGestureRecognizer {
 
     internal private(set) var cellSnapshot: UIView?
