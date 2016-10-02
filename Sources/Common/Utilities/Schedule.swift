@@ -19,31 +19,44 @@ public extension Schedule {
             }
         }
     }
-}
-
-public extension Schedule {
 
     static func countdown(_ dt: TimeInterval, count: UInt, handle: @escaping (TimeInterval) throws -> Void) -> Promise<Void> {
-        let promise = Promise<Void>.lift {
-            try handle(Double(count) * dt)
+        return Promise { (callback: @escaping Result.Callback) in
+            func _countdown(count: UInt) {
+                do {
+                    try handle(dt * Double(count))
+
+                    if count == 0 { return callback(.fullfill(())) }
+
+                    DispatchQueue.main.asyncAfter(deadline: .now() + dt) {
+                        _countdown(count: count - 1)
+                    }
+                } catch {
+                    callback(.reject(error))
+                }
+            }
+
+            _countdown(count: count)
         }
-
-        guard count != 0 else { return promise }
-        return promise
-            .andThen { once(dt) }
-            .andThen { countdown(dt, count: count - 1, handle: handle) }
     }
-}
-
-public extension Schedule {
 
     static func every(_ dt: TimeInterval, handle: @escaping (TimeInterval) throws -> Void) -> Promise<Void> {
-        func every(count: UInt) -> Promise<Void> {
-            return once(dt)
-                .then { try handle(Double(count + 1) * dt) }
-                .andThen { every(count: count + 1) }
-        }
+        return Promise { (callback: @escaping Result.Callback) in
+            func _every(count: UInt) {
+                do {
+                    try handle(dt * Double(count))
 
-        return every(count: 0)
+                    if count == 0 { return callback(.fullfill(())) }
+
+                    DispatchQueue.main.asyncAfter(deadline: .now() + dt) {
+                        _every(count: count + 1)
+                    }
+                } catch {
+                    callback(.reject(error))
+                }
+            }
+
+            _every(count: 0)
+        }
     }
 }

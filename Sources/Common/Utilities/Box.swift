@@ -6,7 +6,7 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
-public final class Box<T> {
+final public class Box<T> {
 
     public let value: T
 

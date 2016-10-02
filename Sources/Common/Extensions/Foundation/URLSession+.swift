@@ -23,7 +23,7 @@ public extension URLSession {
                         callback(.reject(error))
                     }
                 } else {
-                    callback(.reject(PromiseError.noData))
+                    callback(.reject(PromiseError.empty))
                 }
             }.resume()
         }

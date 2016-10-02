@@ -21,7 +21,7 @@ public extension Change {
         }
     }
 
-    func then<U>(_ transform: (T) throws -> U) rethrows -> Change<U> {
+    func map<U>(_ transform: (T) throws -> U) rethrows -> Change<U> {
         switch self {
         case .delete(let value): return try .delete(transform(value))
         case .insert(let value): return try .insert(transform(value))

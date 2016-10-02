@@ -11,14 +11,12 @@
 		C20165531CE0EFC500F7D3E5 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165431CE0EFC500F7D3E5 /* Curry.swift */; };
 		C20165581CE0EFC500F7D3E5 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165481CE0EFC500F7D3E5 /* Promise.swift */; };
 		C201655A1CE0EFC500F7D3E5 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654A1CE0EFC500F7D3E5 /* Result.swift */; };
-		C201655B1CE0EFC500F7D3E5 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654B1CE0EFC500F7D3E5 /* Schedule.swift */; };
 		C201655D1CE0EFC500F7D3E5 /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654D1CE0EFC500F7D3E5 /* Swizzle.swift */; };
 		C201655E1CE0EFC500F7D3E5 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654E1CE0EFC500F7D3E5 /* Then.swift */; };
 		C20165621CE0F01D00F7D3E5 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165421CE0EFC500F7D3E5 /* Box.swift */; };
 		C20165631CE0F01D00F7D3E5 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165431CE0EFC500F7D3E5 /* Curry.swift */; };
 		C20165681CE0F01D00F7D3E5 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165481CE0EFC500F7D3E5 /* Promise.swift */; };
 		C201656A1CE0F01D00F7D3E5 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654A1CE0EFC500F7D3E5 /* Result.swift */; };
-		C201656B1CE0F01D00F7D3E5 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654B1CE0EFC500F7D3E5 /* Schedule.swift */; };
 		C201656D1CE0F01D00F7D3E5 /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654D1CE0EFC500F7D3E5 /* Swizzle.swift */; };
 		C201656E1CE0F01D00F7D3E5 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654E1CE0EFC500F7D3E5 /* Then.swift */; };
 		C20165871CE0FA8B00F7D3E5 /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165811CE0FA8B00F7D3E5 /* Collection+.swift */; };
@@ -84,6 +82,10 @@
 		C225FA9D1D1113A1008DF565 /* ParaboloidSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FA9C1D1113A1008DF565 /* ParaboloidSuperLayout.swift */; };
 		C225FAA11D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */; };
 		C225FAA41D111803008DF565 /* LayoutPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA31D111803008DF565 /* LayoutPresentable.swift */; };
+		C2281E351DA04BB3004D206B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654B1CE0EFC500F7D3E5 /* Schedule.swift */; };
+		C2281E361DA04BB4004D206B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654B1CE0EFC500F7D3E5 /* Schedule.swift */; };
+		C2281E371DA07E7B004D206B /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317491D5A5EF1009B0F42 /* ScheduleTests.swift */; };
+		C2281E381DA07E7C004D206B /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317491D5A5EF1009B0F42 /* ScheduleTests.swift */; };
 		C22EA03A1D98800E003A490A /* _FontLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A2E1D04A6440009B45F /* _FontLoading.swift */; };
 		C22EA03B1D98800F003A490A /* _FontLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A2E1D04A6440009B45F /* _FontLoading.swift */; };
 		C22EA03C1D98801B003A490A /* OpenWeather+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165961CE0FC1100F7D3E5 /* OpenWeather+.swift */; };
@@ -150,11 +152,9 @@
 		C2F3174E1D5A5EF6009B0F42 /* _FontLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317461D5A5EF1009B0F42 /* _FontLoadingTests.swift */; };
 		C2F3174F1D5A5EF6009B0F42 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317471D5A5EF1009B0F42 /* NSDateTests.swift */; };
 		C2F317501D5A5EF6009B0F42 /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317481D5A5EF1009B0F42 /* PromiseTests.swift */; };
-		C2F317511D5A5EF6009B0F42 /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317491D5A5EF1009B0F42 /* ScheduleTests.swift */; };
 		C2F317521D5A5EF7009B0F42 /* _FontLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317461D5A5EF1009B0F42 /* _FontLoadingTests.swift */; };
 		C2F317531D5A5EF7009B0F42 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317471D5A5EF1009B0F42 /* NSDateTests.swift */; };
 		C2F317541D5A5EF7009B0F42 /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317481D5A5EF1009B0F42 /* PromiseTests.swift */; };
-		C2F317551D5A5EF7009B0F42 /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317491D5A5EF1009B0F42 /* ScheduleTests.swift */; };
 		C2F566AB1D242AD800DCEC45 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F566AA1D242AD800DCEC45 /* UIScreen+.swift */; };
 /* End PBXBuildFile section */
 
@@ -1199,7 +1199,7 @@
 				C2F317501D5A5EF6009B0F42 /* PromiseTests.swift in Sources */,
 				C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */,
 				C2F3174F1D5A5EF6009B0F42 /* NSDateTests.swift in Sources */,
-				C2F317511D5A5EF6009B0F42 /* ScheduleTests.swift in Sources */,
+				C2281E371DA07E7B004D206B /* ScheduleTests.swift in Sources */,
 				C2F3174E1D5A5EF6009B0F42 /* _FontLoadingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1211,7 +1211,7 @@
 				C2F317541D5A5EF7009B0F42 /* PromiseTests.swift in Sources */,
 				C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */,
 				C2F317531D5A5EF7009B0F42 /* NSDateTests.swift in Sources */,
-				C2F317551D5A5EF7009B0F42 /* ScheduleTests.swift in Sources */,
+				C2281E381DA07E7C004D206B /* ScheduleTests.swift in Sources */,
 				C2F317521D5A5EF7009B0F42 /* _FontLoadingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1222,6 +1222,7 @@
 			files = (
 				C201660E1CE0FF1C00F7D3E5 /* NSRelationshipDescription+.swift in Sources */,
 				C2C62A2B1D04A3DC0009B45F /* ColorHexing.swift in Sources */,
+				C2281E361DA04BB4004D206B /* Schedule.swift in Sources */,
 				C20166021CE0FF1300F7D3E5 /* NSRange+.swift in Sources */,
 				C20166141CE0FF2100F7D3E5 /* String+.swift in Sources */,
 				C20166111CE0FF2100F7D3E5 /* Dictionary+.swift in Sources */,
@@ -1238,7 +1239,6 @@
 				C20166031CE0FF1300F7D3E5 /* Scanner+.swift in Sources */,
 				C20165621CE0F01D00F7D3E5 /* Box.swift in Sources */,
 				C20165FD1CE0FF1300F7D3E5 /* DateFormatter+.swift in Sources */,
-				C201656B1CE0F01D00F7D3E5 /* Schedule.swift in Sources */,
 				C23F09081D73519F003211D3 /* AnyIterator+.swift in Sources */,
 				C2C62A361D04A65C0009B45F /* _LoremIpsum.swift in Sources */,
 				C20165631CE0F01D00F7D3E5 /* Curry.swift in Sources */,
@@ -1287,7 +1287,6 @@
 				C22EA03C1D98801B003A490A /* OpenWeather+.swift in Sources */,
 				C24A0AE31D72143B00F94F08 /* Change.swift in Sources */,
 				C201663D1CE1017900F7D3E5 /* UIBezierPath+.swift in Sources */,
-				C201655B1CE0EFC500F7D3E5 /* Schedule.swift in Sources */,
 				C20165531CE0EFC500F7D3E5 /* Curry.swift in Sources */,
 				C2F0A7531D10D5DC0022FF61 /* ParaboloidLayoutController.swift in Sources */,
 				C2B280441D6F9B49008293EF /* URLSession+.swift in Sources */,
@@ -1311,6 +1310,7 @@
 				C20165981CE0FC1100F7D3E5 /* OpenWeather.swift in Sources */,
 				C25478461D73D8F400F00C38 /* RangeReplaceableCollection+.swift in Sources */,
 				C2973FF91D7747BC005C73A0 /* GenericTableView.swift in Sources */,
+				C2281E351DA04BB3004D206B /* Schedule.swift in Sources */,
 				C20165C21CE0FC8800F7D3E5 /* CKRecordID+.swift in Sources */,
 				C2C62A2A1D04A36F0009B45F /* ColorHexing.swift in Sources */,
 				C2F566AB1D242AD800DCEC45 /* UIScreen+.swift in Sources */,

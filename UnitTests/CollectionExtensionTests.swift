@@ -43,7 +43,7 @@ extension CollectionExtensionTests {
         XCTAssertEqual(commonString(between: "A", and: "B"), "")
     }
 
-    func textRepeatinElementsWithEmptyness() {
+    func testRepeatingElementsWithEmptyness() {
         XCTAssertEqual(commonString(between: "", and: ""), "")
     }
 }

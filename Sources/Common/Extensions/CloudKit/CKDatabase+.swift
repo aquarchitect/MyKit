@@ -19,7 +19,7 @@ public extension CKDatabase {
                 } else if let record = $0 {
                     callback(.fullfill(record))
                 } else {
-                    callback(.reject(PromiseError.noData))
+                    callback(.reject(PromiseError.empty))
                 }
             }
             return operation
@@ -36,7 +36,7 @@ public extension CKDatabase {
             } else if let result = $0 {
                 callback(.fullfill(result))
             } else {
-                callback(.reject(PromiseError.noData))
+                callback(.reject(PromiseError.empty))
             }
         }
     }

@@ -37,6 +37,11 @@
                BlueprintName = "MyKit-iOSUnitTests"
                ReferencedContainer = "container:MyKit.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "PromiseTests/testCancellation()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

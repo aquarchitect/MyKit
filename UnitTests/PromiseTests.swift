@@ -8,25 +8,14 @@
 
 final class PromiseTests: XCTestCase {
 
-    private enum Exception: Error { case failed }
-
-    private func delay<T>(dt: TimeInterval, result: Result<T>) -> Promise<T> {
-        return Promise { callback in
-            DispatchQueue.main.asyncAfter(deadline: .now() + dt) {
-                callback(result)
-            }
-        }
-    }
-
     func testFullfilledArray() {
         let expectation = self.expectation(description: #function)
 
-        let ps = [(0.5, .fullfill(5)),
-                  (0.5, .fullfill(10)),
-                  (1.0, .fullfill(15))]
-            .map(delay)
+        let ps = [Schedule.once(0.5).map { 5 },
+                  Schedule.once(0.5).map { 10 },
+                  Schedule.once(1.0).map { 15 }]
 
-        Promise<Int>.when(ps).onSuccess {
+        Promise<Int>.concat(ps).onSuccess {
             XCTAssertEqual($0, [5, 10, 15])
             expectation.fulfill()
         }.onFailure {
@@ -41,15 +30,14 @@ final class PromiseTests: XCTestCase {
     func testRejectedArray() {
         let expectation = self.expectation(description: #function)
 
-        let ps = [(0.5, .fullfill(5)),
-                  (0.5, .reject(Exception.failed)),
-                  (1.0, .fullfill(15))]
-                    .map(delay)
+        let ps = [Schedule.once(0.5).map { 5 },
+                  Schedule.once(0.5).map { throw PromiseError.empty },
+                  Schedule.once(1.0).map { 15 }]
 
-        Promise<Int>.when(ps).onSuccess {
+        Promise<Int>.concat(ps).onSuccess {
             XCTFail("Promise callback with value \($0)")
         }.onFailure {
-            XCTAssert(($0 as? Exception) == .failed, "Error \($0) occurred")
+            XCTAssertEqual($0 as? PromiseError, .empty)
             expectation.fulfill()
         }.resolve()
 
@@ -61,10 +49,10 @@ final class PromiseTests: XCTestCase {
     func testFullfilledTuple() {
         let expectation = self.expectation(description: #function)
 
-        let p1 = delay(dt: 0.5, result: .fullfill(true))
-        let p2 = delay(dt: 1.0, result: .fullfill("Success"))
+        let p1 = Schedule.once(0.5).map { true }
+        let p2 = Schedule.once(1.0).map { "Success" }
 
-        when(p1, p2).onSuccess {
+        zip(p1, p2).onSuccess {
             XCTAssert($0 && $1 == "Success")
             expectation.fulfill()
         }.onFailure {
@@ -79,19 +67,18 @@ final class PromiseTests: XCTestCase {
     func testRejectedTuple() {
         let expectation = self.expectation(description: #function)
 
-        let p1 = delay(dt: 0.5, result: .fullfill(true))
-        let p2 = delay(dt: 1.0, result: Result<String>.reject(Exception.failed))
+        let p1 = Schedule.once(0.5).map { true }
+        let p2 = Schedule.once(1.0).map { throw PromiseError.empty }
 
-        when(p1, p2).onSuccess {
+        zip(p1, p2).onSuccess {
             XCTFail("Promise callback with value \($0)")
         }.onFailure {
-            XCTAssert(($0 as? Exception) == .failed, "Error \($0) occurred")
+            XCTAssertEqual($0 as? PromiseError, .empty)
             expectation.fulfill()
         }.resolve()
 
         waitForExpectations(timeout: 3) {
             XCTAssertNil($0)
         }
-
     }
 }

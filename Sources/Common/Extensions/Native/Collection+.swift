@@ -70,25 +70,24 @@ public extension Collection where Iterator.Element: Equatable, Index == Int {
 
     func repeatingElements(byComparing other: Self) -> [Iterator.Element] {
         let matrix = lcsMatrix(byComparing: other)
-        var common: [Iterator.Element] = []
 
-        var i = Int((self.count + 1).toIntMax())
-        var j = Int((other.count + 1).toIntMax())
+        func matrixLookup(at coord: (i: Int, j: Int), result: [Iterator.Element]) -> [Iterator.Element] {
+            guard coord.i >= 2 && coord.j >= 2 else { return result }
 
-        while i >= 2 && j >= 2 {
-            switch matrix[i, j] {
-            case matrix[i, j-1]:
-                j -= 1
-            case matrix[i-1, j]:
-                i -= 1
+            switch matrix[coord.i, coord.j] {
+            case matrix[coord.i, coord.j-1]:
+                return matrixLookup(at: (coord.i, coord.j-1), result: result)
+            case matrix[coord.i-1, coord.j]:
+                return matrixLookup(at: (coord.i-1, coord.j), result: result)
             default:
-                i -= 1
-                j -= 1
-                common.insert(self[i-1], at: 0)
+                return matrixLookup(at: (coord.i-1, coord.j-1), result: [self[coord.i-2]] + result)
             }
+
         }
 
-        return common
+        let i = Int((self.count + 1).toIntMax())
+        let j = Int((other.count + 1).toIntMax())
+        return matrixLookup(at: (i, j), result: [])
     }
 
     typealias Step = (index: Index, element: Generator.Element)
@@ -147,7 +146,7 @@ public extension Collection where Iterator.Element: Equatable, Index == Int, Sub
         var reloads: [IndexPath] = []; reloads.reserveCapacity(Int(count))
 
         backtrackChanges(byComparing: other).forEach {
-            let change = $0.then { IndexPath(arrayLiteral: section, $0.index) }
+            let change = $0.map { IndexPath(arrayLiteral: section, $0.index) }
 
             switch change {
             case .delete(let value):

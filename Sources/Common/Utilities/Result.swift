@@ -14,9 +14,26 @@ public enum Result<T> {
     case fullfill(T)
     case reject(Error)
 
-    public init(construct: () throws -> T) {
+    public init(_ construct: () throws -> T) {
         do { self = .fullfill(try construct()) }
         catch { self = .reject(error) }
+    }
+}
+
+public extension Result {
+
+    var isFullfilled: Bool {
+        switch self {
+        case .fullfill(_): return true
+        default: return false
+        }
+    }
+
+    var isRejected: Bool {
+        switch self {
+        case .reject(_): return true
+        default: return false
+        }
     }
 }
 
@@ -34,7 +51,7 @@ public extension Result {
 public extension Result {
 
     /// Transfrom the result of one type to another with a potential error
-    func then<U>(_ transform: (T) throws -> U) -> Result<U> {
+    func map<U>(_ transform: (T) throws -> U) -> Result<U> {
         switch self {
         case .fullfill(let value):
             do {
@@ -47,7 +64,7 @@ public extension Result {
         }
     }
 
-    func andThen<U>(_ transform: (T) -> Result<U>) -> Result<U> {
+    func flatMap<U>(_ transform: (T) -> Result<U>) -> Result<U> {
         do {
             return transform(try resolve())
         } catch {
@@ -58,7 +75,7 @@ public extension Result {
 
 public extension Result {
 
-    static func zip(_ results: [Result]) -> Result<[T]> {
+    static func concat(_ results: [Result]) -> Result<[T]> {
         return results.reduce(.fullfill([])) {
             do {
                 let result = (try $0.resolve()) + [try $1.resolve()]
