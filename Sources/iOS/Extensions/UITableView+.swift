@@ -12,7 +12,7 @@ public extension UITableView {
 
     enum Update {
 
-        case lscWithAnimation(UITableViewRowAnimation)
+        case lcsWithAnimation(UITableViewRowAnimation)
         case manualHandling((UITableView) -> Void)
     }
 }
@@ -71,7 +71,7 @@ public extension UITableView {
         } else { return nil }
     }
 
-    final func formIndex(bySerializing indexPath: NSIndexPath) -> Int {
+    final func formIndex(bySerializing indexPath: IndexPath) -> Int {
         return (0..<indexPath.section)
             .map { self.numberOfRows(inSection: $0) }
             .lazy

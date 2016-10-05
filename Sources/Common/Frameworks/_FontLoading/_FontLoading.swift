@@ -45,7 +45,7 @@ public protocol _FontLoading: class {
 extension _FontLoading {
 
     /// Return a font object from default bundle
-    static func font(withName name: String, size: CGFloat, fromFile file: String) -> Self? {
+    static func font(name: String, size: CGFloat, fromFile file: String) -> Self? {
         return Self(name: name, size: size) ?? {
             guard let bundle = Bundle.`default` else { return nil }
 

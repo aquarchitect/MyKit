@@ -13,11 +13,29 @@ public extension UIView {
     typealias AnimatingCompletion = (Bool) -> Void
 }
 
+extension UIView {
+
+    func customSnapshotView() -> UIView? {
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.isOpaque, 0)
+
+        if let context = UIGraphicsGetCurrentContext() {
+            self.layer.render(in: context)
+        }
+
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+
+        UIGraphicsEndImageContext()
+        return UIImageView(image: image)
+    }
+}
+
 public extension UIView {
 
     static func animate(withDuration duration: TimeInterval, animations: @escaping () -> Void) -> Promise<Bool> {
         return Promise { callback in
-            self.animate(withDuration: duration, animations: animations) { callback(.fullfill($0)) }
+            self.animate(withDuration: duration, animations: animations) {
+                callback(.fulfill($0))
+            }
         }
     }
 }
@@ -26,7 +44,7 @@ public extension UIView {
 
     enum Axis { case x, y }
 
-    func constraints(subviews: [UIView], equallyAlong axis: Axis) {
+    func constraint(_ subviews: [UIView], equallyAlong axis: Axis) {
         var axisFormat: String = "\(axis.initial):|"
         var dictionaryViews: [String: UIView] = [:]
         var oppositeFormat: [String] = []

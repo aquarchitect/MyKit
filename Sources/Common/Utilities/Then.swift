@@ -18,7 +18,6 @@ public extension Then {
         return self
     }
 
-    @discardableResult
     func andThen<U>(_ transform: (Self) throws -> U) rethrows -> U {
         return try transform(self)
     }

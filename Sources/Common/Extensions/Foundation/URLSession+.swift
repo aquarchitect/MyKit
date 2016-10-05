@@ -18,7 +18,7 @@ public extension URLSession {
                 } else if let _data = data {
                     do {
                         let results = try JSONSerialization.jsonObject(with: _data, options: [])
-                        callback(.fullfill(results as? [String: AnyObject] ?? [:]))
+                        callback(.fulfill(results as? [String: AnyObject] ?? [:]))
                     } catch {
                         callback(.reject(error))
                     }

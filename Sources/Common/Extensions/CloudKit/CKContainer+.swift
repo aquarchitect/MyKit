@@ -16,7 +16,7 @@ public extension CKContainer {
                 if let error = $1 {
                     callback(.reject(error))
                 } else if let recordID = $0 {
-                    callback(.fullfill(recordID))
+                    callback(.fulfill(recordID))
                 } else {
                     callback(.reject(PromiseError.empty))
                 }

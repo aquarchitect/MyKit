@@ -8,15 +8,15 @@
 
 import Foundation
 
-final class ActionWrapper<T>: NSCopying {
+final class ActionWrapper<T>: NSObject, NSCopying {
 
-    let block: (T) -> Void
+    let handler: (T) -> Void
 
-    init(_ block: @escaping (T) -> Void) {
-        self.block = block
+    init(_ handler: @escaping (T) -> Void) {
+        self.handler = handler
     }
 
     func copy(with zone: NSZone? = nil) -> Any {
-        return ActionWrapper(self.block)
+        return ActionWrapper(self.handler)
     }
 }

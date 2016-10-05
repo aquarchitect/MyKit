@@ -8,18 +8,18 @@
 
 import UIKit
 
-public class GrowingTextView: UIControl {
+open class GrowingTextView: UIControl {
 
     // MARK: Property
 
-    public override var intrinsicContentSize: CGSize {
+    open override var intrinsicContentSize: CGSize {
         let width = textBox.contentSize.width + self.layoutMargins.horizontal
         let height = textBox.contentSize.height + self.layoutMargins.vertical
 
         return CGSize(width: width, height: height)
     }
 
-    public let textBox = UITextView().then {
+    open let textBox = UITextView().then {
         $0.showsHorizontalScrollIndicator = false
         $0.textContainer.lineFragmentPadding = 0
         $0.textContainerInset = .zero
@@ -51,12 +51,12 @@ public class GrowingTextView: UIControl {
 
     // MARK: System Method
 
-    public override func layoutMarginsDidChange() {
+    open override func layoutMarginsDidChange() {
         self.invalidateIntrinsicContentSize()
         super.layoutMarginsDidChange()
     }
 
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
 
         textBox.then {
@@ -65,7 +65,7 @@ public class GrowingTextView: UIControl {
         }
     }
 
-    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         self.invalidateIntrinsicContentSize()
         self.setNeedsLayout()
     }

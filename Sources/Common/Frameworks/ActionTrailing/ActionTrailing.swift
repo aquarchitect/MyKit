@@ -6,24 +6,30 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
+private var token = String(#file)
+
 import Foundation.NSObject
 
-private var token = String(#file)
 public protocol ActionTrailing: class {}
 
+extension ActionTrailing {
 
-private extension ActionTrailing {
+    func setAction(_ handler: @escaping (Self) -> Void) {
+        objc_setAssociatedObject(self,
+                                 &token,
+                                 ActionWrapper(handler),
+                                 objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
+    }
 
-    func setAction(_ block: @escaping (Self) -> Void) {
-        let obj: AnyObject = unsafeBitCast(ActionWrapper(block), to: AnyObject.self)
-        objc_setAssociatedObject(self, &token, obj, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
+    func executeAction() {
+        (objc_getAssociatedObject(self, &token) as? ActionWrapper<Self>)?.handler(self)
     }
 }
 
 extension NSObject {
 
-    func handleBlock() {
-        unsafeBitCast(objc_getAssociatedObject(self, &token), to: ActionWrapper.self).block(self)
+    func actionExecuted() {
+        (self as? ActionTrailing)?.executeAction()
     }
 }
 
@@ -34,9 +40,9 @@ extension UIControl: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIControl {
 
-    func addAction(block: @escaping (Self) -> Void, for controlEvents: UIControlEvents) {
-        self.setAction(block)
-        self.addTarget(self, action: #selector(handleBlock), for: controlEvents)
+    func addAction(_ handler: @escaping (Self) -> Void, for controlEvents: UIControlEvents) {
+        self.setAction(handler)
+        self.addTarget(self, action: #selector(actionExecuted), for: controlEvents)
     }
 }
 
@@ -46,9 +52,9 @@ extension UIGestureRecognizer: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIGestureRecognizer {
 
-    func addAction(block: @escaping (Self) -> Void) {
-        self.setAction(block)
-        self.addTarget(self, action: #selector(handleBlock))
+    func addAction(_ handler: @escaping (Self) -> Void) {
+        self.setAction(handler)
+        self.addTarget(self, action: #selector(actionExecuted))
     }
 }
 #elseif os(macOS)
@@ -58,8 +64,9 @@ extension NSControl: ActionTrailing {}
 
 public extension ActionTrailing where Self: NSControl {
 
-    func addAction(block: @escaping (Self) -> Void, for property: String) {
-        self.setAction(block)
+    func addAction(_ handler: @escaping (Self) -> Void, for property: String) {
+        var token = String(describing: self)
+        self.setAction(handler, for: &token)
         self.setValue("handleBlock", forKey: property)
         self.target = self
     }

@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class GenericCollectionCell<V: UIView>: UICollectionViewCell where V: Then {
+open class GenericCollectionCell<V: UIView>: UICollectionViewCell where V: Then {
 
     // MARK: Property
 
-    public let mainView = V().then {
+    open let mainView = V().then {
         $0.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
 

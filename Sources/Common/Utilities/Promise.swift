@@ -18,10 +18,6 @@ public struct Promise<T> {
     public init(_ operation: @escaping Operation) {
         self.operation = operation
     }
-
-    public init(_ construct: @escaping () throws -> T) {
-        self.operation = { $0(.init(construct)) }
-    }
 }
 
 // MARK: - Support Methods
@@ -46,7 +42,7 @@ public extension Promise {
      * Transform value type
      */
     func map<U>(_ transform: @escaping (T) throws -> U) -> Promise<U> {
-        return Promise<U> { (callback: @escaping Result.Callback) in
+        return Promise<U> { callback in
             self.resolve { result in
                 callback(result.map(transform))
             }
@@ -57,7 +53,7 @@ public extension Promise {
      * Transform promise type
      */
     func flatMap<U>(_ transform: @escaping (T) -> Promise<U>) -> Promise<U> {
-        return Promise<U> { (callback: @escaping Result.Callback) in
+        return Promise<U> { callback in
             self.resolve { result in
                 do {
                     try (result.resolve >>> transform)().resolve(callback)
@@ -72,7 +68,7 @@ public extension Promise {
 public extension Promise {
 
     private func onResult(_ execute: @escaping (Result<T>) -> Void) -> Promise {
-        return Promise { (callback: @escaping Result.Callback) in
+        return Promise { callback in
             self.resolve { result in
                 execute(result)
                 callback(result)
@@ -86,7 +82,7 @@ public extension Promise {
 
     func onSuccess(_ execute: @escaping (T) -> Void) -> Promise {
         return onResult {
-            if case .fullfill(let value) = $0 { execute(value) }
+            if case .fulfill(let value) = $0 { execute(value) }
         }
     }
 
@@ -100,10 +96,10 @@ public extension Promise {
 public extension Promise {
 
     func recover(_ transform: @escaping (Error) -> Promise) -> Promise {
-        return Promise { (callback: @escaping Result.Callback) in
+        return Promise { callback in
             self.resolve { result in
                 do {
-                    callback(.fullfill(try result.resolve()))
+                    callback(.fulfill(try result.resolve()))
                 } catch {
                     transform(error).resolve(callback)
                 }
@@ -112,13 +108,12 @@ public extension Promise {
     }
 
     func retry(attempCount count: Int) -> Promise {
-        return Promise { (callback: @escaping Result.Callback) in
+        return Promise { callback in
             func _retry(attemptCount count: Int) {
                 self.resolve { result in
                     switch (result, count) {
-                    case (.fullfill(_), _), (.reject(_), 0): callback(result)
+                    case (.fulfill(_), _), (.reject(_), 0): callback(result)
                     default: _retry(attemptCount: count - 1)
-
                     }
                 }
             }
@@ -131,7 +126,7 @@ public extension Promise {
 public extension Promise {
 
     func inBackground() -> Promise {
-        return Promise { (callback: @escaping Result.Callback) in
+        return Promise { callback in
             DispatchQueue.global(qos: .background).async {
                 self.resolve { result in
                     DispatchQueue.main.sync {
@@ -143,13 +138,20 @@ public extension Promise {
     }
 
     func inDispatchGroup(_ group: DispatchGroup) -> Promise {
-        return Promise { (callback: @escaping Result.Callback) in
+        return Promise { callback in
             group.enter()
             self.resolve { result in
                 callback(result)
                 group.leave()
             }
         }
+    }
+}
+
+public extension Promise {
+
+    static func lift(_ contruct: @escaping () throws -> T) -> Promise {
+        return Promise { $0(.init(contruct)) }
     }
 }
 
@@ -163,7 +165,7 @@ public extension Promise {
     static func concat(_ promises: [Promise]) -> Promise<[T]> {
         let group = DispatchGroup()
 
-        return Promise<[T]> { (callback: @escaping Result<[T]>.Callback) in
+        return Promise<[T]> { callback in
             var outputs: [Result<T>] = []
 
             for promise in promises {
@@ -189,7 +191,7 @@ public extension Promise {
 public func zip<A, B>(_ promiseA: Promise<A>, _ promiseB: Promise<B>) -> Promise<(A, B)> {
     let group = DispatchGroup()
 
-    return Promise<(A, B)> { (callback: @escaping Result<(A, B)>.Callback) in
+    return Promise<(A, B)> { callback in
         var resultA: Result<A>!, resultB: Result<B>!
 
         promiseA

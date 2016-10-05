@@ -8,30 +8,30 @@
 
 import UIKit
 
-public class ParaboloidFlowLayout: SnappingFlowLayout {
+open class ParaboloidFlowLayout: SnappingFlowLayout {
 
     // MARK: Property
 
-    public var paraboloidControler: ParaboloidLayoutController?
+    open var paraboloidControler: ParaboloidLayoutController?
 
-    public override class var layoutAttributesClass: AnyClass {
+    open override class var layoutAttributesClass: AnyClass {
         return ParaboloidLayoutAttributes.self
     }
 
     // MARK: System Methods
 
 
-    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return super.layoutAttributesForElements(in: rect)?.map {
             $0.representedElementCategory == .cell ? (self.layoutAttributesForItem(at: $0.indexPath) ?? $0) : $0
         }
     }
 
-    public override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    open override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
 
-    public override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return (super.layoutAttributesForItem(at: indexPath as IndexPath)?.copy() as? ParaboloidLayoutAttributes).flatMap {
             guard let contentOffset = self.collectionView?.contentOffset else { return nil }
 

@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableView, UITableViewDataSource {
+open class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableView, UITableViewDataSource {
 
     // MARK: Property
 
-    public fileprivate(set) var rowModels: [Model] = []
+    open fileprivate(set) var rowModels: [Model] = []
 
-    public var rowRenderer: ((Row, Model) -> Void)? {
+    open var rowRenderer: ((Row, Model) -> Void)? {
         didSet { self.reloadData() }
     }
 
@@ -33,11 +33,11 @@ public class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableVi
 
     // MARK: Table View Data Source
 
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rowModels.count
     }
 
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(withIdentifier: "\(type(of: Row.self))", for: indexPath).then {
             rowRenderer?($0 as! Row, rowModels[indexPath.row])
         }
@@ -48,7 +48,7 @@ public extension GenericTableView {
 
     func render(rowModels: [Model], update: Update) {
         switch update {
-        case .lscWithAnimation(let animation):
+        case .lcsWithAnimation(let animation):
             /*
              * Giving an estimated range of possibly visible row 
              * will speed up the diff computation on a much narrow

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class SelectingLongPress: UILongPressGestureRecognizer {
+open class SelectingLongPress: UILongPressGestureRecognizer {
 
     /*
      * anchor: first started index path
@@ -20,7 +20,7 @@ public class SelectingLongPress: UILongPressGestureRecognizer {
         return self.view as? UICollectionView
     }
 
-    public func handleGesture() {
+    open func handleGesture() {
         guard let touchingIndexPath = (collectionView.flatMap {
             (self.location(in:) >>> $0.indexPathForItem(at:))($0)
         }) else { return }
@@ -37,7 +37,7 @@ public class SelectingLongPress: UILongPressGestureRecognizer {
         }
     }
 
-    internal func selectCollectionViewItems(to touchingIndexPath: IndexPath) {
+    func selectCollectionViewItems(to touchingIndexPath: IndexPath) {
         guard let anchorIndexPath = dragger?.anchorIndexPath,
             let trackingIndexPath = dragger?.trackingIndexPath
             else { return }

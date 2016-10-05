@@ -8,24 +8,24 @@
 
 import UIKit
 
-public class ParaboloidSuperLayout: SnappingSuperLayout {
+open class ParaboloidSuperLayout: SnappingSuperLayout {
 
-    public override class var layoutAttributesClass: AnyClass {
+    open override class var layoutAttributesClass: AnyClass {
         return ParaboloidLayoutAttributes.self
     }
 
-    public var paraboloidController: ParaboloidLayoutController?
-    public var visibleAttributes: [IndexPath: UICollectionViewLayoutAttributes] = [:]
+    open var paraboloidController: ParaboloidLayoutController?
+    open var visibleAttributes: [IndexPath: UICollectionViewLayoutAttributes] = [:]
 
-    public override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    open override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
 
-    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return visibleAttributes.keys.flatMap(self.layoutAttributesForItem)
     }
 
-    public override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    open override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return (visibleAttributes[indexPath] as? ParaboloidLayoutAttributes).flatMap {
             guard let contentOffset = self.collectionView?.contentOffset else { return nil }
 

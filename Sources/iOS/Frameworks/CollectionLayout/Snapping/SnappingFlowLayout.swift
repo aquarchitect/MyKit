@@ -8,9 +8,9 @@
 
 import UIKit
 
-public class SnappingFlowLayout: UICollectionViewFlowLayout, SnappingLayoutDelegate {
+open class SnappingFlowLayout: UICollectionViewFlowLayout, SnappingLayoutDelegate {
 
-    public var snappingPoint: CGPoint? {
+    open var snappingPoint: CGPoint? {
         didSet {
             DispatchQueue.main.async { [weak self] in
                 guard let `self` = self else { return }
@@ -19,7 +19,7 @@ public class SnappingFlowLayout: UICollectionViewFlowLayout, SnappingLayoutDeleg
         }
     }
 
-    public override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+    open override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         if let point = snappingPoint {
             return snappedContentOffset(forProposedContentOffset: proposedContentOffset, at: point)
         } else {

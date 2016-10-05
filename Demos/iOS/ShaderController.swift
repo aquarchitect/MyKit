@@ -30,7 +30,7 @@ final class ShaderController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let size = UIScreen.mainScreen().bounds.size
+        let size = UIScreen.main.bounds.size
         let vector = GLKVector2Make(Float(size.width * 2), Float(size.height * 2))
 
         nodeShader?.uniforms = [SKUniform(name: "size", floatVector2: vector)]
@@ -38,7 +38,7 @@ final class ShaderController: UIViewController {
         let scene = SKScene().then { $0.scaleMode = .AspectFill }
         (view as? SKView)?.presentScene(scene)
 
-        SKSpriteNode(color: .greenColor(), size: size)
+        SKSpriteNode(color: .green, size: size)
             .then {
                 $0.position = CGPointMake(size.width / 2, size.height / 2)
                 $0.shader = nodeShader

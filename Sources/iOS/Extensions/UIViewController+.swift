@@ -12,13 +12,13 @@ public extension UIViewController {
 
     func presentViewController(controller: UIViewController, animated flag: Bool) -> Promise<Void> {
         return Promise { callback in
-            self.present(controller, animated: flag) { callback(.fullfill()) }
+            self.present(controller, animated: flag) { callback(.fulfill()) }
         }
     }
 
     func dismissViewController(animated flag: Bool) -> Promise<Void> {
         return Promise { callback in
-            self.dismiss(animated: flag) { callback(.fullfill()) }
+            self.dismiss(animated: flag) { callback(.fulfill()) }
         }
     }
 }

@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
+open class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
 
     // MARK: Property
 
-    public fileprivate(set) var cellModels: [Model] = []
+    open fileprivate(set) var cellModels: [Model] = []
 
     /*
      * Providing an estimated of number of visible row will
@@ -22,9 +22,9 @@ public class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollect
      * possible range for diff computation because of the
      * nature of dynamic cell layout.
      */
-    public var estimatedNumberOfVisibleCells = 0
+    open var estimatedNumberOfVisibleCells = 0
 
-    public var cellRenderer: ((Cell, Model) -> Void)? {
+    open var cellRenderer: ((Cell, Model) -> Void)? {
         didSet { self.reloadData() }
     }
 
@@ -42,11 +42,11 @@ public class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollect
 
     // MARK: Data Source
 
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cellModels.count
     }
 
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCell(withReuseIdentifier: "\(type(of: Cell.self))", for: indexPath).then {
             cellRenderer?($0 as! Cell, cellModels[indexPath.item])
         }
@@ -57,14 +57,16 @@ public extension GenericCollectionView where Model: Equatable {
 
     func render(cellModels: [Model], update: Update) {
         switch update {
-        case .lscWithAnimation(let completion):
-            let range: CountableRange<Int> = {
+        case .lcsWithAnimation(let completion):
+
+            let range: CountableRange<Int>? = {
+                guard estimatedNumberOfVisibleCells != 0 else { return nil }
                 let startIndex = self.indexPathsForVisibleItems.first?.item ?? 0
                 let endIndex = startIndex + estimatedNumberOfVisibleCells
-                return .init(startIndex ... endIndex)
+                return CountableRange(startIndex ... endIndex)
             }()
 
-            let updates = cellModels.compare(cellModels, range: range, section: 0)
+            let updates = self.cellModels.compare(cellModels, range: range, section: 0)
             self.cellModels = cellModels
 
             self.performBatchUpdates({

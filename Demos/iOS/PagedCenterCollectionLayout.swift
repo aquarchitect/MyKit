@@ -28,7 +28,7 @@ final class PagedCenterCollectionLayout: ParaboloidFlowLayout {
     }
 
     override init() {
-        let screen = UIScreen.mainScreen()
+        let screen = UIScreen.main
         let length = screen.traitCollection.displayScale * 50
 
         super.init()
@@ -48,7 +48,7 @@ final class PagedCenterCollectionLayout: ParaboloidFlowLayout {
     }
 
     override func prepareLayout() {
-        let size = UIScreen.mainScreen().bounds
+        let size = UIScreen.main.bounds
         let height = size.height - (self.collectionView?.contentInset.vertical ?? 0)
 
         let verticalMargin = (height - self.itemSize.height) / 2

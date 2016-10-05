@@ -62,7 +62,7 @@ public final class OpenWeather {
                                       .units(format)]
         let fullURL = baseURL + String(version) + (method + Component.compound(baseComps + comps))
 
-        return URL(string: fullURL).map(URLSession.shared.dataTask as (URL) -> Promise<[String: AnyObject]>) ?? Promise { $0(.fullfill([:])) }
+        return URL(string: fullURL).map(URLSession.shared.dataTask as (URL) -> Promise<[String: AnyObject]>) ?? Promise { $0(.fulfill([:])) }
     }
 }
 

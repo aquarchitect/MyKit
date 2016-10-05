@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class ParaboloidLayoutAttributes: UICollectionViewLayoutAttributes {
+open class ParaboloidLayoutAttributes: UICollectionViewLayoutAttributes {
 
-    public var paraboloidValue: CGFloat?
+    open var paraboloidValue: CGFloat?
 
-    public override func copy(with zone: NSZone? = nil) -> Any {
+    open override func copy(with zone: NSZone? = nil) -> Any {
         let attributes = super.copy(with: zone)
 
         return (attributes as? ParaboloidLayoutAttributes)?

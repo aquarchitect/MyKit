@@ -11,8 +11,7 @@ import UIKit
 /**
  * Warning: this class has no effect on other than Table/Collection view
  */
-@available(iOS 9.0, *)
-public class ReorderingLongPress: UILongPressGestureRecognizer {
+open class ReorderingLongPress: UILongPressGestureRecognizer {
 
     internal private(set) var cellSnapshot: UIView?
     internal private(set) var sourceIndexPath: IndexPath?
@@ -21,22 +20,17 @@ public class ReorderingLongPress: UILongPressGestureRecognizer {
         return self.view as? UITableView
     }
 
-    internal var collectionView: UICollectionView? {
-        return self.view as? UICollectionView
-    }
+    deinit { cellSnapshot?.removeFromSuperview() }
 
-    public func handleGesture() {
-        guard let trackingIndexPath = (tableView.flatMap {
-            (self.location(in:) >>> $0.indexPathForRow(at:))($0)
-        }) else { return }
-
-        guard (tableView.flatMap { $0.dataSource?.tableView?($0, canMoveRowAt: trackingIndexPath) })
-            ?? (collectionView.flatMap { $0.dataSource?.collectionView?($0, canMoveItemAt: trackingIndexPath) })
-            ?? false else { return }
-
-
+    open func handleGesture() {
         switch self.state {
         case .began:
+            guard let trackingIndexPath = (tableView.flatMap {
+                (self.location(in:) >>> $0.indexPathForRow(at:))($0)
+            }), (tableView.flatMap {
+                $0.dataSource?.tableView?($0, canMoveRowAt: trackingIndexPath)
+            } ?? false) else { return }
+
             let cell = tableView?.cellForRow(at: trackingIndexPath)?.then {
                 $0.alpha = 1
                 $0.isHidden = false
@@ -44,14 +38,14 @@ public class ReorderingLongPress: UILongPressGestureRecognizer {
 
             sourceIndexPath = trackingIndexPath
 
-            cellSnapshot = cell?.snapshotView(afterScreenUpdates: true)?.then {
+            cellSnapshot = cell?.customSnapshotView()?.then {
                 $0.backgroundColor = .blue
                 $0.frame = tableView?.convert(cell?.frame ?? .zero, to: nil) ?? .zero
                 $0.alpha = 0
                 $0.clipsToBounds = false
-                $0.layer.shadowOffset = CGSize(width: -5, height: 0)
-                $0.layer.shadowRadius = 5
-                $0.layer.shadowOpacity = 0.4
+                $0.layer.shadowOffset = .zero
+                $0.layer.shadowRadius = 3
+                $0.layer.shadowOpacity = 0.2
             }.then {
                 UIApplication.shared.keyWindow?.addSubview($0)
             }
@@ -60,14 +54,20 @@ public class ReorderingLongPress: UILongPressGestureRecognizer {
                 cell?.alpha = 0
 
                 self.cellSnapshot?.then {
-                    $0.alpha = 0.98
+                    $0.alpha = 0.93
                     $0.center.y = self.location(in: nil).y
-                    $0.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+                    $0.transform = CGAffineTransform(scaleX: 1.01, y: 1.01)
                 }
                 }, completion: { [weak cell] _ in
                     cell?.isHidden = true
                 })
         case .changed:
+            guard let trackingIndexPath = (tableView.flatMap {
+                (self.location(in:) >>> $0.indexPathForRow(at:))($0)
+            }), (tableView.flatMap {
+                $0.dataSource?.tableView?($0, canMoveRowAt: trackingIndexPath)
+            } ?? false) else { return }
+
             cellSnapshot?.center.y = self.location(in: nil).y
 
             guard let sourceIndexPath = self.sourceIndexPath,
@@ -81,8 +81,6 @@ public class ReorderingLongPress: UILongPressGestureRecognizer {
              * call.
              */
             tableView.flatMap { $0.dataSource?.tableView?($0, moveRowAt: sourceIndexPath, to: trackingIndexPath) }
-            collectionView.flatMap { $0.dataSource?.collectionView?($0, moveItemAt: sourceIndexPath, to: trackingIndexPath) }
-
             self.sourceIndexPath = trackingIndexPath
         default:
             guard let sourceIndexPath = self.sourceIndexPath else { return }
@@ -92,18 +90,21 @@ public class ReorderingLongPress: UILongPressGestureRecognizer {
                 $0.isHidden = false
             }
 
-            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
-                cell?.alpha = 1
-
-                self.cellSnapshot?.then {
-                    $0.alpha = 0
-                    $0.center.y = self.location(in: nil).y
-                    $0.transform = CGAffineTransform.identity
+            UIView.animateKeyframes(withDuration: 0.25, delay: 0, options: .calculationModeLinear, animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.5) {
+                    self.cellSnapshot?.then {
+                        $0.center.y = self.tableView?.convert(cell?.center ?? .zero, to: nil).y ?? 0
+                        $0.transform = CGAffineTransform.identity
+                    }
+                }
+                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 1) {
+                    cell?.alpha = 1
+                    self.cellSnapshot?.alpha = 0
                 }
                 }, completion: { [weak self] _ in
                     self?.cellSnapshot?.removeFromSuperview()
                     self?.sourceIndexPath = nil
-                })
+            })
         }
     }
 }

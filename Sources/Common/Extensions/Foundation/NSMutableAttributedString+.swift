@@ -16,12 +16,16 @@ fileprivate extension NSMutableAttributedString {
 
     var range: NSRange { return NSMakeRange(0, self.length) }
 
-    func _addFont(_ font: AnyObject?, to range: NSRange?) {
-        self.addAttribute(NSFontAttributeName, value: font, range: range ?? self.range)
+    func _addFont(_ font: Any, to range: NSRange?) {
+        self.addAttribute(NSFontAttributeName,
+                          value: font,
+                          range: range ?? self.range)
     }
 
-    func _addColor(_ color: AnyObject?, to range: NSRange?) {
-        self.addAttribute(NSForegroundColorAttributeName, value: color, range: range ?? self.range)
+    func _addColor(_ color: Any, to range: NSRange?) {
+        self.addAttribute(NSForegroundColorAttributeName,
+                          value: color,
+                          range: range ?? self.range)
     }
 }
 
@@ -29,22 +33,22 @@ fileprivate extension NSMutableAttributedString {
 public extension NSMutableAttributedString {
 
     func addFont(_ font: UIFont?, to range: NSRange? = nil) {
-        self._addFont(font, to: range)
+        font.flatMap { self._addFont($0, to: range) }
     }
 
     func addColor(_ color: UIColor?, to range: NSRange? = nil) {
-        self._addColor(color, to: range)
+        color.flatMap { self._addColor($0, to: range) }
     }
 }
 #elseif os(macOS)
 public extension NSMutableAttributedString {
 
     func addFont(_ font: NSFont?, to range: NSRange? = nil) {
-        self._add(font: font, to: range)
+        font.flatMap { self._addFont($0, to: range) }
     }
 
     func addColor(_ color: NSColor?, to range: NSRange? = nil) {
-        self._add(color: color, to: range)
+        font.flatMap { self._addFont($0, to: range) }
     }
 }
 #endif
@@ -58,15 +62,21 @@ public extension NSMutableAttributedString {
     }
 
     func addParagraph(_ paragraph: NSParagraphStyle, to range: NSRange? = nil) {
-        self.addAttribute(NSParagraphStyleAttributeName, value: paragraph, range: range ?? self.range)
+        self.addAttribute(NSParagraphStyleAttributeName,
+                          value: paragraph,
+                          range: range ?? self.range)
     }
 
     func addBaseline(_ baseline: Float, to range: NSRange? = nil) {
-        self.addAttribute(NSBaselineOffsetAttributeName, value: NSNumber(value: baseline), range: range ?? self.range)
+        self.addAttribute(NSBaselineOffsetAttributeName,
+                          value: NSNumber(value: baseline),
+                          range: range ?? self.range)
     }
 
     func addKern(_ kern: Float, to range: NSRange? = nil) {
-        self.addAttribute(NSKernAttributeName, value: NSNumber(value: kern), range: range ?? self.range)
+        self.addAttribute(NSKernAttributeName,
+                          value: NSNumber(value: kern),
+                          range: range ?? self.range)
     }
 }
 

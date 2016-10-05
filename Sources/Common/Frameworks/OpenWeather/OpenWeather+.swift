@@ -275,7 +275,7 @@ public extension OpenWeather.Icon {
         let name = "Weather Icons", file = "OpenWeather"
 
         return NSMutableAttributedString(string: self.description).then {
-            $0.addFont(.font(withName: name, size: size, fromFile: file))
+            $0.addFont(.font(name: name, size: size, fromFile: file))
         }
     }
 }

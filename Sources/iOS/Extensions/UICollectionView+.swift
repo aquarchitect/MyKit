@@ -12,7 +12,7 @@ public extension UICollectionView {
 
     enum Update {
 
-        case lscWithAnimation(UIView.AnimatingCompletion)
+        case lcsWithAnimation(UIView.AnimatingCompletion)
         case manualHandling((UICollectionView) -> Void)
     }
 }

@@ -30,7 +30,7 @@ final class TableController: GenericTableController<String, UITableViewCell>, UI
         }
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
             let layout = layouts[indexPath.row]
@@ -46,7 +46,7 @@ final class TableController: GenericTableController<String, UITableViewCell>, UI
                     $0.collectionView?.then {
                         $0.showsVerticalScrollIndicator = false
                         $0.showsHorizontalScrollIndicator = false
-                        $0.backgroundColor = .whiteColor()
+                        $0.backgroundColor = .white
                         $0.delegate = $0.collectionViewLayout is PagedCenterCollectionLayout ? self : nil
                     }
                 }.then {
@@ -61,7 +61,7 @@ final class TableController: GenericTableController<String, UITableViewCell>, UI
         }
     }
 
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
         collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
     }
 }

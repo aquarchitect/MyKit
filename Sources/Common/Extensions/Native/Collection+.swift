@@ -48,7 +48,7 @@ internal extension Collection where Iterator.Element: Equatable, Index == Int {
         let rows = (self.count + 2).toIntMax()
         let columns = (other.count + 2).toIntMax()
 
-            var matrix = Matrix(repeating: 1, rows: Int(rows), columns: Int(columns))
+        var matrix = Matrix(repeating: 1, rows: Int(rows), columns: Int(columns))
         matrix[row: 0] = Array(repeating: 0, count: Int(columns))
         matrix[column: 0] = Array(repeating: 0, count: Int(rows))
 
@@ -161,20 +161,20 @@ public extension Collection where Iterator.Element: Equatable, Index == Int, Sub
             }
         }
 
-        return (Array(reloads), Array(deletes), Array(inserts))
+        return (reloads, deletes, inserts)
     }
 
     func compare(_ other: Self, range: CountableRange<Index>? = nil, section: Int) -> (reloads: [IndexPath], deletes: [IndexPath], inserts: [IndexPath]) {
-        var thisRange = CountableRange(self.startIndex..<self.endIndex)
-        var otherRange = CountableRange(other.startIndex..<other.endIndex)
-
-        if let _range = range {
-            thisRange = thisRange.clamped(to: _range)
-            otherRange = otherRange.clamped(to: _range)
+        guard let _range = range else {
+            return self._compare(other, section: section)
         }
 
+        let thisRange = (self.startIndex ..< self.endIndex).clamped(to: _range)
+        let otherRange = (other.startIndex ..< other.endIndex).clamped(to: _range)
+
         let thisCollection = self[thisRange].map { $0 }
-        let otherColelction = other[otherRange].map { $0 }
-        return thisCollection._compare(otherColelction, section: section)
+        let otherCollection = other[otherRange].map { $0 }
+
+        return thisCollection._compare(otherCollection, section: section)
     }
 }

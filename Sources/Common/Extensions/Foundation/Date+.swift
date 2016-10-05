@@ -52,11 +52,11 @@ public extension Date {
 public extension Date {
 
     func firstDateOfTheMonth() -> Date {
-        return Date.calendar.date(from: dateComponents([.year, .month]))!
+        return (dateComponents >>> Date.calendar.date(from:))([.year, .month])!
     }
 
     func firstDateOfTheWeek() -> Date {
-        return Date.calendar.date(from: dateComponents([.year, .weekOfYear]))!
+        return (dateComponents >>> Date.calendar.date(from:))([.year, .weekOfYear])!
     }
 }
 
@@ -234,9 +234,7 @@ public extension Date {
         return DateFormatter.shared.then {
                 $0.timeStyle = timeStyle
                 $0.dateStyle = dateStyle
-            }.andThen {
-                $0.string(from: self)
-            }
+            }.string(from: self)
     }
 
     func string(with style: DateFormatter.Style) -> String {

@@ -25,7 +25,7 @@ final class AppleWatchHomeScreenLayout: ParaboloidSuperLayout {
     private var iterimSpacing: CGFloat = 10
 
     private var itemSize: CGSize = {
-        let length = UIScreen.mainScreen().traitCollection.displayScale * 50
+        let length = UIScreen.main.traitCollection.displayScale * 50
         return CGSizeMake(length, length)
     }()
 
@@ -61,7 +61,7 @@ final class AppleWatchHomeScreenLayout: ParaboloidSuperLayout {
             let rect = CGRect(origin: origin, size: itemSize)
 
             !CGRectIntersectsRect(rect, self.collectionView?.bounds ?? .zero) ? () :
-                NSIndexPath(forItem: $0, inSection: 0)
+                IndexPath(item: $0, inSection: 0)
                     .then { Attributes(forCellWithIndexPath: $0) }
                     .then { $0.frame = rect; visibleAttributes[$0.indexPath] = $0 }
         }

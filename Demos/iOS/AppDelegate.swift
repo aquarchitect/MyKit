@@ -15,9 +15,9 @@ final class AppDelegate: UIResponder {
 extension AppDelegate: UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        window = UIWindow(frame: UIScreen.mainScreen().bounds).then {
+        window = UIWindow(frame: UIScreen.main.bounds).then {
             $0.rootViewController = TableController().then(UINavigationController.init)
-            $0.backgroundColor = .blackColor()
+            $0.backgroundColor = .black
             $0.makeKeyAndVisible()
         }
 

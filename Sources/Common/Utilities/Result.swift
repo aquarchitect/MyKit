@@ -11,11 +11,11 @@ public enum Result<T> {
 
     public typealias Callback = (Result) -> Void
 
-    case fullfill(T)
+    case fulfill(T)
     case reject(Error)
 
-    public init(_ construct: () throws -> T) {
-        do { self = .fullfill(try construct()) }
+    public init(_ contruct: () throws -> T) {
+        do { self = .fulfill(try contruct()) }
         catch { self = .reject(error) }
     }
 }
@@ -24,7 +24,7 @@ public extension Result {
 
     var isFullfilled: Bool {
         switch self {
-        case .fullfill(_): return true
+        case .fulfill(_): return true
         default: return false
         }
     }
@@ -42,7 +42,7 @@ public extension Result {
     /// Unwrap in result into values
     func resolve() throws -> T {
         switch self {
-        case .fullfill(let value): return value
+        case .fulfill(let value): return value
         case .reject(let error): throw error
         }
     }
@@ -53,9 +53,9 @@ public extension Result {
     /// Transfrom the result of one type to another with a potential error
     func map<U>(_ transform: (T) throws -> U) -> Result<U> {
         switch self {
-        case .fullfill(let value):
+        case .fulfill(let value):
             do {
-                return .fullfill(try transform(value))
+                return .fulfill(try transform(value))
             } catch {
                 return .reject(error)
             }
@@ -76,10 +76,10 @@ public extension Result {
 public extension Result {
 
     static func concat(_ results: [Result]) -> Result<[T]> {
-        return results.reduce(.fullfill([])) {
+        return results.reduce(.fulfill([])) {
             do {
                 let result = (try $0.resolve()) + [try $1.resolve()]
-                return .fullfill(result)
+                return .fulfill(result)
             } catch {
                 return .reject(error)
             }
@@ -91,7 +91,7 @@ public func zip<A, B>(_ resultA: Result<A>, _ resultB: Result<B>) -> Result<(A, 
     do {
         let a = try resultA.resolve()
         let b = try resultB.resolve()
-        return .fullfill((a, b))
+        return .fulfill((a, b))
     } catch {
         return .reject(error)
     }

@@ -15,18 +15,17 @@ public extension Schedule {
     static func once(_ dt: TimeInterval) -> Promise<Void> {
         return Promise { callback in
             DispatchQueue.main.asyncAfter(deadline: .now() + dt) {
-                callback(.fullfill())
+                callback(.fulfill())
             }
         }
     }
 
     static func countdown(_ dt: TimeInterval, count: UInt, handle: @escaping (TimeInterval) throws -> Void) -> Promise<Void> {
-        return Promise { (callback: @escaping Result.Callback) in
+        return Promise { callback in
             func _countdown(count: UInt) {
                 do {
                     try handle(dt * Double(count))
-
-                    if count == 0 { return callback(.fullfill(())) }
+                    if count == 0 { return callback(.fulfill(())) }
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + dt) {
                         _countdown(count: count - 1)
@@ -41,12 +40,11 @@ public extension Schedule {
     }
 
     static func every(_ dt: TimeInterval, handle: @escaping (TimeInterval) throws -> Void) -> Promise<Void> {
-        return Promise { (callback: @escaping Result.Callback) in
+        return Promise { callback in
             func _every(count: UInt) {
                 do {
                     try handle(dt * Double(count))
-
-                    if count == 0 { return callback(.fullfill(())) }
+                    if count == 0 { return callback(.fulfill(())) }
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + dt) {
                         _every(count: count + 1)
