@@ -84,18 +84,18 @@ iOS/
 
 ### NOTES
 
-##### Naming Convention:
+##### Naming Convention
 - When passing a function as a variable, the input argument name should be a verb for `@noescaping` and a noun for `@escaping`.
 - Transforming method from one type to another is named as `map` and `flatMap` in order to be consistent with `Optional`, especially in the case of [`Promise`](Sources/Common/Utilities/Promise.swift) and [`Result`](Sources/Common/Utilities/Result.swift).
 
-##### Documenting
-Due to `jazzy` difficulties, the support for documentation set is __deprecated__. The attempt of the tool is still available at [gh-pages](http://aquarchitect.github.io/MyKit/). Meanwhile, a search for a better alternative continues.
+##### Documentation Set
+Due to `jazzy` difficulties, the support for documentation is now __deprecated__. . Meanwhile, the search for a better alternative continues.
 
-> The old implementation of `jazzy` combined with `travis-ci` can be found at [`Makefile`](https://github.com/aquarchitect/MyKit/blob/swift-legacy/Makefile)
+> The old `jazzy` and `travis-ci` combination's result and implementation can be found at [gh-pages](http://aquarchitect.github.io/MyKit/) and [`Makefile`](https://github.com/aquarchitect/MyKit/blob/swift-legacy/Makefile) respectively.
 
 ### ABOUT
 
-The library was originally just for organizing all of boilerplate codes in Swift development. However, over the years it has been growing quickly and becomes an essential arsenal in my workflow. If there is a __generic__ implementation of a problem, it likely will end up here.
+The library was originally just for organizing all of the Swift boilerplate codes. However, over the years it has been growing quickly and becomes an essential arsenal in my development workflow. If there is a __generic__ implementation for a problem, it likely will end up here.
 
 > Difference between __Library__ and __Framework__:
 > - _Framework_ call you
