@@ -18,17 +18,19 @@ import AppKit
 final class ActionTrailingTests: XCTestCase {
 
     func testAction() {
-        let expectation = self.expectation(description: #function)
+        let button = UIButton()
+        let buttonType = type(of: button)
+        button.addAction({
+            XCTAssert(buttonType == type(of: $0))
+        }, for: .touchUpInside)
 
-        UIButton().then {
-            $0.addAction({
-                XCTAssertNotNil($0)
-                expectation.fulfill()
-            }, for: .touchUpInside)
-        }.executeAction()
+        let gesture = UIGestureRecognizer()
+        let gestureType = type(of: gesture)
+        gesture.addAction({
+            XCTAssert(gestureType == type(of: $0))
+        })
 
-        waitForExpectations(timeout: 5) {
-            XCTAssertNil($0)
-        }
+        button.executeAction()
+        gesture.executeAction()
     }
 }

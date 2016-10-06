@@ -6,10 +6,9 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
-/**
- * Simple matrix for caching values of LCS algorithm.
- * Reference Surge for optimized matrix computing.
- */
+/// Simple _Matrix_ represents LCS algorithm table (for visual purposes only).
+///
+/// - warning: reference [Surge](https://github.com/mattt/Surge) for optimized matrix computation.
 public struct Matrix<T> {
 
     // MARK: Property
@@ -86,6 +85,8 @@ public extension Matrix {
         }
     }
 }
+
+// MARK: - Custom String
 
 extension Matrix: CustomDebugStringConvertible {
 

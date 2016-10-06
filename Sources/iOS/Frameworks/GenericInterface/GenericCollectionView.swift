@@ -74,9 +74,9 @@ public extension GenericCollectionView where Model: Equatable {
                 self.deleteItems(at: updates.deletes)
                 self.insertItems(at: updates.inserts)
                 }, completion: completion)
-        case .manualHandling(let handle):
+        case .manualHandling(let handler):
             self.cellModels = cellModels
-            handle(self)
+            handler(self)
         }
     }
 }

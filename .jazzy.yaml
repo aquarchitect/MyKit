@@ -5,36 +5,29 @@ github_url: https://github.com/aquarchitect/MyKit.git
 copyright: '© 2016 [Hai Nguyen](http://aquarchitect.github.io)'
 
 clean: true
-exclude: []
+exclude:
+  - "Sources/iOS/Extensions/Draw+.swift"
 
-readme: Assets/Introduction.md
+readme: Resources/Introduction.md
 
 skip_undocumented: true
-hide_documentation_coverage: true
+hide_documentation_coverage: false
 
 xcodebuild_arguments: [-scheme, MyKit-iOS, -toolchain, com.apple.dt.toolchain.XcodeDefault]
 
 custom_categories:
   - name: Utilities
     children:
-#     - Arbitrary
-#     - Diff
-#     - Matrix
-#     - Promise
+    - Arbitrary
+    - Curry
+    - Promise
     - Result
-#     - Then
-#     - Box
-
-  - name: Global Functions
-    children:
-    - measure(_:)
-    - delay(_:queue:block:)
-    - swizzle(_:original:swizzled:)
-    - drawInState(_:render:)
-    - renderInContext(_:opaque:render:)
-
+    - Schedule
+    - Change
+    - Matrix
+    - Box
+    - Then
   - name: Native Extension
     children:
-    - Range
-    - String
-    - CollectionType
+    # - String
+    - Collection

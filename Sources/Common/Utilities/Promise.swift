@@ -10,6 +10,7 @@ import Dispatch
 
 public enum PromiseError: Error { case cancelled, empty }
 
+/// _Promise_ represents the future value of a (usually) asynchronous task.
 public struct Promise<T> {
 
     public typealias Operation = (@escaping Result<T>.Callback) -> Void
@@ -24,39 +25,45 @@ public struct Promise<T> {
 
 public extension Promise {
 
-    /** 
-     * Execute promise with a callback
-     */
+    static func lift(_ contructor: @escaping () throws -> T) -> Promise {
+        return Promise { $0(.init(contructor)) }
+    }
+}
+
+// MARK: - Execution
+
+public extension Promise {
+
+    ///  Execute promise with a callback (for internal usage only)
     fileprivate func resolve(_ callback: @escaping Result<T>.Callback) {
         self.operation(callback)
     }
 
+    /// Execute promise on module level
     func resolve() {
         self.operation { _ in }
     }
 }
 
+// MARK: - Transformation
+
 public extension Promise {
 
-    /**
-     * Transform value type
-     */
-    func map<U>(_ transform: @escaping (T) throws -> U) -> Promise<U> {
+    /// Transform one type to another.
+    func map<U>(_ transformer: @escaping (T) throws -> U) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { result in
-                callback(result.map(transform))
+                callback(result.map(transformer))
             }
         }
     }
 
-    /**
-     * Transform promise type
-     */
-    func flatMap<U>(_ transform: @escaping (T) -> Promise<U>) -> Promise<U> {
+    /// Transform one type to another.
+    func flatMap<U>(_ transformer: @escaping (T) -> Promise<U>) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { result in
                 do {
-                    try (result.resolve >>> transform)().resolve(callback)
+                    try (result.resolve >>> transformer)().resolve(callback)
                 } catch {
                     callback(.reject(error))
                 }
@@ -65,43 +72,47 @@ public extension Promise {
     }
 }
 
+// MARK: - Result Action
+
 public extension Promise {
 
-    private func onResult(_ execute: @escaping (Result<T>) -> Void) -> Promise {
+    private func onResult(_ handler: @escaping (Result<T>) -> Void) -> Promise {
         return Promise { callback in
             self.resolve { result in
-                execute(result)
+                handler(result)
                 callback(result)
             }
         }
     }
 
-    func always(_ execute: @escaping () -> Void) -> Promise {
-        return onResult { _ in execute() }
+    func always(_ handler: @escaping () -> Void) -> Promise {
+        return onResult { _ in handler() }
     }
 
-    func onSuccess(_ execute: @escaping (T) -> Void) -> Promise {
+    func onSuccess(_ handler: @escaping (T) -> Void) -> Promise {
         return onResult {
-            if case .fulfill(let value) = $0 { execute(value) }
+            if case .fulfill(let value) = $0 { handler(value) }
         }
     }
 
-    func onFailure(_ execute: @escaping (Error) -> Void) -> Promise {
+    func onFailure(_ handler: @escaping (Error) -> Void) -> Promise {
         return onResult {
-            if case .reject(let error) = $0 { execute(error) }
+            if case .reject(let error) = $0 { handler(error) }
         }
     }
 }
 
+// MARK: - Failure Action
+
 public extension Promise {
 
-    func recover(_ transform: @escaping (Error) -> Promise) -> Promise {
+    func recover(_ transformer: @escaping (Error) -> Promise) -> Promise {
         return Promise { callback in
             self.resolve { result in
                 do {
                     callback(.fulfill(try result.resolve()))
                 } catch {
-                    transform(error).resolve(callback)
+                    transformer(error).resolve(callback)
                 }
             }
         }
@@ -122,6 +133,8 @@ public extension Promise {
         }
     }
 }
+
+// MARK: - Threading
 
 public extension Promise {
 
@@ -148,20 +161,11 @@ public extension Promise {
     }
 }
 
-public extension Promise {
-
-    static func lift(_ contruct: @escaping () throws -> T) -> Promise {
-        return Promise { $0(.init(contruct)) }
-    }
-}
-
 // MARK: - Multiple Promises
 
 public extension Promise {
 
-    /**
-     * Queue up promises asynchronously
-     */
+    /// Execute promises of the same type asynchronously.
     static func concat(_ promises: [Promise]) -> Promise<[T]> {
         let group = DispatchGroup()
 
@@ -185,9 +189,7 @@ public extension Promise {
     }
 }
 
-/**
- * Queue up promises of 2 dirrent types aysnchronously
- */
+/// Execute promises of different tpes asynchronously
 public func zip<A, B>(_ promiseA: Promise<A>, _ promiseB: Promise<B>) -> Promise<(A, B)> {
     let group = DispatchGroup()
 

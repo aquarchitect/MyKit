@@ -8,10 +8,17 @@
 
 import Foundation
 
-public struct Schedule {}
+public struct Schedule {
+
+    public typealias Operation = (TimeInterval) throws -> Void
+}
 
 public extension Schedule {
 
+    /// Schedule an operation for one time only, similiar to
+    /// `Dispatch.main.asyncAfter`.
+    ///
+    /// - returns: a promise
     static func once(_ dt: TimeInterval) -> Promise<Void> {
         return Promise { callback in
             DispatchQueue.main.asyncAfter(deadline: .now() + dt) {
@@ -20,11 +27,20 @@ public extension Schedule {
         }
     }
 
-    static func countdown(_ dt: TimeInterval, count: UInt, handle: @escaping (TimeInterval) throws -> Void) -> Promise<Void> {
+    /// Schedule an operation that repeats for every `dt` period of time,
+    /// similiar to `Timer`. The schedule will return a successful result 
+    /// after reaching the count of 0. The operation can be terminated by
+    /// throwing an error inside the handler.
+    ///
+    /// - parameter count:   number of repeating operations
+    /// - parameter handler: repeating operations with the current countdown
+    ///
+    /// - returns: a promise
+    static func countdown(_ dt: TimeInterval, count: UInt, handler: @escaping Operation) -> Promise<Void> {
         return Promise { callback in
             func _countdown(count: UInt) {
                 do {
-                    try handle(dt * Double(count))
+                    try handler(dt * Double(count))
                     if count == 0 { return callback(.fulfill(())) }
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + dt) {
@@ -39,11 +55,18 @@ public extension Schedule {
         }
     }
 
-    static func every(_ dt: TimeInterval, handle: @escaping (TimeInterval) throws -> Void) -> Promise<Void> {
+    /// Schedule an operation that repeats for every `dt` period of time,
+    /// similiar to `Timer`. This is an infinite schedule, and can be 
+    /// terminated by throwing an error inside the handler.
+    ///
+    /// - parameter handler: execute every `dt` interval with the time interval
+    ///
+    /// - returns: a promise
+    static func every(_ dt: TimeInterval, handler: @escaping Operation) -> Promise<Void> {
         return Promise { callback in
             func _every(count: UInt) {
                 do {
-                    try handle(dt * Double(count))
+                    try handler(dt * Double(count))
                     if count == 0 { return callback(.fulfill(())) }
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + dt) {

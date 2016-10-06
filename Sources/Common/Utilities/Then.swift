@@ -8,6 +8,9 @@
 
 import Foundation.NSObject
 
+/// _Then_ provides helper functions to ease the transformation of one type to another.
+///
+/// - warning: `map` and `flatMap` should be favored in the case of `Optional`.
 public protocol Then: class {}
 
 public extension Then {

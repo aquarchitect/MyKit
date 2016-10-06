@@ -10,13 +10,13 @@ import Foundation
 
 final class ActionWrapper<T>: NSObject, NSCopying {
 
-    let handler: (T) -> Void
+    let value: (T) -> Void
 
     init(_ handler: @escaping (T) -> Void) {
-        self.handler = handler
+        self.value = handler
     }
 
     func copy(with zone: NSZone? = nil) -> Any {
-        return ActionWrapper(self.handler)
+        return ActionWrapper(self.value)
     }
 }

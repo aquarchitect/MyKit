@@ -8,6 +8,7 @@
 
 import Darwin
 
+/// _Arbitray_ helps selecting element randomly.
 public struct Arbitrary {}
 
 public extension Arbitrary {
@@ -32,6 +33,8 @@ public extension Arbitrary {
     }
 }
 
+// MARK: - Primitive Types
+
 public extension Arbitrary {
 
     static var bool: Bool {
@@ -47,6 +50,8 @@ public extension Arbitrary {
     }
 }
 
+// MARK: - Hexadecimal Value
+
 public extension Arbitrary {
 
     static var hexString: String {
@@ -58,6 +63,8 @@ public extension Arbitrary {
         return UInt(arc4random_uniform(UInt32(UInt16.max)))
     }
 }
+
+// MARK: - Lorem Ipsum
 
 public extension Arbitrary {
 

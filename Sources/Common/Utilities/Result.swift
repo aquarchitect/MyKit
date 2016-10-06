@@ -6,7 +6,7 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
-/// Constant that helps define results of a callback
+/// _Result_ helps defining results of a callback.
 public enum Result<T> {
 
     public typealias Callback = (Result) -> Void
@@ -19,6 +19,8 @@ public enum Result<T> {
         catch { self = .reject(error) }
     }
 }
+
+// MARK: - Attributes
 
 public extension Result {
 
@@ -37,6 +39,8 @@ public extension Result {
     }
 }
 
+// MARK: - Resolving
+
 public extension Result {
 
     /// Unwrap in result into values
@@ -48,9 +52,11 @@ public extension Result {
     }
 }
 
+// MARK: - Transformation
+
 public extension Result {
 
-    /// Transfrom the result of one type to another with a potential error
+    /// Transfrom result of one type to another
     func map<U>(_ transform: (T) throws -> U) -> Result<U> {
         switch self {
         case .fulfill(let value):
@@ -64,6 +70,7 @@ public extension Result {
         }
     }
 
+    /// Transform result of one type to another
     func flatMap<U>(_ transform: (T) -> Result<U>) -> Result<U> {
         do {
             return transform(try resolve())
@@ -73,8 +80,11 @@ public extension Result {
     }
 }
 
+// MARK: - Multiple Results
+
 public extension Result {
 
+    /// Flattern results of the same type to a result of collection type
     static func concat(_ results: [Result]) -> Result<[T]> {
         return results.reduce(.fulfill([])) {
             do {
@@ -87,6 +97,7 @@ public extension Result {
     }
 }
 
+/// Combine results of 2 different types into result of a tuple
 public func zip<A, B>(_ resultA: Result<A>, _ resultB: Result<B>) -> Result<(A, B)> {
     do {
         let a = try resultA.resolve()

@@ -6,6 +6,7 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
+/// Testing
 precedencegroup Currying {
     associativity: left
 }

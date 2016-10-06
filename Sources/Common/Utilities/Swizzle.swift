@@ -8,53 +8,73 @@
 
 import Foundation
 
+/// Swizzles original method of a reference type.
+///
+/// - parameter type:             class name
+/// - parameter originalSelector: name of original method
+/// - parameter swizzledSelector: name of replacement
 /**
-Swizzles original method.
-
-- parameter type: Class name.
-- parameter original: Name of original method.
-- parameter swizzled: Name of replaced method.
-
 ```swift
-    extension UIView {
+import UIKit
 
-        private struct Layout {
+extension UIView {
 
-            typealias Handler = @convention(block) Void -> Void
-            static var Token = "Layout"
-        }
+    struct Layout {
 
-    func overrideLayoutSubviews(block: Void -> Void) {
-        let object: AnyObject = unsafeBitCast(block as Layout.Handler, AnyObject.self)
-        objc_setAssociatedObject(self, &Layout.Token, object, objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
+        typealias Handler = @convention(block) () -> Void
+        static var token = "Layout"
+    }
+
+    func overrideLayoutSubviews(handler: @escaping () -> Void) {
+        objc_setAssociatedObject(self,
+                                 &Layout.token,
+                                 handler as Layout.Handler,
+                                 objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
     }
 
     func swizzledLayoutSubviews() {
         self.swizzledLayoutSubviews()
-    
-        if let object = objc_getAssociatedObject(self, &Layout.Token) {
-            _ = unsafeBitCast(object, Layout.Handler.self)()
-        }
+        (objc_getAssociatedObject(self, &Layout.token) as? Layout.Handler)?()
     }
 
-    public override class func initialize() {
-        struct Dispatch { static var token: dispatch_once_t = 0 }
+    open override class func initialize() {
+        /*
+         * Since `dispatch_once` is deprecated in Swift 3.0,
+         * this implementation is the alternative.
+         */
+        let swizzle: Void = {
+            MyKit.swizzle(type: UIView.self,
+                          original: #selector(layoutSubviews),
+                          swizzled: #selector(swizzledLayoutSubviews))
+        }()
 
-        dispatch_once(&Dispatch.token) {
-            swizzle(UIView.self, original: "layoutSubviews", swizzled: "swizzledLayoutSubviews")
-        }
+        swizzle
     }
-```
+}
 */
+
 public func swizzle(type: AnyClass, original originalSelector: Selector, swizzled swizzledSelector: Selector) {
     // get method objects
     let originalMethod = class_getInstanceMethod(type, originalSelector)
     let swizzledMethod = class_getInstanceMethod(type, swizzledSelector)
 
     // check whether original method has been swizzlled
-    if class_addMethod(type, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod)) {
-        class_replaceMethod(type, swizzledSelector, originalMethod, method_getTypeEncoding(originalMethod))
+    if class_addMethod(type,
+                       originalSelector,
+                       method_getImplementation(swizzledMethod),
+                       method_getTypeEncoding(swizzledMethod)) {
+        class_replaceMethod(type,
+                            swizzledSelector,
+                            originalMethod,
+                            method_getTypeEncoding(originalMethod))
     } else {
-        method_exchangeImplementations(originalMethod, swizzledMethod)
+        method_exchangeImplementations(originalMethod,
+                                       swizzledMethod)
     }
 }
+
+let test: Void = {
+    _ = NSObject()
+}()
+
+

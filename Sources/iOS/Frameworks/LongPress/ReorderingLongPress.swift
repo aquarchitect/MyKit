@@ -8,7 +8,7 @@
 
 import UIKit
 
-/**
+/*
  * Warning: this class has no effect on other than Table/Collection view
  */
 open class ReorderingLongPress: UILongPressGestureRecognizer {

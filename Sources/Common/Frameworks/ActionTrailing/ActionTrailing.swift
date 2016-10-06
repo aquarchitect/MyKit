@@ -22,7 +22,7 @@ extension ActionTrailing {
     }
 
     func executeAction() {
-        (objc_getAssociatedObject(self, &token) as? ActionWrapper<Self>)?.handler(self)
+        (objc_getAssociatedObject(self, &token) as? ActionWrapper<Self>)?.value(self)
     }
 }
 
