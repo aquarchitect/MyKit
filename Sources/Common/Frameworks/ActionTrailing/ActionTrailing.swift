@@ -34,7 +34,7 @@ extension NSObject {
 }
 
 #if os(iOS)
-import UIKit.UIControl
+import UIKit
 
 extension UIControl: ActionTrailing {}
 
@@ -46,8 +46,6 @@ public extension ActionTrailing where Self: UIControl {
     }
 }
 
-import UIKit.UIGestureRecognizer
-
 extension UIGestureRecognizer: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIGestureRecognizer {
@@ -58,16 +56,26 @@ public extension ActionTrailing where Self: UIGestureRecognizer {
     }
 }
 #elseif os(macOS)
-import AppKit.NSControl
+import AppKit
 
 extension NSControl: ActionTrailing {}
 
 public extension ActionTrailing where Self: NSControl {
 
-    func addAction(_ handler: @escaping (Self) -> Void, for property: String) {
-        var token = String(describing: self)
-        self.setAction(handler, for: &token)
-        self.setValue("handleBlock", forKey: property)
+    func addAction(_ handler: @escaping (Self) -> Void) {
+        self.setAction(handler)
+        self.action = #selector(actionExecuted)
+        self.target = self
+    }
+}
+
+extension NSGestureRecognizer: ActionTrailing {}
+
+public extension ActionTrailing where Self: NSGestureRecognizer {
+
+    func addAction(_ handler: @escaping (Self) -> Void) {
+        self.setAction(handler)
+        self.action = #selector(actionExecuted)
         self.target = self
     }
 }

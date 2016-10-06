@@ -17,6 +17,7 @@ import AppKit
 
 final class ActionTrailingTests: XCTestCase {
 
+#if os(iOS)
     func testAction() {
         let button = UIButton()
         let buttonType = type(of: button)
@@ -33,4 +34,22 @@ final class ActionTrailingTests: XCTestCase {
         button.executeAction()
         gesture.executeAction()
     }
+#elseif os(macOS)
+    func testAction() {
+        let button = NSButton()
+        let buttonType = type(of: button)
+        button.addAction({
+            XCTAssert(buttonType == type(of: $0))
+        })
+
+        let gesture = NSGestureRecognizer()
+        let gestureType = type(of: gesture)
+        gesture.addAction({
+            XCTAssert(gestureType == type(of: $0))
+        })
+
+        button.executeAction()
+        gesture.executeAction()
+    }
+#endif
 }

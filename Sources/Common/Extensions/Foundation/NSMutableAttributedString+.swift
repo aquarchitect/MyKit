@@ -48,7 +48,7 @@ public extension NSMutableAttributedString {
     }
 
     func addColor(_ color: NSColor?, to range: NSRange? = nil) {
-        font.flatMap { self._addFont($0, to: range) }
+        color.flatMap { self._addColor($0, to: range) }
     }
 }
 #endif

@@ -63,7 +63,7 @@ extension CollectionExtensionTests {
         let (c1s, c2s) = sampleCharacters
         let changes = c1s.compare(c2s)
 
-        XCTAssertEqual(changes.map { $0.isDelete }, [true, true, false])
+        XCTAssertEqual(changes.map { $0.isDeleted }, [true, true, false])
         XCTAssertEqual(changes.map { $0.value.index }, [1, 2, 2])
         XCTAssertEqual(changes.map { $0.value.element }, ["B", "D", "G"])
     }
