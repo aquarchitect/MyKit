@@ -13,11 +13,6 @@ add_git_tag(tag: "#{lane[:version]}")
 push_git_tags(force: true)
 end
 
-desc "Generate documetation set"
-lane :doc do
-  sh("cd ../ && bash Scripts/build_docs_set.sh")
-end
-
 desc "Test targets"
 lane :test do
   ["iOS", "macOS"].each do |platform|

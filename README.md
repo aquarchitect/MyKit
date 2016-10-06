@@ -3,14 +3,13 @@ MyKit
 
 [![Swift Version](https://img.shields.io/badge/swift-3.0-orange.svg?style=flat-square)](https://swift.org)  [![Build Status](https://img.shields.io/travis/aquarchitect/MyKit.svg?style=flat-square)](https://travis-ci.org/aquarchitect/MyKit/)  [![Platform Support](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20-lightgrey.svg?style=flat-square)](https://developer.apple.com/xcode/download/)
 
-Documentation: [http://aquarchitect.github.io/MyKit/](http://aquarchitect.github.io/MyKit/)
-
 ### INTRODUCTION
 
-__MyKit__ is a wide-ranged collection of codes from extensions to small modular frameworks covering from data structure to user interface. For record purposes, everything is listed in a directory tree below, and the exciting features are highlighted with an embedded link directly to the source codes.
+__MyKit__ is a wide-ranged collection of codes from extensions to small modular frameworks covering from data structure to user interface. For record purposes, everything is listed in the directory tree below; exciting features are highlighted with an embedded link directly to the source codes.
 
-Thanks for checking out, and Happy coding!
+Thanks for checking it out, and Happy coding!
 
+<details><summary>Directory Tree</summary>
 <big><pre>
 Common/
 ├── Utilities/
@@ -81,12 +80,28 @@ iOS/
     ├── [GenericInterface](Sources/iOS/Frameworks/GenericInterface/) - including table/collection view
     └── [CollectionLayout](Sources/iOS/Frameworks/CollectionLayout/) - including Paraboloid and Snapping
 </pre></big>
+</details>
+
+### NOTES
+
+##### Naming Convention:
+
+- When passing function as a variable, the input argument of that variable should be a verb for `@noescaping` function, otherwise noun for `@escaping` function.
+- Transforming method from one type to another is named as `map` and `flatMap` in order to be consistent with `Optional`, especially in the case of [`Promise`](Sources/Common/Utilities/Promise.swift) and [`Result`](Sources/Common/Utilities/Result.swift).
+
+### DOCUMENTATION
+
+The support for the library documentation using `jazzy` due to its difficulties has been deprecated. The attempt with the tool is still [gh-pages](http://aquarchitect.github.io/MyKit/). Meanwhile, a search for a better alternative continues.
+
+> The old CI implementation of _jazzy_ can be found at [_Makefile_](https://github.com/aquarchitect/MyKit/blob/swift-legacy/Makefile).
 
 ### ABOUT
 
-This library was originally just for organizing the common boilerplate codes in my Swift development workflow; and it has been growing larger over years. If there is a __generic__ solution for an implementation, it likely will end up here.
+This library was simply a storage for my Swift boilerplate codes. However, over the years and it has been growing quickly and becomes an essential arsenal for my development workflow. If there is a __generic__ implementation of a problem, it likely will end up here.
 
-This is more or less an educational diary of mine to programming; but most importantly it is an essential arsenal for any of my Swift project.
+> Difference between __Library__ and __Framework__:
+> - _Framework_ call you
+> - You call _Library_
 
 ### LICENSE
 
