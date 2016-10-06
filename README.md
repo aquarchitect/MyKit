@@ -85,19 +85,17 @@ iOS/
 ### NOTES
 
 ##### Naming Convention:
-
-- When passing function as a variable, the input argument of that variable should be a verb for `@noescaping` function, otherwise noun for `@escaping` function.
+- When passing a function as a variable, the input argument name should be a verb for `@noescaping` and a noun for `@escaping`.
 - Transforming method from one type to another is named as `map` and `flatMap` in order to be consistent with `Optional`, especially in the case of [`Promise`](Sources/Common/Utilities/Promise.swift) and [`Result`](Sources/Common/Utilities/Result.swift).
 
-### DOCUMENTATION
+##### Documenting
+Due to `jazzy` difficulties, the support for documentation set is __deprecated__. The attempt of the tool is still available at [gh-pages](http://aquarchitect.github.io/MyKit/). Meanwhile, a search for a better alternative continues.
 
-The support for the library documentation using `jazzy` due to its difficulties has been deprecated. The attempt with the tool is still [gh-pages](http://aquarchitect.github.io/MyKit/). Meanwhile, a search for a better alternative continues.
-
-> The old CI implementation of _jazzy_ can be found at [_Makefile_](https://github.com/aquarchitect/MyKit/blob/swift-legacy/Makefile).
+> The old implementation of `jazzy` combined with `travis-ci` can be found at [`Makefile`](https://github.com/aquarchitect/MyKit/blob/swift-legacy/Makefile)
 
 ### ABOUT
 
-This library was simply a storage for my Swift boilerplate codes. However, over the years and it has been growing quickly and becomes an essential arsenal for my development workflow. If there is a __generic__ implementation of a problem, it likely will end up here.
+The library was originally just for organizing all of boilerplate codes in Swift development. However, over the years it has been growing quickly and becomes an essential arsenal in my workflow. If there is a __generic__ implementation of a problem, it likely will end up here.
 
 > Difference between __Library__ and __Framework__:
 > - _Framework_ call you
