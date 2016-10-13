@@ -121,6 +121,8 @@
 		C2973FF71D7747BC005C73A0 /* GenericCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF41D7747BC005C73A0 /* GenericCollectionCell.swift */; };
 		C2973FF81D7747BC005C73A0 /* GenericCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF51D7747BC005C73A0 /* GenericCollectionView.swift */; };
 		C2973FF91D7747BC005C73A0 /* GenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF61D7747BC005C73A0 /* GenericTableView.swift */; };
+		C2A673891DB00820009E063A /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673881DB00820009E063A /* Mutex.swift */; };
+		C2A6738A1DB00820009E063A /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673881DB00820009E063A /* Mutex.swift */; };
 		C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2AFF8991D9847BD00431639 /* ReorderingLongPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AFF8981D9847BD00431639 /* ReorderingLongPress.swift */; };
@@ -309,6 +311,7 @@
 		C2973FF41D7747BC005C73A0 /* GenericCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericCollectionCell.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericCollectionCell.swift; sourceTree = "<group>"; };
 		C2973FF51D7747BC005C73A0 /* GenericCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericCollectionView.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericCollectionView.swift; sourceTree = "<group>"; };
 		C2973FF61D7747BC005C73A0 /* GenericTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericTableView.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericTableView.swift; sourceTree = "<group>"; };
+		C2A673881DB00820009E063A /* Mutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mutex.swift; path = Sources/Common/Utilities/Mutex.swift; sourceTree = "<group>"; };
 		C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensionTests.swift; path = UnitTests/CollectionExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		C2AFF8981D9847BD00431639 /* ReorderingLongPress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReorderingLongPress.swift; path = Sources/iOS/Frameworks/LongPress/ReorderingLongPress.swift; sourceTree = "<group>"; };
 		C2AFF89A1D9849E400431639 /* SelectingLongPress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectingLongPress.swift; path = Sources/iOS/Frameworks/LongPress/SelectingLongPress.swift; sourceTree = "<group>"; };
@@ -628,7 +631,7 @@
 			children = (
 				C250EB771D9C78C6008FC9D0 /* QuickTest.playground */,
 				C22EA0371D987DA2003A490A /* MyKit */,
-				C289AD921B62B9AD00186773 /* Source */,
+				C289AD921B62B9AD00186773 /* Sources */,
 				C2DC8B881CAB2EDB00837D9E /* Demos */,
 				C2F3D6A71CAB5733002E8F1A /* UITests */,
 				C2B60ACC1B95080800F6D2BB /* UnitTests */,
@@ -636,14 +639,14 @@
 			);
 			sourceTree = "<group>";
 		};
-		C289AD921B62B9AD00186773 /* Source */ = {
+		C289AD921B62B9AD00186773 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				C2DC8C3C1CAB4C1600837D9E /* Common */,
 				C2DC8C3D1CAB4C2700837D9E /* iOS */,
 				C2DC8C3E1CAB4C2C00837D9E /* macOS */,
 			);
-			name = Source;
+			name = Sources;
 			sourceTree = "<group>";
 		};
 		C289AD931B62BA0500186773 /* Extensions */ = {
@@ -686,6 +689,7 @@
 				C201654B1CE0EFC500F7D3E5 /* Schedule.swift */,
 				C201654D1CE0EFC500F7D3E5 /* Swizzle.swift */,
 				C201654E1CE0EFC500F7D3E5 /* Then.swift */,
+				C2A673881DB00820009E063A /* Mutex.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1265,6 +1269,7 @@
 				C20165FA1CE0FF1300F7D3E5 /* Bundle+.swift in Sources */,
 				C201656D1CE0F01D00F7D3E5 /* Swizzle.swift in Sources */,
 				C20166041CE0FF1700F7D3E5 /* CKContainer+.swift in Sources */,
+				C2A6738A1DB00820009E063A /* Mutex.swift in Sources */,
 				C201656A1CE0F01D00F7D3E5 /* Result.swift in Sources */,
 				C20165F81CE0FF0E00F7D3E5 /* CGRect+.swift in Sources */,
 				C20166071CE0FF1700F7D3E5 /* CKRecord+.swift in Sources */,
@@ -1294,6 +1299,7 @@
 				C201655E1CE0EFC500F7D3E5 /* Then.swift in Sources */,
 				C201658A1CE0FA8B00F7D3E5 /* Sequence+.swift in Sources */,
 				C20166461CE1017900F7D3E5 /* UIViewController+.swift in Sources */,
+				C2A673891DB00820009E063A /* Mutex.swift in Sources */,
 				C2AFF89B1D9849E400431639 /* SelectingLongPress.swift in Sources */,
 				C201664F1CE1026800F7D3E5 /* GrowingTextView.swift in Sources */,
 				C20165BE1CE0FC8800F7D3E5 /* CKContainer+.swift in Sources */,
