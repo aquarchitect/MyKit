@@ -123,6 +123,8 @@
 		C2973FF91D7747BC005C73A0 /* GenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF61D7747BC005C73A0 /* GenericTableView.swift */; };
 		C2A673891DB00820009E063A /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673881DB00820009E063A /* Mutex.swift */; };
 		C2A6738A1DB00820009E063A /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673881DB00820009E063A /* Mutex.swift */; };
+		C2A6738C1DB00E06009E063A /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6738B1DB00E06009E063A /* Signal.swift */; };
+		C2A6738D1DB00E06009E063A /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6738B1DB00E06009E063A /* Signal.swift */; };
 		C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2AFF8991D9847BD00431639 /* ReorderingLongPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AFF8981D9847BD00431639 /* ReorderingLongPress.swift */; };
@@ -312,6 +314,7 @@
 		C2973FF51D7747BC005C73A0 /* GenericCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericCollectionView.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericCollectionView.swift; sourceTree = "<group>"; };
 		C2973FF61D7747BC005C73A0 /* GenericTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericTableView.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericTableView.swift; sourceTree = "<group>"; };
 		C2A673881DB00820009E063A /* Mutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mutex.swift; path = Sources/Common/Utilities/Mutex.swift; sourceTree = "<group>"; };
+		C2A6738B1DB00E06009E063A /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Signal.swift; path = Sources/Common/Utilities/Signal.swift; sourceTree = "<group>"; };
 		C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensionTests.swift; path = UnitTests/CollectionExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		C2AFF8981D9847BD00431639 /* ReorderingLongPress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReorderingLongPress.swift; path = Sources/iOS/Frameworks/LongPress/ReorderingLongPress.swift; sourceTree = "<group>"; };
 		C2AFF89A1D9849E400431639 /* SelectingLongPress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectingLongPress.swift; path = Sources/iOS/Frameworks/LongPress/SelectingLongPress.swift; sourceTree = "<group>"; };
@@ -690,6 +693,7 @@
 				C201654D1CE0EFC500F7D3E5 /* Swizzle.swift */,
 				C201654E1CE0EFC500F7D3E5 /* Then.swift */,
 				C2A673881DB00820009E063A /* Mutex.swift */,
+				C2A6738B1DB00E06009E063A /* Signal.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1266,6 +1270,7 @@
 				C20165F61CE0FEED00F7D3E5 /* CloudStack.swift in Sources */,
 				C20166081CE0FF1700F7D3E5 /* CKRecordID+.swift in Sources */,
 				C20166051CE0FF1700F7D3E5 /* CKDatabase+.swift in Sources */,
+				C2A6738D1DB00E06009E063A /* Signal.swift in Sources */,
 				C20165FA1CE0FF1300F7D3E5 /* Bundle+.swift in Sources */,
 				C201656D1CE0F01D00F7D3E5 /* Swizzle.swift in Sources */,
 				C20166041CE0FF1700F7D3E5 /* CKContainer+.swift in Sources */,
@@ -1292,6 +1297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C20166441CE1017900F7D3E5 /* UIScrollView+.swift in Sources */,
+				C2A6738C1DB00E06009E063A /* Signal.swift in Sources */,
 				C20165881CE0FA8B00F7D3E5 /* Dictionary+.swift in Sources */,
 				C217DD6F1D3AD9FD0047DFBF /* UILabel+.swift in Sources */,
 				C20165D41CE0FCA000F7D3E5 /* CGSize+.swift in Sources */,

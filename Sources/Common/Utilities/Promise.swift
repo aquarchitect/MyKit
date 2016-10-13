@@ -25,8 +25,8 @@ public struct Promise<T> {
 
 public extension Promise {
 
-    static func lift(_ contructor: @escaping () throws -> T) -> Promise {
-        return Promise { $0(.init(contructor)) }
+    static func lift(_ construct: @escaping () throws -> T) -> Promise {
+        return Promise { $0(.init(construct)) }
     }
 }
 
@@ -50,20 +50,20 @@ public extension Promise {
 public extension Promise {
 
     /// Transform one type to another.
-    func map<U>(_ transformer: @escaping (T) throws -> U) -> Promise<U> {
+    func map<U>(_ transform: @escaping (T) throws -> U) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { result in
-                callback(result.map(transformer))
+                callback(result.map(transform))
             }
         }
     }
 
     /// Transform one type to another.
-    func flatMap<U>(_ transformer: @escaping (T) -> Promise<U>) -> Promise<U> {
+    func flatMap<U>(_ transform: @escaping (T) -> Promise<U>) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { result in
                 do {
-                    try (result.resolve >>> transformer)().resolve(callback)
+                    try (result.resolve >>> transform)().resolve(callback)
                 } catch {
                     callback(.reject(error))
                 }
@@ -76,28 +76,28 @@ public extension Promise {
 
 public extension Promise {
 
-    private func onResult(_ handler: @escaping (Result<T>) -> Void) -> Promise {
+    private func onResult(_ handle: @escaping (Result<T>) -> Void) -> Promise {
         return Promise { callback in
             self.resolve { result in
-                handler(result)
+                handle(result)
                 callback(result)
             }
         }
     }
 
-    func always(_ handler: @escaping () -> Void) -> Promise {
-        return onResult { _ in handler() }
+    func always(_ handle: @escaping () -> Void) -> Promise {
+        return onResult { _ in handle() }
     }
 
-    func onSuccess(_ handler: @escaping (T) -> Void) -> Promise {
+    func onSuccess(_ handle: @escaping (T) -> Void) -> Promise {
         return onResult {
-            if case .fulfill(let value) = $0 { handler(value) }
+            if case .fulfill(let value) = $0 { handle(value) }
         }
     }
 
-    func onFailure(_ handler: @escaping (Error) -> Void) -> Promise {
+    func onFailure(_ handle: @escaping (Error) -> Void) -> Promise {
         return onResult {
-            if case .reject(let error) = $0 { handler(error) }
+            if case .reject(let error) = $0 { handle(error) }
         }
     }
 }
@@ -106,13 +106,13 @@ public extension Promise {
 
 public extension Promise {
 
-    func recover(_ transformer: @escaping (Error) -> Promise) -> Promise {
+    func recover(_ transform: @escaping (Error) -> Promise) -> Promise {
         return Promise { callback in
             self.resolve { result in
                 do {
                     callback(.fulfill(try result.resolve()))
                 } catch {
-                    transformer(error).resolve(callback)
+                    transform(error).resolve(callback)
                 }
             }
         }

@@ -68,9 +68,9 @@ public extension GenericTableView {
             self.deleteRows(at: updates.deletes, with: animation)
             self.insertRows(at: updates.inserts, with: animation)
             self.endUpdates()
-        case .manualHandling(let handler):
+        case .manualHandling(let handle):
             self.rowModels = rowModels
-            handler(self)
+            handle(self)
         }
     }
 }

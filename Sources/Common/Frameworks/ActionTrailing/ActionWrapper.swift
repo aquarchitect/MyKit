@@ -12,8 +12,8 @@ final class ActionWrapper<T>: NSObject, NSCopying {
 
     let value: (T) -> Void
 
-    init(_ handler: @escaping (T) -> Void) {
-        self.value = handler
+    init(_ handle: @escaping (T) -> Void) {
+        self.value = handle
     }
 
     func copy(with zone: NSZone? = nil) -> Any {

@@ -14,10 +14,10 @@ public protocol ActionTrailing: class {}
 
 extension ActionTrailing {
 
-    func setAction(_ handler: @escaping (Self) -> Void) {
+    func setAction(_ handle: @escaping (Self) -> Void) {
         objc_setAssociatedObject(self,
                                  &token,
-                                 ActionWrapper(handler),
+                                 ActionWrapper(handle),
                                  objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
     }
 
@@ -40,8 +40,8 @@ extension UIControl: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIControl {
 
-    func addAction(_ handler: @escaping (Self) -> Void, for controlEvents: UIControlEvents) {
-        self.setAction(handler)
+    func addAction(_ handle: @escaping (Self) -> Void, for controlEvents: UIControlEvents) {
+        self.setAction(handle)
         self.addTarget(self, action: #selector(actionExecuted), for: controlEvents)
     }
 }
@@ -50,8 +50,8 @@ extension UIGestureRecognizer: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIGestureRecognizer {
 
-    func addAction(_ handler: @escaping (Self) -> Void) {
-        self.setAction(handler)
+    func addAction(_ handle: @escaping (Self) -> Void) {
+        self.setAction(handle)
         self.addTarget(self, action: #selector(actionExecuted))
     }
 }
@@ -62,8 +62,8 @@ extension NSControl: ActionTrailing {}
 
 public extension ActionTrailing where Self: NSControl {
 
-    func addAction(_ handler: @escaping (Self) -> Void) {
-        self.setAction(handler)
+    func addAction(_ handle: @escaping (Self) -> Void) {
+        self.setAction(handle)
         self.action = #selector(actionExecuted)
         self.target = self
     }
@@ -73,8 +73,8 @@ extension NSGestureRecognizer: ActionTrailing {}
 
 public extension ActionTrailing where Self: NSGestureRecognizer {
 
-    func addAction(_ handler: @escaping (Self) -> Void) {
-        self.setAction(handler)
+    func addAction(_ handle: @escaping (Self) -> Void) {
+        self.setAction(handle)
         self.action = #selector(actionExecuted)
         self.target = self
     }
