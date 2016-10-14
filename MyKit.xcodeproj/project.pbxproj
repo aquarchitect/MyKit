@@ -125,6 +125,8 @@
 		C2A6738A1DB00820009E063A /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673881DB00820009E063A /* Mutex.swift */; };
 		C2A6738C1DB00E06009E063A /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6738B1DB00E06009E063A /* Signal.swift */; };
 		C2A6738D1DB00E06009E063A /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6738B1DB00E06009E063A /* Signal.swift */; };
+		C2A673961DB094C2009E063A /* SignalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673911DB09493009E063A /* SignalTests.swift */; };
+		C2A673971DB094C3009E063A /* SignalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673911DB09493009E063A /* SignalTests.swift */; };
 		C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2AFF8991D9847BD00431639 /* ReorderingLongPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AFF8981D9847BD00431639 /* ReorderingLongPress.swift */; };
@@ -315,6 +317,7 @@
 		C2973FF61D7747BC005C73A0 /* GenericTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericTableView.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericTableView.swift; sourceTree = "<group>"; };
 		C2A673881DB00820009E063A /* Mutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mutex.swift; path = Sources/Common/Utilities/Mutex.swift; sourceTree = "<group>"; };
 		C2A6738B1DB00E06009E063A /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Signal.swift; path = Sources/Common/Utilities/Signal.swift; sourceTree = "<group>"; };
+		C2A673911DB09493009E063A /* SignalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignalTests.swift; path = UnitTests/SignalTests.swift; sourceTree = SOURCE_ROOT; };
 		C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensionTests.swift; path = UnitTests/CollectionExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		C2AFF8981D9847BD00431639 /* ReorderingLongPress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReorderingLongPress.swift; path = Sources/iOS/Frameworks/LongPress/ReorderingLongPress.swift; sourceTree = "<group>"; };
 		C2AFF89A1D9849E400431639 /* SelectingLongPress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectingLongPress.swift; path = Sources/iOS/Frameworks/LongPress/SelectingLongPress.swift; sourceTree = "<group>"; };
@@ -701,13 +704,14 @@
 		C2B60ACC1B95080800F6D2BB /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */,
 				C2F317461D5A5EF1009B0F42 /* _FontLoadingTests.swift */,
+				C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */,
 				C2F317471D5A5EF1009B0F42 /* NSDateTests.swift */,
 				C2F317481D5A5EF1009B0F42 /* PromiseTests.swift */,
 				C2F317491D5A5EF1009B0F42 /* ScheduleTests.swift */,
 				C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */,
 				C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */,
+				C2A673911DB09493009E063A /* SignalTests.swift */,
 			);
 			name = UnitTests;
 			path = MyKitTests;
@@ -1219,6 +1223,7 @@
 				C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */,
 				C2F3174F1D5A5EF6009B0F42 /* NSDateTests.swift in Sources */,
 				C214B90D1DA2155700754247 /* ActionTrailingTests.swift in Sources */,
+				C2A673961DB094C2009E063A /* SignalTests.swift in Sources */,
 				C2281E371DA07E7B004D206B /* ScheduleTests.swift in Sources */,
 				C2F3174E1D5A5EF6009B0F42 /* _FontLoadingTests.swift in Sources */,
 			);
@@ -1233,6 +1238,7 @@
 				C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */,
 				C2F317531D5A5EF7009B0F42 /* NSDateTests.swift in Sources */,
 				C214B90E1DA2155800754247 /* ActionTrailingTests.swift in Sources */,
+				C2A673971DB094C3009E063A /* SignalTests.swift in Sources */,
 				C2281E381DA07E7C004D206B /* ScheduleTests.swift in Sources */,
 				C2F317521D5A5EF7009B0F42 /* _FontLoadingTests.swift in Sources */,
 			);

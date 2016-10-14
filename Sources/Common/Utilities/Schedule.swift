@@ -30,17 +30,17 @@ public extension Schedule {
     /// Schedule an operation that repeats for every `dt` period of time,
     /// similiar to `Timer`. The schedule will return a successful result 
     /// after reaching the count of 0. The operation can be terminated by
-    /// throwing an error inside the handler.
+    /// throwing an error inside the handle.
     ///
     /// - parameter count:   number of repeating operations
-    /// - parameter handler: repeating operations with the current countdown
+    /// - parameter handle: repeating operations with the current countdown
     ///
     /// - returns: a promise
-    static func countdown(_ dt: TimeInterval, count: UInt, handler: @escaping Operation) -> Promise<Void> {
+    static func countdown(_ dt: TimeInterval, count: UInt, handle: @escaping Operation) -> Promise<Void> {
         return Promise { callback in
             func _countdown(count: UInt) {
                 do {
-                    try handler(dt * Double(count))
+                    try handle(dt * Double(count))
                     if count == 0 { return callback(.fulfill(())) }
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + dt) {
@@ -57,16 +57,16 @@ public extension Schedule {
 
     /// Schedule an operation that repeats for every `dt` period of time,
     /// similiar to `Timer`. This is an infinite schedule, and can be 
-    /// terminated by throwing an error inside the handler.
+    /// terminated by throwing an error inside the handle.
     ///
-    /// - parameter handler: execute every `dt` interval with the time interval
+    /// - parameter handle: execute every `dt` interval with the time interval
     ///
     /// - returns: a promise
-    static func every(_ dt: TimeInterval, handler: @escaping Operation) -> Promise<Void> {
+    static func every(_ dt: TimeInterval, handle: @escaping Operation) -> Promise<Void> {
         return Promise { callback in
             func _every(count: UInt) {
                 do {
-                    try handler(dt * Double(count))
+                    try handle(dt * Double(count))
                     if count == 0 { return callback(.fulfill(())) }
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + dt) {
