@@ -6,7 +6,7 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
-private var token = String(#file)
+private var GlobalToken: UInt8 = 0
 
 import Foundation.NSObject
 
@@ -16,19 +16,19 @@ extension ActionTrailing {
 
     func setAction(_ handle: @escaping (Self) -> Void) {
         objc_setAssociatedObject(self,
-                                 &token,
+                                 &GlobalToken,
                                  ActionWrapper(handle),
                                  objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
     }
 
     func executeAction() {
-        (objc_getAssociatedObject(self, &token) as? ActionWrapper<Self>)?.value(self)
+        (objc_getAssociatedObject(self, &GlobalToken) as? ActionWrapper<Self>)?.handle(self)
     }
 }
 
 extension NSObject {
 
-    func actionExecuted() {
+    func handleAction() {
         (self as? ActionTrailing)?.executeAction()
     }
 }
@@ -42,7 +42,7 @@ public extension ActionTrailing where Self: UIControl {
 
     func addAction(_ handle: @escaping (Self) -> Void, for controlEvents: UIControlEvents) {
         self.setAction(handle)
-        self.addTarget(self, action: #selector(actionExecuted), for: controlEvents)
+        self.addTarget(self, action: #selector(handleAction), for: controlEvents)
     }
 }
 
@@ -52,7 +52,7 @@ public extension ActionTrailing where Self: UIGestureRecognizer {
 
     func addAction(_ handle: @escaping (Self) -> Void) {
         self.setAction(handle)
-        self.addTarget(self, action: #selector(actionExecuted))
+        self.addTarget(self, action: #selector(handleAction))
     }
 }
 #elseif os(macOS)
