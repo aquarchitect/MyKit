@@ -15,6 +15,7 @@ public protocol Then: class {}
 
 public extension Then {
 
+#if swift(>=3.0)
     @discardableResult
     func then(_ perform: (Self) throws -> Void) rethrows -> Self {
         try perform(self)
@@ -24,6 +25,17 @@ public extension Then {
     func andThen<U>(_ transform: (Self) throws -> U) rethrows -> U {
         return try transform(self)
     }
+#else
+    func then(@noescape perform: (Self) throws -> Void) rethrows -> Self {
+        try perform(self)
+        return self
+    }
+
+    @warn_unused_result
+    func andThen<U>(@noescape transform: (Self) throws -> U) rethrows -> U {
+        return try transform(self)
+    }
+#endif
 }
 
 extension Box: Then {}

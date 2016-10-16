@@ -11,7 +11,10 @@ import UIKit
 public extension UIScreen {
 
     var propotionalWidth: CGFloat {
-        let ratio: CGFloat = UIDevice.current.userInterfaceIdiom == .phone ? 1 : 2/3
-        return fmin(self.bounds.width, self.bounds.height) * ratio
+        if case .compact = self.traitCollection.horizontalSizeClass {
+            return self.bounds.width
+        } else {
+            return min(self.bounds.width, self.bounds.height) * 2/3
+        }
     }
 }

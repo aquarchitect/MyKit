@@ -47,8 +47,15 @@ public final class OpenWeather {
 
     // MARK: Initialization
 
-    public init(apiKey: String, version: Double = 2.5, language: String = "en", format: Format = .celsius) {
-        self.apiKey = apiKey
+    /// OpenWeather manages networking requests.
+    ///
+    /// - parameter version:  default value - 2.5
+    /// - parameter language: default value - en
+    /// - parameter format:   default format - celsius
+    ///
+    /// - warning: make sure to register your api key in the Info.plist
+    public init(version: Double = 2.5, language: String = "en", format: Format = .celsius) {
+        self.apiKey = Bundle.main.infoDictionary?["OpenWeatherAPIKey"] as? String ?? ""
         self.version = version
         self.language = language
         self.format = format
@@ -97,11 +104,11 @@ public extension OpenWeather {
     }
 }
 
-private func + (lhs: OpenWeather.Method, rhs: OpenWeather.Component) -> String {
+fileprivate func + (lhs: OpenWeather.Method, rhs: OpenWeather.Component) -> String {
     return lhs.rawValue + rhs.query
 }
 
-private extension OpenWeather.Component {
+extension OpenWeather.Component {
 
     var query: String {
         switch self {
