@@ -9,7 +9,7 @@
 
 #if os(iOS)
 import UIKit
-#elseif os(macOS)
+#elseif os(OSX)
 import AppKit
 #endif
 
@@ -34,7 +34,7 @@ final class ActionTrailingTests: XCTestCase {
         button.executeAction()
         gesture.executeAction()
     }
-#elseif os(macOS)
+#elseif os(OSX)
     func testAction() {
         let button = NSButton()
         let buttonType = type(of: button)

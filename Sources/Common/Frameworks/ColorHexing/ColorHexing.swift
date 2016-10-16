@@ -14,7 +14,7 @@ public protocol ColorHexing: class {
 #if os(iOS)
     @discardableResult
     func getRed(_ red: UnsafeMutablePointer<CGFloat>?, green: UnsafeMutablePointer<CGFloat>?, blue: UnsafeMutablePointer<CGFloat>?, alpha: UnsafeMutablePointer<CGFloat>?) -> Bool
-#elseif os(macOS)
+#elseif os(OSX)
     @discardableResult
     func getRed(_ red: UnsafeMutablePointer<CGFloat>?, green: UnsafeMutablePointer<CGFloat>?, blue: UnsafeMutablePointer<CGFloat>?, alpha: UnsafeMutablePointer<CGFloat>?)
 #endif
@@ -56,7 +56,7 @@ public extension ColorHexing {
 #if os(iOS)
 import UIKit.UIColor
 extension UIColor: ColorHexing {}
-#elseif os(macOS)
+#elseif os(OSX)
 import AppKit.NSColor
 extension NSColor: ColorHexing {}
 #endif

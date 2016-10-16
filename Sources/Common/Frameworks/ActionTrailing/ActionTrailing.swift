@@ -55,7 +55,7 @@ public extension ActionTrailing where Self: UIGestureRecognizer {
         self.addTarget(self, action: #selector(handleAction))
     }
 }
-#elseif os(macOS)
+#elseif os(OSX)
 import AppKit
 
 extension NSControl: ActionTrailing {}
@@ -64,7 +64,7 @@ public extension ActionTrailing where Self: NSControl {
 
     func addAction(_ handle: @escaping (Self) -> Void) {
         self.setAction(handle)
-        self.action = #selector(actionExecuted)
+        self.action = #selector(handleAction)
         self.target = self
     }
 }
@@ -75,7 +75,7 @@ public extension ActionTrailing where Self: NSGestureRecognizer {
 
     func addAction(_ handle: @escaping (Self) -> Void) {
         self.setAction(handle)
-        self.action = #selector(actionExecuted)
+        self.action = #selector(handleAction)
         self.target = self
     }
 }

@@ -8,7 +8,7 @@
 
 #if os(iOS)
 import UIKit
-#elseif os(macOS)
+#elseif os(OSX)
 import AppKit
 #endif
 
@@ -40,7 +40,7 @@ public extension NSMutableAttributedString {
         color.flatMap { self._addColor($0, to: range) }
     }
 }
-#elseif os(macOS)
+#elseif os(OSX)
 public extension NSMutableAttributedString {
 
     func addFont(_ font: NSFont?, to range: NSRange? = nil) {

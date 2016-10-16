@@ -21,7 +21,7 @@ final class CustomFontTests: XCTestCase {
 
 #if os(iOS)
         testsFontInstanceOf(type: UIFont.self)
-#elseif os(macOS)
+#elseif os(OSX)
         testsFontInstanceOf(type: NSFont.self)
 #endif
     }

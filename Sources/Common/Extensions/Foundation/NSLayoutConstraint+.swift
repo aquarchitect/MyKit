@@ -8,7 +8,7 @@
 
 #if os(iOS)
 import UIKit
-#elseif os(macOS)
+#elseif os(OSX)
 import AppKit
 #endif
 
@@ -16,10 +16,18 @@ import AppKit
 public extension Array where Element: NSLayoutConstraint {
 
     func activate() {
+#if swift(>=3.0)
         NSLayoutConstraint.activate(self)
+#else
+        NSLayoutConstraint.activateConstraints(self)
+#endif
     }
 
     func deactivate() {
+#if swift(>=3.0)
         NSLayoutConstraint.deactivate(self)
+#else
+        NSLayoutConstraint.deactivateConstraints(self)
+#endif
     }
 }

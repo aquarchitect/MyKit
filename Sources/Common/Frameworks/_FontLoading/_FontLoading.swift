@@ -60,7 +60,7 @@ extension _FontLoading {
 #if os(iOS)
 import UIKit.UIFont
 extension UIFont: _FontLoading {}
-#elseif os(macOS)
+#elseif os(OSX)
 import AppKit.NSFont
 extension NSFont: _FontLoading {}
 #endif

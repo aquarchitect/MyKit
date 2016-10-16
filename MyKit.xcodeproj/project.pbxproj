@@ -91,7 +91,6 @@
 		C2281E371DA07E7B004D206B /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317491D5A5EF1009B0F42 /* ScheduleTests.swift */; };
 		C2281E381DA07E7C004D206B /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317491D5A5EF1009B0F42 /* ScheduleTests.swift */; };
 		C22CFAFF1DB1F99E006D8DBE /* Timer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22CFAFE1DB1F99E006D8DBE /* Timer+.swift */; };
-		C22CFB001DB1F99E006D8DBE /* Timer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22CFAFE1DB1F99E006D8DBE /* Timer+.swift */; };
 		C22EA03A1D98800E003A490A /* _FontLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A2E1D04A6440009B45F /* _FontLoading.swift */; };
 		C22EA03B1D98800F003A490A /* _FontLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A2E1D04A6440009B45F /* _FontLoading.swift */; };
 		C22EA03C1D98801B003A490A /* OpenWeather+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165961CE0FC1100F7D3E5 /* OpenWeather+.swift */; };
@@ -126,9 +125,10 @@
 		C2A673891DB00820009E063A /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673881DB00820009E063A /* Mutex.swift */; };
 		C2A6738A1DB00820009E063A /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673881DB00820009E063A /* Mutex.swift */; };
 		C2A6738C1DB00E06009E063A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6738B1DB00E06009E063A /* Observable.swift */; };
-		C2A6738D1DB00E06009E063A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6738B1DB00E06009E063A /* Observable.swift */; };
 		C2A673961DB094C2009E063A /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673911DB09493009E063A /* ObservableTests.swift */; };
 		C2A673971DB094C3009E063A /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673911DB09493009E063A /* ObservableTests.swift */; };
+		C2A9D7A31DB4399500F264EE /* Timer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22CFAFE1DB1F99E006D8DBE /* Timer+.swift */; };
+		C2A9D7A41DB439BD00F264EE /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6738B1DB00E06009E063A /* Observable.swift */; };
 		C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2AFF8991D9847BD00431639 /* ReorderingLongPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AFF8981D9847BD00431639 /* ReorderingLongPress.swift */; };
@@ -1255,6 +1255,7 @@
 				C201660E1CE0FF1C00F7D3E5 /* NSRelationshipDescription+.swift in Sources */,
 				C2C62A2B1D04A3DC0009B45F /* ColorHexing.swift in Sources */,
 				C2281E361DA04BB4004D206B /* Schedule.swift in Sources */,
+				C2A9D7A31DB4399500F264EE /* Timer+.swift in Sources */,
 				C20166021CE0FF1300F7D3E5 /* NSRange+.swift in Sources */,
 				C20166141CE0FF2100F7D3E5 /* String+.swift in Sources */,
 				C20166111CE0FF2100F7D3E5 /* Dictionary+.swift in Sources */,
@@ -1267,11 +1268,11 @@
 				C2B3F34E1D0B8B030055B06E /* PersistentStack.swift in Sources */,
 				C20165F01CE0FEE200F7D3E5 /* OpenWeather.swift in Sources */,
 				C275E7171D00197B000118F0 /* Collection+.swift in Sources */,
+				C2A9D7A41DB439BD00F264EE /* Observable.swift in Sources */,
 				C22EA03B1D98800F003A490A /* _FontLoading.swift in Sources */,
 				C2B3F34D1D0B8AF80055B06E /* ActionWrapper.swift in Sources */,
 				C24A0AE41D72143B00F94F08 /* Change.swift in Sources */,
 				C20166031CE0FF1300F7D3E5 /* Scanner+.swift in Sources */,
-				C22CFB001DB1F99E006D8DBE /* Timer+.swift in Sources */,
 				C20165621CE0F01D00F7D3E5 /* Box.swift in Sources */,
 				C20165FD1CE0FF1300F7D3E5 /* DateFormatter+.swift in Sources */,
 				C23F09081D73519F003211D3 /* AnyIterator+.swift in Sources */,
@@ -1281,7 +1282,6 @@
 				C20165F61CE0FEED00F7D3E5 /* CloudStack.swift in Sources */,
 				C20166081CE0FF1700F7D3E5 /* CKRecordID+.swift in Sources */,
 				C20166051CE0FF1700F7D3E5 /* CKDatabase+.swift in Sources */,
-				C2A6738D1DB00E06009E063A /* Observable.swift in Sources */,
 				C20165FA1CE0FF1300F7D3E5 /* Bundle+.swift in Sources */,
 				C201656D1CE0F01D00F7D3E5 /* Swizzle.swift in Sources */,
 				C20166041CE0FF1700F7D3E5 /* CKContainer+.swift in Sources */,
