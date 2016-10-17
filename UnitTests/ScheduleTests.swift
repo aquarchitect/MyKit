@@ -10,6 +10,8 @@
 
 final class ScheduleTests: XCTestCase {
 
+    private enum Exception: Error { case cancelled }
+
     func testOnce() {
         let expectation = self.expectation(description: #function)
 
@@ -41,9 +43,9 @@ final class ScheduleTests: XCTestCase {
 
         Schedule.countdown(0.5, count: 8) {
             XCTAssertEqual(iterator.next(), $0)
-            if $0 < 2 { throw PromiseError.cancelled }
+            if $0 < 2 { throw Exception.cancelled }
         }.onFailure {
-            XCTAssertEqual($0 as? PromiseError, .cancelled)
+            XCTAssertEqual($0 as? Exception, .cancelled)
             expectation.fulfill()
         }.resolve()
 
@@ -58,9 +60,9 @@ final class ScheduleTests: XCTestCase {
 
         Schedule.every(0.5) {
             XCTAssertEqual(iterator.next(), $0)
-            if $0 < 2 { throw PromiseError.cancelled }
+            if $0 < 2 { throw Exception.cancelled }
         }.onFailure {
-            XCTAssertEqual($0 as? PromiseError, .cancelled)
+            XCTAssertEqual($0 as? Exception, .cancelled)
             expectation.fulfill()
         }.resolve()
 

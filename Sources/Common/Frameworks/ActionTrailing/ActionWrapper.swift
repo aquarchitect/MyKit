@@ -12,6 +12,7 @@ final class ActionWrapper<T>: NSObject, NSCopying {
 
     let handle: (T) -> Void
 
+#if swift(>=3.0)
     init(_ handle: @escaping (T) -> Void) {
         self.handle = handle
     }
@@ -19,4 +20,13 @@ final class ActionWrapper<T>: NSObject, NSCopying {
     func copy(with zone: NSZone? = nil) -> Any {
         return ActionWrapper(self.handle)
     }
+#else
+    init(_ handle: (T) -> Void) {
+        self.handle = handle
+    }
+
+    func copyWithZone(zone: NSZone) -> AnyObject {
+        return ActionWrapper(self.handle)
+    }
+#endif
 }

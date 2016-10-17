@@ -8,26 +8,45 @@
 
 import Dispatch
 
-public enum PromiseError: Error { case cancelled, empty }
+#if swift(>=3.0)
+public enum PromiseError: Error { case empty }
+#else
+public enum PromiseError: ErrorType { case empty }
+#endif
 
 /// _Promise_ represents the future value of a (usually) asynchronous task.
 public struct Promise<T> {
 
+#if swift(>=3.0)
     public typealias Operation = (@escaping Result<T>.Callback) -> Void
     fileprivate let operation: Operation
 
     public init(_ operation: @escaping Operation) {
         self.operation = operation
     }
+#else
+    public typealias Operation = (Result<T>.Callback) -> Void
+    private let operation: Operation
+
+    public init(_ operation: Operation) {
+        self.operation = operation
+    }
+#endif
 }
 
 // MARK: - Support Methods
 
 public extension Promise {
 
+#if swift(>=3.0)
     static func lift(_ construct: @escaping () throws -> T) -> Promise {
         return Promise { $0(.init(construct)) }
     }
+#else
+    static func lift(construct: () throws -> T) -> Promise {
+        return Promise { $0(.init(construct)) }
+    }
+#endif
 }
 
 // MARK: - Execution
@@ -35,9 +54,15 @@ public extension Promise {
 public extension Promise {
 
     ///  Execute promise with a callback (for internal usage only)
+#if swift(>=3.0)
     fileprivate func resolve(_ callback: @escaping Result<T>.Callback) {
         self.operation(callback)
     }
+#else
+    private func resolve(callback: Result<T>.Callback) {
+        self.operation(callback)
+    }
+#endif
 
     /// Execute promise on module level
     func resolve() {
@@ -50,6 +75,7 @@ public extension Promise {
 public extension Promise {
 
     /// Transform one type to another.
+#if swift(>=3.0)
     func map<U>(_ transform: @escaping (T) throws -> U) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { result in
@@ -57,8 +83,18 @@ public extension Promise {
             }
         }
     }
+#else
+    func map<U>(transform: (T) throws -> U) -> Promise<U> {
+        return Promise<U> { callback in
+            self.resolve { result in
+                callback(result.map(transform))
+            }
+        }
+    }
+#endif
 
     /// Transform one type to another.
+#if swift(>=3.0)
     func flatMap<U>(_ transform: @escaping (T) -> Promise<U>) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { result in
@@ -70,12 +106,26 @@ public extension Promise {
             }
         }
     }
+#else
+    func flatMap<U>(transform: (T) -> Promise<U>) -> Promise<U> {
+        return Promise<U> { callback in
+            self.resolve { result in
+                do {
+                    try (result.resolve >>> transform)().resolve(callback)
+                } catch {
+                    callback(.reject(error))
+                }
+            }
+        }
+    }
+#endif
 }
 
 // MARK: - Result Action
 
 public extension Promise {
 
+#if swift(>=3.0)
     private func onResult(_ handle: @escaping (Result<T>) -> Void) -> Promise {
         return Promise { callback in
             self.resolve { result in
@@ -100,12 +150,39 @@ public extension Promise {
             if case .reject(let error) = $0 { handle(error) }
         }
     }
+#else
+    private func onResult(handle: (Result<T>) -> Void) -> Promise {
+        return Promise { callback in
+            self.resolve { result in
+                handle(result)
+                callback(result)
+            }
+        }
+    }
+
+    func always(handle: () -> Void) -> Promise {
+        return onResult { _ in handle() }
+    }
+
+    func onSuccess(handle: (T) -> Void) -> Promise {
+        return onResult {
+            if case .fulfill(let value) = $0 { handle(value) }
+        }
+    }
+
+    func onFailure(handle: (ErrorType) -> Void) -> Promise {
+        return onResult {
+            if case .reject(let error) = $0 { handle(error) }
+        }
+    }
+#endif
 }
 
 // MARK: - Failure Action
 
 public extension Promise {
 
+#if swift(>=3.0)
     func recover(_ transform: @escaping (Error) -> Promise) -> Promise {
         return Promise { callback in
             self.resolve { result in
@@ -117,6 +194,19 @@ public extension Promise {
             }
         }
     }
+#else
+    func recover(transform: (ErrorType) -> Promise) -> Promise {
+        return Promise { callback in
+            self.resolve { result in
+                do {
+                    callback(.fulfill(try result.resolve()))
+                } catch {
+                    transform(error).resolve(callback)
+                }
+            }
+        }
+    }
+#endif
 
     func retry(attempCount count: Int) -> Promise {
         return Promise { callback in
@@ -140,6 +230,7 @@ public extension Promise {
 
     func inBackground() -> Promise {
         return Promise { callback in
+#if swift(>=3.0)
             DispatchQueue.global(qos: .background).async {
                 self.resolve { result in
                     DispatchQueue.main.sync {
@@ -147,9 +238,19 @@ public extension Promise {
                     }
                 }
             }
+#else
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
+                self.resolve { result in
+                    dispatch_async(dispatch_get_main_queue()) {
+                        callback(result)
+                    }
+                }
+            }
+#endif
         }
     }
 
+#if swift(>=3.0)
     func inDispatchGroup(_ group: DispatchGroup) -> Promise {
         return Promise { callback in
             group.enter()
@@ -159,6 +260,17 @@ public extension Promise {
             }
         }
     }
+#else
+    func inDispatchGroup(group: dispatch_group_t) -> Promise {
+        return Promise { callback in
+            dispatch_group_enter(group)
+            self.resolve { result in
+                callback(result)
+                dispatch_group_leave(group)
+            }
+        }
+    }
+#endif
 }
 
 // MARK: - Multiple Promises
@@ -166,6 +278,7 @@ public extension Promise {
 public extension Promise {
 
     /// Execute promises of the same type asynchronously.
+#if swift(>=3.0)
     static func concat(_ promises: [Promise]) -> Promise<[T]> {
         let group = DispatchGroup()
 
@@ -187,9 +300,33 @@ public extension Promise {
     static func concat(_ promises: Promise...) -> Promise<[T]> {
         return concat(promises)
     }
+#else
+    static func concat(promises: [Promise]) -> Promise<[T]> {
+        let group = dispatch_group_create()
+
+        return Promise<[T]> { callback in
+            var outputs: [Result<T>] = []
+
+            for promise in promises {
+                promise
+                    .inDispatchGroup(group)
+                    .resolve { outputs.append($0) }
+            }
+
+            dispatch_group_notify(group, dispatch_get_main_queue()) {
+                callback(Result.concat(outputs))
+            }
+        }
+    }
+
+    static func concat(promises: Promise...) -> Promise<[T]> {
+        return concat(promises)
+    }
+#endif
 }
 
 /// Execute promises of different tpes asynchronously
+#if swift(>=3.0)
 public func zip<A, B>(_ promiseA: Promise<A>, _ promiseB: Promise<B>) -> Promise<(A, B)> {
     let group = DispatchGroup()
 
@@ -209,3 +346,24 @@ public func zip<A, B>(_ promiseA: Promise<A>, _ promiseB: Promise<B>) -> Promise
         }
     }
 }
+#else
+public func zip<A, B>(promiseA: Promise<A>, _ promiseB: Promise<B>) -> Promise<(A, B)> {
+    let group = dispatch_group_create()
+
+    return Promise<(A, B)> { callback in
+        var resultA: Result<A>!, resultB: Result<B>!
+
+        promiseA
+            .inDispatchGroup(group)
+            .resolve { resultA = $0 }
+
+        promiseB
+            .inDispatchGroup(group)
+            .resolve { resultB = $0 }
+
+        dispatch_group_notify(group, dispatch_get_main_queue()) {
+            callback(zip(resultA, resultB))
+        }
+    }
+}
+#endif
