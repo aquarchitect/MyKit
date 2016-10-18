@@ -9,21 +9,38 @@
 /// :nodoc:
 public extension Dictionary {
 
-    init<S: Sequence>(sequence: S)
+#if swift(>=3.0)
+    init<S: Sequence>(_ sequence: S)
         where S.Iterator.Element == Element {
         self.init()
-        self.merge(sequence: sequence)
+        self.merge(sequence)
     }
 
-    mutating func merge<S: Sequence>(sequence: S)
+    mutating func merge<S: Sequence>(_ sequence: S)
         where S.Iterator.Element == Element {
         sequence.forEach { self[$0] = $1 }
     }
 
-    func merging<S: Sequence>(sequence: S) -> Dictionary
+    func merging<S: Sequence>(_ sequence: S) -> Dictionary
         where S.Iterator.Element == Element {
         var result = self
         result.merge(sequence: sequence)
         return result
     }
+#else
+    init<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
+        self.init()
+        self.merge(sequence)
+    }
+
+    mutating func merge<S: SequenceType where S.Generator.Element == Element>(sequence: S) {
+        sequence.forEach { self[$0] = $1 }
+    }
+
+    func merging<S: SequenceType where S.Generator.Element == Element>(sequence: S) -> Dictionary {
+        var result = self
+        result.merge(sequence)
+        return result
+    }
+#endif
 }

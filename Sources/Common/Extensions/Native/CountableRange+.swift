@@ -6,6 +6,7 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
+#if swift(>=3.0)
 public extension CountableRange {
 
     /// Shift range by specified value
@@ -15,3 +16,4 @@ public extension CountableRange {
         return start..<end
     }
 }
+#endif

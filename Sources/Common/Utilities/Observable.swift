@@ -168,7 +168,6 @@ public extension Observable {
         return self
     }
 #else
-    @discardableResult
     func onNext(handle: (T) -> Void) -> Observable {
         subscribe { result in
             if case .fulfill(let value) = result { handle(value) }
@@ -189,7 +188,6 @@ public extension Observable {
         return self
     }
 #else
-    @discardableResult
     func onError(handle: (ErrorType) -> Void) -> Observable {
         subscribe { result in
             if case .reject(let error) = result { handle(error) }
