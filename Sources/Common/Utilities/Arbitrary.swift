@@ -13,6 +13,7 @@ public struct Arbitrary {}
 
 public extension Arbitrary {
 
+#if swift(>=3.0)
     static func element<C: Collection>(in c: C) -> C.Iterator.Element
     where C.IndexDistance == Int {
         precondition(!c.isEmpty, "No elements for random selecting")
@@ -31,6 +32,24 @@ public extension Arbitrary {
 
         return c[startIndex..<endIndex]
     }
+#else
+    static func element<C: CollectionType where C.Index.Distance == Int>(in c: C) -> C.Generator.Element {
+        precondition(!c.isEmpty, "No elements for random selecting")
+
+        let distance = Int(arc4random_uniform(UInt32(c.count)))
+        return c[c.startIndex.advancedBy(distance)]
+    }
+
+    static func subsequence<C: CollectionType where C.Index.Distance == Int>(in c: C) -> C.SubSequence {
+        let startDistance = Int(arc4random_uniform(UInt32(c.count)))
+        let startIndex = c.startIndex.advancedBy(startDistance)
+
+        let endDistance = element(in: startDistance..<c.count)
+        let endIndex = c.startIndex.advancedBy(endDistance)
+
+        return c[startIndex..<endIndex]
+    }
+#endif
 }
 
 // MARK: - Primitive Types
