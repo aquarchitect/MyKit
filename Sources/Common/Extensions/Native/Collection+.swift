@@ -8,6 +8,7 @@
 
 import Foundation
 
+#if swift(>=3.0)
 internal extension Collection where Iterator.Element: Comparable, Index == Int, IndexDistance == Int {
 
     /*
@@ -15,8 +16,8 @@ internal extension Collection where Iterator.Element: Comparable, Index == Int, 
      * core team rejects this proposal to the language. Therefore,
      * this extension will be kept internal for the time being.
      */
-    func binarySearch(element: Iterator.Element) -> Index? {
-        func binarySearch(range: Range<Index>) -> Index? {
+    func binarySearch(_ element: Iterator.Element) -> Index? {
+        func _binarySearch(in range: Range<Index>) -> Index? {
             guard range.lowerBound < range.upperBound else { return nil }
 
             let midIndex = self.index(range.lowerBound, offsetBy: (range.upperBound - range.lowerBound)/2)
@@ -24,16 +25,16 @@ internal extension Collection where Iterator.Element: Comparable, Index == Int, 
             switch self[midIndex] {
             case _ where element < self[midIndex]:
                 let _range = Range(range.lowerBound..<midIndex)
-                return binarySearch(range: _range)
+                return _binarySearch(in: _range)
             case _ where element > self[midIndex]:
                 let _range = Range((midIndex+1)..<range.upperBound)
-                return binarySearch(range: _range)
+                return _binarySearch(in: _range)
             default:
                 return midIndex
             }
         }
 
-        return binarySearch(range: self.startIndex..<self.endIndex)
+        return _binarySearch(in: self.startIndex..<self.endIndex)
     }
 }
 
@@ -150,7 +151,7 @@ public extension Collection where Iterator.Element: Equatable, Index == Int, Sub
 
             switch change {
             case .delete(let value):
-                if let index = inserts.binarySearch(element: value) {
+                if let index = inserts.binarySearch(value) {
                     inserts.remove(at: index)
                     reloads.insert(value, at: 0)
                 } else {
@@ -178,3 +179,5 @@ public extension Collection where Iterator.Element: Equatable, Index == Int, Sub
         return thisCollection._compare(otherCollection, section: section)
     }
 }
+#else
+#endif

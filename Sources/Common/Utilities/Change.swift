@@ -43,10 +43,19 @@ public extension Change {
 
 public extension Change {
 
+#if swift(>=3.0)
     func map<U>(_ transform: (T) throws -> U) rethrows -> Change<U> {
         switch self {
         case .delete(let value): return try .delete(transform(value))
         case .insert(let value): return try .insert(transform(value))
         }
     }
+#else
+    func map<U>(transform: (T) throws -> U) rethrows -> Change<U> {
+        switch self {
+        case .delete(let value): return try .delete(transform(value))
+        case .insert(let value): return try .insert(transform(value))
+        }
+    }
+#endif
 }

@@ -63,13 +63,14 @@ public final class OpenWeather {
 
     // MARK: Support Method
 
-    fileprivate func fetch(method: Method, components comps: Component...) -> Promise<[String: AnyObject]> {
+    fileprivate func fetch(method: Method, components comps: Component...) -> Promise<(Data, URLResponse)> {
         let baseComps: [Component] = [.apiKey(apiKey),
                                       .language(language),
                                       .units(format)]
         let fullURL = baseURL + String(version) + (method + Component.compound(baseComps + comps))
 
-        return URL(string: fullURL).map(URLSession.shared.dataTask as (URL) -> Promise<[String: AnyObject]>) ?? Promise { $0(.fulfill([:])) }
+        return URL(string: fullURL).map(URLSession.shared.dataTask as (URL) -> Promise<(Data, URLResponse)>)
+            ?? Promise.lift { throw PromiseError.empty }
     }
 }
 
@@ -77,29 +78,29 @@ public extension OpenWeather {
 
     // MARK: Current Weather Network Calls
 
-    func fetchcurrentWeatherOf(city name: String) -> Promise<[String: AnyObject]> {
+    func fetchcurrentWeatherOf(city name: String) -> Promise<(Data, URLResponse)> {
         return fetch(method: .currentWeather, components: .cityName(name))
     }
 
-    func fetchcurrentWeatherOf(city id: Int) -> Promise<[String: AnyObject]> {
+    func fetchcurrentWeatherOf(city id: Int) -> Promise<(Data, URLResponse)> {
         return fetch(method: .currentWeather, components: .cityID(id))
     }
 
-    func fetchcurrentWeatherAt(location coord: CLLocationCoordinate2D) -> Promise<[String: AnyObject]> {
+    func fetchcurrentWeatherAt(location coord: CLLocationCoordinate2D) -> Promise<(Data, URLResponse)> {
         return fetch(method: .currentWeather, components: .locationCoordinate(coord))
     }
 
     // MARK: Daily Forecast Network Calls
 
-    func fetchdailyForecastOf(city name: String, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
+    func fetchdailyForecastOf(city name: String, numberOfDays count: Int) -> Promise<(Data, URLResponse)> {
         return fetch(method: .dailyForecast, components: .cityName(name), .returnedDays(count))
     }
 
-    func fetchdailyForecastOf(city id: Int, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
+    func fetchdailyForecastOf(city id: Int, numberOfDays count: Int) -> Promise<(Data, URLResponse)> {
         return fetch(method: .dailyForecast, components: .cityID(id), .returnedDays(count))
     }
 
-    func fetchdailyForecastAt(location coord: CLLocationCoordinate2D, numberOfDays count: Int) -> Promise<[String: AnyObject]> {
+    func fetchdailyForecastAt(location coord: CLLocationCoordinate2D, numberOfDays count: Int) -> Promise<(Data, URLResponse)> {
         return fetch(method: .dailyForecast, components: .locationCoordinate(coord), .returnedDays(count))
     }
 }

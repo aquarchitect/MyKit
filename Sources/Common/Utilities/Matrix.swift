@@ -6,14 +6,17 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
-/// Simple _Matrix_ represents LCS algorithm table (for visual purposes only).
+/// Simple _Matrix_ to work with LCS algorithm (debugging purposes only).
 ///
 /// - warning: reference [Surge](https://github.com/mattt/Surge) for optimized matrix computation.
 public struct Matrix<T> {
 
     // MARK: Property
-
+#if swift(>=3.0)
     fileprivate var elements: [T]
+#else
+    private var elements: [T]
+#endif
 
     public let rows: Int
     public let columns: Int
@@ -27,7 +30,11 @@ public struct Matrix<T> {
     public init(repeating value: T, rows: Int, columns: Int) {
         self.rows = rows
         self.columns = columns
+#if swift(>=3.0)
         self.elements = Array(repeating: value, count: rows * columns)
+#else
+        self.elements = Array(count: rows * columns, repeatedValue: value)
+#endif
     }
 }
 
@@ -35,9 +42,15 @@ public struct Matrix<T> {
 
 private extension Matrix {
 
+#if swift(>=3.0)
     func isValid(row: Int, column: Int) -> Bool {
         return (0..<rows).contains(row) && (0..<columns).contains(column)
     }
+#else
+    func isValid(row row: Int, column: Int) -> Bool {
+        return (0..<rows).contains(row) && (0..<columns).contains(column)
+    }
+#endif
 }
 
 // MARK: - Supscription
@@ -68,8 +81,12 @@ public extension Matrix {
             assert(newValue.count == columns, "Column out of bounds")
             let startIndex = row * columns
             let endIndex = startIndex + columns
-            
+
+#if swift(>=3.0)
             elements.replaceSubrange(startIndex..<endIndex, with: newValue)
+#else
+            elements.replaceRange(startIndex..<endIndex, with: newValue)
+#endif
         }
     }
 
@@ -91,6 +108,7 @@ public extension Matrix {
 extension Matrix: CustomDebugStringConvertible {
 
     public var debugDescription: String {
+#if swift(>=3.0)
         let displayRow: (Int) -> String = { row in
             (0..<self.columns)
                 .map { column in "\(self[row, column])" }
@@ -100,5 +118,16 @@ extension Matrix: CustomDebugStringConvertible {
         return (0..<rows)
             .map(displayRow)
             .joined(separator: "\n")
+#else
+        let displayRow: (Int) -> String = { row in
+            (0..<self.columns)
+                .map { column in "\(self[row, column])" }
+                .joinWithSeparator(" ")
+        }
+
+        return (0..<rows)
+            .map(displayRow)
+            .joinWithSeparator("\n")
+#endif
     }
 }
