@@ -10,14 +10,26 @@ import CoreGraphics
 
 public extension CGPoint {
 
-    func distance(to point: CGPoint) -> CGFloat {
+#if swift(>=3.0)
+    func distance(from point: CGPoint) -> CGFloat {
         return sqrt(pow(self.x - point.x, 2) + pow(self.y - point.y, 2))
     }
+#else
+    func distanceFromPoint(point: CGPoint) -> CGFloat {
+        return sqrt(pow(self.x - point.x, 2) + pow(self.y - point.y, 2))
+    }
+#endif
 
     /**
      * Return a point by shifting origins toward self
      */
-    func convertToCoordinate(withOrigin point: CGPoint) -> CGPoint {
+#if swift(>=3.0)
+    func convertToCoordinate(ofOrigin point: CGPoint) -> CGPoint {
         return CGPoint(x: self.x - point.x, y: self.y - point.y)
     }
+#else
+    func convertToCoordinateOfOrigin(point: CGPoint) -> CGPoint {
+        return CGPoint(x: self.x - point.x, y: self.y - point.y)
+    }
+#endif
 }

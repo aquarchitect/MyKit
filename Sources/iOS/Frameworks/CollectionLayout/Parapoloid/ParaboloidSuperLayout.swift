@@ -29,7 +29,7 @@ open class ParaboloidSuperLayout: SnappingSuperLayout {
         return (visibleAttributes[indexPath] as? ParaboloidLayoutAttributes).flatMap {
             guard let contentOffset = self.collectionView?.contentOffset else { return nil }
 
-            let center = $0.center.convertToCoordinate(withOrigin: contentOffset)
+            let center = $0.center.convertToCoordinate(ofOrigin: contentOffset)
             $0.paraboloidValue = paraboloidController?.zValue(atPoint: center)
 
             return $0
