@@ -12,6 +12,12 @@ public struct ParaboloidLayoutController {
 
     public typealias Limits = (min: CGFloat, max: CGFloat)
 
+    private static let AppleWatchHomeScreenFormula: (CGRect, CGPoint) -> CGFloat = {
+        let x = -pow(($1.x - $0.width / 2) / (2.5 * $0.width), 2)
+        let y = -pow(($1.y - $0.height / 2) / (2.5 * $0.height), 2)
+        return 20 * (x + y) + 1
+    }
+
     // MARK: Property
 
     private let formula: (CGPoint) -> CGFloat
@@ -19,23 +25,30 @@ public struct ParaboloidLayoutController {
 
     // MARK: Initialization
 
+#if swift(>=3.0)
     public init(formula: @escaping (CGPoint) -> CGFloat, zValueLimits limits: Limits? = nil) {
         self.formula = formula
         self.zValueLimits = limits
     }
+#else
+    public init(formula: (CGPoint) -> CGFloat, zValueLimits limits: Limits? = nil) {
+        self.formula = formula
+        self.zValueLimits = limits
+    }
+#endif
 
     /*
      * Similar to Apple Watch home screen parapoloid function
      */
+#if swift(>=3.0)
     public init(bounds: CGRect = UIScreen.main.bounds) {
-        let formula: (CGPoint) -> CGFloat = {
-            let x = -pow(($0.x - bounds.width / 2) / (2.5 * bounds.width), 2)
-            let y = -pow(($0.y - bounds.height / 2) / (2.5 * bounds.height), 2)
-            return 20 * (x + y) + 1
-        }
-
-        self.init(formula: formula)
+        self.init(formula: { ParaboloidLayoutController.AppleWatchHomeScreenFormula(bounds, $0) })
     }
+#else
+    public init(bounds: CGRect = UIScreen.mainScreen().bounds) {
+        self.init(formula: { ParaboloidLayoutController.AppleWatchHomeScreenFormula(bounds, $0) })
+    }
+#endif
 
     // MARK: Support Method
 

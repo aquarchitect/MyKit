@@ -8,6 +8,7 @@
 
 import UIKit
 
+#if swift(>=3.0)
 open class SnappingSuperLayout: UICollectionViewLayout, SnappingLayoutDelegate {
 
     open var snappingPoint: CGPoint? {
@@ -27,3 +28,24 @@ open class SnappingSuperLayout: UICollectionViewLayout, SnappingLayoutDelegate {
         }
     }
 }
+#else
+public class SnappingSuperLayout: UICollectionViewLayout, SnappingLayoutDelegate {
+
+    public var snappingPoint: CGPoint? {
+        didSet {
+            dispatch_async(dispatch_get_main_queue()) { [weak self] in
+                guard let `self` = self else { return }
+                _ = self.snappingPoint.flatMap(self.snap(into:))
+            }
+        }
+    }
+
+    public override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
+        if let point = snappingPoint {
+            return snappedContentOffset(forProposedContentOffset: proposedContentOffset, at: point)
+        } else {
+            return super.targetContentOffsetForProposedContentOffset(proposedContentOffset, withScrollingVelocity: velocity)
+        }
+    }
+}
+#endif

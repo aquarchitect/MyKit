@@ -8,6 +8,7 @@
 
 import UIKit
 
+#if swift(>=3.0)
 open class ParaboloidLayoutAttributes: UICollectionViewLayoutAttributes {
 
     open var paraboloidValue: CGFloat?
@@ -20,3 +21,17 @@ open class ParaboloidLayoutAttributes: UICollectionViewLayoutAttributes {
             ?? attributes
     }
 }
+#else
+public class ParaboloidLayoutAttributes: UICollectionViewLayoutAttributes {
+
+    public var paraboloidValue: CGFloat?
+
+    public override func copyWithZone(zone: NSZone) -> AnyObject {
+        let attributes = super.copyWithZone(zone)
+
+        return (attributes as? ParaboloidLayoutAttributes)?
+            .then { $0.paraboloidValue = paraboloidValue }
+            ?? attributes
+    }
+}
+#endif

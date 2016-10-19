@@ -33,21 +33,21 @@ public extension Arbitrary {
         return c[startIndex..<endIndex]
     }
 #else
-    static func element<C: CollectionType where C.Index.Distance == Int>(in c: C) -> C.Generator.Element {
-        precondition(!c.isEmpty, "No elements for random selecting")
+    static func elementInCollection<C: CollectionType where C.Index.Distance == Int>(collection: C) -> C.Generator.Element {
+        precondition(!collection.isEmpty, "No elements for random selecting")
 
-        let distance = Int(arc4random_uniform(UInt32(c.count)))
-        return c[c.startIndex.advancedBy(distance)]
+        let distance = Int(arc4random_uniform(UInt32(collection.count)))
+        return collection[collection.startIndex.advancedBy(distance)]
     }
 
-    static func subsequence<C: CollectionType where C.Index.Distance == Int>(in c: C) -> C.SubSequence {
-        let startDistance = Int(arc4random_uniform(UInt32(c.count)))
-        let startIndex = c.startIndex.advancedBy(startDistance)
+    static func subsequenceInCollection<C: CollectionType where C.Index.Distance == Int>(collection: C) -> C.SubSequence {
+        let startDistance = Int(arc4random_uniform(UInt32(collection.count)))
+        let startIndex = collection.startIndex.advancedBy(startDistance)
 
-        let endDistance = element(in: startDistance..<c.count)
-        let endIndex = c.startIndex.advancedBy(endDistance)
+        let endDistance = elementInCollection(startDistance..<collection.count)
+        let endIndex = collection.startIndex.advancedBy(endDistance)
 
-        return c[startIndex..<endIndex]
+        return collection[startIndex..<endIndex]
     }
 #endif
 }
@@ -64,9 +64,15 @@ public extension Arbitrary {
         return Int(arc4random())
     }
 
+#if swift(>=3.0)
     static func int(in range: CountableRange<Int>) -> Int {
         return element(in: range)
     }
+#else
+    static func intInRange(range: Range<Int>) -> Int {
+        return elementInCollection(range)
+    }
+#endif
 }
 
 // MARK: - Hexadecimal Value
@@ -88,10 +94,18 @@ public extension Arbitrary {
 public extension Arbitrary {
 
     static var sentence: String {
+#if swift(>=3.0)
         return element(in: _LoremIpsum.shared)
+#else
+        return (_LoremIpsum.sharedInstance >>> elementInCollection)()
+#endif
     }
 
     static var paragraph: String {
+#if swift(>=3.0)
         return subsequence(in: _LoremIpsum.shared).joined(separator: ". ")
+#else
+        return (_LoremIpsum.sharedInstance >>> subsequenceInCollection)().joinWithSeparator(". ")
+#endif
     }
 }
