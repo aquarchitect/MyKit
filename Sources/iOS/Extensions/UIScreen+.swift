@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIScreen {
 
-    var propotionalWidth: CGFloat {
+    var proportionalWidth: CGFloat {
 #if swift(>=3.0)
         if case .compact = self.traitCollection.horizontalSizeClass {
             return self.bounds.width

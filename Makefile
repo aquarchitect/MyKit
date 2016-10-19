@@ -28,6 +28,24 @@ define package-platform
 	fi
 endef
 
+define minify-web
+	file=$(1);																\
+	echo ">>> Minifying $$file ... ";										\
+	case $${file##*.} in													\
+		html) cat $$file | html-minifier --collapse-whitespace -o $$file;;	\
+		css) cat $$file | cleancss --s0 -o $$file;;							\
+	esac
+endef
+
+define commit-pages
+	echo ">>> Commiting generated documentation ...";	\
+	git init;											\
+	git add .;											\
+	git commit -m "$(1)";								\
+	git remote add upstream $(GITHUB_SECURE_URL);		\
+	git push -f upstream master:gh-pages
+endef
+
 define commit-tag
 	echo ">>> Commiting $(1) tag ... ";				\
 	git remote add upstream $(GITHUB_SECURE_URL);	\
@@ -40,6 +58,7 @@ xctest:
 		-scheme "MyKit-$(SCHEME)"						\
 		-configuration Debug							\
 		-destination "$(DESTINATION)"					\
+		SWIFT_VERSION="$(SWIFT)"
 		CODE_SIGN_IDENTITY=""							\
 		CODE_SIGNING_REQUIRED=NO						\
 		| xcpretty
@@ -48,10 +67,12 @@ xcbuild:
 	@ xcodebuild clean build							\
 		-target "MyKit-$(SCHEME)"			 			\
 		-configuration Release							\
+		SWIFT_VERSION="$(SWIFT)"
 		OBJROOT=$$(pwd)/Build							\
 		SYMROOT=$$(pwd)/Build							\
 		CODE_SIGN_IDENTITY=""							\
 		CODE_SIGNING_REQUIRED=NO						\
+		ONLY_ACTIVE_ARCH=NO								\
 		| xcpretty
 
 packages:
@@ -68,6 +89,18 @@ tag:
 		version=$$(echo $(MESSAGE) | awk -F '[][]' '{print $$4}');	\
 		message=$$(echo $(MESSAGE) | awk -F '[][]' '{print $$5}');	\
 		$(call commit-tag,$$version,$$message) > /dev/null 2>&1;	\
+	  fi
+
+jazzy:
+	@ echo ">>> Generating documentation ... "
+	@ jazzy
+	@ if true; then 												\
+		doc=$$(find docs \( -name "*.html" -or -name "*.css" \));	\
+		for file in $$doc; do $(call minify-web,$$file); done;		\
+	  fi
+	@ if true; then													\
+		msg="Publish from TravisCI on $$(date +%D)";				\
+		cd docs && $(call commit-pages,$$msg) > /dev/null 2>&1;		\
 	  fi
 
 clean:
