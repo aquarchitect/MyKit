@@ -13,10 +13,10 @@ branches:
 
 env:
   matrix:
-  - DESTIONATION="OS=10.0,name=iPhone SE"   SCHEME=iOS      SWIFT=2.3
-  - DESTIONATION="OS=10.0,name=iPhone SE"   SCHEME=iOS      SWIFT=3.0
-  - DESTIONATION="arch=x86_64"              SCHEME=macOS    SWIFT=2.3
-  - DESTIONATION="arch=x86_64"              SCHEME=macOS    SWIFT=3.0
+  - DESTINATION="OS=10.0,name=iPhone SE"   SCHEME=iOS      SWIFT=2.3
+  - DESTINATION="OS=10.0,name=iPhone SE"   SCHEME=iOS      SWIFT=3.0
+  - DESTINATION="arch=x86_64"              SCHEME=macOS    SWIFT=2.3
+  - DESTINATION="arch=x86_64"              SCHEME=macOS    SWIFT=3.0
   global:
   - MESSAGE=$(git log --oneline -1)
   - JOB=$(echo $MESSAGE | awk -F '[][]' '{print $2}')
