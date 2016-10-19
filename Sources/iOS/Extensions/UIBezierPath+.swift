@@ -47,7 +47,7 @@ public extension UIBezierPath {
 public extension UIBezierPath {
 
 #if swift(>=3.0)
-    final func outlineStroke() -> UIBezierPath {
+    var outlineStroke: UIBezierPath {
         return CGPath(__byStroking: self.cgPath,
                       transform: nil,
                       lineWidth: self.lineWidth,

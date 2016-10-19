@@ -11,9 +11,11 @@ import UIKit
 public extension UICollectionView {
 
     enum Update {
-
-        case lcsWithAnimation(UIView.AnimatingCompletion)
-        case manualHandling((UICollectionView) -> Void)
+#if swift(>=3.0)
+        case lcs, forcefull
+#else
+        case LCS, Forcefull
+#endif
     }
 }
 
@@ -46,6 +48,11 @@ public extension UICollectionView {
         } else { return nil }
     }
 
+    @available(*, unavailable, renamed: "indexPath(after:)")
+    final func successorOfIndexPath(_ indexPath: IndexPath) -> IndexPath? {
+        return self.indexPath(after: indexPath)
+    }
+
     final func indexPath(before indexPath: IndexPath) -> IndexPath? {
         if indexPath.item > 0 {
             return IndexPath(item: indexPath.item - 1, section: indexPath.section)
@@ -57,11 +64,21 @@ public extension UICollectionView {
         } else { return nil }
     }
 
+    @available(*, unavailable, renamed: "indexPath(before:)")
+    final func predecessorOfIndexPath(_ indexPath: IndexPath) -> IndexPath? {
+        return self.indexPath(before: indexPath)
+    }
+
     final func index(bySerializing indexPath: IndexPath) -> Int {
         return (0..<indexPath.section)
             .map(self.numberOfItems(inSection:))
             .lazy
             .reduce(indexPath.row, +)
+    }
+
+    @available(*, unavailable, renamed: "index(bySerializing:)")
+    final func indexBySerializingIndexPath(_ indexPath: IndexPath) -> Int {
+        return self.index(bySerializing: indexPath)
     }
 
     final func indexPath(byDeserializing index: Int) -> IndexPath {
@@ -74,6 +91,11 @@ public extension UICollectionView {
         }
 
         return IndexPath(row: index - count, section: section)
+    }
+
+    @available(*, unavailable, renamed: "indexPath(byDeserializing:)")
+    final func indexPathByDeserializingIndex(_ index: Int) -> IndexPath {
+        return self.indexPath(byDeserializing: index)
     }
 #else
     final func successorOfIndexPath(indexPath: NSIndexPath) -> NSIndexPath? {

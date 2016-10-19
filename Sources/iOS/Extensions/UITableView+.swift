@@ -12,8 +12,11 @@ public extension UITableView {
 
     enum Update {
 
-        case lcsWithAnimation(UITableViewRowAnimation)
-        case manualHandling((UITableView) -> Void)
+#if swift(>=3.0)
+        case lcs, forcefull
+#else
+        case LCS, Forcefull
+#endif
     }
 }
 
@@ -76,7 +79,7 @@ public extension UITableView {
 public extension UITableView {
 
 #if swift(>=3.0)
-    final func formIndexPath(after indexPath: IndexPath) -> IndexPath? {
+    final func indexPath(after indexPath: IndexPath) -> IndexPath? {
         if indexPath.row < self.numberOfRows(inSection: indexPath.section) - 1 {
             return IndexPath(row: indexPath.row + 1, section: indexPath.section)
         } else if indexPath.section < self.numberOfSections - 1 {
@@ -84,7 +87,12 @@ public extension UITableView {
         } else { return nil }
     }
 
-    final func formIndexPath(before indexPath: IndexPath) -> IndexPath? {
+    @available(*, unavailable, renamed: "indexPath(after:)")
+    final func successorOfIndexPath(_ indexPath: IndexPath) -> IndexPath? {
+        return self.indexPath(after: indexPath)
+    }
+
+    final func indexPath(before indexPath: IndexPath) -> IndexPath? {
         if indexPath.row > 0 {
             return IndexPath(row: indexPath.row - 1, section: indexPath.section)
         } else if indexPath.section > 0 {
@@ -95,14 +103,24 @@ public extension UITableView {
         } else { return nil }
     }
 
-    final func formIndex(bySerializing indexPath: IndexPath) -> Int {
+    @available(*, unavailable, renamed: "indexPath(before:)")
+    final func predecessorOfIndexPath(_ indexPath: IndexPath) -> IndexPath? {
+        return self.indexPath(before: indexPath)
+    }
+
+    final func index(bySerializing indexPath: IndexPath) -> Int {
         return (0..<indexPath.section)
             .map(self.numberOfRows(inSection:))
             .lazy
             .reduce(indexPath.row, +)
     }
 
-    final func formIndexPath(byDeserializing index: Int) -> IndexPath {
+    @available(*, unavailable, renamed: "index(bySerializing:)")
+    final func indexBySerializingIndexPath(_ indexPath: IndexPath) -> Int {
+        return self.index(bySerializing: indexPath)
+    }
+
+    final func indexPath(byDeserializing index: Int) -> IndexPath {
         var (section, count) = (0, 0)
 
         while case let rows = self.numberOfRows(inSection: section),
@@ -112,6 +130,11 @@ public extension UITableView {
         }
 
         return IndexPath(row: index - count, section: section)
+    }
+
+    @available(*, unavailable, renamed: "indexPath(byDeserializing:)")
+    final func indexPathByDeserializingIndex(_ index: Int) -> IndexPath {
+        return self.indexPath(byDeserializing: index)
     }
 #else
     final func successorOfIndexPath(indexPath: NSIndexPath) -> NSIndexPath? {
