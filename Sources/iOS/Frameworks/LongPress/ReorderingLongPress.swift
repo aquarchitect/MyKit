@@ -11,6 +11,7 @@ import UIKit
 /*
  * Warning: this class has no effect on other than Table/Collection view
  */
+#if swift(>=3.0)
 open class ReorderingLongPress: UILongPressGestureRecognizer {
 
     internal private(set) var cellSnapshot: UIView?
@@ -108,3 +109,102 @@ open class ReorderingLongPress: UILongPressGestureRecognizer {
         }
     }
 }
+#else
+public class ReorderingLongPress: UILongPressGestureRecognizer {
+
+    internal private(set) var cellSnapshot: UIView?
+    internal private(set) var sourceIndexPath: NSIndexPath?
+
+    internal var tableView: UITableView? {
+        return self.view as? UITableView
+    }
+
+    deinit { cellSnapshot?.removeFromSuperview() }
+
+    public func handleGesture() {
+        switch self.state {
+        case .Began:
+            guard let trackingIndexPath = (tableView.flatMap {
+                (self.locationInView >>> $0.indexPathForRowAtPoint)($0)
+                }) where (tableView.flatMap {
+                    $0.dataSource?.tableView?($0, canMoveRowAtIndexPath: trackingIndexPath)
+                } ?? false) else { return }
+
+            let cell = tableView?.cellForRowAtIndexPath(trackingIndexPath)?.then {
+                $0.alpha = 1
+                $0.hidden = false
+            }
+
+            sourceIndexPath = trackingIndexPath
+
+            cellSnapshot = cell?.customSnapshotView()?.then {
+                $0.backgroundColor = .blueColor()
+                $0.frame = tableView?.convertRect(cell?.frame ?? .zero, toView: nil) ?? .zero
+                $0.alpha = 0
+                $0.clipsToBounds = false
+                $0.layer.shadowOffset = .zero
+                $0.layer.shadowRadius = 3
+                $0.layer.shadowOpacity = 0.2
+            }.then {
+                UIApplication.sharedApplication().keyWindow?.addSubview($0)
+            }
+
+            UIView.animateWithDuration(0.25, delay: 0, options: .CurveEaseOut, animations: {
+                cell?.alpha = 0
+
+                self.cellSnapshot?.then {
+                    $0.alpha = 0.93
+                    $0.center.y = self.locationInView(nil).y
+                    $0.transform = CGAffineTransformMakeScale(1.01, 1.01)
+                }
+                }, completion: { [weak cell] _ in
+                    cell?.hidden = true
+                })
+        case .Changed:
+            guard let trackingIndexPath = (tableView.flatMap {
+                (self.locationInView >>> $0.indexPathForRowAtPoint)($0)
+                }) where (tableView.flatMap {
+                    $0.dataSource?.tableView?($0, canMoveRowAtIndexPath: trackingIndexPath)
+                } ?? false) else { return }
+
+            cellSnapshot?.center.y = self.locationInView(nil).y
+
+            guard let sourceIndexPath = self.sourceIndexPath
+                where sourceIndexPath != trackingIndexPath
+                else { return }
+
+            /*
+             * As table/collection view implementation follows declarative programming,
+             * it has data source pointing to itself. This gives you an opportunity
+             * to mutate the view models only. The data should be changed on delegation
+             * call.
+             */
+            _ = tableView.flatMap { $0.dataSource?.tableView?($0, moveRowAtIndexPath: sourceIndexPath, toIndexPath: trackingIndexPath) }
+            self.sourceIndexPath = trackingIndexPath
+        default:
+            guard let sourceIndexPath = self.sourceIndexPath else { return }
+
+            let cell = tableView?.cellForRowAtIndexPath(sourceIndexPath)?.then {
+                $0.alpha = 0
+                $0.hidden = false
+            }
+
+            UIView.animateKeyframesWithDuration(0.25, delay: 0, options: .CalculationModeLinear, animations: {
+                UIView.addKeyframeWithRelativeStartTime(0, relativeDuration: 0.5) {
+                    self.cellSnapshot?.then {
+                        $0.center.y = self.tableView?.convertPoint(cell?.center ?? .zero, toView: nil).y ?? 0
+                        $0.transform = CGAffineTransformIdentity
+                    }
+                }
+                UIView.addKeyframeWithRelativeStartTime(0.5, relativeDuration: 1) {
+                    cell?.alpha = 1
+                    self.cellSnapshot?.alpha = 0
+                }
+                }, completion: { [weak self] _ in
+                    self?.cellSnapshot?.removeFromSuperview()
+                    self?.sourceIndexPath = nil
+                })
+        }
+    }
+}
+#endif

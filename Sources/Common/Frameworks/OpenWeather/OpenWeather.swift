@@ -238,7 +238,7 @@ extension OpenWeather.Component {
         case .CityName(let name): return "q=\(name)"
         case .CityID(let id): return "id=\(id)"
         case .LocationCoordinate(let coord): return "lat=\(coord.latitude)&lon=\(coord.longitude)"
-        case .Compound(let comps): return comps.map { $0.query }.joined(separator: "&")
+        case .Compound(let comps): return comps.map { $0.query }.joinWithSeparator("&")
         }
     }
 }

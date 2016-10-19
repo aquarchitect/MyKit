@@ -40,3 +40,9 @@ public extension Then {
 
 extension Box: Then {}
 extension NSObject: Then {}
+
+#if swift(>=3.0)
+#else
+import UIKit
+extension UIView: Then {}
+#endif

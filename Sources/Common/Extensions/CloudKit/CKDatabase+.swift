@@ -11,7 +11,8 @@ import CloudKit
 public extension CKDatabase {
 
     func fetchCurrentUser() -> Promise<CKRecord> {
-        let constructOperation: (@escaping Result<CKRecord>.Callback) -> CKFetchRecordsOperation = { callback in
+
+        let constructOperation = { (callback: Result<CKRecord>.Callback) in
             let operation = CKFetchRecordsOperation.fetchCurrentUserRecordOperation()
 
             operation.perRecordCompletionBlock = {
