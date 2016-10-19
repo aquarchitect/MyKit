@@ -271,11 +271,21 @@ extension OpenWeather.Icon: CustomStringConvertible {
 
 public extension OpenWeather.Icon {
 
+#if swift(>=3.0)
     func attributedString(ofSize size: CGFloat) -> NSMutableAttributedString {
         let name = "Weather Icons", file = "OpenWeather"
 
         return NSMutableAttributedString(string: self.description).then {
-            $0.addFont(.font(name: name, size: size, fromFile: file))
+            $0.addFont(.getFont(name: name, size: size, fromFile: file))
         }
     }
+#else
+    func attributedStringOfSize(size: CGFloat) -> NSMutableAttributedString {
+        let name = "Weather Icons", file = "OpenWeather"
+
+        return NSMutableAttributedString(string: self.description).then {
+            $0.addFont(.getFont(name: name, size: size, fromFile: file))
+        }
+    }
+#endif
 }

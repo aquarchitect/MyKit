@@ -17,7 +17,7 @@ final class CustomFontTests: XCTestCase {
     }
 
     func testsCustomFontRegister() {
-        XCTAssertNotNil(Bundle.`default`)
+        XCTAssertNotNil(Bundle.default)
 
 #if os(iOS)
         testsFontInstanceOf(type: UIFont.self)

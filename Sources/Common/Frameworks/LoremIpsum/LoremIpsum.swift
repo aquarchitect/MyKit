@@ -13,6 +13,7 @@ An LorumIpsum object generates random text at different length designed specific
 
 - throws: file corruption error.
 */
+#if swift(>=3.0)
 struct _LoremIpsum: Collection {
 
     fileprivate let storage: [String]
@@ -25,7 +26,7 @@ struct _LoremIpsum: Collection {
     fileprivate init() throws {
         let name = "_LoremIpsum", ext = "txt"
 
-        guard let url = Bundle.`default`?.url(forResource: name, withExtension: ext) else {
+        guard let url = Bundle.default?.url(forResource: name, withExtension: ext) else {
             enum FileIOError: Error { case unableToOpen(file: String) }
             throw FileIOError.unableToOpen(file: "\(name).\(ext)")
         }
@@ -72,3 +73,59 @@ extension _LoremIpsum {
         return Singleton.value
     }
 }
+#else
+struct _LoremIpsum: CollectionType {
+
+    private let storage: [String]
+
+    let startIndex = 0
+    var endIndex: Int {
+        return storage.count
+    }
+
+    private init() throws {
+        let name = "_LoremIpsum", ext = "txt"
+
+        guard let url = NSBundle.defaultBundle()?.URLForResource(name, withExtension: ext) else {
+        enum FileIOError: ErrorType { case UnableToOpen(file: String) }
+        throw FileIOError.UnableToOpen(file: "\(name).\(ext)")
+        }
+
+        let lorem = try String(contentsOfURL: url)
+        let range = lorem.startIndex..<lorem.endIndex
+        var storage = [String]()
+
+        lorem.enumerateSubstringsInRange(range, options: .BySentences) { substring, _, _, _ in
+            let string = (substring ?? "")
+                .stringByReplacingOccurrencesOfString("\\n", withString: "")
+                .stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
+
+            if !string.isEmpty { storage.append(string) }
+        }
+
+        self.storage = storage
+    }
+
+    subscript(index: Int) -> String {
+        return storage[index]
+    }
+}
+
+extension _LoremIpsum: CustomDebugStringConvertible {
+
+    var debugDescription: String {
+        return storage.joinWithSeparator(" ")
+    }
+}
+
+extension _LoremIpsum {
+    
+    static func sharedInstance() -> _LoremIpsum {
+        struct Singleton {
+            static var value = try! _LoremIpsum()
+        }
+        
+        return Singleton.value
+    }
+    }
+#endif

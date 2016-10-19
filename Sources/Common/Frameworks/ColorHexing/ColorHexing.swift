@@ -11,12 +11,20 @@ import CoreGraphics
 public protocol ColorHexing: class {
 
     init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
+#if swift(>=3.0)
 #if os(iOS)
     @discardableResult
     func getRed(_ red: UnsafeMutablePointer<CGFloat>?, green: UnsafeMutablePointer<CGFloat>?, blue: UnsafeMutablePointer<CGFloat>?, alpha: UnsafeMutablePointer<CGFloat>?) -> Bool
 #elseif os(OSX)
     @discardableResult
     func getRed(_ red: UnsafeMutablePointer<CGFloat>?, green: UnsafeMutablePointer<CGFloat>?, blue: UnsafeMutablePointer<CGFloat>?, alpha: UnsafeMutablePointer<CGFloat>?)
+#endif
+#else
+#if os(iOS)
+    func getRed(red: UnsafeMutablePointer<CGFloat>, green: UnsafeMutablePointer<CGFloat>, blue: UnsafeMutablePointer<CGFloat>, alpha: UnsafeMutablePointer<CGFloat>) -> Bool
+#elseif os(OSX)
+    func getRed(red: UnsafeMutablePointer<CGFloat>, green: UnsafeMutablePointer<CGFloat>, blue: UnsafeMutablePointer<CGFloat>, alpha: UnsafeMutablePointer<CGFloat>)
+#endif
 #endif
 }
 
@@ -48,7 +56,11 @@ public extension ColorHexing {
     }
 
     init?(hexString value: String) {
+#if swift(>=3.0)
         guard let hex = value.hexUInt else { return nil }
+#else
+        guard let hex = value.toHexUInt() else { return nil }
+#endif
         self.init(hexUInt: hex, alpha: 1)
     }
 }
