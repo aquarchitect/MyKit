@@ -8,9 +8,15 @@
 
 import CloudKit
 
-extension CKRecordID {
+public extension CKRecordID {
 
-    public func target(of action: CKReferenceAction) -> CKReference {
+#if swift(>=3.0)
+    func target(of action: CKReferenceAction) -> CKReference {
         return CKReference(recordID: self, action: action)
     }
+#else
+    func targetOfAction(action: CKReferenceAction) -> CKReference {
+        return CKReference(recordID: self, action: action)
+    }
+#endif
 }
