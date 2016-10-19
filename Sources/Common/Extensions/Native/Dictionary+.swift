@@ -24,7 +24,7 @@ public extension Dictionary {
     func merging<S: Sequence>(_ sequence: S) -> Dictionary
         where S.Iterator.Element == Element {
         var result = self
-        result.merge(sequence: sequence)
+        result.merge(sequence)
         return result
     }
 #else

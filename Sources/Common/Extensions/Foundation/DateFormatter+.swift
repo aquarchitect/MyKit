@@ -8,6 +8,7 @@
 
 import Foundation
 
+#if swift(>=3.0)
 public extension DateFormatter {
 
     static var shared: DateFormatter {
@@ -31,3 +32,5 @@ public extension DateFormatter {
         return self.date(from: string)
     }
 }
+#else
+#endif

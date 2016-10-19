@@ -11,7 +11,7 @@ import Foundation
 /**
  * Future Value
  */
-final public class Observable<T> {
+public class Observable<T> {
 
     public typealias Token = UInt8
     private(set) var callbacks: [Token: Result<T>.Callback] = [:]

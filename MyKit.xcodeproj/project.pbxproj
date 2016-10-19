@@ -130,6 +130,14 @@
 		C2617B1D1DB6B739004E4B5A /* NSLayoutConstraint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165AA1CE0FC6D00F7D3E5 /* NSLayoutConstraint+.swift */; };
 		C2617B1E1DB6B739004E4B5A /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165AB1CE0FC6D00F7D3E5 /* NSMutableAttributedString+.swift */; };
 		C2617B1F1DB6B739004E4B5A /* NSRange+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165AD1CE0FC6D00F7D3E5 /* NSRange+.swift */; };
+		C2617B241DB6E288004E4B5A /* NSTimer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2617B231DB6E288004E4B5A /* NSTimer+.swift */; };
+		C2617B251DB6E288004E4B5A /* NSTimer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2617B231DB6E288004E4B5A /* NSTimer+.swift */; };
+		C2617B271DB6E445004E4B5A /* NSBundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2617B261DB6E445004E4B5A /* NSBundle+.swift */; };
+		C2617B281DB6E445004E4B5A /* NSBundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2617B261DB6E445004E4B5A /* NSBundle+.swift */; };
+		C2617B2A1DB6E5E9004E4B5A /* NSDate+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2617B291DB6E5E9004E4B5A /* NSDate+.swift */; };
+		C2617B2B1DB6E5E9004E4B5A /* NSDate+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2617B291DB6E5E9004E4B5A /* NSDate+.swift */; };
+		C2617B2E1DB6EC34004E4B5A /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2617B2D1DB6EC34004E4B5A /* NSDateFormatter+.swift */; };
+		C2617B2F1DB6EC34004E4B5A /* NSDateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2617B2D1DB6EC34004E4B5A /* NSDateFormatter+.swift */; };
 		C2692FD01D6502D300A29897 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2692FCF1D6502D300A29897 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2692FD11D6502D300A29897 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2692FCF1D6502D300A29897 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
@@ -332,6 +340,10 @@
 		C2617AFD1DB6B5A3004E4B5A /* AnyGenerator+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AnyGenerator+.swift"; path = "Sources/Common/Extensions/Native/AnyGenerator+.swift"; sourceTree = "<group>"; };
 		C2617B0C1DB6B623004E4B5A /* OptionSetType+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "OptionSetType+.swift"; path = "Sources/Common/Extensions/Native/OptionSetType+.swift"; sourceTree = "<group>"; };
 		C2617B0F1DB6B67E004E4B5A /* RangeReplaceableCollectionType+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RangeReplaceableCollectionType+.swift"; path = "Sources/Common/Extensions/Native/RangeReplaceableCollectionType+.swift"; sourceTree = "<group>"; };
+		C2617B231DB6E288004E4B5A /* NSTimer+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTimer+.swift"; path = "Sources/Common/Extensions/Foundation/NSTimer+.swift"; sourceTree = "<group>"; };
+		C2617B261DB6E445004E4B5A /* NSBundle+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSBundle+.swift"; path = "Sources/Common/Extensions/Foundation/NSBundle+.swift"; sourceTree = "<group>"; };
+		C2617B291DB6E5E9004E4B5A /* NSDate+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+.swift"; path = "Sources/Common/Extensions/Foundation/NSDate+.swift"; sourceTree = "<group>"; };
+		C2617B2D1DB6EC34004E4B5A /* NSDateFormatter+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDateFormatter+.swift"; path = "Sources/Common/Extensions/Foundation/NSDateFormatter+.swift"; sourceTree = "<group>"; };
 		C2692FCF1D6502D300A29897 /* MyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyKit.h; path = MyKit/MyKit.h; sourceTree = "<group>"; };
 		C2848DE01C95642E00707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2848E011C956A7600707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -494,9 +506,13 @@
 			children = (
 				C2D0AAAC1DB59F5500C6847E /* Range+.swift */,
 				C22CFAFE1DB1F99E006D8DBE /* Timer+.swift */,
+				C2617B231DB6E288004E4B5A /* NSTimer+.swift */,
 				C20165A51CE0FC6D00F7D3E5 /* Bundle+.swift */,
+				C2617B261DB6E445004E4B5A /* NSBundle+.swift */,
 				C20165A71CE0FC6D00F7D3E5 /* Date+.swift */,
+				C2617B291DB6E5E9004E4B5A /* NSDate+.swift */,
 				C20165A81CE0FC6D00F7D3E5 /* DateFormatter+.swift */,
+				C2617B2D1DB6EC34004E4B5A /* NSDateFormatter+.swift */,
 				C20165AE1CE0FC6D00F7D3E5 /* Scanner+.swift */,
 				C2617AF91DB6A88D004E4B5A /* NSScanner+.swift */,
 				C2D0AAAF1DB5A16400C6847E /* NSIndexPath+.swift */,
@@ -1302,9 +1318,11 @@
 				C2617B1A1DB6B739004E4B5A /* URLSession+.swift in Sources */,
 				C20165F01CE0FEE200F7D3E5 /* OpenWeather.swift in Sources */,
 				C2A9D7A41DB439BD00F264EE /* Observable.swift in Sources */,
+				C2617B2F1DB6EC34004E4B5A /* NSDateFormatter+.swift in Sources */,
 				C2617B0B1DB6B5AB004E4B5A /* OptionSet+.swift in Sources */,
 				C2617B041DB6B5AB004E4B5A /* Collection+.swift in Sources */,
 				C2617B1D1DB6B739004E4B5A /* NSLayoutConstraint+.swift in Sources */,
+				C2617B281DB6E445004E4B5A /* NSBundle+.swift in Sources */,
 				C2617B171DB6B739004E4B5A /* Date+.swift in Sources */,
 				C22EA03B1D98800F003A490A /* _FontLoading.swift in Sources */,
 				C2B3F34D1D0B8AF80055B06E /* ActionWrapper.swift in Sources */,
@@ -1313,9 +1331,11 @@
 				C24A0AE41D72143B00F94F08 /* Change.swift in Sources */,
 				C2617B1B1DB6B739004E4B5A /* NSIndexPath+.swift in Sources */,
 				C2617B021DB6B5AB004E4B5A /* String+.swift in Sources */,
+				C2617B2B1DB6E5E9004E4B5A /* NSDate+.swift in Sources */,
 				C2617B1F1DB6B739004E4B5A /* NSRange+.swift in Sources */,
 				C2617B0A1DB6B5AB004E4B5A /* RangeReplaceableCollection+.swift in Sources */,
 				C2617B051DB6B5AB004E4B5A /* CollectionType+.swift in Sources */,
+				C2617B251DB6E288004E4B5A /* NSTimer+.swift in Sources */,
 				C2617B181DB6B739004E4B5A /* DateFormatter+.swift in Sources */,
 				C20165621CE0F01D00F7D3E5 /* Box.swift in Sources */,
 				C20165631CE0F01D00F7D3E5 /* Curry.swift in Sources */,
@@ -1353,6 +1373,7 @@
 				C20166441CE1017900F7D3E5 /* UIScrollView+.swift in Sources */,
 				C2A6738C1DB00E06009E063A /* Observable.swift in Sources */,
 				C20165881CE0FA8B00F7D3E5 /* Dictionary+.swift in Sources */,
+				C2617B2E1DB6EC34004E4B5A /* NSDateFormatter+.swift in Sources */,
 				C217DD6F1D3AD9FD0047DFBF /* UILabel+.swift in Sources */,
 				C20165D41CE0FCA000F7D3E5 /* CGSize+.swift in Sources */,
 				C225FA9D1D1113A1008DF565 /* ParaboloidSuperLayout.swift in Sources */,
@@ -1364,6 +1385,7 @@
 				C2A673891DB00820009E063A /* Mutex.swift in Sources */,
 				C2AFF89B1D9849E400431639 /* SelectingLongPress.swift in Sources */,
 				C201664F1CE1026800F7D3E5 /* GrowingTextView.swift in Sources */,
+				C2617B241DB6E288004E4B5A /* NSTimer+.swift in Sources */,
 				C20165BE1CE0FC8800F7D3E5 /* CKContainer+.swift in Sources */,
 				C20165521CE0EFC500F7D3E5 /* Box.swift in Sources */,
 				C20166831CE1097100F7D3E5 /* SnappingSuperLayout.swift in Sources */,
@@ -1377,6 +1399,7 @@
 				C20165D21CE0FCA000F7D3E5 /* CGPoint+.swift in Sources */,
 				C20165C91CE0FC9400F7D3E5 /* NSAttributeDescription+.swift in Sources */,
 				C2617B101DB6B67E004E4B5A /* RangeReplaceableCollectionType+.swift in Sources */,
+				C2617B2A1DB6E5E9004E4B5A /* NSDate+.swift in Sources */,
 				C201655D1CE0EFC500F7D3E5 /* Swizzle.swift in Sources */,
 				C201655A1CE0EFC500F7D3E5 /* Result.swift in Sources */,
 				C2973FF71D7747BC005C73A0 /* GenericCollectionCell.swift in Sources */,
@@ -1413,6 +1436,7 @@
 				C22EA03A1D98800E003A490A /* _FontLoading.swift in Sources */,
 				C2617AFA1DB6A88D004E4B5A /* NSScanner+.swift in Sources */,
 				C20165C11CE0FC8800F7D3E5 /* CKRecord+.swift in Sources */,
+				C2617B271DB6E445004E4B5A /* NSBundle+.swift in Sources */,
 				C2B3F3491D0B8A9E0055B06E /* ActionTrailing.swift in Sources */,
 				C20165891CE0FA8B00F7D3E5 /* CountableRange+.swift in Sources */,
 				C20165D31CE0FCA000F7D3E5 /* CGRect+.swift in Sources */,

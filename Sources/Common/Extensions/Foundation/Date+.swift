@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: Support Method
-
+#if swift(>=3.0)
 public extension Date {
 
     typealias Period = (passed: Int, left: Int)
@@ -249,3 +249,5 @@ public extension Date {
         return string(dateStyle: style, timeStyle: .none)
     }
 }
+#else
+#endif

@@ -48,7 +48,7 @@ public extension ColorHexing {
     }
 
     init?(hexString value: String) {
-        guard let hex = value.toHexUInt() else { return nil }
+        guard let hex = value.hexUInt else { return nil }
         self.init(hexUInt: hex, alpha: 1)
     }
 }

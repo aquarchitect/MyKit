@@ -8,6 +8,7 @@
 
 import Foundation
 
+#if swift(>=3.0)
 extension Bundle {
 
     static var `default`: Bundle? {
@@ -19,3 +20,5 @@ extension Bundle {
         return Bundle(identifier: "HaiNguyen.MyKit-\(platform)")
     }
 }
+#else
+#endif

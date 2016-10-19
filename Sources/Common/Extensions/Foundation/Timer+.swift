@@ -8,36 +8,47 @@
 
 import Foundation
 
-public extension Timer {
+#if swift(>=3.0)
+extension Timer {
 
-    @available(iOS 10.0, macOS 10.12, *)
-    static func countdown(_ count: UInt, timeInterval: TimeInterval) -> Observable<TimeInterval> {
-        let observable = Observable<TimeInterval>()
-        var _count = count
+    final class TimeIntervalObservable: Observable<TimeInterval> {
 
-        Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak observable] in
-            guard let _signal = observable else { return $0.invalidate() }
-            guard _count != 0 else { return $0.invalidate() }
+        private var count: UInt
 
-            _signal.update(Double(_count) * timeInterval)
-            _count -= 1
+        init(count: UInt) {
+            self.count = count
         }
 
-        return observable
+        @objc func handleTimer(timer: Timer) {
+            guard count != 0 else { return timer.invalidate() }
+            update(Double(count) * timer.timeInterval)
+            count -= 1
+        }
     }
 
-    @available(iOS 10.0, macOS 10.12, *)
-    static func every(timeInterval: TimeInterval) -> Observable<TimeInterval> {
-        let observable = Observable<TimeInterval>()
-        var _count = 0
+    func schedule(count: UInt, timeInterval: TimeInterval) -> Observable<TimeInterval> {
+        let observable = TimeIntervalObservable(count: count)
 
-        Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak observable] in
-            guard let _signal = observable else { return $0.invalidate() }
-
-            _signal.update(Double(_count) * timeInterval)
-            _count += 1
-        }
+        Timer(timeInterval: timeInterval,
+              target: observable,
+              selector: #selector(TimeIntervalObservable.handleTimer(timer:)),
+              userInfo: nil,
+              repeats: true)
+            .then { RunLoop.current.add($0, forMode: .defaultRunLoopMode) }
 
         return observable
     }
 }
+
+public extension Timer {
+
+    func countdown(_ count: UInt, timerInterval: TimeInterval) -> Observable<TimeInterval> {
+        return schedule(count: count, timeInterval: timerInterval)
+    }
+
+    func every(_ timerInterval: TimeInterval) -> Observable<TimeInterval> {
+        return schedule(count: UInt.max, timeInterval: timerInterval)
+    }
+}
+#else
+#endif

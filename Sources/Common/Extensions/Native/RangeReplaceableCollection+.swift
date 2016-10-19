@@ -20,7 +20,7 @@ public extension RangeReplaceableCollection where Index == Int {
 
     func applying(_ changes: [Change<(index: Index, element: Iterator.Element)>]) -> Self {
         var result = self
-        result.apply(changes: changes)
+        result.apply(changes)
         return result
     }
 }
