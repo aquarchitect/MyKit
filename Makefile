@@ -54,7 +54,7 @@ define commit-tag
 endef
 
 xctest:
-	@ xcodebuild clean build								\
+	@ xcodebuild clean build							\
 		-scheme "MyKit-$(SCHEME)"						\
 		-configuration Debug							\
 		-destination "$(DESTINATION)"					\

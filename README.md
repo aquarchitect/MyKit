@@ -1,7 +1,7 @@
 MyKit
 =====
 
-[![Swift Version](https://img.shields.io/badge/swift-3.0-orange.svg?style=flat-square)](https://swift.org)  [![Build Status](https://img.shields.io/travis/aquarchitect/MyKit.svg?style=flat-square)](https://travis-ci.org/aquarchitect/MyKit/)  [![Platform Support](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS%20-lightgrey.svg?style=flat-square)](https://developer.apple.com/xcode/download/)
+[![Build Status](https://img.shields.io/travis/aquarchitect/MyKit.svg?style=flat-square)](https://travis-ci.org/aquarchitect/MyKit/)  [![Swift Version](https://img.shields.io/badge/swift-2.3%20%7C%203.0-orange.svg?style=flat-square)](https://swift.org)  [![Platform Support](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS-lightgrey.svg?style=flat-square)](https://developer.apple.com/xcode/download/)
 
 ### INTRODUCTION
 
@@ -85,13 +85,10 @@ iOS/
 ### NOTES
 
 ##### Naming Convention
-- When passing a function as a variable, the input argument name should be a verb for `@noescaping` and a noun for `@escaping`.
 - Transforming method from one type to another is named as `map` and `flatMap` in order to be consistent with `Optional`, especially in the case of [`Promise`](Sources/Common/Utilities/Promise.swift) and [`Result`](Sources/Common/Utilities/Result.swift).
 
 ##### Documentation Set
 Due to `jazzy` difficulties, the support for documentation is now __deprecated__. . Meanwhile, the search for a better alternative continues.
-
-> The old `jazzy` and `travis-ci` combination's result and implementation can be found at [gh-pages](http://aquarchitect.github.io/MyKit/) and [`Makefile`](https://github.com/aquarchitect/MyKit/blob/swift-legacy/Makefile) respectively.
 
 ### ABOUT
 
