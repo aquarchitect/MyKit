@@ -54,11 +54,11 @@ define commit-tag
 endef
 
 xctest:
-	@ xcodebuild clean test								\
+	@ xcodebuild clean build								\
 		-scheme "MyKit-$(SCHEME)"						\
 		-configuration Debug							\
 		-destination "$(DESTINATION)"					\
-		SWIFT_VERSION="$(SWIFT)"
+		SWIFT_VERSION="$(SWIFT)"						\
 		CODE_SIGN_IDENTITY=""							\
 		CODE_SIGNING_REQUIRED=NO						\
 		| xcpretty
@@ -67,7 +67,7 @@ xcbuild:
 	@ xcodebuild clean build							\
 		-target "MyKit-$(SCHEME)"			 			\
 		-configuration Release							\
-		SWIFT_VERSION="$(SWIFT)"
+		SWIFT_VERSION="$(SWIFT)"						\
 		OBJROOT=$$(pwd)/Build							\
 		SYMROOT=$$(pwd)/Build							\
 		CODE_SIGN_IDENTITY=""							\
