@@ -38,8 +38,6 @@ open class GrowingTextView: UIControl {
         super.preservesSuperviewLayoutMargins = true
         super.addSubview(textBox)
 
-        textBox.addObserver(self, forKeyPath: "contentSize", options: [.initial, .new], context: nil)
-
         [(.left, .leftMargin),
          (.right, .right),
          (.top, .topMargin),
@@ -47,8 +45,6 @@ open class GrowingTextView: UIControl {
             .map { NSLayoutConstraint(item: textBox, attribute: $0, relatedBy: .equal, toItem: self, attribute: $1, multiplier: 1, constant: 0).then { $0.priority = 800 }}
             .activate()
     }
-
-    deinit { textBox.removeObserver(self, forKeyPath: "contentSize") }
 
     // MARK: System Method
 
@@ -66,9 +62,14 @@ open class GrowingTextView: UIControl {
         }
     }
 
-    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        self.invalidateIntrinsicContentSize()
-        self.setNeedsLayout()
+    // MARK: First Responder
+
+    open override func becomeFirstResponder() -> Bool {
+        return textBox.becomeFirstResponder()
+    }
+
+    open override func resignFirstResponder() -> Bool {
+        return textBox.resignFirstResponder()
     }
 }
 #else
@@ -94,8 +95,6 @@ public class GrowingTextView: UIControl {
         super.preservesSuperviewLayoutMargins = true
         super.addSubview(textBox)
 
-        textBox.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
-
         [(.Left, .LeftMargin),
          (.Right, .Right),
          (.Top, .TopMargin),
@@ -103,8 +102,6 @@ public class GrowingTextView: UIControl {
             .map { NSLayoutConstraint(item: textBox, attribute: $0, relatedBy: .Equal, toItem: self, attribute: $1, multiplier: 1, constant: 0).then { $0.priority = 800 }}
             .activate()
     }
-
-    deinit { textBox.removeObserver(self, forKeyPath: "contentSize") }
 
     // MARK: System Method
 
@@ -129,9 +126,14 @@ public class GrowingTextView: UIControl {
         }
     }
 
-    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        self.invalidateIntrinsicContentSize()
-        self.setNeedsLayout()
+    // MARK: First Responder
+
+    public override func becomeFirstResponder() -> Bool {
+        return textBox.becomeFirstResponder()
+    }
+
+    public override func resignFirstResponder() -> Bool {
+        return textBox.resignFirstResponder()
     }
 }
 #endif

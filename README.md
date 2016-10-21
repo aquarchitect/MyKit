@@ -1,7 +1,7 @@
 MyKit
 =====
 
-[![Build Status](https://img.shields.io/travis/aquarchitect/MyKit.svg?style=flat-square)](https://travis-ci.org/aquarchitect/MyKit/)  [![Swift Version](https://img.shields.io/badge/swift-2.3%20%7C%203.0-orange.svg?style=flat-square)](https://swift.org)  [![Platform Support](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS-lightgrey.svg?style=flat-square)](https://developer.apple.com/xcode/download/)
+[![Build Status](https://img.shields.io/travis/aquarchitect/MyKit.svg?style=flat-square)](https://travis-ci.org/aquarchitect/MyKit/)  [![Swift Version](https://img.shields.io/badge/swift-2.3%20%7C%203.0-orange.svg?style=flat-square)](https://swift.org)  [![Platform Support](https://img.shields.io/badge/platforms-iOS%20%7C%20macOS-lightgrey.svg?style=flat-square)](https://developer.apple.com/xcode/download/)  [![Carthage compatible](https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat-square)](https://github.com/Carthage/Carthage)  [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/ReSwift/ReSwift/blob/master/LICENSE.md)
 
 ### INTRODUCTION
 
