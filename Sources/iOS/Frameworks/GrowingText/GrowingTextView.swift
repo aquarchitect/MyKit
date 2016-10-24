@@ -8,6 +8,11 @@
 
 import UIKit
 
+/*
+ * For `UITableView`/`UICollectionView` with embeded growing text view in row/cell,
+ * you should remove `contentSize` observer from `textBox` becuase the layout changes
+ * from outside not from the inside.
+ */
 #if swift(>=3.0)
 open class GrowingTextView: UIControl {
 
@@ -44,7 +49,11 @@ open class GrowingTextView: UIControl {
          (.bottom, .bottomMargin)]
             .map { NSLayoutConstraint(item: textBox, attribute: $0, relatedBy: .equal, toItem: self, attribute: $1, multiplier: 1, constant: 0).then { $0.priority = 800 }}
             .activate()
+
+        textBox.addObserver(self, forKeyPath: #keyPath(contentSize), options: [.initial, .new], context: nil)
     }
+
+    deinit { textBox.removeObserver(self, forKeyPath: #keyPath(contentSize)) }
 
     // MARK: System Method
 
@@ -60,6 +69,11 @@ open class GrowingTextView: UIControl {
             let diff = $0.contentSize.height - $0.bounds.height
             diff < 0 ? $0.contentInset.top = diff / 2 : ()
         }
+    }
+
+    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        self.invalidateIntrinsicContentSize()
+        self.setNeedsLayout()
     }
 
     // MARK: First Responder
@@ -101,7 +115,11 @@ public class GrowingTextView: UIControl {
          (.Bottom, .BottomMargin)]
             .map { NSLayoutConstraint(item: textBox, attribute: $0, relatedBy: .Equal, toItem: self, attribute: $1, multiplier: 1, constant: 0).then { $0.priority = 800 }}
             .activate()
+
+        textBox.addObserver(self, forKeyPath: "contentSize", options: [.Initial, .New], context: nil)
     }
+
+    deinit { textBox.removeObserver(self, forKeyPath: "contentSize") }
 
     // MARK: System Method
 
@@ -124,6 +142,11 @@ public class GrowingTextView: UIControl {
             let diff = $0.contentSize.height - $0.bounds.height
             diff < 0 ? $0.contentInset.top = diff / 2 : ()
         }
+    }
+
+    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        self.invalidateIntrinsicContentSize()
+        self.setNeedsLayout()
     }
 
     // MARK: First Responder

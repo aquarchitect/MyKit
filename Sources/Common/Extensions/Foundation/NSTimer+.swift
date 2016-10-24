@@ -2,7 +2,7 @@
  * NSTimer+.swift
  * MyKit
  *
- * Created by Hai Nguyen on 10/18/16.
+ * Created by Hai Nguyen.
  * Copyright (c) 2016 Hai Nguyen.
  */
 
@@ -27,7 +27,7 @@ extension NSTimer {
         }
     }
 
-    func schedule(count: UInt, timeInterval: NSTimeInterval) -> Observable<NSTimeInterval> {
+    static func schedule(count count: UInt, timeInterval: NSTimeInterval) -> Observable<NSTimeInterval> {
         let observable = TimeIntervalObservable(count: count)
 
         NSTimer(timeInterval: timeInterval,
@@ -38,6 +38,17 @@ extension NSTimer {
             .then { NSRunLoop.currentRunLoop().addTimer($0, forMode: NSDefaultRunLoopMode) }
 
         return observable
+    }
+}
+
+public extension NSTimer {
+
+    static func countdown(count: UInt, timeInterval: NSTimeInterval) -> Observable<NSTimeInterval> {
+        return schedule(count: count, timeInterval: timeInterval)
+    }
+
+    static func every(timeInterval: NSTimeInterval) -> Observable<NSTimeInterval> {
+        return schedule(count: UInt.max, timeInterval: timeInterval)
     }
 }
 #endif

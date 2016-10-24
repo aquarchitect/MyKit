@@ -26,7 +26,7 @@ extension Timer {
         }
     }
 
-    func schedule(count: UInt, timeInterval: TimeInterval) -> Observable<TimeInterval> {
+    static func schedule(count: UInt, timeInterval: TimeInterval) -> Observable<TimeInterval> {
         let observable = TimeIntervalObservable(count: count)
 
         Timer(timeInterval: timeInterval,
@@ -42,12 +42,12 @@ extension Timer {
 
 public extension Timer {
 
-    func countdown(_ count: UInt, timerInterval: TimeInterval) -> Observable<TimeInterval> {
-        return schedule(count: count, timeInterval: timerInterval)
+    static func countdown(_ count: UInt, timeInterval: TimeInterval) -> Observable<TimeInterval> {
+        return schedule(count: count, timeInterval: timeInterval)
     }
 
-    func every(_ timerInterval: TimeInterval) -> Observable<TimeInterval> {
-        return schedule(count: UInt.max, timeInterval: timerInterval)
+    static func every(_ timeInterval: TimeInterval) -> Observable<TimeInterval> {
+        return schedule(count: UInt.max, timeInterval: timeInterval)
     }
 }
 #else

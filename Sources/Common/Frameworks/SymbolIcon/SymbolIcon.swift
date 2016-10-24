@@ -6,7 +6,7 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
-import Foundation.NSAttributedString
+import Foundation
 import CoreGraphics
 
 public struct SymbolIcon {

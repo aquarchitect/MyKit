@@ -6,7 +6,7 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
-import Foundation.NSObject
+import Foundation
 
 /// _Then_ provides helper functions to ease the transformation of one type to another.
 ///

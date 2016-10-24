@@ -8,7 +8,7 @@
 
 private var GlobalToken: UInt8 = 0
 
-import Foundation.NSObject
+import Foundation
 
 public protocol ActionTrailing: class {}
 
