@@ -12,6 +12,6 @@ import Foundation
 #else
 public func delay(timeInterval: NSTimeInterval, block: () -> Void) {
     let poptime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(Double(NSEC_PER_SEC) * timeInterval))
-    dispatch_after(poptime, dispatch_get_main_queue(), block)
+    dispatch_after(poptime, Queue.Main, block)
 }
 #endif

@@ -323,7 +323,7 @@ public extension Observable {
                 observable.update(result)
             }
 #else
-            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
+            dispatch_async(Queue.Global.Background) {
                 observable.update(result)
             }
 #endif
@@ -341,7 +341,7 @@ public extension Observable {
                 observable.update(result)
             }
 #else
-            dispatch_async(dispatch_get_main_queue()) {
+            dispatch_async(Queue.Main) {
                 observable.update(result)
             }
 #endif

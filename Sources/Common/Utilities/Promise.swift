@@ -239,9 +239,9 @@ public extension Promise {
                 }
             }
 #else
-            dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
+            dispatch_async(Queue.Global.Background) {
                 self.resolve { result in
-                    dispatch_async(dispatch_get_main_queue()) {
+                    dispatch_async(Queue.Main) {
                         callback(result)
                     }
                 }
@@ -313,7 +313,7 @@ public extension Promise {
                     .resolve { outputs.append($0) }
             }
 
-            dispatch_group_notify(group, dispatch_get_main_queue()) {
+            dispatch_group_notify(group, Queue.Main) {
                 callback(Result.concat(outputs))
             }
         }
@@ -361,7 +361,7 @@ public func zip<A, B>(promiseA: Promise<A>, _ promiseB: Promise<B>) -> Promise<(
             .inDispatchGroup(group)
             .resolve { resultB = $0 }
 
-        dispatch_group_notify(group, dispatch_get_main_queue()) {
+        dispatch_group_notify(group, Queue.Main) {
             callback(zip(resultA, resultB))
         }
     }

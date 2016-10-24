@@ -33,7 +33,7 @@ public class SnappingFlowLayout: UICollectionViewFlowLayout, SnappingLayoutDeleg
 
     public var snappingPoint: CGPoint? {
         didSet {
-            dispatch_async(dispatch_get_main_queue()) { [weak self] in
+            dispatch_async(Queue.Main) { [weak self] in
                 guard let `self` = self else { return }
                 _ = self.snappingPoint.flatMap(self.snap(into:))
             }
