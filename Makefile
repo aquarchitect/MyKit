@@ -9,8 +9,8 @@ endef
 define package-platform
 	if [ "$(1)" == "iOS" ]; then 														\
 		echo ">>> Packaging MyKit for iOS ... ";										\
-		$(MAKE) xcbuild SCHEME=iOS SDK=iphoneos9.3;										\
-		$(MAKE) xcbuild SCHEME=iOS SDK=iphonesimulator9.3;								\
+		$(MAKE) xcbuild SCHEME=iOS SDK=iphoneos10.0 SWIFT=$(2);							\
+		$(MAKE) xcbuild SCHEME=iOS SDK=iphonesimulator10.0 SWIFT=$(2);					\
 		cp -r Build/Release-iphoneos iOS;												\
 		cp -r Build/Release-iphonesimulator/MyKit.framework/Modules/MyKit.swiftmodule/ 	\
 			iOS/MyKit.framework/Modules/MyKit.swiftmodule;								\
@@ -20,7 +20,7 @@ define package-platform
 		zip -rq MyKit-iOS.zip iOS;														\
 	elif [ "$(1)" == "macOS" ]; then													\
 		echo ">>> Packaging MyKit for macOS ... ";										\
-		$(MAKE) xcbuild SCHEME=macOS SDK=macosx10.11;									\
+		$(MAKE) xcbuild SCHEME=macOS SDK=macosx10.12 SWIFT=$(2);						\
 		cp -r Build/Release macOS;														\
 		zip -rq MyKit-macOS.zip macOS;													\
 	else																				\
@@ -66,6 +66,7 @@ xctest:
 xcbuild:
 	@ xcodebuild clean build							\
 		-target "MyKit-$(SCHEME)"			 			\
+		-sdk "$(SDK)"									\
 		-configuration Release							\
 		SWIFT_VERSION="$(SWIFT)"						\
 		OBJROOT=$$(pwd)/Build							\
@@ -76,11 +77,11 @@ xcbuild:
 		| xcpretty
 
 packages:
-	@ if [ -z "$(PLATFORM)" ]; then				\
-		$(call package-platform,iOS);			\
-		$(call package-platform,macOS);			\
-	  else										\
-	  	$(call package-platform,$(PLATFORM));	\
+	@ if [ -z "$(PLATFORM)" ]; then						\
+		$(call package-platform,iOS,$(SWIFT));			\
+		$(call package-platform,macOS,$(SWIFT));		\
+	  else												\
+	  	$(call package-platform,$(PLATFORM),$(SWIFT));	\
 	  fi
 	$ $(MAKE) clean
 

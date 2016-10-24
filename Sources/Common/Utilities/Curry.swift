@@ -21,7 +21,7 @@ public func >>> <A, B, C>(lhs: @escaping (A) throws -> B, rhs: @escaping (B) thr
     return { try rhs(try lhs($0)) }
 }
 #else
-    infix operator >>> {}
+infix operator >>> {}
 
 public func >>> <A, B, C>(lhs: (A) -> B, rhs: (B) -> C) -> (A) -> C {
     return { rhs(lhs($0)) }
