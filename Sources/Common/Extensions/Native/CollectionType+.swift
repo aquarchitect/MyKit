@@ -10,6 +10,20 @@ import Foundation
 
 #if swift(>=3.0)
 #else
+public extension CollectionType {
+
+    func find(condition: (Generator.Element) -> Bool) -> Generator.Element? {
+        var result: Generator.Element?
+
+        for element in self where condition(element) {
+            result = element
+            break
+        }
+
+        return result
+    }
+}
+
 internal extension CollectionType where Generator.Element: Comparable, Index == Int, Index.Distance == Int {
 
     /*

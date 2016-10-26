@@ -42,7 +42,7 @@ extension Box: Then {}
 extension NSObject: Then {}
 
 #if swift(>=3.0)
-#else
+#elseif os(iOS)
 import UIKit
 extension UIView: Then {}
 #endif

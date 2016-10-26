@@ -1,5 +1,5 @@
 /*
- * _LoremIpsum.swift
+ * LoremIpsum.swift
  * MyKit
  *
  * Created by Hai Nguyen.
@@ -14,7 +14,7 @@ An LorumIpsum object generates random text at different length designed specific
 - throws: file corruption error.
 */
 #if swift(>=3.0)
-struct _LoremIpsum: Collection {
+struct LoremIpsum: Collection {
 
     fileprivate let storage: [String]
 
@@ -24,7 +24,7 @@ struct _LoremIpsum: Collection {
     }
 
     fileprivate init() throws {
-        let name = "_LoremIpsum", ext = "txt"
+        let name = "LoremIpsum", ext = "txt"
 
         guard let url = Bundle.default?.url(forResource: name, withExtension: ext) else {
             enum FileIOError: Error { case unableToOpen(file: String) }
@@ -56,25 +56,25 @@ struct _LoremIpsum: Collection {
     }
 }
 
-extension _LoremIpsum: CustomDebugStringConvertible {
+extension LoremIpsum: CustomDebugStringConvertible {
 
     var debugDescription: String {
         return storage.joined(separator: " ")
     }
 }
 
-extension _LoremIpsum {
+extension LoremIpsum {
 
-    static var shared: _LoremIpsum {
+    static var shared: LoremIpsum {
         struct Singleton {
-            static var value = try! _LoremIpsum()
+            static var value = try! LoremIpsum()
         }
 
         return Singleton.value
     }
 }
 #else
-struct _LoremIpsum: CollectionType {
+struct LoremIpsum: CollectionType {
 
     private let storage: [String]
 
@@ -84,7 +84,7 @@ struct _LoremIpsum: CollectionType {
     }
 
     private init() throws {
-        let name = "_LoremIpsum", ext = "txt"
+        let name = "LoremIpsum", ext = "txt"
 
         guard let url = NSBundle.defaultBundle()?.URLForResource(name, withExtension: ext) else {
         enum FileIOError: ErrorType { case UnableToOpen(file: String) }
@@ -111,18 +111,18 @@ struct _LoremIpsum: CollectionType {
     }
 }
 
-extension _LoremIpsum: CustomDebugStringConvertible {
+extension LoremIpsum: CustomDebugStringConvertible {
 
     var debugDescription: String {
         return storage.joinWithSeparator(" ")
     }
 }
 
-extension _LoremIpsum {
+extension LoremIpsum {
     
-    static func sharedInstance() -> _LoremIpsum {
+    static func sharedInstance() -> LoremIpsum {
         struct Singleton {
-            static var value = try! _LoremIpsum()
+            static var value = try! LoremIpsum()
         }
         
         return Singleton.value

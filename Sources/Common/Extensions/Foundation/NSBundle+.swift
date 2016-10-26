@@ -21,4 +21,18 @@ extension NSBundle {
         return NSBundle(identifier: "HaiNguyen.MyKit-\(platform)")
     }
 }
+
+#if os(OSX)
+import AppKit
+
+extension NSBundle {
+
+    func viewFromNibNamed<V: NSView>(nib: String) -> V? {
+        var objects: NSArray?
+        self.loadNibNamed(nib, owner: nil, topLevelObjects: &objects)
+
+        return objects?.filter { $0 is V }.first as? V
+    }
+}
+#endif
 #endif

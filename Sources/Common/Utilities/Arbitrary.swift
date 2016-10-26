@@ -95,17 +95,17 @@ public extension Arbitrary {
 
     static var sentence: String {
 #if swift(>=3.0)
-        return element(in: _LoremIpsum.shared)
+        return element(in: LoremIpsum.shared)
 #else
-        return (_LoremIpsum.sharedInstance >>> elementInCollection)()
+        return (LoremIpsum.sharedInstance >>> elementInCollection)()
 #endif
     }
 
     static var paragraph: String {
 #if swift(>=3.0)
-        return subsequence(in: _LoremIpsum.shared).joined(separator: ". ")
+        return subsequence(in: LoremIpsum.shared).joined(separator: ". ")
 #else
-        return (_LoremIpsum.sharedInstance >>> subsequenceInCollection)().joinWithSeparator(". ")
+        return (LoremIpsum.sharedInstance >>> subsequenceInCollection)().joinWithSeparator(". ")
 #endif
     }
 }

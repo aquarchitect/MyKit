@@ -91,6 +91,7 @@
 		C23DFCF21CAE0EF9008EFF34 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
 		C23DFCF31CAE0EF9008EFF34 /* MyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C23F09071D73519F003211D3 /* AnyIterator+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23F09061D73519F003211D3 /* AnyIterator+.swift */; };
+		C23FADAE1DC0135100A4491C /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2617AF71DB6A2B8004E4B5A /* Timing.swift */; };
 		C2446BEE1CEB6D2100957586 /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2446BED1CEB6D2100957586 /* Arbitrary.swift */; };
 		C2446BEF1CEB6D2100957586 /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2446BED1CEB6D2100957586 /* Arbitrary.swift */; };
 		C245DFD61DA1CB9C004D9F18 /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165911CE0FC0200F7D3E5 /* SymbolIcon.swift */; };
@@ -681,6 +682,13 @@
 			name = LongPress;
 			sourceTree = "<group>";
 		};
+		C23FADAD1DC0112C00A4491C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		C25A3ED01CEBB87200A68790 /* ActionTrailing */ = {
 			isa = PBXGroup;
 			children = (
@@ -842,6 +850,7 @@
 		C2DC8C3E1CAB4C2C00837D9E /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				C23FADAD1DC0112C00A4491C /* Extensions */,
 			);
 			name = macOS;
 			sourceTree = "<group>";
@@ -1346,6 +1355,7 @@
 				C20165631CE0F01D00F7D3E5 /* Curry.swift in Sources */,
 				C2B3F34C1D0B8AF80055B06E /* ActionTrailing.swift in Sources */,
 				C2617B131DB6B739004E4B5A /* NSScanner+.swift in Sources */,
+				C23FADAE1DC0135100A4491C /* Timing.swift in Sources */,
 				C20165F61CE0FEED00F7D3E5 /* CloudStack.swift in Sources */,
 				C2617B191DB6B739004E4B5A /* Scanner+.swift in Sources */,
 				C20166081CE0FF1700F7D3E5 /* CKRecordID+.swift in Sources */,
@@ -2012,7 +2022,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2075,7 +2085,7 @@
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
