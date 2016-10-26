@@ -47,7 +47,8 @@ struct LoremIpsum: Collection {
     }
 
     func index(after i: Int) -> Int {
-        precondition(i + 1 >= self.count, "Out of bounds.")
+        precondition(i != self.endIndex, "Out of bounds.")
+
         return i + 1
     }
 
@@ -127,5 +128,5 @@ extension LoremIpsum {
         
         return Singleton.value
     }
-    }
+}
 #endif

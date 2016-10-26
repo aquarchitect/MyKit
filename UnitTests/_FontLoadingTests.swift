@@ -12,7 +12,7 @@ final class CustomFontTests: XCTestCase {
 
     func testsFontInstanceOf<T: _FontLoading>(type: T.Type) {
         [("Ionicons", "SymbolIcon"), ("Weather Icons", "OpenWeather")].forEach {
-            XCTAssertNotNil(T.font(name: $0.0, size: 17, fromFile: $0.1))
+            XCTAssertNotNil(T.getFont(name: $0.0, size: 17, fromFile: $0.1))
         }
     }
 

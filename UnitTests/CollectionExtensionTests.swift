@@ -14,15 +14,15 @@ extension CollectionExtensionTests {
 
     func testBinarySearchWithManyElements() {
         let sample = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67 ]
-        XCTAssertEqual(sample.binarySearch(element: 43), 13)
+        XCTAssertEqual(sample.binarySearch(43), 13)
     }
 
     func testBinarySearchWithOneElement() {
-        XCTAssertNil([5].binarySearch(element: 10))
+        XCTAssertNil([5].binarySearch(10))
     }
 
     func testBinarySearchWithEmptyness() {
-        XCTAssertNil([].binarySearch(element: 10))
+        XCTAssertNil([].binarySearch(10))
     }
 }
 

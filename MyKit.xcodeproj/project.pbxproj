@@ -74,8 +74,6 @@
 		C225FA9D1D1113A1008DF565 /* ParaboloidSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FA9C1D1113A1008DF565 /* ParaboloidSuperLayout.swift */; };
 		C225FAA11D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */; };
 		C225FAA41D111803008DF565 /* LayoutPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA31D111803008DF565 /* LayoutPresentable.swift */; };
-		C2281E371DA07E7B004D206B /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317491D5A5EF1009B0F42 /* ScheduleTests.swift */; };
-		C2281E381DA07E7C004D206B /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317491D5A5EF1009B0F42 /* ScheduleTests.swift */; };
 		C22CFAFF1DB1F99E006D8DBE /* Timer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22CFAFE1DB1F99E006D8DBE /* Timer+.swift */; };
 		C22EA03A1D98800E003A490A /* _FontLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A2E1D04A6440009B45F /* _FontLoading.swift */; };
 		C22EA03B1D98800F003A490A /* _FontLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A2E1D04A6440009B45F /* _FontLoading.swift */; };
@@ -98,6 +96,8 @@
 		C245DFD71DA1CB9D004D9F18 /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165911CE0FC0200F7D3E5 /* SymbolIcon.swift */; };
 		C24A0AE31D72143B00F94F08 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24A0AE01D7211D800F94F08 /* Change.swift */; };
 		C24A0AE41D72143B00F94F08 /* Change.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24A0AE01D7211D800F94F08 /* Change.swift */; };
+		C24B380C1DC12BFA00036264 /* ArbitraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B38091DC12BDC00036264 /* ArbitraryTests.swift */; };
+		C24B380D1DC12BFB00036264 /* ArbitraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B38091DC12BDC00036264 /* ArbitraryTests.swift */; };
 		C25478461D73D8F400F00C38 /* RangeReplaceableCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25478451D73D8F400F00C38 /* RangeReplaceableCollection+.swift */; };
 		C2617AF81DB6A2B8004E4B5A /* Timing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2617AF71DB6A2B8004E4B5A /* Timing.swift */; };
 		C2617AFA1DB6A88D004E4B5A /* NSScanner+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2617AF91DB6A88D004E4B5A /* NSScanner+.swift */; };
@@ -193,10 +193,8 @@
 		C2F317351D5A5CE1009B0F42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F317091D5A5959009B0F42 /* Main.storyboard */; };
 		C2F3174E1D5A5EF6009B0F42 /* _FontLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317461D5A5EF1009B0F42 /* _FontLoadingTests.swift */; };
 		C2F3174F1D5A5EF6009B0F42 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317471D5A5EF1009B0F42 /* NSDateTests.swift */; };
-		C2F317501D5A5EF6009B0F42 /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317481D5A5EF1009B0F42 /* PromiseTests.swift */; };
 		C2F317521D5A5EF7009B0F42 /* _FontLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317461D5A5EF1009B0F42 /* _FontLoadingTests.swift */; };
 		C2F317531D5A5EF7009B0F42 /* NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317471D5A5EF1009B0F42 /* NSDateTests.swift */; };
-		C2F317541D5A5EF7009B0F42 /* PromiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317481D5A5EF1009B0F42 /* PromiseTests.swift */; };
 		C2F566AB1D242AD800DCEC45 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F566AA1D242AD800DCEC45 /* UIScreen+.swift */; };
 /* End PBXBuildFile section */
 
@@ -335,6 +333,7 @@
 		C23F09061D73519F003211D3 /* AnyIterator+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AnyIterator+.swift"; path = "Sources/Common/Extensions/Native/AnyIterator+.swift"; sourceTree = "<group>"; };
 		C2446BED1CEB6D2100957586 /* Arbitrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arbitrary.swift; path = Sources/Common/Utilities/Arbitrary.swift; sourceTree = "<group>"; };
 		C24A0AE01D7211D800F94F08 /* Change.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Change.swift; path = Sources/Common/Utilities/Change.swift; sourceTree = "<group>"; };
+		C24B38091DC12BDC00036264 /* ArbitraryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArbitraryTests.swift; path = UnitTests/ArbitraryTests.swift; sourceTree = SOURCE_ROOT; };
 		C250EB771D9C78C6008FC9D0 /* QuickTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = QuickTest.playground; sourceTree = "<group>"; };
 		C25478451D73D8F400F00C38 /* RangeReplaceableCollection+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "RangeReplaceableCollection+.swift"; path = "Sources/Common/Extensions/Native/RangeReplaceableCollection+.swift"; sourceTree = "<group>"; };
 		C2617AF71DB6A2B8004E4B5A /* Timing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Timing.swift; path = Sources/Common/Utilities/Timing.swift; sourceTree = "<group>"; };
@@ -779,6 +778,7 @@
 				C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */,
 				C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */,
 				C2A673911DB09493009E063A /* ObservableTests.swift */,
+				C24B38091DC12BDC00036264 /* ArbitraryTests.swift */,
 			);
 			name = UnitTests;
 			path = MyKitTests;
@@ -1286,14 +1286,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2F317501D5A5EF6009B0F42 /* PromiseTests.swift in Sources */,
 				C214B9101DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift in Sources */,
 				C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */,
 				C2F3174F1D5A5EF6009B0F42 /* NSDateTests.swift in Sources */,
 				C214B90D1DA2155700754247 /* ActionTrailingTests.swift in Sources */,
 				C2A673961DB094C2009E063A /* ObservableTests.swift in Sources */,
-				C2281E371DA07E7B004D206B /* ScheduleTests.swift in Sources */,
 				C2F3174E1D5A5EF6009B0F42 /* _FontLoadingTests.swift in Sources */,
+				C24B380C1DC12BFA00036264 /* ArbitraryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1301,14 +1300,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2F317541D5A5EF7009B0F42 /* PromiseTests.swift in Sources */,
 				C214B9111DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift in Sources */,
 				C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */,
 				C2F317531D5A5EF7009B0F42 /* NSDateTests.swift in Sources */,
 				C214B90E1DA2155800754247 /* ActionTrailingTests.swift in Sources */,
 				C2A673971DB094C3009E063A /* ObservableTests.swift in Sources */,
-				C2281E381DA07E7C004D206B /* ScheduleTests.swift in Sources */,
 				C2F317521D5A5EF7009B0F42 /* _FontLoadingTests.swift in Sources */,
+				C24B380D1DC12BFB00036264 /* ArbitraryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
