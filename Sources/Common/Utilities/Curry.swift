@@ -6,6 +6,10 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
+/**
+ * This is not a true curry's definition, 
+ * but inspired by the concept.
+ */
 #if swift(>=3.0)
 precedencegroup Currying {
     associativity: left

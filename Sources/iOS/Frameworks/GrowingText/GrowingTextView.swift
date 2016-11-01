@@ -50,10 +50,10 @@ open class GrowingTextView: UIControl {
             .map { NSLayoutConstraint(item: textBox, attribute: $0, relatedBy: .equal, toItem: self, attribute: $1, multiplier: 1, constant: 0).then { $0.priority = 800 }}
             .activate()
 
-        textBox.addObserver(self, forKeyPath: #keyPath(contentSize), options: [.initial, .new], context: nil)
+        textBox.addObserver(self, forKeyPath: #keyPath(UITextView.contentSize), options: [.initial, .new], context: nil)
     }
 
-    deinit { textBox.removeObserver(self, forKeyPath: #keyPath(contentSize)) }
+    deinit { textBox.removeObserver(self, forKeyPath: #keyPath(UITextView.contentSize)) }
 
     // MARK: System Method
 

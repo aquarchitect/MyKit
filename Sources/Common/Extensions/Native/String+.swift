@@ -10,6 +10,14 @@ import Foundation
 
 public extension String {
 
+    var fourCharCode: FourCharCode? {
+        guard self.characters.count == 4 else { return nil }
+        return self.utf16.reduce(0) { ($0 << 8) + FourCharCode($1) }
+    }
+}
+
+public extension String {
+
     /// Produce a camel case string
     func camelcased() -> String {
 #if swift(>=3.0)

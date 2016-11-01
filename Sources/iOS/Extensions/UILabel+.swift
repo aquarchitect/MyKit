@@ -8,11 +8,35 @@
 
 import UIKit
 
+public extension UILabel {
+
+#if swift(>=3.0)
+    var shared: UILabel {
+        struct Singleton {
+            static let value = UILabel().then {
+                $0.numberOfLines = 0
+            }
+        }
+
+        return Singleton.value
+    }
+#else
+    func sharedInstance() -> UILabel {
+        struct Singleton {
+            static let value = UILabel().then {
+                $0.numberOfLines = 0
+            }
+        }
+
+        return Singleton.value
+    }
+#endif
+}
+
 /// :nodoc:
 public extension UILabel {
 
-    // FIXME: unable to make it work in an app
-
+    // FIXME: doesn't seem to work in production
 #if swift(>=3.0)
     func boundingRectForCharacters(in range: NSRange) -> CGRect {
         guard let attributedText = self.attributedText else { return CGRect.null }
