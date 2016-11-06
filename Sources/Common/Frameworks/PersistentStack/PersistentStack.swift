@@ -22,7 +22,6 @@ public extension PersistentStack {
 
 public extension PersistentStack {
 
-#if swift(>=3.0)
     static func context(forApp name: String, type: String, at directory: FileManager.SearchPathDirectory = .documentDirectory) throws -> NSManagedObjectContext {
         let url = FileManager.default
             .urls(for: directory, in: .userDomainMask)
@@ -40,23 +39,4 @@ public extension PersistentStack {
             $0.undoManager = UndoManager()
         }
     }
-#else
-    static func context(forApp name: String, type: String, atDirectory directory: NSSearchPathDirectory = .DocumentDirectory) throws -> NSManagedObjectContext {
-        let url = NSFileManager.defaultManager()
-            .URLsForDirectory(directory, inDomains: .UserDomainMask)
-            .last?
-            .URLByAppendingPathComponent("\(name)Data")
-
-        let model = NSBundle.mainBundle()
-            .URLForResource(name, withExtension: "momd")
-            .flatMap(NSManagedObjectModel.init(contentsOfURL:))
-
-        return try NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType).then {
-            $0.persistentStoreCoordinator = try model
-                .map(NSPersistentStoreCoordinator.init(managedObjectModel:))?
-                .then { try $0.addPersistentStoreWithType(type, configuration: nil, URL: url, options: nil) }
-            $0.undoManager = NSUndoManager()
-        }
-    }
-#endif
 }

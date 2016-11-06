@@ -8,7 +8,6 @@
 
 import Foundation
 
-#if swift(>=3.0)
 public extension Scanner {
 
     // MARK: String
@@ -92,5 +91,3 @@ public extension Scanner {
         return self.scanHexInt64(&result) ? result : nil
     }
 }
-#else
-#endif

@@ -10,7 +10,6 @@ import CloudKit
 
 public extension CKRecord {
 
-#if swift(>=3.0)
     var metadata: Data {
         let data = NSMutableData()
 
@@ -28,23 +27,4 @@ public extension CKRecord {
         self.init(coder: coder)
         coder.finishDecoding()
     }
-#else
-    var metadata: NSData {
-        let data = NSMutableData()
-
-        NSKeyedArchiver(forWritingWithMutableData: data).then {
-            $0.requiresSecureCoding = true
-            self.encodeSystemFieldsWithCoder($0)
-            $0.finishEncoding()
-        }
-
-        return data
-    }
-
-    convenience init?(metadata: NSData) {
-        let coder = NSKeyedUnarchiver(forReadingWithData: metadata)
-        self.init(coder: coder)
-        coder.finishDecoding()
-    }
-#endif
 }

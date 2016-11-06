@@ -6,7 +6,6 @@
  * Copyright (c) 2016 Hai Nguyen.
  */
 
-#if swift(>=3.0)
 public extension RangeReplaceableCollection where Index == Int {
 
     mutating func apply(_ changes: [Change<(index: Index, element: Iterator.Element)>]) {
@@ -24,5 +23,3 @@ public extension RangeReplaceableCollection where Index == Int {
         return result
     }
 }
-#else
-#endif

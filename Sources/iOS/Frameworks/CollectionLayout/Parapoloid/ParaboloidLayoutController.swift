@@ -25,30 +25,17 @@ public struct ParaboloidLayoutController {
 
     // MARK: Initialization
 
-#if swift(>=3.0)
     public init(formula: @escaping (CGPoint) -> CGFloat, zValueLimits limits: Limits? = nil) {
         self.formula = formula
         self.zValueLimits = limits
     }
-#else
-    public init(formula: (CGPoint) -> CGFloat, zValueLimits limits: Limits? = nil) {
-        self.formula = formula
-        self.zValueLimits = limits
-    }
-#endif
 
     /*
      * Similar to Apple Watch home screen parapoloid function
      */
-#if swift(>=3.0)
     public init(bounds: CGRect = UIScreen.main.bounds) {
         self.init(formula: { ParaboloidLayoutController.AppleWatchHomeScreenFormula(bounds, $0) })
     }
-#else
-    public init(bounds: CGRect = UIScreen.mainScreen().bounds) {
-        self.init(formula: { ParaboloidLayoutController.AppleWatchHomeScreenFormula(bounds, $0) })
-    }
-#endif
 
     // MARK: Support Method
 

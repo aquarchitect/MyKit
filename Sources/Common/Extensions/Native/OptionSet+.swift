@@ -7,7 +7,6 @@
  *
  */
 
-#if swift(>=3.0)
 public extension OptionSet where RawValue == Int {
 
     init(bitIndexes: [Int]) {
@@ -19,5 +18,3 @@ public extension OptionSet where RawValue == Int {
         self.init(bitIndexes: bitIndexes)
     }
 }
-#else
-#endif

@@ -8,7 +8,6 @@
 
 import Foundation
 
-#if swift(>=3.0)
 internal extension Collection where Iterator.Element: Comparable, Index == Int, IndexDistance == Int {
 
     /*
@@ -179,5 +178,3 @@ public extension Collection where Iterator.Element: Equatable, Index == Int, Sub
         return thisCollection._compare(otherCollection, section: section)
     }
 }
-#else
-#endif

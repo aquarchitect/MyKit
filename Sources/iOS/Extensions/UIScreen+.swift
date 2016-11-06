@@ -11,18 +11,10 @@ import UIKit
 public extension UIScreen {
 
     var proportionalWidth: CGFloat {
-#if swift(>=3.0)
         if case .compact = self.traitCollection.horizontalSizeClass {
             return self.bounds.width
         } else {
             return min(self.bounds.width, self.bounds.height) * 2/3
         }
-#else
-        if case .Compact = self.traitCollection.horizontalSizeClass {
-            return self.bounds.width
-        } else {
-            return min(self.bounds.width, self.bounds.height) * 2/3
-        }
-#endif
     }
 }

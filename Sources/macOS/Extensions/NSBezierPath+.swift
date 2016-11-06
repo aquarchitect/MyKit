@@ -19,7 +19,6 @@ public extension NSBezierPath {
         self.init(points: points)
     }
 
-    #if swift(>=3.0)
     func drawLines(_ points: [NSPoint]) {
         precondition(points.count > 1, "Invalid number of points!")
 
@@ -30,16 +29,4 @@ public extension NSBezierPath {
     func drawLines(_ points: NSPoint...) {
         drawLines(points)
     }
-    #else
-    func drawLines(points: [NSPoint]) {
-        precondition(points.count > 1, "Invalid number of points!")
-
-        self.moveToPoint(points.first!)
-        points.dropFirst().forEach(self.lineToPoint)
-    }
-
-    func drawLines(points: NSPoint...) {
-        drawLines(points)
-    }
-    #endif
 }

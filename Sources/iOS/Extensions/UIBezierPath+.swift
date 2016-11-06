@@ -19,7 +19,6 @@ public extension UIBezierPath {
         self.init(points: points)
     }
 
-#if swift(>=3.0)
     func drawLines(_ points: [CGPoint]) {
         precondition(points.count > 1, "Invalid number of points!")
 
@@ -30,23 +29,10 @@ public extension UIBezierPath {
     func drawLines(_ points: CGPoint...) {
         drawLines(points)
     }
-#else
-    func drawLines(points: [CGPoint]) {
-        precondition(points.count > 1, "Invalid number of points!")
-
-        self.moveToPoint(points.first!)
-        points.dropFirst().forEach(self.addLineToPoint)
-    }
-
-    func drawLines(points: CGPoint...) {
-        drawLines(points)
-    }
-#endif
 }
 
 public extension UIBezierPath {
 
-#if swift(>=3.0)
     var outlineStroke: UIBezierPath {
         return CGPath(__byStroking: self.cgPath,
                       transform: nil,
@@ -57,17 +43,4 @@ public extension UIBezierPath {
             .flatMap(UIBezierPath.init(cgPath:))
             ?? UIBezierPath()
     }
-#else
-    final func outlineStroke() -> UIBezierPath {
-        return CGPathCreateCopyByStrokingPath(self.CGPath,
-                                       nil,
-                                       self.lineWidth,
-                                       self.lineCapStyle,
-                                       self.lineJoinStyle,
-                                       self.miterLimit)
-            .map(UIBezierPath.init(CGPath:))
-            ?? UIBezierPath()
-    }
-
-#endif
 }

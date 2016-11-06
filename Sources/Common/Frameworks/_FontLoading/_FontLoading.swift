@@ -8,7 +8,6 @@
 
 import Foundation
 
-#if swift(>=3.0)
 func registerFont(from file: String, of bundle: Bundle) throws {
     let ext = "ttf"
 
@@ -33,35 +32,6 @@ func registerFont(from file: String, of bundle: Bundle) throws {
     guard CTFontManagerRegisterGraphicsFont(.init(provider), nil)
         else { throw Exception.failedToRegisterFont(_file) }
 }
-#else
-func registerFontFromFile(file: String, ofBundle bundle: NSBundle) throws {
-    let ext = "ttf"
-
-    let _file = !file.hasSuffix(ext) ? file : {
-        let endIndex = file.endIndex
-        let startIndex = endIndex.advancedBy(-ext.characters.count)
-        return file[startIndex..<endIndex]
-        }()
-
-    enum Exception: ErrorType {
-
-        case unableToOpen(file: String)
-        case failedToRegisterFont(String)
-    }
-
-
-
-    // get file url
-    guard let url = bundle.URLForResource(file, withExtension: ext),
-        let provider = (NSData(contentsOfURL: url).flatMap { CGDataProviderCreateWithCFData($0) })
-        else { throw Exception.unableToOpen(file: _file) }
-
-    // register font
-    let font = CGFontCreateWithDataProvider(provider)
-    guard CTFontManagerRegisterGraphicsFont(font, nil)
-        else { throw Exception.failedToRegisterFont(_file) }
-}
-#endif
 
 /*
  * Public scope lets the test module to recognize the protocol;
@@ -75,7 +45,6 @@ public protocol _FontLoading: class {
 extension _FontLoading {
 
     /// Return a font object from default bundle
-#if swift(>=3.0)
     static func getFont(name: String, size: CGFloat, fromFile file: String) -> Self? {
         return Self(name: name, size: size) ?? {
             guard let bundle = Bundle.default else { return nil }
@@ -89,21 +58,6 @@ extension _FontLoading {
             return Self(name: name, size: size)
         }()
     }
-#else
-    static func getFont(name name: String, size: CGFloat, fromFile file: String) -> Self? {
-        return Self(name: name, size: size) ?? {
-            guard let bundle = NSBundle.defaultBundle() else { return nil }
-
-            do {
-                try registerFontFromFile(file, ofBundle: bundle)
-            } catch {
-                print(error)
-            }
-
-            return Self(name: name, size: size)
-        }()
-    }
-#endif
 }
 
 #if os(iOS)

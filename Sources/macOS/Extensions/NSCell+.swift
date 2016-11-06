@@ -10,7 +10,6 @@ import AppKit
 
 public extension NSCell {
 
-    #if swift(>=3.0)
     static var shared: NSCell {
         struct Singleton {
             static let value = NSCell().then {
@@ -20,15 +19,4 @@ public extension NSCell {
 
         return Singleton.value
     }
-    #else
-    static func sharedInstance() -> UILabel {
-        struct Singleton {
-            static let value = UILabel().then {
-                $0.numberOfLines = 0
-            }
-        }
-
-        return Singleton.value
-    }
-    #endif
 }

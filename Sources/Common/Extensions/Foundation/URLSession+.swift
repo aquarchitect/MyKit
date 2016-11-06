@@ -8,7 +8,6 @@
 
 import Foundation
 
-#if swift(>=3.0)
 public extension URLSession {
 
     func dataTask(with url: URL) -> Promise<(Data, URLResponse)> {
@@ -25,5 +24,3 @@ public extension URLSession {
         }
     }
 }
-#else
-#endif

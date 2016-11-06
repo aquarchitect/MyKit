@@ -8,7 +8,6 @@
 
 import Foundation
 
-#if swift(>=3.0)
 extension Timer {
 
     final class TimeIntervalObservable: Observable<TimeInterval> {
@@ -50,5 +49,3 @@ public extension Timer {
         return schedule(count: UInt.max, timeInterval: timeInterval)
     }
 }
-#else
-#endif

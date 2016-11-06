@@ -7,7 +7,6 @@
  */
 
 /// :nodoc:
-#if swift(>=3.0)
 public extension Sequence {
 
     public func pair<Key: Hashable, Value>(_ transform: (Iterator.Element) throws -> (Key, Value)) rethrows -> Dictionary<Key, Value> {
@@ -21,5 +20,3 @@ public extension Sequence {
         return results
     }
 }
-#else
-#endif

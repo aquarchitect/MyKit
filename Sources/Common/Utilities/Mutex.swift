@@ -23,17 +23,9 @@ public class Mutex {
         pthread_mutex_destroy(&mutex)
     }
 
-#if swift(>=3.0)
     public func perform(_ execute: () -> Void) {
         pthread_mutex_lock(&mutex)
         execute()
         pthread_mutex_unlock(&mutex)
     }
-#else
-    public func perform(@noescape execute: () -> Void) {
-        pthread_mutex_lock(&mutex)
-        execute()
-        pthread_mutex_unlock(&mutex)
-    }
-#endif
 }

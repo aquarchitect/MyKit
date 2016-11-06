@@ -13,7 +13,6 @@ public struct Arbitrary {}
 
 public extension Arbitrary {
 
-#if swift(>=3.0)
     static func element<C: Collection>(in c: C) -> C.Iterator.Element
     where C.IndexDistance == Int {
         precondition(!c.isEmpty, "No elements for random selecting")
@@ -32,24 +31,6 @@ public extension Arbitrary {
 
         return c[startIndex..<endIndex]
     }
-#else
-    static func elementInCollection<C: CollectionType where C.Index.Distance == Int>(collection: C) -> C.Generator.Element {
-        precondition(!collection.isEmpty, "No elements for random selecting")
-
-        let distance = Int(arc4random_uniform(UInt32(collection.count)))
-        return collection[collection.startIndex.advancedBy(distance)]
-    }
-
-    static func subsequenceInCollection<C: CollectionType where C.Index.Distance == Int>(collection: C) -> C.SubSequence {
-        let startDistance = Int(arc4random_uniform(UInt32(collection.count)))
-        let startIndex = collection.startIndex.advancedBy(startDistance)
-
-        let endDistance = elementInCollection(startDistance..<collection.count)
-        let endIndex = collection.startIndex.advancedBy(endDistance)
-
-        return collection[startIndex..<endIndex]
-    }
-#endif
 }
 
 // MARK: - Primitive Types
@@ -64,15 +45,9 @@ public extension Arbitrary {
         return Int(arc4random())
     }
 
-#if swift(>=3.0)
     static func int(in range: CountableRange<Int>) -> Int {
         return element(in: range)
     }
-#else
-    static func intInRange(range: Range<Int>) -> Int {
-        return elementInCollection(range)
-    }
-#endif
 }
 
 // MARK: - Hexadecimal Value
@@ -94,18 +69,10 @@ public extension Arbitrary {
 public extension Arbitrary {
 
     static var sentence: String {
-#if swift(>=3.0)
         return element(in: LoremIpsum.shared)
-#else
-        return (LoremIpsum.sharedInstance >>> elementInCollection)()
-#endif
     }
 
     static var paragraph: String {
-#if swift(>=3.0)
         return subsequence(in: LoremIpsum.shared).joined(separator: ". ")
-#else
-        return (LoremIpsum.sharedInstance >>> subsequenceInCollection)().joinWithSeparator(". ")
-#endif
     }
 }
