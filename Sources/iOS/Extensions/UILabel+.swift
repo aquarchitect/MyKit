@@ -11,7 +11,7 @@ import UIKit
 public extension UILabel {
 
 #if swift(>=3.0)
-    var shared: UILabel {
+    static var shared: UILabel {
         struct Singleton {
             static let value = UILabel().then {
                 $0.numberOfLines = 0
@@ -21,7 +21,7 @@ public extension UILabel {
         return Singleton.value
     }
 #else
-    func sharedInstance() -> UILabel {
+    static func sharedInstance() -> UILabel {
         struct Singleton {
             static let value = UILabel().then {
                 $0.numberOfLines = 0

@@ -61,7 +61,7 @@ public extension GenericTableView {
                 return .init(startIndex ... endIndex)
             }()
 
-            let updates = rowModels.compare(rowModels, range: range, section: 0)
+            let updates = self.rowModels.compare(rowModels, range: range, section: 0)
             self.rowModels = rowModels
 
             self.beginUpdates()
@@ -128,7 +128,7 @@ public extension GenericTableView {
                 return .init(startIndex ... endIndex)
             }()
 
-            let updates = rowModels.compare(rowModels, range: range, section: 0)
+            let updates = self.rowModels.compare(rowModels, range: range, section: 0)
             self.rowModels = rowModels
 
             self.beginUpdates()

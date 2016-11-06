@@ -12,9 +12,9 @@ import Foundation
 internal extension Collection where Iterator.Element: Comparable, Index == Int, IndexDistance == Int {
 
     /*
-     * Due to the complexity of binary search implementation, the
-     * core team rejects this proposal to the language. Therefore,
-     * this extension will be kept internal for the time being.
+     * The Swift core team has decided not to integrate binary search into
+     * the language because of its complexity. Therefore, this implementation
+     * is not made public in the meantime.
      */
     func binarySearch(_ element: Iterator.Element) -> Index? {
         func _binarySearch(in range: Range<Index>) -> Index? {
