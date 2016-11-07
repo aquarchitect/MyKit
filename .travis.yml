@@ -27,7 +27,7 @@ script:
   - if [ "$TRAVIS_TAG" == "" ]; then
         make xctest SCHEME=iOS DESTINATION="OS=10.0,name=iPhone SE";
         make xctest SCHEME=macOS DESTINATION="arch=x86_64";
-  fi
+    fi
 
 after_success:
   - if [[ "$TRAVIS_TAG" == "" ]]; then
