@@ -12,10 +12,31 @@ open class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableView
 
     // MARK: Property
 
-    open fileprivate(set) var rowModels: [Model] = []
-
     open var rowRenderer: ((Row, Model) -> Void)? {
         didSet { self.reloadData() }
+    }
+
+    open fileprivate(set) var rowModels: [Model] = [] {
+        didSet {
+            /*
+             * Giving an estimated range of possibly visible row
+             * will speed up the diff computation on a much narrow
+             * subset of elements.
+             */
+            let range: CountableRange<Int> = {
+                let startIndex = self.indexPathsForVisibleRows?.first?.row ?? 0
+                let endIndex = startIndex + estimatedNumberOfVisibleRows
+                return .init(startIndex ... endIndex)
+            }()
+
+            let updates = oldValue.compareThoroughly(rowModels, range: range) { IndexPath(arrayLiteral: 0, $0) }
+
+            self.beginUpdates()
+            self.reloadRows(at: updates.reloads, with: .automatic)
+            self.deleteRows(at: updates.deletes, with: .fade)
+            self.insertRows(at: updates.inserts, with: .automatic)
+            self.endUpdates()
+        }
     }
 
     // MARK: Initialization
@@ -40,37 +61,6 @@ open class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableView
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return tableView.dequeueReusableCell(withIdentifier: "\(type(of: Row.self))-0", for: indexPath).then {
             rowRenderer?($0 as! Row, rowModels[indexPath.row])
-        }
-    }
-}
-
-public extension GenericTableView {
-
-    func render(_ rowModels: [Model], update: Update) {
-        switch update {
-        case .lcs:
-            /*
-             * Giving an estimated range of possibly visible row 
-             * will speed up the diff computation on a much narrow
-             * subset of elements.
-             */
-            let range: CountableRange<Int> = {
-                let startIndex = self.indexPathsForVisibleRows?.first?.row ?? 0
-                let endIndex = startIndex + estimatedNumberOfVisibleRows
-                return .init(startIndex ... endIndex)
-            }()
-
-            let updates = self.rowModels.compare(rowModels, range: range, section: 0)
-            self.rowModels = rowModels
-
-            self.beginUpdates()
-            self.reloadRows(at: updates.reloads, with: .automatic)
-            self.deleteRows(at: updates.deletes, with: .fade)
-            self.insertRows(at: updates.inserts, with: .automatic)
-            self.endUpdates()
-        case .forcefull:
-            self.rowModels = rowModels
-            self.reloadData()
         }
     }
 }

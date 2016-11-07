@@ -2,7 +2,7 @@
  * NSCell+.swift
  * MyKit
  *
- * Created by Hai Nguyen on 11/2/16.
+ * Created by Hai Nguyen.
  * Copyright (c) 2016 Hai Nguyen.
  */
 

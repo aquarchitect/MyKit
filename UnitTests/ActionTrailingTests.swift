@@ -2,7 +2,7 @@
  * ActionTrailingTests.swift
  * MyKit
  *
- * Created by Hai Nguyen on 10/2/16
+ * Created by Hai Nguyen.
  * Copyright (c) 2016 Hai Nguyen. All rights reserved.
  *
  */

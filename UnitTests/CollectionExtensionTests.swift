@@ -70,7 +70,7 @@ extension CollectionExtensionTests {
 
     func testChangingIndexPaths() {
         let (c1s, c2s) = sampleCharacters
-        let changes = c1s.compare(c2s, section: 0)
+        let changes = c1s.compareThoroughly(c2s) { IndexPath(arrayLiteral: 0, $0) }
 
         XCTAssertEqual(changes.reloads, [IndexPath(indexes: [0, 2])])
         XCTAssertEqual(changes.deletes, [IndexPath(indexes: [0, 1])])

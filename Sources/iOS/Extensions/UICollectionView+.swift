@@ -8,11 +8,6 @@
 
 import UIKit
 
-public extension UICollectionView {
-
-    enum Update { case lcs, forcefull }
-}
-
 // MARK: - Miscellaneous
 
 /// :nodoc:

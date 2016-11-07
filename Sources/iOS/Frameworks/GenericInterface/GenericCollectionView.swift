@@ -8,17 +8,15 @@
 
 import UIKit
 
-open class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
+open class GenericCollectionView<Model: Equatable, Cell: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
 
     // MARK: Property
-
-    open fileprivate(set) var cellModels: [Model] = []
 
     /*
      * Providing an estimated of number of visible row will
      * speed up the diff computation.
      *
-     * Unlike table view, it is impossible to calculate a 
+     * Unlike table view, it is impossible to calculate a
      * possible range for diff computation because of the
      * nature of dynamic cell layout.
      */
@@ -26,6 +24,30 @@ open class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollectio
 
     open var cellRenderer: ((Cell, Model) -> Void)? {
         didSet { self.reloadData() }
+    }
+
+    open fileprivate(set) var cellModels: [Model] = [] {
+        didSet {
+            let range: CountableRange<Int>? = {
+                guard estimatedNumberOfVisibleCells != 0 else { return nil }
+
+                /*
+                 * the assumption is `indexPathsForVisibleItems` in an
+                 * ascending order.
+                 */
+                let startIndex = self.indexPathsForVisibleItems.first?.item ?? 0
+                let endIndex = startIndex + estimatedNumberOfVisibleCells
+                return CountableRange(startIndex ... endIndex)
+            }()
+
+            let updates = oldValue.compareThoroughly(cellModels, range: range) { IndexPath(arrayLiteral: 0, $0) }
+            
+            self.performBatchUpdates({
+                self.reloadItems(at: updates.reloads)
+                self.deleteItems(at: updates.deletes)
+                self.insertItems(at: updates.inserts)
+            }, completion: nil)
+        }
     }
 
     // MARK: Initialization
@@ -49,34 +71,6 @@ open class GenericCollectionView<Model, Cell: UICollectionViewCell>: UICollectio
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCell(withReuseIdentifier: "\(type(of: Cell.self))", for: indexPath).then {
             cellRenderer?($0 as! Cell, cellModels[indexPath.item])
-        }
-    }
-}
-
-public extension GenericCollectionView where Model: Equatable {
-
-    func render(_ cellModels: [Model], update: Update) {
-        switch update {
-        case .lcs:
-
-            let range: CountableRange<Int>? = {
-                guard estimatedNumberOfVisibleCells != 0 else { return nil }
-                let startIndex = self.indexPathsForVisibleItems.first?.item ?? 0
-                let endIndex = startIndex + estimatedNumberOfVisibleCells
-                return CountableRange(startIndex ... endIndex)
-            }()
-
-            let updates = self.cellModels.compare(cellModels, range: range, section: 0)
-            self.cellModels = cellModels
-
-            self.performBatchUpdates({
-                self.reloadItems(at: updates.reloads)
-                self.deleteItems(at: updates.deletes)
-                self.insertItems(at: updates.inserts)
-                }, completion: nil)
-        case .forcefull:
-            self.cellModels = cellModels
-            self.reloadData()
         }
     }
 }

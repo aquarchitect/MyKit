@@ -135,20 +135,45 @@ public extension Collection where Iterator.Element: Equatable, Index == Int {
 
 public extension Collection where Iterator.Element: Equatable, Index == Int, SubSequence.Iterator.Element: Equatable {
 
-    /**
-     * This is designed for `UITableView` and `UICollecitonView`.
-     */
-    private func _compare(_ other: Self, section: Int) -> (reloads: [IndexPath], deletes: [IndexPath], inserts: [IndexPath]) {
+    private func _compareOptimally<T>(_ other: Self, indexTransformer transfomer: (Int) -> T) -> (deletes: [T], inserts: [T]) {
+        let minCapacity = Swift.min(self.count, other.count).toIntMax()
+
+        var deletes: [T] = []; deletes.reserveCapacity(Int(minCapacity))
+        var inserts: [T] = []; inserts.reserveCapacity(Int(minCapacity))
+
+        for change in self.backtrackChanges(byComparing: other) {
+            switch (change.map { transfomer($0.index) }) {
+            case .delete(let value): deletes.insert(value, at: 0)
+            case .insert(let value): inserts.insert(value, at: 0)
+            }
+        }
+
+        return (deletes, inserts)
+    }
+
+    func compareOptimally<T>(_ other: Self, range: CountableRange<Index>? = nil, indexTransformer transformer: (Int) -> T) -> (deletes: [T], inserts: [T]) {
+        guard let _range = range else {
+            return self._compareOptimally(other, indexTransformer: transformer)
+        }
+
+        let thisRange = (self.startIndex ..< self.endIndex).clamped(to: _range)
+        let otherRange = (other.startIndex ..< other.endIndex).clamped(to: _range)
+
+        let thisCollection = self[thisRange].map { $0 }
+        let otherCollection = other[otherRange].map { $0 }
+
+        return thisCollection._compareOptimally(otherCollection, indexTransformer: transformer)
+    }
+
+    private func _compareThoroughly<T: Comparable>(_ other: Self, indexTransformer transformer: (Int) -> T) -> (reloads: [T], deletes: [T], inserts: [T]) {
         let count = Swift.max(self.count, other.count).toIntMax()
 
-        var inserts: [IndexPath] = []; inserts.reserveCapacity(Int(count))
-        var deletes: [IndexPath] = []; deletes.reserveCapacity(Int(count))
-        var reloads: [IndexPath] = []; reloads.reserveCapacity(Int(count))
+        var inserts: [T] = []; inserts.reserveCapacity(Int(count))
+        var deletes: [T] = []; deletes.reserveCapacity(Int(count))
+        var reloads: [T] = []; reloads.reserveCapacity(Int(count))
 
-        backtrackChanges(byComparing: other).forEach {
-            let change = $0.map { IndexPath(arrayLiteral: section, $0.index) }
-
-            switch change {
+        for change in backtrackChanges(byComparing: other) {
+            switch (change.map { transformer($0.index) }) {
             case .delete(let value):
                 if let index = inserts.binarySearch(value) {
                     inserts.remove(at: index)
@@ -164,9 +189,9 @@ public extension Collection where Iterator.Element: Equatable, Index == Int, Sub
         return (reloads, deletes, inserts)
     }
 
-    func compare(_ other: Self, range: CountableRange<Index>? = nil, section: Int) -> (reloads: [IndexPath], deletes: [IndexPath], inserts: [IndexPath]) {
+    func compareThoroughly<T: Comparable>(_ other: Self, range: CountableRange<Index>? = nil, indexTransfomer transformer: (Int) -> T) -> (reloads: [T], deletes: [T], inserts: [T]) {
         guard let _range = range else {
-            return self._compare(other, section: section)
+            return self._compareThoroughly(other, indexTransformer: transformer)
         }
 
         let thisRange = (self.startIndex ..< self.endIndex).clamped(to: _range)
@@ -175,6 +200,6 @@ public extension Collection where Iterator.Element: Equatable, Index == Int, Sub
         let thisCollection = self[thisRange].map { $0 }
         let otherCollection = other[otherRange].map { $0 }
 
-        return thisCollection._compare(otherCollection, section: section)
+        return thisCollection._compareThoroughly(otherCollection, indexTransformer: transformer)
     }
 }

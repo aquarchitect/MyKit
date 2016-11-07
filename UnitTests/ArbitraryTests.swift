@@ -2,7 +2,7 @@
  * ArbitraryTests.swift
  * MyKit
  *
- * Created by Hai Nguyen on 10/26/16.
+ * Created by Hai Nguyen.
  * Copyright (c) 2016 Hai Nguyen.
  */
 
