@@ -55,12 +55,11 @@ public extension Arbitrary {
 public extension Arbitrary {
 
     static var hexString: String {
-        let value = arc4random_uniform(UInt32(UInt16.max))
-        return String(format: "#%06X", value)
+        return element(in: ColorPalette.shared)
     }
 
     static var hexUInt: UInt {
-        return UInt(arc4random_uniform(UInt32(UInt16.max)))
+        return element(in: ColorPalette.shared.flatMap { $0.hexUInt })
     }
 }
 

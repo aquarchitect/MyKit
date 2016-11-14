@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal extension Collection where Iterator.Element: Comparable, Index == Int, IndexDistance == Int {
+extension Collection where Iterator.Element: Comparable {
 
     /*
      * The Swift core team has decided not to integrate binary search into
@@ -18,15 +18,14 @@ internal extension Collection where Iterator.Element: Comparable, Index == Int, 
     func binarySearch(_ element: Iterator.Element) -> Index? {
         func _binarySearch(in range: Range<Index>) -> Index? {
             guard range.lowerBound < range.upperBound else { return nil }
-
-            let midIndex = self.index(range.lowerBound, offsetBy: (range.upperBound - range.lowerBound)/2)
+            let midIndex = self.index(range.lowerBound, offsetBy: self.count/2)
 
             switch self[midIndex] {
             case _ where element < self[midIndex]:
-                let _range = Range(range.lowerBound..<midIndex)
+                let _range = Range(range.lowerBound ..< midIndex)
                 return _binarySearch(in: _range)
             case _ where element > self[midIndex]:
-                let _range = Range((midIndex+1)..<range.upperBound)
+                let _range = Range(self.index(after: range.lowerBound) ..< range.upperBound)
                 return _binarySearch(in: _range)
             default:
                 return midIndex
@@ -38,7 +37,7 @@ internal extension Collection where Iterator.Element: Comparable, Index == Int, 
 }
 
 /// :nodoc:
-internal extension Collection where Iterator.Element: Equatable, Index == Int {
+extension Collection where Iterator.Element: Equatable, Index == Int {
 
     /*
      * Longest Common Sequence
@@ -177,12 +176,12 @@ public extension Collection where Iterator.Element: Equatable, Index == Int, Sub
             case .delete(let value):
                 if let index = inserts.binarySearch(value) {
                     inserts.remove(at: index)
-                    reloads.insert(value, at: 0)
+                    reloads.insert(value, at: inserts.startIndex)
                 } else {
-                    deletes.insert(value, at: 0)
+                    deletes.insert(value, at: inserts.startIndex)
                 }
             case .insert(let value):
-                inserts.insert(value, at: 0)
+                inserts.insert(value, at: inserts.startIndex)
             }
         }
 

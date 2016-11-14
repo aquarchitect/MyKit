@@ -17,20 +17,19 @@ struct LoremIpsum: Collection {
 
     fileprivate let storage: [String]
 
-    let startIndex = 0
-    var endIndex: Int {
-        return storage.count
+    var startIndex: Int {
+        return storage.startIndex
     }
 
-    fileprivate init() throws {
-        let name = "LoremIpsum", ext = "txt"
+    var endIndex: Int {
+        return storage.endIndex
+    }
 
-        guard let url = Bundle.default?.url(forResource: name, withExtension: ext) else {
-            enum FileIOError: Error { case unableToOpen(file: String) }
-            throw FileIOError.unableToOpen(file: "\(name).\(ext)")
-        }
+    fileprivate init() {
+        guard let url = Bundle.default?.url(forResource: "LoremIpsum", withExtension: "txt")
+            else { fatalError("Unable to open source file!") }
 
-        let lorem = try String(contentsOf: url)
+        let lorem = try! String(contentsOf: url)
         let range = lorem.startIndex..<lorem.endIndex
         var storage = [String]()
 
@@ -66,10 +65,7 @@ extension LoremIpsum: CustomDebugStringConvertible {
 extension LoremIpsum {
 
     static var shared: LoremIpsum {
-        struct Singleton {
-            static var value = try! LoremIpsum()
-        }
-
+        struct Singleton { static var value = LoremIpsum() }
         return Singleton.value
     }
 }
