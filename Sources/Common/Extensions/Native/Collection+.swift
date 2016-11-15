@@ -37,22 +37,30 @@ extension Collection where Iterator.Element: Comparable {
 }
 
 /// :nodoc:
-extension Collection where Iterator.Element: Equatable, Index == Int {
+extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
+
+    fileprivate var range: Range<Index> {
+        return self.startIndex ..< self.endIndex
+    }
 
     /*
      * Longest Common Sequence
      */
-    func lcsMatrix<C: Collection>(byComparing other: C) -> Matrix<Index>
-    where C.Iterator.Element == Iterator.Element, C.Index == Index {
-        let rows = (self.count + 2).toIntMax()
-        let columns = (other.count + 2).toIntMax()
+    func lcsMatrix<C: Collection>(byComparing other: C, in range: Range<Index>? = nil) -> Matrix<Index>
+        where C.SubSequence.Iterator.Element == SubSequence.Iterator.Element, C.Index == Index
+    {
+        let thisRange = self.range.clamped(to: range ?? self.range)
+        let otherRange = other.range.clamped(to: range ?? other.range)
+
+        let rows = thisRange.count + 2
+        let columns = otherRange.count + 2
 
         var matrix = Matrix(repeating: 1, rows: Int(rows), columns: Int(columns))
         matrix[row: 0] = Array(repeating: 0, count: Int(columns))
         matrix[column: 0] = Array(repeating: 0, count: Int(rows))
 
-        for (i, thisElement) in self.enumerated() {
-            for (j, otherElement) in other.enumerated() {
+        for (i, thisElement) in self[thisRange].enumerated() {
+            for (j, otherElement) in other[otherRange].enumerated() {
                 if thisElement == otherElement {
                     matrix[i+2, j+2] = matrix[i+1, j+1] + 1
                 } else {
@@ -65,10 +73,13 @@ extension Collection where Iterator.Element: Equatable, Index == Int {
     }
 }
 
-public extension Collection where Iterator.Element: Equatable, Index == Int {
+public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
 
-    func repeatingElements(byComparing other: Self) -> [Iterator.Element] {
-        let matrix = lcsMatrix(byComparing: other)
+    func repeatingElements(byComparing other: Self, in range: Range<Index>? = nil) -> [Iterator.Element] {
+        let matrix = lcsMatrix(byComparing: other, in: range)
+
+        let thisRange = self.range.clamped(to: range ?? self.range)
+        let otherRange = other.range.clamped(to: range ?? other.range)
 
         func matrixLookup(at coord: (i: Int, j: Int), result: [Iterator.Element]) -> [Iterator.Element] {
             guard coord.i >= 2 && coord.j >= 2 else { return result }
@@ -79,35 +90,35 @@ public extension Collection where Iterator.Element: Equatable, Index == Int {
             case matrix[coord.i-1, coord.j]:
                 return matrixLookup(at: (coord.i-1, coord.j), result: result)
             default:
-                return matrixLookup(at: (coord.i-1, coord.j-1), result: [self[coord.i-2]] + result)
+                let index = thisRange.lowerBound + coord.i - 2
+                return matrixLookup(at: (coord.i-1, coord.j-1), result: [self[index]] + result)
             }
-
         }
 
-        let i = Int((self.count + 1).toIntMax())
-        let j = Int((other.count + 1).toIntMax())
-        return matrixLookup(at: (i, j), result: [])
+        return matrixLookup(at: (thisRange.count + 1, otherRange.count + 1), result: [])
     }
 
     typealias Step = (index: Index, element: Generator.Element)
 
-    func backtrackChanges(byComparing other: Self) -> AnyIterator<Change<Step>> {
-        let matrix = lcsMatrix(byComparing: other)
+    func backtrackChanges(byComparing other: Self, in range: Range<Index>? = nil) -> AnyIterator<Change<Step>> {
+        let matrix = lcsMatrix(byComparing: other, in: range)
+        let thisRange = self.range.clamped(to: range ?? self.range)
+        let otherRange = other.range.clamped(to: range ?? other.range)
 
-        var i = Int((self.count + 1).toIntMax())
-        var j = Int((other.count + 1).toIntMax())
+        var i = thisRange.count + 1
+        var j = otherRange.count + 1
 
         return AnyIterator {
             while i >= 1 && j >= 1 {
                 switch matrix[i, j] {
                 case matrix[i, j-1]:
                     j -= 1
-                    let step: Step = (j-1, other[j-1])
-                    return .insert(step)
+                    let index = otherRange.lowerBound + j - 1
+                    return .insert((index, other[index]))
                 case matrix[i-1, j]:
                     i -= 1
-                    let step: Step = (i-1, self[i-1])
-                    return .delete(step)
+                    let index = thisRange.lowerBound + i - 1
+                    return .delete((index, self[index]))
                 default:
                     i -= 1
                     j -= 1
@@ -118,13 +129,16 @@ public extension Collection where Iterator.Element: Equatable, Index == Int {
         }
     }
 
-    func compare(_ other: Self) -> [Change<Step>] {
-        let count = Swift.max(self.count, other.count).toIntMax()
+    func compare(_ other: Self, in range: Range<Index>? = nil) -> [Change<Step>] {
+        let thisRange = self.range.clamped(to: range ?? self.range)
+        let otherRange = other.range.clamped(to: range ?? other.range)
+
+        let count = Swift.max(thisRange.count, otherRange.count)
 
         var results: [Change<Step>] = []
-        results.reserveCapacity(Int(count))
+        results.reserveCapacity(count)
 
-        backtrackChanges(byComparing: other).forEach {
+        backtrackChanges(byComparing: other, in: range).forEach {
             results.insert($0, at: 0)
         }
 
@@ -132,46 +146,38 @@ public extension Collection where Iterator.Element: Equatable, Index == Int {
     }
 }
 
-public extension Collection where Iterator.Element: Equatable, Index == Int, SubSequence.Iterator.Element: Equatable {
+public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
 
-    private func _compareOptimally<T>(_ other: Self, indexTransformer transfomer: (Int) -> T) -> (deletes: [T], inserts: [T]) {
-        let minCapacity = Swift.min(self.count, other.count).toIntMax()
+    func compareOptimally<C: RangeReplaceableCollection>(_ other: Self, in range: Range<Index>? = nil, indexTransformer transfomer: (Index) -> C.Iterator.Element) -> (deletes: C, inserts: C) {
+        let thisRange = self.range.clamped(to: range ?? self.range)
+        let otherRange = other.range.clamped(to: range ?? other.range)
 
-        var deletes: [T] = []; deletes.reserveCapacity(Int(minCapacity))
-        var inserts: [T] = []; inserts.reserveCapacity(Int(minCapacity))
+        let count = C.IndexDistance(Swift.max(thisRange.count, otherRange.count).toIntMax())
 
-        for change in self.backtrackChanges(byComparing: other) {
+        var inserts = C(); inserts.reserveCapacity(count)
+        var deletes = C(); deletes.reserveCapacity(count)
+
+        for change in self.backtrackChanges(byComparing: other, in: range) {
             switch (change.map { transfomer($0.index) }) {
-            case .delete(let value): deletes.insert(value, at: 0)
-            case .insert(let value): inserts.insert(value, at: 0)
+            case .delete(let value): deletes.insert(value, at: deletes.startIndex)
+            case .insert(let value): inserts.insert(value, at: inserts.startIndex)
             }
         }
 
         return (deletes, inserts)
     }
 
-    func compareOptimally<T>(_ other: Self, range: CountableRange<Index>? = nil, indexTransformer transformer: (Int) -> T) -> (deletes: [T], inserts: [T]) {
-        guard let _range = range else {
-            return self._compareOptimally(other, indexTransformer: transformer)
-        }
+    func compareThoroughly<C: RangeReplaceableCollection>(_ other: Self, in range: Range<Index>? = nil, indexTransformer transformer: (Index) -> C.Iterator.Element) -> (reloads: C, deletes: C, inserts: C) where C.Iterator.Element: Comparable {
+        let thisRange = self.range.clamped(to: range ?? self.range)
+        let otherRange = other.range.clamped(to: range ?? other.range)
 
-        let thisRange = (self.startIndex ..< self.endIndex).clamped(to: _range)
-        let otherRange = (other.startIndex ..< other.endIndex).clamped(to: _range)
+        let count = C.IndexDistance(Swift.max(thisRange.count, otherRange.count).toIntMax())
 
-        let thisCollection = self[thisRange].map { $0 }
-        let otherCollection = other[otherRange].map { $0 }
+        var inserts = C(); inserts.reserveCapacity(count)
+        var deletes = C(); deletes.reserveCapacity(count)
+        var reloads = C(); reloads.reserveCapacity(count)
 
-        return thisCollection._compareOptimally(otherCollection, indexTransformer: transformer)
-    }
-
-    private func _compareThoroughly<T: Comparable>(_ other: Self, indexTransformer transformer: (Int) -> T) -> (reloads: [T], deletes: [T], inserts: [T]) {
-        let count = Swift.max(self.count, other.count).toIntMax()
-
-        var inserts: [T] = []; inserts.reserveCapacity(Int(count))
-        var deletes: [T] = []; deletes.reserveCapacity(Int(count))
-        var reloads: [T] = []; reloads.reserveCapacity(Int(count))
-
-        for change in backtrackChanges(byComparing: other) {
+        for change in backtrackChanges(byComparing: other, in: range) {
             switch (change.map { transformer($0.index) }) {
             case .delete(let value):
                 if let index = inserts.binarySearch(value) {
@@ -186,19 +192,5 @@ public extension Collection where Iterator.Element: Equatable, Index == Int, Sub
         }
 
         return (reloads, deletes, inserts)
-    }
-
-    func compareThoroughly<T: Comparable>(_ other: Self, range: CountableRange<Index>? = nil, indexTransfomer transformer: (Int) -> T) -> (reloads: [T], deletes: [T], inserts: [T]) {
-        guard let _range = range else {
-            return self._compareThoroughly(other, indexTransformer: transformer)
-        }
-
-        let thisRange = (self.startIndex ..< self.endIndex).clamped(to: _range)
-        let otherRange = (other.startIndex ..< other.endIndex).clamped(to: _range)
-
-        let thisCollection = self[thisRange].map { $0 }
-        let otherCollection = other[otherRange].map { $0 }
-
-        return thisCollection._compareThoroughly(otherCollection, indexTransformer: transformer)
     }
 }

@@ -28,15 +28,19 @@ extension CollectionExtensionTests {
 
 extension CollectionExtensionTests {
 
-    private func commonString(between str1: String, and str2: String) -> String {
+    private func commonString(between str1: String, and str2: String, in range: Range<Int>? = nil) -> String {
         let c1s = str1.characters.map { $0 }
         let c2s = str2.characters.map { $0 }
 
-        return String(c1s.repeatingElements(byComparing: c2s))
+        return String(c1s.repeatingElements(byComparing: c2s, in: range))
     }
 
     func testRepeatingElementsWithManyElements() {
         XCTAssertEqual(commonString(between: "ABDC", and: "ACG"), "AC")
+    }
+
+    func testRepeatingElementsWithManyElementsInRange() {
+        XCTAssertEqual(commonString(between: "ABDC", and: "ACG", in: Range(1...5)), "C")
     }
 
     func testRepeatingElementsWithOneElement() {
@@ -68,11 +72,12 @@ extension CollectionExtensionTests {
         XCTAssertEqual(changes.map { $0.value.element }, ["B", "D", "G"])
     }
 
-//    func testChangingIndexPaths() {
-//        let (c1s, c2s) = sampleCharacters
-//        let changes = c1s.compareThoroughly(c2s) { IndexPath(arrayLiteral: 0, $0) }
-//
-//        XCTAssertEqual(changes.reloads, [IndexPath(indexes: [0, 2])])
-//        XCTAssertEqual(changes.deletes, [IndexPath(indexes: [0, 1])])
-//    }
+    func testOptimalChangingIndexPaths() {
+        let (c1s, c2s) = sampleCharacters
+        let changes1: (Array<IndexPath>, Array<IndexPath>) = c1s.compareOptimally(c2s) { IndexPath(arrayLiteral: 0, $0) }
+        let changes2: (Array<IndexPath>, Array<IndexPath>) = c1s.compareOptimally(c2s, in: Range(1...5)) { IndexPath(arrayLiteral: 0, $0) }
+
+        XCTAssertEqual(changes1.0, changes2.0)
+        XCTAssertEqual(changes1.1, changes2.1)
+    }
 }
