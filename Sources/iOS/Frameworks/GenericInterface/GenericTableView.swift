@@ -23,13 +23,13 @@ open class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableView
              * will speed up the diff computation on a much narrow
              * subset of elements.
              */
-            let range: CountableRange<Int> = {
+            let range: Range<Int> = {
                 let startIndex = self.indexPathsForVisibleRows?.first?.row ?? 0
                 let endIndex = startIndex + estimatedNumberOfVisibleRows
                 return .init(startIndex ... endIndex)
             }()
 
-            let updates = oldValue.compareThoroughly(rowModels, range: range) { IndexPath(arrayLiteral: 0, $0) }
+            let updates = oldValue.compareThoroughly(rowModels, in: range) { IndexPath(arrayLiteral: 0, $0) }
 
             self.beginUpdates()
             self.reloadRows(at: updates.reloads, with: .automatic)

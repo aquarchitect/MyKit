@@ -28,7 +28,7 @@ open class GenericCollectionView<Model: Equatable, Cell: UICollectionViewCell>: 
 
     open fileprivate(set) var cellModels: [Model] = [] {
         didSet {
-            let range: CountableRange<Int>? = {
+            let range: Range<Int>? = {
                 guard estimatedNumberOfVisibleCells != 0 else { return nil }
 
                 /*
@@ -37,10 +37,10 @@ open class GenericCollectionView<Model: Equatable, Cell: UICollectionViewCell>: 
                  */
                 let startIndex = self.indexPathsForVisibleItems.first?.item ?? 0
                 let endIndex = startIndex + estimatedNumberOfVisibleCells
-                return CountableRange(startIndex ... endIndex)
+                return Range(startIndex ... endIndex)
             }()
 
-            let updates = oldValue.compareThoroughly(cellModels, range: range) { IndexPath(arrayLiteral: 0, $0) }
+            let updates = oldValue.compareThoroughly(cellModels, in: range) { IndexPath(arrayLiteral: 0, $0) }
             
             self.performBatchUpdates({
                 self.reloadItems(at: updates.reloads)

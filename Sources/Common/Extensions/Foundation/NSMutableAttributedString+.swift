@@ -14,7 +14,10 @@ import AppKit
 
 extension NSMutableAttributedString {
 
-    var range: NSRange { return NSMakeRange(0, self.length) }
+    var range: NSRange {
+        return NSMakeRange(0, self.length)
+    }
+
     func _addFont(_ font: Any, to range: NSRange?) {
         self.addAttribute(NSFontAttributeName,
                           value: font,

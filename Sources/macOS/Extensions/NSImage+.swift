@@ -31,7 +31,6 @@ public extension NSImage {
             $0.unlockFocus()
 
             $0.isTemplate = false
-            Swift.print($0)
         } ?? self
     }
 }

@@ -8,6 +8,13 @@
 
 import Foundation
 
+public extension Collection where Self: RandomAccessCollection {
+
+    func element(at index: IndexDistance) -> Iterator.Element? {
+        return self.index(self.startIndex, offsetBy: index, limitedBy: self.endIndex).map { self[$0] }
+    }
+}
+
 extension Collection where Iterator.Element: Comparable {
 
     /*
@@ -146,12 +153,12 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
 
 public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
 
-    func compareOptimally<C: RangeReplaceableCollection>(_ other: Self, in range: Range<Index>? = nil, indexTransformer transfomer: (Index) -> C.Iterator.Element) -> (deletes: C, inserts: C) {
+    func compareOptimally<T>(_ other: Self, in range: Range<Index>? = nil, indexTransformer transfomer: (Index) -> T) -> (deletes: [T], inserts: [T]) {
         let (ranges, changes) = _backtrackChanges(byComparing: other, in: range)
-        let count = C.IndexDistance(Swift.max(ranges.this.count, ranges.other.count).toIntMax())
+        let count = Swift.max(ranges.this.count, ranges.other.count)
 
-        var inserts = C(); inserts.reserveCapacity(count)
-        var deletes = C(); deletes.reserveCapacity(count)
+        var inserts = [T](); inserts.reserveCapacity(count)
+        var deletes = [T](); deletes.reserveCapacity(count)
 
         for change in changes {
             switch (change.map { transfomer($0.index) }) {
@@ -163,13 +170,13 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         return (deletes, inserts)
     }
 
-    func compareThoroughly<C: RangeReplaceableCollection>(_ other: Self, in range: Range<Index>? = nil, indexTransformer transformer: (Index) -> C.Iterator.Element) -> (reloads: C, deletes: C, inserts: C) where C.Iterator.Element: Comparable {
+    func compareThoroughly<T: Comparable>(_ other: Self, in range: Range<Index>? = nil, indexTransformer transformer: (Index) -> T) -> (reloads: [T], deletes: [T], inserts: [T]) {
         let (ranges, changes) = _backtrackChanges(byComparing: other, in: range)
-        let count = C.IndexDistance(Swift.max(ranges.this.count, ranges.other.count).toIntMax())
+        let count = Swift.max(ranges.this.count, ranges.other.count)
 
-        var inserts = C(); inserts.reserveCapacity(count)
-        var deletes = C(); deletes.reserveCapacity(count)
-        var reloads = C(); reloads.reserveCapacity(count)
+        var inserts = [T](); inserts.reserveCapacity(count)
+        var deletes = [T](); deletes.reserveCapacity(count)
+        var reloads = [T](); reloads.reserveCapacity(count)
 
         for change in changes {
             switch (change.map { transformer($0.index) }) {

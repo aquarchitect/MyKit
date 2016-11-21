@@ -59,7 +59,7 @@ public extension Promise {
     }
 
     /// Transform one type to another.
-    func flatMap<U>(_ transform: @escaping (T) -> Promise<U>) -> Promise<U> {
+    func flatMap<U>(_ transform: @escaping (T) throws -> Promise<U>) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { result in
                 do {
@@ -138,9 +138,9 @@ public extension Promise {
 
 public extension Promise {
 
-    func inBackground() -> Promise {
+    func inDispatchQueue(_ queue: DispatchQueue) -> Promise {
         return Promise { callback in
-            DispatchQueue.global(qos: .background).async {
+            queue.async {
                 self.resolve { result in
                     DispatchQueue.main.sync {
                         callback(result)
@@ -148,6 +148,10 @@ public extension Promise {
                 }
             }
         }
+    }
+
+    func inBackground() -> Promise {
+        return inDispatchQueue(.global(qos: .background))
     }
 
     func inDispatchGroup(_ group: DispatchGroup) -> Promise {
@@ -194,7 +198,7 @@ public func zip<A, B>(_ promiseA: Promise<A>, _ promiseB: Promise<B>) -> Promise
     let group = DispatchGroup()
 
     return Promise<(A, B)> { callback in
-        var resultA: Result<A>!, resultB: Result<B>!
+        var resultA: Result<A>?, resultB: Result<B>?
 
         promiseA
             .inDispatchGroup(group)
@@ -205,7 +209,9 @@ public func zip<A, B>(_ promiseA: Promise<A>, _ promiseB: Promise<B>) -> Promise
             .resolve { resultB = $0 }
 
         group.notify(queue: .main) {
-            callback(zip(resultA, resultB))
+            zip(resultA, resultB).map {
+                callback(zip($0, $1))
+            }
         }
     }
 }

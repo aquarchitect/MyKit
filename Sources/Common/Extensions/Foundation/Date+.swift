@@ -163,7 +163,7 @@ public extension Date {
 
 public extension Date {
 
-    func istoday() ->Bool {
+    func isToday() ->Bool {
         return isSameDayAs(.today)
     }
 
