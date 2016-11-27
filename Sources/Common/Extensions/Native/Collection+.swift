@@ -11,7 +11,10 @@ import Foundation
 public extension Collection where Self: RandomAccessCollection {
 
     func element(at index: IndexDistance) -> Iterator.Element? {
-        return self.index(self.startIndex, offsetBy: index, limitedBy: self.endIndex).map { self[$0] }
+        return self.index(self.startIndex,
+                          offsetBy: index,
+                          limitedBy: self.endIndex)
+            .map { self[$0] }
     }
 }
 
@@ -29,10 +32,10 @@ extension Collection where Iterator.Element: Comparable {
 
             switch self[midIndex] {
             case _ where element < self[midIndex]:
-                let _range = Range(range.lowerBound ..< midIndex)
+                let _range = range.lowerBound ..< midIndex
                 return _binarySearch(in: _range)
             case _ where element > self[midIndex]:
-                let _range = Range(self.index(after: range.lowerBound) ..< range.upperBound)
+                let _range = self.index(after: range.lowerBound) ..< range.upperBound
                 return _binarySearch(in: _range)
             default:
                 return midIndex
@@ -55,8 +58,9 @@ extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int
     /*
      * Longest Common Sequence
      */
-    func lcsMatrix<C: Collection>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges, Matrix<Index>)
-        where C.SubSequence.Iterator.Element == SubSequence.Iterator.Element, C.Index == Index
+    func lcsMatrix<C: Collection>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges, Matrix<Index>) where
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element,
+        C.Index == Index
     {
         let thisRange = self.range.clamped(to: range ?? self.range)
         let otherRange = other.range.clamped(to: range ?? other.range)
@@ -151,7 +155,10 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
     }
 }
 
-public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
+public extension Collection where
+    SubSequence.Iterator.Element: Equatable,
+    Index == Int
+{
 
     func compareOptimally<T>(_ other: Self, in range: Range<Index>? = nil, indexTransformer transfomer: (Index) -> T) -> (deletes: [T], inserts: [T]) {
         let (ranges, changes) = _backtrackChanges(byComparing: other, in: range)

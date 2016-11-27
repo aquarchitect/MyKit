@@ -138,6 +138,8 @@
 		C2A6738C1DB00E06009E063A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6738B1DB00E06009E063A /* Observable.swift */; };
 		C2A673961DB094C2009E063A /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673911DB09493009E063A /* ObservableTests.swift */; };
 		C2A673971DB094C3009E063A /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673911DB09493009E063A /* ObservableTests.swift */; };
+		C2A7EF131DE9467300087DB2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A7EF121DE9467300087DB2 /* Node.swift */; };
+		C2A7EF141DE9467300087DB2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A7EF121DE9467300087DB2 /* Node.swift */; };
 		C2A9D7A41DB439BD00F264EE /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6738B1DB00E06009E063A /* Observable.swift */; };
 		C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
@@ -339,6 +341,7 @@
 		C2A673881DB00820009E063A /* Mutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mutex.swift; path = Sources/Common/Utilities/Mutex.swift; sourceTree = "<group>"; };
 		C2A6738B1DB00E06009E063A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = Sources/Common/Utilities/Observable.swift; sourceTree = "<group>"; };
 		C2A673911DB09493009E063A /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservableTests.swift; path = UnitTests/ObservableTests.swift; sourceTree = SOURCE_ROOT; };
+		C2A7EF121DE9467300087DB2 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = Sources/Common/Utilities/Node.swift; sourceTree = "<group>"; };
 		C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensionTests.swift; path = UnitTests/CollectionExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		C2AFF8981D9847BD00431639 /* ReorderingLongPress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReorderingLongPress.swift; path = Sources/iOS/Frameworks/LongPress/ReorderingLongPress.swift; sourceTree = "<group>"; };
 		C2AFF89A1D9849E400431639 /* SelectingLongPress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectingLongPress.swift; path = Sources/iOS/Frameworks/LongPress/SelectingLongPress.swift; sourceTree = "<group>"; };
@@ -722,8 +725,8 @@
 		C289AD941B62BA0E00186773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C289ED481DDCD41800E8BD00 /* ObjectCaching */,
 				C2C62A2D1D04A5E00009B45F /* _FontLoading */,
+				C289ED481DDCD41800E8BD00 /* ObjectCaching */,
 				C20F70241C7532EC004C688F /* LoremIpsum */,
 				C2C180871CEBBF3D00D00FA4 /* ColorHexing */,
 				C25A3ED01CEBB87200A68790 /* ActionTrailing */,
@@ -749,6 +752,7 @@
 				C201654E1CE0EFC500F7D3E5 /* Then.swift */,
 				C2A673881DB00820009E063A /* Mutex.swift */,
 				C2A6738B1DB00E06009E063A /* Observable.swift */,
+				C2A7EF121DE9467300087DB2 /* Node.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1336,6 +1340,7 @@
 				C2617B081DB6B5AB004E4B5A /* AnyIterator+.swift in Sources */,
 				C24A0AE41D72143B00F94F08 /* Change.swift in Sources */,
 				C2617B021DB6B5AB004E4B5A /* String+.swift in Sources */,
+				C2A7EF141DE9467300087DB2 /* Node.swift in Sources */,
 				C2617B1F1DB6B739004E4B5A /* NSRange+.swift in Sources */,
 				C2617B0A1DB6B5AB004E4B5A /* RangeReplaceableCollection+.swift in Sources */,
 				C2617B181DB6B739004E4B5A /* DateFormatter+.swift in Sources */,
@@ -1386,6 +1391,7 @@
 				C201655E1CE0EFC500F7D3E5 /* Then.swift in Sources */,
 				C201658A1CE0FA8B00F7D3E5 /* Sequence+.swift in Sources */,
 				C20166461CE1017900F7D3E5 /* UIViewController+.swift in Sources */,
+				C2A7EF131DE9467300087DB2 /* Node.swift in Sources */,
 				C2A673891DB00820009E063A /* Mutex.swift in Sources */,
 				C2AFF89B1D9849E400431639 /* SelectingLongPress.swift in Sources */,
 				C27DE1A91DD8F4BF00358FA8 /* ColorPalette.swift in Sources */,

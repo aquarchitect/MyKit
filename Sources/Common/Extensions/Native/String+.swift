@@ -60,8 +60,11 @@ private extension String.Format {
 
     var pattern: String {
         switch self {
-        case .ip: return [String](repeating: "([01]?\\d\\d?|2[0-4]\\d|25[0-5])", count: 4).joined(separator: "\\.")
-        case .hexadecimal: return "#[0-9A-Fa-f]{2,6}"
+        case .ip:
+            return Array(repeating: "([01]?\\d\\d?|2[0-4]\\d|25[0-5])", count: 4)
+                .joined(separator: "\\.")
+        case .hexadecimal:
+            return "#[0-9A-Fa-f]{2,6}"
         }
     }
 }

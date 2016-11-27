@@ -14,22 +14,33 @@ public extension Scanner {
 
     public func scan(characters: CharacterSet) -> String? {
         var result: NSString? = ""
-        return self.scanCharacters(from: characters, into: &result) ? (result as? String) : nil
+
+        return self.scanCharacters(from: characters, into: &result)
+            ? (result as? String)
+            : nil
     }
 
     public func scan(upto characters: CharacterSet) -> String? {
         var result: NSString? = ""
-        return self.scanUpToCharacters(from: characters, into: &result) ? (result as? String) : nil
+        return self.scanUpToCharacters(from: characters, into: &result)
+            ? (result as? String)
+            : nil
     }
 
     public func scan(string: String) -> String? {
         var result: NSString? = ""
-        return self.scanString(string, into: &result) ? result as? String : nil
+
+        return self.scanString(string, into: &result)
+            ? result as? String
+            : nil
     }
 
     public func scanUpTo(string: String) -> String? {
         var result: NSString? = ""
-        return self.scanUpTo(string, into: &result) ? result as? String : nil
+
+        return self.scanUpTo(string, into: &result)
+            ? result as? String
+            : nil
     }
 
     // MARK: Number

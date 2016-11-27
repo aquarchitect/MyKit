@@ -13,16 +13,41 @@ public struct Arbitrary {}
 
 public extension Arbitrary {
 
-    static func element<C: Collection>(in c: C) -> C.Iterator.Element
-    where C.IndexDistance == Int {
-        precondition(!c.isEmpty, "No elements for random selecting")
+    static func elements<C: Collection>(in c: C, count requested: Int) -> [C.Iterator.Element] where
+        C.Index == Int,
+        C.IndexDistance == Int
+    {
+        var examined = 0, selected = 0
+        var results: [C.Iterator.Element] = []
+        results.reserveCapacity(requested)
 
-        let distance = Int(arc4random_uniform(UInt32(c.count)))
-        return c[c.index(c.startIndex, offsetBy: distance)]
+        while selected < requested {
+            examined += 1
+
+            let random = Double(int) / 0x100000000
+            let leftToExam = c.count - examined + 1
+            let leftToAdd = requested - selected
+
+            if Double(leftToExam) * random < Double(leftToAdd) {
+                results += [c[examined - 1]]
+                selected += 1
+            }
+        }
+
+        return results
     }
 
-    static func subsequence<C: Collection>(in c: C) -> C.SubSequence
-    where C.IndexDistance == Int {
+    static func element<C: Collection>(in c: C) -> C.Iterator.Element where
+        C.Index == Int,
+        C.IndexDistance == Int
+    {
+        precondition(!c.isEmpty, "No elements for random selecting")
+        return elements(in: c, count: 1)[0]
+    }
+
+    static func subsequence<C>(in c: C) -> C.SubSequence
+        where C: Collection, C.IndexDistance == Int
+    {
         let startDistance = Int(arc4random_uniform(UInt32(c.count)))
         let startIndex = c.index(c.startIndex, offsetBy: startDistance)
 
