@@ -11,33 +11,22 @@ import Foundation
 /**
  * Future Value
  */
-public class Observable<T> {
+open class Observable<T> {
 
-    public typealias Token = UInt8
-    private(set) var callbacks: [Token: Result<T>.Callback] = [:]
-
+    private(set) var callbacks: [Result<T>.Callback] = []
     fileprivate let mutex = Mutex()
-    private var token: Token = 0
 
     public init() {}
 
-    @discardableResult
-    public func subscribe(_ callback: @escaping Result<T>.Callback) -> Token {
-        token += 1
-        mutex.perform { callbacks[token] = callback }
-        return token
-    }
-
-    @discardableResult
-    public func unsubscribe(_ token: Token) -> Result<T>.Callback? {
-        return callbacks.removeValue(forKey: token)
+    fileprivate func subscribe(_ callback: @escaping Result<T>.Callback) {
+        mutex.perform { callbacks.append(callback) }
     }
 }
 
 public extension Observable {
 
     fileprivate func update(_ result: Result<T>) {
-        mutex.perform { callbacks.values.forEach { $0(result) }}
+        mutex.perform { callbacks.forEach { $0(result) }}
     }
 
     func update(_ value: T) {
@@ -109,16 +98,12 @@ public extension Observable {
 
 public extension Observable {
 
-    private func _join(other: Observable) -> Observable {
+    func join(_ other: Observable) -> Observable {
         let observable = Observable()
         subscribe(observable.update)
         other.subscribe(observable.update)
 
         return observable
-    }
-
-    func join(_ other: Observable) -> Observable {
-        return _join(other: other)
     }
 }
 

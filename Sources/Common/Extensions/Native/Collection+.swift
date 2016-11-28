@@ -110,13 +110,13 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
 
     typealias Step = (index: Index, element: Generator.Element)
 
-    fileprivate func _backtrackChanges(byComparing other: Self, in range: Range<Index>? = nil) -> (Ranges, AnyIterator<Change<Step>>) {
+    fileprivate func _backtrackChanges(byComparing other: Self, in range: Range<Index>? = nil) -> (Ranges, AnyIterator<Diff<Step>>) {
         let (ranges, matrix) = lcsMatrix(byComparing: other, in: range)
 
         var i = ranges.this.count + 1
         var j = ranges.other.count + 1
 
-        let iterator = AnyIterator<Change<Step>> {
+        let iterator = AnyIterator<Diff<Step>> {
             while i >= 1 && j >= 1 {
                 switch matrix[i, j] {
                 case matrix[i, j-1]:
@@ -139,15 +139,15 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         return (ranges, iterator)
     }
 
-    func backtrackChanges(byComparing other: Self, in range: Range<Index>? = nil) -> AnyIterator<Change<Step>> {
+    func backtrackChanges(byComparing other: Self, in range: Range<Index>? = nil) -> AnyIterator<Diff<Step>> {
         return _backtrackChanges(byComparing: other, in: range).1
     }
 
-    func compare(_ other: Self, in range: Range<Index>? = nil) -> [Change<Step>] {
+    func compare(_ other: Self, in range: Range<Index>? = nil) -> [Diff<Step>] {
         let (ranges, changes) = _backtrackChanges(byComparing: other, in: range)
         let count = Swift.max(ranges.this.count, ranges.other.count)
 
-        var results: [Change<Step>] = []
+        var results: [Diff<Step>] = []
         results.reserveCapacity(count)
         changes.forEach { results.insert($0, at: 0) }
 
@@ -155,12 +155,11 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
     }
 }
 
-public extension Collection where
-    SubSequence.Iterator.Element: Equatable,
-    Index == Int
-{
+public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
 
-    func compareOptimally<T>(_ other: Self, in range: Range<Index>? = nil, indexTransformer transfomer: (Index) -> T) -> (deletes: [T], inserts: [T]) {
+    typealias IndexTransformer<T> = (Index) -> T
+
+    func compareOptimally<T>(_ other: Self, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (deletes: [T], inserts: [T]) {
         let (ranges, changes) = _backtrackChanges(byComparing: other, in: range)
         let count = Swift.max(ranges.this.count, ranges.other.count)
 
@@ -168,7 +167,7 @@ public extension Collection where
         var deletes = [T](); deletes.reserveCapacity(count)
 
         for change in changes {
-            switch (change.map { transfomer($0.index) }) {
+            switch (change.map { transformer($0.index) }) {
             case .delete(let value): deletes.insert(value, at: deletes.startIndex)
             case .insert(let value): inserts.insert(value, at: inserts.startIndex)
             }
@@ -177,7 +176,7 @@ public extension Collection where
         return (deletes, inserts)
     }
 
-    func compareThoroughly<T: Comparable>(_ other: Self, in range: Range<Index>? = nil, indexTransformer transformer: (Index) -> T) -> (reloads: [T], deletes: [T], inserts: [T]) {
+    func compareThoroughly<T: Comparable>(_ other: Self, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (reloads: [T], deletes: [T], inserts: [T]) {
         let (ranges, changes) = _backtrackChanges(byComparing: other, in: range)
         let count = Swift.max(ranges.this.count, ranges.other.count)
 

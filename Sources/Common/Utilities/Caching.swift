@@ -1,8 +1,8 @@
 /*
- * ObjectCaching.swift
+ * Caching.swift
  * MyKit
  *
- * Created by Hai Nguyen on 11/16/16.
+ * Created by Hai Nguyen.
  * Copyright (c) 2016 Hai Nguyen.
  */
 
@@ -13,7 +13,7 @@ import Foundation
  * The idea is to incapsulate the gap between of controllers
  * and view model.
  */
-public protocol ObjectCaching: class {
+public protocol Caching: class {
 
     associatedtype Key: AnyObject
     associatedtype Object: AnyObject
@@ -22,7 +22,7 @@ public protocol ObjectCaching: class {
     static var pendingOperationIDs: NSMutableSet { get }
 }
 
-public extension ObjectCaching where Self == Object {
+public extension Caching where Self == Object {
 
     static func register(_ key: Key, with object: Self) {
         storage.setObject(object, forKey: key)
@@ -42,7 +42,7 @@ public extension ObjectCaching where Self == Object {
 }
 
 
-public extension ObjectCaching where Self == Object {
+public extension Caching where Self == Object {
 
     static func register(_ key: Key, with constructor: Promise<Self>) -> Promise<Void> {
         guard registeredObject(forKey: key) == nil else {
@@ -74,7 +74,7 @@ public extension ObjectCaching where Self == Object {
 
 #if os(iOS)
 import UIKit
-    
+
 extension UIImage: ObjectCaching {
 
     public typealias Key = NSString
@@ -93,11 +93,11 @@ extension UIImage: ObjectCaching {
 import AppKit
 /*
  * This solution is simply another alternative for the
- * native caching machenism. 
+ * native caching machenism.
  *
  * Pros: generics and emiting of `NSCache`
  */
-extension NSImage: ObjectCaching {
+extension NSImage: Caching {
 
     public typealias Key = NSString
 
@@ -105,7 +105,7 @@ extension NSImage: ObjectCaching {
         struct Singleton { static let value = NSCache<NSString, NSImage>() }
         return Singleton.value
     }
-
+    
     public static var pendingOperationIDs: NSMutableSet {
         struct Singleton { static let value = NSMutableSet() }
         return Singleton.value

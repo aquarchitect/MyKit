@@ -1,13 +1,13 @@
 /*
- * Change.swift
+ * Diff.swift
  * MyKit
  *
  * Created by Hai Nguyen.
  * Copyright (c) 2016 Hai Nguyen.
  */
 
-/// _Change_ represents a difference of LCS algorithm.
-public enum Change<T> {
+/// _Diff_ represents a difference of LCS algorithm.
+public enum Diff<T> {
 
     case insert(T)
     case delete(T)
@@ -15,7 +15,7 @@ public enum Change<T> {
 
 // MARK: - Attributes
 
-public extension Change {
+public extension Diff {
 
     var value: T {
         switch self {
@@ -41,9 +41,9 @@ public extension Change {
 
 // MARK: - Transformation
 
-public extension Change {
+public extension Diff {
 
-    func map<U>(_ transform: (T) throws -> U) rethrows -> Change<U> {
+    func map<U>(_ transform: (T) throws -> U) rethrows -> Diff<U> {
         switch self {
         case .delete(let value): return try .delete(transform(value))
         case .insert(let value): return try .insert(transform(value))
