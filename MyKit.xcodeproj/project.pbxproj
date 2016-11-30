@@ -81,8 +81,6 @@
 		C2291EF01DEBF57E00CBF3BE /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2291EEE1DEBF57E00CBF3BE /* Caching.swift */; };
 		C2291EF21DEBF7D500CBF3BE /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2291EF11DEBF7D500CBF3BE /* NSManagedObjectContext+.swift */; };
 		C2291EF31DEBF7D500CBF3BE /* NSManagedObjectContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2291EF11DEBF7D500CBF3BE /* NSManagedObjectContext+.swift */; };
-		C2291EF51DEBF94C00CBF3BE /* Redux.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2291EF41DEBF94C00CBF3BE /* Redux.swift */; };
-		C2291EF61DEBF94C00CBF3BE /* Redux.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2291EF41DEBF94C00CBF3BE /* Redux.swift */; };
 		C2291EF81DEBFDBE00CBF3BE /* FontRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2291EF71DEBFDBE00CBF3BE /* FontRegistry.swift */; };
 		C2291EF91DEBFDBE00CBF3BE /* FontRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2291EF71DEBFDBE00CBF3BE /* FontRegistry.swift */; };
 		C22CFAFF1DB1F99E006D8DBE /* Timer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22CFAFE1DB1F99E006D8DBE /* Timer+.swift */; };
@@ -135,6 +133,12 @@
 		C2973FF71D7747BC005C73A0 /* GenericCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF41D7747BC005C73A0 /* GenericCollectionCell.swift */; };
 		C2973FF81D7747BC005C73A0 /* GenericCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF51D7747BC005C73A0 /* GenericCollectionView.swift */; };
 		C2973FF91D7747BC005C73A0 /* GenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF61D7747BC005C73A0 /* GenericTableView.swift */; };
+		C29D675A1DEE0203001F69F4 /* ReduxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D67591DEE0203001F69F4 /* ReduxStore.swift */; };
+		C29D675B1DEE0203001F69F4 /* ReduxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D67591DEE0203001F69F4 /* ReduxStore.swift */; };
+		C29D675D1DEE022B001F69F4 /* ReduxLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D675C1DEE022B001F69F4 /* ReduxLogger.swift */; };
+		C29D675E1DEE022B001F69F4 /* ReduxLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D675C1DEE022B001F69F4 /* ReduxLogger.swift */; };
+		C29D67A01DEE4261001F69F4 /* ReduxSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D679F1DEE4261001F69F4 /* ReduxSubscription.swift */; };
+		C29D67A11DEE4261001F69F4 /* ReduxSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29D679F1DEE4261001F69F4 /* ReduxSubscription.swift */; };
 		C2A673891DB00820009E063A /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673881DB00820009E063A /* Mutex.swift */; };
 		C2A6738A1DB00820009E063A /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673881DB00820009E063A /* Mutex.swift */; };
 		C2A6738C1DB00E06009E063A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6738B1DB00E06009E063A /* Observable.swift */; };
@@ -306,7 +310,6 @@
 		C2291EEB1DEBF54D00CBF3BE /* LoremIpsum.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LoremIpsum.txt; path = Sources/Common/Frameworks/LoremIpsum/LoremIpsum.txt; sourceTree = "<group>"; };
 		C2291EEE1DEBF57E00CBF3BE /* Caching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Caching.swift; path = Sources/Common/Utilities/Caching.swift; sourceTree = "<group>"; };
 		C2291EF11DEBF7D500CBF3BE /* NSManagedObjectContext+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+.swift"; path = "Sources/Common/Extensions/CoreData/NSManagedObjectContext+.swift"; sourceTree = "<group>"; };
-		C2291EF41DEBF94C00CBF3BE /* Redux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Redux.swift; path = Sources/Common/Utilities/Redux.swift; sourceTree = "<group>"; };
 		C2291EF71DEBFDBE00CBF3BE /* FontRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontRegistry.swift; path = Sources/Common/Frameworks/FontRegistry/FontRegistry.swift; sourceTree = "<group>"; };
 		C22CFAFE1DB1F99E006D8DBE /* Timer+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Timer+.swift"; path = "Sources/Common/Extensions/Foundation/Timer+.swift"; sourceTree = "<group>"; };
 		C22EA03E1D9888B1003A490A /* Bridging-UITests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-UITests.h"; path = "MyKit/Bridging-UITests.h"; sourceTree = "<group>"; };
@@ -336,6 +339,9 @@
 		C2973FF41D7747BC005C73A0 /* GenericCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericCollectionCell.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericCollectionCell.swift; sourceTree = "<group>"; };
 		C2973FF51D7747BC005C73A0 /* GenericCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericCollectionView.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericCollectionView.swift; sourceTree = "<group>"; };
 		C2973FF61D7747BC005C73A0 /* GenericTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericTableView.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericTableView.swift; sourceTree = "<group>"; };
+		C29D67591DEE0203001F69F4 /* ReduxStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReduxStore.swift; path = Sources/Common/Frameworks/ReduxParadigm/ReduxStore.swift; sourceTree = "<group>"; };
+		C29D675C1DEE022B001F69F4 /* ReduxLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReduxLogger.swift; path = Sources/Common/Frameworks/ReduxParadigm/ReduxLogger.swift; sourceTree = "<group>"; };
+		C29D679F1DEE4261001F69F4 /* ReduxSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReduxSubscription.swift; path = Sources/Common/Frameworks/ReduxParadigm/ReduxSubscription.swift; sourceTree = "<group>"; };
 		C2A673881DB00820009E063A /* Mutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mutex.swift; path = Sources/Common/Utilities/Mutex.swift; sourceTree = "<group>"; };
 		C2A6738B1DB00E06009E063A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = Sources/Common/Utilities/Observable.swift; sourceTree = "<group>"; };
 		C2A673911DB09493009E063A /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservableTests.swift; path = UnitTests/ObservableTests.swift; sourceTree = SOURCE_ROOT; };
@@ -711,6 +717,7 @@
 		C289AD941B62BA0E00186773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C29D67581DEE01B4001F69F4 /* ReduxParadigm */,
 				C2C62A2D1D04A5E00009B45F /* FontRegistry */,
 				C20F70241C7532EC004C688F /* LoremIpsum */,
 				C2C180871CEBBF3D00D00FA4 /* ColorHexing */,
@@ -736,9 +743,18 @@
 				C2A673881DB00820009E063A /* Mutex.swift */,
 				C2A6738B1DB00E06009E063A /* Observable.swift */,
 				C2291EEE1DEBF57E00CBF3BE /* Caching.swift */,
-				C2291EF41DEBF94C00CBF3BE /* Redux.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		C29D67581DEE01B4001F69F4 /* ReduxParadigm */ = {
+			isa = PBXGroup;
+			children = (
+				C29D67591DEE0203001F69F4 /* ReduxStore.swift */,
+				C29D675C1DEE022B001F69F4 /* ReduxLogger.swift */,
+				C29D679F1DEE4261001F69F4 /* ReduxSubscription.swift */,
+			);
+			name = ReduxParadigm;
 			sourceTree = "<group>";
 		};
 		C2B60ACC1B95080800F6D2BB /* UnitTests */ = {
@@ -1305,6 +1321,7 @@
 				C2617B081DB6B5AB004E4B5A /* AnyIterator+.swift in Sources */,
 				C24A0AE41D72143B00F94F08 /* Diff.swift in Sources */,
 				C2617B021DB6B5AB004E4B5A /* String+.swift in Sources */,
+				C29D675B1DEE0203001F69F4 /* ReduxStore.swift in Sources */,
 				C2617B1F1DB6B739004E4B5A /* NSRange+.swift in Sources */,
 				C2617B181DB6B739004E4B5A /* DateFormatter+.swift in Sources */,
 				C20165621CE0F01D00F7D3E5 /* Box.swift in Sources */,
@@ -1324,7 +1341,6 @@
 				C2617B161DB6B739004E4B5A /* Bundle+.swift in Sources */,
 				C228CF9C1DD97D7F0032B132 /* Optional+.swift in Sources */,
 				C241A5491DCA638300E26DD5 /* NSCell+.swift in Sources */,
-				C2291EF61DEBF94C00CBF3BE /* Redux.swift in Sources */,
 				C2617B011DB6B5AB004E4B5A /* CountableRange+.swift in Sources */,
 				C2617B1E1DB6B739004E4B5A /* NSMutableAttributedString+.swift in Sources */,
 				C2291EF01DEBF57E00CBF3BE /* Caching.swift in Sources */,
@@ -1336,11 +1352,13 @@
 				C27DE1AA1DD8F4BF00358FA8 /* ColorPalette.swift in Sources */,
 				C20165F71CE0FF0E00F7D3E5 /* CGPoint+.swift in Sources */,
 				C2617B151DB6B739004E4B5A /* Timer+.swift in Sources */,
+				C29D675E1DEE022B001F69F4 /* ReduxLogger.swift in Sources */,
 				C22EA03D1D98801C003A490A /* OpenWeather+.swift in Sources */,
 				C2446BEF1CEB6D2100957586 /* Arbitrary.swift in Sources */,
 				C2291EF31DEBF7D500CBF3BE /* NSManagedObjectContext+.swift in Sources */,
 				C2C62A2C1D04A4200009B45F /* Matrix.swift in Sources */,
 				C20165681CE0F01D00F7D3E5 /* Promise.swift in Sources */,
+				C29D67A11DEE4261001F69F4 /* ReduxSubscription.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1359,6 +1377,7 @@
 				C20166461CE1017900F7D3E5 /* UIViewController+.swift in Sources */,
 				C2A673891DB00820009E063A /* Mutex.swift in Sources */,
 				C2AFF89B1D9849E400431639 /* SelectingLongPress.swift in Sources */,
+				C29D675A1DEE0203001F69F4 /* ReduxStore.swift in Sources */,
 				C27DE1A91DD8F4BF00358FA8 /* ColorPalette.swift in Sources */,
 				C201664F1CE1026800F7D3E5 /* GrowingTextView.swift in Sources */,
 				C20165BE1CE0FC8800F7D3E5 /* CKContainer+.swift in Sources */,
@@ -1370,7 +1389,6 @@
 				C20165531CE0EFC500F7D3E5 /* Curry.swift in Sources */,
 				C2F0A7531D10D5DC0022FF61 /* ParaboloidLayoutController.swift in Sources */,
 				C20165B21CE0FC6D00F7D3E5 /* DateFormatter+.swift in Sources */,
-				C2291EF51DEBF94C00CBF3BE /* Redux.swift in Sources */,
 				C2D0AAA01DB5926100C6847E /* URLSession+.swift in Sources */,
 				C20165D21CE0FCA000F7D3E5 /* CGPoint+.swift in Sources */,
 				C20165C91CE0FC9400F7D3E5 /* NSAttributeDescription+.swift in Sources */,
@@ -1403,6 +1421,7 @@
 				C201663E1CE1017900F7D3E5 /* UICollectionView+.swift in Sources */,
 				C20165C11CE0FC8800F7D3E5 /* CKRecord+.swift in Sources */,
 				C2B3F3491D0B8A9E0055B06E /* ActionTrailing.swift in Sources */,
+				C29D67A01DEE4261001F69F4 /* ReduxSubscription.swift in Sources */,
 				C20165891CE0FA8B00F7D3E5 /* CountableRange+.swift in Sources */,
 				C20165D31CE0FCA000F7D3E5 /* CGRect+.swift in Sources */,
 				C20165B11CE0FC6D00F7D3E5 /* Date+.swift in Sources */,
@@ -1416,6 +1435,7 @@
 				C201658B1CE0FA8B00F7D3E5 /* String+.swift in Sources */,
 				C2BD802E1D98703300F3D34F /* SnappingLayoutDelegate.swift in Sources */,
 				C20165581CE0EFC500F7D3E5 /* Promise.swift in Sources */,
+				C29D675D1DEE022B001F69F4 /* ReduxLogger.swift in Sources */,
 				C245DFD61DA1CB9C004D9F18 /* SymbolIcon.swift in Sources */,
 				C2446BEE1CEB6D2100957586 /* Arbitrary.swift in Sources */,
 				C201663C1CE1017900F7D3E5 /* Draw+.swift in Sources */,
