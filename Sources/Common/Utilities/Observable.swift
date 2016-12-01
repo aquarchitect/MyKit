@@ -105,6 +105,16 @@ public extension Observable {
 
         return observable
     }
+
+    static func merge(_ observables: Observable...) -> Observable {
+        let observable = Observable()
+
+        observables.forEach {
+            $0.subscribe(observable.update)
+        }
+
+        return observable
+    }
 }
 
 public extension Observable {
