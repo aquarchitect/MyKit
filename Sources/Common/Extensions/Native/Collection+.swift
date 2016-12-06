@@ -10,9 +10,11 @@ import Foundation
 
 public extension Collection where Self: RandomAccessCollection {
 
-    func element(at index: IndexDistance) -> Iterator.Element? {
+    func element(at index: Index) -> Iterator.Element? {
+        let distance = self.distance(from: self.startIndex, to: index)
+
         return self.index(self.startIndex,
-                          offsetBy: index,
+                          offsetBy: distance,
                           limitedBy: self.endIndex)
             .map { self[$0] }
     }
