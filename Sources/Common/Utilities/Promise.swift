@@ -35,7 +35,7 @@ public extension Promise {
 public extension Promise {
 
     ///  Execute promise with a callback (for internal usage only)
-    fileprivate func resolve(_ callback: @escaping Result<T>.Callback) {
+    internal func resolve(_ callback: @escaping Result<T>.Callback) {
         self.operation(callback)
     }
 

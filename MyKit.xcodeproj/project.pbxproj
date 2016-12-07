@@ -169,6 +169,8 @@
 		C2F0A7501D10D5DC0022FF61 /* ParaboloidFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0A74C1D10D5DC0022FF61 /* ParaboloidFlowLayout.swift */; };
 		C2F0A7521D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0A74E1D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift */; };
 		C2F0A7531D10D5DC0022FF61 /* ParaboloidLayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0A74F1D10D5DC0022FF61 /* ParaboloidLayoutController.swift */; };
+		C2F288891DF8BBBC003E84F9 /* ReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F288861DF8BB21003E84F9 /* ReduxTests.swift */; };
+		C2F2888A1DF8BBBC003E84F9 /* ReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F288861DF8BB21003E84F9 /* ReduxTests.swift */; };
 		C2F317231D5A5CA5009B0F42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317031D5A5947009B0F42 /* AppDelegate.swift */; };
 		C2F317341D5A5CD1009B0F42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317041D5A5947009B0F42 /* ViewController.swift */; };
 		C2F317351D5A5CE1009B0F42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F317091D5A5959009B0F42 /* Main.storyboard */; };
@@ -363,6 +365,7 @@
 		C2F0A74C1D10D5DC0022FF61 /* ParaboloidFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidFlowLayout.swift; sourceTree = "<group>"; };
 		C2F0A74E1D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidLayoutAttributes.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidLayoutAttributes.swift; sourceTree = "<group>"; };
 		C2F0A74F1D10D5DC0022FF61 /* ParaboloidLayoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidLayoutController.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidLayoutController.swift; sourceTree = "<group>"; };
+		C2F288861DF8BB21003E84F9 /* ReduxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReduxTests.swift; path = UnitTests/ReduxTests.swift; sourceTree = SOURCE_ROOT; };
 		C2F317031D5A5947009B0F42 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/macOS/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C2F317041D5A5947009B0F42 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Demos/macOS/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		C2F317071D5A5950009B0F42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demos/macOS/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -745,6 +748,7 @@
 			isa = PBXGroup;
 			children = (
 				C2F317471D5A5EF1009B0F42 /* DateTests.swift */,
+				C2F288861DF8BB21003E84F9 /* ReduxTests.swift */,
 				C2F317481D5A5EF1009B0F42 /* PromiseTests.swift */,
 				C2F317491D5A5EF1009B0F42 /* ScheduleTests.swift */,
 				C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */,
@@ -1264,6 +1268,7 @@
 				C214B90D1DA2155700754247 /* ActionTrailingTests.swift in Sources */,
 				C2A673961DB094C2009E063A /* ObservableTests.swift in Sources */,
 				C2F3174E1D5A5EF6009B0F42 /* FontRegistryTests.swift in Sources */,
+				C2F288891DF8BBBC003E84F9 /* ReduxTests.swift in Sources */,
 				C24B380C1DC12BFA00036264 /* ArbitraryTests.swift in Sources */,
 				C2FCAE6D1DDAE77F006D8C6D /* PromiseTests.swift in Sources */,
 			);
@@ -1279,6 +1284,7 @@
 				C214B90E1DA2155800754247 /* ActionTrailingTests.swift in Sources */,
 				C2A673971DB094C3009E063A /* ObservableTests.swift in Sources */,
 				C2F317521D5A5EF7009B0F42 /* FontRegistryTests.swift in Sources */,
+				C2F2888A1DF8BBBC003E84F9 /* ReduxTests.swift in Sources */,
 				C24B380D1DC12BFB00036264 /* ArbitraryTests.swift in Sources */,
 				C2FCAE6E1DDAE780006D8C6D /* PromiseTests.swift in Sources */,
 			);

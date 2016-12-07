@@ -23,6 +23,8 @@ open class Observable<T> {
     }
 }
 
+extension Observable: Then {}
+
 public extension Observable {
 
     fileprivate func update(_ result: Result<T>) {

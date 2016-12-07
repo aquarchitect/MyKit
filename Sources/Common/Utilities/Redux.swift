@@ -8,28 +8,61 @@
 
 open class Redux<State, Action> {
 
-    public typealias Dispatch = (Action) throws -> Void
-    public typealias Reducer = (State, Action) throws -> State
-    public typealias Middleware = (Redux, @escaping Dispatch) -> Dispatch
+    public typealias Reducer = (State, Action) -> Promise<State>
 
-    public private(set) var state: State
-    fileprivate(set) var _dispatch: Dispatch = { _ in }
+    public typealias Dispatcher = (Action) throws -> Void
+    public typealias Middleware = (State, @escaping Dispatcher) -> Dispatcher
 
-    public init(reducer: @escaping Reducer, state: State) {
+    final public private(set) var state: State
+
+    final private let reducer: Reducer
+    final private let middleware: Middleware
+
+    public init(reducer: @escaping Reducer, state: State, middleware: @escaping Middleware) {
         self.state = state
-        self._dispatch = { [weak self] action in
-            guard let `self` = self else { return }
-            self.state = try reducer(self.state, action)
+        self.reducer = reducer
+        self.middleware = middleware
+    }
+
+    /**
+     * Errors from the reducer and other middlewares can be 
+     * subscribed in a middleware placing first in the queue.
+     */
+    public convenience init(reducer: @escaping Reducer, state: State, middlewares: Middleware...) {
+        self.init(reducer: reducer, state: state, middleware: Redux.merge(middlewares))
+    }
+
+    /**
+     * If you override this method, make sure you call `super.dipstach`.
+     */
+    open func dispatch(_ action: Action) {
+        reducer(state, action).resolve {
+            var dispatch: Dispatcher = { _ in }
+
+            switch $0 {
+            case .fulfill(let state): self.state = state
+            case .reject(let error): dispatch = { _ in throw error }
+            }
+
+            try? self.middleware(self.state, dispatch)(action)
+        }
+    }
+}
+
+public extension Redux {
+
+    static func merge(_ middlewares: [Middleware]) -> Middleware {
+        return { state, dispatch in
+            middlewares
+                .reversed()
+                .reduce(
+                    dispatch,
+                    { $1(state, $0) }
+                )
         }
     }
 
-    public func inject(_ middlewares: Middleware...) {
-        _dispatch = middlewares
-            .reversed()
-            .reduce(_dispatch) { $1(self, $0) }
-    }
-
-    open func dispatch(_ action: Action) throws {
-        try _dispatch(action)
+    static func merge(_ middlerwares: Middleware...) -> Middleware {
+        return merge(middlerwares)
     }
 }

@@ -8,13 +8,12 @@
 
 final class PromiseTests: XCTestCase {
 
-    /*
     func testFullfilledArray() {
         let expectation = self.expectation(description: #function)
 
-        let ps = [Schedule.once(0.5).map { 5 },
-                  Schedule.once(0.5).map { 10 },
-                  Schedule.once(1.0).map { 15 }]
+        let ps = [5, 10, 15].map { int in
+            Promise.lift { int }
+        }
 
         Promise<Int>.concat(ps).onSuccess {
             XCTAssertEqual($0, [5, 10, 15])
@@ -31,9 +30,11 @@ final class PromiseTests: XCTestCase {
     func testRejectedArray() {
         let expectation = self.expectation(description: #function)
 
-        let ps = [Schedule.once(0.5).map { 5 },
-                  Schedule.once(0.5).map { throw PromiseError.empty },
-                  Schedule.once(1.0).map { 15 }]
+        var ps = [5, 15].map { int in
+            Promise.lift { int }
+        }
+
+        ps.insert(Promise.lift { throw PromiseError.empty }, at: 1)
 
         Promise<Int>.concat(ps).onSuccess {
             XCTFail("Promise callback with value \($0)")
@@ -50,8 +51,8 @@ final class PromiseTests: XCTestCase {
     func testFullfilledTuple() {
         let expectation = self.expectation(description: #function)
 
-        let p1 = Schedule.once(0.5).map { true }
-        let p2 = Schedule.once(1.0).map { "Success" }
+        let p1 = Promise.lift { true }
+        let p2 = Promise.lift { "Success" }
 
         zip(p1, p2).onSuccess {
             XCTAssert($0 && $1 == "Success")
@@ -68,8 +69,8 @@ final class PromiseTests: XCTestCase {
     func testRejectedTuple() {
         let expectation = self.expectation(description: #function)
 
-        let p1 = Schedule.once(0.5).map { true }
-        let p2 = Schedule.once(1.0).map { throw PromiseError.empty }
+        let p1 = Promise.lift { true }
+        let p2 = Promise.lift { throw PromiseError.empty }
 
         zip(p1, p2).onSuccess {
             XCTFail("Promise callback with value \($0)")
@@ -82,7 +83,6 @@ final class PromiseTests: XCTestCase {
             XCTAssertNil($0)
         }
     }
-    */
 
     func testBackground() {
         let expectation = self.expectation(description: #function)
