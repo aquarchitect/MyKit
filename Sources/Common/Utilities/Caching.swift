@@ -22,53 +22,29 @@ public protocol Caching: class {
     static var pendingOperationIDs: NSMutableSet { get }
 }
 
-public extension Caching where Self == Object {
-
-    static func register(_ key: Key, with object: Self) {
-        storage.setObject(object, forKey: key)
-    }
-
-    static func unregister(_ key: Key) {
-        storage.removeObject(forKey: key)
-    }
-
-    static func registeredObject(forKey key: Key) -> Self? {
-        return storage.object(forKey: key)
-    }
-
-    static func contains(registeredKey key: Key) -> Bool {
-        return registeredObject(forKey: key) != nil
-    }
-}
-
-
-public extension Caching where Self == Object {
-
-    static func register(_ key: Key, with constructor: Promise<Self>) -> Promise<Void> {
-        guard registeredObject(forKey: key) == nil else {
-            return Promise.lift {}
-        }
-
-        guard !pendingOperationIDs.contains(key) else {
-            return Promise<Void>.lift { throw PromiseError.empty }
-        }
-
-        pendingOperationIDs.add(key)
-
-        return constructor.map {
-            self.register(key, with: $0)
-
-            objc_sync_enter(self.pendingOperationIDs)
-            self.pendingOperationIDs.remove(key)
-            objc_sync_exit(self.pendingOperationIDs)
-        }
-    }
+public extension Caching {
 
     /**
-     * Return a promise with constructor executing asynchronously.
+     * The constructor can be either an async or sync task.
      */
-    static func register(_ key: Key, with constructor: @escaping () throws -> Self) -> Promise<Void> {
-        return register(key, with: Promise.lift(constructor))
+    static func fetchObject(for key: Key, with constructor: Promise<Object>) -> Promise<Object> {
+        if let object = storage.object(forKey: key) {
+            return Promise.lift { object }
+        } else if !pendingOperationIDs.contains(key) {
+            return Promise.lift { throw PromiseError.empty }
+        } else {
+            pendingOperationIDs.add(key)
+
+            return constructor.map {
+                self.storage.setObject($0, forKey: key)
+
+                objc_sync_enter(self.pendingOperationIDs)
+                self.pendingOperationIDs.remove(key)
+                objc_sync_exit(self.pendingOperationIDs)
+
+                return $0
+            }
+        }
     }
 }
 
