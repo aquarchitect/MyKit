@@ -6,17 +6,21 @@
  * Copyright (c) 2016 Hai Nguyen.
  */
 
-open class Redux<State, Action> {
+open class Redux<State, Action: Equatable> {
 
     public typealias Reducer = (State, Action) -> Promise<State>
 
     public typealias Dispatcher = (Action) throws -> Void
     public typealias Middleware = (State, @escaping Dispatcher) -> Dispatcher
 
+    // MARK: Properties
+
     final public private(set) var state: State
 
     final private let reducer: Reducer
     final private let middleware: Middleware
+
+    // MARK: Initialization
 
     public init(reducer: @escaping Reducer, state: State, middleware: @escaping Middleware) {
         self.state = state
@@ -32,19 +36,23 @@ open class Redux<State, Action> {
         self.init(reducer: reducer, state: state, middleware: Redux.merge(middlewares))
     }
 
+    // MARK: Primary Methods
+
     /**
      * If you override this method, make sure you call `super.dipstach`.
      */
     open func dispatch(_ action: Action) {
-        reducer(state, action).resolve {
+        reducer(state, action).resolve { [weak self] in
+            guard let `self` = self else { return }
             var dispatch: Dispatcher = { _ in }
 
             switch $0 {
-            case .fulfill(let state): self.state = state
-            case .reject(let error): dispatch = { _ in throw error }
+            case .fulfill(let value): dispatch = { _ in Swift.print(1); self.state = value }
+            case .reject(let error): dispatch = { _ in Swift.print(1); throw error }
             }
 
-            try? self.middleware(self.state, dispatch)(action)
+            let state = (try? $0.resolve()) ?? self.state
+            try? self.middleware(state, dispatch)(action)
         }
     }
 }
