@@ -6,7 +6,7 @@
  * Copyright (c) 2016 Hai Nguyen.
  */
 
-open class Redux<State, Action: Equatable> {
+open class Redux<State, Action> {
 
     public typealias Reducer = (State, Action) -> Promise<State>
 
@@ -42,16 +42,13 @@ open class Redux<State, Action: Equatable> {
      * If you override this method, make sure you call `super.dipstach`.
      */
     open func dispatch(_ action: Action) {
-        reducer(state, action).resolve { [weak self] in
+        reducer(state, action).resolve { [weak self] result in
             guard let `self` = self else { return }
-            var dispatch: Dispatcher = { _ in }
-
-            switch $0 {
-            case .fulfill(let value): dispatch = { _ in Swift.print(1); self.state = value }
-            case .reject(let error): dispatch = { _ in Swift.print(1); throw error }
+            let dispatch: Dispatcher = { _ in
+                self.state = try result.resolve()
             }
 
-            let state = (try? $0.resolve()) ?? self.state
+            let state = (try? result.resolve()) ?? self.state
             try? self.middleware(state, dispatch)(action)
         }
     }
