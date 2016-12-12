@@ -6,51 +6,46 @@
  * Copyright (c) 2016 Hai Nguyen.
  */
 
-open class Redux<State, Action> {
+/**
+ * `Redux` protocol takes a different approach than the known Redux architecture
+ * from web development. The concept is basically the same - state of the entire
+ * application is dictated solely by actions. 
+ *
+ * The key components different from typical Redux are:
+ * - State is not stored in the main component, but instead should be encapsulated
+ *   in a middleware.
+ * - Actions are encourage to be recorded (not just for debugging purposes). Best
+ *   example to reasoning about it is selected index. State object often has an
+ *   attribute dedicated for this, which also relected in the array of content.
+ *   This is unneccessarily redundant; beside in the same object, whatever the
+ *   controller is in charge of maintaining the state mutability has another
+ *   responsibility which is to keep both of selecting attributes in sync.
+ *
+ */
+public protocol Redux: class {
 
-    public typealias Reducer = (State, Action) -> Promise<State>
+    associatedtype State
+    associatedtype Action
 
-    public typealias Dispatcher = (Action) throws -> Void
-    public typealias Middleware = (State, @escaping Dispatcher) -> Dispatcher
+    typealias Reducer = (State, Action) -> Promise<State>
+    typealias Dispatcher = (Action) throws -> Void
+    typealias Middleware = (State, @escaping Dispatcher) -> Dispatcher
 
-    // MARK: Properties
+    var reducer: Reducer { get }
+    var middleware: Middleware { get }
 
-    final public private(set) var state: State
+    func dispatch(_ action: Action)
+}
 
-    final private let reducer: Reducer
-    final private let middleware: Middleware
+public extension Redux {
 
-    // MARK: Initialization
-
-    public init(reducer: @escaping Reducer, state: State, middleware: @escaping Middleware) {
-        self.state = state
-        self.reducer = reducer
-        self.middleware = middleware
-    }
-
-    /**
-     * Errors from the reducer and other middlewares can be 
-     * subscribed in a middleware placing first in the queue.
-     */
-    public convenience init(reducer: @escaping Reducer, state: State, middlewares: Middleware...) {
-        self.init(reducer: reducer, state: state, middleware: Redux.merge(middlewares))
-    }
-
-    // MARK: Primary Methods
-
-    /**
-     * If you override this method, make sure you call `super.dipstach`.
-     */
-    open func dispatch(_ action: Action) {
-        reducer(state, action).resolve { [weak self] result in
-            guard let `self` = self else { return }
-            let dispatch: Dispatcher = { _ in
-                self.state = try result.resolve()
-            }
-
-            let state = (try? result.resolve()) ?? self.state
-            try? self.middleware(state, dispatch)(action)
-        }
+    func dispatch(_ state: State, _ action: Action) {
+        reducer(state, action)
+            .onSuccess { state in
+                try? self.middleware(state, { _ in })(action)
+            }.onFailure { error in
+                try? self.middleware(state, { _ in throw error })(action)
+            }.resolve()
     }
 }
 
@@ -63,7 +58,7 @@ public extension Redux {
                 .reduce(
                     dispatch,
                     { $1(state, $0) }
-                )
+            )
         }
     }
 

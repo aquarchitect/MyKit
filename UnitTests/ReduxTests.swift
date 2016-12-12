@@ -8,10 +8,14 @@
 
 final class ReduxTests: XCTestCase {
 
-    private typealias Store = Redux<String, Bool>
+    enum Exception: Error { case a, b }
 
-    func testMiddlewares() {
-        enum Exception: Error { case a, b }
+    fileprivate class Store: Redux {
+
+        typealias State = String
+        typealias Action = Bool
+
+        let middleware: Store.Middleware
 
         let reducer: Store.Reducer = { state, action in
             switch action {
@@ -19,6 +23,18 @@ final class ReduxTests: XCTestCase {
             case false: return Promise.lift { throw Exception.a }
             }
         }
+
+        init(middlewares: Store.Middleware...) {
+            self.middleware = Store.merge(middlewares)
+        }
+
+        func dispatch(_ action: Bool) {
+            dispatch("Initial", action)
+        }
+    }
+
+    func testMiddlewares() {
+
 
         let m1: Store.Middleware = { state, dispatch in
             return { action in
@@ -45,8 +61,7 @@ final class ReduxTests: XCTestCase {
             }
         }
 
-        let store = Store(reducer: reducer, state: "Initial", middleware: Store.merge(m2, m1))
-
+        let store = Store(middlewares: m2, m1)
         store.dispatch(true)
         store.dispatch(false)
     }
