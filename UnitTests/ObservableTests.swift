@@ -10,6 +10,19 @@
 
 final class ObservableTests: XCTestCase {
 
+    func testLift() {
+        let expectation = self.expectation(description: #function)
+
+        Observable.lift { "Test" }.onNext {
+            XCTAssertEqual($0, "Test")
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 2) {
+            XCTAssertNil($0)
+        }
+    }
+
     func testMap() {
         let expectation = self.expectation(description: #function)
 

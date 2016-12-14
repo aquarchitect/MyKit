@@ -228,13 +228,6 @@ public extension Observable {
     }
 }
 
-extension Observable: CustomStringConvertible {
-
-    public var description: String {
-        return "Has \(callbacks.count) subscription"
-    }
-}
-
 public func zip<A, B>(_ observableA: Observable<A>, observableB: Observable<B>) -> Observable<(A, B)> {
     let observable = Observable<(A, B)>()
     var resultA: Result<A>?, resultB: Result<B>?
