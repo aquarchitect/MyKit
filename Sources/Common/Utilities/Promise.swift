@@ -25,8 +25,8 @@ public struct Promise<T> {
 
 public extension Promise {
 
-    static func lift(_ construct: @escaping () throws -> T) -> Promise {
-        return Promise { $0(.init(construct)) }
+    static func lift(_ constructor: @escaping () throws -> T) -> Promise {
+        return Promise { $0(.init(constructor)) }
     }
 }
 
@@ -50,20 +50,20 @@ public extension Promise {
 public extension Promise {
 
     /// Transform one type to another.
-    func map<U>(_ transform: @escaping (T) throws -> U) -> Promise<U> {
+    func map<U>(_ transformer: @escaping (T) throws -> U) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { result in
-                callback(result.map(transform))
+                callback(result.map(transformer))
             }
         }
     }
 
     /// Transform one type to another.
-    func flatMap<U>(_ transform: @escaping (T) -> Promise<U>) -> Promise<U> {
+    func flatMap<U>(_ transformer: @escaping (T) -> Promise<U>) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { result in
                 do {
-                    try (result.resolve >>> transform)().resolve(callback)
+                    try (result.resolve >>> transformer)().resolve(callback)
                 } catch {
                     callback(.reject(error))
                 }
@@ -106,13 +106,13 @@ public extension Promise {
 
 public extension Promise {
 
-    func recover(_ transform: @escaping (Error) -> Promise) -> Promise {
+    func recover(_ transformer: @escaping (Error) -> Promise) -> Promise {
         return Promise { callback in
             self.resolve { result in
                 do {
                     callback(.fulfill(try result.resolve()))
                 } catch {
-                    transform(error).resolve(callback)
+                    transformer(error).resolve(callback)
                 }
             }
         }
@@ -138,7 +138,7 @@ public extension Promise {
 
 public extension Promise {
 
-    func inDispatchQueue(_ queue: DispatchQueue) -> Promise {
+    func on(_ queue: DispatchQueue) -> Promise {
         return Promise { callback in
             queue.async {
                 self.resolve { result in
@@ -151,7 +151,7 @@ public extension Promise {
     }
 
     func inBackground() -> Promise {
-        return inDispatchQueue(.global(qos: .background))
+        return on(.global(qos: .background))
     }
 
     func inDispatchGroup(_ group: DispatchGroup) -> Promise {

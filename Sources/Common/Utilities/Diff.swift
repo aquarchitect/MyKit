@@ -43,10 +43,10 @@ public extension Diff {
 
 public extension Diff {
 
-    func map<U>(_ transform: (T) throws -> U) rethrows -> Diff<U> {
+    func map<U>(_ transformer: (T) throws -> U) rethrows -> Diff<U> {
         switch self {
-        case .delete(let value): return try .delete(transform(value))
-        case .insert(let value): return try .insert(transform(value))
+        case .delete(let value): return try .delete(transformer(value))
+        case .insert(let value): return try .insert(transformer(value))
         }
     }
 }

@@ -9,11 +9,11 @@
 /// :nodoc:
 public extension Sequence {
 
-    public func pair<Key: Hashable, Value>(_ transform: (Iterator.Element) throws -> (Key, Value)) rethrows -> Dictionary<Key, Value> {
+    public func pair<Key: Hashable, Value>(_ transformer: (Iterator.Element) throws -> (Key, Value)) rethrows -> Dictionary<Key, Value> {
         var results: [Key: Value] = Dictionary(minimumCapacity: self.underestimatedCount)
 
         try self.forEach {
-            let element = try transform($0)
+            let element = try transformer($0)
             results[element.0] = element.1
         }
 

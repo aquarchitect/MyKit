@@ -57,11 +57,11 @@ public extension Result {
 public extension Result {
 
     /// Transfrom result of one type to another
-    func map<U>(_ transform: (T) throws -> U) -> Result<U> {
+    func map<U>(_ transformer: (T) throws -> U) -> Result<U> {
         switch self {
         case .fulfill(let value):
             do {
-                return .fulfill(try transform(value))
+                return .fulfill(try transformer(value))
             } catch {
                 return .reject(error)
             }
@@ -71,9 +71,9 @@ public extension Result {
     }
 
     /// Transform result of one type to another
-    func flatMap<U>(_ transform: (T) -> Result<U>) -> Result<U> {
+    func flatMap<U>(_ transformer: (T) -> Result<U>) -> Result<U> {
         do {
-            return transform(try resolve())
+            return transformer(try resolve())
         } catch {
             return Result<U>.reject(error)
         }

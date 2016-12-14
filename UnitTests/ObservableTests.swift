@@ -33,23 +33,17 @@ final class ObservableTests: XCTestCase {
 
         var results: [String] = []
         let main = Observable<Int>()
-        let sub = Observable<String>()
 
         main.flatMap { value in
-            DispatchQueue.main.async {
-                sub.update("\(value)")
-            }
-
-            return sub
+            Observable.lift { "\(value)" }
         }.onNext {
             results += [$0]
         }
 
         main.update(1)
-        sub.update("A")
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            XCTAssertEqual(results, ["A", "1"])
+            XCTAssertEqual(results, ["1"])
             expectation.fulfill()
         }
 

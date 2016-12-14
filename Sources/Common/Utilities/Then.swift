@@ -21,8 +21,8 @@ public extension Then {
         return self
     }
 
-    func andThen<U>(_ transform: (Self) throws -> U) rethrows -> U {
-        return try transform(self)
+    func andThen<U>(_ transformer: (Self) throws -> U) rethrows -> U {
+        return try transformer(self)
     }
 }
 

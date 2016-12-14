@@ -31,6 +31,23 @@ extension Observable: Then {}
 
 public extension Observable {
 
+    static func lift(_ construct: @escaping () throws -> T) -> Observable {
+        let observable = Observable<T>()
+
+        DispatchQueue.main.async {
+            do {
+                try (construct >>> observable.update)()
+            } catch {
+                observable.update(error)
+            }
+        }
+
+        return observable
+    }
+}
+
+public extension Observable {
+
     internal func update(_ result: Result<T>) {
         mutex.perform { callbacks.forEach { $0(result) }}
     }
@@ -46,22 +63,22 @@ public extension Observable {
 
 public extension Observable {
 
-    func map<U>(_ transform: @escaping (T) throws -> U) -> Observable<U> {
+    func map<U>(_ transformer: @escaping (T) throws -> U) -> Observable<U> {
         let observable = Observable<U>()
 
         subscribe { result in
-            observable.update(result.map(transform))
+            observable.update(result.map(transformer))
         }
 
         return observable
     }
 
-    func flatMap<U>(_ transform: @escaping (T) -> Observable<U>) -> Observable<U> {
+    func flatMap<U>(_ transformer: @escaping (T) -> Observable<U>) -> Observable<U> {
         let observable = Observable<U>()
 
         subscribe { result in
             do {
-                try (result.resolve >>> transform)().subscribe(observable.update)
+                try (result.resolve >>> transformer)().subscribe(observable.update)
             } catch {
                 observable.update(.reject(error))
             }
@@ -70,7 +87,7 @@ public extension Observable {
         return observable
     }
 
-    func flatMapLatest<U>(_ transform: @escaping (T) throws -> Observable<U>) -> Observable<U> {
+    func flatMapLatest<U>(_ transformer: @escaping (T) throws -> Observable<U>) -> Observable<U> {
         let observable = Observable<U>()
         var lastResult: Box<Result<T>>?
 
@@ -79,7 +96,7 @@ public extension Observable {
             lastResult = boxedResult
 
             do {
-                try (outerResult.resolve >>> transform)().subscribe { innerResult in
+                try (outerResult.resolve >>> transformer)().subscribe { innerResult in
                     guard lastResult === boxedResult else { return }
                     observable.update(innerResult)
                     lastResult = nil
@@ -190,11 +207,11 @@ public extension Observable {
 
 public extension Observable {
 
-    func inBackground() -> Observable {
+    func on(_ queue: DispatchQueue) -> Observable {
         let observable = Observable()
 
         subscribe { result in
-            DispatchQueue.global(qos: .background).async {
+            queue.async {
                 observable.update(result)
             }
         }
@@ -202,16 +219,12 @@ public extension Observable {
         return observable
     }
 
+    func inBackground() -> Observable {
+        return on(.global(qos: .background))
+    }
+
     func inMainQueue() -> Observable {
-        let observable = Observable()
-
-        subscribe { result in
-            DispatchQueue.main.async {
-                observable.update(result)
-            }
-        }
-
-        return observable
+        return on(.main)
     }
 }
 
