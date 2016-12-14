@@ -6,36 +6,31 @@
  * Copyright (c) 2016 Hai Nguyen.
  */
 
+@testable import MyKit
+
 final class ReduxTests: XCTestCase {
 
     enum Exception: Error { case a, b }
 
-    fileprivate class Store: Redux {
-
-        typealias State = String
-        typealias Action = Bool
-
-        let middleware: Store.Middleware
-
-        let reducer: Store.Reducer = { state, action in
-            switch action {
-            case true: return Promise.lift { state }
-            case false: return Promise.lift { throw Exception.a }
-            }
-        }
+    fileprivate class Store: Redux<String, Bool> {
 
         init(middlewares: Store.Middleware...) {
-            self.middleware = Store.merge(middlewares)
-        }
+            let reducer: Store.Reducer = { state, action in
+                let observable = Observable<String>()
 
-        func dispatch(_ action: Bool) {
-            dispatch("Initial", action)
+                switch action {
+                case true: observable.update(state)
+                case false: observable.update(Exception.a)
+                }
+
+                return observable
+            }
+
+            super.init(reducer: reducer, middleware: Store.merge(middlewares))
         }
     }
 
     func testMiddlewares() {
-
-
         let m1: Store.Middleware = { state, dispatch in
             return { action in
                 switch action {
@@ -62,7 +57,7 @@ final class ReduxTests: XCTestCase {
         }
 
         let store = Store(middlewares: m2, m1)
-        store.dispatch(true)
-        store.dispatch(false)
+        store.input.update(("Initial", true))
+        store.input.update(("Initial", false))
     }
 }

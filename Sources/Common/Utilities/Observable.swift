@@ -18,7 +18,7 @@ open class Observable<T> {
 
     public init() {}
 
-    fileprivate func subscribe(_ callback: @escaping Result<T>.Callback) {
+    internal func subscribe(_ callback: @escaping Result<T>.Callback) {
         mutex.perform { callbacks.append(callback) }
     }
 }
@@ -27,12 +27,16 @@ extension Observable: Then {}
 
 public extension Observable {
 
-    fileprivate func update(_ result: Result<T>) {
+    internal func update(_ result: Result<T>) {
         mutex.perform { callbacks.forEach { $0(result) }}
     }
 
     func update(_ value: T) {
         update(.fulfill(value))
+    }
+
+    func update(_ error: Error) {
+        update(.reject(error))
     }
 }
 
@@ -54,6 +58,28 @@ public extension Observable {
         subscribe { result in
             do {
                 try (result.resolve >>> transform)().subscribe(observable.update)
+            } catch {
+                observable.update(.reject(error))
+            }
+        }
+
+        return observable
+    }
+
+    func flatMapLatest<U>(_ transform: @escaping (T) throws -> Observable<U>) -> Observable<U> {
+        let observable = Observable<U>()
+        var lastResult: Box<Result<T>>?
+
+        subscribe { outerResult in
+            let boxedResult = Box(outerResult)
+            lastResult = boxedResult
+
+            do {
+                try (outerResult.resolve >>> transform)().subscribe { innerResult in
+                    guard lastResult === boxedResult else { return }
+                    observable.update(innerResult)
+                    lastResult = nil
+                }
             } catch {
                 observable.update(.reject(error))
             }
@@ -100,12 +126,13 @@ public extension Observable {
 
 public extension Observable {
 
-    func join(_ other: Observable) -> Observable {
-        let observable = Observable()
-        subscribe(observable.update)
-        other.subscribe(observable.update)
+    func join(_ others: Observable...) -> Observable {
+        for other in others {
+            subscribe(other.update)
+            other.subscribe(update)
+        }
 
-        return observable
+        return self
     }
 
     static func merge(_ observables: Observable...) -> Observable {
@@ -133,36 +160,27 @@ public extension Observable {
         return observable
     }
 
+    /**
+     * The observable only fires once per specified time interval. The last
+     * call to update will always be delivered (although it might be delayed 
+     * up to thhe specified amount of seconds).
+     */
     func debounce(_ timeInterval: TimeInterval) -> Observable {
-        let outerObservable = Observable()
-        var lastCall: Date?
+        let observable = Observable()
+        var lastResult: Box<Result<T>>?
 
-        subscribe { outerResult in
-            let currentTime = Date()
+        subscribe { result in
+            let boxedResult = Box(result)
+            lastResult = boxedResult
 
-            func updateIfNeeded(_ innerObservable: Observable) -> Result<T>.Callback {
-                return { innerResult in
-                    let timeSinceLastCall = lastCall?.timeIntervalSinceNow
-
-                    if (timeSinceLastCall ?? -timeInterval) <= -timeInterval {
-                        // update if time frame is outside of debounce window
-                        lastCall = Date()
-                        innerObservable.update(innerResult)
-                    } else if case .orderedAscending? = lastCall?.compare(currentTime) {
-                        // skip result if there was a new result
-                        let deadline: DispatchTime = .now() + timeInterval - (timeSinceLastCall ?? 0)
-
-                        DispatchQueue.main.asyncAfter(deadline: deadline) {
-                            updateIfNeeded(innerObservable)(innerResult)
-                        }
-                    }
-                }
+            let deadline: DispatchTime = .now() + timeInterval
+            DispatchQueue.main.asyncAfter(deadline: deadline) {
+                guard lastResult === boxedResult else { return }
+                observable.update(result)
             }
-
-            updateIfNeeded(outerObservable)(outerResult)
         }
 
-        return outerObservable
+        return observable
     }
 }
 
@@ -191,4 +209,28 @@ public extension Observable {
 
         return observable
     }
+}
+
+public func zip<A, B>(_ observableA: Observable<A>, observableB: Observable<B>) -> Observable<(A, B)> {
+    let observable = Observable<(A, B)>()
+    var resultA: Result<A>?, resultB: Result<B>?
+
+    func update() {
+        zip(resultA, resultB)
+            .map { zip($0, $1) }
+            .map(observable.update)
+    }
+
+    observableA.subscribe { result in
+        resultA = result
+        update()
+    }
+
+    observableB.subscribe { result in
+        resultB = result
+        update()
+
+    }
+
+    return observable
 }

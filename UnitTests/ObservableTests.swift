@@ -1,5 +1,5 @@
 /*
- * SignalTests.swift
+ * ObservableTests.swift
  * MyKit
  *
  * Created by Hai Nguyen.
@@ -8,20 +8,18 @@
 
 @testable import MyKit
 
-final class SignalTests: XCTestCase {
+final class ObservableTests: XCTestCase {
 
-    private let result = "Hello World"
-    private let observable = Observable<String>()
-
-    func testSimpleSignal() {
+    func testMap() {
         let expectation = self.expectation(description: #function)
 
-        observable.map {
-            $0 + " World"
-        }.onNext {
-            expectation.fulfill()
-            XCTAssertEqual($0, self.result)
-        }
+        let observable = Observable<String>()
+        observable
+            .map { $0 + " World" }
+            .onNext {
+                XCTAssertEqual($0, "Hello World")
+                expectation.fulfill()
+            }
 
         observable.update("Hello")
 
@@ -30,19 +28,110 @@ final class SignalTests: XCTestCase {
         }
     }
 
-    func testDelaySignal() {
+    func testFlatMap() {
         let expectation = self.expectation(description: #function)
 
-        observable.map {
-            $0 + " World"
-        }.delay(4).onNext {
-            expectation.fulfill()
-            XCTAssertEqual($0, self.result)
+        var results: [String] = []
+        let main = Observable<Int>()
+        let sub = Observable<String>()
+
+        main.flatMap { value in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                sub.update("\(value)")
+            }
+            return sub
+        }.onNext {
+            results += [$0]
         }
+
+        main.update(1)
+        sub.update("A")
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            XCTAssertEqual(results, ["A", "1"])
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 3) {
+            XCTAssertNil($0)
+        }
+    }
+
+    func testFlatMapLastest() {
+        let firstExpectation = self.expectation(description: #function)
+        let secondExpectation = self.expectation(description: #function)
+
+        var result: [String] = []
+        let observable = Observable<Int>()
+        observable.flatMapLatest { value -> Observable<String> in
+            let innerObservable = Observable<String>()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                innerObservable.update("\(value)")
+            }
+
+            return innerObservable
+        }.onNext {
+            result += [$0]
+        }
+
+        [1, 2].forEach(observable.update)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            observable.update(3)
+            firstExpectation.fulfill()
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            XCTAssertEqual(result, ["2", "3"])
+            secondExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 6) {
+            XCTAssertNil($0)
+        }
+    }
+
+    func testDelay() {
+        let expectation = self.expectation(description: #function)
+
+        let observable = Observable<String>()
+        observable.delay(4)
+            .map { $0 + " World" }
+            .onNext {
+                XCTAssertEqual($0, "Hello World")
+                expectation.fulfill()
+            }
 
         observable.update("Hello")
 
         waitForExpectations(timeout: 6) {
+            XCTAssertNil($0)
+        }
+    }
+
+    func testDebounce() {
+        let firstExpectation = self.expectation(description: "First Expectation")
+        let secondExepectation = self.expectation(description: "Second Expectation")
+
+        var results: [String] = []
+
+        let observable = Observable<String>()
+        observable.debounce(1).onNext { results += [$0] }
+        ["A", "B", "C"].forEach(observable.update)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            observable.update("D")
+            XCTAssertEqual(results, ["C"])
+            firstExpectation.fulfill()
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            XCTAssertEqual(results, ["C", "D"])
+            secondExepectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 5) {
             XCTAssertNil($0)
         }
     }

@@ -7,58 +7,52 @@
  */
 
 /**
- * `Redux` protocol takes a different approach than the known Redux architecture
- * from web development. The concept is basically the same - state of the entire
- * application is dictated solely by actions. 
+ * `Redux` takes a different approach from a typical Redux from web development.
+ * The concepts are essentially the same - state of the entire application is 
+ * dictated solely by actions.
  *
- * The key components different from typical Redux are:
- * - State is not stored in the main component, but instead should be encapsulated
- *   in a middleware.
- * - Actions are encourage to be recorded (not just for debugging purposes). Best
- *   example to reasoning about it is selected index. State object often has an
- *   attribute dedicated for this, which also relected in the array of content.
- *   This is unneccessarily redundant; beside in the same object, whatever the
- *   controller is in charge of maintaining the state mutability has another
- *   responsibility which is to keep both of selecting attributes in sync.
- *
+ * The key components that make this different are:
+ * - The entire app state is encourage to be encapsulated inside a middleware. This
+ *   approach provides a flexibility whether to save the state based on the current
+ *   action.
+ * - Actions are also encouraged to be recorded in a middleware - not only for debugging. 
+ *   Best example to reason about it are selection attributes. These information are often
+ *   redundantly reflect inside of the app array content, which also adds more responsibility
+ *   into the object who maintains the state mutability of keeping both attributes in sync.
+ * - State subscription is also encouraged to handle errors either catching from the root
+ *   reducer or other middlewares. Most importantly, state subscription middleware needs to be
+ *   positioned first in the queue.
  */
-public protocol Redux: class {
+open class Redux<State, Action> {
 
-    associatedtype State
-    associatedtype Action
+    public typealias Reducer = (State, Action) -> Observable<State>
+    public typealias Dispatcher = (Action) throws -> Void
+    public typealias Middleware = (State, @escaping Dispatcher) -> Dispatcher
 
-    typealias Reducer = (State, Action) -> Promise<State>
-    typealias Dispatcher = (Action) throws -> Void
-    typealias Middleware = (State, @escaping Dispatcher) -> Dispatcher
+    public let input = Observable<(State, Action)>()
 
-    var reducer: Reducer { get }
-    var middleware: Middleware { get }
+    public init(reducer: @escaping Reducer, middleware: @escaping Middleware) {
+        input.flatMapLatest { state, action in
+            reducer(state, action)
+                .map { ($0, action) }
+                .onError { error in
+                    try? middleware(state, { _ in throw error })(action)
+                }
+        }.onNext { state, action in
+            try? middleware(state, { _ in })(action)
+        }
+    }
 
-    func dispatch(_ action: Action)
-}
-
-public extension Redux {
-
-    func dispatch(_ state: State, _ action: Action) {
-        reducer(state, action)
-            .onSuccess { state in
-                try? self.middleware(state, { _ in })(action)
-            }.onFailure { error in
-                try? self.middleware(state, { _ in throw error })(action)
-            }.resolve()
+    public convenience init(reducer: @escaping Reducer, middlewares: Middleware...) {
+        self.init(reducer: reducer, middleware: Redux.merge(middlewares))
     }
 }
 
-public extension Redux {
+extension Redux {
 
     static func merge(_ middlewares: [Middleware]) -> Middleware {
         return { state, dispatch in
-            middlewares
-                .reversed()
-                .reduce(
-                    dispatch,
-                    { $1(state, $0) }
-            )
+            middlewares.reversed().reduce(dispatch, { $1(state, $0) })
         }
     }
 
