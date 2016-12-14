@@ -21,6 +21,10 @@ open class Observable<T> {
     internal func subscribe(_ callback: @escaping Result<T>.Callback) {
         mutex.perform { callbacks.append(callback) }
     }
+
+    public func unsubscribeAll() {
+        mutex.perform { callbacks.removeAll() }
+    }
 }
 
 extension Observable: Then {}
@@ -52,7 +56,7 @@ public extension Observable {
         return observable
     }
 
-    func flatMap<U>(_ transform: @escaping (T) throws -> Observable<U>) -> Observable<U> {
+    func flatMap<U>(_ transform: @escaping (T) -> Observable<U>) -> Observable<U> {
         let observable = Observable<U>()
 
         subscribe { result in

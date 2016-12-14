@@ -42,13 +42,9 @@ open class Redux<State, Action> {
             try? middleware(state, { _ in })(action)
         }
     }
-
-    public convenience init(reducer: @escaping Reducer, middlewares: Middleware...) {
-        self.init(reducer: reducer, middleware: Redux.merge(middlewares))
-    }
 }
 
-extension Redux {
+public extension Redux {
 
     static func merge(_ middlewares: [Middleware]) -> Middleware {
         return { state, dispatch in

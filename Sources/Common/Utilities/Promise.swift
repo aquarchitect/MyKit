@@ -59,7 +59,7 @@ public extension Promise {
     }
 
     /// Transform one type to another.
-    func flatMap<U>(_ transform: @escaping (T) throws -> Promise<U>) -> Promise<U> {
+    func flatMap<U>(_ transform: @escaping (T) -> Promise<U>) -> Promise<U> {
         return Promise<U> { callback in
             self.resolve { result in
                 do {

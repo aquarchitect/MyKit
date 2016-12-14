@@ -36,9 +36,10 @@ final class ObservableTests: XCTestCase {
         let sub = Observable<String>()
 
         main.flatMap { value in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.async {
                 sub.update("\(value)")
             }
+
             return sub
         }.onNext {
             results += [$0]
