@@ -143,4 +143,15 @@ final class ObservableTests: XCTestCase {
             XCTAssertNil($0)
         }
     }
+
+    func testBackground() {
+        let expectation = self.expectation(description: #function)
+
+        Observable.lift(on: .global(qos: .background)) {
+            XCTAssertFalse(Thread.isMainThread)
+            expectation.fulfill()
+        }.inBackground()
+
+        waitForExpectations(timeout: 1) { XCTAssertNil($0) }
+    }
 }

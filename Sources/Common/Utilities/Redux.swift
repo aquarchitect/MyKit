@@ -29,7 +29,7 @@ open class Redux<State, Action> {
     public typealias Dispatcher = (Action) throws -> Void
     public typealias Middleware = (State, @escaping Dispatcher) -> Dispatcher
 
-    private let input = Observable<(State, Action)>()
+    internal let input = Observable<(State, Action)>()
 
     public init(reducer: @escaping Reducer, middleware: @escaping Middleware) {
         input.flatMapLatest { state, action in

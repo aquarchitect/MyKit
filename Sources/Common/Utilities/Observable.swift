@@ -31,12 +31,12 @@ extension Observable: Then {}
 
 public extension Observable {
 
-    static func lift(_ construct: @escaping () throws -> T) -> Observable {
+    static func lift(on queue: DispatchQueue = .main, _ constructor: @escaping () throws -> T) -> Observable {
         let observable = Observable()
 
-        DispatchQueue.main.async {
+        queue.async {
             do {
-                try (observable.update • construct)()
+                try (observable.update • constructor)()
             } catch {
                 observable.update(error)
             }
@@ -244,6 +244,7 @@ public extension Observable {
 
 public extension Observable {
 
+    @discardableResult
     func on(_ queue: DispatchQueue) -> Observable {
         let observable = Observable()
 
@@ -256,10 +257,12 @@ public extension Observable {
         return observable
     }
 
+    @discardableResult
     func inBackground() -> Observable {
         return on(.global(qos: .background))
     }
 
+    @discardableResult
     func inMainQueue() -> Observable {
         return on(.main)
     }
