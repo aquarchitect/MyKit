@@ -6,8 +6,6 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
-private struct NoContent: Error {}
-
 /// _Result_ helps defining results of a callback.
 public enum Result<T> {
 
@@ -30,7 +28,7 @@ public enum Result<T> {
         } else if let _value = value {
             self = .fulfill(_value)
         } else {
-            self = .reject(Empty())
+            self = .reject(Empty.default)
         }
     }
 }

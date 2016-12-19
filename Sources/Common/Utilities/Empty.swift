@@ -10,7 +10,17 @@
  * `Empty` is designed to break a chaining asynchronous composition.
  * It does not carry much information for debugging.
  */
-public struct Empty: Error {}
+public struct Empty: Error {
+
+    fileprivate init() {}
+}
+
+public extension Empty {
+
+    static var `default`: Empty {
+        return .init()
+    }
+}
 
 extension Empty: CustomStringConvertible {
 
