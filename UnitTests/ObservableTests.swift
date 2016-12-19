@@ -147,10 +147,10 @@ final class ObservableTests: XCTestCase {
     func testBackground() {
         let expectation = self.expectation(description: #function)
 
-        Observable.lift(on: .global(qos: .background)) {
+        Observable.lift { "Test" }.inBackground().onNext { _ in
             XCTAssertFalse(Thread.isMainThread)
             expectation.fulfill()
-        }.inBackground()
+        }
 
         waitForExpectations(timeout: 1) { XCTAssertNil($0) }
     }
