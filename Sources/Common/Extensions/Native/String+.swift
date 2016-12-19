@@ -20,7 +20,7 @@ public extension String {
 
     /// Produce a camel case string
     func camelcased() -> String {
-        return (CharacterSet.init(charactersIn:) >>> self.components)(" -_")
+        return (self.components(separatedBy:) • CharacterSet.init(charactersIn:))(" -_")
             .lazy
             .enumerated()
             .map { $0 == 0 ? $1.lowercased() : $1.capitalized }

@@ -1,0 +1,20 @@
+/*
+ * Empty.swift
+ * MyKit
+ *
+ * Created by Hai Nguyen on 12/16/16.
+ * Copyright (c) 2016 Hai Nguyen.
+ */
+
+/**
+ * `Empty` is designed to break a chaining asynchronous composition.
+ * It does not carry much information for debugging.
+ */
+public struct Empty: Error {}
+
+extension Empty: CustomStringConvertible {
+
+    public var description: String {
+        return "Unharmed error"
+    }
+}

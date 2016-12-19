@@ -10,17 +10,9 @@ import CloudKit
 
 public extension CKContainer {
 
-    func fetchUserRecordID() -> Promise<CKRecordID> {
-        return Promise { callback in
-            self.fetchUserRecordID {
-                if let error = $1 {
-                    callback(.reject(error))
-                } else if let recordID = $0 {
-                    callback(.fulfill(recordID))
-                } else {
-                    callback(.reject(PromiseError.empty))
-                }
-            }
+    func fetchUserRecordID() -> Observable<CKRecordID> {
+        return Observable().then {
+            self.fetchUserRecordID(completionHandler: $0.update)
         }
     }
 }

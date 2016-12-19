@@ -8,14 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		C20165521CE0EFC500F7D3E5 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165421CE0EFC500F7D3E5 /* Box.swift */; };
-		C20165531CE0EFC500F7D3E5 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165431CE0EFC500F7D3E5 /* Curry.swift */; };
-		C20165581CE0EFC500F7D3E5 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165481CE0EFC500F7D3E5 /* Promise.swift */; };
+		C20165531CE0EFC500F7D3E5 /* Composite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165431CE0EFC500F7D3E5 /* Composite.swift */; };
 		C201655A1CE0EFC500F7D3E5 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654A1CE0EFC500F7D3E5 /* Result.swift */; };
 		C201655D1CE0EFC500F7D3E5 /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654D1CE0EFC500F7D3E5 /* Swizzle.swift */; };
 		C201655E1CE0EFC500F7D3E5 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654E1CE0EFC500F7D3E5 /* Then.swift */; };
 		C20165621CE0F01D00F7D3E5 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165421CE0EFC500F7D3E5 /* Box.swift */; };
-		C20165631CE0F01D00F7D3E5 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165431CE0EFC500F7D3E5 /* Curry.swift */; };
-		C20165681CE0F01D00F7D3E5 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165481CE0EFC500F7D3E5 /* Promise.swift */; };
+		C20165631CE0F01D00F7D3E5 /* Composite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165431CE0EFC500F7D3E5 /* Composite.swift */; };
 		C201656A1CE0F01D00F7D3E5 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654A1CE0EFC500F7D3E5 /* Result.swift */; };
 		C201656D1CE0F01D00F7D3E5 /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654D1CE0EFC500F7D3E5 /* Swizzle.swift */; };
 		C201656E1CE0F01D00F7D3E5 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201654E1CE0EFC500F7D3E5 /* Then.swift */; };
@@ -154,6 +152,8 @@
 		C2BB19B51D113186004F76BA /* ShaderKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB19B41D113186004F76BA /* ShaderKind.swift */; };
 		C2BB19B71D113433004F76BA /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB19B61D113433004F76BA /* TableController.swift */; };
 		C2BB19B91D1139EC004F76BA /* BasicShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C2BB19B81D1139EC004F76BA /* BasicShader.fsh */; };
+		C2BB63F51E0470BE0006DC70 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB63F41E0470BE0006DC70 /* Empty.swift */; };
+		C2BB63F61E0470BE0006DC70 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB63F41E0470BE0006DC70 /* Empty.swift */; };
 		C2BD802E1D98703300F3D34F /* SnappingLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BD802D1D98703300F3D34F /* SnappingLayoutDelegate.swift */; };
 		C2C1D39E1DC83BEA009FAB35 /* NSBezierPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C1D39D1DC83BEA009FAB35 /* NSBezierPath+.swift */; };
 		C2C62A2A1D04A36F0009B45F /* ColorHexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A291D04A36F0009B45F /* ColorHexing.swift */; };
@@ -255,7 +255,7 @@
 
 /* Begin PBXFileReference section */
 		C20165421CE0EFC500F7D3E5 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Common/Utilities/Box.swift; sourceTree = "<group>"; };
-		C20165431CE0EFC500F7D3E5 /* Curry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Curry.swift; path = Sources/Common/Utilities/Curry.swift; sourceTree = "<group>"; };
+		C20165431CE0EFC500F7D3E5 /* Composite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Composite.swift; path = Sources/Common/Utilities/Composite.swift; sourceTree = "<group>"; };
 		C20165481CE0EFC500F7D3E5 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = Sources/Common/Utilities/Promise.swift; sourceTree = "<group>"; };
 		C201654A1CE0EFC500F7D3E5 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Sources/Common/Utilities/Result.swift; sourceTree = "<group>"; };
 		C201654D1CE0EFC500F7D3E5 /* Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swizzle.swift; path = Sources/Common/Utilities/Swizzle.swift; sourceTree = "<group>"; };
@@ -351,6 +351,7 @@
 		C2BB19B41D113186004F76BA /* ShaderKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShaderKind.swift; path = Demos/iOS/ShaderKind.swift; sourceTree = SOURCE_ROOT; };
 		C2BB19B61D113433004F76BA /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableController.swift; path = Demos/iOS/TableController.swift; sourceTree = SOURCE_ROOT; };
 		C2BB19B81D1139EC004F76BA /* BasicShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = BasicShader.fsh; path = Demos/iOS/BasicShader.fsh; sourceTree = SOURCE_ROOT; };
+		C2BB63F41E0470BE0006DC70 /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Empty.swift; path = Sources/Common/Utilities/Empty.swift; sourceTree = "<group>"; };
 		C2BD802D1D98703300F3D34F /* SnappingLayoutDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingLayoutDelegate.swift; path = Sources/iOS/Frameworks/CollectionLayout/Snapping/SnappingLayoutDelegate.swift; sourceTree = "<group>"; };
 		C2C1D39D1DC83BEA009FAB35 /* NSBezierPath+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSBezierPath+.swift"; path = "Sources/macOS/Extensions/NSBezierPath+.swift"; sourceTree = "<group>"; };
 		C2C62A291D04A36F0009B45F /* ColorHexing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorHexing.swift; path = Sources/Common/Frameworks/ColorHexing/ColorHexing.swift; sourceTree = "<group>"; };
@@ -729,7 +730,7 @@
 			children = (
 				C2446BED1CEB6D2100957586 /* Arbitrary.swift */,
 				C20165421CE0EFC500F7D3E5 /* Box.swift */,
-				C20165431CE0EFC500F7D3E5 /* Curry.swift */,
+				C20165431CE0EFC500F7D3E5 /* Composite.swift */,
 				C24A0AE01D7211D800F94F08 /* Diff.swift */,
 				C2EAD8291D03F714001D2DC4 /* Matrix.swift */,
 				C20165481CE0EFC500F7D3E5 /* Promise.swift */,
@@ -740,6 +741,7 @@
 				C2A6738B1DB00E06009E063A /* Observable.swift */,
 				C2291EEE1DEBF57E00CBF3BE /* Caching.swift */,
 				C24F53751DEF5A3300673CF2 /* Redux.swift */,
+				C2BB63F41E0470BE0006DC70 /* Empty.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1301,6 +1303,7 @@
 				C201656E1CE0F01D00F7D3E5 /* Then.swift in Sources */,
 				C2EB48AA1DA5804300635D55 /* LoremIpsum.swift in Sources */,
 				C2617B031DB6B5AB004E4B5A /* Dictionary+.swift in Sources */,
+				C2BB63F61E0470BE0006DC70 /* Empty.swift in Sources */,
 				C2617B1A1DB6B739004E4B5A /* URLSession+.swift in Sources */,
 				C20165F01CE0FEE200F7D3E5 /* OpenWeather.swift in Sources */,
 				C2A9D7A41DB439BD00F264EE /* Observable.swift in Sources */,
@@ -1315,7 +1318,7 @@
 				C2617B1F1DB6B739004E4B5A /* NSRange+.swift in Sources */,
 				C2617B181DB6B739004E4B5A /* DateFormatter+.swift in Sources */,
 				C20165621CE0F01D00F7D3E5 /* Box.swift in Sources */,
-				C20165631CE0F01D00F7D3E5 /* Curry.swift in Sources */,
+				C20165631CE0F01D00F7D3E5 /* Composite.swift in Sources */,
 				C2B3F34C1D0B8AF80055B06E /* ActionTrailing.swift in Sources */,
 				C2C1D39E1DC83BEA009FAB35 /* NSBezierPath+.swift in Sources */,
 				C243BAE91DD18E49005103BC /* GenericCollectionItem.swift in Sources */,
@@ -1347,7 +1350,6 @@
 				C2291EF31DEBF7D500CBF3BE /* NSManagedObjectContext+.swift in Sources */,
 				C24F53771DEF5A3300673CF2 /* Redux.swift in Sources */,
 				C2C62A2C1D04A4200009B45F /* Matrix.swift in Sources */,
-				C20165681CE0F01D00F7D3E5 /* Promise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1374,7 +1376,7 @@
 				C22EA03C1D98801B003A490A /* OpenWeather+.swift in Sources */,
 				C24A0AE31D72143B00F94F08 /* Diff.swift in Sources */,
 				C201663D1CE1017900F7D3E5 /* UIBezierPath+.swift in Sources */,
-				C20165531CE0EFC500F7D3E5 /* Curry.swift in Sources */,
+				C20165531CE0EFC500F7D3E5 /* Composite.swift in Sources */,
 				C2F0A7531D10D5DC0022FF61 /* ParaboloidLayoutController.swift in Sources */,
 				C20165B21CE0FC6D00F7D3E5 /* DateFormatter+.swift in Sources */,
 				C24F53761DEF5A3300673CF2 /* Redux.swift in Sources */,
@@ -1406,6 +1408,7 @@
 				C20165CE1CE0FC9400F7D3E5 /* NSRelationshipDescription+.swift in Sources */,
 				C22CFAFF1DB1F99E006D8DBE /* Timer+.swift in Sources */,
 				C20165B41CE0FC6D00F7D3E5 /* NSLayoutConstraint+.swift in Sources */,
+				C2BB63F51E0470BE0006DC70 /* Empty.swift in Sources */,
 				C2EB48A71DA5803200635D55 /* LoremIpsum.swift in Sources */,
 				C201663E1CE1017900F7D3E5 /* UICollectionView+.swift in Sources */,
 				C20165C11CE0FC8800F7D3E5 /* CKRecord+.swift in Sources */,
@@ -1422,7 +1425,6 @@
 				C2EAD82A1D03F714001D2DC4 /* Matrix.swift in Sources */,
 				C201658B1CE0FA8B00F7D3E5 /* String+.swift in Sources */,
 				C2BD802E1D98703300F3D34F /* SnappingLayoutDelegate.swift in Sources */,
-				C20165581CE0EFC500F7D3E5 /* Promise.swift in Sources */,
 				C245DFD61DA1CB9C004D9F18 /* SymbolIcon.swift in Sources */,
 				C2446BEE1CEB6D2100957586 /* Arbitrary.swift in Sources */,
 				C201663C1CE1017900F7D3E5 /* Draw+.swift in Sources */,

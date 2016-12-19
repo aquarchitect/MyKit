@@ -29,7 +29,7 @@ open class Redux<State, Action> {
     public typealias Dispatcher = (Action) throws -> Void
     public typealias Middleware = (State, @escaping Dispatcher) -> Dispatcher
 
-    public let input = Observable<(State, Action)>()
+    private let input = Observable<(State, Action)>()
 
     public init(reducer: @escaping Reducer, middleware: @escaping Middleware) {
         input.flatMapLatest { state, action in
@@ -41,6 +41,10 @@ open class Redux<State, Action> {
         }.onNext { state, action in
             try? middleware(state, { _ in })(action)
         }
+    }
+
+    open func dispatch(_ state: State, _ action: Action) {
+        input.update((state, action))
     }
 }
 

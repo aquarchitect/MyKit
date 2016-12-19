@@ -10,32 +10,33 @@ import Foundation
 
 extension Timer {
 
-    final class TimeIntervalObservable: Observable<TimeInterval> {
+    final private class Counter {
 
-        private var count: UInt
+        var count: UInt
+        let observable = Observable<TimeInterval>()
 
-        init(count: UInt) {
+        init(startAt count: UInt) {
             self.count = count
         }
 
         @objc func handleTimer(timer: Timer) {
             guard count != 0 else { return timer.invalidate() }
-            update(Double(count) * timer.timeInterval)
+            observable.update(Double(count) * timer.timeInterval)
             count -= 1
         }
     }
 
     static func schedule(count: UInt, timeInterval: TimeInterval) -> Observable<TimeInterval> {
-        let observable = TimeIntervalObservable(count: count)
+        let counter = Counter(startAt: 0)
 
         Timer(timeInterval: timeInterval,
-              target: observable,
-              selector: #selector(TimeIntervalObservable.handleTimer(timer:)),
+              target: counter,
+              selector: #selector(Counter.handleTimer(timer:)),
               userInfo: nil,
               repeats: true)
             .then { RunLoop.current.add($0, forMode: .defaultRunLoopMode) }
 
-        return observable
+        return counter.observable
     }
 }
 

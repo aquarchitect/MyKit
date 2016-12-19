@@ -11,7 +11,7 @@ import Foundation
 /**
  * Future Value
  */
-open class Observable<T> {
+final public class Observable<T> {
 
     private(set) var callbacks: [Result<T>.Callback] = []
     fileprivate let mutex = Mutex()
@@ -32,11 +32,11 @@ extension Observable: Then {}
 public extension Observable {
 
     static func lift(_ construct: @escaping () throws -> T) -> Observable {
-        let observable = Observable<T>()
+        let observable = Observable()
 
         DispatchQueue.main.async {
             do {
-                try (construct >>> observable.update)()
+                try (observable.update • construct)()
             } catch {
                 observable.update(error)
             }
@@ -50,6 +50,10 @@ public extension Observable {
 
     internal func update(_ result: Result<T>) {
         mutex.perform { callbacks.forEach { $0(result) }}
+    }
+
+    internal func update(_ value: T?, _ error: Error?) {
+        update(.init(value, error))
     }
 
     func update(_ value: T) {
@@ -78,7 +82,7 @@ public extension Observable {
 
         subscribe { result in
             do {
-                try (result.resolve >>> transformer)().subscribe(observable.update)
+                try (transformer • result.resolve)().subscribe(observable.update)
             } catch {
                 observable.update(.reject(error))
             }
@@ -96,7 +100,7 @@ public extension Observable {
             lastResult = boxedResult
 
             do {
-                try (outerResult.resolve >>> transformer)().subscribe { innerResult in
+                try (transformer • outerResult.resolve)().subscribe { innerResult in
                     guard lastResult === boxedResult else { return }
                     observable.update(innerResult)
                     lastResult = nil
@@ -114,7 +118,7 @@ public extension Observable {
 
         subscribe { result in
             do {
-                if try (result.resolve >>> check)() { observable.update(result) }
+                if try (check • result.resolve)() { observable.update(result) }
             } catch {
                 observable.update(.reject(error))
             }
@@ -126,19 +130,52 @@ public extension Observable {
 
 public extension Observable {
 
-    @discardableResult
-    func onNext(_ handle: @escaping (T) -> Void) -> Observable {
+    func recover(_ transformer: @escaping (Error) -> Observable) -> Observable {
+        let observable = Observable()
+
         subscribe { result in
-            if case .fulfill(let value) = result { handle(value) }
+            guard case .reject(let error) = result else { return }
+            transformer(error).subscribe(observable.update)
+        }
+
+        return observable
+    }
+    
+    func retry(attemptCount count: Int) -> Observable {
+        let obserable = Observable()
+
+        subscribe { result in
+            func _retry(atttempCount count: Int) {
+                switch (result, count) {
+                case (.fulfill(_), _), (.reject(_), 0):
+                    obserable.update(result)
+                default:
+                    _retry(atttempCount: count - 1)
+                }
+            }
+
+            _retry(atttempCount: count)
+        }
+
+        return obserable
+    }
+}
+
+public extension Observable {
+
+    @discardableResult
+    func onNext(_ handler: @escaping (T) -> Void) -> Observable {
+        subscribe { result in
+            if case .fulfill(let value) = result { handler(value) }
         }
 
         return self
     }
 
     @discardableResult
-    func onError(_ handle: @escaping (Error) -> Void) -> Observable {
+    func onError(_ handler: @escaping (Error) -> Void) -> Observable {
         subscribe { result in
-            if case .reject(let error) = result { handle(error) }
+            if case .reject(let error) = result { handler(error) }
         }
 
         return self
@@ -238,16 +275,8 @@ public func zip<A, B>(_ observableA: Observable<A>, observableB: Observable<B>) 
             .map(observable.update)
     }
 
-    observableA.subscribe { result in
-        resultA = result
-        update()
-    }
-
-    observableB.subscribe { result in
-        resultB = result
-        update()
-
-    }
+    observableA.subscribe { resultA = $0; update() }
+    observableB.subscribe { resultB = $0; update() }
 
     return observable
 }

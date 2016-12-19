@@ -63,14 +63,17 @@ public final class OpenWeather {
 
     // MARK: Support Method
 
-    fileprivate func fetchData(using method: Method, components comps: Component...) -> Promise<(Data, URLResponse)> {
+    fileprivate func fetch(_ method: Method, with comps: Component...) -> Observable<(Data, URLResponse)> {
         let baseComps: [Component] = [.apiKey(apiKey),
                                       .language(language),
                                       .units(format)]
-        let fullURL = baseURL + String(version) + (method + Component.compound(baseComps + comps))
+        let fullURL = baseURL
+            + String(version)
+            + (method + .compound(baseComps + comps))
 
-        return URL(string: fullURL).map(URLSession.shared.dataTask as (URL) -> Promise<(Data, URLResponse)>)
-            ?? Promise.lift { throw PromiseError.empty }
+        return URL(string: fullURL)
+            .map(URLSession.shared.dataTask(with:))
+            ?? Observable()
     }
 }
 
@@ -78,30 +81,30 @@ public extension OpenWeather {
 
     // MARK: Current Weather Network Calls
 
-    func fetchCurrentWeather(ofCity name: String) -> Promise<(Data, URLResponse)> {
-        return fetchData(using: .currentWeather, components: .cityName(name))
+    func fetchCurrentWeather(ofCity name: String) -> Observable<(Data, URLResponse)> {
+        return fetch(.currentWeather, with: .cityName(name))
     }
 
-    func fetchCurrentWeather(ofCity id: Int) -> Promise<(Data, URLResponse)> {
-        return fetchData(using: .currentWeather, components: .cityID(id))
+    func fetchCurrentWeather(ofCity id: Int) -> Observable<(Data, URLResponse)> {
+        return fetch(.currentWeather, with: .cityID(id))
     }
 
-    func fetchCurrentWeather(atLocation coord: CLLocationCoordinate2D) -> Promise<(Data, URLResponse)> {
-        return fetchData(using: .currentWeather, components: .locationCoordinate(coord))
+    func fetchCurrentWeather(atLocation coord: CLLocationCoordinate2D) -> Observable<(Data, URLResponse)> {
+        return fetch(.currentWeather, with: .locationCoordinate(coord))
     }
 
     // MARK: Daily Forecast Network Calls
 
-    func fetchDailyForecast(ofCity name: String, numberOfDays count: Int) -> Promise<(Data, URLResponse)> {
-        return fetchData(using: .dailyForecast, components: .cityName(name), .returnedDays(count))
+    func fetchDailyForecast(ofCity name: String, numberOfDays count: Int) -> Observable<(Data, URLResponse)> {
+        return fetch(.dailyForecast, with: .cityName(name), .returnedDays(count))
     }
 
-    func fetchDailyForecast(ofCity id: Int, numberOfDays count: Int) -> Promise<(Data, URLResponse)> {
-        return fetchData(using: .dailyForecast, components: .cityID(id), .returnedDays(count))
+    func fetchDailyForecast(ofCity id: Int, numberOfDays count: Int) -> Observable<(Data, URLResponse)> {
+        return fetch(.dailyForecast, with: .cityID(id), .returnedDays(count))
     }
 
-    func fetchDailyForecast(atLocation coord: CLLocationCoordinate2D, numberOfDays count: Int) -> Promise<(Data, URLResponse)> {
-        return fetchData(using: .dailyForecast, components: .locationCoordinate(coord), .returnedDays(count))
+    func fetchDailyForecast(atLocation coord: CLLocationCoordinate2D, numberOfDays count: Int) -> Observable<(Data, URLResponse)> {
+        return fetch(.dailyForecast, with: .locationCoordinate(coord), .returnedDays(count))
     }
 }
 

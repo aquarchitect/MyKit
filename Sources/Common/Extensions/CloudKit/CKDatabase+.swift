@@ -10,50 +10,40 @@ import CloudKit
 
 public extension CKDatabase {
 
-    func fetchCurrentUser() -> Promise<CKRecord> {
-        return Promise({ callback in
-            let operation = CKFetchRecordsOperation.fetchCurrentUserRecordOperation()
-            operation.perRecordCompletionBlock = {
-                if let error = $2 {
-                    callback(.reject(error))
-                } else if let record = $0 {
-                    callback(.fulfill(record))
-                } else {
-                    callback(.reject(PromiseError.empty))
-                }
-            }
-            return operation
-        } >>> self.add)
+    func fetchCurrentUser() -> Observable<CKRecord> {
+        let observable = Observable<CKRecord>()
+
+        let operation = CKFetchRecordsOperation.fetchCurrentUserRecordOperation()
+        operation.perRecordCompletionBlock = { observable.update($0, $2) }
+        self.add(operation)
+
+        return observable
     }
 }
 
 public extension CKDatabase {
 
-    private func transform<T>(_ callback: @escaping Result<T>.Callback) -> (T?, Error?) -> Void {
-        return {
-            if let error = $1 {
-                callback(.reject(error))
-            } else if let result = $0 {
-                callback(.fulfill(result))
-            } else {
-                callback(.reject(PromiseError.empty))
-            }
+    func save(_ record: CKRecord) -> Observable<CKRecord> {
+        return Observable().then {
+            self.save(record, completionHandler: $0.update)
         }
     }
 
-    func save(record: CKRecord) -> Promise<CKRecord> {
-        return Promise(transform >>> { self.save(record, completionHandler: $0) })
+    func delete(withRecordID recordID: CKRecordID) -> Observable<CKRecordID> {
+        return Observable().then {
+            self.delete(withRecordID: recordID, completionHandler: $0.update)
+        }
     }
 
-    func delete(recordID: CKRecordID) -> Promise<CKRecordID> {
-        return Promise(transform >>> { self.delete(withRecordID: recordID, completionHandler: $0) })
+    func fetch(withRecordID recordID: CKRecordID) -> Observable<CKRecord> {
+        return Observable().then {
+            self.fetch(withRecordID: recordID, completionHandler: $0.update)
+        }
     }
 
-    func fetch(recordID: CKRecordID) -> Promise<CKRecord> {
-        return Promise(transform >>> { self.fetch(withRecordID: recordID, completionHandler: $0) })
-    }
-
-    func perform(query: CKQuery, zoneID: CKRecordZoneID? = nil) -> Promise<[CKRecord]> {
-        return Promise(transform >>> { self.perform(query, inZoneWith: zoneID, completionHandler: $0) })
+    func perform(_ query: CKQuery, inZoneWith zoneID: CKRecordZoneID? = nil) -> Observable<[CKRecord]> {
+        return Observable().then {
+            self.perform(query, inZoneWith: zoneID, completionHandler: $0.update)
+        }
     }
 }

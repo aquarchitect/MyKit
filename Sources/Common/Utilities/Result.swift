@@ -6,6 +6,8 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
+private struct NoContent: Error {}
+
 /// _Result_ helps defining results of a callback.
 public enum Result<T> {
 
@@ -15,8 +17,21 @@ public enum Result<T> {
     case reject(Error)
 
     public init(_ contruct: () throws -> T) {
-        do { self = .fulfill(try contruct()) }
-        catch { self = .reject(error) }
+        do {
+            self = .fulfill(try contruct())
+        } catch {
+            self = .reject(error)
+        }
+    }
+
+    init(_ value: T?, _ error: Error?) {
+        if let _error = error {
+            self = .reject(_error)
+        } else if let _value = value {
+            self = .fulfill(_value)
+        } else {
+            self = .reject(Empty())
+        }
     }
 }
 

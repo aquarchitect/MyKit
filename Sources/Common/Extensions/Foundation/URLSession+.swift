@@ -10,17 +10,9 @@ import Foundation
 
 public extension URLSession {
 
-    func dataTask(with url: URL) -> Promise<(Data, URLResponse)> {
-        return Promise { callback in
-            self.dataTask(with: url) { data, response, error in
-                if let _error = error {
-                    return callback(.reject(_error))
-                } else if let _response = response, let _data = data {
-                    callback(.fulfill((_data, _response)))
-                } else {
-                    callback(.reject(PromiseError.empty))
-                }
-            }.resume()
-        }
+    func dataTask(with url: URL) -> Observable<(Data, URLResponse)> {
+        let observable = Observable<(Data, URLResponse)>()
+        self.dataTask(with: url) { observable.update(zip($0.0, $0.1), $0.2) }
+        return observable
     }
 }

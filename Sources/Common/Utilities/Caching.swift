@@ -27,22 +27,20 @@ public extension Caching {
     /**
      * The constructor can be either an async or sync task.
      */
-    static func fetchObject(for key: Key, with constructor: Promise<Object>) -> Promise<Object> {
+    static func fetchObject(for key: Key, with constructor: Observable<Object>) -> Observable<Object> {
         if let object = storage.object(forKey: key) {
-            return Promise.lift { object }
+            return .lift { object }
         } else if !pendingOperationIDs.contains(key) {
-            return Promise.lift { throw PromiseError.empty }
+            return .init()
         } else {
             pendingOperationIDs.add(key)
 
-            return constructor.map {
+            return constructor.onNext {
                 self.storage.setObject($0, forKey: key)
 
                 objc_sync_enter(self.pendingOperationIDs)
                 self.pendingOperationIDs.remove(key)
                 objc_sync_exit(self.pendingOperationIDs)
-
-                return $0
             }
         }
     }
