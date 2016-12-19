@@ -256,7 +256,6 @@
 /* Begin PBXFileReference section */
 		C20165421CE0EFC500F7D3E5 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Common/Utilities/Box.swift; sourceTree = "<group>"; };
 		C20165431CE0EFC500F7D3E5 /* Composite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Composite.swift; path = Sources/Common/Utilities/Composite.swift; sourceTree = "<group>"; };
-		C20165481CE0EFC500F7D3E5 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = Sources/Common/Utilities/Promise.swift; sourceTree = "<group>"; };
 		C201654A1CE0EFC500F7D3E5 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Sources/Common/Utilities/Result.swift; sourceTree = "<group>"; };
 		C201654D1CE0EFC500F7D3E5 /* Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Swizzle.swift; path = Sources/Common/Utilities/Swizzle.swift; sourceTree = "<group>"; };
 		C201654E1CE0EFC500F7D3E5 /* Then.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Then.swift; path = Sources/Common/Utilities/Then.swift; sourceTree = "<group>"; };
@@ -733,7 +732,6 @@
 				C20165431CE0EFC500F7D3E5 /* Composite.swift */,
 				C24A0AE01D7211D800F94F08 /* Diff.swift */,
 				C2EAD8291D03F714001D2DC4 /* Matrix.swift */,
-				C20165481CE0EFC500F7D3E5 /* Promise.swift */,
 				C201654A1CE0EFC500F7D3E5 /* Result.swift */,
 				C201654D1CE0EFC500F7D3E5 /* Swizzle.swift */,
 				C201654E1CE0EFC500F7D3E5 /* Then.swift */,
