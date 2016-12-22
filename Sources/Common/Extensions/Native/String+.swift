@@ -10,6 +10,16 @@ import Foundation
 
 public extension String {
 
+    func substring(between from: String, and to: String) -> String {
+        return Optional("(?<=\(from))[^\(to)]+")
+            .flatMap { self.range(of: $0, options: .regularExpression, range: nil, locale: nil) }
+            .map { self[$0] }
+            ?? ""
+    }
+}
+
+public extension String {
+
     var fourCharCode: FourCharCode? {
         guard self.characters.count == 4 else { return nil }
         return self.utf16.reduce(0) { ($0 << 8) + FourCharCode($1) }
