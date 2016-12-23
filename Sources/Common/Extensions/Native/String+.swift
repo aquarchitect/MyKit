@@ -29,12 +29,29 @@ public extension String {
 public extension String {
 
     /// Produce a camel case string
-    func camelcased() -> String {
-        return (self.components(separatedBy:) • CharacterSet.init(charactersIn:))(" -_")
+    var camelcased: String {
+        return camelcased(with: nil)
+    }
+
+    func camelcased(with locale: Locale?) -> String {
+        let characters = CharacterSet(charactersIn: " -_")
+        return self.components(separatedBy: characters)
             .lazy
             .enumerated()
-            .map { $0 == 0 ? $1.lowercased() : $1.capitalized }
+            .map { ($0 == 0 ? $1.lowercased : $1.capitalized)(locale) }
             .joined(separator: "")
+    }
+
+    var capitalizedFirst: String {
+        return capitalizedFirst(with: nil)
+    }
+
+    func capitalizedFirst(with locale: Locale?) -> String {
+        let index = self.index(after: self.startIndex)
+
+        return self.substring(to: index)
+            .capitalized(with: locale)
+            + self.substring(from: index)
     }
 }
 
