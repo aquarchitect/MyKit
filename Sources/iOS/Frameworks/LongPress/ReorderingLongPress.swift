@@ -26,7 +26,7 @@ open class ReorderingLongPress: UILongPressGestureRecognizer {
         switch self.state {
         case .began:
             guard let trackingIndexPath = (tableView.flatMap {
-                (self.location(in:) >>> $0.indexPathForRow(at:))($0)
+                ($0.indexPathForRow(at:) • self.location(in:))($0)
             }), (tableView.flatMap {
                 $0.dataSource?.tableView?($0, canMoveRowAt: trackingIndexPath)
             } ?? false) else { return }
@@ -63,7 +63,7 @@ open class ReorderingLongPress: UILongPressGestureRecognizer {
                 })
         case .changed:
             guard let trackingIndexPath = (tableView.flatMap {
-                (self.location(in:) >>> $0.indexPathForRow(at:))($0)
+                ($0.indexPathForRow(at:) • self.location(in:))($0)
             }), (tableView.flatMap {
                 $0.dataSource?.tableView?($0, canMoveRowAt: trackingIndexPath)
             } ?? false) else { return }

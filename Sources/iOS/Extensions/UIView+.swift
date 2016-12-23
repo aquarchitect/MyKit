@@ -31,11 +31,13 @@ extension UIView {
 
 public extension UIView {
 
-    static func animate(withDuration duration: TimeInterval, animations: @escaping () -> Void) -> Promise<Bool> {
-        return Promise { callback in
-            self.animate(withDuration: duration, animations: animations) {
-                callback(.fulfill($0))
-            }
+    static func animate(withDuration duration: TimeInterval, animations: @escaping () -> Void) -> Observable<Bool> {
+        return Observable().then {
+            self.animate(
+                withDuration: duration,
+                animations: animations,
+                completion: $0.update
+            )
         }
     }
 }

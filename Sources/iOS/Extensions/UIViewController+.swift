@@ -10,15 +10,15 @@ import UIKit
 
 public extension UIViewController {
 
-    func present(controller: UIViewController, animated flag: Bool) -> Promise<Void> {
-        return Promise { callback in
-            self.present(controller, animated: flag) { callback(.fulfill()) }
+    func present(controller: UIViewController, animated flag: Bool) -> Observable<Void> {
+        return Observable().then {
+            self.present(controller, animated: flag, completion: $0.update)
         }
     }
 
-    func dismissViewController(animated flag: Bool) -> Promise<Void> {
-        return Promise { callback in
-            self.dismiss(animated: flag) { callback(.fulfill()) }
+    func dismissViewController(animated flag: Bool) -> Observable<Void> {
+        return Observable().then {
+            self.dismiss(animated: flag, completion: $0.update)
         }
     }
 }

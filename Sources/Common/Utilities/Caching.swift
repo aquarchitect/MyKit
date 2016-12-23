@@ -49,7 +49,7 @@ public extension Caching {
 #if os(iOS)
 import UIKit
 
-extension UIImage: ObjectCaching {
+extension UIImage: Caching {
 
     public typealias Key = NSString
 
@@ -58,8 +58,8 @@ extension UIImage: ObjectCaching {
         return Singleton.value
     }
 
-    public static var pendingOperationIDs: Box<Set<Key>> {
-        struct Singleton { static let value = Box(Set<Key>()) }
+    public static var pendingOperationIDs: NSMutableSet {
+        struct Singleton { static let value = NSMutableSet() }
         return Singleton.value
     }
 }
