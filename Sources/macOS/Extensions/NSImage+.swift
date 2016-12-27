@@ -10,16 +10,6 @@ import AppKit
 
 public extension NSImage {
 
-    convenience init(attributedString: NSAttributedString) {
-        let size = attributedString.size()
-        self.init(size: size)
-
-        self.lockFocus()
-        let rect = NSRect(origin: .zero, size: size)
-        attributedString.draw(in: rect)
-        self.unlockFocus()
-    }
-
     func image(withTintColor color: NSColor) -> NSImage {
         guard self.isTemplate else { return self }
 
@@ -32,5 +22,18 @@ public extension NSImage {
 
             $0.isTemplate = false
         } ?? self
+    }
+}
+
+public extension NSImage {
+
+    static func render(_ attributedString: NSAttributedString) -> NSImage {
+        let size = attributedString.size()
+
+        return NSImage(size: size).then {
+            $0.lockFocus()
+            attributedString.draw(in: .init(origin: .zero, size: size))
+            $0.unlockFocus()
+        }
     }
 }

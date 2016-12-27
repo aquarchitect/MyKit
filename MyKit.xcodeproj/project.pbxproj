@@ -124,6 +124,7 @@
 		C2617B1F1DB6B739004E4B5A /* NSRange+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165AD1CE0FC6D00F7D3E5 /* NSRange+.swift */; };
 		C2692FD01D6502D300A29897 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2692FCF1D6502D300A29897 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2692FD11D6502D300A29897 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2692FCF1D6502D300A29897 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C27485CA1E11F72B0008DBAE /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27485C91E11F72B0008DBAE /* UIImage+.swift */; };
 		C27DE1A61DD8E8B500358FA8 /* ColorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = C27DE1A51DD8E8B500358FA8 /* ColorPalette.plist */; };
 		C27DE1A71DD8E8B500358FA8 /* ColorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = C27DE1A51DD8E8B500358FA8 /* ColorPalette.plist */; };
 		C27DE1A91DD8F4BF00358FA8 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27DE1A81DD8F4BF00358FA8 /* ColorPalette.swift */; };
@@ -326,6 +327,7 @@
 		C24F53751DEF5A3300673CF2 /* Redux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Redux.swift; path = Sources/Common/Utilities/Redux.swift; sourceTree = "<group>"; };
 		C250EB771D9C78C6008FC9D0 /* QuickTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = QuickTest.playground; sourceTree = "<group>"; };
 		C2692FCF1D6502D300A29897 /* MyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyKit.h; path = MyKit/MyKit.h; sourceTree = "<group>"; };
+		C27485C91E11F72B0008DBAE /* UIImage+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+.swift"; path = "Sources/iOS/Extensions/UIImage+.swift"; sourceTree = "<group>"; };
 		C27DE1A51DD8E8B500358FA8 /* ColorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ColorPalette.plist; path = Sources/Common/Frameworks/ColorHexing/ColorPalette.plist; sourceTree = "<group>"; };
 		C27DE1A81DD8F4BF00358FA8 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = Sources/Common/Frameworks/ColorHexing/ColorPalette.swift; sourceTree = "<group>"; };
 		C2848DE01C95642E00707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -520,6 +522,7 @@
 				C20166311CE1017900F7D3E5 /* Draw+.swift */,
 				C20166321CE1017900F7D3E5 /* UIBezierPath+.swift */,
 				C20166331CE1017900F7D3E5 /* UICollectionView+.swift */,
+				C27485C91E11F72B0008DBAE /* UIImage+.swift */,
 				C217DD6E1D3AD9FD0047DFBF /* UILabel+.swift */,
 				C20166361CE1017900F7D3E5 /* UIEdgeInsets+.swift */,
 				C2F566AA1D242AD800DCEC45 /* UIScreen+.swift */,
@@ -1379,6 +1382,7 @@
 				C20165C91CE0FC9400F7D3E5 /* NSAttributeDescription+.swift in Sources */,
 				C201655D1CE0EFC500F7D3E5 /* Swizzle.swift in Sources */,
 				C201655A1CE0EFC500F7D3E5 /* Result.swift in Sources */,
+				C27485CA1E11F72B0008DBAE /* UIImage+.swift in Sources */,
 				C2973FF71D7747BC005C73A0 /* GenericCollectionCell.swift in Sources */,
 				C20165871CE0FA8B00F7D3E5 /* Collection+.swift in Sources */,
 				C20165B71CE0FC6D00F7D3E5 /* NSRange+.swift in Sources */,
