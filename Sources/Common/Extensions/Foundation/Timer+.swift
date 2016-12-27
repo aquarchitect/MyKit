@@ -21,13 +21,13 @@ extension Timer {
 
         @objc func handleTimer(timer: Timer) {
             guard count != 0 else { return timer.invalidate() }
-            observable.update(Double(count) * timer.timeInterval)
             count -= 1
+            observable.update(Double(count) * timer.timeInterval)
         }
     }
 
     static func schedule(count: UInt, timeInterval: TimeInterval) -> Observable<TimeInterval> {
-        let counter = Counter(startAt: 0)
+        let counter = Counter(startAt: count)
 
         Timer(timeInterval: timeInterval,
               target: counter,
