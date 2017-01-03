@@ -30,7 +30,7 @@ public extension Caching {
     static func fetchObject(for key: Key, with constructor: Promise<Object>) -> Observable<Object> {
         if let object = storage.object(forKey: key) {
             return .lift { object }
-        } else if !pendingOperationIDs.contains(key) {
+        } else if pendingOperationIDs.contains(key) {
             return .init()
         } else {
             pendingOperationIDs.add(key)

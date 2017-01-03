@@ -129,6 +129,8 @@
 		C27DE1AA1DD8F4BF00358FA8 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27DE1A81DD8F4BF00358FA8 /* ColorPalette.swift */; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
 		C2848E061C956A7600707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
+		C28C6E871E1C4AC400BC51F0 /* CachingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C6E841E1C4AB400BC51F0 /* CachingTests.swift */; };
+		C28C6E881E1C4AC500BC51F0 /* CachingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C6E841E1C4AB400BC51F0 /* CachingTests.swift */; };
 		C2973FF71D7747BC005C73A0 /* GenericCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF41D7747BC005C73A0 /* GenericCollectionCell.swift */; };
 		C2973FF81D7747BC005C73A0 /* GenericCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF51D7747BC005C73A0 /* GenericCollectionView.swift */; };
 		C2973FF91D7747BC005C73A0 /* GenericTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973FF61D7747BC005C73A0 /* GenericTableView.swift */; };
@@ -319,6 +321,7 @@
 		C2848E011C956A7600707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7C1B62B95700186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD8A1B62B97400186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C28C6E841E1C4AB400BC51F0 /* CachingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CachingTests.swift; path = UnitTests/CachingTests.swift; sourceTree = SOURCE_ROOT; };
 		C2973FF41D7747BC005C73A0 /* GenericCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericCollectionCell.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericCollectionCell.swift; sourceTree = "<group>"; };
 		C2973FF51D7747BC005C73A0 /* GenericCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericCollectionView.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericCollectionView.swift; sourceTree = "<group>"; };
 		C2973FF61D7747BC005C73A0 /* GenericTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericTableView.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericTableView.swift; sourceTree = "<group>"; };
@@ -715,6 +718,7 @@
 		C2B60ACC1B95080800F6D2BB /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				C28C6E841E1C4AB400BC51F0 /* CachingTests.swift */,
 				C2F317471D5A5EF1009B0F42 /* DateTests.swift */,
 				C2F288861DF8BB21003E84F9 /* ReduxTests.swift */,
 				C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */,
@@ -1155,6 +1159,7 @@
 				C214B9101DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift in Sources */,
 				C2F2D8691E08754D0041BF0F /* ObservableTests.swift in Sources */,
 				C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */,
+				C28C6E871E1C4AC400BC51F0 /* CachingTests.swift in Sources */,
 				C2A28EDB1E12312400D7AD89 /* TimerExtensionTests.swift in Sources */,
 				C2F3174F1D5A5EF6009B0F42 /* DateTests.swift in Sources */,
 				C214B90D1DA2155700754247 /* ActionTrailingTests.swift in Sources */,
@@ -1171,6 +1176,7 @@
 				C214B9111DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift in Sources */,
 				C2F2D86A1E08754E0041BF0F /* ObservableTests.swift in Sources */,
 				C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */,
+				C28C6E881E1C4AC500BC51F0 /* CachingTests.swift in Sources */,
 				C2A28EDC1E12312500D7AD89 /* TimerExtensionTests.swift in Sources */,
 				C2F317531D5A5EF7009B0F42 /* DateTests.swift in Sources */,
 				C214B90E1DA2155800754247 /* ActionTrailingTests.swift in Sources */,
