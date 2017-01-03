@@ -8,6 +8,8 @@
 
 import Foundation
 
+public typealias Promise<T> = () -> Observable<T>
+
 /**
  * Future Value
  */
