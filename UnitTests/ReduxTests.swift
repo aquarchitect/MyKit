@@ -10,54 +10,115 @@
 
 final class ReduxTests: XCTestCase {
 
-    enum Exception: Error { case a, b }
+    fileprivate enum Exception: Error { case a, b }
 
-    fileprivate class Store: Redux<String, Bool> {
+    fileprivate class SimpleRedux: Redux<String, Bool> {}
 
-        init(middlewares: Store.Middleware...) {
-            let reducer: Store.Reducer = { state, action in
-                let observable = Observable<String>()
-
-                switch action {
-                case true: observable.update(state)
-                case false: observable.update(Exception.a)
-                }
-
-                return observable
+    fileprivate let reducer: SimpleRedux.Reducer = { state, action in
+        return .lift {
+            if action {
+                return state
+            } else {
+                throw Exception.a
             }
-
-            super.init(reducer: reducer, middleware: Store.merge(middlewares))
         }
     }
 
+    fileprivate let middleware1: SimpleRedux.Middleware = { state, dispatch in
+        return { action in
+            if action {
+                throw Exception.b
+            } else {
+                try dispatch(action)
+            }
+        }
+    }
+
+    fileprivate let middleware2: SimpleRedux.Middleware = { state, dispatch in
+        return { action in
+            do {
+                try dispatch(action)
+            } catch {
+                XCTAssertEqual(error as? Exception, action ? .b : .a)
+            }
+        }
+    }
+}
+
+extension ReduxTests {
+
+    func testMergingReducersWithSuccess() {
+        let exepectation = self.expectation(description: #function)
+
+        SimpleRedux.merge(reducer, reducer)("Initial", true).onNext {
+            XCTAssertEqual($0, "Initial")
+            exepectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 2) { XCTAssertNil($0) }
+    }
+
+    func testMergingReducersWithFailure() {
+        let exepectation = self.expectation(description: #function)
+
+        SimpleRedux.merge(reducer, reducer)("Initial", false).onError {
+            XCTAssertEqual($0 as? Exception, .a)
+            exepectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 2) { XCTAssertNil($0) }
+    }
+}
+
+extension ReduxTests {
+
     func testMiddlewares() {
-        let m1: Store.Middleware = { state, dispatch in
-            return { action in
-                switch action {
-                case true: throw Exception.b
-                case false: try dispatch(action)
-                }
+        let expectation = self.expectation(description: #function)
 
-                XCTFail("This block is not supposed to be executed")
+        do {
+            let m = SimpleRedux.merge(middleware2, middleware1)
+            try m("Initial", { _ in XCTFail("Should not execute this block") })(true)
+            try m("Initial", { _ in expectation.fulfill() })(false)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
+
+        waitForExpectations(timeout: 2) { XCTAssertNil($0) }
+    }
+}
+
+extension ReduxTests {
+
+    func testBasicRedux() {
+        let expectation = self.expectation(description: #function)
+
+        let middleware: SimpleRedux.Middleware = { state, dispatch in
+            return { action in expectation.fulfill() }
+        }
+
+        SimpleRedux(
+            reducers: [reducer],
+            middlewares: [middleware, middleware2, middleware1]
+        ).dispatch(state: "Initial", actions: true)
+
+        waitForExpectations(timeout: 2) { XCTAssertNil($0) }
+    }
+
+    func testReduxCycles() {
+        let expectation = self.expectation(description: #function)
+
+        var count = 0
+        let middleware: SimpleRedux.Middleware = { state, dispatch in
+            return { action in
+                count != 2 ? (count += 1) : expectation.fulfill()
             }
         }
 
-        let m2: Store.Middleware = { state, dispatch in
-            return { action in
-                do {
-                    try dispatch(action)
-                    XCTFail("This block is supposed to fail")
-                } catch {
-                    switch action {
-                    case true: XCTAssertTrue(error as? Exception == .b)
-                    case false: XCTAssertTrue(error as? Exception == .a)
-                    }
-                }
-            }
-        }
+        SimpleRedux(
+            reducers: [reducer],
+            middlewares: [middleware, middleware2, middleware1]
+            ).dispatch(state: "Initial", actions: true, true, true)
 
-        let store = Store(middlewares: m2, m1)
-        store.input.update(("Initial", true))
-        store.input.update(("Initial", false))
+        waitForExpectations(timeout: 4) { XCTAssertNil($0) }
     }
 }
