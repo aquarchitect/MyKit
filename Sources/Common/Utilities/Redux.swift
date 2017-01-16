@@ -68,24 +68,20 @@ open class Redux<State, Action> {
     /// - Parameters:
     ///   - state: initial state
     ///   - actions: action sequence
-    open func dispatch(_ state: State, _ actions: AnyIterator<(TimeInterval, Action)>) {
-        cycles = actions
-        updateNextCycle(of: state)
-    }
-
-    open func dispatch(_ state: State, _ actions: AnyIterator<(Action)>) {
-        cycles = AnyIterator(actions.lazy.map { (0, $0) }.makeIterator())
+    open func dispatch<I: IteratorProtocol>(_ state: State, _ actions: I)
+    where I.Element == (TimeInterval, Action) {
+        cycles = AnyIterator(actions)
         updateNextCycle(of: state)
     }
 
     open func dispatch<S: Sequence>(_ state: State, _ actions: S)
     where S.Iterator.Element == Action {
-        dispatch(state, AnyIterator(actions.makeIterator()))
-    }
+        let _actions = actions
+            .lazy
+            .map { (Double(0), $0) }
+            .makeIterator()
 
-    open func reduce<S: Sequence>(_ state: State, _ actions: S)
-    where S.Iterator.Element == (TimeInterval, Action) {
-        dispatch(state, AnyIterator(actions.makeIterator()))
+        dispatch(state, _actions)
     }
 }
 
