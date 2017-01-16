@@ -99,7 +99,7 @@ extension ReduxTests {
         SimpleRedux(
             reducers: [reducer],
             middlewares: [middleware, middleware2, middleware1]
-        ).dispatch(state: "Initial", actions: true)
+        ).dispatch("Initial", [true])
 
         waitForExpectations(timeout: 2) { XCTAssertNil($0) }
     }
@@ -117,7 +117,7 @@ extension ReduxTests {
         SimpleRedux(
             reducers: [reducer],
             middlewares: [middleware, middleware2, middleware1]
-            ).dispatch(state: "Initial", actions: true, true, true)
+        ).dispatch("Initial", [true, true, true])
 
         waitForExpectations(timeout: 4) { XCTAssertNil($0) }
     }

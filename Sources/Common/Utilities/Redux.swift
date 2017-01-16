@@ -33,38 +33,59 @@ open class Redux<State, Action> {
     private let input = Observable<(State, Action)>()
 
     // one cycle = reducers + middlewares
-    private var cycles = [Action]().makeIterator()
+    private var cycles = AnyIterator<(TimeInterval, Action)>(EmptyIterator())
 
     public init(reducers: [Reducer], middlewares: [Middleware]) {
         let reducer = Redux.merge(reducers)
         let middleware = Redux.merge(middlewares)
 
-        input.flatMapLatest { state, action in
-            reducer(state, action)
-                .map { ($0, action) }
-                .onNext { Swift.print($0) }
+        input.flatMapLatest { oldState, action in
+            reducer(oldState, action)
                 .onError { error in
-                    Swift.print(error)
-                    try? middleware(state, { _ in throw error })(action)
-            }
-        }.onNext { state, action in
-            try? middleware(state, { _ in })(action)
-
-            DispatchQueue.main.async {
-                self.updateNextCycle(state: state)
-            }
+                    // redirect reducer errors to one of the middles
+                    try? middleware(oldState, { _ in throw error })(action)
+                }.onNext { newState in
+                    try? middleware(newState, { _ in })(action)
+                }
+        }.onNext { state in
+            self.updateNextCycle(of: state)
         }
     }
 
-    private func updateNextCycle(state: State) {
-        cycles.next().map { input.update((state, $0)) }
+    private func updateNextCycle(of state: State) {
+        guard let (interval, action) = cycles.next() else { return }
+
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + interval,
+            execute: { self.input.update((state, action)) }
+        )
     }
 
-    /// The implementation can also handle multiple cycle 
-    /// one after another.
-    open func dispatch(state: State, actions: Action...) {
-        cycles = actions.makeIterator()
-        updateNextCycle(state: state)
+    /// The implementation mutates state on one action at a time (one cycle).
+    /// A cycle counts as one when passing through all of reducers
+    /// and middlewares.
+    ///
+    /// - Parameters:
+    ///   - state: initial state
+    ///   - actions: action sequence
+    final func dispatch(_ state: State, _ actions: AnyIterator<(TimeInterval, Action)>) {
+        cycles = actions
+        updateNextCycle(of: state)
+    }
+
+    final func dispatch(_ state: State, _ actions: AnyIterator<(Action)>) {
+        cycles = AnyIterator(actions.lazy.map { (0, $0) }.makeIterator())
+        updateNextCycle(of: state)
+    }
+
+    final func dispatch<S: Sequence>(_ state: State, _ actions: S)
+    where S.Iterator.Element == Action {
+        dispatch(state, AnyIterator(actions.makeIterator()))
+    }
+
+    final func reduce<S: Sequence>(_ state: State, _ actions: S)
+    where S.Iterator.Element == (TimeInterval, Action) {
+        dispatch(state, AnyIterator(actions.makeIterator()))
     }
 }
 
