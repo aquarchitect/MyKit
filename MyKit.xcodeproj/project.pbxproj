@@ -61,6 +61,8 @@
 		C201664F1CE1026800F7D3E5 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201664E1CE1026800F7D3E5 /* GrowingTextView.swift */; };
 		C20166831CE1097100F7D3E5 /* SnappingSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166821CE1097100F7D3E5 /* SnappingSuperLayout.swift */; };
 		C201668A1CE10A8300F7D3E5 /* SnappingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166891CE10A8300F7D3E5 /* SnappingFlowLayout.swift */; };
+		C2070E351E2EA740003449D7 /* CompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2070E321E2EA739003449D7 /* CompositeTests.swift */; };
+		C2070E361E2EA740003449D7 /* CompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2070E321E2EA739003449D7 /* CompositeTests.swift */; };
 		C207B47B1DA40EBE004AD852 /* OptionSet+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C207B47A1DA40EBE004AD852 /* OptionSet+.swift */; };
 		C214B90D1DA2155700754247 /* ActionTrailingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */; };
 		C214B90E1DA2155800754247 /* ActionTrailingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */; };
@@ -284,6 +286,7 @@
 		C201664E1CE1026800F7D3E5 /* GrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GrowingTextView.swift; path = Sources/iOS/Frameworks/GrowingText/GrowingTextView.swift; sourceTree = "<group>"; };
 		C20166821CE1097100F7D3E5 /* SnappingSuperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingSuperLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Snapping/SnappingSuperLayout.swift; sourceTree = "<group>"; };
 		C20166891CE10A8300F7D3E5 /* SnappingFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Snapping/SnappingFlowLayout.swift; sourceTree = "<group>"; };
+		C2070E321E2EA739003449D7 /* CompositeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompositeTests.swift; path = UnitTests/CompositeTests.swift; sourceTree = SOURCE_ROOT; };
 		C207B47A1DA40EBE004AD852 /* OptionSet+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "OptionSet+.swift"; path = "Sources/Common/Extensions/Native/OptionSet+.swift"; sourceTree = "<group>"; };
 		C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionTrailingTests.swift; path = UnitTests/ActionTrailingTests.swift; sourceTree = SOURCE_ROOT; };
 		C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSMutableAttributedStringExtensionTests.swift; path = UnitTests/NSMutableAttributedStringExtensionTests.swift; sourceTree = SOURCE_ROOT; };
@@ -718,6 +721,7 @@
 		C2B60ACC1B95080800F6D2BB /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				C2070E321E2EA739003449D7 /* CompositeTests.swift */,
 				C28C6E841E1C4AB400BC51F0 /* CachingTests.swift */,
 				C2F317471D5A5EF1009B0F42 /* DateTests.swift */,
 				C2F288861DF8BB21003E84F9 /* ReduxTests.swift */,
@@ -1160,6 +1164,7 @@
 				C2F2D8691E08754D0041BF0F /* ObservableTests.swift in Sources */,
 				C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */,
 				C28C6E871E1C4AC400BC51F0 /* CachingTests.swift in Sources */,
+				C2070E351E2EA740003449D7 /* CompositeTests.swift in Sources */,
 				C2A28EDB1E12312400D7AD89 /* TimerExtensionTests.swift in Sources */,
 				C2F3174F1D5A5EF6009B0F42 /* DateTests.swift in Sources */,
 				C214B90D1DA2155700754247 /* ActionTrailingTests.swift in Sources */,
@@ -1177,6 +1182,7 @@
 				C2F2D86A1E08754E0041BF0F /* ObservableTests.swift in Sources */,
 				C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */,
 				C28C6E881E1C4AC500BC51F0 /* CachingTests.swift in Sources */,
+				C2070E361E2EA740003449D7 /* CompositeTests.swift in Sources */,
 				C2A28EDC1E12312500D7AD89 /* TimerExtensionTests.swift in Sources */,
 				C2F317531D5A5EF7009B0F42 /* DateTests.swift in Sources */,
 				C214B90E1DA2155800754247 /* ActionTrailingTests.swift in Sources */,

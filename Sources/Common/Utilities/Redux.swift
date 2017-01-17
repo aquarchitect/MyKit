@@ -88,16 +88,25 @@ open class Redux<State, Action> {
 public extension Redux {
 
     static func merge(_ reducers: [Reducer]) -> Reducer {
-        return reducers.reduce(
-            { state, _ in .lift { state }},
-            { result, reducer in
-                { state, action in
-                    result(state, action).flatMap {
-                        reducer($0, action)
+        /* 
+         * The implementation can start with an empty observable;
+         * however, it would add another uneccessary layer of
+         * obserable to the final merged reducer.
+         */
+        if let firstReducer = reducers.first {
+            return reducers.dropFirst().reduce(
+                firstReducer,
+                { result, reducer in
+                    { state, action in
+                        result(state, action).flatMap {
+                            reducer($0, action)
+                        }
                     }
                 }
-            }
-        )
+            )
+        } else {
+            return { state, _ in .lift { state }}
+        }
     }
 
     static func merge(_ reducers: Reducer...) -> Reducer {
