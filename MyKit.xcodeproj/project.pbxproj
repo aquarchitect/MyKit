@@ -122,6 +122,8 @@
 		C2617B1F1DB6B739004E4B5A /* NSRange+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20165AD1CE0FC6D00F7D3E5 /* NSRange+.swift */; };
 		C2692FD01D6502D300A29897 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2692FCF1D6502D300A29897 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2692FD11D6502D300A29897 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2692FCF1D6502D300A29897 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C270B2121E308A5200517CC7 /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C270B2111E308A5200517CC7 /* GenericViewController.swift */; };
+		C270B2141E308A9900517CC7 /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C270B2131E308A9900517CC7 /* GenericViewController.swift */; };
 		C27485CA1E11F72B0008DBAE /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27485C91E11F72B0008DBAE /* UIImage+.swift */; };
 		C27DE1A61DD8E8B500358FA8 /* ColorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = C27DE1A51DD8E8B500358FA8 /* ColorPalette.plist */; };
 		C27DE1A71DD8E8B500358FA8 /* ColorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = C27DE1A51DD8E8B500358FA8 /* ColorPalette.plist */; };
@@ -314,6 +316,8 @@
 		C24F53751DEF5A3300673CF2 /* Redux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Redux.swift; path = Sources/Common/Utilities/Redux.swift; sourceTree = "<group>"; };
 		C250EB771D9C78C6008FC9D0 /* QuickTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = QuickTest.playground; sourceTree = "<group>"; };
 		C2692FCF1D6502D300A29897 /* MyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyKit.h; path = MyKit/MyKit.h; sourceTree = "<group>"; };
+		C270B2111E308A5200517CC7 /* GenericViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericViewController.swift; path = Sources/macOS/Frameworks/GenericInterface/GenericViewController.swift; sourceTree = "<group>"; };
+		C270B2131E308A9900517CC7 /* GenericViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericViewController.swift; path = Sources/iOS/Frameworks/GenericInterface/GenericViewController.swift; sourceTree = "<group>"; };
 		C27485C91E11F72B0008DBAE /* UIImage+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+.swift"; path = "Sources/iOS/Extensions/UIImage+.swift"; sourceTree = "<group>"; };
 		C27DE1A51DD8E8B500358FA8 /* ColorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ColorPalette.plist; path = Sources/Common/Frameworks/ColorHexing/ColorPalette.plist; sourceTree = "<group>"; };
 		C27DE1A81DD8F4BF00358FA8 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = Sources/Common/Frameworks/ColorHexing/ColorPalette.swift; sourceTree = "<group>"; };
@@ -530,6 +534,7 @@
 				C2973FF61D7747BC005C73A0 /* GenericTableView.swift */,
 				C2973FF51D7747BC005C73A0 /* GenericCollectionView.swift */,
 				C2973FF41D7747BC005C73A0 /* GenericCollectionCell.swift */,
+				C270B2131E308A9900517CC7 /* GenericViewController.swift */,
 			);
 			name = GenericInterface;
 			sourceTree = "<group>";
@@ -635,6 +640,7 @@
 			isa = PBXGroup;
 			children = (
 				C243BAE81DD18E49005103BC /* GenericCollectionItem.swift */,
+				C270B2111E308A5200517CC7 /* GenericViewController.swift */,
 			);
 			name = GenericInterface;
 			sourceTree = "<group>";
@@ -1207,6 +1213,7 @@
 				C2617B171DB6B739004E4B5A /* Date+.swift in Sources */,
 				C2B3F34D1D0B8AF80055B06E /* ActionWrapper.swift in Sources */,
 				C2617B081DB6B5AB004E4B5A /* AnyIterator+.swift in Sources */,
+				C270B2121E308A5200517CC7 /* GenericViewController.swift in Sources */,
 				C24A0AE41D72143B00F94F08 /* Diff.swift in Sources */,
 				C2617B021DB6B5AB004E4B5A /* String+.swift in Sources */,
 				C2617B1F1DB6B739004E4B5A /* NSRange+.swift in Sources */,
@@ -1287,6 +1294,7 @@
 				C20166411CE1017900F7D3E5 /* UIEdgeInsets+.swift in Sources */,
 				C2291EF21DEBF7D500CBF3BE /* NSManagedObjectContext+.swift in Sources */,
 				C2F0A7501D10D5DC0022FF61 /* ParaboloidFlowLayout.swift in Sources */,
+				C270B2141E308A9900517CC7 /* GenericViewController.swift in Sources */,
 				C20165AF1CE0FC6D00F7D3E5 /* Bundle+.swift in Sources */,
 				C20166451CE1017900F7D3E5 /* UITableView+.swift in Sources */,
 				C201668A1CE10A8300F7D3E5 /* SnappingFlowLayout.swift in Sources */,
