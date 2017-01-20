@@ -67,6 +67,17 @@ public extension ActionTrailing where Self: NSControl {
     }
 }
 
+extension NSMenuItem: ActionTrailing {}
+
+public extension ActionTrailing where Self: NSMenuItem {
+
+    func addAction(_ handle: @escaping (Self) -> Void) {
+        self.setAction(handle)
+        self.action = #selector(handleAction)
+        self.target = self
+    }
+}
+
 extension NSGestureRecognizer: ActionTrailing {}
 
 public extension ActionTrailing where Self: NSGestureRecognizer {
