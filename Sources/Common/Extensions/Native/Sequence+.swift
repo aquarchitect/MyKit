@@ -9,7 +9,7 @@
 /// :nodoc:
 public extension Sequence {
 
-    public func pair<Key: Hashable, Value>(_ transformer: (Iterator.Element) throws -> (Key, Value)) rethrows -> Dictionary<Key, Value> {
+    func pair<Key: Hashable, Value>(_ transformer: (Iterator.Element) throws -> (Key, Value)) rethrows -> Dictionary<Key, Value> {
         var results: [Key: Value] = Dictionary(minimumCapacity: self.underestimatedCount)
 
         try self.forEach {

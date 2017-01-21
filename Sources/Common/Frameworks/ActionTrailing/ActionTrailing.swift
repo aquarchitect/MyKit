@@ -15,8 +15,12 @@ public protocol ActionTrailing: class {}
 extension ActionTrailing {
 
     func setAction(_ handle: @escaping (Self) -> Void) {
-        objc_setAssociatedObject(self, &GlobalToken, ActionWrapper(handle),
-                                 objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC)
+        objc_setAssociatedObject(
+            self,
+            &GlobalToken,
+            ActionWrapper(handle),
+            objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC
+        )
     }
 
     func executeAction() {
