@@ -186,6 +186,10 @@
 		C2F317521D5A5EF7009B0F42 /* FontRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317461D5A5EF1009B0F42 /* FontRegistryTests.swift */; };
 		C2F317531D5A5EF7009B0F42 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317471D5A5EF1009B0F42 /* DateTests.swift */; };
 		C2F566AB1D242AD800DCEC45 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F566AA1D242AD800DCEC45 /* UIScreen+.swift */; };
+		C2FA1F3F1E36C3C900AF45A5 /* NSTableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FA1F3E1E36C3C900AF45A5 /* NSTableView+.swift */; };
+		C2FA1F411E36C57A00AF45A5 /* NSView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FA1F401E36C57A00AF45A5 /* NSView+.swift */; };
+		C2FA1F431E36CB4600AF45A5 /* CGRectEdge+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FA1F421E36CB4600AF45A5 /* CGRectEdge+.swift */; };
+		C2FA1F441E36CB8D00AF45A5 /* CGRectEdge+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FA1F421E36CB4600AF45A5 /* CGRectEdge+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -368,6 +372,9 @@
 		C2F317461D5A5EF1009B0F42 /* FontRegistryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontRegistryTests.swift; path = UnitTests/FontRegistryTests.swift; sourceTree = SOURCE_ROOT; };
 		C2F317471D5A5EF1009B0F42 /* DateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTests.swift; path = UnitTests/DateTests.swift; sourceTree = SOURCE_ROOT; };
 		C2F566AA1D242AD800DCEC45 /* UIScreen+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScreen+.swift"; path = "Sources/iOS/Extensions/UIScreen+.swift"; sourceTree = "<group>"; };
+		C2FA1F3E1E36C3C900AF45A5 /* NSTableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTableView+.swift"; path = "Sources/macOS/Extensions/NSTableView+.swift"; sourceTree = "<group>"; };
+		C2FA1F401E36C57A00AF45A5 /* NSView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSView+.swift"; path = "Sources/macOS/Extensions/NSView+.swift"; sourceTree = "<group>"; };
+		C2FA1F421E36CB4600AF45A5 /* CGRectEdge+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGRectEdge+.swift"; path = "Sources/Common/Extensions/CoreGraphics/CGRectEdge+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +485,7 @@
 				C20165CF1CE0FCA000F7D3E5 /* CGPoint+.swift */,
 				C20165D01CE0FCA000F7D3E5 /* CGRect+.swift */,
 				C20165D11CE0FCA000F7D3E5 /* CGSize+.swift */,
+				C2FA1F421E36CB4600AF45A5 /* CGRectEdge+.swift */,
 			);
 			name = CoreGraphics;
 			sourceTree = "<group>";
@@ -621,6 +629,8 @@
 			isa = PBXGroup;
 			children = (
 				C241A5481DCA638300E26DD5 /* NSCell+.swift */,
+				C2FA1F401E36C57A00AF45A5 /* NSView+.swift */,
+				C2FA1F3E1E36C3C900AF45A5 /* NSTableView+.swift */,
 				C2C1D39D1DC83BEA009FAB35 /* NSBezierPath+.swift */,
 				C2C7E5DF1DCD0A9500AC8973 /* NSEdgeInsets.swift */,
 				C21736641DCD41E000CE7DE7 /* NSImage+.swift */,
@@ -1214,7 +1224,9 @@
 				C2B3F34D1D0B8AF80055B06E /* ActionWrapper.swift in Sources */,
 				C2617B081DB6B5AB004E4B5A /* AnyIterator+.swift in Sources */,
 				C270B2121E308A5200517CC7 /* GenericViewController.swift in Sources */,
+				C2FA1F411E36C57A00AF45A5 /* NSView+.swift in Sources */,
 				C24A0AE41D72143B00F94F08 /* Diff.swift in Sources */,
+				C2FA1F431E36CB4600AF45A5 /* CGRectEdge+.swift in Sources */,
 				C2617B021DB6B5AB004E4B5A /* String+.swift in Sources */,
 				C2617B1F1DB6B739004E4B5A /* NSRange+.swift in Sources */,
 				C2617B181DB6B739004E4B5A /* DateFormatter+.swift in Sources */,
@@ -1243,6 +1255,7 @@
 				C2291EF91DEBFDBE00CBF3BE /* FontRegistry.swift in Sources */,
 				C20166071CE0FF1700F7D3E5 /* CKRecord+.swift in Sources */,
 				C20166091CE0FF1C00F7D3E5 /* NSAttributeDescription+.swift in Sources */,
+				C2FA1F3F1E36C3C900AF45A5 /* NSTableView+.swift in Sources */,
 				C27DE1AA1DD8F4BF00358FA8 /* ColorPalette.swift in Sources */,
 				C20165F71CE0FF0E00F7D3E5 /* CGPoint+.swift in Sources */,
 				C2617B151DB6B739004E4B5A /* Timer+.swift in Sources */,
@@ -1331,6 +1344,7 @@
 				C245DFD61DA1CB9C004D9F18 /* SymbolIcon.swift in Sources */,
 				C2446BEE1CEB6D2100957586 /* Arbitrary.swift in Sources */,
 				C201663C1CE1017900F7D3E5 /* Draw+.swift in Sources */,
+				C2FA1F441E36CB8D00AF45A5 /* CGRectEdge+.swift in Sources */,
 				C2291EEF1DEBF57E00CBF3BE /* Caching.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
