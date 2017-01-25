@@ -164,7 +164,6 @@
 		C2C62A2A1D04A36F0009B45F /* ColorHexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A291D04A36F0009B45F /* ColorHexing.swift */; };
 		C2C62A2B1D04A3DC0009B45F /* ColorHexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A291D04A36F0009B45F /* ColorHexing.swift */; };
 		C2C62A2C1D04A4200009B45F /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAD8291D03F714001D2DC4 /* Matrix.swift */; };
-		C2C7E5E01DCD0A9500AC8973 /* NSEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C7E5DF1DCD0A9500AC8973 /* NSEdgeInsets.swift */; };
 		C2D0AAA01DB5926100C6847E /* URLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D0AA9F1DB5926100C6847E /* URLSession+.swift */; };
 		C2D5E7CA1CE12FF80049B5C1 /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165901CE0FC0200F7D3E5 /* SymbolIcon.ttf */; };
 		C2D5E7CB1CE12FF90049B5C1 /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165901CE0FC0200F7D3E5 /* SymbolIcon.ttf */; };
@@ -353,7 +352,6 @@
 		C2BD802D1D98703300F3D34F /* SnappingLayoutDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingLayoutDelegate.swift; path = Sources/iOS/Frameworks/CollectionLayout/Snapping/SnappingLayoutDelegate.swift; sourceTree = "<group>"; };
 		C2C1D39D1DC83BEA009FAB35 /* NSBezierPath+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSBezierPath+.swift"; path = "Sources/macOS/Extensions/NSBezierPath+.swift"; sourceTree = "<group>"; };
 		C2C62A291D04A36F0009B45F /* ColorHexing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorHexing.swift; path = Sources/Common/Frameworks/ColorHexing/ColorHexing.swift; sourceTree = "<group>"; };
-		C2C7E5DF1DCD0A9500AC8973 /* NSEdgeInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSEdgeInsets.swift; path = Sources/macOS/Extensions/NSEdgeInsets.swift; sourceTree = "<group>"; };
 		C2D0AA9F1DB5926100C6847E /* URLSession+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URLSession+.swift"; path = "Sources/Common/Extensions/Foundation/URLSession+.swift"; sourceTree = "<group>"; };
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2EAD8291D03F714001D2DC4 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix.swift; path = Sources/Common/Utilities/Matrix.swift; sourceTree = "<group>"; };
@@ -628,12 +626,11 @@
 		C23FADAD1DC0112C00A4491C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C2FB70A81E394D5000963877 /* EdgeInsets+.swift */,
 				C241A5481DCA638300E26DD5 /* NSCell+.swift */,
 				C2FA1F401E36C57A00AF45A5 /* NSView+.swift */,
 				C2C1D39D1DC83BEA009FAB35 /* NSBezierPath+.swift */,
-				C2C7E5DF1DCD0A9500AC8973 /* NSEdgeInsets.swift */,
 				C21736641DCD41E000CE7DE7 /* NSImage+.swift */,
-				C2FB70A81E394D5000963877 /* EdgeInsets+.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1242,7 +1239,6 @@
 				C201656D1CE0F01D00F7D3E5 /* Swizzle.swift in Sources */,
 				C20166041CE0FF1700F7D3E5 /* CKContainer+.swift in Sources */,
 				C2A6738A1DB00820009E063A /* Mutex.swift in Sources */,
-				C2C7E5E01DCD0A9500AC8973 /* NSEdgeInsets.swift in Sources */,
 				C201656A1CE0F01D00F7D3E5 /* Result.swift in Sources */,
 				C2617B161DB6B739004E4B5A /* Bundle+.swift in Sources */,
 				C228CF9C1DD97D7F0032B132 /* Optional+.swift in Sources */,
