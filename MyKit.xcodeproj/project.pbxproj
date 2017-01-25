@@ -189,7 +189,7 @@
 		C2FA1F411E36C57A00AF45A5 /* NSView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FA1F401E36C57A00AF45A5 /* NSView+.swift */; };
 		C2FA1F431E36CB4600AF45A5 /* CGRectEdge+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FA1F421E36CB4600AF45A5 /* CGRectEdge+.swift */; };
 		C2FA1F441E36CB8D00AF45A5 /* CGRectEdge+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FA1F421E36CB4600AF45A5 /* CGRectEdge+.swift */; };
-		C2FB70A31E39267B00963877 /* CenteredClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FB70A21E39267B00963877 /* CenteredClip.swift */; };
+		C2FB70A91E394D5000963877 /* EdgeInsets+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FB70A81E394D5000963877 /* EdgeInsets+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -374,7 +374,7 @@
 		C2F566AA1D242AD800DCEC45 /* UIScreen+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIScreen+.swift"; path = "Sources/iOS/Extensions/UIScreen+.swift"; sourceTree = "<group>"; };
 		C2FA1F401E36C57A00AF45A5 /* NSView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSView+.swift"; path = "Sources/macOS/Extensions/NSView+.swift"; sourceTree = "<group>"; };
 		C2FA1F421E36CB4600AF45A5 /* CGRectEdge+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGRectEdge+.swift"; path = "Sources/Common/Extensions/CoreGraphics/CGRectEdge+.swift"; sourceTree = "<group>"; };
-		C2FB70A21E39267B00963877 /* CenteredClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CenteredClip.swift; path = Sources/macOS/Frameworks/CenteredClip/CenteredClip.swift; sourceTree = "<group>"; };
+		C2FB70A81E394D5000963877 /* EdgeInsets+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "EdgeInsets+.swift"; path = "Sources/macOS/Extensions/EdgeInsets+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -633,6 +633,7 @@
 				C2C1D39D1DC83BEA009FAB35 /* NSBezierPath+.swift */,
 				C2C7E5DF1DCD0A9500AC8973 /* NSEdgeInsets.swift */,
 				C21736641DCD41E000CE7DE7 /* NSImage+.swift */,
+				C2FB70A81E394D5000963877 /* EdgeInsets+.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -640,7 +641,6 @@
 		C243BAE01DD184BA005103BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C2FB70A11E39254800963877 /* CenteredClip */,
 				C243BAE11DD184C3005103BC /* GenericInterface */,
 			);
 			name = Frameworks;
@@ -871,14 +871,6 @@
 				C2A28EDF1E12376E00D7AD89 /* Assets.xcassets */,
 			);
 			name = Support;
-			sourceTree = "<group>";
-		};
-		C2FB70A11E39254800963877 /* CenteredClip */ = {
-			isa = PBXGroup;
-			children = (
-				C2FB70A21E39267B00963877 /* CenteredClip.swift */,
-			);
-			name = CenteredClip;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1227,7 +1219,6 @@
 				C2A9D7A41DB439BD00F264EE /* Observable.swift in Sources */,
 				C2617B0B1DB6B5AB004E4B5A /* OptionSet+.swift in Sources */,
 				C2617B041DB6B5AB004E4B5A /* Collection+.swift in Sources */,
-				C2FB70A31E39267B00963877 /* CenteredClip.swift in Sources */,
 				C2617B1D1DB6B739004E4B5A /* NSLayoutConstraint+.swift in Sources */,
 				C2617B171DB6B739004E4B5A /* Date+.swift in Sources */,
 				C2B3F34D1D0B8AF80055B06E /* ActionWrapper.swift in Sources */,
@@ -1258,6 +1249,7 @@
 				C241A5491DCA638300E26DD5 /* NSCell+.swift in Sources */,
 				C2617B011DB6B5AB004E4B5A /* CountableRange+.swift in Sources */,
 				C2617B1E1DB6B739004E4B5A /* NSMutableAttributedString+.swift in Sources */,
+				C2FB70A91E394D5000963877 /* EdgeInsets+.swift in Sources */,
 				C2291EF01DEBF57E00CBF3BE /* Caching.swift in Sources */,
 				C21736651DCD41E000CE7DE7 /* NSImage+.swift in Sources */,
 				C20165F81CE0FF0E00F7D3E5 /* CGRect+.swift in Sources */,

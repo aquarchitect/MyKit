@@ -1,14 +1,14 @@
 /*
- * UIEdgeInsets+.swift
+ * EdgeInsets+.swift
  * MyKit
  *
  * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
+ * Copyright (c) 2017 Hai Nguyen.
  */
 
-import UIKit
+import AppKit
 
-public extension UIEdgeInsets {
+public extension EdgeInsets {
 
     var vertical: CGFloat {
         return self.top + self.bottom
