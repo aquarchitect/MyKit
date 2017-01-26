@@ -11,7 +11,13 @@ import CoreGraphics
 public extension CGRect {
 
     var center: CGPoint {
-        return CGPoint(x: self.midX, y: self.midY)
+        get {
+            return CGPoint(x: self.midX, y: self.midY)
+        }
+        set {
+            self.origin.x = newValue.x - self.width/2
+            self.origin.y = newValue.y - self.height/2
+        }
     }
 
     init(center: CGPoint, sideLength: CGFloat) {
