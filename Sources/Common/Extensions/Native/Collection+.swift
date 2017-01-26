@@ -13,10 +13,11 @@ public extension Collection where Self: RandomAccessCollection {
     func element(at index: Index) -> Iterator.Element? {
         let distance = self.distance(from: self.startIndex, to: index)
 
-        return self.index(self.startIndex,
-                          offsetBy: distance,
-                          limitedBy: self.endIndex)
-            .map { self[$0] }
+        return self.index(
+            self.startIndex,
+            offsetBy: distance,
+            limitedBy: self.endIndex
+        ).map { self[$0] }
     }
 }
 
@@ -30,21 +31,23 @@ extension Collection where Iterator.Element: Comparable {
     func binarySearch(_ element: Iterator.Element) -> Index? {
         func _binarySearch(in range: Range<Index>) -> Index? {
             guard range.lowerBound < range.upperBound else { return nil }
-            let midIndex = self.index(range.lowerBound, offsetBy: self.count/2)
+
+            let distance = self.distance(from: range.lowerBound, to: range.upperBound)
+            let midIndex = self.index(range.lowerBound, offsetBy: distance/2)
 
             switch self[midIndex] {
             case _ where element < self[midIndex]:
                 let _range = range.lowerBound ..< midIndex
                 return _binarySearch(in: _range)
             case _ where element > self[midIndex]:
-                let _range = self.index(after: range.lowerBound) ..< range.upperBound
+                let _range = self.index(after: midIndex) ..< range.upperBound
                 return _binarySearch(in: _range)
             default:
                 return midIndex
             }
         }
 
-        return _binarySearch(in: self.startIndex..<self.endIndex)
+        return _binarySearch(in: self.startIndex ..< self.endIndex)
     }
 }
 

@@ -24,6 +24,10 @@ extension CollectionExtensionTests {
     func testBinarySearchWithEmptyness() {
         XCTAssertNil([].binarySearch(10))
     }
+
+    func testBinarySearchWithTwoElements() {
+        XCTAssertEqual([1, 2].binarySearch(1), 0)
+    }
 }
 
 extension CollectionExtensionTests {
