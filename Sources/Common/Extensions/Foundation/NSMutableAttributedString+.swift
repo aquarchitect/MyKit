@@ -81,8 +81,3 @@ public extension NSMutableAttributedString {
                           range: range ?? self.range)
     }
 }
-
-public func + (lhs: NSMutableAttributedString, rhs: NSMutableAttributedString) -> NSMutableAttributedString {
-    return NSMutableAttributedString(attributedString: lhs)
-        .then { $0.append(rhs) }
-}

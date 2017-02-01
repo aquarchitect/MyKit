@@ -173,6 +173,8 @@
 		C2F0A7501D10D5DC0022FF61 /* ParaboloidFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0A74C1D10D5DC0022FF61 /* ParaboloidFlowLayout.swift */; };
 		C2F0A7521D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0A74E1D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift */; };
 		C2F0A7531D10D5DC0022FF61 /* ParaboloidLayoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F0A74F1D10D5DC0022FF61 /* ParaboloidLayoutController.swift */; };
+		C2F1FBD01E425875006027C3 /* NSAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F1FBCF1E425875006027C3 /* NSAttributedString+.swift */; };
+		C2F1FBD11E425875006027C3 /* NSAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F1FBCF1E425875006027C3 /* NSAttributedString+.swift */; };
 		C2F288891DF8BBBC003E84F9 /* ReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F288861DF8BB21003E84F9 /* ReduxTests.swift */; };
 		C2F2888A1DF8BBBC003E84F9 /* ReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F288861DF8BB21003E84F9 /* ReduxTests.swift */; };
 		C2F2D8691E08754D0041BF0F /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673911DB09493009E063A /* ObservableTests.swift */; };
@@ -360,6 +362,7 @@
 		C2F0A74C1D10D5DC0022FF61 /* ParaboloidFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidFlowLayout.swift; sourceTree = "<group>"; };
 		C2F0A74E1D10D5DC0022FF61 /* ParaboloidLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidLayoutAttributes.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidLayoutAttributes.swift; sourceTree = "<group>"; };
 		C2F0A74F1D10D5DC0022FF61 /* ParaboloidLayoutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParaboloidLayoutController.swift; path = Sources/iOS/Frameworks/CollectionLayout/Parapoloid/ParaboloidLayoutController.swift; sourceTree = "<group>"; };
+		C2F1FBCF1E425875006027C3 /* NSAttributedString+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSAttributedString+.swift"; path = "Sources/Common/Extensions/Foundation/NSAttributedString+.swift"; sourceTree = "<group>"; };
 		C2F288861DF8BB21003E84F9 /* ReduxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReduxTests.swift; path = UnitTests/ReduxTests.swift; sourceTree = SOURCE_ROOT; };
 		C2F317031D5A5947009B0F42 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/macOS/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C2F317041D5A5947009B0F42 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Demos/macOS/ViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -473,6 +476,7 @@
 				C20165AA1CE0FC6D00F7D3E5 /* NSLayoutConstraint+.swift */,
 				C20165AB1CE0FC6D00F7D3E5 /* NSMutableAttributedString+.swift */,
 				C20165AD1CE0FC6D00F7D3E5 /* NSRange+.swift */,
+				C2F1FBCF1E425875006027C3 /* NSAttributedString+.swift */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -1226,6 +1230,7 @@
 				C2FA1F431E36CB4600AF45A5 /* CGRectEdge+.swift in Sources */,
 				C2617B021DB6B5AB004E4B5A /* String+.swift in Sources */,
 				C2617B1F1DB6B739004E4B5A /* NSRange+.swift in Sources */,
+				C2F1FBD11E425875006027C3 /* NSAttributedString+.swift in Sources */,
 				C2617B181DB6B739004E4B5A /* DateFormatter+.swift in Sources */,
 				C20165621CE0F01D00F7D3E5 /* Box.swift in Sources */,
 				C20165631CE0F01D00F7D3E5 /* Composite.swift in Sources */,
@@ -1342,6 +1347,7 @@
 				C201663C1CE1017900F7D3E5 /* Draw+.swift in Sources */,
 				C2FA1F441E36CB8D00AF45A5 /* CGRectEdge+.swift in Sources */,
 				C2291EEF1DEBF57E00CBF3BE /* Caching.swift in Sources */,
+				C2F1FBD01E425875006027C3 /* NSAttributedString+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
