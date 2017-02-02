@@ -105,7 +105,7 @@ public extension Redux {
                 }
             )
         } else {
-            return { state, _ in .lift { state }}
+            return { state, _ in .lift(state)}
         }
     }
 

@@ -14,7 +14,7 @@ public enum Result<T> {
     case fulfill(T)
     case reject(Error)
 
-    public init(_ contruct: () throws -> T) {
+    public init(_ contruct: @autoclosure () throws -> T) {
         do {
             self = .fulfill(try contruct())
         } catch {
