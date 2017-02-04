@@ -12,10 +12,10 @@ precedencegroup Composite {
 
 infix operator •: Composite
 
-public func • <A, B, C>(lhs: @escaping (B) -> C, rhs: @escaping (A) -> B) -> (A) -> C {
-    return { lhs(rhs($0)) }
+public func • <A, B, C>(lhs: @escaping (A) -> B, rhs: @escaping (B) -> C) -> (A) -> C {
+    return { rhs(lhs($0)) }
 }
 
-public func • <A, B, C>(lhs: @escaping (B) throws -> C, rhs: @escaping (A) throws -> B) -> (A) throws -> C {
-    return { try lhs(try rhs($0)) }
+public func • <A, B, C>(lhs: @escaping (A) throws -> B, rhs: @escaping (B) throws -> C) -> (A) throws -> C {
+    return { try rhs(try lhs($0)) }
 }

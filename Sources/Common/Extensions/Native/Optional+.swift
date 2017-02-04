@@ -12,3 +12,10 @@ public func zip<A, B>(_ optionalA: Optional<A>, _ optionalB: Optional<B>) -> Opt
     default: return .none
     }
 }
+
+public func zip<A, B, C>(_ optionalA: Optional<A>, _ optionalB: Optional<B>, _ optionalC: Optional<C>) -> Optional<(A, B, C)> {
+    switch (optionalA, optionalB, optionalC) {
+    case (let a?, let b?, let c?): return (a, b, c)
+    default: return .none
+    }
+}

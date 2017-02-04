@@ -167,6 +167,8 @@
 		C2D0AAA01DB5926100C6847E /* URLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D0AA9F1DB5926100C6847E /* URLSession+.swift */; };
 		C2D5E7CA1CE12FF80049B5C1 /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165901CE0FC0200F7D3E5 /* SymbolIcon.ttf */; };
 		C2D5E7CB1CE12FF90049B5C1 /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165901CE0FC0200F7D3E5 /* SymbolIcon.ttf */; };
+		C2E3C5571E468D1700B9DC34 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E3C5561E468D1700B9DC34 /* NSObject+.swift */; };
+		C2E3C5581E468D1700B9DC34 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E3C5561E468D1700B9DC34 /* NSObject+.swift */; };
 		C2EAD82A1D03F714001D2DC4 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAD8291D03F714001D2DC4 /* Matrix.swift */; };
 		C2EB48A71DA5803200635D55 /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EB48A51DA5803200635D55 /* LoremIpsum.swift */; };
 		C2EB48AA1DA5804300635D55 /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EB48A51DA5803200635D55 /* LoremIpsum.swift */; };
@@ -356,6 +358,7 @@
 		C2C62A291D04A36F0009B45F /* ColorHexing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorHexing.swift; path = Sources/Common/Frameworks/ColorHexing/ColorHexing.swift; sourceTree = "<group>"; };
 		C2D0AA9F1DB5926100C6847E /* URLSession+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URLSession+.swift"; path = "Sources/Common/Extensions/Foundation/URLSession+.swift"; sourceTree = "<group>"; };
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2E3C5561E468D1700B9DC34 /* NSObject+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSObject+.swift"; path = "Sources/Common/Extensions/Foundation/NSObject+.swift"; sourceTree = "<group>"; };
 		C2EAD8291D03F714001D2DC4 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix.swift; path = Sources/Common/Utilities/Matrix.swift; sourceTree = "<group>"; };
 		C2EB48A51DA5803200635D55 /* LoremIpsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoremIpsum.swift; path = Sources/Common/Frameworks/LoremIpsum/LoremIpsum.swift; sourceTree = "<group>"; };
 		C2EF9F701CAB955100BC205F /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -477,6 +480,7 @@
 				C20165AB1CE0FC6D00F7D3E5 /* NSMutableAttributedString+.swift */,
 				C20165AD1CE0FC6D00F7D3E5 /* NSRange+.swift */,
 				C2F1FBCF1E425875006027C3 /* NSAttributedString+.swift */,
+				C2E3C5561E468D1700B9DC34 /* NSObject+.swift */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -1254,6 +1258,7 @@
 				C2291EF01DEBF57E00CBF3BE /* Caching.swift in Sources */,
 				C21736651DCD41E000CE7DE7 /* NSImage+.swift in Sources */,
 				C20165F81CE0FF0E00F7D3E5 /* CGRect+.swift in Sources */,
+				C2E3C5581E468D1700B9DC34 /* NSObject+.swift in Sources */,
 				C2291EF91DEBFDBE00CBF3BE /* FontRegistry.swift in Sources */,
 				C20166071CE0FF1700F7D3E5 /* CKRecord+.swift in Sources */,
 				C20166091CE0FF1C00F7D3E5 /* NSAttributeDescription+.swift in Sources */,
@@ -1290,6 +1295,7 @@
 				C20166831CE1097100F7D3E5 /* SnappingSuperLayout.swift in Sources */,
 				C22EA03C1D98801B003A490A /* OpenWeather+.swift in Sources */,
 				C24A0AE31D72143B00F94F08 /* Diff.swift in Sources */,
+				C2E3C5571E468D1700B9DC34 /* NSObject+.swift in Sources */,
 				C201663D1CE1017900F7D3E5 /* UIBezierPath+.swift in Sources */,
 				C20165531CE0EFC500F7D3E5 /* Composite.swift in Sources */,
 				C2F0A7531D10D5DC0022FF61 /* ParaboloidLayoutController.swift in Sources */,

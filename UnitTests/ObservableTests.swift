@@ -125,7 +125,7 @@ final class ObservableTests: XCTestCase {
         var results: [String] = []
 
         let observable = Observable<String>()
-        observable.debounce(1).onNext { results += [$0] }
+        observable.throttle(1).onNext { results += [$0] }
         ["A", "B", "C"].forEach(observable.update)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

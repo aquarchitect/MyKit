@@ -29,7 +29,7 @@ public extension Date {
         return Date.calendar.component(component, from: self)
     }
 
-    func dateComponents(of components: [Calendar.Component]) -> DateComponents {
+    func dateComponents(of components: Calendar.Component...) -> DateComponents {
         return Date.calendar.dateComponents(Set(components), from: self)
     }
 
@@ -51,11 +51,11 @@ public extension Date {
 public extension Date {
 
     func firstDateOfTheMonth() -> Date {
-        return (Date.calendar.date(from:) • dateComponents(of:))([.year, .month])!
+        return (dateComponents(of:) • Date.calendar.date(from:))((.year, .month))!
     }
 
     func firstDateOfTheWeek() -> Date {
-        return (Date.calendar.date(from:) • dateComponents(of:))([.year, .weekOfYear])!
+        return (dateComponents(of:) • Date.calendar.date(from:))((.year, .weekOfYear))!
     }
 }
 
@@ -80,7 +80,7 @@ public extension Date {
     }
 
     static func numberOfDaysInThisWeek() -> Period {
-        var days = calendar.firstWeekday - today.dateComponents(of: [.weekday]).weekday!
+        var days = calendar.firstWeekday - today.dateComponents(of: .weekday).weekday!
         days += 7 * Int(.init(value: days <= 0))
         return (7 - days, days - 1)
     }
@@ -129,24 +129,28 @@ public extension Date {
 
 public extension Date {
 
+    private func isMatched(with date: Date) -> (Calendar.Component...) -> Bool {
+        return date.dateComponents(of:) • isMatched(with:)
+    }
+
     func isSameDayAs(_ date: Date) -> Bool {
-        return (isMatched(with:) • date.dateComponents(of:))([.year, .month, .day])
+        return isMatched(with: date)(.year, .month, .day)
     }
 
     func isSameWeekAs(_ date: Date) -> Bool {
-        return (isMatched(with:) • date.dateComponents(of:))([.year, .weekOfYear])
+        return isMatched(with: date)(.year, .weekOfYear)
     }
 
     func isSameMonthAs(_ date: Date) -> Bool {
-        return (isMatched(with:) • date.dateComponents(of:))([.year, .month])
+        return isMatched(with: date)(.year, .month)
     }
 
     func isSameYearAs(_ date: Date) -> Bool {
-        return (isMatched(with:) • date.dateComponents(of:))([.year])
+        return isMatched(with: date)(.year)
     }
 }
 
-// MARK: today Comparison
+// MARK: Today Present Comparison
 
 public extension Date {
 
@@ -159,7 +163,7 @@ public extension Date {
     }
 }
 
-// MARK: today Comparison within a Week
+// MARK: Today Daily Comparison
 
 public extension Date {
 
@@ -168,15 +172,15 @@ public extension Date {
     }
 
     func isTomorrow() -> Bool {
-        return (isSameDayAs • Date.today.adding(days:))(1)
+        return (Date.today.adding(days:) • isSameDayAs)(1)
     }
 
     func isYesterday() -> Bool {
-        return (isSameDayAs • Date.today.adding(days:))(-1)
+        return (Date.today.adding(days:) • isSameDayAs)(-1)
     }
 }
 
-// MARK: today Comparison within a Month
+// MARK: Today Weekly Comparison
 
 public extension Date {
 
@@ -185,15 +189,15 @@ public extension Date {
     }
 
     func isNextWeek() -> Bool {
-        return (isSameWeekAs • Date.today.adding(weeks:))(1)
+        return (Date.today.adding(weeks:) • isSameWeekAs)(1)
     }
 
     func isLastWeek() -> Bool {
-        return (isSameWeekAs • Date.today.adding(weeks:))(-1)
+        return (Date.today.adding(weeks:) • isSameWeekAs)(-1)
     }
 }
 
-// MARK: today Comparison within a Year
+// MARK: Today Monthly Comparison
 
 public extension Date {
 
@@ -202,13 +206,15 @@ public extension Date {
     }
 
     func isNextMonth() -> Bool {
-        return (isSameMonthAs • Date.today.adding(months:))(1)
+        return (Date.today.adding(months:) • isSameMonthAs)(1)
     }
 
     func isLastMonth() -> Bool {
-        return (isSameMonthAs • Date.today.adding(months:))(-1)
+        return (Date.today.adding(months:) • isSameMonthAs)(-1)
     }
 }
+
+// MARK: Today Yearly Comparison
 
 public extension Date {
 
@@ -217,15 +223,15 @@ public extension Date {
     }
 
     func isNextYear() -> Bool {
-        return (isSameYearAs • Date.today.adding(years:))(1)
+        return (Date.today.adding(years:) • isSameYearAs)(1)
     }
 
     func isLastYear() -> Bool {
-        return (isSameYearAs • Date.today.adding(years:))(-1)
+        return (Date.today.adding(years:) • isSameYearAs)(-1)
     }
 }
 
-// MARK: String with Style
+// MARK: Formatted String
 
 public extension Date {
 

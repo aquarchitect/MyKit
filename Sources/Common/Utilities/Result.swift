@@ -115,7 +115,7 @@ public extension Result {
 }
 
 /// Combine results of 2 different types into result of a tuple
-func _zip<A, B>(resultA: Result<A>, resultB: Result<B>) -> Result<(A, B)> {
+public func zip<A, B>(_ resultA: Result<A>, _ resultB: Result<B>) -> Result<(A, B)> {
     do {
         let a = try resultA.resolve()
         let b = try resultB.resolve()
@@ -124,6 +124,15 @@ func _zip<A, B>(resultA: Result<A>, resultB: Result<B>) -> Result<(A, B)> {
         return .reject(error)
     }
 }
-public func zip<A, B>(_ resultA: Result<A>, _ resultB: Result<B>) -> Result<(A, B)> {
-    return _zip(resultA: resultA, resultB: resultB)
+
+public func zip<A, B, C>(_ resultA: Result<A>, _ resultB: Result<B>, _ resultC: Result<C>) -> Result<(A, B, C)> {
+    do {
+        let a = try resultA.resolve()
+        let b = try resultB.resolve()
+        let c = try resultC.resolve()
+        return .fulfill((a, b, c))
+    } catch {
+        return .reject(error)
+    }
 }
+

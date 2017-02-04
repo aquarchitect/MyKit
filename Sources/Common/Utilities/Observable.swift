@@ -31,6 +31,8 @@ final public class Observable<T> {
 
 extension Observable: Then {}
 
+// MARK: - Sync Signal
+
 public extension Observable {
 
     static func lift(on queue: DispatchQueue = .main, _ constructor: @autoclosure @escaping () throws -> T) -> Observable {
@@ -38,7 +40,7 @@ public extension Observable {
 
         queue.async {
             do {
-                try (observable.update • constructor)()
+                try (constructor • observable.update)()
             } catch {
                 observable.update(error)
             }
@@ -47,6 +49,8 @@ public extension Observable {
         return observable
     }
 }
+
+// MARK: - Signal Update
 
 public extension Observable {
 
@@ -67,6 +71,8 @@ public extension Observable {
     }
 }
 
+// MARK: - Signal Transformation
+
 public extension Observable {
 
     func map<U>(_ transformer: @escaping (T) throws -> U) -> Observable<U> {
@@ -84,7 +90,7 @@ public extension Observable {
 
         subscribe { result in
             do {
-                try (transformer • result.resolve)().subscribe(observable.update)
+                try (result.resolve • transformer)().subscribe(observable.update)
             } catch {
                 observable.update(.reject(error))
             }
@@ -102,7 +108,7 @@ public extension Observable {
             lastResult = boxedResult
 
             do {
-                try (transformer • outerResult.resolve)().subscribe { innerResult in
+                try (outerResult.resolve • transformer)().subscribe { innerResult in
                     guard lastResult === boxedResult else { return }
                     observable.update(innerResult)
                     lastResult = nil
@@ -115,12 +121,18 @@ public extension Observable {
         return observable
     }
 
-    func filter(_ check: @escaping (T) throws -> Bool) -> Observable {
+    func combineLatest<U>(_ other: Observable<U>) -> Observable<(T, U)> {
+        return zip(self, other)
+    }
+
+    func filter(_ isIncluded: @escaping (T) throws -> Bool) -> Observable {
         let observable = Observable()
 
         subscribe { result in
             do {
-                if try (check • result.resolve)() { observable.update(result) }
+                if try (result.resolve • isIncluded)() {
+                    observable.update(result)
+                }
             } catch {
                 observable.update(.reject(error))
             }
@@ -129,6 +141,8 @@ public extension Observable {
         return observable
     }
 }
+
+// MARK: - Recovery Signal
 
 public extension Observable {
 
@@ -163,6 +177,8 @@ public extension Observable {
     }
 }
 
+// MARK: - Signal Subscription
+
 public extension Observable {
 
     @discardableResult
@@ -183,6 +199,8 @@ public extension Observable {
         return self
     }
 }
+
+// MARK: - Signal Combination
 
 public extension Observable {
 
@@ -206,6 +224,8 @@ public extension Observable {
     }
 }
 
+// MARK: - Timing Signal
+
 public extension Observable {
 
     func delay(_ timeInterval: TimeInterval) -> Observable {
@@ -225,7 +245,7 @@ public extension Observable {
      * call to update will always be delivered (although it might be delayed 
      * up to thhe specified amount of seconds).
      */
-    func debounce(_ timeInterval: TimeInterval) -> Observable {
+    func throttle(_ timeInterval: TimeInterval) -> Observable {
         let observable = Observable()
         var lastResult: Box<Result<T>>?
 
@@ -243,6 +263,8 @@ public extension Observable {
         return observable
     }
 }
+
+// MARK: - Threaded Signal
 
 public extension Observable {
 
@@ -270,9 +292,11 @@ public extension Observable {
     }
 }
 
-public func zip<A, B>(_ observableA: Observable<A>, observableB: Observable<B>) -> Observable<(A, B)> {
+public func zip<A, B>(_ observableA: Observable<A>, _ observableB: Observable<B>) -> Observable<(A, B)> {
     let observable = Observable<(A, B)>()
-    var resultA: Result<A>?, resultB: Result<B>?
+
+    var resultA: Result<A>?
+    var resultB: Result<B>?
 
     func update() {
         zip(resultA, resultB)
@@ -282,6 +306,26 @@ public func zip<A, B>(_ observableA: Observable<A>, observableB: Observable<B>) 
 
     observableA.subscribe { resultA = $0; update() }
     observableB.subscribe { resultB = $0; update() }
+
+    return observable
+}
+
+public func zip<A, B, C>(_ observableA: Observable<A>, _ observableB: Observable<B>, _ observableC: Observable<C>) -> Observable<(A, B, C)> {
+    let observable = Observable<(A, B, C)>()
+
+    var resultA: Result<A>?
+    var resultB: Result<B>?
+    var resultC: Result<C>?
+
+    func update() {
+        zip(resultA, resultB, resultC)
+            .map { zip($0, $1, $2) }
+            .map(observable.update)
+    }
+
+    observableA.subscribe { resultA = $0; update() }
+    observableB.subscribe { resultB = $0; update() }
+    observableC.subscribe { resultC = $0; update() }
 
     return observable
 }

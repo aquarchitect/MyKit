@@ -6,8 +6,6 @@
  * Copyright (c) 2015 Hai Nguyen.
  */
 
-import Foundation
-
 /// _Then_ provides helper functions to ease the transformation of one type to another.
 ///
 /// - warning: `map` and `flatMap` should be favored in the case of `Optional`.
@@ -25,6 +23,3 @@ public extension Then {
         return try transformer(self)
     }
 }
-
-extension Box: Then {}
-extension NSObject: Then {}
