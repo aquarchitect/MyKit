@@ -16,7 +16,7 @@ final class CachingTests: XCTestCase {
             for: "Testing",
             with: .lift(
                 on: .global(qos: .background),
-                Image.render(.init(string: "Testing"))!
+                UIImage.render(.init(string: "Testing"))!
             )
         )
 #elseif os(OSX)
