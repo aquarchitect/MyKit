@@ -8,19 +8,19 @@
 
 import Foundation
 
-public typealias Promise<T> = () -> Observable<T>
-
 /**
  * Future Value
  */
 final public class Observable<T> {
 
-    private(set) var callbacks: [Result<T>.Callback] = []
+    typealias Callback = Result<T>.Callback
+
+    private(set) var callbacks: [Callback] = []
     fileprivate let mutex = Mutex()
 
     public init() {}
 
-    internal func subscribe(_ callback: @escaping Result<T>.Callback) {
+    internal func subscribe(_ callback: @escaping Callback) {
         mutex.perform { callbacks.append(callback) }
     }
 

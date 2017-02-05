@@ -13,7 +13,7 @@ final class ObservableTests: XCTestCase {
     func testLift() {
         let expectation = self.expectation(description: #function)
 
-        Observable.lift { "Test" }.onNext {
+        Observable.lift("Test").onNext {
             XCTAssertEqual($0, "Test")
             expectation.fulfill()
         }
@@ -48,7 +48,7 @@ final class ObservableTests: XCTestCase {
         let main = Observable<Int>()
 
         main.flatMap { value in
-            Observable.lift { "\(value)" }
+            Observable.lift("\(value)")
         }.onNext {
             results += [$0]
         }

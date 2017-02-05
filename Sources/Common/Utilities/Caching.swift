@@ -27,7 +27,7 @@ public extension Caching {
     /**
      * The constructor can be either an async or sync task.
      */
-    static func fetchObject(for key: Key, with constructor: Promise<Object>) -> Observable<Object> {
+    static func fetchObject(for key: Key, with constructor: @autoclosure () -> Observable<Object>) -> Observable<Object> {
         if let object = storage.object(forKey: key) {
             return .lift(object)
         } else if pendingOperationIDs.contains(key) {

@@ -12,25 +12,24 @@ final class CachingTests: XCTestCase {
         let expectation = self.expectation(description: #function)
 
 #if os(iOS)
-        typealias Image = UIImage
+        let observable = UIImage.fetchObject(
+            for: "Testing",
+            with: .lift(
+                on: .global(qos: .background),
+                Image.render(.init(string: "Testing"))!
+            )
+        )
 #elseif os(OSX)
-        typealias Image = NSImage
+        let observable = NSImage.fetchObject(
+            for: "Testing",
+            with: .lift(
+                on: .global(qos: .background),
+                NSImage.render(.init(string: "Testing"))
+            )
+        )
 #endif
 
-        Image.fetchObject(for: "Testing", with: {
-            .lift(on: .global(qos: .background)) {
-                let image = Image.render(.init(string: "Testing"))
-#if os(iOS)
-                if let _image = image {
-                    return _image
-                } else {
-                    throw Empty.default
-                }
-#elseif os(OSX)
-                return image
-#endif
-            }
-        }).onNext {
+        observable.onNext {
             XCTAssertNotNil($0)
             expectation.fulfill()
         }

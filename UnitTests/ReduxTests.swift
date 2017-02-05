@@ -15,13 +15,13 @@ final class ReduxTests: XCTestCase {
     fileprivate class SimpleRedux: Redux<String, Bool> {}
 
     fileprivate let reducer: SimpleRedux.Reducer = { state, action in
-        return .lift {
-            if action {
-                return state
-            } else {
-                throw Exception.a
-            }
+        let observable = Observable<String>()
+
+        DispatchQueue.main.async {
+            observable.update(action ? .fulfill(state) : .reject(Exception.a))
         }
+
+        return observable
     }
 
     fileprivate let middleware1: SimpleRedux.Middleware = { state, dispatch in
