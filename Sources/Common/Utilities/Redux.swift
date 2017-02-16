@@ -9,19 +9,18 @@
 import Foundation
 
 /**
- * The implementation of `Redux` takes a very different approach from a typical 
+ * The implementation of `Redux` takes a different approach from a typical
  * unidirectional architecture flow from web development. The concept is essentially
- * the same which is to encapsulate the application STATE mutation process with
+ * the same, which is to encapsulate the application STATE mutation with systemactic
  * ACTIONs.
  *
- * The key different components are:
- * - MIDDLEWARE plays a significant role in this implementation such as action recorder,
+ * The key components are:
+ * - MIDDLEWAREs play much more significant roles in the flow such as action recorder,
  *   state subscription, app store (state storage)...
- * - The implementation is kept fundamentally very simple. STATE is not stored in
+ * - The implementation is kept fundamentally simple. STATE is not stored in
  *   this object but rather in an independent MIDDLEWARE.
- * - All of potential errors are directed to be handled in one of the middlewares.
- *   By positioning it first in the queue, state subscription not only catches
- *   errors from reducers but also from other middlewares.
+ * - Errors from both REDUCER and MIDDLEWARE can be caught by one of the MIDDEWAREs
+ *   by placing first in the queue.
  */
 open class Redux<State, Action> {
 
@@ -34,9 +33,6 @@ open class Redux<State, Action> {
     private let reducer: Reducer
     private let middleware: Middleware
 
-    // one cycle = reducers + middlewares
-    private var cycles = AnyIterator<(TimeInterval, Action)>(EmptyIterator())
-
     // MARK: Initialization
 
     public init(reducer: @escaping Reducer, middlewares: [Middleware]) {
@@ -46,57 +42,45 @@ open class Redux<State, Action> {
 
     // MARK: Helper Methods
 
-    private func dispatch(_ state: State, _ action: Action) {
+    /// This is designed specifically for unit testing. One action can finish a cycle
+    /// (reducer + middlewares) after another.
+    ///
+    /// - Parameters:
+    ///   - state: initial state
+    ///   - cycles: cycles of action
+    ///   - completion: invoke when cycles are empty
+    public func dispatch(_ state: State, _ cycles: [Action], _ completion: (() -> Void)? = nil) {
+        guard let action = cycles.first else {
+            completion?(); return
+        }
+
         let newState: State
         let firstDispatch: Dispatcher
-        let updateCycle: ((State) -> Void)?
+        let isContinued: Bool
 
         do {
             newState = try reducer(state, action)
             firstDispatch = { _ in }
-            updateCycle = updateNextCycle
+            isContinued = true
         } catch {
             newState = state
             firstDispatch = { _ in throw error }
-            updateCycle = nil
+            isContinued = false
         }
 
         try? middleware(newState, firstDispatch)(action)
-        updateCycle?(newState)
+
+        // continue next cycles
+        if isContinued {
+            dispatch(newState, Array(cycles.dropFirst()), completion)
+        }
     }
 
-    private func updateNextCycle(of state: State) {
-        guard let (interval, action) = cycles.next() else { return }
-
-        DispatchQueue.main.asyncAfter(
-            deadline: .now() + interval,
-            execute: { self.dispatch(state, action) }
-        )
-    }
-
-    /// The implementation mutates state on one action at a time (one cycle).
-    /// A cycle counts as one when passing through all of reducers
-    /// and middlewares.
-    ///
-    /// - Parameters:
-    ///   - state: initial state
-    ///   - actions: action sequence
-    open func dispatch<I: IteratorProtocol>(_ state: State, _ actions: I)
-    where I.Element == (TimeInterval, Action) {
-        cycles = AnyIterator(actions)
-        updateNextCycle(of: state)
-    }
-
-    open func dispatch<S: Sequence>(_ state: State, _ actions: S)
-    where S.Iterator.Element == Action {
-        let _actions = actions
-            .lazy
-            .map { (Double(0), $0) }
-            .makeIterator()
-
-        dispatch(state, _actions)
+    open func dispatch(_ state: State, _ action: Action) {
+        dispatch(state, [action], nil)
     }
 }
+
 
 public extension Redux {
 
