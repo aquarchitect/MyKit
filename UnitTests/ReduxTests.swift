@@ -72,8 +72,26 @@ extension ReduxTests {
         SimpleRedux(
             reducer: reducer,
             middlewares: [middleware, middleware2, middleware1]
-        ).dispatch(state: "Initial", action: true)
+        ).dispatch("Initial", [true])
 
         waitForExpectations(timeout: 2) { XCTAssertNil($0) }
+    }
+
+    func testReduxCycles() {
+        let expectation = self.expectation(description: #function)
+
+        var count = 0
+        let middleware: SimpleRedux.Middleware = { state, dispatch in
+            return { action in
+                count != 2 ? (count += 1) : expectation.fulfill()
+            }
+        }
+
+        SimpleRedux(
+            reducer: reducer,
+            middlewares: [middleware, middleware2, middleware1]
+        ).dispatch("Initial", [true, true, true])
+
+        waitForExpectations(timeout: 4) { XCTAssertNil($0) }
     }
 }
