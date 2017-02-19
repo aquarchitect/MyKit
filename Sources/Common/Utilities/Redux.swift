@@ -49,8 +49,9 @@ open class Redux<State, Action> {
     ///   - state: initial state
     ///   - cycles: cycles of action
     ///   - completion: invoke when cycles are empty
-    public func dispatch(_ state: State, _ cycles: [Action], _ completion: (() -> Void)? = nil) {
-        guard let action = cycles.first else {
+    open func dispatch<I: IteratorProtocol>(_ state: State, _ cycles: inout I, _ completion: (() -> Void)? = nil)
+    where I.Element == Action {
+        guard let action = cycles.next() else {
             completion?(); return
         }
 
@@ -71,9 +72,12 @@ open class Redux<State, Action> {
         try? middleware(newState, firstDispatch)(action)
 
         // continue next cycles
-        if isContinued {
-            dispatch(newState, Array(cycles.dropFirst()), completion)
-        }
+        if isContinued { dispatch(newState, &cycles, completion) }
+    }
+
+    open func dispatch(_ state: State, _ cycles: [Action], _ completion: (() -> Void)? = nil) {
+        var iterator = cycles.makeIterator()
+        dispatch(state, &iterator, completion)
     }
 
     open func dispatch(_ state: State, _ action: Action) {
