@@ -21,13 +21,9 @@ public extension Collection where Self: RandomAccessCollection {
     }
 }
 
-extension Collection where Iterator.Element: Comparable {
+public extension Collection where Iterator.Element: Comparable {
 
-    /*
-     * The Swift core team has decided not to integrate binary search into
-     * the language because of its complexity. Therefore, this implementation
-     * is not made public in the meantime.
-     */
+    /// Return the first element of an ordered collection by using Binary Search algorithm
     func binarySearch(_ element: Iterator.Element) -> Index? {
         func _binarySearch(in range: Range<Index>) -> Index? {
             guard range.lowerBound < range.upperBound else { return nil }
