@@ -11,48 +11,48 @@ import AppKit
 @available(OSX 10.11, *)
 public extension NSCollectionViewFlowLayout {
 
-    func delegateInset(for section: Int) -> EdgeInsets? {
+    func delegateInsetForSection(at index: Int) -> EdgeInsets? {
         return zip(
             self.collectionView,
             self.collectionView?.delegate as? NSCollectionViewDelegateFlowLayout
         ).flatMap {
-            $1.collectionView?($0, layout: self, insetForSectionAt: section)
+            $1.collectionView?($0, layout: self, insetForSectionAt: index)
         }
     }
 
-    func delegateMinimumLineSpacing(for section: Int) -> CGFloat? {
+    func delegateMinimumLineSpacingForSection(at index: Int) -> CGFloat? {
         return zip(
             self.collectionView,
             self.collectionView?.delegate as? NSCollectionViewDelegateFlowLayout
         ).flatMap {
-            $1.collectionView?($0, layout: self, minimumLineSpacingForSectionAt: section)
+            $1.collectionView?($0, layout: self, minimumLineSpacingForSectionAt: index)
         }
     }
 
-    func delegateMinimumInteritemSpacing(for section: Int) -> CGFloat? {
+    func delegateMinimumInteritemSpacingForSection(at index: Int) -> CGFloat? {
         return zip(
             self.collectionView,
             self.collectionView?.delegate as? NSCollectionViewDelegateFlowLayout
         ).flatMap {
-            $1.collectionView?($0, layout: self, minimumInteritemSpacingForSectionAt: section)
+            $1.collectionView?($0, layout: self, minimumInteritemSpacingForSectionAt: index)
         }
     }
 
-    func delegateHeaderSize(in section: Int) -> NSSize? {
+    func delegateHeaderSizeInSection(_ index: Int) -> NSSize? {
         return zip(
             self.collectionView,
             self.collectionView?.delegate as? NSCollectionViewDelegateFlowLayout
         ).flatMap {
-            $1.collectionView?($0, layout: self, referenceSizeForHeaderInSection: section)
+            $1.collectionView?($0, layout: self, referenceSizeForHeaderInSection: index)
         }
     }
 
-    func delegateFooterSize(in section: Int) -> NSSize? {
+    func delegateFooterSizeInSection(_ index: Int) -> NSSize? {
         return zip(
             self.collectionView,
             self.collectionView?.delegate as? NSCollectionViewDelegateFlowLayout
         ).flatMap {
-            $1.collectionView?($0, layout: self, referenceSizeForFooterInSection: section)
+            $1.collectionView?($0, layout: self, referenceSizeForFooterInSection: index)
         }
     }
 }

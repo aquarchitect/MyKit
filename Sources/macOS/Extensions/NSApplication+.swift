@@ -48,7 +48,7 @@ public extension NSApplication {
         }
     }
 
-    var hideOtherApplicationsMenutItem: NSMenuItem {
+    var hideOtherApplicationsMenuItem: NSMenuItem {
         return NSMenuItem().then {
             $0.title = "Hide Others"
             $0.keyEquivalent = "h"
