@@ -62,6 +62,8 @@
 		C20166831CE1097100F7D3E5 /* SnappingSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166821CE1097100F7D3E5 /* SnappingSuperLayout.swift */; };
 		C201668A1CE10A8300F7D3E5 /* SnappingFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20166891CE10A8300F7D3E5 /* SnappingFlowLayout.swift */; };
 		C207B47B1DA40EBE004AD852 /* OptionSet+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C207B47A1DA40EBE004AD852 /* OptionSet+.swift */; };
+		C20C5D611E6A0CC40038C47B /* NSMenu+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C5D601E6A0CC40038C47B /* NSMenu+.swift */; };
+		C20C5D7C1E6A0E1D0038C47B /* NSMenuItem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C5D7B1E6A0E1D0038C47B /* NSMenuItem+.swift */; };
 		C214B90D1DA2155700754247 /* ActionTrailingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */; };
 		C214B90E1DA2155800754247 /* ActionTrailingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */; };
 		C214B9101DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */; };
@@ -144,14 +146,6 @@
 		C2A6738A1DB00820009E063A /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673881DB00820009E063A /* Mutex.swift */; };
 		C2A6738C1DB00E06009E063A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6738B1DB00E06009E063A /* Observable.swift */; };
 		C2A9D7A41DB439BD00F264EE /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6738B1DB00E06009E063A /* Observable.swift */; };
-		C2AC368B1E6679D700E93803 /* NSApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC368A1E6679D700E93803 /* NSApplication+.swift */; };
-		C2AC368D1E668E0500E93803 /* NSDocumentController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC368C1E668E0500E93803 /* NSDocumentController+.swift */; };
-		C2AC368F1E66902300E93803 /* NSWindow+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC368E1E66902300E93803 /* NSWindow+.swift */; };
-		C2AC36911E6691FD00E93803 /* NSDocument+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC36901E6691FD00E93803 /* NSDocument+.swift */; };
-		C2AC36931E6693A300E93803 /* UndoManager+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC36921E6693A300E93803 /* UndoManager+.swift */; };
-		C2AC36951E66942500E93803 /* NSText+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC36941E66942500E93803 /* NSText+.swift */; };
-		C2AC36971E66957400E93803 /* NSTextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC36961E66957400E93803 /* NSTextView+.swift */; };
-		C2AC36991E6698D500E93803 /* NSResponder+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC36981E6698D500E93803 /* NSResponder+.swift */; };
 		C2AC369D1E67431C00E93803 /* NSTableView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC369C1E67431C00E93803 /* NSTableView+.swift */; };
 		C2AC369F1E67470C00E93803 /* NSCollectionViewFlowLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC369E1E67470C00E93803 /* NSCollectionViewFlowLayout+.swift */; };
 		C2AC36A11E67495B00E93803 /* ProcessInfo+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC36A01E67495B00E93803 /* ProcessInfo+.swift */; };
@@ -308,6 +302,8 @@
 		C20166821CE1097100F7D3E5 /* SnappingSuperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingSuperLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Snapping/SnappingSuperLayout.swift; sourceTree = "<group>"; };
 		C20166891CE10A8300F7D3E5 /* SnappingFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingFlowLayout.swift; path = Sources/iOS/Frameworks/CollectionLayout/Snapping/SnappingFlowLayout.swift; sourceTree = "<group>"; };
 		C207B47A1DA40EBE004AD852 /* OptionSet+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "OptionSet+.swift"; path = "Sources/Common/Extensions/Native/OptionSet+.swift"; sourceTree = "<group>"; };
+		C20C5D601E6A0CC40038C47B /* NSMenu+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSMenu+.swift"; path = "Sources/macOS/Extensions/NSMenu+.swift"; sourceTree = "<group>"; };
+		C20C5D7B1E6A0E1D0038C47B /* NSMenuItem+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSMenuItem+.swift"; path = "Sources/macOS/Extensions/NSMenuItem+.swift"; sourceTree = "<group>"; };
 		C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionTrailingTests.swift; path = UnitTests/ActionTrailingTests.swift; sourceTree = SOURCE_ROOT; };
 		C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSMutableAttributedStringExtensionTests.swift; path = UnitTests/NSMutableAttributedStringExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		C21736641DCD41E000CE7DE7 /* NSImage+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSImage+.swift"; path = "Sources/macOS/Extensions/NSImage+.swift"; sourceTree = "<group>"; };
@@ -356,14 +352,6 @@
 		C2A673881DB00820009E063A /* Mutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mutex.swift; path = Sources/Common/Utilities/Mutex.swift; sourceTree = "<group>"; };
 		C2A6738B1DB00E06009E063A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Observable.swift; path = Sources/Common/Utilities/Observable.swift; sourceTree = "<group>"; };
 		C2A673911DB09493009E063A /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservableTests.swift; path = UnitTests/ObservableTests.swift; sourceTree = SOURCE_ROOT; };
-		C2AC368A1E6679D700E93803 /* NSApplication+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSApplication+.swift"; path = "Sources/macOS/Extensions/NSApplication+.swift"; sourceTree = "<group>"; };
-		C2AC368C1E668E0500E93803 /* NSDocumentController+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDocumentController+.swift"; path = "Sources/macOS/Extensions/NSDocumentController+.swift"; sourceTree = "<group>"; };
-		C2AC368E1E66902300E93803 /* NSWindow+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSWindow+.swift"; path = "Sources/macOS/Extensions/NSWindow+.swift"; sourceTree = "<group>"; };
-		C2AC36901E6691FD00E93803 /* NSDocument+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDocument+.swift"; path = "Sources/macOS/Extensions/NSDocument+.swift"; sourceTree = "<group>"; };
-		C2AC36921E6693A300E93803 /* UndoManager+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UndoManager+.swift"; path = "Sources/macOS/Extensions/UndoManager+.swift"; sourceTree = "<group>"; };
-		C2AC36941E66942500E93803 /* NSText+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSText+.swift"; path = "Sources/macOS/Extensions/NSText+.swift"; sourceTree = "<group>"; };
-		C2AC36961E66957400E93803 /* NSTextView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTextView+.swift"; path = "Sources/macOS/Extensions/NSTextView+.swift"; sourceTree = "<group>"; };
-		C2AC36981E6698D500E93803 /* NSResponder+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSResponder+.swift"; path = "Sources/macOS/Extensions/NSResponder+.swift"; sourceTree = "<group>"; };
 		C2AC369C1E67431C00E93803 /* NSTableView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTableView+.swift"; path = "Sources/macOS/Extensions/NSTableView+.swift"; sourceTree = "<group>"; };
 		C2AC369E1E67470C00E93803 /* NSCollectionViewFlowLayout+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSCollectionViewFlowLayout+.swift"; path = "Sources/macOS/Extensions/NSCollectionViewFlowLayout+.swift"; sourceTree = "<group>"; };
 		C2AC36A01E67495B00E93803 /* ProcessInfo+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ProcessInfo+.swift"; path = "Sources/Common/Extensions/Foundation/ProcessInfo+.swift"; sourceTree = "<group>"; };
@@ -663,20 +651,14 @@
 			isa = PBXGroup;
 			children = (
 				C2FB70A81E394D5000963877 /* EdgeInsets+.swift */,
-				C2AC36921E6693A300E93803 /* UndoManager+.swift */,
-				C2AC36941E66942500E93803 /* NSText+.swift */,
-				C2AC36961E66957400E93803 /* NSTextView+.swift */,
+				C20C5D601E6A0CC40038C47B /* NSMenu+.swift */,
+				C20C5D7B1E6A0E1D0038C47B /* NSMenuItem+.swift */,
 				C2AC369C1E67431C00E93803 /* NSTableView+.swift */,
 				C2AC369E1E67470C00E93803 /* NSCollectionViewFlowLayout+.swift */,
-				C2AC36981E6698D500E93803 /* NSResponder+.swift */,
 				C241A5481DCA638300E26DD5 /* NSCell+.swift */,
 				C2FA1F401E36C57A00AF45A5 /* NSView+.swift */,
 				C2C1D39D1DC83BEA009FAB35 /* NSBezierPath+.swift */,
 				C21736641DCD41E000CE7DE7 /* NSImage+.swift */,
-				C2AC368E1E66902300E93803 /* NSWindow+.swift */,
-				C2AC36901E6691FD00E93803 /* NSDocument+.swift */,
-				C2AC368A1E6679D700E93803 /* NSApplication+.swift */,
-				C2AC368C1E668E0500E93803 /* NSDocumentController+.swift */,
 				C2AC36A31E674D4A00E93803 /* NSWindowStyleMask+.swift */,
 			);
 			name = Extensions;
@@ -1252,15 +1234,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C201660E1CE0FF1C00F7D3E5 /* NSRelationshipDescription+.swift in Sources */,
-				C2AC36991E6698D500E93803 /* NSResponder+.swift in Sources */,
 				C2C62A2B1D04A3DC0009B45F /* ColorHexing.swift in Sources */,
 				C245DFD71DA1CB9D004D9F18 /* SymbolIcon.swift in Sources */,
+				C20C5D611E6A0CC40038C47B /* NSMenu+.swift in Sources */,
 				C20165F91CE0FF0E00F7D3E5 /* CGSize+.swift in Sources */,
 				C201656E1CE0F01D00F7D3E5 /* Then.swift in Sources */,
 				C2EB48AA1DA5804300635D55 /* LoremIpsum.swift in Sources */,
 				C2617B031DB6B5AB004E4B5A /* Dictionary+.swift in Sources */,
 				C2AC36AB1E675E2A00E93803 /* GenericAccessoryController.swift in Sources */,
-				C2AC368B1E6679D700E93803 /* NSApplication+.swift in Sources */,
 				C2BB63F61E0470BE0006DC70 /* Empty.swift in Sources */,
 				C2617B1A1DB6B739004E4B5A /* URLSession+.swift in Sources */,
 				C20165F01CE0FEE200F7D3E5 /* OpenWeather.swift in Sources */,
@@ -1272,13 +1253,13 @@
 				C2B3F34D1D0B8AF80055B06E /* ActionWrapper.swift in Sources */,
 				C2617B081DB6B5AB004E4B5A /* AnyIterator+.swift in Sources */,
 				C2AC36A21E67495B00E93803 /* ProcessInfo+.swift in Sources */,
+				C20C5D7C1E6A0E1D0038C47B /* NSMenuItem+.swift in Sources */,
 				C270B2121E308A5200517CC7 /* GenericViewController.swift in Sources */,
 				C2AC369D1E67431C00E93803 /* NSTableView+.swift in Sources */,
 				C2FA1F411E36C57A00AF45A5 /* NSView+.swift in Sources */,
 				C24A0AE41D72143B00F94F08 /* Diff.swift in Sources */,
 				C2FA1F431E36CB4600AF45A5 /* CGRectEdge+.swift in Sources */,
 				C2617B021DB6B5AB004E4B5A /* String+.swift in Sources */,
-				C2AC368D1E668E0500E93803 /* NSDocumentController+.swift in Sources */,
 				C2617B1F1DB6B739004E4B5A /* NSRange+.swift in Sources */,
 				C2F1FBD11E425875006027C3 /* NSAttributedString+.swift in Sources */,
 				C2617B181DB6B739004E4B5A /* DateFormatter+.swift in Sources */,
@@ -1290,23 +1271,19 @@
 				C2617B191DB6B739004E4B5A /* Scanner+.swift in Sources */,
 				C20166081CE0FF1700F7D3E5 /* CKRecordID+.swift in Sources */,
 				C2617B061DB6B5AB004E4B5A /* Sequence+.swift in Sources */,
-				C2AC36951E66942500E93803 /* NSText+.swift in Sources */,
 				C20166051CE0FF1700F7D3E5 /* CKDatabase+.swift in Sources */,
 				C201656D1CE0F01D00F7D3E5 /* Swizzle.swift in Sources */,
 				C20166041CE0FF1700F7D3E5 /* CKContainer+.swift in Sources */,
 				C2A6738A1DB00820009E063A /* Mutex.swift in Sources */,
 				C201656A1CE0F01D00F7D3E5 /* Result.swift in Sources */,
 				C2617B161DB6B739004E4B5A /* Bundle+.swift in Sources */,
-				C2AC36931E6693A300E93803 /* UndoManager+.swift in Sources */,
 				C228CF9C1DD97D7F0032B132 /* Optional+.swift in Sources */,
 				C241A5491DCA638300E26DD5 /* NSCell+.swift in Sources */,
 				C2617B011DB6B5AB004E4B5A /* CountableRange+.swift in Sources */,
 				C2617B1E1DB6B739004E4B5A /* NSMutableAttributedString+.swift in Sources */,
 				C2AC369F1E67470C00E93803 /* NSCollectionViewFlowLayout+.swift in Sources */,
 				C2FB70A91E394D5000963877 /* EdgeInsets+.swift in Sources */,
-				C2AC368F1E66902300E93803 /* NSWindow+.swift in Sources */,
 				C2291EF01DEBF57E00CBF3BE /* Caching.swift in Sources */,
-				C2AC36971E66957400E93803 /* NSTextView+.swift in Sources */,
 				C21736651DCD41E000CE7DE7 /* NSImage+.swift in Sources */,
 				C20165F81CE0FF0E00F7D3E5 /* CGRect+.swift in Sources */,
 				C2E3C5581E468D1700B9DC34 /* NSObject+.swift in Sources */,
@@ -1322,7 +1299,6 @@
 				C2291EF31DEBF7D500CBF3BE /* NSManagedObjectContext+.swift in Sources */,
 				C24F53771DEF5A3300673CF2 /* Redux.swift in Sources */,
 				C2C62A2C1D04A4200009B45F /* Matrix.swift in Sources */,
-				C2AC36911E6691FD00E93803 /* NSDocument+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
