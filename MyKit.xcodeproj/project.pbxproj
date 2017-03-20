@@ -173,6 +173,7 @@
 		C2C62A2B1D04A3DC0009B45F /* ColorHexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C62A291D04A36F0009B45F /* ColorHexing.swift */; };
 		C2C62A2C1D04A4200009B45F /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAD8291D03F714001D2DC4 /* Matrix.swift */; };
 		C2D0AAA01DB5926100C6847E /* URLSession+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D0AA9F1DB5926100C6847E /* URLSession+.swift */; };
+		C2D4CA3A1E804F18000F7439 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D4CA391E804F18000F7439 /* UIStackView+.swift */; };
 		C2D5E7CA1CE12FF80049B5C1 /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165901CE0FC0200F7D3E5 /* SymbolIcon.ttf */; };
 		C2D5E7CB1CE12FF90049B5C1 /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C20165901CE0FC0200F7D3E5 /* SymbolIcon.ttf */; };
 		C2E3C5571E468D1700B9DC34 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E3C5561E468D1700B9DC34 /* NSObject+.swift */; };
@@ -372,6 +373,7 @@
 		C2C1D39D1DC83BEA009FAB35 /* NSBezierPath+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSBezierPath+.swift"; path = "Sources/macOS/Extensions/NSBezierPath+.swift"; sourceTree = "<group>"; };
 		C2C62A291D04A36F0009B45F /* ColorHexing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorHexing.swift; path = Sources/Common/Frameworks/ColorHexing/ColorHexing.swift; sourceTree = "<group>"; };
 		C2D0AA9F1DB5926100C6847E /* URLSession+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "URLSession+.swift"; path = "Sources/Common/Extensions/Foundation/URLSession+.swift"; sourceTree = "<group>"; };
+		C2D4CA391E804F18000F7439 /* UIStackView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStackView+.swift"; path = "Sources/iOS/Extensions/UIStackView+.swift"; sourceTree = "<group>"; };
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E3C5561E468D1700B9DC34 /* NSObject+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSObject+.swift"; path = "Sources/Common/Extensions/Foundation/NSObject+.swift"; sourceTree = "<group>"; };
 		C2EAD8291D03F714001D2DC4 /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Matrix.swift; path = Sources/Common/Utilities/Matrix.swift; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 				C201663A1CE1017900F7D3E5 /* UITableView+.swift */,
 				C23D6ECE1D6A66660086A3C7 /* UIView+.swift */,
 				C201663B1CE1017900F7D3E5 /* UIViewController+.swift */,
+				C2D4CA391E804F18000F7439 /* UIStackView+.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1311,6 +1314,7 @@
 				C20165881CE0FA8B00F7D3E5 /* Dictionary+.swift in Sources */,
 				C217DD6F1D3AD9FD0047DFBF /* UILabel+.swift in Sources */,
 				C20165D41CE0FCA000F7D3E5 /* CGSize+.swift in Sources */,
+				C2D4CA3A1E804F18000F7439 /* UIStackView+.swift in Sources */,
 				C225FA9D1D1113A1008DF565 /* ParaboloidSuperLayout.swift in Sources */,
 				C201655E1CE0EFC500F7D3E5 /* Then.swift in Sources */,
 				C2AC36A11E67495B00E93803 /* ProcessInfo+.swift in Sources */,

@@ -92,11 +92,18 @@ public extension Arbitrary {
 
 public extension Arbitrary {
 
+    static var word: String {
+        let collection = element(in: LoremIpsum.shared)
+            .components(separatedBy: " ")
+        return element(in: collection).capitalizedFirst
+    }
+
     static var sentence: String {
         return element(in: LoremIpsum.shared)
     }
 
     static var paragraph: String {
-        return subsequence(in: LoremIpsum.shared).joined(separator: ". ")
+        return subsequence(in: LoremIpsum.shared)
+            .joined(separator: ". ")
     }
 }
