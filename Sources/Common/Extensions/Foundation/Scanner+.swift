@@ -16,14 +16,14 @@ public extension Scanner {
         var result: NSString? = ""
 
         return self.scanCharacters(from: characters, into: &result)
-            ? (result as? String)
+            ? (result as String?)
             : nil
     }
 
     public func scan(upto characters: CharacterSet) -> String? {
         var result: NSString? = ""
         return self.scanUpToCharacters(from: characters, into: &result)
-            ? (result as? String)
+            ? (result as String?)
             : nil
     }
 
@@ -31,7 +31,7 @@ public extension Scanner {
         var result: NSString? = ""
 
         return self.scanString(string, into: &result)
-            ? result as? String
+            ? (result as String?)
             : nil
     }
 
@@ -39,7 +39,7 @@ public extension Scanner {
         var result: NSString? = ""
 
         return self.scanUpTo(string, into: &result)
-            ? result as? String
+            ? (result as String?)
             : nil
     }
 
