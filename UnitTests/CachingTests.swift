@@ -32,8 +32,11 @@ final class CachingTests: XCTestCase {
         observable.onNext {
             XCTAssertNotNil($0)
             expectation.fulfill()
+        }.onError {
+            XCTFail($0.localizedDescription)
+            expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 2) { XCTAssertNil($0) }
+        waitForExpectations(timeout: 3) { XCTAssertNil($0) }
     }
 }

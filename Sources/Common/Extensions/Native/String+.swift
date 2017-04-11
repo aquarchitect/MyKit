@@ -58,10 +58,10 @@ public extension String {
 public extension String {
 
     /// Known format for string
-    enum Format { case ip, hexadecimal }
+    enum Format { case ip, hexadecimal, email }
 
     /// Validate the receiver with format
-    func isValidAs(_ format: Format) -> Bool {
+    func isValid(as format: Format) -> Bool {
         return isMatched(withPattern: format.pattern)
     }
 
@@ -74,7 +74,7 @@ public extension String {
 public extension String {
 
     var hexUInt: UInt? {
-        guard self.isValidAs(.hexadecimal) else { return nil }
+        guard self.isValid(as: .hexadecimal) else { return nil }
         let scanner = Scanner(string: self)
             .then { $0.scanLocation = 1 }
 
@@ -88,10 +88,14 @@ private extension String.Format {
     var pattern: String {
         switch self {
         case .ip:
-            return Array(repeating: "([01]?\\d\\d?|2[0-4]\\d|25[0-5])", count: 4)
-                .joined(separator: "\\.")
+            return Array(
+                repeating: "([01]?\\d\\d?|2[0-4]\\d|25[0-5])",
+                count: 4
+            ).joined(separator: "\\.")
         case .hexadecimal:
             return "#[0-9A-Fa-f]{2,6}"
+        case .email:
+            return "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         }
     }
 }
