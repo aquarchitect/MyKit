@@ -22,3 +22,17 @@ public extension NSTableView {
         return IndexSet(integersIn: rangeOfVisibleRows)
     }
 }
+
+public extension NSTableView {
+
+    func make<V: NSView>(for owner: Any?) -> V where V: Then {
+        let identifier = String(describing: V.self)
+
+        return self.make(
+            withIdentifier: identifier,
+            owner: owner
+        ) as? V ?? V().then {
+            $0.identifier = identifier
+        }
+    }
+}

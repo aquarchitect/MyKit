@@ -11,7 +11,7 @@ import Foundation
 /**
  * The implementation of `Redux` takes a different approach from a typical
  * unidirectional architecture flow from web development. The concept is essentially
- * the same, which is to encapsulate the application STATE mutation with systemactic
+ * the same, which is to encapsulate the application STATE mutation with systematic
  * ACTIONs.
  *
  * The key components are:

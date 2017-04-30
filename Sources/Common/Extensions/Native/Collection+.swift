@@ -70,6 +70,29 @@ extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int
 
         return ((thisRange, otherRange) as Ranges, matrix)
     }
+}
+
+public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
+
+    func repeatingElements(byComparing other: Self, in range: Range<Index>? = nil) -> [Iterator.Element] {
+        let (ranges, matrix) = lcsMatrix(byComparing: other, in: range)
+
+        func matrixLookup(at coord: (i: Int, j: Int), result: [Iterator.Element]) -> [Iterator.Element] {
+            guard coord.i >= 2 && coord.j >= 2 else { return result }
+
+            switch matrix[coord.i, coord.j] {
+            case matrix[coord.i, coord.j-1]:
+                return matrixLookup(at: (coord.i, coord.j-1), result: result)
+            case matrix[coord.i-1, coord.j]:
+                return matrixLookup(at: (coord.i-1, coord.j), result: result)
+            default:
+                let index = ranges.this.lowerBound + coord.i - 2
+                return matrixLookup(at: (coord.i-1, coord.j-1), result: [self[index]] + result)
+            }
+        }
+
+        return matrixLookup(at: (ranges.this.count + 1, ranges.other.count + 1), result: [])
+    }
 
     typealias Step = (index: Index, element: Generator.Element)
 
@@ -119,26 +142,6 @@ extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int
 }
 
 public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
-
-    func repeatingElements(byComparing other: Self, in range: Range<Index>? = nil) -> [Iterator.Element] {
-        let (ranges, matrix) = lcsMatrix(byComparing: other, in: range)
-
-        func matrixLookup(at coord: (i: Int, j: Int), result: [Iterator.Element]) -> [Iterator.Element] {
-            guard coord.i >= 2 && coord.j >= 2 else { return result }
-
-            switch matrix[coord.i, coord.j] {
-            case matrix[coord.i, coord.j-1]:
-                return matrixLookup(at: (coord.i, coord.j-1), result: result)
-            case matrix[coord.i-1, coord.j]:
-                return matrixLookup(at: (coord.i-1, coord.j), result: result)
-            default:
-                let index = ranges.this.lowerBound + coord.i - 2
-                return matrixLookup(at: (coord.i-1, coord.j-1), result: [self[index]] + result)
-            }
-        }
-
-        return matrixLookup(at: (ranges.this.count + 1, ranges.other.count + 1), result: [])
-    }
 
     typealias IndexTransformer<T> = (Index) -> T
 
