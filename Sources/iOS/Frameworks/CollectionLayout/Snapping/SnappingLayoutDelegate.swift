@@ -26,7 +26,7 @@ public extension SnappingLayoutDelegate where Self: UICollectionViewLayout {
         guard let collectionView = self.collectionView else { return nil }
 
         let distance: (UICollectionViewLayoutAttributes) -> CGFloat = {
-            $0.center.convertToCoordinate(ofOrigin: contentOffset).distance(from: point)
+            $0.center.convertToCoordinate(of: contentOffset).distance(from: point)
         }
 
         let rect = CGRect(origin: contentOffset, size: collectionView.bounds.size)

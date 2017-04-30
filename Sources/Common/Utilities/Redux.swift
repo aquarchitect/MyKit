@@ -35,7 +35,10 @@ open class Redux<State, Action> {
 
     // MARK: Initialization
 
-    public init(reducer: @escaping Reducer, middlewares: [Middleware]) {
+    public init<S>(reducer: @escaping Reducer, middlewares: S) where
+        S: Sequence,
+        S.Iterator.Element == Middleware
+    {
         self.reducer = reducer
         self.middleware = Redux.merge(middlewares)
     }
@@ -49,8 +52,10 @@ open class Redux<State, Action> {
     ///   - state: initial state
     ///   - cycles: cycles of action
     ///   - completion: invoke when cycles are empty
-    open func dispatch<I: IteratorProtocol>(_ state: State, _ cycles: inout I, _ completion: (() -> Void)? = nil)
-    where I.Element == Action {
+    final func dispatch<I>(_ state: State, _ cycles: inout I, _ completion: (() -> Void)?) where
+        I: IteratorProtocol,
+        I.Element == Action
+    {
         guard let action = cycles.next() else {
             completion?(); return
         }
@@ -75,7 +80,10 @@ open class Redux<State, Action> {
         if isContinued { dispatch(newState, &cycles, completion) }
     }
 
-    open func dispatch(_ state: State, _ cycles: [Action], _ completion: (() -> Void)? = nil) {
+    open func dispatch<S>(_ state: State, _ cycles: S, _ completion: (() -> Void)?) where
+        S: Sequence,
+        S.Iterator.Element == Action
+    {
         var iterator = cycles.makeIterator()
         dispatch(state, &iterator, completion)
     }
@@ -85,10 +93,12 @@ open class Redux<State, Action> {
     }
 }
 
-
 public extension Redux {
 
-    static func merge(_ middlewares: [Middleware]) -> Middleware {
+    static func merge<S>(_ middlewares: S) -> Middleware where
+        S: Sequence,
+        S.Iterator.Element == Middleware
+    {
         return { state, dispatch in
             middlewares
                 .reversed()

@@ -34,7 +34,7 @@ open class ParaboloidFlowLayout: SnappingFlowLayout {
         return (super.layoutAttributesForItem(at: indexPath)?.copy() as? ParaboloidLayoutAttributes).flatMap {
             guard let contentOffset = self.collectionView?.contentOffset else { return nil }
 
-            let center = $0.center.convertToCoordinate(ofOrigin: contentOffset)
+            let center = $0.center.convertToCoordinate(of: contentOffset)
             $0.paraboloidValue = paraboloidControler?.zValue(atPoint: center)
 
             return $0

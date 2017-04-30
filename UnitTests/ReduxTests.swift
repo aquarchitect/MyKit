@@ -12,7 +12,15 @@ final class ReduxTests: XCTestCase {
 
     fileprivate enum Exception: Error { case a, b }
 
-    fileprivate class SimpleRedux: Redux<String, Bool> {}
+    fileprivate class SimpleRedux: Redux<String, Bool> {
+
+        override init<S>(reducer: @escaping SimpleRedux.Reducer, middlewares: S) where
+            S: Sequence,
+            S.Iterator.Element == SimpleRedux.Middleware
+        {
+            super.init(reducer: reducer, middlewares: middlewares)
+        }
+    }
 
     fileprivate let reducer: SimpleRedux.Reducer = { state, action in
         if action {

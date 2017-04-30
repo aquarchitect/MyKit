@@ -14,10 +14,8 @@ public extension CGPoint {
         return sqrt(pow(self.x - point.x, 2) + pow(self.y - point.y, 2))
     }
 
-    /**
-     * Return a point by shifting origins toward self
-     */
-    func convertToCoordinate(ofOrigin point: CGPoint) -> CGPoint {
+    /// Return a point by shifting origins toward self
+    func convertToCoordinate(of point: CGPoint) -> CGPoint {
         return CGPoint(x: self.x - point.x, y: self.y - point.y)
     }
 }

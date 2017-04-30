@@ -24,7 +24,7 @@ public final class OpenWeather {
         case dailyForecast = "/forecast/daily?"
     }
 
-    fileprivate indirect enum Component {
+    fileprivate enum Component {
 
         case apiKey(String)
         case language(String)
@@ -33,7 +33,8 @@ public final class OpenWeather {
         case cityName(String)
         case cityID(Int)
         case locationCoordinate(CLLocationCoordinate2D)
-        case compound([Component])
+
+        indirect case compound([Component])
     }
 
     // MARK: Property

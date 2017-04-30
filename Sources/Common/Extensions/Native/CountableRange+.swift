@@ -10,8 +10,9 @@ public extension CountableRange {
 
     /// Shift range by specified value
     func offsets(by n: IndexDistance) -> CountableRange {
-        let start = self.index(self.lowerBound, offsetBy: n)
-        let end = self.index(self.upperBound, offsetBy: n)
+        let start = self.lowerBound.advanced(by: n)
+        let end = self.upperBound.advanced(by: n)
+
         return start..<end
     }
 }

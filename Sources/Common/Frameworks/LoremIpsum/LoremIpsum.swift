@@ -15,6 +15,10 @@ An LorumIpsum object generates random text at different length designed specific
 */
 struct LoremIpsum: Collection {
 
+    static let shared = LoremIpsum()
+
+    // MARK: Properties
+
     fileprivate let storage: [String]
 
     var startIndex: Int {
@@ -24,6 +28,8 @@ struct LoremIpsum: Collection {
     var endIndex: Int {
         return storage.endIndex
     }
+
+    // MARK: Initialization
 
     fileprivate init() {
         guard let url = Bundle.default?.url(forResource: "LoremIpsum", withExtension: "txt")
@@ -44,8 +50,10 @@ struct LoremIpsum: Collection {
         self.storage = storage
     }
 
+    // MARK: System Methods
+
     func index(after i: Int) -> Int {
-        precondition(i != self.endIndex, "Out of bounds.")
+        precondition(i < endIndex, "Out of bounds.")
 
         return i + 1
     }
@@ -58,14 +66,6 @@ struct LoremIpsum: Collection {
 extension LoremIpsum: CustomDebugStringConvertible {
 
     var debugDescription: String {
-        return storage.joined(separator: " ")
-    }
-}
-
-extension LoremIpsum {
-
-    static var shared: LoremIpsum {
-        struct Singleton { static var value = LoremIpsum() }
-        return Singleton.value
+        return storage.joined(separator: "\n")
     }
 }

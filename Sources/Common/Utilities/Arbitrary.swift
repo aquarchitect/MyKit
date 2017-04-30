@@ -13,7 +13,8 @@ public struct Arbitrary {}
 
 public extension Arbitrary {
 
-    static func elements<C: Collection>(in c: C, count requested: Int) -> [C.Iterator.Element] where
+    static func elements<C>(in c: C, count requested: Int) -> [C.Iterator.Element] where
+        C: Collection,
         C.Index == Int,
         C.IndexDistance == Int
     {
@@ -37,7 +38,8 @@ public extension Arbitrary {
         return results
     }
 
-    static func element<C: Collection>(in c: C) -> C.Iterator.Element where
+    static func element<C>(in c: C) -> C.Iterator.Element where
+        C: Collection,
         C.Index == Int,
         C.IndexDistance == Int
     {
@@ -45,8 +47,9 @@ public extension Arbitrary {
         return elements(in: c, count: 1)[0]
     }
 
-    static func subsequence<C>(in c: C) -> C.SubSequence
-        where C: Collection, C.IndexDistance == Int
+    static func subsequence<C>(in c: C) -> C.SubSequence where
+        C: Collection,
+        C.IndexDistance == Int
     {
         let startDistance = Int(arc4random_uniform(UInt32(c.count)))
         let startIndex = c.index(c.startIndex, offsetBy: startDistance)

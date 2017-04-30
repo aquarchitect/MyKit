@@ -13,7 +13,7 @@ import AppKit
 #endif
 
 /// :nodoc:
-public extension Array where Element: NSLayoutConstraint {
+public extension Array where Element == NSLayoutConstraint {
 
     func activate() {
         NSLayoutConstraint.activate(self)

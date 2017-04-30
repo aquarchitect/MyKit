@@ -8,19 +8,6 @@
 
 import Foundation
 
-public extension Collection where Self: RandomAccessCollection {
-
-    func element(at index: Index) -> Iterator.Element? {
-        let distance = self.distance(from: self.startIndex, to: index)
-
-        return self.index(
-            self.startIndex,
-            offsetBy: distance,
-            limitedBy: self.endIndex
-        ).map { self[$0] }
-    }
-}
-
 public extension Collection where Iterator.Element: Comparable {
 
     /// Return the first element of an ordered collection by using Binary Search algorithm
@@ -52,13 +39,11 @@ extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int
 
     typealias Ranges = (this: Range<Index>, other: Range<Index>)
 
-    fileprivate var range: Range<Index> {
+    private var range: Range<Index> {
         return self.startIndex ..< self.endIndex
     }
 
-    /*
-     * Longest Common Sequence
-     */
+    /// Longest Common SubSequence Table
     func lcsMatrix<C: Collection>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges, Matrix<Index>) where
         C.SubSequence.Iterator.Element == SubSequence.Iterator.Element,
         C.Index == Index
@@ -84,29 +69,6 @@ extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int
         }
 
         return ((thisRange, otherRange) as Ranges, matrix)
-    }
-}
-
-public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
-
-    func repeatingElements(byComparing other: Self, in range: Range<Index>? = nil) -> [Iterator.Element] {
-        let (ranges, matrix) = lcsMatrix(byComparing: other, in: range)
-
-        func matrixLookup(at coord: (i: Int, j: Int), result: [Iterator.Element]) -> [Iterator.Element] {
-            guard coord.i >= 2 && coord.j >= 2 else { return result }
-
-            switch matrix[coord.i, coord.j] {
-            case matrix[coord.i, coord.j-1]:
-                return matrixLookup(at: (coord.i, coord.j-1), result: result)
-            case matrix[coord.i-1, coord.j]:
-                return matrixLookup(at: (coord.i-1, coord.j), result: result)
-            default:
-                let index = ranges.this.lowerBound + coord.i - 2
-                return matrixLookup(at: (coord.i-1, coord.j-1), result: [self[index]] + result)
-            }
-        }
-
-        return matrixLookup(at: (ranges.this.count + 1, ranges.other.count + 1), result: [])
     }
 
     typealias Step = (index: Index, element: Generator.Element)
@@ -157,6 +119,26 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
 }
 
 public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
+
+    func repeatingElements(byComparing other: Self, in range: Range<Index>? = nil) -> [Iterator.Element] {
+        let (ranges, matrix) = lcsMatrix(byComparing: other, in: range)
+
+        func matrixLookup(at coord: (i: Int, j: Int), result: [Iterator.Element]) -> [Iterator.Element] {
+            guard coord.i >= 2 && coord.j >= 2 else { return result }
+
+            switch matrix[coord.i, coord.j] {
+            case matrix[coord.i, coord.j-1]:
+                return matrixLookup(at: (coord.i, coord.j-1), result: result)
+            case matrix[coord.i-1, coord.j]:
+                return matrixLookup(at: (coord.i-1, coord.j), result: result)
+            default:
+                let index = ranges.this.lowerBound + coord.i - 2
+                return matrixLookup(at: (coord.i-1, coord.j-1), result: [self[index]] + result)
+            }
+        }
+
+        return matrixLookup(at: (ranges.this.count + 1, ranges.other.count + 1), result: [])
+    }
 
     typealias IndexTransformer<T> = (Index) -> T
 
