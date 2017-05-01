@@ -1,10 +1,10 @@
-/*
- * TableController.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// TableController.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 final class TableController: GenericTableController<String, UITableViewCell>, UICollectionViewDelegate {
 

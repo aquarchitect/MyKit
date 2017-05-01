@@ -1,10 +1,10 @@
-/*
- * ActionTrailing.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
- */
+// 
+// ActionTrailing.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai Nguyen.
+// 
 
 private var GlobalToken: UInt8 = 0
 

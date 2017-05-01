@@ -1,10 +1,10 @@
-/*
- * CKRecordID+.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
- */
+// 
+// CKRecordID+.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai Nguyen.
+// 
 
 import CloudKit
 

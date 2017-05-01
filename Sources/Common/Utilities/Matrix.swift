@@ -1,10 +1,10 @@
-/*
- * Matrix.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
- */
+// 
+// Matrix.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai Nguyen.
+// 
 
 /// Simple _Matrix_ to work with LCS algorithm (debugging purposes only).
 ///

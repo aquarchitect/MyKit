@@ -1,10 +1,10 @@
-/*
- * ShaderController.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// ShaderController.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 final class ShaderController: UIViewController {
 

@@ -1,10 +1,10 @@
-/*
- * NSDateTests.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
- */
+// 
+// NSDateTests.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai Nguyen.
+// 
 
 final class NSDateTests: XCTestCase {
 

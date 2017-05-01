@@ -1,10 +1,10 @@
-/*
- * Timer+.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// Timer+.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 import Foundation
 

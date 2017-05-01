@@ -1,10 +1,10 @@
-/*
- * NSWindowStyleMask+.swift
- * MyKit
- *
- * Created by Hai Nguyen on 3/1/17.
- * Copyright (c) 2017 Hai Nguyen.
- */
+// 
+// NSWindowStyleMask+.swift
+// MyKit
+// 
+// Created by Hai Nguyen on 3/1/17.
+// Copyright (c) 2017 Hai Nguyen.
+// 
 
 import AppKit
 

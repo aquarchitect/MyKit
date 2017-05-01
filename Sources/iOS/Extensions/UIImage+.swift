@@ -1,10 +1,10 @@
-/*
- * UIImage+.swift
- * MyKit
- *
- * Created by Hai Nguyen on 12/26/16.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// UIImage+.swift
+// MyKit
+// 
+// Created by Hai Nguyen on 12/26/16.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 import UIKit
 

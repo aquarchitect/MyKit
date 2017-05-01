@@ -1,16 +1,16 @@
-/*
- * Observable.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// Observable.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 import Foundation
 
-/**
- * Future Value
- */
+// *
+// Future Value
+// 
 final public class Observable<T> {
 
     typealias Callback = Result<T>.Callback

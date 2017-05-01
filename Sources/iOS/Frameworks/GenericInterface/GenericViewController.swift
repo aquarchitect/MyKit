@@ -1,10 +1,10 @@
-/*
- * GenericViewController.swift
- * MyKit
- *
- * Created by Hai Nguyen on 1/18/17.
- * Copyright (c) 2017 Hai Nguyen.
- */
+// 
+// GenericViewController.swift
+// MyKit
+// 
+// Created by Hai Nguyen on 1/18/17.
+// Copyright (c) 2017 Hai Nguyen.
+// 
 
 import UIKit
 

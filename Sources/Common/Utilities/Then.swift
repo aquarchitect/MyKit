@@ -1,10 +1,10 @@
-/*
- * Then.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
- */
+// 
+// Then.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai Nguyen.
+// 
 
 /// _Then_ provides helper functions to ease the transformation of one type to another.
 ///

@@ -1,10 +1,10 @@
-/*
- * LayoutPresentable.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// LayoutPresentable.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 protocol LayoutPresentable: class {
 

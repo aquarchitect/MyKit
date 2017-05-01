@@ -1,10 +1,10 @@
-/*
- * CachingTests.swift
- * MyKit
- *
- * Created by Hai Nguyen on 1/3/17.
- * Copyright (c) 2017 Hai Nguyen.
- */
+// 
+// CachingTests.swift
+// MyKit
+// 
+// Created by Hai Nguyen on 1/3/17.
+// Copyright (c) 2017 Hai Nguyen.
+// 
 
 final class CachingTests: XCTestCase {
 

@@ -1,10 +1,10 @@
-/*
- * NSMenuItem+.swift
- * MyKit
- *
- * Created by Hai Nguyen on 3/3/17.
- * Copyright (c) 2017 Hai Nguyen.
- */
+// 
+// NSMenuItem+.swift
+// MyKit
+// 
+// Created by Hai Nguyen on 3/3/17.
+// Copyright (c) 2017 Hai Nguyen.
+// 
 
 import AppKit
 

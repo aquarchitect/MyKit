@@ -1,10 +1,10 @@
-/*
- * BasicShader.fsh
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
- */
+// 
+// BasicShader.fsh
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai Nguyen.
+// 
 
 void main(void) {
     vec2 uv = gl_FragCoord.xy / size;

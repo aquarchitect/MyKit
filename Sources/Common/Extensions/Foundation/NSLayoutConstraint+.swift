@@ -1,10 +1,10 @@
-/*
- * NSLayoutConstraint+.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
- */
+// 
+// NSLayoutConstraint+.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai Nguyen.
+// 
 
 #if os(iOS)
 import UIKit

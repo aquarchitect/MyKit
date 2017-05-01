@@ -1,10 +1,10 @@
-/*
- * Bridging.h
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
- */
+// 
+// Bridging.h
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai Nguyen.
+// 
 
 @import AppKit;
 @import MyKit;

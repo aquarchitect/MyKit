@@ -1,10 +1,10 @@
-/*
- * PagedCenterCollectionLayout.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// PagedCenterCollectionLayout.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 final class PagedCenterCollectionLayout: ParaboloidFlowLayout {
 

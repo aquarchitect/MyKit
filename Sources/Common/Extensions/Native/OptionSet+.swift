@@ -1,11 +1,11 @@
-/*
- * OptionSet+.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen. All rights reserved.
- *
- */
+// 
+// OptionSet+.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen. All rights reserved.
+// 
+// 
 
 public extension OptionSet where RawValue == Int {
 

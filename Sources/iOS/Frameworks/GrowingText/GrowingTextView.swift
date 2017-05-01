@@ -1,18 +1,19 @@
-/*
- * GrowingTextView.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
- */
+// 
+// GrowingTextView.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai Nguyen.
+// 
 
 import UIKit
 
-/*
- * For `UITableView`/`UICollectionView` with embeded growing text view in row/cell,
- * you should remove `contentSize` observer from `textBox` becuase the layout changes
- * from outside not from the inside.
- */
+/// Text view grows as user types. Its layout gets updated internally.
+///
+/// - Warning: If using this class inside `UICollectionView` cell or 
+/// `UITableView` row, `contentSize` obserser should be removed
+/// from `textBox` instance. This will allow to the layout
+/// apply the size changes externally instead of internally.
 open class GrowingTextView: UIControl {
 
     // MARK: Property
@@ -42,17 +43,34 @@ open class GrowingTextView: UIControl {
         super.preservesSuperviewLayoutMargins = true
         super.addSubview(textBox)
 
-        [(.left, .leftMargin),
-         (.right, .right),
-         (.top, .topMargin),
-         (.bottom, .bottomMargin)]
-            .map { NSLayoutConstraint(item: textBox, attribute: $0, relatedBy: .equal, toItem: self, attribute: $1, multiplier: 1, constant: 0).then { $0.priority = 800 }}
-            .activate()
+        [
+            (.left, .leftMargin),
+            (.right, .right),
+            (.top, .topMargin),
+            (.bottom, .bottomMargin)
+        ].map {
+            NSLayoutConstraint(
+                item: textBox,
+                attribute: $0,
+                relatedBy: .equal,
+                toItem: self,
+                attribute: $1,
+                multiplier: 1,
+                constant: 0
+            ).then { $0.priority = 800 }
+        }.activate()
 
-        textBox.addObserver(self, forKeyPath: #keyPath(UITextView.contentSize), options: [.initial, .new], context: nil)
+        textBox.addObserver(
+            self,
+            forKeyPath: #keyPath(UITextView.contentSize),
+            options: [.initial, .new],
+            context: nil
+        )
     }
 
-    deinit { textBox.removeObserver(self, forKeyPath: #keyPath(UITextView.contentSize)) }
+    deinit {
+        textBox.removeObserver(self, forKeyPath: #keyPath(UITextView.contentSize))
+    }
 
     // MARK: System Method
 

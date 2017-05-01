@@ -1,10 +1,10 @@
-/*
- * ParaboloidSuperLayout.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// ParaboloidSuperLayout.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 import UIKit
 

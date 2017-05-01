@@ -1,10 +1,10 @@
-/*
- * NSCollectionViewFlowLayout+.swift
- * MyKit
- *
- * Created by Hai Nguyen on 3/1/17.
- * Copyright (c) 2017 Hai Nguyen.
- */
+// 
+// NSCollectionViewFlowLayout+.swift
+// MyKit
+// 
+// Created by Hai Nguyen on 3/1/17.
+// Copyright (c) 2017 Hai Nguyen.
+// 
 
 import AppKit
 

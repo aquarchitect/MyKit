@@ -1,10 +1,10 @@
-/*
- * NSManagedObjectContext+.swift
- * MyKit
- *
- * Created by Hai Nguyen on 11/27/16.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// NSManagedObjectContext+.swift
+// MyKit
+// 
+// Created by Hai Nguyen on 11/27/16.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 import CoreData
 

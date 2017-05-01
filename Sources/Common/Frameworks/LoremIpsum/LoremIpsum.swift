@@ -1,18 +1,15 @@
-/*
- * LoremIpsum.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
- */
+// 
+// LoremIpsum.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai Nguyen.
+// 
 
 import Foundation
 
-/**
-An LorumIpsum object generates random text at different length designed specifically for robust testing.
-
-- throws: file corruption error.
-*/
+/// A LorumIpsum random text generator; its main purpose
+/// is for testing with different text lenght.
 struct LoremIpsum: Collection {
 
     static let shared = LoremIpsum()
@@ -32,8 +29,12 @@ struct LoremIpsum: Collection {
     // MARK: Initialization
 
     fileprivate init() {
-        guard let url = Bundle.default?.url(forResource: "LoremIpsum", withExtension: "txt")
-            else { fatalError("Unable to open source file!") }
+        guard let url = Bundle.default?.url(
+            forResource: "LoremIpsum",
+            withExtension: "txt"
+        ) else {
+            fatalError("Unable to open source file!")
+        }
 
         let lorem = try! String(contentsOf: url)
         let range = lorem.startIndex..<lorem.endIndex

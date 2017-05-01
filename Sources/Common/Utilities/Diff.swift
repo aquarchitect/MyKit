@@ -1,10 +1,10 @@
-/*
- * Diff.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// Diff.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 /// _Diff_ represents a difference of LCS algorithm.
 public enum Diff<T> {

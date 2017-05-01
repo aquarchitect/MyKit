@@ -1,10 +1,10 @@
-/*
- * EdgeInsets+.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2017 Hai Nguyen.
- */
+// 
+// EdgeInsets+.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2017 Hai Nguyen.
+// 
 
 import AppKit
 

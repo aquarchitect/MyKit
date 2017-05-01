@@ -1,10 +1,10 @@
-/*
- * NSMutableAttributedString+.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
- */
+// 
+// NSMutableAttributedString+.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai Nguyen.
+// 
 
 #if os(iOS)
 import UIKit

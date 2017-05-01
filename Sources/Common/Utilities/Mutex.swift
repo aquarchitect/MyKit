@@ -1,16 +1,16 @@
-/*
- * Mutex.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// Mutex.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 import Darwin
 
-/**
- * Concurrency control - execute tasks one at a time
- */
+// *
+// Concurrency control - execute tasks one at a time
+// 
 public class Mutex {
 
     private var mutex = pthread_mutex_t()

@@ -1,17 +1,17 @@
-/*
- * FontRegistry.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
- */
+// 
+// FontRegistry.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai Nguyen.
+// 
 
 import Foundation
 
-/*
- * Public scope lets the test module to recognize the protocol;
- * but it's designed only for internal usage.
- */
+/// This class is for register font in a framework
+/// 
+/// - Warning: even though the protocol marks as Public
+/// for unit testing, it's designed for internal usage only.
 public protocol FontRegistry: class {
 
     init?(name: String, size: CGFloat)

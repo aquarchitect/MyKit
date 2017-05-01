@@ -1,10 +1,10 @@
-/*
- * OpenWeather+.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai nguyen.
- */
+// 
+// OpenWeather+.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai nguyen.
+// 
 
 import Foundation
 import CoreGraphics

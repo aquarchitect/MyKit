@@ -1,11 +1,11 @@
-/*
- * ActionTrailingTests.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen. All rights reserved.
- *
- */
+// 
+// ActionTrailingTests.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen. All rights reserved.
+// 
+// 
 
 #if os(iOS)
 import UIKit

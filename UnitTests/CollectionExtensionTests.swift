@@ -1,10 +1,10 @@
-/*
- * CollectionExtensionTests.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen. All rights reserved.
- */
+// 
+// CollectionExtensionTests.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen. All rights reserved.
+// 
 
 @testable import MyKit
 

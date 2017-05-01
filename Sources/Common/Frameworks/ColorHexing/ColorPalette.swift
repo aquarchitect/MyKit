@@ -1,10 +1,10 @@
-/*
- * ColorPalette.swift
- * MyKit
- *
- * Created by Hai Nguyen on 11/13/16.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// ColorPalette.swift
+// MyKit
+// 
+// Created by Hai Nguyen on 11/13/16.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 import Foundation
 

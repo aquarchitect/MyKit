@@ -1,17 +1,18 @@
-/*
- * ReorderingLongPress.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// ReorderingLongPress.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 import UIKit
 
-/*
- * Warning: this class has no effect on other than Table/Collection view
- */
+/// Reoder `UICollectionView` cell or `UITableView` row with
+/// long press gesture.
 open class ReorderingLongPress: UILongPressGestureRecognizer {
+
+    // MARK: Properties
 
     internal private(set) var cellSnapshot: UIView?
     internal private(set) var sourceIndexPath: IndexPath?
@@ -20,7 +21,11 @@ open class ReorderingLongPress: UILongPressGestureRecognizer {
         return self.view as? UITableView
     }
 
+    // MARK: Initialization
+
     deinit { cellSnapshot?.removeFromSuperview() }
+
+    // MARK: System Methods
 
     open func handleGesture() {
         switch self.state {

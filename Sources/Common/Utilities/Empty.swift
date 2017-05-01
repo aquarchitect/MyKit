@@ -1,15 +1,13 @@
-/*
- * Empty.swift
- * MyKit
- *
- * Created by Hai Nguyen on 12/16/16.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// Empty.swift
+// MyKit
+// 
+// Created by Hai Nguyen on 12/16/16.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
-/**
- * `Empty` is designed to break a chaining asynchronous composition.
- * It does not carry much information for debugging.
- */
+/// The structure is a harmless meaningless error. 
+/// The idea is to break asynchrous operation chaining.
 public struct Empty: Error {
 
     fileprivate init() {}
@@ -25,6 +23,6 @@ public extension Empty {
 extension Empty: CustomStringConvertible {
 
     public var description: String {
-        return "Unharmed error"
+        return "Harmless error"
     }
 }

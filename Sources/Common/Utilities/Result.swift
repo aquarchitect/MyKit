@@ -1,10 +1,10 @@
-/*
- * Result.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2015 Hai Nguyen.
- */
+// 
+// Result.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2015 Hai Nguyen.
+// 
 
 /// _Result_ helps defining results of a callback.
 public enum Result<T> {

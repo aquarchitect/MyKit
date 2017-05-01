@@ -1,27 +1,25 @@
-/*
- * Redux.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// Redux.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 import Foundation
 
-/**
- * The implementation of `Redux` takes a different approach from a typical
- * unidirectional architecture flow from web development. The concept is essentially
- * the same, which is to encapsulate the application STATE mutation with systematic
- * ACTIONs.
- *
- * The key components are:
- * - MIDDLEWAREs play much more significant roles in the flow such as action recorder,
- *   state subscription, app store (state storage)...
- * - The implementation is kept fundamentally simple. STATE is not stored in
- *   this object but rather in an independent MIDDLEWARE.
- * - Errors from both REDUCER and MIDDLEWARE can be caught by one of the MIDDEWAREs
- *   by placing first in the queue.
- */
+/// The implementation of `Redux` takes a different approach from a typical
+/// unidirectional architecture flow from web development. The concept is essentially
+/// the same, which is to encapsulate the application STATE mutation with systematic
+/// ACTIONs.
+///
+/// The key components are:
+/// - MIDDLEWAREs play much more significant roles in the flow such as action recorder,
+///   state subscription, app store (state storage)...
+/// - The implementation is kept fundamentally simple. STATE is not stored in
+///   this object but rather in an independent MIDDLEWARE.
+/// - Errors from both REDUCER and MIDDLEWARE can be caught by one of the MIDDEWAREs
+///   by placing first in the queue.
 open class Redux<State, Action> {
 
     public typealias Reducer = (State, Action) throws -> State

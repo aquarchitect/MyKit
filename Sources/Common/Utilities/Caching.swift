@@ -1,18 +1,14 @@
-/*
- * Caching.swift
- * MyKit
- *
- * Created by Hai Nguyen.
- * Copyright (c) 2016 Hai Nguyen.
- */
+// 
+// Caching.swift
+// MyKit
+// 
+// Created by Hai Nguyen.
+// Copyright (c) 2016 Hai Nguyen.
+// 
 
 import Foundation
 
-/**
- * Simple caching machenism on the instance level.
- * The idea is to incapsulate the gap between of controllers
- * and view model.
- */
+/// A simple caching machenism works on object level.
 public protocol Caching: class {
 
     associatedtype Key: AnyObject
@@ -65,12 +61,12 @@ extension UIImage: Caching {
 }
 #elseif os(OSX)
 import AppKit
-/*
- * This solution is simply another alternative for the
- * native caching machenism.
- *
- * Pros: generics and emiting of `NSCache`
- */
+
+// This solution is simply an alternative for the
+// native `NSImage` caching machenism.
+//
+// Reference to `NSImage` documentation for more
+// native caching machenism.
 extension NSImage: Caching {
 
     public typealias Key = NSString
