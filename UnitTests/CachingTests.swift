@@ -15,16 +15,16 @@ final class CachingTests: XCTestCase {
         let observable = UIImage.fetchObject(
             for: "Testing",
             with: .lift(
-                on: .global(qos: .background),
-                UIImage.render(.init(string: "Testing"))!
+                UIImage.render(.init(string: "Testing"))!,
+                on: .global(qos: .background)
             )
         )
 #elseif os(OSX)
         let observable = NSImage.fetchObject(
             for: "Testing",
             with: .lift(
-                on: .global(qos: .background),
-                NSImage.render(.init(string: "Testing"))
+                NSImage.render(.init(string: "Testing")),
+                on: .global(qos: .background)
             )
         )
 #endif
@@ -37,6 +37,6 @@ final class CachingTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 3) { XCTAssertNil($0) }
+        waitForExpectations(timeout: 2) { XCTAssertNil($0) }
     }
 }

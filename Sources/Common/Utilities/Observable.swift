@@ -33,12 +33,13 @@ extension Observable: Then {}
 
 public extension Observable {
 
-    static func lift(on queue: DispatchQueue = .main, _ constructor: @autoclosure @escaping () throws -> T) -> Observable {
+    static func lift(_ constructor: @autoclosure @escaping () throws -> T, on queue: DispatchQueue = .main) -> Observable {
         let observable = Observable()
 
         queue.async {
             do {
-                try (constructor • observable.update)()
+                let value = try constructor()
+                observable.update(value)
             } catch {
                 observable.update(error)
             }

@@ -46,7 +46,7 @@ open class Redux<State, Action> {
 
     // MARK: Support Methods
 
-    func dispatch(_ state: State, _ action: Action) {
+    open func dispatch(_ state: State, _ action: Action) {
         inputStream.update((state, action))
     }
 }
