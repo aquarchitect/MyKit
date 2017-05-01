@@ -23,6 +23,10 @@
 		C23DFCEE1CADFEF9008EFF34 /* MyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C23DFCF21CAE0EF9008EFF34 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
 		C23DFCF31CAE0EF9008EFF34 /* MyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C23E055B1EB6B851003023CE /* _Redux.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E055A1EB6B851003023CE /* _Redux.swift */; };
+		C23E055C1EB6B851003023CE /* _Redux.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E055A1EB6B851003023CE /* _Redux.swift */; };
+		C23E05601EB6B8C6003023CE /* _ReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E055F1EB6B8C6003023CE /* _ReduxTests.swift */; };
+		C23E05611EB6B8C6003023CE /* _ReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E055F1EB6B8C6003023CE /* _ReduxTests.swift */; };
 		C24B380C1DC12BFA00036264 /* ArbitraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B38091DC12BDC00036264 /* ArbitraryTests.swift */; };
 		C24B380D1DC12BFB00036264 /* ArbitraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B38091DC12BDC00036264 /* ArbitraryTests.swift */; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
@@ -280,6 +284,8 @@
 		C23939BB1CAC7F4300526B30 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/iOS/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C23939BC1CAC7F4300526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demos/iOS/Info.plist; sourceTree = SOURCE_ROOT; };
 		C23939C51CAC7F4F00526B30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demos/iOS/Base.lproj/Launch.storyboard; sourceTree = SOURCE_ROOT; };
+		C23E055A1EB6B851003023CE /* _Redux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Redux.swift; sourceTree = "<group>"; };
+		C23E055F1EB6B8C6003023CE /* _ReduxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ReduxTests.swift; sourceTree = "<group>"; };
 		C24B38091DC12BDC00036264 /* ArbitraryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArbitraryTests.swift; path = UnitTests/ArbitraryTests.swift; sourceTree = SOURCE_ROOT; };
 		C2848DE01C95642E00707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2848E011C956A7600707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -665,6 +671,22 @@
 			path = LongPress;
 			sourceTree = "<group>";
 		};
+		C23E055D1EB6B859003023CE /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				C23E055A1EB6B851003023CE /* _Redux.swift */,
+			);
+			name = Legacy;
+			sourceTree = "<group>";
+		};
+		C23E05621EB6B8C9003023CE /* Legacy */ = {
+			isa = PBXGroup;
+			children = (
+				C23E055F1EB6B8C6003023CE /* _ReduxTests.swift */,
+			);
+			name = Legacy;
+			sourceTree = "<group>";
+		};
 		C23FADAD1DC0112C00A4491C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -775,6 +797,7 @@
 				C2D1E51E1EB287E900DBBEFA /* Result.swift */,
 				C2D1E51F1EB287E900DBBEFA /* Swizzle.swift */,
 				C2D1E5201EB287E900DBBEFA /* Then.swift */,
+				C23E055D1EB6B859003023CE /* Legacy */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -792,6 +815,7 @@
 				C2A28ED91E12310900D7AD89 /* TimerExtensionTests.swift */,
 				C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */,
 				C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */,
+				C23E05621EB6B8C9003023CE /* Legacy */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -1229,6 +1253,7 @@
 				C2F3174F1D5A5EF6009B0F42 /* DateTests.swift in Sources */,
 				C214B90D1DA2155700754247 /* ActionTrailingTests.swift in Sources */,
 				C2F3174E1D5A5EF6009B0F42 /* FontRegistryTests.swift in Sources */,
+				C23E05601EB6B8C6003023CE /* _ReduxTests.swift in Sources */,
 				C2F288891DF8BBBC003E84F9 /* ReduxTests.swift in Sources */,
 				C24B380C1DC12BFA00036264 /* ArbitraryTests.swift in Sources */,
 			);
@@ -1246,6 +1271,7 @@
 				C2F317531D5A5EF7009B0F42 /* DateTests.swift in Sources */,
 				C214B90E1DA2155800754247 /* ActionTrailingTests.swift in Sources */,
 				C2F317521D5A5EF7009B0F42 /* FontRegistryTests.swift in Sources */,
+				C23E05611EB6B8C6003023CE /* _ReduxTests.swift in Sources */,
 				C2F2888A1DF8BBBC003E84F9 /* ReduxTests.swift in Sources */,
 				C24B380D1DC12BFB00036264 /* ArbitraryTests.swift in Sources */,
 			);
@@ -1293,6 +1319,7 @@
 				C2D1E5941EB28FD300DBBEFA /* NSMutableAttributedString+.swift in Sources */,
 				C2D1E57C1EB28FC900DBBEFA /* Caching.swift in Sources */,
 				C2D1E6291EB2937F00DBBEFA /* ActionWrapper.swift in Sources */,
+				C23E055C1EB6B851003023CE /* _Redux.swift in Sources */,
 				C2D1E57E1EB28FC900DBBEFA /* Diff.swift in Sources */,
 				C2D1E5901EB28FD300DBBEFA /* Date+.swift in Sources */,
 				C2D1E61A1EB2935C00DBBEFA /* FontRegistry.swift in Sources */,
@@ -1389,6 +1416,7 @@
 				C2D1E60A1EB2930000DBBEFA /* ParaboloidFlowLayout.swift in Sources */,
 				C2D1E53A1EB287FC00DBBEFA /* Optional+.swift in Sources */,
 				C2D1E5361EB287FC00DBBEFA /* AnyIterator+.swift in Sources */,
+				C23E055B1EB6B851003023CE /* _Redux.swift in Sources */,
 				C2D1E5EE1EB2929F00DBBEFA /* UIStackView+.swift in Sources */,
 				C2D1E5211EB287E900DBBEFA /* Arbitrary.swift in Sources */,
 				C2D1E5FC1EB292F600DBBEFA /* GenericCollectionCell.swift in Sources */,

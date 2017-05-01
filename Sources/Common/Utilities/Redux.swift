@@ -8,28 +8,23 @@
 
 import Foundation
 
-/// The implementation of `Redux` takes a different approach from a typical
-/// unidirectional architecture flow from web development. The concept is essentially
-/// the same, which is to encapsulate the application STATE mutation with systematic
-/// ACTIONs.
-///
-/// The key components are:
-/// - MIDDLEWAREs play much more significant roles in the flow such as action recorder,
-///   state subscription, app store (state storage)...
-/// - The implementation is kept fundamentally simple. STATE is not stored in
-///   this object but rather in an independent MIDDLEWARE.
-/// - Errors from both REDUCER and MIDDLEWARE can be caught by one of the MIDDEWAREs
-///   by placing first in the queue.
+/// `Redux` is a redeign of `_Redux`. The implemetation integrates
+/// the use of `Observable` to `REDUCER, which allows to dispatch
+/// state and action with `flatMap` latest. 
+/// 
+/// - Note: In the previous implemetation, `ActionReducer` holds
+/// a significant responsibility such as traversing actions stack
+/// for a specific actions (selected index), which creates quite 
+/// a complexity for a new signal coming in.
 open class Redux<State, Action> {
 
-    public typealias Reducer = (State, Action) throws -> State
+    public typealias Reducer = (State, Action) -> Observable<State>
     public typealias Dispatcher = (Action) throws -> Void
     public typealias Middleware = (State, @escaping Dispatcher) -> Dispatcher
 
     // MARK: Properties
 
-    private let reducer: Reducer
-    private let middleware: Middleware
+    private let inputStream = Observable<(State, Action)>()
 
     // MARK: Initialization
 
@@ -37,57 +32,22 @@ open class Redux<State, Action> {
         S: Sequence,
         S.Iterator.Element == Middleware
     {
-        self.reducer = reducer
-        self.middleware = Redux.merge(middlewares)
-    }
+        let middleware = Redux.merge(middlewares)
 
-    // MARK: Helper Methods
-
-    /// This is designed specifically for unit testing. One action can finish a cycle
-    /// (reducer + middlewares) after another.
-    ///
-    /// - Parameters:
-    ///   - state: initial state
-    ///   - cycles: cycles of action
-    ///   - completion: invoke when cycles are empty
-    final func dispatch<I>(_ state: State, _ cycles: inout I, _ completion: (() -> Void)?) where
-        I: IteratorProtocol,
-        I.Element == Action
-    {
-        guard let action = cycles.next() else {
-            completion?(); return
+        // error is directed to handle in one of the middlewaress.
+        _ = inputStream.flatMapLatest { oldState, action in
+            reducer(oldState, action).onError { error in
+                try? middleware(oldState, { _ in throw error })(action)
+            }.onNext { newState in
+                try? middleware(newState, { _ in })(action)
+            }
         }
-
-        let newState: State
-        let firstDispatch: Dispatcher
-        let isContinued: Bool
-
-        do {
-            newState = try reducer(state, action)
-            firstDispatch = { _ in }
-            isContinued = true
-        } catch {
-            newState = state
-            firstDispatch = { _ in throw error }
-            isContinued = false
-        }
-
-        try? middleware(newState, firstDispatch)(action)
-
-        // continue next cycles
-        if isContinued { dispatch(newState, &cycles, completion) }
     }
 
-    open func dispatch<S>(_ state: State, _ cycles: S, _ completion: (() -> Void)?) where
-        S: Sequence,
-        S.Iterator.Element == Action
-    {
-        var iterator = cycles.makeIterator()
-        dispatch(state, &iterator, completion)
-    }
+    // MARK: Support Methods
 
-    open func dispatch(_ state: State, _ action: Action) {
-        dispatch(state, [action], nil)
+    func dispatch(_ state: State, _ action: Action) {
+        inputStream.update((state, action))
     }
 }
 

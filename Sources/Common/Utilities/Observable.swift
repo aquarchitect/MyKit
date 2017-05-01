@@ -8,9 +8,7 @@
 
 import Foundation
 
-// *
-// Future Value
-// 
+/// Future Value
 final public class Observable<T> {
 
     typealias Callback = Result<T>.Callback
