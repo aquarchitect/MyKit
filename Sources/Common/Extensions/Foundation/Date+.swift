@@ -51,11 +51,11 @@ public extension Date {
 public extension Date {
 
     func firstDateOfTheMonth() -> Date {
-        return (dateComponents(of:) • Date.calendar.date(from:))((.year, .month))!
+        return (dateComponents(of:) >>> Date.calendar.date(from:))((.year, .month))!
     }
 
     func firstDateOfTheWeek() -> Date {
-        return (dateComponents(of:) • Date.calendar.date(from:))((.year, .weekOfYear))!
+        return (dateComponents(of:) >>> Date.calendar.date(from:))((.year, .weekOfYear))!
     }
 }
 
@@ -130,7 +130,7 @@ public extension Date {
 public extension Date {
 
     private func isMatched(with date: Date) -> (Calendar.Component...) -> Bool {
-        return date.dateComponents(of:) • isMatched(with:)
+        return date.dateComponents(of:) >>> isMatched(with:)
     }
 
     func isSameDayAs(_ date: Date) -> Bool {
@@ -172,11 +172,11 @@ public extension Date {
     }
 
     func isTomorrow() -> Bool {
-        return (Date.today.adding(days:) • isSameDayAs)(1)
+        return (Date.today.adding(days:) >>> isSameDayAs)(1)
     }
 
     func isYesterday() -> Bool {
-        return (Date.today.adding(days:) • isSameDayAs)(-1)
+        return (Date.today.adding(days:) >>> isSameDayAs)(-1)
     }
 }
 
@@ -189,11 +189,11 @@ public extension Date {
     }
 
     func isNextWeek() -> Bool {
-        return (Date.today.adding(weeks:) • isSameWeekAs)(1)
+        return (Date.today.adding(weeks:) >>> isSameWeekAs)(1)
     }
 
     func isLastWeek() -> Bool {
-        return (Date.today.adding(weeks:) • isSameWeekAs)(-1)
+        return (Date.today.adding(weeks:) >>> isSameWeekAs)(-1)
     }
 }
 
@@ -206,11 +206,11 @@ public extension Date {
     }
 
     func isNextMonth() -> Bool {
-        return (Date.today.adding(months:) • isSameMonthAs)(1)
+        return (Date.today.adding(months:) >>> isSameMonthAs)(1)
     }
 
     func isLastMonth() -> Bool {
-        return (Date.today.adding(months:) • isSameMonthAs)(-1)
+        return (Date.today.adding(months:) >>> isSameMonthAs)(-1)
     }
 }
 
@@ -223,11 +223,11 @@ public extension Date {
     }
 
     func isNextYear() -> Bool {
-        return (Date.today.adding(years:) • isSameYearAs)(1)
+        return (Date.today.adding(years:) >>> isSameYearAs)(1)
     }
 
     func isLastYear() -> Bool {
-        return (Date.today.adding(years:) • isSameYearAs)(-1)
+        return (Date.today.adding(years:) >>> isSameYearAs)(-1)
     }
 }
 

@@ -22,7 +22,7 @@ open class SelectingLongPress: UILongPressGestureRecognizer {
 
     open func handleGesture() {
         guard let touchingIndexPath = (collectionView.flatMap {
-            (self.location(in:) • $0.indexPathForItem(at:))($0)
+            (self.location(in:) >>> $0.indexPathForItem(at:))($0)
         }) else { return }
 
 

@@ -47,7 +47,7 @@
 		C2D1E5211EB287E900DBBEFA /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5141EB287E900DBBEFA /* Arbitrary.swift */; };
 		C2D1E5221EB287E900DBBEFA /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5151EB287E900DBBEFA /* Box.swift */; };
 		C2D1E5231EB287E900DBBEFA /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5161EB287E900DBBEFA /* Caching.swift */; };
-		C2D1E5241EB287E900DBBEFA /* Composite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5171EB287E900DBBEFA /* Composite.swift */; };
+		C2D1E5241EB287E900DBBEFA /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5171EB287E900DBBEFA /* Composition.swift */; };
 		C2D1E5251EB287E900DBBEFA /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5181EB287E900DBBEFA /* Diff.swift */; };
 		C2D1E5261EB287E900DBBEFA /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5191EB287E900DBBEFA /* Empty.swift */; };
 		C2D1E5271EB287E900DBBEFA /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E51A1EB287E900DBBEFA /* Matrix.swift */; };
@@ -87,7 +87,7 @@
 		C2D1E57A1EB28FC900DBBEFA /* Arbitrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5141EB287E900DBBEFA /* Arbitrary.swift */; };
 		C2D1E57B1EB28FC900DBBEFA /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5151EB287E900DBBEFA /* Box.swift */; };
 		C2D1E57C1EB28FC900DBBEFA /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5161EB287E900DBBEFA /* Caching.swift */; };
-		C2D1E57D1EB28FC900DBBEFA /* Composite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5171EB287E900DBBEFA /* Composite.swift */; };
+		C2D1E57D1EB28FC900DBBEFA /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5171EB287E900DBBEFA /* Composition.swift */; };
 		C2D1E57E1EB28FC900DBBEFA /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5181EB287E900DBBEFA /* Diff.swift */; };
 		C2D1E57F1EB28FC900DBBEFA /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5191EB287E900DBBEFA /* Empty.swift */; };
 		C2D1E5801EB28FC900DBBEFA /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E51A1EB287E900DBBEFA /* Matrix.swift */; };
@@ -305,7 +305,7 @@
 		C2D1E5141EB287E900DBBEFA /* Arbitrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arbitrary.swift; sourceTree = "<group>"; };
 		C2D1E5151EB287E900DBBEFA /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		C2D1E5161EB287E900DBBEFA /* Caching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Caching.swift; sourceTree = "<group>"; };
-		C2D1E5171EB287E900DBBEFA /* Composite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Composite.swift; sourceTree = "<group>"; };
+		C2D1E5171EB287E900DBBEFA /* Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
 		C2D1E5181EB287E900DBBEFA /* Diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diff.swift; sourceTree = "<group>"; };
 		C2D1E5191EB287E900DBBEFA /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		C2D1E51A1EB287E900DBBEFA /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
@@ -787,7 +787,7 @@
 				C2D1E5141EB287E900DBBEFA /* Arbitrary.swift */,
 				C2D1E5151EB287E900DBBEFA /* Box.swift */,
 				C2D1E5161EB287E900DBBEFA /* Caching.swift */,
-				C2D1E5171EB287E900DBBEFA /* Composite.swift */,
+				C2D1E5171EB287E900DBBEFA /* Composition.swift */,
 				C2D1E5181EB287E900DBBEFA /* Diff.swift */,
 				C2D1E5191EB287E900DBBEFA /* Empty.swift */,
 				C2D1E51A1EB287E900DBBEFA /* Matrix.swift */,
@@ -1326,7 +1326,7 @@
 				C2D1E61C1EB2936300DBBEFA /* CKDatabase+.swift in Sources */,
 				C2D1E5841EB28FC900DBBEFA /* Result.swift in Sources */,
 				C2D1E6221EB2936700DBBEFA /* CGSize+.swift in Sources */,
-				C2D1E57D1EB28FC900DBBEFA /* Composite.swift in Sources */,
+				C2D1E57D1EB28FC900DBBEFA /* Composition.swift in Sources */,
 				C2D1E61B1EB2936300DBBEFA /* CKContainer+.swift in Sources */,
 				C2D1E59C1EB28FD700DBBEFA /* NSManagedObjectContext+.swift in Sources */,
 				C2D1E5951EB28FD300DBBEFA /* NSObject+.swift in Sources */,
@@ -1424,7 +1424,7 @@
 				C2D1E5701EB2884900DBBEFA /* CGPoint+.swift in Sources */,
 				C2D1E5391EB287FC00DBBEFA /* Dictionary+.swift in Sources */,
 				C2D1E5AF1EB2922500DBBEFA /* ColorHexing.swift in Sources */,
-				C2D1E5241EB287E900DBBEFA /* Composite.swift in Sources */,
+				C2D1E5241EB287E900DBBEFA /* Composition.swift in Sources */,
 				C2D1E54A1EB2881200DBBEFA /* Bundle+.swift in Sources */,
 				C2D1E5291EB287E900DBBEFA /* Observable.swift in Sources */,
 				C2D1E5BD1EB2923B00DBBEFA /* OpenWeather.swift in Sources */,

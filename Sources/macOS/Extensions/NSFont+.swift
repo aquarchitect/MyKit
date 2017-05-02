@@ -45,20 +45,20 @@ public extension NSFont {
 public extension NSFont {
 
     static func systemFont(for controlSize: NSControlSize) -> NSFont {
-        return (NSFont.systemFontSize(for:) • NSFont.systemFont(ofSize:))(controlSize)
+        return (NSFont.systemFontSize(for:) >>> NSFont.systemFont(ofSize:))(controlSize)
     }
 
     static func boldSystemFont(for controlSize: NSControlSize) -> NSFont {
-        return (NSFont.systemFontSize(for:) • NSFont.boldSystemFont(ofSize:))(controlSize)
+        return (NSFont.systemFontSize(for:) >>> NSFont.boldSystemFont(ofSize:))(controlSize)
     }
 
     @available(OSX 10.11, *)
     static func boldItalicSystemFont(for controlSize: NSControlSize) -> NSFont? {
-        return (NSFont.systemFontSize(for:) • NSFont.boldItalicSystemFont(ofSize:))(controlSize)
+        return (NSFont.systemFontSize(for:) >>> NSFont.boldItalicSystemFont(ofSize:))(controlSize)
     }
 
     @available(OSX 10.11, *)
     static func italicSystemFont(for controlSize: NSControlSize) -> NSFont? {
-        return (NSFont.systemFontSize(for:) • NSFont.italicSystemFont(ofSize:))(controlSize)
+        return (NSFont.systemFontSize(for:) >>> NSFont.italicSystemFont(ofSize:))(controlSize)
     }
 }
