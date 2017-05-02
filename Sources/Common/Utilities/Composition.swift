@@ -12,7 +12,7 @@ precedencegroup Composition {
 
 infix operator >>>: Composition
 
-public func >>><A, B, C>(lhs: @escaping (A) -> B, rhs: @escaping (B) -> C) -> (A) -> C {
+public func >>><A, B, C>(lhs: @escaping (A) -> B, rhs: @escaping (B) -> C) -> ((A) -> C) {
     return { rhs(lhs($0)) }
 }
 

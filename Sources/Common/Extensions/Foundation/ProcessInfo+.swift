@@ -11,7 +11,8 @@ import Foundation
 public extension ProcessInfo {
 
     var isRunningUnitTest: Bool {
-        return self.environment.keys.contains("XCInjectBundleInto")
+        return self.environment.keys.contains("XCInjectBundleInto")             // for application
+            || self.environment.keys.contains("XCTestConfigurationFilePath")    // for framework
     }
 }
 
