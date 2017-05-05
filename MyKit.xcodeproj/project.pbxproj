@@ -15,6 +15,8 @@
 		C214B90E1DA2155800754247 /* ActionTrailingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */; };
 		C214B9101DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */; };
 		C214B9111DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */; };
+		C21A6AF41EBC124F00B42314 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A6AF31EBC124F00B42314 /* Curry.swift */; };
+		C21A6AF51EBC124F00B42314 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A6AF31EBC124F00B42314 /* Curry.swift */; };
 		C225FAA11D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */; };
 		C225FAA41D111803008DF565 /* LayoutPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA31D111803008DF565 /* LayoutPresentable.swift */; };
 		C23939C81CAC7F5900526B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939BB1CAC7F4300526B30 /* AppDelegate.swift */; };
@@ -279,6 +281,7 @@
 		C20E0C701EB68A8400576412 /* NSEvent+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSEvent+.swift"; sourceTree = "<group>"; };
 		C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionTrailingTests.swift; path = UnitTests/ActionTrailingTests.swift; sourceTree = SOURCE_ROOT; };
 		C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSMutableAttributedStringExtensionTests.swift; path = UnitTests/NSMutableAttributedStringExtensionTests.swift; sourceTree = SOURCE_ROOT; };
+		C21A6AF31EBC124F00B42314 /* Curry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Curry.swift; sourceTree = "<group>"; };
 		C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppleWatchHomeScreenLayout.swift; path = Demos/iOS/AppleWatchHomeScreenLayout.swift; sourceTree = SOURCE_ROOT; };
 		C225FAA31D111803008DF565 /* LayoutPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutPresentable.swift; path = Demos/iOS/LayoutPresentable.swift; sourceTree = SOURCE_ROOT; };
 		C23939BB1CAC7F4300526B30 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/iOS/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -749,7 +752,7 @@
 		C289AD921B62B9AD00186773 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				C2DC8C3C1CAB4C1600837D9E /* Common */,
+				C2DC8C3C1CAB4C1600837D9E /* Shared */,
 				C2DC8C3D1CAB4C2700837D9E /* iOS */,
 				C2DC8C3E1CAB4C2C00837D9E /* macOS */,
 			);
@@ -788,6 +791,7 @@
 				C2D1E5151EB287E900DBBEFA /* Box.swift */,
 				C2D1E5161EB287E900DBBEFA /* Caching.swift */,
 				C2D1E5171EB287E900DBBEFA /* Composition.swift */,
+				C21A6AF31EBC124F00B42314 /* Curry.swift */,
 				C2D1E5181EB287E900DBBEFA /* Diff.swift */,
 				C2D1E5191EB287E900DBBEFA /* Empty.swift */,
 				C2D1E51A1EB287E900DBBEFA /* Matrix.swift */,
@@ -857,13 +861,14 @@
 			path = "MyKit-iOSDemo";
 			sourceTree = "<group>";
 		};
-		C2DC8C3C1CAB4C1600837D9E /* Common */ = {
+		C2DC8C3C1CAB4C1600837D9E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				C289AD951B62BA1700186773 /* Utilities */,
 				C289AD931B62BA0500186773 /* Extensions */,
 				C289AD941B62BA0E00186773 /* Frameworks */,
 			);
+			name = Shared;
 			path = Common;
 			sourceTree = "<group>";
 		};
@@ -1330,6 +1335,7 @@
 				C2D1E61B1EB2936300DBBEFA /* CKContainer+.swift in Sources */,
 				C2D1E59C1EB28FD700DBBEFA /* NSManagedObjectContext+.swift in Sources */,
 				C2D1E5951EB28FD300DBBEFA /* NSObject+.swift in Sources */,
+				C21A6AF51EBC124F00B42314 /* Curry.swift in Sources */,
 				C2D1E5931EB28FD300DBBEFA /* NSLayoutConstraint+.swift in Sources */,
 				C2D1E6211EB2936700DBBEFA /* CGRectEdge+.swift in Sources */,
 				C20E0C6F1EB689FE00576412 /* NSCollectionView+.swift in Sources */,
@@ -1423,6 +1429,7 @@
 				C2D1E54D1EB2881200DBBEFA /* NSAttributedString+.swift in Sources */,
 				C2D1E5701EB2884900DBBEFA /* CGPoint+.swift in Sources */,
 				C2D1E5391EB287FC00DBBEFA /* Dictionary+.swift in Sources */,
+				C21A6AF41EBC124F00B42314 /* Curry.swift in Sources */,
 				C2D1E5AF1EB2922500DBBEFA /* ColorHexing.swift in Sources */,
 				C2D1E5241EB287E900DBBEFA /* Composition.swift in Sources */,
 				C2D1E54A1EB2881200DBBEFA /* Bundle+.swift in Sources */,

@@ -28,20 +28,22 @@ open class Redux<State, Action> {
 
     // MARK: Initialization
 
-    public init<S>(reducer: @escaping Reducer, middlewares: S) where
-        S: Sequence,
-        S.Iterator.Element == Middleware
-    {
-        let middleware = Redux.merge(middlewares)
-
+    public init(reducer: @escaping Reducer, middleware: @escaping Middleware) {
         // error is directed to handle in one of the middlewaress.
-        _ = inputStream.flatMapLatest { oldState, action in
+        _ = inputStream.flatMap { oldState, action in
             reducer(oldState, action).onError { error in
                 try? middleware(oldState, { _ in throw error })(action)
             }.onNext { newState in
                 try? middleware(newState, { _ in })(action)
             }
         }
+    }
+
+    public convenience init<S>(reducer: @escaping Reducer, middlewares: S) where
+        S: Sequence,
+        S.Iterator.Element == Middleware
+    {
+        self.init(reducer: reducer, middleware: Redux.merge(middlewares))
     }
 
     // MARK: Support Methods
