@@ -205,6 +205,8 @@
 		C2D1E63B1EB2939E00DBBEFA /* NSWindowStyleMask+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5CF1EB2928000DBBEFA /* NSWindowStyleMask+.swift */; };
 		C2D1E63D1EB2950500DBBEFA /* RandomAccessCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E63C1EB2950500DBBEFA /* RandomAccessCollection+.swift */; };
 		C2D1E63E1EB2950500DBBEFA /* RandomAccessCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E63C1EB2950500DBBEFA /* RandomAccessCollection+.swift */; };
+		C2E9B1EA1EBD734D003D1372 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E9B1E91EBD734D003D1372 /* Benchmark.swift */; };
+		C2E9B1EB1EBD734D003D1372 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E9B1E91EBD734D003D1372 /* Benchmark.swift */; };
 		C2F288891DF8BBBC003E84F9 /* ReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F288861DF8BB21003E84F9 /* ReduxTests.swift */; };
 		C2F2888A1DF8BBBC003E84F9 /* ReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F288861DF8BB21003E84F9 /* ReduxTests.swift */; };
 		C2F2D8691E08754D0041BF0F /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673911DB09493009E063A /* ObservableTests.swift */; };
@@ -408,6 +410,7 @@
 		C2D1E6121EB2933400DBBEFA /* MyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyKit.h; sourceTree = "<group>"; };
 		C2D1E63C1EB2950500DBBEFA /* RandomAccessCollection+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RandomAccessCollection+.swift"; sourceTree = "<group>"; };
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2E9B1E91EBD734D003D1372 /* Benchmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		C2EF9F701CAB955100BC205F /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F288861DF8BB21003E84F9 /* ReduxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReduxTests.swift; path = UnitTests/ReduxTests.swift; sourceTree = SOURCE_ROOT; };
 		C2F317031D5A5947009B0F42 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/macOS/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -788,6 +791,7 @@
 			isa = PBXGroup;
 			children = (
 				C2D1E5141EB287E900DBBEFA /* Arbitrary.swift */,
+				C2E9B1E91EBD734D003D1372 /* Benchmark.swift */,
 				C2D1E5151EB287E900DBBEFA /* Box.swift */,
 				C2D1E5161EB287E900DBBEFA /* Caching.swift */,
 				C2D1E5171EB287E900DBBEFA /* Composition.swift */,
@@ -1349,6 +1353,7 @@
 				C2D1E5821EB28FC900DBBEFA /* Observable.swift in Sources */,
 				C2D1E58B1EB28FCD00DBBEFA /* Optional+.swift in Sources */,
 				C2D1E63A1EB2939E00DBBEFA /* NSView+.swift in Sources */,
+				C2E9B1EB1EBD734D003D1372 /* Benchmark.swift in Sources */,
 				C2D1E58A1EB28FCD00DBBEFA /* Dictionary+.swift in Sources */,
 				C2D1E6251EB2937B00DBBEFA /* ColorHexing.swift in Sources */,
 				C2D1E6281EB2937F00DBBEFA /* ActionTrailing.swift in Sources */,
@@ -1385,6 +1390,7 @@
 				C2D1E5541EB2881200DBBEFA /* Timer+.swift in Sources */,
 				C2D1E53B1EB287FC00DBBEFA /* OptionSet+.swift in Sources */,
 				C2D1E63D1EB2950500DBBEFA /* RandomAccessCollection+.swift in Sources */,
+				C2E9B1EA1EBD734D003D1372 /* Benchmark.swift in Sources */,
 				C2D1E52D1EB287E900DBBEFA /* Then.swift in Sources */,
 				C2D1E5551EB2881200DBBEFA /* URLSession+.swift in Sources */,
 				C2D1E5271EB287E900DBBEFA /* Matrix.swift in Sources */,
