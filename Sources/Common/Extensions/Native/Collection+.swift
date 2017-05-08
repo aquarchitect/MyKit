@@ -44,9 +44,10 @@ extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int
     }
 
     /// Longest Common SubSequence Table
-    func lcsMatrix<C: Collection>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges, Matrix<Index>) where
-        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element,
-        C.Index == Index
+    func lcsMatrix<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges, Matrix<Index>) where
+        C: Collection,
+        C.Index == Index,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
     {
         let thisRange = self.range.clamped(to: range ?? self.range)
         let otherRange = other.range.clamped(to: range ?? other.range)
@@ -74,7 +75,11 @@ extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int
 
 public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
 
-    func repeatingElements(byComparing other: Self, in range: Range<Index>? = nil) -> [Iterator.Element] {
+    func repeatingElements<C>(byComparing other: C, in range: Range<Index>? = nil) -> [Iterator.Element] where
+        C: Collection,
+        C.Index == Index,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
         let (ranges, matrix) = lcsMatrix(byComparing: other, in: range)
 
         func matrixLookup(at coord: (i: Int, j: Int), result: [Iterator.Element]) -> [Iterator.Element] {
@@ -96,7 +101,12 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
 
     typealias Step = (index: Index, element: Generator.Element)
 
-    fileprivate func _backtrackChanges(byComparing other: Self, in range: Range<Index>? = nil) -> (Ranges, AnyIterator<Diff<Step>>) {
+    fileprivate func _backtrackChanges<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges, AnyIterator<Diff<Step>>) where
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
         let (ranges, matrix) = lcsMatrix(byComparing: other, in: range)
 
         var i = ranges.this.count + 1
@@ -125,11 +135,21 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         return (ranges, iterator)
     }
 
-    func backtrackChanges(byComparing other: Self, in range: Range<Index>? = nil) -> AnyIterator<Diff<Step>> {
+    func backtrackChanges<C>(byComparing other: C, in range: Range<Index>? = nil) -> AnyIterator<Diff<Step>> where
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
         return _backtrackChanges(byComparing: other, in: range).1
     }
 
-    func compare(_ other: Self, in range: Range<Index>? = nil) -> [Diff<Step>] {
+    func compare<C>(_ other: C, in range: Range<Index>? = nil) -> [Diff<Step>] where
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
         let (ranges, changes) = _backtrackChanges(byComparing: other, in: range)
         let count = Swift.max(ranges.this.count, ranges.other.count)
 
@@ -145,7 +165,12 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
 
     typealias IndexTransformer<T> = (Index) -> T
 
-    func compareOptimally<T>(_ other: Self, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (deletes: [T], inserts: [T]) {
+    func compareOptimally<C, T>(_ other: C, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (deletes: [T], inserts: [T]) where
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
         let (ranges, changes) = _backtrackChanges(byComparing: other, in: range)
         let count = Swift.max(ranges.this.count, ranges.other.count)
 
@@ -162,7 +187,13 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         return (deletes, inserts)
     }
 
-    func compareThoroughly<T: Comparable>(_ other: Self, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (reloads: [T], deletes: [T], inserts: [T]) {
+    func compareThoroughly<C, T>(_ other: C, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (reloads: [T], deletes: [T], inserts: [T]) where
+        T: Comparable,
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
         let (ranges, changes) = _backtrackChanges(byComparing: other, in: range)
         let count = Swift.max(ranges.this.count, ranges.other.count)
 
