@@ -8,11 +8,14 @@
 
 import Foundation
 
-extension Bundle {
+public extension Bundle {
 
     var productName: String {
         return (self.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String) ?? ""
     }
+}
+
+extension Bundle {
 
     static var `default`: Bundle? {
 #if os(iOS)
