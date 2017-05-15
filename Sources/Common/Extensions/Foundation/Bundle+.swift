@@ -10,6 +10,10 @@ import Foundation
 
 extension Bundle {
 
+    var productName: String {
+        return (self.object(forInfoDictionaryKey: kCFBundleNameKey as String) as? String) ?? ""
+    }
+
     static var `default`: Bundle? {
 #if os(iOS)
         let platform = "iOS"

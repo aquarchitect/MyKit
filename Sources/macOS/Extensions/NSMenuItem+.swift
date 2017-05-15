@@ -14,7 +14,7 @@ public extension NSMenuItem {
 
     static var orderFrontStandardAboutPanel: NSMenuItem {
         return NSMenuItem().then {
-            $0.title = "About"
+            $0.title = "About \(Bundle.main.productName)"
             $0.action = #selector(NSApplication.orderFrontStandardAboutPanel(_:))
         }
     }
