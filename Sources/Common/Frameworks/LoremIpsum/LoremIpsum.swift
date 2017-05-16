@@ -10,19 +10,19 @@ import Foundation
 
 /// A LorumIpsum random text generator; its main purpose
 /// is for testing with different text lenght.
-struct LoremIpsum: Collection {
+public struct LoremIpsum: Collection {
 
-    static let shared = LoremIpsum()
+    static public let shared = LoremIpsum()
 
     // MARK: Properties
 
     fileprivate let storage: [String]
 
-    var startIndex: Int {
+    public var startIndex: Int {
         return storage.startIndex
     }
 
-    var endIndex: Int {
+    public var endIndex: Int {
         return storage.endIndex
     }
 
@@ -53,20 +53,20 @@ struct LoremIpsum: Collection {
 
     // MARK: System Methods
 
-    func index(after i: Int) -> Int {
+    public func index(after i: Int) -> Int {
         precondition(i < endIndex, "Out of bounds.")
 
         return i + 1
     }
 
-    subscript(index: Int) -> String {
+    public subscript(index: Int) -> String {
         return storage[index]
     }
 }
 
 extension LoremIpsum: CustomDebugStringConvertible {
 
-    var debugDescription: String {
+    public var debugDescription: String {
         return storage.joined(separator: "\n")
     }
 }
