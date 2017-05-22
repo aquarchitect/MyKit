@@ -8,9 +8,7 @@
 
 import Darwin
 
-// *
-// Concurrency control - execute tasks one at a time
-// 
+/// Concurrency control - execute tasks one at a time
 public class Mutex {
 
     private var mutex = pthread_mutex_t()

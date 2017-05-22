@@ -6,8 +6,6 @@
 // Copyright (c) 2015 Hai Nguyen.
 // 
 
-import Foundation
-
 public extension Collection where Iterator.Element: Comparable {
 
     /// Return the first element of an ordered collection by using Binary Search algorithm
