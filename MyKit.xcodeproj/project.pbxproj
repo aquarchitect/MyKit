@@ -17,6 +17,8 @@
 		C214B9111DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */; };
 		C21A6AF41EBC124F00B42314 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A6AF31EBC124F00B42314 /* Curry.swift */; };
 		C21A6AF51EBC124F00B42314 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A6AF31EBC124F00B42314 /* Curry.swift */; };
+		C21FE1E31ED37D1800EA98B9 /* JSONSerialization+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21FE1E21ED37D1800EA98B9 /* JSONSerialization+.swift */; };
+		C21FE1E41ED37D1800EA98B9 /* JSONSerialization+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21FE1E21ED37D1800EA98B9 /* JSONSerialization+.swift */; };
 		C225FAA11D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */; };
 		C225FAA41D111803008DF565 /* LayoutPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA31D111803008DF565 /* LayoutPresentable.swift */; };
 		C23939C81CAC7F5900526B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939BB1CAC7F4300526B30 /* AppDelegate.swift */; };
@@ -282,6 +284,7 @@
 		C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionTrailingTests.swift; path = UnitTests/ActionTrailingTests.swift; sourceTree = SOURCE_ROOT; };
 		C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSMutableAttributedStringExtensionTests.swift; path = UnitTests/NSMutableAttributedStringExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		C21A6AF31EBC124F00B42314 /* Curry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Curry.swift; sourceTree = "<group>"; };
+		C21FE1E21ED37D1800EA98B9 /* JSONSerialization+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "JSONSerialization+.swift"; sourceTree = "<group>"; };
 		C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppleWatchHomeScreenLayout.swift; path = Demos/iOS/AppleWatchHomeScreenLayout.swift; sourceTree = SOURCE_ROOT; };
 		C225FAA31D111803008DF565 /* LayoutPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutPresentable.swift; path = Demos/iOS/LayoutPresentable.swift; sourceTree = SOURCE_ROOT; };
 		C23939BB1CAC7F4300526B30 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/iOS/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -512,6 +515,7 @@
 				C2D1E53E1EB2881200DBBEFA /* Bundle+.swift */,
 				C2D1E53F1EB2881200DBBEFA /* Date+.swift */,
 				C2D1E5401EB2881200DBBEFA /* DateFormatter+.swift */,
+				C21FE1E21ED37D1800EA98B9 /* JSONSerialization+.swift */,
 				C2D1E5411EB2881200DBBEFA /* NSAttributedString+.swift */,
 				C2D1E5421EB2881200DBBEFA /* NSLayoutConstraint+.swift */,
 				C2D1E5431EB2881200DBBEFA /* NSMutableAttributedString+.swift */,
@@ -1285,6 +1289,7 @@
 			files = (
 				C2D1E58E1EB28FCD00DBBEFA /* String+.swift in Sources */,
 				C2D1E57A1EB28FC900DBBEFA /* Arbitrary.swift in Sources */,
+				C21FE1E41ED37D1800EA98B9 /* JSONSerialization+.swift in Sources */,
 				C2D1E6381EB2939E00DBBEFA /* NSMenuItem+.swift in Sources */,
 				C2D1E61D1EB2936300DBBEFA /* CKRecord+.swift in Sources */,
 				C2D1E58C1EB28FCD00DBBEFA /* OptionSet+.swift in Sources */,
@@ -1426,6 +1431,7 @@
 				C2D1E5211EB287E900DBBEFA /* Arbitrary.swift in Sources */,
 				C2D1E5FC1EB292F600DBBEFA /* GenericCollectionCell.swift in Sources */,
 				C2D1E54D1EB2881200DBBEFA /* NSAttributedString+.swift in Sources */,
+				C21FE1E31ED37D1800EA98B9 /* JSONSerialization+.swift in Sources */,
 				C2D1E5701EB2884900DBBEFA /* CGPoint+.swift in Sources */,
 				C2D1E5391EB287FC00DBBEFA /* Dictionary+.swift in Sources */,
 				C21A6AF41EBC124F00B42314 /* Curry.swift in Sources */,
