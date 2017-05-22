@@ -11,19 +11,42 @@ import Foundation
 /// Future Value
 final public class Observable<T> {
 
-    typealias Callback = Result<T>.Callback
+    private var globalID: UInt64 = 0
 
-    private(set) var callbacks: [Callback] = []
+    public typealias ID = UInt64
+    public typealias Callback = Result<T>.Callback
+
+    // MARK: Properties
+
+    private(set) var callbacks: [ID: Callback] = [:]
     fileprivate let mutex = Mutex()
+
+    // MARK: Initialization
 
     public init() {}
 
-    internal func subscribe(_ callback: @escaping Callback) {
-        mutex.perform { callbacks.append(callback) }
+    // MARK: Subscribing Methods
+
+    @discardableResult
+    public func subscribe(_ callback: @escaping Callback) -> ID {
+        mutex.perform {
+            callbacks[globalID] = callback
+        }
+
+        defer { globalID += 1 }
+        return globalID
+    }
+
+    public func unsubscribe(_ id: ID) {
+        mutex.perform {
+            callbacks.removeValue(forKey: id)
+        }
     }
 
     public func unsubscribeAll() {
-        mutex.perform { callbacks.removeAll() }
+        mutex.perform {
+            callbacks.removeAll()
+        }
     }
 }
 
@@ -54,7 +77,9 @@ public extension Observable {
 public extension Observable {
 
     internal func update(_ result: Result<T>) {
-        mutex.perform { callbacks.forEach { $0(result) }}
+        mutex.perform {
+            callbacks.values.forEach { $0(result) }
+        }
     }
 
     internal func update(_ value: T?, _ error: Error?) {
