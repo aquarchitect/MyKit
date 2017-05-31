@@ -98,7 +98,7 @@ public extension Arbitrary {
     static var word: String {
         let collection = element(in: LoremIpsum.shared)
             .components(separatedBy: " ")
-        return element(in: collection).capitalizedFirst
+        return element(in: collection).capitalized
     }
 
     static var sentence: String {

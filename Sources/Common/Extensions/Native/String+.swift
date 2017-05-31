@@ -42,16 +42,28 @@ public extension String {
             .joined(separator: "")
     }
 
-    var capitalizedFirst: String {
-        return capitalizedFirst(with: nil)
+    @available(*, deprecated, message: "Prefer system format like autocapitalizationType")
+    var capitalizedFirstWord: String {
+        return capitalizedFirstWord(with: nil)
     }
 
-    func capitalizedFirst(with locale: Locale?) -> String {
-        let index = self.index(after: self.startIndex)
+    @available(*, deprecated, renamed: "capitalizedFirstWord")
+    var capitalizedFirst: String {
+        return capitalizedFirstWord
+    }
 
-        return self.substring(to: index)
-            .capitalized(with: locale)
-            + self.substring(from: index)
+    @available(*, deprecated, message: "Prefer system format like autocapitalizationType")
+    func capitalizedFirstWord(with locale: Locale?) -> String {
+        return self.range(of: " ").map {
+            self.substring(to: $0.lowerBound)
+                .capitalized(with: locale)
+                + self.substring(from: $0.lowerBound)
+            } ?? self
+    }
+
+    @available(*, deprecated, renamed: "capitalizedFirstWord(with:)")
+    func capitalizedFirst(with locale: Locale?) -> String {
+        return capitalizedFirstWord(with: locale)
     }
 }
 
