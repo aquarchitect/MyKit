@@ -11,11 +11,16 @@ import CoreGraphics
 public protocol ColorHexing: class {
 
     init(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)
+    init(hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat)
 #if os(iOS)
     @discardableResult
     func getRed(_ red: UnsafeMutablePointer<CGFloat>?, green: UnsafeMutablePointer<CGFloat>?, blue: UnsafeMutablePointer<CGFloat>?, alpha: UnsafeMutablePointer<CGFloat>?) -> Bool
+
+    @discardableResult
+    func getHue(_ hue: UnsafeMutablePointer<CGFloat>?, saturation: UnsafeMutablePointer<CGFloat>?, brightness: UnsafeMutablePointer<CGFloat>?, alpha: UnsafeMutablePointer<CGFloat>?) -> Bool
 #elseif os(OSX)
     func getRed(_ red: UnsafeMutablePointer<CGFloat>?, green: UnsafeMutablePointer<CGFloat>?, blue: UnsafeMutablePointer<CGFloat>?, alpha: UnsafeMutablePointer<CGFloat>?)
+    func getHue(_ hue: UnsafeMutablePointer<CGFloat>?, saturation: UnsafeMutablePointer<CGFloat>?, brightness: UnsafeMutablePointer<CGFloat>?, alpha: UnsafeMutablePointer<CGFloat>?)
 #endif
 }
 
@@ -49,6 +54,41 @@ public extension ColorHexing {
     init?(hexString value: String) {
         guard let hex = value.hexUInt else { return nil }
         self.init(hexUInt: hex, alpha: 1)
+    }
+}
+
+public extension ColorHexing {
+
+    func lighten(_ amount: CGFloat) -> Self {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+
+        return Self(
+            red: min(r + amount, 1),
+            green: min(g + amount, 1),
+            blue: min(b + amount, 1),
+            alpha: min(a + amount, 1)
+        )
+    }
+
+    func darken(_ amount: CGFloat) -> Self {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+
+        return Self(
+            red: max(r - amount, 0),
+            green: max(g - amount, 0),
+            blue: max(b - amount, 0),
+            alpha: max(a - amount, 0)
+        )
     }
 }
 
