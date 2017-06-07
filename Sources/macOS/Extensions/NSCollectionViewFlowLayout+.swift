@@ -56,3 +56,29 @@ public extension NSCollectionViewFlowLayout {
         }
     }
 }
+
+@available(OSX 10.11, *)
+public extension NSCollectionViewFlowLayout {
+
+    /// Return an estimated number of visible elements that
+    /// are visible in bounds by using known layout attributes
+    /// including item size, section insets, spacing, and scroll direction.
+    ///
+    /// - Warning: the estimate calculation is only capable of simple
+    /// flow layout.
+    var estimatedNumberOfVisibleElements: Int {
+        guard let collectionView = self.collectionView else { return 0 }
+
+        switch self.scrollDirection {
+        case .vertical:
+            return Int((collectionView.bounds.height - self.sectionInset.vertical + self.minimumLineSpacing) / (self.itemSize.height + self.minimumLineSpacing))
+        case .horizontal:
+            return Int((collectionView.bounds.width - self.sectionInset.horizontal + self.minimumLineSpacing) / (self.itemSize.width + self.minimumInteritemSpacing))
+        }
+    }
+
+    @available(*, deprecated, renamed: "estimatedNumberOfVisibleElements")
+    var maximumNumberOfVisibleElements: Int {
+        return estimatedNumberOfVisibleElements
+    }
+}
