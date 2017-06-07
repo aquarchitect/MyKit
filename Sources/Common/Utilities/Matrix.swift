@@ -54,13 +54,13 @@ public extension Matrix {
         }
     }
 
-    subscript(row row: Int) -> [T] {
+    subscript(row row: Int) -> ArraySlice<T> {
         get {
             assert(row < rows, "Row out of bounds.")
             let startIndex = row * columns
             let endIndex = startIndex + columns
 
-            return Array(elements[startIndex..<endIndex])
+            return elements[startIndex..<endIndex]
         }
         set {
             assert(row < rows, "Row out of bounds.")
@@ -72,10 +72,10 @@ public extension Matrix {
         }
     }
 
-    subscript(column column: Int) -> [T] {
+    subscript(column column: Int) -> ArraySlice<T> {
         get {
             assert(column < columns, "Column out of bounds")
-            return (0..<rows).map { elements[$0 * columns + column] }
+            return ArraySlice((0..<rows).map({ elements[$0 * columns + column] }))
         }
         set {
             assert(column < columns, "Column out of bounds")

@@ -35,14 +35,14 @@ public extension Collection where Iterator.Element: Comparable {
 /// :nodoc:
 extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
 
-    typealias Ranges = (this: Range<Index>, other: Range<Index>)
+    typealias Ranges<I: Comparable> = (this: Range<I>, other: Range<I>)
 
     private var range: Range<Index> {
         return self.startIndex ..< self.endIndex
     }
 
     /// Longest Common SubSequence Table
-    func lcsMatrix<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges, Matrix<Index>) where
+    func lcsMatrix<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges<Index>, Matrix<Index>) where
         C: Collection,
         C.Index == Index,
         C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
@@ -54,8 +54,8 @@ extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int
         let columns = otherRange.count + 2
 
         var matrix = Matrix(repeating: 1, rows: Int(rows), columns: Int(columns))
-        matrix[row: 0] = Array(repeating: 0, count: Int(columns))
-        matrix[column: 0] = Array(repeating: 0, count: Int(rows))
+        matrix[row: 0] = ArraySlice(repeating: 0, count: Int(columns))
+        matrix[column: 0] = ArraySlice(repeating: 0, count: Int(rows))
 
         for (i, thisElement) in self[thisRange].enumerated() {
             for (j, otherElement) in other[otherRange].enumerated() {
@@ -67,7 +67,7 @@ extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int
             }
         }
 
-        return ((thisRange, otherRange) as Ranges, matrix)
+        return ((thisRange, otherRange) as Ranges<Index>, matrix)
     }
 }
 
@@ -99,7 +99,7 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
 
     typealias Step = (index: Index, element: Generator.Element)
 
-    fileprivate func _backtrackChanges<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges, AnyIterator<Diff<Step>>) where
+    fileprivate func _backtrackChanges<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges<Index>, AnyIterator<Diff<Step>>) where
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
@@ -176,13 +176,22 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         var deletes = [T](); deletes.reserveCapacity(count)
 
         for change in changes {
-            switch (change.map { transformer($0.index) }) {
+            switch change.map({ transformer($0.index) }) {
             case .delete(let value): deletes.insert(value, at: deletes.startIndex)
             case .insert(let value): inserts.insert(value, at: inserts.startIndex)
             }
         }
 
         return (deletes, inserts)
+    }
+
+    func compareOptimally<C>(_ other: C, in range: Range<Index>? = nil) -> (deletes: [Int], inserts: [Int]) where
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
+        return compareOptimally(other, in: range, transformer: Int.init(integerLiteral:))
     }
 
     func compareThoroughly<C, T>(_ other: C, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (reloads: [T], deletes: [T], inserts: [T]) where
@@ -195,12 +204,18 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         let (ranges, changes) = _backtrackChanges(byComparing: other, in: range)
         let count = Swift.max(ranges.this.count, ranges.other.count)
 
-        var inserts = [T](); inserts.reserveCapacity(count)
-        var deletes = [T](); deletes.reserveCapacity(count)
-        var reloads = [T](); reloads.reserveCapacity(count)
+        var reloads = Array(repeating: transformer(0), count: count)
+        reloads.removeAll(keepingCapacity: true)
+
+        var inserts = Array(repeating: transformer(0), count: count)
+        inserts.removeAll(keepingCapacity: true)
+
+        var deletes = Array(repeating: transformer(0), count: count)
+        deletes.removeAll(keepingCapacity: true)
 
         for change in changes {
-            switch (change.map { transformer($0.index) }) {
+            switch change.map({ transformer($0.index) }) {
+
             case .delete(let value):
                 if let index = inserts.binarySearch(value) {
                     inserts.remove(at: index)
@@ -208,11 +223,21 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
                 } else {
                     deletes.insert(value, at: inserts.startIndex)
                 }
+
             case .insert(let value):
                 inserts.insert(value, at: inserts.startIndex)
             }
         }
 
         return (reloads, deletes, inserts)
+    }
+
+    func compareThoroughly<C>(_ other: C, in range: Range<Index>? = nil) -> (reloads: [Int], deletes: [Int], inserts: [Int]) where
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
+        return compareThoroughly(other, in: range, transformer: Int.init(integerLiteral:))
     }
 }
