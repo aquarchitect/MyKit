@@ -27,10 +27,6 @@
 		C23DFCEE1CADFEF9008EFF34 /* MyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C23DFCF21CAE0EF9008EFF34 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
 		C23DFCF31CAE0EF9008EFF34 /* MyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C23E055B1EB6B851003023CE /* _Redux.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E055A1EB6B851003023CE /* _Redux.swift */; };
-		C23E055C1EB6B851003023CE /* _Redux.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E055A1EB6B851003023CE /* _Redux.swift */; };
-		C23E05601EB6B8C6003023CE /* _ReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E055F1EB6B8C6003023CE /* _ReduxTests.swift */; };
-		C23E05611EB6B8C6003023CE /* _ReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23E055F1EB6B8C6003023CE /* _ReduxTests.swift */; };
 		C24B380C1DC12BFA00036264 /* ArbitraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B38091DC12BDC00036264 /* ArbitraryTests.swift */; };
 		C24B380D1DC12BFB00036264 /* ArbitraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B38091DC12BDC00036264 /* ArbitraryTests.swift */; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
@@ -41,6 +37,8 @@
 		C2A28EDC1E12312500D7AD89 /* TimerExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A28ED91E12310900D7AD89 /* TimerExtensionTests.swift */; };
 		C2A28EDE1E12374D00D7AD89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A28EDD1E12374D00D7AD89 /* Assets.xcassets */; };
 		C2A28EE01E12376E00D7AD89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A28EDF1E12376E00D7AD89 /* Assets.xcassets */; };
+		C2A6AA801EE7A91900A5A95E /* OffsetCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6AA7F1EE7A91900A5A95E /* OffsetCollection.swift */; };
+		C2A6AA811EE7A91900A5A95E /* OffsetCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6AA7F1EE7A91900A5A95E /* OffsetCollection.swift */; };
 		C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2BB19AE1D111DBC004F76BA /* PagedCenterCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB19AD1D111DBC004F76BA /* PagedCenterCollectionLayout.swift */; };
@@ -290,8 +288,6 @@
 		C23939BB1CAC7F4300526B30 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/iOS/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C23939BC1CAC7F4300526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demos/iOS/Info.plist; sourceTree = SOURCE_ROOT; };
 		C23939C51CAC7F4F00526B30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demos/iOS/Base.lproj/Launch.storyboard; sourceTree = SOURCE_ROOT; };
-		C23E055A1EB6B851003023CE /* _Redux.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Redux.swift; sourceTree = "<group>"; };
-		C23E055F1EB6B8C6003023CE /* _ReduxTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ReduxTests.swift; sourceTree = "<group>"; };
 		C24B38091DC12BDC00036264 /* ArbitraryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArbitraryTests.swift; path = UnitTests/ArbitraryTests.swift; sourceTree = SOURCE_ROOT; };
 		C2848DE01C95642E00707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2848E011C956A7600707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,6 +298,7 @@
 		C2A28EDD1E12374D00D7AD89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Demos/iOS/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		C2A28EDF1E12376E00D7AD89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Demos/macOS/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		C2A673911DB09493009E063A /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservableTests.swift; path = UnitTests/ObservableTests.swift; sourceTree = SOURCE_ROOT; };
+		C2A6AA7F1EE7A91900A5A95E /* OffsetCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OffsetCollection.swift; path = OffsetCollection/OffsetCollection.swift; sourceTree = "<group>"; };
 		C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensionTests.swift; path = UnitTests/CollectionExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		C2BB19AD1D111DBC004F76BA /* PagedCenterCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagedCenterCollectionLayout.swift; path = Demos/iOS/PagedCenterCollectionLayout.swift; sourceTree = SOURCE_ROOT; };
 		C2BB19AF1D112E1E004F76BA /* ShaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShaderController.swift; path = Demos/iOS/ShaderController.swift; sourceTree = SOURCE_ROOT; };
@@ -677,22 +674,6 @@
 			path = LongPress;
 			sourceTree = "<group>";
 		};
-		C23E055D1EB6B859003023CE /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-				C23E055A1EB6B851003023CE /* _Redux.swift */,
-			);
-			name = Legacy;
-			sourceTree = "<group>";
-		};
-		C23E05621EB6B8C9003023CE /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-				C23E055F1EB6B8C6003023CE /* _ReduxTests.swift */,
-			);
-			name = Legacy;
-			sourceTree = "<group>";
-		};
 		C23FADAD1DC0112C00A4491C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,6 +758,7 @@
 		C289AD941B62BA0E00186773 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2A6AA7E1EE7A8D900A5A95E /* OffsetCollection */,
 				C2C62A2D1D04A5E00009B45F /* FontRegistry */,
 				C20F70241C7532EC004C688F /* LoremIpsum */,
 				C2C180871CEBBF3D00D00FA4 /* ColorHexing */,
@@ -805,9 +787,16 @@
 				C2D1E51E1EB287E900DBBEFA /* Result.swift */,
 				C2D1E51F1EB287E900DBBEFA /* Swizzle.swift */,
 				C2D1E5201EB287E900DBBEFA /* Then.swift */,
-				C23E055D1EB6B859003023CE /* Legacy */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C2A6AA7E1EE7A8D900A5A95E /* OffsetCollection */ = {
+			isa = PBXGroup;
+			children = (
+				C2A6AA7F1EE7A91900A5A95E /* OffsetCollection.swift */,
+			);
+			name = OffsetCollection;
 			sourceTree = "<group>";
 		};
 		C2B60ACC1B95080800F6D2BB /* UnitTests */ = {
@@ -823,7 +812,6 @@
 				C2A28ED91E12310900D7AD89 /* TimerExtensionTests.swift */,
 				C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */,
 				C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */,
-				C23E05621EB6B8C9003023CE /* Legacy */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -1259,7 +1247,6 @@
 				C2F3174F1D5A5EF6009B0F42 /* DateTests.swift in Sources */,
 				C214B90D1DA2155700754247 /* ActionTrailingTests.swift in Sources */,
 				C2F3174E1D5A5EF6009B0F42 /* FontRegistryTests.swift in Sources */,
-				C23E05601EB6B8C6003023CE /* _ReduxTests.swift in Sources */,
 				C2F288891DF8BBBC003E84F9 /* ReduxTests.swift in Sources */,
 				C24B380C1DC12BFA00036264 /* ArbitraryTests.swift in Sources */,
 			);
@@ -1277,7 +1264,6 @@
 				C2F317531D5A5EF7009B0F42 /* DateTests.swift in Sources */,
 				C214B90E1DA2155800754247 /* ActionTrailingTests.swift in Sources */,
 				C2F317521D5A5EF7009B0F42 /* FontRegistryTests.swift in Sources */,
-				C23E05611EB6B8C6003023CE /* _ReduxTests.swift in Sources */,
 				C2F2888A1DF8BBBC003E84F9 /* ReduxTests.swift in Sources */,
 				C24B380D1DC12BFB00036264 /* ArbitraryTests.swift in Sources */,
 			);
@@ -1326,7 +1312,6 @@
 				C2D1E5941EB28FD300DBBEFA /* NSMutableAttributedString+.swift in Sources */,
 				C2D1E57C1EB28FC900DBBEFA /* Caching.swift in Sources */,
 				C2D1E6291EB2937F00DBBEFA /* ActionWrapper.swift in Sources */,
-				C23E055C1EB6B851003023CE /* _Redux.swift in Sources */,
 				C2D1E57E1EB28FC900DBBEFA /* Diff.swift in Sources */,
 				C2D1E5901EB28FD300DBBEFA /* Date+.swift in Sources */,
 				C2D1E61A1EB2935C00DBBEFA /* FontRegistry.swift in Sources */,
@@ -1358,6 +1343,7 @@
 				C2D1E59B1EB28FD700DBBEFA /* NSAttributeDescription+.swift in Sources */,
 				C2D1E6391EB2939E00DBBEFA /* NSTableView+.swift in Sources */,
 				C2D1E62A1EB2938200DBBEFA /* SymbolIcon.swift in Sources */,
+				C2A6AA811EE7A91900A5A95E /* OffsetCollection.swift in Sources */,
 				C2D1E6231EB2937700DBBEFA /* LoremIpsum.swift in Sources */,
 				C2D1E63E1EB2950500DBBEFA /* RandomAccessCollection+.swift in Sources */,
 				C20E0C6B1EB670B300576412 /* NSTextField+.swift in Sources */,
@@ -1409,6 +1395,7 @@
 				C2D1E5EA1EB2929F00DBBEFA /* UIImage+.swift in Sources */,
 				C2D1E5E91EB2929F00DBBEFA /* UIEdgeInsets+.swift in Sources */,
 				C2D1E5FD1EB292F600DBBEFA /* GenericCollectionView.swift in Sources */,
+				C2A6AA801EE7A91900A5A95E /* OffsetCollection.swift in Sources */,
 				C2D1E52A1EB287E900DBBEFA /* Redux.swift in Sources */,
 				C2D1E5371EB287FC00DBBEFA /* Collection+.swift in Sources */,
 				C2D1E5511EB2881200DBBEFA /* NSRange+.swift in Sources */,
@@ -1426,7 +1413,6 @@
 				C2D1E60A1EB2930000DBBEFA /* ParaboloidFlowLayout.swift in Sources */,
 				C2D1E53A1EB287FC00DBBEFA /* Optional+.swift in Sources */,
 				C2D1E5361EB287FC00DBBEFA /* AnyIterator+.swift in Sources */,
-				C23E055B1EB6B851003023CE /* _Redux.swift in Sources */,
 				C2D1E5EE1EB2929F00DBBEFA /* UIStackView+.swift in Sources */,
 				C2D1E5211EB287E900DBBEFA /* Arbitrary.swift in Sources */,
 				C2D1E5FC1EB292F600DBBEFA /* GenericCollectionCell.swift in Sources */,

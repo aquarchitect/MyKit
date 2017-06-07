@@ -6,6 +6,14 @@
 // Copyright (c) 2015 Hai Nguyen.
 // 
 
+public extension Collection where Index: SignedInteger {
+
+    /// A view onto the collection with offseted indexes
+    func offsetIndexes(by value: IndexDistance) -> OffsetCollection<Self> {
+        return OffsetCollection(base: self, offsetValue: Int(value.toIntMax()))
+    }
+}
+
 public extension Collection where Iterator.Element: Comparable {
 
     /// Return the first element of an ordered collection by using Binary Search algorithm
