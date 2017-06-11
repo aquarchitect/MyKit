@@ -10,15 +10,20 @@ import AppKit
 
 public extension NSView {
 
+    func snapshotImage() -> NSImage? {
+        return NSImage(size: self.bounds.size).then {
+            self.bitmapImageRepForCachingDisplay(in: self.bounds)?
+                .then { self.cacheDisplay(in: self.bounds, to: $0) }
+                .then($0.addRepresentation(_:))
+        }
+    }
+
     func snapshotView() -> NSImageView? {
-        return self.bitmapImageRepForCachingDisplay(in: self.bounds)?
-            .then { self.cacheDisplay(in: self.bounds, to: $0) }
-            .andThen { bitmap in
-                NSImageView().then {
-                    $0.frame = self.bounds
-                    $0.image = NSImage(size: self.bounds.size)
-                    $0.image?.addRepresentation(bitmap)
-                }
+        guard let image = snapshotImage() else { return nil }
+
+        return NSImageView().then {
+            $0.frame = self.bounds
+            $0.image = image
         }
     }
 
