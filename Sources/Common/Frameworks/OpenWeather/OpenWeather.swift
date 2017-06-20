@@ -54,7 +54,7 @@ public final class OpenWeather {
     /// - parameter language: default value - en
     /// - parameter format:   default format - celsius
     ///
-    /// - warning: make sure to register your api key in the Info.plist
+    /// - warning: make sure to register your api key in the Info-Framework.plist
     public init(version: Double = 2.5, language: String = "en", format: Format = .celsius) {
         self.apiKey = Bundle.main.infoDictionary?["OpenWeatherAPIKey"] as? String ?? ""
         self.version = version
