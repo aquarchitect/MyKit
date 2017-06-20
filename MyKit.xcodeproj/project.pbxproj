@@ -205,6 +205,7 @@
 		C2D1E63B1EB2939E00DBBEFA /* NSWindowStyleMask+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5CF1EB2928000DBBEFA /* NSWindowStyleMask+.swift */; };
 		C2D1E63D1EB2950500DBBEFA /* RandomAccessCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E63C1EB2950500DBBEFA /* RandomAccessCollection+.swift */; };
 		C2D1E63E1EB2950500DBBEFA /* RandomAccessCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E63C1EB2950500DBBEFA /* RandomAccessCollection+.swift */; };
+		C2D57F171EF9880F00429868 /* UICollectionViewFlowLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D57F161EF9880F00429868 /* UICollectionViewFlowLayout+.swift */; };
 		C2E9B1EA1EBD734D003D1372 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E9B1E91EBD734D003D1372 /* Benchmark.swift */; };
 		C2E9B1EB1EBD734D003D1372 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E9B1E91EBD734D003D1372 /* Benchmark.swift */; };
 		C2F288891DF8BBBC003E84F9 /* ReduxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F288861DF8BB21003E84F9 /* ReduxTests.swift */; };
@@ -407,6 +408,7 @@
 		C2D1E6111EB2933400DBBEFA /* modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = modulemap; sourceTree = "<group>"; };
 		C2D1E6121EB2933400DBBEFA /* MyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyKit.h; sourceTree = "<group>"; };
 		C2D1E63C1EB2950500DBBEFA /* RandomAccessCollection+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RandomAccessCollection+.swift"; sourceTree = "<group>"; };
+		C2D57F161EF9880F00429868 /* UICollectionViewFlowLayout+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionViewFlowLayout+.swift"; sourceTree = "<group>"; };
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E9B1E91EBD734D003D1372 /* Benchmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Benchmark.swift; sourceTree = "<group>"; };
 		C2EF9F701CAB955100BC205F /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -554,6 +556,7 @@
 				C2D1E5DA1EB2929F00DBBEFA /* Draw+.swift */,
 				C2D1E5DB1EB2929F00DBBEFA /* UIBezierPath+.swift */,
 				C2D1E5DC1EB2929F00DBBEFA /* UICollectionView+.swift */,
+				C2D57F161EF9880F00429868 /* UICollectionViewFlowLayout+.swift */,
 				C2D1E5DD1EB2929F00DBBEFA /* UIEdgeInsets+.swift */,
 				C2D1E5DE1EB2929F00DBBEFA /* UIImage+.swift */,
 				C2D1E5DF1EB2929F00DBBEFA /* UILabel+.swift */,
@@ -1380,6 +1383,7 @@
 				C2D1E5271EB287E900DBBEFA /* Matrix.swift in Sources */,
 				C2D1E5F01EB2929F00DBBEFA /* UIView+.swift in Sources */,
 				C2D1E5F71EB292F000DBBEFA /* GrowingTextView.swift in Sources */,
+				C2D57F171EF9880F00429868 /* UICollectionViewFlowLayout+.swift in Sources */,
 				C2D1E5721EB2884900DBBEFA /* CGRectEdge+.swift in Sources */,
 				C2D1E5221EB287E900DBBEFA /* Box.swift in Sources */,
 				C2D1E5A71EB2921900DBBEFA /* FontRegistry.swift in Sources */,

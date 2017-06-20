@@ -25,11 +25,10 @@ public extension NSCollectionView {
 @available(OSX 10.11, *)
 public extension NSCollectionView {
 
-    /// Return an estimated range of visible item indexes. 
+    /// Return an estimated range of item indexes that are visible in bounds.
     ///
-    /// The calculation uses `estimatedNumberOfVisibleElements`
-    /// and only works with flow layout and single section 
-    /// collection view.
+    /// The calculation uses `estimatedNumberOfVisibleElements` and only works 
+    /// for a simple flow layout and single section collection view.
     var estimatedRangeOfVisibleItems: CountableRange<Int> {
         guard self.numberOfSections == 1,
             let flowLayout = self.collectionViewLayout as? NSCollectionViewFlowLayout,

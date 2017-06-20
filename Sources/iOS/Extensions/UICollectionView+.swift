@@ -18,6 +18,22 @@ public extension UICollectionView {
     }
 }
 
+public extension UICollectionView {
+
+    /// Return an estimated range of item indexes that are visible in bounds.
+    ///
+    /// The calculation uses `estimatedNumberOfVisibleElements` and only works
+    /// for a simple flow layout and single section collection view.
+    var estimatedRangeOfVisibleItems: CountableRange<Int> {
+        guard self.numberOfSections == 1,
+            let flowLayout = self.collectionViewLayout as? UICollectionViewFlowLayout,
+            let minIndex = self.indexPathsForVisibleItems.first?.item
+            else { return 0..<0 }
+
+        return minIndex..<(minIndex + flowLayout.estimatedNumberOfVisibleElements)
+    }
+}
+
 // MARK: Transform IndexPath
 
 public extension UICollectionView {
@@ -43,8 +59,8 @@ public extension UICollectionView {
 
     final func index(bySerializing indexPath: IndexPath) -> Int {
         return (0..<indexPath.section)
-            .map(self.numberOfItems(inSection:))
             .lazy
+            .map(self.numberOfItems(inSection:))
             .reduce(indexPath.row, +)
     }
 
