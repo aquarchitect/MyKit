@@ -404,7 +404,7 @@
 		C2D1E6091EB2930000DBBEFA /* ParaboloidSuperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParaboloidSuperLayout.swift; sourceTree = "<group>"; };
 		C2D1E60E1EB2933400DBBEFA /* Bridging-UnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-UnitTests.h"; sourceTree = "<group>"; };
 		C2D1E60F1EB2933400DBBEFA /* Info-UnitTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-UnitTests.plist"; sourceTree = "<group>"; };
-		C2D1E6101EB2933400DBBEFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Info.plist; sourceTree = "<group>"; };
+		C2D1E6101EB2933400DBBEFA /* Info-Framework.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Framework.plist"; sourceTree = "<group>"; };
 		C2D1E6111EB2933400DBBEFA /* modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = modulemap; sourceTree = "<group>"; };
 		C2D1E6121EB2933400DBBEFA /* MyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyKit.h; sourceTree = "<group>"; };
 		C2D1E63C1EB2950500DBBEFA /* RandomAccessCollection+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RandomAccessCollection+.swift"; sourceTree = "<group>"; };
@@ -662,7 +662,7 @@
 				C2D1E6121EB2933400DBBEFA /* MyKit.h */,
 				C2D1E60E1EB2933400DBBEFA /* Bridging-UnitTests.h */,
 				C2D1E60F1EB2933400DBBEFA /* Info-UnitTests.plist */,
-				C2D1E6101EB2933400DBBEFA /* Info.plist */,
+				C2D1E6101EB2933400DBBEFA /* Info-Framework.plist */,
 				C2D1E6111EB2933400DBBEFA /* modulemap */,
 			);
 			path = MyKit;
@@ -1547,7 +1547,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-iOSUnitTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-iOS-unittests";
 				PRODUCT_NAME = MyKitUnitTests;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyKit/Bridging-UnitTests.h";
@@ -1593,7 +1593,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-iOSUnitTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-iOS-unittests";
 				PRODUCT_NAME = MyKitUnitTests;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyKit/Bridging-UnitTests.h";
@@ -1645,7 +1645,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-OSXUnitTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS-unittests";
 				PRODUCT_NAME = MyKitUnitTests;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
@@ -1694,7 +1694,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-OSXUnitTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS-unittests";
 				PRODUCT_NAME = MyKitUnitTests;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
@@ -1728,7 +1728,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = MyKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1766,7 +1765,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = MyKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = MyKit;
@@ -1826,14 +1824,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/MyKit/Info.plist";
+				INFOPLIST_FILE = "MyKit/Info-Framework.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULEMAP_FILE = MyKit/modulemap;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = MyKit;
 				SDKROOT = macosx;
@@ -1888,14 +1886,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/MyKit/Info.plist";
+				INFOPLIST_FILE = "MyKit/Info-Framework.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MODULEMAP_FILE = MyKit/modulemap;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS";
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = MyKit;
 				SDKROOT = macosx;
@@ -1955,14 +1953,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/MyKit/Info.plist";
+				INFOPLIST_FILE = "MyKit/Info-Framework.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-iOS";
 				PRODUCT_NAME = MyKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2018,14 +2016,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/MyKit/Info.plist";
+				INFOPLIST_FILE = "MyKit/Info-Framework.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-iOS";
 				PRODUCT_NAME = MyKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2084,7 +2082,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-iOSDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-iOS-demo";
 				PRODUCT_NAME = MyKitDemo;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = Demos/iOS/Bridging.h;
@@ -2132,7 +2130,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-iOSDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-iOS-demo";
 				PRODUCT_NAME = MyKitDemo;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = Demos/iOS/Bridging.h;
@@ -2187,7 +2185,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-macOSDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS-demo";
 				PRODUCT_NAME = MyKitDemo;
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
@@ -2236,7 +2234,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "HaiNguyen.MyKit-macOSDemo";
+				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS-demo";
 				PRODUCT_NAME = MyKitDemo;
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
