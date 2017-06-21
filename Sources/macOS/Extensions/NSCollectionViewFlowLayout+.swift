@@ -38,7 +38,7 @@ public extension NSCollectionViewFlowLayout {
         }
     }
 
-    func delegateHeaderSizeInSection(_ index: Int) -> NSSize? {
+    func delegateHeaderSizeInSection(_ index: Int) -> CGSize? {
         return zip(
             self.collectionView,
             self.collectionView?.delegate as? NSCollectionViewDelegateFlowLayout
@@ -47,7 +47,7 @@ public extension NSCollectionViewFlowLayout {
         }
     }
 
-    func delegateFooterSizeInSection(_ index: Int) -> NSSize? {
+    func delegateFooterSizeInSection(_ index: Int) -> CGSize? {
         return zip(
             self.collectionView,
             self.collectionView?.delegate as? NSCollectionViewDelegateFlowLayout
