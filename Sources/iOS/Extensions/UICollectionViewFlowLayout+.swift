@@ -10,6 +10,54 @@ import UIKit
 
 public extension UICollectionViewFlowLayout {
 
+    func delegateInsetForSection(at index: Int) -> UIEdgeInsets? {
+        return zip(
+            self.collectionView,
+            self.collectionView?.delegate as? UICollectionViewDelegateFlowLayout
+        ).flatMap {
+            $1.collectionView?($0, layout: self, insetForSectionAt: index)
+        }
+    }
+
+    func delegateMinimumLineSpacingForSection(at index: Int) -> CGFloat? {
+        return zip(
+            self.collectionView,
+            self.collectionView?.delegate as? UICollectionViewDelegateFlowLayout
+        ).flatMap {
+            $1.collectionView?($0, layout: self, minimumLineSpacingForSectionAt: index)
+        }
+    }
+
+    func delegateMinimumInteritemSpacingForSection(at index: Int) -> CGFloat? {
+        return zip(
+            self.collectionView,
+            self.collectionView?.delegate as? UICollectionViewDelegateFlowLayout
+        ).flatMap {
+            $1.collectionView?($0, layout: self, minimumInteritemSpacingForSectionAt: index)
+        }
+    }
+
+    func delegateHeaderSizeInSection(_ index: Int) -> CGSize? {
+        return zip(
+            self.collectionView,
+            self.collectionView?.delegate as? UICollectionViewDelegateFlowLayout
+            ).flatMap {
+                $1.collectionView?($0, layout: self, referenceSizeForHeaderInSection: index)
+        }
+    }
+
+    func delegateFooterSizeInSection(_ index: Int) -> CGSize? {
+        return zip(
+            self.collectionView,
+            self.collectionView?.delegate as? UICollectionViewDelegateFlowLayout
+            ).flatMap {
+                $1.collectionView?($0, layout: self, referenceSizeForFooterInSection: index)
+        }
+    }
+}
+
+public extension UICollectionViewFlowLayout {
+
     /// Return an estimated number of elements that are visible
     /// in bounds by using known layout attributes including item size,
     /// section insets, spacing, and scroll direction.
