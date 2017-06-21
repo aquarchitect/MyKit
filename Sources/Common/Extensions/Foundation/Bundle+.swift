@@ -23,6 +23,6 @@ extension Bundle {
 #elseif os(OSX)
         let platform = "macOS"
 #endif
-        return Bundle(identifier: "HaiNguyen.MyKit-\(platform)")
+        return Bundle(identifier: "hainguyen.mykit-\(platform)")
     }
 }

@@ -23,9 +23,9 @@ extension FontRegistry {
         _ = bundle
             .url(forResource: file, withExtension: "ttf")
             .flatMap(NSData.init(contentsOf:))
-            .flatMap { CGDataProvider(data: $0) }
+            .flatMap({ CGDataProvider(data: $0) })
             .map(CGFont.init)
-            .map { CTFontManagerRegisterGraphicsFont($0, nil) }
+            .map({ CTFontManagerRegisterGraphicsFont($0, nil) })
     }
 
     /// Return a font object from default bundle
