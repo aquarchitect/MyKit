@@ -29,6 +29,8 @@
 		C23DFCF31CAE0EF9008EFF34 /* MyKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C24B380C1DC12BFA00036264 /* ArbitraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B38091DC12BDC00036264 /* ArbitraryTests.swift */; };
 		C24B380D1DC12BFB00036264 /* ArbitraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B38091DC12BDC00036264 /* ArbitraryTests.swift */; };
+		C2669D4C1EFB60C000422C4D /* Heckel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2669D4B1EFB60C000422C4D /* Heckel.swift */; };
+		C2669D4D1EFB60C000422C4D /* Heckel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2669D4B1EFB60C000422C4D /* Heckel.swift */; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
 		C2848E061C956A7600707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
 		C28C6E871E1C4AC400BC51F0 /* CachingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C6E841E1C4AB400BC51F0 /* CachingTests.swift */; };
@@ -290,6 +292,7 @@
 		C23939BC1CAC7F4300526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demos/iOS/Info.plist; sourceTree = SOURCE_ROOT; };
 		C23939C51CAC7F4F00526B30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demos/iOS/Base.lproj/Launch.storyboard; sourceTree = SOURCE_ROOT; };
 		C24B38091DC12BDC00036264 /* ArbitraryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArbitraryTests.swift; path = UnitTests/ArbitraryTests.swift; sourceTree = SOURCE_ROOT; };
+		C2669D4B1EFB60C000422C4D /* Heckel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heckel.swift; sourceTree = "<group>"; };
 		C2848DE01C95642E00707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2848E011C956A7600707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7C1B62B95700186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -782,6 +785,7 @@
 				C2D1E5171EB287E900DBBEFA /* Composition.swift */,
 				C21A6AF31EBC124F00B42314 /* Curry.swift */,
 				C2D1E5181EB287E900DBBEFA /* Diff.swift */,
+				C2669D4B1EFB60C000422C4D /* Heckel.swift */,
 				C2D1E5191EB287E900DBBEFA /* Empty.swift */,
 				C2D1E51A1EB287E900DBBEFA /* Matrix.swift */,
 				C2D1E51B1EB287E900DBBEFA /* Mutex.swift */,
@@ -1323,6 +1327,7 @@
 				C2D1E6221EB2936700DBBEFA /* CGSize+.swift in Sources */,
 				C2D1E57D1EB28FC900DBBEFA /* Composition.swift in Sources */,
 				C2D1E61B1EB2936300DBBEFA /* CKContainer+.swift in Sources */,
+				C2669D4D1EFB60C000422C4D /* Heckel.swift in Sources */,
 				C2D1E59C1EB28FD700DBBEFA /* NSManagedObjectContext+.swift in Sources */,
 				C2D1E5951EB28FD300DBBEFA /* NSObject+.swift in Sources */,
 				C21A6AF51EBC124F00B42314 /* Curry.swift in Sources */,
@@ -1395,6 +1400,7 @@
 				C2D1E5731EB2884900DBBEFA /* CGSize+.swift in Sources */,
 				C2D1E54C1EB2881200DBBEFA /* DateFormatter+.swift in Sources */,
 				C2D1E5501EB2881200DBBEFA /* NSObject+.swift in Sources */,
+				C2669D4C1EFB60C000422C4D /* Heckel.swift in Sources */,
 				C2D1E5E61EB2929F00DBBEFA /* Draw+.swift in Sources */,
 				C2D1E5EA1EB2929F00DBBEFA /* UIImage+.swift in Sources */,
 				C2D1E5E91EB2929F00DBBEFA /* UIEdgeInsets+.swift in Sources */,

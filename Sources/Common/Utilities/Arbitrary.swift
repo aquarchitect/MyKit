@@ -30,7 +30,7 @@ public extension Arbitrary {
             let leftToAdd = requested - selected
 
             if Double(leftToExam) * random < Double(leftToAdd) {
-                results += [c[examined - 1]]
+                results.append(c[examined - 1])
                 selected += 1
             }
         }

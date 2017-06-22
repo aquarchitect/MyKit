@@ -6,6 +6,11 @@
 // Copyright (c) 2015 Hai Nguyen.
 // 
 
+public extension Collection {
+
+    typealias IndexTransformer<T> = (Index) -> T
+}
+
 public extension Collection where Index: SignedInteger {
 
     /// A view onto the collection with offseted indexes
@@ -50,7 +55,7 @@ extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int
     }
 
     /// Longest Common SubSequence Table
-    func lcsMatrix<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges<Index>, Matrix<Index>) where
+    func matrixUsingLCS<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges<Index>, Matrix<Index>) where
         C: Collection,
         C.Index == Index,
         C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
@@ -77,16 +82,25 @@ extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int
 
         return ((thisRange, otherRange) as Ranges<Index>, matrix)
     }
-}
 
-public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
-
-    func repeatingElements<C>(byComparing other: C, in range: Range<Index>? = nil) -> [Iterator.Element] where
+    @available(*, deprecated, renamed: "matrixUsingLCS(byComparing:in:)")
+    func lcsMatrix<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges<Index>, Matrix<Index>) where
         C: Collection,
         C.Index == Index,
         C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
     {
-        let (ranges, matrix) = lcsMatrix(byComparing: other, in: range)
+        return matrixUsingLCS(byComparing: other, in: range)
+    }
+}
+
+public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
+
+    func repeatingElementsUsingLCS<C>(byComparing other: C, in range: Range<Index>? = nil) -> [Iterator.Element] where
+        C: Collection,
+        C.Index == Index,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
+        let (ranges, matrix) = matrixUsingLCS(byComparing: other, in: range)
 
         func matrixLookup(at coord: (i: Int, j: Int), result: [Iterator.Element]) -> [Iterator.Element] {
             guard coord.i >= 2 && coord.j >= 2 else { return result }
@@ -105,15 +119,24 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         return matrixLookup(at: (ranges.this.count + 1, ranges.other.count + 1), result: [])
     }
 
+    @available(*, deprecated, renamed: "repeatingElementsUsingLCS(byComparing:in:)")
+    func repeatingElements<C>(byComparing other: C, in range: Range<Index>? = nil) -> [Iterator.Element] where
+        C: Collection,
+        C.Index == Index,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
+        return repeatingElementsUsingLCS(byComparing: other, in: range)
+    }
+
     typealias Step = (index: Index, element: Generator.Element)
 
-    fileprivate func _backtrackChanges<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges<Index>, AnyIterator<Diff<Step>>) where
+    fileprivate func _backtrackChangesUsingLCS<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges<Index>, AnyIterator<Diff<Step>>) where
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
         C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
     {
-        let (ranges, matrix) = lcsMatrix(byComparing: other, in: range)
+        let (ranges, matrix) = matrixUsingLCS(byComparing: other, in: range)
 
         var i = ranges.this.count + 1
         var j = ranges.other.count + 1
@@ -141,22 +164,42 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         return (ranges, iterator)
     }
 
+    @available(*, deprecated, renamed: "_backtrackChangesUsingLCS(byComparing:in:)")
+    fileprivate func _backtrackChanges<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges<Index>, AnyIterator<Diff<Step>>) where
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
+        return _backtrackChanges(byComparing: other, in: range)
+    }
+
+    func backtrackChangesUsingLCS<C>(byComparing other: C, in range: Range<Index>? = nil) -> AnyIterator<Diff<Step>> where
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
+        return _backtrackChangesUsingLCS(byComparing: other, in: range).1
+    }
+
+    @available(*, deprecated, renamed: "backtrackChangesUsingLCS(byComparing:in:)")
     func backtrackChanges<C>(byComparing other: C, in range: Range<Index>? = nil) -> AnyIterator<Diff<Step>> where
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
         C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
     {
-        return _backtrackChanges(byComparing: other, in: range).1
+        return backtrackChangesUsingLCS(byComparing: other, in: range)
     }
 
-    func compare<C>(_ other: C, in range: Range<Index>? = nil) -> [Diff<Step>] where
+    func compareUsingLCS<C>(_ other: C, in range: Range<Index>? = nil) -> [Diff<Step>] where
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
         C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
     {
-        let (ranges, changes) = _backtrackChanges(byComparing: other, in: range)
+        let (ranges, changes) = _backtrackChangesUsingLCS(byComparing: other, in: range)
         let count = Swift.max(ranges.this.count, ranges.other.count)
 
         var results: [Diff<Step>] = []
@@ -165,23 +208,28 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
 
         return results
     }
-}
 
-public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
-
-    typealias IndexTransformer<T> = (Index) -> T
-
-    func compareOptimally<C, T>(_ other: C, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (deletes: [T], inserts: [T]) where
+    @available(*, deprecated, renamed: "compareUsingLCS(_:in:)")
+    func compare<C>(_ other: C, in range: Range<Index>? = nil) -> [Diff<Step>] where
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
         C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
     {
-        let (ranges, changes) = _backtrackChanges(byComparing: other, in: range)
-        let count = Swift.max(ranges.this.count, ranges.other.count)
+        return compareUsingLCS(other, in: range)
+    }
+}
 
-        var inserts = [T](); inserts.reserveCapacity(count)
-        var deletes = [T](); deletes.reserveCapacity(count)
+public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
+
+    func compareOptimallyUsingLCS<C, T>(_ other: C, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (deletes: [T], inserts: [T]) where
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
+        let (_, changes) = _backtrackChangesUsingLCS(byComparing: other, in: range)
+        var inserts = [T](), deletes = [T]()
 
         for change in changes {
             switch change.map({ transformer($0.index) }) {
@@ -193,33 +241,44 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         return (deletes, inserts)
     }
 
+    @available(*, deprecated, renamed: "compareOptimallyUsingLCS(_:in:transformer:)")
+    func compareOptimally<C, T>(_ other: C, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (deletes: [T], inserts: [T]) where
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
+        return compareOptimallyUsingLCS(other, in: range, transformer: transformer)
+    }
+
+    func compareOptimallyUsingLCS<C>(_ other: C, in range: Range<Index>? = nil) -> (deletes: [Int], inserts: [Int]) where
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
+        return compareOptimallyUsingLCS(other, in: range, transformer: Int.init(integerLiteral:))
+    }
+
+    @available(*, deprecated, renamed: "compareOptimallyUsingLCS(_:in:)")
     func compareOptimally<C>(_ other: C, in range: Range<Index>? = nil) -> (deletes: [Int], inserts: [Int]) where
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
         C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
     {
-        return compareOptimally(other, in: range, transformer: Int.init(integerLiteral:))
+        return compareOptimallyUsingLCS(other, in: range, transformer: Int.init(integerLiteral:))
     }
 
-    func compareThoroughly<C, T>(_ other: C, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (reloads: [T], deletes: [T], inserts: [T]) where
+    func compareThoroughlyUsingLCS<C, T>(_ other: C, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (updates: [T], deletes: [T], inserts: [T]) where
         T: Comparable,
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
         C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
     {
-        let (ranges, changes) = _backtrackChanges(byComparing: other, in: range)
-        let count = Swift.max(ranges.this.count, ranges.other.count)
-
-        var reloads = Array(repeating: transformer(0), count: count)
-        reloads.removeAll(keepingCapacity: true)
-
-        var inserts = Array(repeating: transformer(0), count: count)
-        inserts.removeAll(keepingCapacity: true)
-
-        var deletes = Array(repeating: transformer(0), count: count)
-        deletes.removeAll(keepingCapacity: true)
+        let (_, changes) = _backtrackChangesUsingLCS(byComparing: other, in: range)
+        var updates = [T](), inserts = [T](), deletes = [T]()
 
         for change in changes {
             switch change.map({ transformer($0.index) }) {
@@ -227,7 +286,7 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
             case .delete(let value):
                 if let index = inserts.binarySearch(value) {
                     inserts.remove(at: index)
-                    reloads.insert(value, at: inserts.startIndex)
+                    updates.insert(value, at: inserts.startIndex)
                 } else {
                     deletes.insert(value, at: inserts.startIndex)
                 }
@@ -237,15 +296,181 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
             }
         }
 
-        return (reloads, deletes, inserts)
+        return (updates, deletes, inserts)
     }
 
-    func compareThoroughly<C>(_ other: C, in range: Range<Index>? = nil) -> (reloads: [Int], deletes: [Int], inserts: [Int]) where
+    @available(*, deprecated, renamed: "compareThoroughlyUsingLCS(_:in:transformer:)")
+    func compareThoroughly<C, T>(_ other: C, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (updates: [T], deletes: [T], inserts: [T]) where
+        T: Comparable,
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
         C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
     {
-        return compareThoroughly(other, in: range, transformer: Int.init(integerLiteral:))
+        return compareThoroughlyUsingLCS(other, in: range, transformer: transformer)
+    }
+
+    func compareThoroughlyUsingLCS<C>(_ other: C, in range: Range<Index>? = nil) -> (updates: [Int], deletes: [Int], inserts: [Int]) where
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
+        return compareThoroughlyUsingLCS(other, in: range, transformer: Int.init(integerLiteral:))
+    }
+
+    @available(*, deprecated, renamed: "compareThoroughlyUsingLCS(_:in:)")
+    func compareThoroughly<C>(_ other: C, in range: Range<Index>? = nil) -> (updates: [Int], deletes: [Int], inserts: [Int]) where
+        C: Collection,
+        C.Index == Index,
+        C.Iterator.Element == Iterator.Element,
+        C.SubSequence.Iterator.Element == SubSequence.Iterator.Element
+    {
+        return compareThoroughlyUsingLCS(other, in: range, transformer: Int.init(integerLiteral:))
+    }
+}
+
+public extension Collection where Iterator.Element: Hashable & Comparable, IndexDistance == Int {
+
+    func enumerateDiffStepsUsingHeckel<C>(byComparing other: C, block: (Heckel.Step<Index>) -> Void) where
+        C: Collection,
+        C.Index == Index,
+        C.IndexDistance == IndexDistance,
+        C.Iterator.Element == Iterator.Element
+    {
+        var oa: [Heckel.Entry] = [], na: [Heckel.Entry] = []
+
+        var table = Dictionary<Iterator.Element, Heckel.Symbol>(minimumCapacity: Swift.max(self.count.hashValue, other.count.hashValue))
+
+        // phase 1
+        for element in other {
+            let symbol = table[element] ?? Heckel.Symbol()
+
+            table[element] = symbol
+            symbol.nc.increment()
+            na.append(.symbol(symbol))
+        }
+
+        // phase 2
+        for (index, element) in self.enumerated() {
+            let symbol = table[element] ?? Heckel.Symbol()
+
+            table[element] = symbol
+            symbol.then {
+                $0.oc.increment()
+                $0.olno.append(index)
+            }
+            oa.append(.symbol(symbol))
+        }
+
+        // phase 3
+        for (newIndex, element) in na.enumerated() {
+            guard case let .symbol(symbol) = element,
+                symbol.andThen({ $0.occursInBoth && !$0.olno.isEmpty })
+                else { continue }
+
+            let oldIndex = symbol.olno.removeFirst()
+            na[newIndex] = .index(oldIndex)
+            oa[oldIndex] = .index(newIndex)
+        }
+
+        // phase 4
+        for (i, element) in na.enumerated().dropFirst().dropLast() {
+            guard case let .index(j) = element, j + 1 < oa.count,
+                case let .symbol(newEntry) = na[i + 1],
+                case let .symbol(oldEntry) = oa[j + 1],
+                newEntry === oldEntry
+                else { continue }
+
+            na[i + 1] = .index(j + 1)
+            oa[j + 1] = .index(i + 1)
+        }
+
+        // phase 5
+        for (i, _) in na.enumerated().dropFirst().reversed() {
+            guard case let .index(j) = na[i], j - 1 >= 0,
+                case let .symbol(newEntry) = na[i - 1],
+                case let .symbol(oldEntry) = oa[j - 1],
+                newEntry === oldEntry
+                else { continue }
+
+            na[i - 1] = .index(j - 1)
+            oa[j - 1] = .index(i - 1)
+        }
+
+        var runningOffset = 0
+        var deleteOffsets = Array(repeating: 0, count: self.count.hashValue)
+        for (oldIndex, element) in oa.enumerated() {
+            deleteOffsets[oldIndex] = runningOffset
+
+            guard case .symbol = element else { continue }
+            block(.delete(self.index(self.startIndex, offsetBy: oldIndex)))
+            runningOffset += 1
+        }
+
+        runningOffset = 0
+        for (newIndex, element) in na.enumerated() {
+            switch element {
+
+            case .symbol:
+                block(.insert(other.index(other.startIndex, offsetBy: newIndex)))
+                runningOffset += 1
+
+            case let .index(oldIndex):
+                let oldElementIndex = self.index(self.startIndex, offsetBy: oldIndex)
+                let newElementIndex = other.index(other.startIndex, offsetBy: newIndex)
+
+                if self[oldElementIndex] != other[newElementIndex] {
+                    block(.update(newElementIndex))
+                }
+
+                if (oldIndex - deleteOffsets[oldIndex] + runningOffset) != newIndex {
+                    block(.move(oldElementIndex, newElementIndex))
+                }
+            }
+        }
+    }
+
+    func compareUsingHeckel<C>(_ other: C) -> [Heckel.Step<Index>] where
+        C: Collection,
+        C.Index == Index,
+        C.IndexDistance == IndexDistance,
+        C.Iterator.Element == Iterator.Element
+    {
+        var steps: [Heckel.Step<Index>] = []
+        enumerateDiffStepsUsingHeckel(byComparing: other) { steps.append($0) }
+        return steps
+    }
+
+    func compareUsingHeckel<C, T>(_ other: C, indexTransformer: IndexTransformer<T>) -> (deletes: [T], inserts: [T], moves: [(T, T)], updates: [T]) where
+        C: Collection,
+        C.Index == Index,
+        C.IndexDistance == IndexDistance,
+        C.Iterator.Element == Iterator.Element
+    {
+        var deletes = [T](), inserts = [T](), moves = [(T, T)](), updates = [T]()
+
+        enumerateDiffStepsUsingHeckel(byComparing: other) {
+            switch $0.map(indexTransformer) {
+            case .delete(let value): deletes.append(value)
+            case .insert(let value): inserts.append(value)
+            case .move(let values): moves.append(values)
+            case .update(let value): updates.append(value)
+            }
+        }
+
+        return (deletes, inserts, moves, updates)
+    }
+}
+
+public extension Collection where Iterator.Element: Hashable & Comparable, IndexDistance == Int, Index == Int {
+
+    func compareUsingHeckel<C>(_ other: C) -> (deletes: [Int], inserts: [Int], moves: [(Int, Int)], updates: [Int]) where
+        C: Collection,
+        C.Index == Index,
+        C.IndexDistance == IndexDistance,
+        C.Iterator.Element == Iterator.Element
+    {
+        return compareUsingHeckel(other, indexTransformer: Int.init(integerLiteral:))
     }
 }
