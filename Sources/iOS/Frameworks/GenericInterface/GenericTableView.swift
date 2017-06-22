@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(*, deprecated)
 open class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableView, UITableViewDataSource {
 
     // MARK: Property
@@ -18,21 +19,22 @@ open class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableView
 
     open fileprivate(set) var rowModels: [Model] = [] {
         didSet {
-            /*
-             * Giving an estimated range of possibly visible row
-             * will speed up the diff computation on a much narrow
-             * subset of elements.
-             */
+            // Giving an estimated range of possibly visible row
+            // will speed up the diff computation on a much narrow
+            // subset of elements.
             let range: Range<Int> = {
                 let startIndex = self.indexPathsForVisibleRows?.first?.row ?? 0
                 let endIndex = startIndex + estimatedNumberOfVisibleRows
                 return .init(startIndex ... endIndex)
             }()
 
-            let updates = oldValue.compareThoroughly(rowModels, in: range) { IndexPath(arrayLiteral: 0, $0) }
+            let updates = oldValue.compareThoroughlyUsingLCS(
+                rowModels, in: range,
+                transformer: IndexPath(index: 0).appending
+            )
 
             self.beginUpdates()
-            self.reloadRows(at: updates.reloads, with: .automatic)
+            self.reloadRows(at: updates.updates, with: .automatic)
             self.deleteRows(at: updates.deletes, with: .fade)
             self.insertRows(at: updates.inserts, with: .automatic)
             self.endUpdates()
