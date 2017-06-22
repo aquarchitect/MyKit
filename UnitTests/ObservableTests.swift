@@ -50,7 +50,7 @@ final class ObservableTests: XCTestCase {
         main.flatMap { value in
             Observable.lift("\(value)")
         }.onNext {
-            results += [$0]
+            results.append($0)
         }
 
         main.update(1)
@@ -80,7 +80,7 @@ final class ObservableTests: XCTestCase {
 
             return innerObservable
         }.onNext {
-            result += [$0]
+            result.append($0)
         }
 
         [1, 2].forEach(observable.update)
@@ -125,7 +125,7 @@ final class ObservableTests: XCTestCase {
         var results: [String] = []
 
         let observable = Observable<String>()
-        observable.throttle(1).onNext { results += [$0] }
+        observable.throttle(1).onNext({ results.append($0) })
         ["A", "B", "C"].forEach(observable.update)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {

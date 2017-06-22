@@ -55,15 +55,19 @@ public extension UIView {
             let key = "subview\(index)"
             dictionaryViews[key] = subview
 
-            oppositeFormat += ["\(axis.reversed.initial):|[\(key)]|"]
+            oppositeFormat.append("\(axis.reversed.initial):|[\(key)]|")
             axisFormat += "[" + key + (index == 0 ? "" : "(==subview0)") + "]"
         }
 
         axisFormat += "|"
 
-        (oppositeFormat + [axisFormat])
-            .reduce([]) { $0 + NSLayoutConstraint.constraints(withVisualFormat: $1, options: [], metrics: nil, views: dictionaryViews) }
-            .activate()
+        (oppositeFormat + [axisFormat]).reduce([]) {
+            $0 + NSLayoutConstraint.constraints(
+                withVisualFormat: $1,
+                metrics: nil,
+                views: dictionaryViews
+            )
+        }.activate()
     }
 }
 
