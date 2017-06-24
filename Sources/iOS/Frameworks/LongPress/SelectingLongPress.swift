@@ -10,10 +10,8 @@ import UIKit
 
 open class SelectingLongPress: UILongPressGestureRecognizer {
 
-    /*
-     * anchor: first started index path
-     * track: last known touched index path
-     */
+    // anchor: first started index path
+    // track: last known touched index path
     private var dragger: (anchorIndexPath: IndexPath, trackingIndexPath: IndexPath)?
 
     internal var collectionView: UICollectionView? {

@@ -21,17 +21,16 @@ public extension UITableView {
     }
 
     var estimatedNumberOfVisibleRows: Int {
-        let height: CGFloat
-
-        if self.visibleCells.isEmpty {
-            height = UIScreen.main.bounds.height
-        } else if self.estimatedRowHeight == 0 {
-            height = self.bounds.height
+        if self.estimatedRowHeight == 0 {
+            return Int(self.bounds.height/self.rowHeight)
         } else {
-            height = self.estimatedRowHeight
+            return Int(self.bounds.height/self.estimatedRowHeight)
         }
+    }
 
-        return Int(height/self.rowHeight)
+    var estimatedRangeOfVisibleRows: CountableRange<Int> {
+        let lowerBound = self.indexPathsForVisibleRows?.first?.row ?? 0
+        return lowerBound ..< (lowerBound + estimatedNumberOfVisibleRows)
     }
 
     final func hasSection(section: Int) -> Bool {

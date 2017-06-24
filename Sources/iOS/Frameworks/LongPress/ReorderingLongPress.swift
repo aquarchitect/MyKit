@@ -79,12 +79,10 @@ open class ReorderingLongPress: UILongPressGestureRecognizer {
                 sourceIndexPath != trackingIndexPath
                 else { return }
 
-            /*
-             * As table/collection view implementation follows declarative programming,
-             * it has data source pointing to itself. This gives you an opportunity
-             * to mutate the view models only. The data should be changed on delegation
-             * call.
-             */
+            // As table/collection view implementation follows declarative programming,
+            // it has data source pointing to itself. This gives you an opportunity
+            // to mutate the view models only. The data should be changed on delegation
+            // call.
             tableView.flatMap { $0.dataSource?.tableView?($0, moveRowAt: sourceIndexPath, to: trackingIndexPath) }
             self.sourceIndexPath = trackingIndexPath
         default:
