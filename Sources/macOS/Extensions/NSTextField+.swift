@@ -19,10 +19,4 @@ public extension NSTextField {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-
-    var fieldEditor: NSTextView? {
-        return self.cell.flatMap {
-            $0.fieldEditor(for: self)
-        }
-    }
 }
