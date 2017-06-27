@@ -14,7 +14,7 @@ public extension UIImage {
         let size = attributedString.size()
         let image: UIImage?
 
-        UIGraphicsBeginImageContext(size)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         attributedString.draw(in: .init(origin: .zero, size: size))
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
