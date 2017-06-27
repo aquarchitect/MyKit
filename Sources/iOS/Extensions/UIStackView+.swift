@@ -14,21 +14,21 @@ public extension UIStackView {
     convenience init(arrangedSubviews: [UIView], columns: Int, rows: Int) {
         assert(arrangedSubviews.count == columns * rows)
 
-        let stackViews: [UIView] = (0 ..< rows).lazy.map {
-            Array(arrangedSubviews[($0 * columns) ..< (($0 + 1) * columns)])
-            }.map {
-                UIStackView(arrangedSubviews: $0).then {
-                    $0.alignment = .fill
-                    $0.axis = .horizontal
-                    $0.distribution = .fillEqually
-                    $0.spacing = 1
-                }
-        }
-
-        self.init(arrangedSubviews: stackViews)
+        self.init()
         self.alignment = .fill
         self.axis = .vertical
         self.distribution = .fillEqually
-        self.spacing = 1
+
+        for row in 0 ..< rows {
+            let range = (row * columns) ..< ((row + 1) * columns)
+            let subviews = Array(arrangedSubviews[range])
+
+            UIStackView(arrangedSubviews: subviews).then {
+                $0.alignment = .fill
+                $0.axis = .horizontal
+                $0.distribution = .equalSpacing
+                $0.translatesAutoresizingMaskIntoConstraints = false
+            }.then(self.addArrangedSubview)
+        }
     }
 }

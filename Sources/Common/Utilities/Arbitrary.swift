@@ -9,13 +9,17 @@
 import Darwin
 
 /// _Arbitray_ helps selecting element randomly.
-public struct Arbitrary {}
+public enum Arbitrary {}
 
 public extension Arbitrary {
 
+    /// Return a collection of arbitrary elements using selection 
+    /// sampling technique. The method keeps the original elements
+    /// order in tact.
+    ///
+    /// - See Also: [Algorithm Alley](http://profesores.elo.utfsm.cl/~tarredondo/info/soft-comp/codigo/dt/id-3%20algorithm.pdf)
     static func elements<C>(in c: C, count requested: Int) -> [C.Iterator.Element] where
         C: Collection,
-        C.Index == Int,
         C.IndexDistance == Int
     {
         var examined = 0, selected = 0
@@ -30,7 +34,7 @@ public extension Arbitrary {
             let leftToAdd = requested - selected
 
             if Double(leftToExam) * random < Double(leftToAdd) {
-                results.append(c[examined - 1])
+                results.append(c[c.index(c.startIndex, offsetBy: examined - 1)])
                 selected += 1
             }
         }
@@ -40,7 +44,6 @@ public extension Arbitrary {
 
     static func element<C>(in c: C) -> C.Iterator.Element where
         C: Collection,
-        C.Index == Int,
         C.IndexDistance == Int
     {
         precondition(!c.isEmpty, "No elements for random selecting")
@@ -87,7 +90,7 @@ public extension Arbitrary {
     }
 
     static var hexUInt: UInt {
-        return element(in: ColorPalette.shared.flatMap { $0.hexUInt })
+        return element(in: ColorPalette.shared.flatMap({ $0.hexUInt }))
     }
 }
 
