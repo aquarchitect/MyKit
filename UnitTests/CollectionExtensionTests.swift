@@ -148,6 +148,22 @@ extension CollectionExtensionTests {
     }
 }
 
+extension CollectionExtensionTests {
+
+    func testDiffingIndexesUsingHeckel3 (){
+        let o = [1, 2, 3, 3, 4]
+        let n = [1, 3, 2, 3, 4]
+
+        let (deletes, inserts, moves, updates) = o.compareUsingHeckel(n)
+
+        XCTAssertEqual(deletes, [])
+        XCTAssertEqual(inserts, [])
+        XCTAssertEqual(moves.map({ $0.0 }), [2, 1])
+        XCTAssertEqual(moves.map({ $0.1 }), [1, 2])
+        XCTAssertEqual(updates, [])
+    }
+}
+
 extension CollectionExtensionTests.Cell: Hashable {
 
     var hashValue: Int {
