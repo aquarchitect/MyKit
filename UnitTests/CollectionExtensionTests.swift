@@ -119,6 +119,14 @@ extension CollectionExtensionTests {
         ]
     }
 
+    private var sample3s: [Cell] {
+        return [
+            Cell(title: "Search", hexColorUInt: 0, isSelected: false, shortcut: "F"),
+            Cell(title: "Work", hexColorUInt: 1, isSelected: true, shortcut: "1"),
+            Cell(title: "New", hexColorUInt: 3, isSelected: true, shortcut: "N")
+        ]
+    }
+
     func testDiffingIndexesUsingHeckel1() {
         let (deletes, inserts, moves, updates) = sample1s.compareUsingHeckel(sample2s)
 
@@ -130,10 +138,10 @@ extension CollectionExtensionTests {
     }
 
     func testDiffingIndexesUsingHeckel2() {
-        let (deletes, inserts, moves, updates) = sample1s.compareUsingHeckel(sample2s.dropFirst())
+        let (deletes, inserts, moves, updates) = sample1s.compareUsingHeckel(sample3s)
 
-        XCTAssertEqual(deletes, [0, 1])
-        XCTAssertEqual(inserts, [])
+        XCTAssertEqual(deletes, [1, 2])
+        XCTAssertEqual(inserts, [1])
         XCTAssertEqual(moves.map({ $0.0 }), [])
         XCTAssertEqual(moves.map({ $0.1 }), [])
         XCTAssertEqual(updates, [2])
