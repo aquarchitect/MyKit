@@ -10,19 +10,33 @@ import Foundation
 
 public extension String {
 
-    func substring(between from: String, and to: String) -> String {
-        return Optional("(?<=\(from))[^\(to)]+")
-            .flatMap { self.range(of: $0, options: .regularExpression, range: nil, locale: nil) }
-            .map { self[$0] }
-            ?? ""
+    var fourCharCode: FourCharCode? {
+        guard self.characters.count == 4 else { return nil }
+        return self.utf16.reduce(0) { ($0 << 8) + FourCharCode($1) }
     }
 }
 
 public extension String {
 
-    var fourCharCode: FourCharCode? {
-        guard self.characters.count == 4 else { return nil }
-        return self.utf16.reduce(0) { ($0 << 8) + FourCharCode($1) }
+    /// Finds and returns the range of the first occurrence between given strings
+    /// using regular expression option.
+    func substring(between from: String, and to: String, range searchRange: Range<String.Index>? = nil, locale: Locale? = nil) -> String {
+        return Optional("(?<=\(from))[^\(to)]+")
+            .flatMap({ self.range(of: $0, options: .regularExpression, range: searchRange, locale: locale) })
+            .map({ self[$0] })
+            ?? ""
+    }
+
+    func substring(byOmittingSuffix suffix: String) -> String {
+        return self.range(of: suffix)
+            .map({ self[$0] })
+            ?? self
+    }
+
+    func substring(byOmittingPrefix prefix: String) -> String {
+        return self.range(of: prefix)
+            .map({ self[$0] })
+            ?? self
     }
 }
 
@@ -41,6 +55,9 @@ public extension String {
             .map { ($0 == 0 ? $1.lowercased : $1.capitalized)(locale) }
             .joined(separator: "")
     }
+}
+
+public extension String {
 
     @available(*, deprecated, message: "Prefer system format like autocapitalizationType")
     var capitalizedFirstWord: String {
