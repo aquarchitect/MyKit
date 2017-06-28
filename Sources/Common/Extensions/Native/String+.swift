@@ -29,13 +29,13 @@ public extension String {
 
     func substring(byOmittingSuffix suffix: String) -> String {
         return self.range(of: suffix)
-            .map({ self[$0] })
+            .map({ self[self.startIndex ..< $0.lowerBound] })
             ?? self
     }
 
     func substring(byOmittingPrefix prefix: String) -> String {
         return self.range(of: prefix)
-            .map({ self[$0] })
+            .map({ self[$0.upperBound ..< self.endIndex] })
             ?? self
     }
 }
