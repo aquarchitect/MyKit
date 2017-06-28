@@ -52,7 +52,7 @@
 		C2D1E5221EB287E900DBBEFA /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5151EB287E900DBBEFA /* Box.swift */; };
 		C2D1E5231EB287E900DBBEFA /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5161EB287E900DBBEFA /* Caching.swift */; };
 		C2D1E5241EB287E900DBBEFA /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5171EB287E900DBBEFA /* Composition.swift */; };
-		C2D1E5251EB287E900DBBEFA /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5181EB287E900DBBEFA /* Diff.swift */; };
+		C2D1E5251EB287E900DBBEFA /* LCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5181EB287E900DBBEFA /* LCS.swift */; };
 		C2D1E5261EB287E900DBBEFA /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5191EB287E900DBBEFA /* Empty.swift */; };
 		C2D1E5271EB287E900DBBEFA /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E51A1EB287E900DBBEFA /* Matrix.swift */; };
 		C2D1E5281EB287E900DBBEFA /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E51B1EB287E900DBBEFA /* Mutex.swift */; };
@@ -92,7 +92,7 @@
 		C2D1E57B1EB28FC900DBBEFA /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5151EB287E900DBBEFA /* Box.swift */; };
 		C2D1E57C1EB28FC900DBBEFA /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5161EB287E900DBBEFA /* Caching.swift */; };
 		C2D1E57D1EB28FC900DBBEFA /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5171EB287E900DBBEFA /* Composition.swift */; };
-		C2D1E57E1EB28FC900DBBEFA /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5181EB287E900DBBEFA /* Diff.swift */; };
+		C2D1E57E1EB28FC900DBBEFA /* LCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5181EB287E900DBBEFA /* LCS.swift */; };
 		C2D1E57F1EB28FC900DBBEFA /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5191EB287E900DBBEFA /* Empty.swift */; };
 		C2D1E5801EB28FC900DBBEFA /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E51A1EB287E900DBBEFA /* Matrix.swift */; };
 		C2D1E5811EB28FC900DBBEFA /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E51B1EB287E900DBBEFA /* Mutex.swift */; };
@@ -313,7 +313,7 @@
 		C2D1E5151EB287E900DBBEFA /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		C2D1E5161EB287E900DBBEFA /* Caching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Caching.swift; sourceTree = "<group>"; };
 		C2D1E5171EB287E900DBBEFA /* Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
-		C2D1E5181EB287E900DBBEFA /* Diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diff.swift; sourceTree = "<group>"; };
+		C2D1E5181EB287E900DBBEFA /* LCS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCS.swift; sourceTree = "<group>"; };
 		C2D1E5191EB287E900DBBEFA /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 		C2D1E51A1EB287E900DBBEFA /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		C2D1E51B1EB287E900DBBEFA /* Mutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mutex.swift; sourceTree = "<group>"; };
@@ -784,7 +784,7 @@
 				C2D1E5161EB287E900DBBEFA /* Caching.swift */,
 				C2D1E5171EB287E900DBBEFA /* Composition.swift */,
 				C21A6AF31EBC124F00B42314 /* Curry.swift */,
-				C2D1E5181EB287E900DBBEFA /* Diff.swift */,
+				C2D1E5181EB287E900DBBEFA /* LCS.swift */,
 				C2669D4B1EFB60C000422C4D /* Heckel.swift */,
 				C2D1E5191EB287E900DBBEFA /* Empty.swift */,
 				C2D1E51A1EB287E900DBBEFA /* Matrix.swift */,
@@ -1319,7 +1319,7 @@
 				C2D1E5941EB28FD300DBBEFA /* NSMutableAttributedString+.swift in Sources */,
 				C2D1E57C1EB28FC900DBBEFA /* Caching.swift in Sources */,
 				C2D1E6291EB2937F00DBBEFA /* ActionWrapper.swift in Sources */,
-				C2D1E57E1EB28FC900DBBEFA /* Diff.swift in Sources */,
+				C2D1E57E1EB28FC900DBBEFA /* LCS.swift in Sources */,
 				C2D1E5901EB28FD300DBBEFA /* Date+.swift in Sources */,
 				C2D1E61A1EB2935C00DBBEFA /* FontRegistry.swift in Sources */,
 				C2D1E61C1EB2936300DBBEFA /* CKDatabase+.swift in Sources */,
@@ -1371,7 +1371,7 @@
 				C2D1E54F1EB2881200DBBEFA /* NSMutableAttributedString+.swift in Sources */,
 				C2D1E5261EB287E900DBBEFA /* Empty.swift in Sources */,
 				C2D1E53C1EB287FC00DBBEFA /* Sequence+.swift in Sources */,
-				C2D1E5251EB287E900DBBEFA /* Diff.swift in Sources */,
+				C2D1E5251EB287E900DBBEFA /* LCS.swift in Sources */,
 				C2D1E5781EB2888400DBBEFA /* NSManagedObjectContext+.swift in Sources */,
 				C2D1E5F11EB2929F00DBBEFA /* UIViewController+.swift in Sources */,
 				C2D1E5F51EB292EC00DBBEFA /* SelectingLongPress.swift in Sources */,

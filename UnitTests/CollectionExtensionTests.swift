@@ -1,4 +1,4 @@
-// 
+//
 // CollectionExtensionTests.swift
 // MyKit
 // 
@@ -33,25 +33,25 @@ extension CollectionExtensionTests {
 extension CollectionExtensionTests {
 
     private func commonString(between str1: String, and str2: String, in range: Range<Int>? = nil) -> String {
-        let c1s = str1.characters.map { $0 }
-        let c2s = str2.characters.map { $0 }
+        let c1s = Array(str1.characters)
+        let c2s = Array(str2.characters)
 
-        return String(c1s.repeatingElements(byComparing: c2s, in: range))
+        return String(c1s.repeatingElementsUsingLCS(byComparing: c2s, in: range))
     }
 
-    func testRepeatingElementsWithManyElements() {
+    func testRepeatingElementsUsingLCSWithManyElements() {
         XCTAssertEqual(commonString(between: "ABDC", and: "ACG"), "AC")
     }
 
-    func testRepeatingElementsWithManyElementsInRange() {
-        XCTAssertEqual(commonString(between: "ABDC", and: "ACG", in: Range(1...5)), "C")
+    func testRepeatingElementsUsingLCSWithManyElementsInRange() {
+        XCTAssertEqual(commonString(between: "ABDC", and: "ACG", in: 1..<6), "C")
     }
 
-    func testRepeatingElementsWithOneElement() {
+    func testRepeatingElementsUsingLCSWithSingleElement() {
         XCTAssertEqual(commonString(between: "A", and: "B"), "")
     }
 
-    func testRepeatingElementsWithEmptyness() {
+    func testRepeatingElementsUsingLCSWithEmptyness() {
         XCTAssertEqual(commonString(between: "", and: ""), "")
     }
 }
@@ -62,26 +62,98 @@ extension CollectionExtensionTests {
         return ("ABDC".characters.map { $0 }, "ACG".characters.map { $0 })
     }
 
-    /*
-     * Unfortunately, the current Swift does not allow extension
-     * of a type with constraints to conform a protocol.
-     * This is a naive test but it does the job.
-     */
-    func testChangingIndexesAndElements() {
+    // Unfortunately, the current Swift does not allow extension
+    // of a type with constraints to conform a protocol.
+    // This is a naive test but it does the job.
+    func testDiffingElementsUsingLCS() {
         let (c1s, c2s) = sampleCharacters
-        let changes = c1s.compare(c2s)
+        let changes = c1s.compareUsingLCS(c2s)
 
-        XCTAssertEqual(changes.map { $0.isDeleted }, [true, true, false])
-        XCTAssertEqual(changes.map { $0.value.index }, [1, 2, 2])
-        XCTAssertEqual(changes.map { $0.value.element }, ["B", "D", "G"])
+        XCTAssertEqual(changes.map({ $0.isDeleted }), [true, true, false])
+        XCTAssertEqual(changes.map({ $0.value.index }), [1, 2, 2])
+        XCTAssertEqual(changes.map({ $0.value.element }), ["B", "D", "G"])
     }
 
-    func testOptimalChangingIndexPaths() {
+    func testDiffingIndexesUsingLCS() {
         let (c1s, c2s) = sampleCharacters
-        let changes1: (Array<IndexPath>, Array<IndexPath>) = c1s.compareOptimally(c2s) { IndexPath(arrayLiteral: 0, $0) }
-        let changes2: (Array<IndexPath>, Array<IndexPath>) = c1s.compareOptimally(c2s, in: Range(1...5)) { IndexPath(arrayLiteral: 0, $0) }
+        let (deletes1, inserts1) = c1s.compareOptimallyUsingLCS(
+            c2s,
+            transformer: IndexPath(index: 0).appending
+        )
+        let (deletes2, inserts2) = c1s.compareOptimallyUsingLCS(
+            c2s,
+            in: 1 ..< 6,
+            transformer: IndexPath(index: 0).appending
+        )
 
-        XCTAssertEqual(changes1.0, changes2.0)
-        XCTAssertEqual(changes1.1, changes2.1)
+        XCTAssertEqual(deletes1, deletes2)
+        XCTAssertEqual(inserts1, inserts2)
+    }
+}
+
+extension CollectionExtensionTests {
+
+    fileprivate struct Cell {
+
+        let title: String
+        let hexColorUInt: UInt
+        let isSelected: Bool
+        let shortcut: String?
+    }
+
+    private var sample1s: [Cell] {
+        return [
+            Cell(title: "Search", hexColorUInt: 0, isSelected: false, shortcut: "F"),
+            Cell(title: "Pesonal", hexColorUInt: 1, isSelected: true, shortcut: "1"),
+            Cell(title: "Duende", hexColorUInt: 2, isSelected: false, shortcut: "2"),
+            Cell(title: "New", hexColorUInt: 3, isSelected: false, shortcut: "N")
+        ]
+    }
+
+    private var sample2s: [Cell] {
+        return [
+            Cell(title: "Search", hexColorUInt: 0, isSelected: false, shortcut: "F"),
+            Cell(title: "Pesonal", hexColorUInt: 1, isSelected: false, shortcut: "1"),
+            Cell(title: "Duende", hexColorUInt: 2, isSelected: true, shortcut: "2"),
+            Cell(title: "New", hexColorUInt: 3, isSelected: false, shortcut: "N")
+        ]
+    }
+
+    func testDiffingIndexesUsingHeckel1() {
+        let (deletes, inserts, moves, updates) = sample1s.compareUsingHeckel(sample2s)
+
+        XCTAssertEqual(deletes, [])
+        XCTAssertEqual(inserts, [])
+        XCTAssertEqual(moves.map({ $0.0 }), [])
+        XCTAssertEqual(moves.map({ $0.1 }), [])
+        XCTAssertEqual(updates, [1, 2])
+    }
+
+    func testDiffingIndexesUsingHeckel2() {
+        let (deletes, inserts, moves, updates) = sample1s.compareUsingHeckel(sample2s.dropFirst())
+
+        XCTAssertEqual(deletes, [0, 1])
+        XCTAssertEqual(inserts, [])
+        XCTAssertEqual(moves.map({ $0.0 }), [])
+        XCTAssertEqual(moves.map({ $0.1 }), [])
+        XCTAssertEqual(updates, [2])
+    }
+}
+
+extension CollectionExtensionTests.Cell: Hashable {
+
+    var hashValue: Int {
+        return title.appending(shortcut ?? "").hashValue
+            + hexColorUInt.hashValue
+    }
+}
+
+extension CollectionExtensionTests.Cell: Equatable {
+
+    static func == (lhs: CollectionExtensionTests.Cell, rhs: CollectionExtensionTests.Cell) -> Bool {
+        return lhs.title == rhs.title
+            && lhs.hexColorUInt == rhs.hexColorUInt
+            && lhs.isSelected == rhs.isSelected
+            && lhs.shortcut == rhs.shortcut
     }
 }

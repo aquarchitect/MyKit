@@ -21,7 +21,7 @@ public extension Collection where Index: SignedInteger {
 
 public extension Collection where Iterator.Element: Comparable {
 
-    /// Return the first element using Binary Search algorithm.
+    /// Returns an index of the first element using Binary Search algorithm.
     ///
     /// - Parameter element: a element to search for.
     /// - Warning: this should only be called on sorted collection
@@ -48,7 +48,6 @@ public extension Collection where Iterator.Element: Comparable {
     }
 }
 
-/// :nodoc:
 extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
 
     typealias Ranges<I: Comparable> = (this: Range<I>, other: Range<I>)
@@ -57,7 +56,7 @@ extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int
         return self.startIndex ..< self.endIndex
     }
 
-    /// Return a tuple of old and new collection ranges and a Longest Common Subsequence lookup table.
+    /// Return a tuple of collections' clamped ranges and a longest common subsequence (LCS) lookup table.
     ///
     /// - Parameters:
     ///     - other: a collection to compare with.
@@ -103,7 +102,7 @@ extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int
 
 public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
 
-    /// Return an array of elements that both collection contains.
+    /// Returns an array of elements that both collection contains.
     /// 
     /// - Parameters:
     ///     - other: a collection to compare with.
@@ -144,13 +143,13 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
 
     typealias Step = (index: Index, element: Generator.Element)
 
-    /// Return a tuple of old and new collection ranges and Longest Common Subsequence diffing results.
+    /// Returns a tuple of collections' clamped ranges and longest common subsequence (LCS) diffing results.
     ///
     /// - Parameters:
     ///     - other: a collection to compare with.
     ///     - range: a range for both collection to apply the algorithm on.
     ///       If `range` is `nil`, the operation will perform on the entire collections.
-    fileprivate func _backtrackChangesUsingLCS<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges<Index>, AnyIterator<Diff<Step>>) where
+    fileprivate func _backtrackChangesUsingLCS<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges<Index>, AnyIterator<LCS.Diff<Step>>) where
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
@@ -161,7 +160,7 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         var i = ranges.this.count + 1
         var j = ranges.other.count + 1
 
-        let iterator = AnyIterator<Diff<Step>> {
+        let iterator = AnyIterator<LCS.Diff<Step>> {
             while i >= 1 && j >= 1 {
                 switch matrix[i, j] {
                 case matrix[i, j-1]:
@@ -185,7 +184,7 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
     }
 
     @available(*, deprecated, renamed: "_backtrackChangesUsingLCS(byComparing:in:)")
-    fileprivate func _backtrackChanges<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges<Index>, AnyIterator<Diff<Step>>) where
+    fileprivate func _backtrackChanges<C>(byComparing other: C, in range: Range<Index>? = nil) -> (Ranges<Index>, AnyIterator<LCS.Diff<Step>>) where
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
@@ -194,13 +193,13 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         return _backtrackChanges(byComparing: other, in: range)
     }
 
-    /// Return an iterator of Longest Common Subsquence diffing results.
+    /// Return an iterator of longest common subsquence (LCS) diffing results.
     ///
     /// - Parameters:
     ///     - other: a collection to compare with.
     ///     - range: a range for both collection to apply the algorithm on.
     ///       If `range` is `nil`, the operation will perform on the entire collections.
-    func backtrackChangesUsingLCS<C>(byComparing other: C, in range: Range<Index>? = nil) -> AnyIterator<Diff<Step>> where
+    func backtrackChangesUsingLCS<C>(byComparing other: C, in range: Range<Index>? = nil) -> AnyIterator<LCS.Diff<Step>> where
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
@@ -210,7 +209,7 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
     }
 
     @available(*, deprecated, renamed: "backtrackChangesUsingLCS(byComparing:in:)")
-    func backtrackChanges<C>(byComparing other: C, in range: Range<Index>? = nil) -> AnyIterator<Diff<Step>> where
+    func backtrackChanges<C>(byComparing other: C, in range: Range<Index>? = nil) -> AnyIterator<LCS.Diff<Step>> where
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
@@ -219,13 +218,13 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         return backtrackChangesUsingLCS(byComparing: other, in: range)
     }
 
-    /// Return an array of Longest Common Subsequence diffing results.
+    /// Return an array of longest common subsequence LCS) diffing results.
     ///
     /// - Parameters:
     ///     - other: a collection to compare with.
     ///     - range: a range for both collection to apply the algorithm on.
     ///       If `range` is `nil`, the operation will perform on the entire collections.
-    func compareUsingLCS<C>(_ other: C, in range: Range<Index>? = nil) -> [Diff<Step>] where
+    func compareUsingLCS<C>(_ other: C, in range: Range<Index>? = nil) -> [LCS.Diff<Step>] where
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
@@ -234,15 +233,15 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         let (ranges, changes) = _backtrackChangesUsingLCS(byComparing: other, in: range)
         let count = Swift.max(ranges.this.count, ranges.other.count)
 
-        var results: [Diff<Step>] = []
+        var results: [LCS.Diff<Step>] = []
         results.reserveCapacity(count)
-        changes.forEach { results.insert($0, at: 0) }
+        changes.forEach({ results.insert($0, at: 0) })
 
         return results
     }
 
     @available(*, deprecated, renamed: "compareUsingLCS(_:in:)")
-    func compare<C>(_ other: C, in range: Range<Index>? = nil) -> [Diff<Step>] where
+    func compare<C>(_ other: C, in range: Range<Index>? = nil) -> [LCS.Diff<Step>] where
         C: Collection,
         C.Index == Index,
         C.Iterator.Element == Iterator.Element,
@@ -254,8 +253,8 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
 
 public extension Collection where SubSequence.Iterator.Element: Equatable, Index == Int {
 
-    /// Return deleting and inserting `U`-type indexes from Longest Common Subsequence
-    /// diffing that can be used to apply on collection interfaces such as `UICollectionView`,
+    /// Return deleting and inserting indexes of longest common subsequence (LCS) diffing 
+    /// results that can be used to update collection interfaces such as `UICollectionView`,
     /// `UITableView`, `NSTableView`, `NSCollectionView`.
     ///
     /// - Complexity: O(m * n)
@@ -295,18 +294,7 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         return compareOptimallyUsingLCS(other, in: range, transformer: transformer)
     }
 
-    /// Return deleting and inserting indexes from Longest Common Subsequence diffing
-    /// that can be used to apply on collection interfaces such as `UICollectionView`, 
-    /// `UITableView`, `NSTableView`, `NSCollectionView`.
-    ///
-    /// - Complexity: O(m * n)
-    /// - Parameters:
-    ///     - other: a collection to compare with.
-    ///     - range: a range for both collection to apply the algorithm on.
-    ///       If `range` is `nil`, the operation will perform on the entire collections.
-    ///     - transformer: a block to apply diffing indexes with.
-    /// - Note: the results are guaranteed to have the elements' order reserved that
-    ///         can apply on `self` and produce `other`.
+    /// Similar to `compareOptimallyUsingLCS` but with interger index type.
     func compareOptimallyUsingLCS<C>(_ other: C, in range: Range<Index>? = nil) -> (deletes: [Int], inserts: [Int]) where
         C: Collection,
         C.Index == Index,
@@ -326,18 +314,8 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         return compareOptimallyUsingLCS(other, in: range, transformer: Int.init(integerLiteral:))
     }
 
-    /// Return updating, deleting, and inserting `U`-type indexes from Longest Common
-    /// Subsequence diffing that can be used to apply on collection interfaces such as 
-    /// `UICollectionView`, `UITableView`, `NSTableView`, `NSCollectionView`.
-    ///
-    /// - Complexity: O(m * n)
-    /// - Parameters:
-    ///     - other: a collection to compare with.
-    ///     - range: a range for both collection to apply the algorithm on.
-    ///       If `range` is `nil`, the operation will perform on the entire collections.
-    ///     - transformer: a block to apply diffing indexes with.
-    /// - Note: the results are guaranteed to have the elements' order reserved that 
-    ///         can apply on `self` and produce `other`.
+    /// Return deleting and inserting indexes of longest common subsequence (LCS) diffing 
+    /// results that are similar to `compareOptimallyUsingLCS`.
     func compareThoroughlyUsingLCS<C, T>(_ other: C, in range: Range<Index>? = nil, transformer: IndexTransformer<T>) -> (updates: [T], deletes: [T], inserts: [T]) where
         T: Comparable,
         C: Collection,
@@ -378,15 +356,7 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
         return compareThoroughlyUsingLCS(other, in: range, transformer: transformer)
     }
 
-    /// Return updating, deleting, and inserting indexes from Longest Common Subsequence 
-    /// diffing that can apply on collection interfaces such as `UICollectionView`, 
-    /// `UITableView`, `NSTableView`, `NSCollectionView`.
-    ///
-    /// - Complexity: O(m * n)
-    /// - Parameters:
-    ///     - other: a collection to compare with.
-    ///     - range: a range for both collection to apply the algorithm on.
-    ///       If `range` is `nil`, the operation will perform on the entire collections.
+    /// Similar to `compareThoroughlyUsingLCS` but with specific interger index type.
     func compareThoroughlyUsingLCS<C>(_ other: C, in range: Range<Index>? = nil) -> (updates: [Int], deletes: [Int], inserts: [Int]) where
         C: Collection,
         C.Index == Index,
@@ -407,9 +377,9 @@ public extension Collection where SubSequence.Iterator.Element: Equatable, Index
     }
 }
 
-public extension Collection where Iterator.Element: Hashable & Comparable, IndexDistance == Int {
+public extension Collection where Iterator.Element: Hashable, IndexDistance == Int {
 
-    /// Allows the enumeration on the results of Paul Heckel's isolating differences between files technique.
+    /// Allows the enumeration on the results of Paul Heckel's isolating differences between files.
     ///
     /// - Parameters:
     ///     - other: a collection to compare with.
@@ -417,7 +387,7 @@ public extension Collection where Iterator.Element: Hashable & Comparable, Index
     /// - See Also: [Paul Heckel's paper](http://documents.scribd.com/docs/10ro9oowpo1h81pgh1as.pdf)
     /// - Note: the return results can apply directly to the colelction interfaces.
     /// - Warning: there is no guarantee that the elements' order is reserved.
-    func enumerateDiffStepsUsingHeckel<C>(byComparing other: C, block: (Heckel.Step<Index>) -> Void) where
+    func enumerateDiffStepsUsingHeckel<C>(byComparing other: C, block: (Heckel.Diff<Index>) -> Void) where
         C: Collection,
         C.Index == Index,
         C.IndexDistance == IndexDistance,
@@ -425,22 +395,22 @@ public extension Collection where Iterator.Element: Hashable & Comparable, Index
     {
         var oa: [Heckel.Entry] = [], na: [Heckel.Entry] = []
 
-        var table = Dictionary<Iterator.Element, Heckel.Symbol>(minimumCapacity: Swift.max(self.count.hashValue, other.count.hashValue))
+        var table = Dictionary<Int, Heckel.Symbol>(minimumCapacity: Swift.max(self.count.hashValue, other.count.hashValue))
 
         // phase 1
         for element in other {
-            let symbol = table[element] ?? Heckel.Symbol()
+            let symbol = table[element.hashValue] ?? Heckel.Symbol()
 
-            table[element] = symbol
+            table[element.hashValue] = symbol
             symbol.nc.increment()
             na.append(.symbol(symbol))
         }
 
         // phase 2
         for (index, element) in self.enumerated() {
-            let symbol = table[element] ?? Heckel.Symbol()
+            let symbol = table[element.hashValue] ?? Heckel.Symbol()
 
-            table[element] = symbol
+            table[element.hashValue] = symbol
             symbol.then {
                 $0.oc.increment()
                 $0.olno.append(index)
@@ -507,6 +477,7 @@ public extension Collection where Iterator.Element: Hashable & Comparable, Index
                 let oldElementIndex = self.index(self.startIndex, offsetBy: oldIndex)
                 let newElementIndex = other.index(other.startIndex, offsetBy: newIndex)
 
+                // update are elements that have same hash but are not equal
                 if self[oldElementIndex] != other[newElementIndex] {
                     block(.update(newElementIndex))
                 }
@@ -518,30 +489,32 @@ public extension Collection where Iterator.Element: Hashable & Comparable, Index
         }
     }
 
-    /// Return an array of Paul Heckel's diffing results.
+    /// Returns an array of Paul Heckel's diffing results.
     ///
     /// - Parameter other: a collection to compare with.
     /// - Note: the return results can apply directly to the colelction interfaces.
     /// - Warning: there is no guarantee that the elements' order is reserved.
-    func compareUsingHeckel<C>(_ other: C) -> [Heckel.Step<Index>] where
+    func compareUsingHeckel<C>(_ other: C) -> [Heckel.Diff<Index>] where
         C: Collection,
         C.Index == Index,
         C.IndexDistance == IndexDistance,
         C.Iterator.Element == Iterator.Element
     {
-        var steps: [Heckel.Step<Index>] = []
+        var steps: [Heckel.Diff<Index>] = []
         enumerateDiffStepsUsingHeckel(byComparing: other) { steps.append($0) }
         return steps
     }
 
-    /// Return deletes, inserts, moves, and updates `U`-type indexes from Paul Heckel diffing.
+    /// Returns deletes, inserts, moves, and updates indexes of Paul Heckel diffing results.
+    ///
+    /// Updates are elements that have same hash but are not equal.
     ///
     /// - Parameters:
     ///     - other: a collection to compare with.
     ///     - block: a block to apply diffing result with.
     /// - Note: the return results can apply directly to the colelction interfaces.
     /// - Warning: there is no guarantee that the elements' order is reserved.
-    func compareUsingHeckel<C, T>(_ other: C, indexTransformer: IndexTransformer<T>) -> (deletes: [T], inserts: [T], moves: [(T, T)], updates: [T]) where
+    func compareUsingHeckel<C, T>(_ other: C, transformer: IndexTransformer<T>) -> (deletes: [T], inserts: [T], moves: [(T, T)], updates: [T]) where
         C: Collection,
         C.Index == Index,
         C.IndexDistance == IndexDistance,
@@ -550,7 +523,7 @@ public extension Collection where Iterator.Element: Hashable & Comparable, Index
         var deletes = [T](), inserts = [T](), moves = [(T, T)](), updates = [T]()
 
         enumerateDiffStepsUsingHeckel(byComparing: other) {
-            switch $0.map(indexTransformer) {
+            switch $0.map(transformer) {
             case .delete(let value): deletes.append(value)
             case .insert(let value): inserts.append(value)
             case .move(let values): moves.append(values)
@@ -562,21 +535,15 @@ public extension Collection where Iterator.Element: Hashable & Comparable, Index
     }
 }
 
-public extension Collection where Iterator.Element: Hashable & Comparable, IndexDistance == Int, Index == Int {
+public extension Collection where Iterator.Element: Hashable, IndexDistance == Int, Index == Int {
 
-    /// Return deletes, inserts, moves, and updates indexes from Paul Heckel diffing.
-    ///
-    /// - Parameters:
-    ///     - other: a collection to compare with.
-    ///     - block: a block to apply diffing result with.
-    /// - Note: the return results can apply directly to the colelction interfaces.
-    /// - Warning: there is no guarantee that the elements' order is reserved.
+    /// Similar to `compareUsingHeckel` but with specific interger index type.
     func compareUsingHeckel<C>(_ other: C) -> (deletes: [Int], inserts: [Int], moves: [(Int, Int)], updates: [Int]) where
         C: Collection,
         C.Index == Index,
         C.IndexDistance == IndexDistance,
         C.Iterator.Element == Iterator.Element
     {
-        return compareUsingHeckel(other, indexTransformer: Int.init(integerLiteral:))
+        return compareUsingHeckel(other, transformer: Int.init(integerLiteral:))
     }
 }

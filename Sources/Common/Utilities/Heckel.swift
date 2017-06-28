@@ -13,7 +13,7 @@ public enum Heckel {
         case zero, one, many
     }
 
-    public enum Step<T> {
+    public enum Diff<T> {
 
         case insert(T)
         case delete(T)
@@ -57,9 +57,9 @@ extension Heckel.Counter: CustomStringConvertible {
     }
 }
 
-public extension Heckel.Step {
+public extension Heckel.Diff {
 
-    func map<U>(_ transformer: (T) throws -> U) rethrows -> Heckel.Step<U> {
+    func map<U>(_ transformer: (T) throws -> U) rethrows -> Heckel.Diff<U> {
         switch self {
         case .insert(let value): return try .insert(transformer(value))
         case .delete(let value): return try .delete(transformer(value))
@@ -69,7 +69,7 @@ public extension Heckel.Step {
     }
 }
 
-extension Heckel.Step: CustomStringConvertible {
+extension Heckel.Diff: CustomStringConvertible {
 
     public var description: String {
         switch self {
