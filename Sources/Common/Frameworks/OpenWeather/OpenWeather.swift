@@ -65,9 +65,12 @@ public final class OpenWeather {
     // MARK: Support Method
 
     fileprivate func fetch(_ method: Method, with comps: Component...) -> Observable<(Data, URLResponse)> {
-        let baseComps: [Component] = [.apiKey(apiKey),
-                                      .language(language),
-                                      .units(format)]
+        let baseComps: [Component] = [
+            .apiKey(apiKey),
+            .language(language),
+            .units(format)
+        ]
+        
         let fullURL = baseURL
             + String(version)
             + (method + .compound(baseComps + comps))

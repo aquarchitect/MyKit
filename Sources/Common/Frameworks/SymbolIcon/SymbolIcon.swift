@@ -11,7 +11,11 @@ import CoreGraphics
 
 public struct SymbolIcon {
 
+    // MARK: Properties
+
     fileprivate let character: Character
+
+    // MARK: Initialization
 
     public init(_ character: Character) {
         self.character = character
@@ -20,11 +24,9 @@ public struct SymbolIcon {
 
 public extension SymbolIcon {
 
-    func attributedString(ofSize size: CGFloat) -> NSMutableAttributedString {
-        let name = "Ionicons", file = "SymbolIcon"
-        
+    func attributedString(ofSize size: CGFloat) -> NSMutableAttributedString {        
         return NSMutableAttributedString(string: "\(character)").then {
-            $0.addFont(.getFont(name: name, size: size, fromFile: file))
+            $0.addFont(.getFont(name: "Ionicons", size: size, fromFile: "SymbolIcon"))
         }
     }
 }

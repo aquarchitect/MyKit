@@ -40,9 +40,7 @@ public extension NSBezierPath {
     }
 
     func drawLines(_ points: [NSPoint]) {
-        precondition(points.count > 1, "Invalid number of points!")
-
-        self.move(to: points.first!)
+        points.first.map(self.move(to:))
         points.dropFirst().forEach(self.line)
     }
 

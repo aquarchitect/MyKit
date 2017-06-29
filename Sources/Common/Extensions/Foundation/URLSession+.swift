@@ -12,7 +12,10 @@ public extension URLSession {
 
     func dataTask(with url: URL) -> Observable<(Data, URLResponse)> {
         let observable = Observable<(Data, URLResponse)>()
-        self.dataTask(with: url) { observable.update(zip($0.0, $0.1), $0.2) }
+        self.dataTask(
+            with: url,
+            completionHandler: { observable.update(zip($0.0, $0.1), $0.2) }
+        )
         return observable
     }
 }
