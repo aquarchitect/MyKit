@@ -11,7 +11,13 @@ import Speech
 @available(iOS 10.0, *)
 public extension SFSpeechRecognizer {
 
-    func recognitionTask(_ request: SFSpeechRecognitionRequest) -> Observable<SFSpeechRecognitionResult> {
+    static var authorizationRequest: Observable<SFSpeechRecognizerAuthorizationStatus> {
+        return Observable().then {
+            SFSpeechRecognizer.requestAuthorization($0.update)
+        }
+    }
+
+    func recognitionTask(with request: SFSpeechRecognitionRequest) -> Observable<SFSpeechRecognitionResult> {
         return Observable().then {
             self.recognitionTask(with: request, resultHandler: $0.update)
         }
