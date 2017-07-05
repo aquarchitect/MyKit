@@ -20,36 +20,34 @@ final class ActionTrailingTests: XCTestCase {
 #if os(iOS)
     func testAction() {
         let button = UIButton()
-        let buttonType = type(of: button)
         button.addAction({
-            XCTAssert(buttonType == type(of: $0))
+            XCTAssert(type(of: $0) == UIButton.self)
         }, for: .touchUpInside)
 
-        let gesture = UIGestureRecognizer()
-        let gestureType = type(of: gesture)
-        gesture.addAction({
-            XCTAssert(gestureType == type(of: $0))
-        })
+        button.handleAction(button)
 
-        button.executeAction()
-        gesture.executeAction()
+        let gesture = UITapGestureRecognizer()
+        gesture.addAction {
+            XCTAssert(type(of: $0) == UITapGestureRecognizer.self)
+        }
+
+        gesture.handleAction(gesture)
     }
 #elseif os(OSX)
     func testAction() {
         let button = NSButton()
-        let buttonType = type(of: button)
-        button.addAction({
-            XCTAssert(buttonType == type(of: $0))
-        })
+        button.addAction {
+            XCTAssert(type(of: $0) == NSButton.self)
+        }
+
+        button.handleAction(button)
 
         let gesture = NSGestureRecognizer()
-        let gestureType = type(of: gesture)
-        gesture.addAction({
-            XCTAssert(gestureType == type(of: $0))
-        })
+        gesture.addAction {
+            XCTAssert(type(of: $0) == NSGestureRecognizer.self)
+        }
 
-        button.executeAction()
-        gesture.executeAction()
+        gesture.handleAction(gesture)
     }
 #endif
 }

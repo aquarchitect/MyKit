@@ -47,4 +47,11 @@ public extension LCS.Diff {
         case .insert(let value): return try .insert(transformer(value))
         }
     }
+
+    func flatMap<U>(_ transfomer: (T) throws -> LCS.Diff<U>) rethrows -> LCS.Diff<U> {
+        switch self {
+        case .delete(let value): return try transfomer(value)
+        case .insert(let value): return try transfomer(value)
+        }
+    }
 }

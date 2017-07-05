@@ -6,64 +6,64 @@
 // Copyright (c) 2015 Hai Nguyen.
 // 
 
-private var GlobalToken: UInt8 = 0
-
 import Foundation
+
+private var GlobalToken: UInt8 = 0
 
 public protocol ActionTrailing: class {}
 
-extension ActionTrailing {
+extension ActionTrailing where Self: NSObject {
 
-    func setAction(_ handler: @escaping (Self) -> Void) {
-        objc_setAssociatedObject(
-            self,
-            &GlobalToken,
-            ActionWrapper(handler),
-            objc_AssociationPolicy.OBJC_ASSOCIATION_COPY_NONATOMIC
-        )
-    }
-
-    func executeAction() {
-        (objc_getAssociatedObject(self, &GlobalToken) as? ActionWrapper<Self>)?.handle(self)
-    }
-}
-
-extension NSObject {
-
-    func handleAction() {
-        (self as? ActionTrailing)?.executeAction()
+    var block: ((Self) -> Void)? {
+        get { return getAssociatedObject() }
+        set { newValue.map(setAssociatedObject) }
     }
 }
 
 #if os(iOS)
 import UIKit
 
-extension UIControl: ActionTrailing {}
+extension UIControl: ActionTrailing {
+
+    func handleAction(_ sender: UIControl) {
+        block?(sender)
+    }
+}
 
 public extension ActionTrailing where Self: UIControl {
 
-    func addAction(_ handler: @escaping (Self) -> Void, for controlEvents: UIControlEvents) {
-        self.setAction(handler)
+    func addAction(_ block: @escaping (Self) -> Void, for controlEvents: UIControlEvents) {
+        self.block = block
         self.addTarget(self, action: #selector(handleAction), for: controlEvents)
     }
 }
 
-extension UIGestureRecognizer: ActionTrailing {}
+extension UIGestureRecognizer: ActionTrailing {
+
+    func handleAction(_ sender: UIGestureRecognizer) {
+        block?(sender)
+    }
+}
 
 public extension ActionTrailing where Self: UIGestureRecognizer {
 
-    func addAction(_ handler: @escaping (Self) -> Void) {
-        self.setAction(handler)
+    func addAction(_ block: @escaping (Self) -> Void) {
+        self.block = block
         self.addTarget(self, action: #selector(handleAction))
     }
 }
 
-extension UIBarButtonItem: ActionTrailing {}
+extension UIBarButtonItem: ActionTrailing {
+
+    func handleAction(_ sender: UIBarButtonItem) {
+        block?(sender)
+    }
+}
 
 public extension ActionTrailing where Self: UIBarButtonItem {
 
-    func addAction(_ handler: @escaping (Self) -> Void) {
-        self.setAction(handler)
+    func addAction(_ block: @escaping (Self) -> Void) {
+        self.block = block
         self.target = self
         self.action = #selector(handleAction)
     }
@@ -72,34 +72,49 @@ public extension ActionTrailing where Self: UIBarButtonItem {
 #elseif os(OSX)
 import AppKit
 
-extension NSControl: ActionTrailing {}
+extension NSControl: ActionTrailing {
+
+    func handleAction(_ sender: NSControl) {
+        block?(sender)
+    }
+}
 
 public extension ActionTrailing where Self: NSControl {
 
-    func addAction(_ handler: @escaping (Self) -> Void) {
-        self.setAction(handler)
+    func addAction(_ block: @escaping (Self) -> Void) {
+        self.block = block
         self.action = #selector(handleAction)
         self.target = self
     }
 }
 
-extension NSMenuItem: ActionTrailing {}
+extension NSMenuItem: ActionTrailing {
+
+    func handleAction(_ sender: NSMenuItem) {
+        block?(sender)
+    }
+}
 
 public extension ActionTrailing where Self: NSMenuItem {
 
-    func addAction(_ handler: @escaping (Self) -> Void) {
-        self.setAction(handler)
+    func addAction(_ block: @escaping (Self) -> Void) {
+        self.block = block
         self.action = #selector(handleAction)
         self.target = self
     }
 }
 
-extension NSGestureRecognizer: ActionTrailing {}
+extension NSGestureRecognizer: ActionTrailing {
+
+    func handleAction(_ sender: NSGestureRecognizer) {
+        block?(sender)
+    }
+}
 
 public extension ActionTrailing where Self: NSGestureRecognizer {
 
-    func addAction(_ handler: @escaping (Self) -> Void) {
-        self.setAction(handler)
+    func addAction(_ block: @escaping (Self) -> Void) {
+        self.block = block
         self.action = #selector(handleAction)
         self.target = self
     }

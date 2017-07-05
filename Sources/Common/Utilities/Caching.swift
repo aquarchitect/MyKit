@@ -50,12 +50,20 @@ extension UIImage: Caching {
     public typealias Key = NSString
 
     public static var storage: NSCache<Key, UIImage> {
-        struct Singleton { static let value = NSCache<NSString, UIImage>() }
+        struct Singleton {
+
+            static let value = NSCache<NSString, UIImage>()
+        }
+
         return Singleton.value
     }
 
     public static var pendingOperationIDs: NSMutableSet {
-        struct Singleton { static let value = NSMutableSet() }
+        struct Singleton {
+
+            static let value = NSMutableSet()
+        }
+
         return Singleton.value
     }
 }
@@ -72,12 +80,20 @@ extension NSImage: Caching {
     public typealias Key = NSString
 
     public static var storage: NSCache<Key, NSImage> {
-        struct Singleton { static let value = NSCache<NSString, NSImage>() }
+        struct Singleton {
+
+            static let value = NSCache<NSString, NSImage>()
+        }
+
         return Singleton.value
     }
     
     public static var pendingOperationIDs: NSMutableSet {
-        struct Singleton { static let value = NSMutableSet() }
+        struct Singleton {
+
+            static let value = NSMutableSet()
+        }
+
         return Singleton.value
     }
 }

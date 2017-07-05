@@ -2,7 +2,7 @@
 // main.swift
 // MyKit
 //
-// Created by Hai Nguyen on 5/15/17.
+// Created by Hai Nguyen.
 // Copyright (c) 2017 Hai Nguyen.
 //
 

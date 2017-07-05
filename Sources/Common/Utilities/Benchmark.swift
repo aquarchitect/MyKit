@@ -2,7 +2,7 @@
 // Benchmark.swift
 // MyKit
 //
-// Created by Hai Nguyen on 5/5/17.
+// Created by Hai Nguyen.
 // Copyright (c) 2017 Hai Nguyen.
 //
 

@@ -2,7 +2,7 @@
 // OffsetCollection.swift
 // MyKit
 //
-// Created by Hai Nguyen on 6/6/17.
+// Created by Hai Nguyen.
 // Copyright (c) 2017 Hai Nguyen.
 //
 

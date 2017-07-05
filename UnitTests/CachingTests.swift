@@ -2,7 +2,7 @@
 // CachingTests.swift
 // MyKit
 // 
-// Created by Hai Nguyen on 1/3/17.
+// Created by Hai Nguyen.
 // Copyright (c) 2017 Hai Nguyen.
 // 
 

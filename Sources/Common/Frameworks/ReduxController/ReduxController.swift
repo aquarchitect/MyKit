@@ -1,22 +1,20 @@
-// 
-// Redux.swift
+//
+// ReduxController.swift
 // MyKit
-// 
+//
 // Created by Hai Nguyen.
-// Copyright (c) 2016 Hai Nguyen.
-// 
-
-import Foundation
+// Copyright (c) 2017 Hai Nguyen.
+//
 
 /// `Redux` is a redeign of `_Redux`. The implemetation integrates
 /// the use of `Observable` to `REDUCER, which allows to dispatch
-/// state and action with `flatMap` latest. 
-/// 
+/// state and action with `flatMap` latest.
+///
 /// - Note: In the previous implemetation, `ActionReducer` holds
 /// a significant responsibility such as traversing actions stack
-/// for a specific actions (selected index), which creates quite 
+/// for a specific actions (selected index), which creates quite
 /// a complexity for a new signal coming in.
-open class Redux<State, Action> {
+open class ReduxController<State, Action> {
 
     public typealias Reducer = (State, Action) -> Observable<State>
     public typealias Dispatcher = (Action) throws -> Void
@@ -33,8 +31,8 @@ open class Redux<State, Action> {
         _ = inputStream.flatMap { oldState, action in
             reducer(oldState, action).onError { error in
                 try? middleware(oldState, { _ in throw error })(action)
-            }.onNext { newState in
-                try? middleware(newState, { _ in })(action)
+                }.onNext { newState in
+                    try? middleware(newState, { _ in })(action)
             }
         }
     }
@@ -43,7 +41,7 @@ open class Redux<State, Action> {
         S: Sequence,
         S.Iterator.Element == Middleware
     {
-        self.init(reducer: reducer, middleware: Redux.merge(middlewares))
+        self.init(reducer: reducer, middleware: ReduxController.merge(middlewares))
     }
 
     // MARK: Support Methods
@@ -53,7 +51,7 @@ open class Redux<State, Action> {
     }
 }
 
-public extension Redux {
+public extension ReduxController {
 
     static func merge<S>(_ middlewares: S) -> Middleware where
         S: Sequence,

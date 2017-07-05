@@ -2,7 +2,7 @@
 // RandomAccessCollection+.swift
 // MyKit
 //
-// Created by Hai Nguyen on 4/27/17.
+// Created by Hai Nguyen.
 // Copyright (c) 2017 Hai Nguyen.
 //
 

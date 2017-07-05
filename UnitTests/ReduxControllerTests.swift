@@ -1,18 +1,18 @@
 // 
-// ReduxTests.swift
+// ReduxControllerTests.swift
 // MyKit
 // 
-// Created by Hai Nguyen on 12/7/16.
+// Created by Hai Nguyen.
 // Copyright (c) 2016 Hai Nguyen.
 // 
 
 @testable import MyKit
 
-final class ReduxTests: XCTestCase {
+final class ReduxControllerTests: XCTestCase {
 
     fileprivate enum Exception: Error { case a, b }
 
-    typealias SimpleRedux = Redux<String, Bool>
+    typealias SimpleRedux = ReduxController<String, Bool>
 
     fileprivate let middleware1: SimpleRedux.Middleware = { state, dispatch in
         return { action in
@@ -40,7 +40,7 @@ final class ReduxTests: XCTestCase {
     }
 }
 
-extension ReduxTests {
+extension ReduxControllerTests {
 
     func testMiddlewares() {
         let expectation = self.expectation(description: #function)

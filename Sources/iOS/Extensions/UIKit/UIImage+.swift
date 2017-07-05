@@ -2,7 +2,7 @@
 // UIImage+.swift
 // MyKit
 // 
-// Created by Hai Nguyen on 12/26/16.
+// Created by Hai Nguyen.
 // Copyright (c) 2016 Hai Nguyen.
 // 
 
