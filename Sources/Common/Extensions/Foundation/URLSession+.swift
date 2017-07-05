@@ -18,4 +18,13 @@ public extension URLSession {
         )
         return observable
     }
+
+    func dataTask(with request: URLRequest) -> Observable<(Data, URLResponse)> {
+        let observable = Observable<(Data, URLResponse)>()
+        self.dataTask(
+            with: request,
+            completionHandler: { observable.update(zip($0.0, $0.1), $0.2) }
+        )
+        return observable
+    }
 }
