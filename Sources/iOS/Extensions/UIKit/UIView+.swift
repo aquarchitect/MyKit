@@ -44,9 +44,7 @@ public extension UIView {
 
 public extension UIView {
 
-    enum Axis { case x, y }
-
-    func constraint(_ subviews: [UIView], equallyAlong axis: Axis) {
+    func constraint(_ subviews: [UIView], equallyAlong axis: UILayoutConstraintAxis) {
         var axisFormat: String = "\(axis.initial):|"
         var dictionaryViews: [String: UIView] = [:]
         var oppositeFormat: [String] = []
@@ -55,7 +53,7 @@ public extension UIView {
             let key = "subview\(index)"
             dictionaryViews[key] = subview
 
-            oppositeFormat.append("\(axis.reversed.initial):|[\(key)]|")
+            oppositeFormat.append("\(axis.opposite.initial):|[\(key)]|")
             axisFormat += "[" + key + (index == 0 ? "" : "(==subview0)") + "]"
         }
 
@@ -71,19 +69,19 @@ public extension UIView {
     }
 }
 
-fileprivate extension UIView.Axis {
+fileprivate extension UILayoutConstraintAxis {
 
     var initial: Character {
         switch self {
-        case .x: return "H"
-        case .y: return "V"
+        case .horizontal: return "H"
+        case .vertical: return "V"
         }
     }
 
-    var reversed: UIView.Axis {
+    var opposite: UILayoutConstraintAxis {
         switch self {
-        case .x: return .y
-        case .y: return .x
+        case .horizontal: return .vertical
+        case .vertical: return .horizontal
         }
     }
 }
