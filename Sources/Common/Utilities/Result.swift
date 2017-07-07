@@ -22,7 +22,7 @@ public enum Result<T> {
         }
     }
 
-    init(_ value: T?, _ error: Error?) {
+    public init(_ value: T?, _ error: Error?) {
         if let _error = error {
             self = .reject(_error)
         } else if let _value = value {
