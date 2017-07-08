@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Multiple select collection cell by dragging with long press gesture.
 open class SelectingCollectionGesture: UILongPressGestureRecognizer {
 
     // MARK: Properties

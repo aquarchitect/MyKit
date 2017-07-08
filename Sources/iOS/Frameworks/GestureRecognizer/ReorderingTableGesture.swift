@@ -8,8 +8,7 @@
 
 import UIKit
 
-/// Reorder `UITableView` row with
-/// long press gesture.
+/// Reorder table view row with long press gesture.
 open class ReorderingTableGesture: UILongPressGestureRecognizer {
 
     // MARK: Properties
