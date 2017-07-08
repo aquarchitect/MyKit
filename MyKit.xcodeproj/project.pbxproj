@@ -135,8 +135,6 @@
 		C2D1E5BD1EB2923B00DBBEFA /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5BA1EB2923B00DBBEFA /* OpenWeather.swift */; };
 		C2D1E5BE1EB2923B00DBBEFA /* OpenWeather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2D1E5BB1EB2923B00DBBEFA /* OpenWeather.ttf */; };
 		C2D1E5BF1EB2923B00DBBEFA /* OpenWeather+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5BC1EB2923B00DBBEFA /* OpenWeather+.swift */; };
-		C2D1E5F41EB292EC00DBBEFA /* ReorderingLongPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5F21EB292EC00DBBEFA /* ReorderingLongPress.swift */; };
-		C2D1E5F51EB292EC00DBBEFA /* SelectingLongPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5F31EB292EC00DBBEFA /* SelectingLongPress.swift */; };
 		C2D1E5F71EB292F000DBBEFA /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5F61EB292F000DBBEFA /* GrowingTextView.swift */; };
 		C2D1E5FC1EB292F600DBBEFA /* GenericCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5F81EB292F600DBBEFA /* GenericCollectionCell.swift */; };
 		C2D1E5FD1EB292F600DBBEFA /* GenericCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5F91EB292F600DBBEFA /* GenericCollectionView.swift */; };
@@ -207,6 +205,8 @@
 		C2D4F8E91F057BD0001FAE8E /* NSWindowStyleMask+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D4F8CD1F0579C2001FAE8E /* NSWindowStyleMask+.swift */; };
 		C2E9B1EA1EBD734D003D1372 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E9B1E91EBD734D003D1372 /* Benchmark.swift */; };
 		C2E9B1EB1EBD734D003D1372 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E9B1E91EBD734D003D1372 /* Benchmark.swift */; };
+		C2F224061F1092E00033C86B /* SelectingCollectionGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F224041F1092E00033C86B /* SelectingCollectionGesture.swift */; };
+		C2F224071F1092E00033C86B /* ReorderingTableGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F224051F1092E00033C86B /* ReorderingTableGesture.swift */; };
 		C2F288891DF8BBBC003E84F9 /* ReduxControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F288861DF8BB21003E84F9 /* ReduxControllerTests.swift */; };
 		C2F2888A1DF8BBBC003E84F9 /* ReduxControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F288861DF8BB21003E84F9 /* ReduxControllerTests.swift */; };
 		C2F2D8691E08754D0041BF0F /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A673911DB09493009E063A /* ObservableTests.swift */; };
@@ -365,8 +365,6 @@
 		C2D1E5C01EB2927500DBBEFA /* GenericAccessoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GenericAccessoryController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2D1E5C11EB2927500DBBEFA /* GenericCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GenericCollectionItem.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2D1E5C21EB2927500DBBEFA /* GenericViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GenericViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		C2D1E5F21EB292EC00DBBEFA /* ReorderingLongPress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReorderingLongPress.swift; sourceTree = "<group>"; };
-		C2D1E5F31EB292EC00DBBEFA /* SelectingLongPress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectingLongPress.swift; sourceTree = "<group>"; };
 		C2D1E5F61EB292F000DBBEFA /* GrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextView.swift; sourceTree = "<group>"; };
 		C2D1E5F81EB292F600DBBEFA /* GenericCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCollectionCell.swift; sourceTree = "<group>"; };
 		C2D1E5F91EB292F600DBBEFA /* GenericCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCollectionView.swift; sourceTree = "<group>"; };
@@ -416,6 +414,8 @@
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2E9B1E91EBD734D003D1372 /* Benchmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Benchmark.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2EF9F701CAB955100BC205F /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2F224041F1092E00033C86B /* SelectingCollectionGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectingCollectionGesture.swift; sourceTree = "<group>"; };
+		C2F224051F1092E00033C86B /* ReorderingTableGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReorderingTableGesture.swift; sourceTree = "<group>"; };
 		C2F288861DF8BB21003E84F9 /* ReduxControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReduxControllerTests.swift; path = UnitTests/ReduxControllerTests.swift; sourceTree = SOURCE_ROOT; };
 		C2F317071D5A5950009B0F42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demos/macOS/Info.plist; sourceTree = SOURCE_ROOT; };
 		C2F3170C1D5A596E009B0F42 /* Bridging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bridging.h; path = Demos/iOS/Bridging.h; sourceTree = SOURCE_ROOT; };
@@ -547,7 +547,7 @@
 		C201662F1CE1016400F7D3E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C231CAA61D790A48007A895E /* LongPress */,
+				C231CAA61D790A48007A895E /* GestureRecognizer */,
 				C201664D1CE1025C00F7D3E5 /* GrowingText */,
 				C20166591CE1035B00F7D3E5 /* GenericInterface */,
 				C20166571CE1032400F7D3E5 /* CollectionLayout */,
@@ -662,13 +662,13 @@
 			path = MyKit;
 			sourceTree = "<group>";
 		};
-		C231CAA61D790A48007A895E /* LongPress */ = {
+		C231CAA61D790A48007A895E /* GestureRecognizer */ = {
 			isa = PBXGroup;
 			children = (
-				C2D1E5F21EB292EC00DBBEFA /* ReorderingLongPress.swift */,
-				C2D1E5F31EB292EC00DBBEFA /* SelectingLongPress.swift */,
+				C2F224041F1092E00033C86B /* SelectingCollectionGesture.swift */,
+				C2F224051F1092E00033C86B /* ReorderingTableGesture.swift */,
 			);
-			path = LongPress;
+			path = GestureRecognizer;
 			sourceTree = "<group>";
 		};
 		C23FADAD1DC0112C00A4491C /* Extensions */ = {
@@ -1410,6 +1410,7 @@
 				C2D1E5A31EB28FEE00DBBEFA /* CKDatabase+.swift in Sources */,
 				C2D4F8B51F057970001FAE8E /* UILabel+.swift in Sources */,
 				C2D1E5711EB2884900DBBEFA /* CGRect+.swift in Sources */,
+				C2F224061F1092E00033C86B /* SelectingCollectionGesture.swift in Sources */,
 				C2D4F8B21F057970001FAE8E /* UICollectionViewFlowLayout+.swift in Sources */,
 				C2D1E5771EB2888400DBBEFA /* NSAttributeDescription+.swift in Sources */,
 				C2D1E54F1EB2881200DBBEFA /* NSMutableAttributedString+.swift in Sources */,
@@ -1419,8 +1420,6 @@
 				C2D1E5251EB287E900DBBEFA /* LCS.swift in Sources */,
 				C2D4F8B61F057970001FAE8E /* UIScreen+.swift in Sources */,
 				C2D1E5781EB2888400DBBEFA /* NSManagedObjectContext+.swift in Sources */,
-				C2D1E5F51EB292EC00DBBEFA /* SelectingLongPress.swift in Sources */,
-				C2D1E5F41EB292EC00DBBEFA /* ReorderingLongPress.swift in Sources */,
 				C2FB98391F0CE3780092009F /* ActionTrailing.swift in Sources */,
 				C2D1E60C1EB2930000DBBEFA /* ParaboloidLayoutController.swift in Sources */,
 				C2D1E5FF1EB292F600DBBEFA /* GenericViewController.swift in Sources */,
@@ -1493,6 +1492,7 @@
 				C2D4F8B71F057970001FAE8E /* UIScrollView+.swift in Sources */,
 				C2D1E5B81EB2923300DBBEFA /* SymbolIcon.swift in Sources */,
 				C2D1E5A51EB28FEE00DBBEFA /* CKRecordID+.swift in Sources */,
+				C2F224071F1092E00033C86B /* ReorderingTableGesture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

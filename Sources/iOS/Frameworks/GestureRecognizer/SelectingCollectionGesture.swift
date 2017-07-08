@@ -1,5 +1,5 @@
 // 
-// SelectingLongPress.swift
+// SelectingCollectionGesture.swift
 // MyKit
 // 
 // Created by Hai Nguyen.
@@ -8,7 +8,9 @@
 
 import UIKit
 
-open class SelectingLongPress: UILongPressGestureRecognizer {
+open class SelectingCollectionGesture: UILongPressGestureRecognizer {
+
+    // MARK: Properties
 
     // anchor: first started index path
     // track: last known touched index path
@@ -18,18 +20,28 @@ open class SelectingLongPress: UILongPressGestureRecognizer {
         return self.view as? UICollectionView
     }
 
-    open func handleGesture() {
-        guard let touchingIndexPath = (collectionView.flatMap {
-            (self.location(in:) >>> $0.indexPathForItem(at:))($0)
-        }) else { return }
+    // MARK: Initialization
 
+    init() {
+        super.init(target: nil, action: nil)
+        super.addTarget(self, action: #selector(handleGesture))
+    }
+
+    // MARK: Helper Methods
+
+    open func handleGesture() {
+        guard let touchingIndexPath = collectionView.flatMap({ (self.location(in:) >>> $0.indexPathForItem(at:))($0) })
+            else { return }
 
         switch self.state {
+
         case .began:
             collectionView?.selectItem(at: touchingIndexPath, animated: true, scrollPosition: [])
             dragger = (touchingIndexPath, touchingIndexPath)
+
         case .changed:
             dragger.flatMap { selectCollectionViewItems(to: $0.trackingIndexPath) }
+
         default:
             dragger = nil
         }
@@ -45,6 +57,7 @@ open class SelectingLongPress: UILongPressGestureRecognizer {
             else { return }
 
         switch trackingIndexPath.compare(touchingIndexPath) {
+
         case .orderedAscending:
             guard let cell = collectionView?.cellForItem(at: trackingIndexPathSucessor) else { return }
 
@@ -58,6 +71,7 @@ open class SelectingLongPress: UILongPressGestureRecognizer {
 
             dragger?.trackingIndexPath = trackingIndexPathPredecessor
             selectCollectionViewItems(to: touchingIndexPath)
+
         case .orderedDescending:
             guard let cell = collectionView?.cellForItem(at: trackingIndexPathPredecessor) else { return }
 
@@ -71,6 +85,7 @@ open class SelectingLongPress: UILongPressGestureRecognizer {
 
             dragger?.trackingIndexPath = trackingIndexPathSucessor
             selectCollectionViewItems(to: touchingIndexPath)
+            
         case .orderedSame:
             collectionView?.selectItem(at: trackingIndexPath, animated: true, scrollPosition: [])
         }

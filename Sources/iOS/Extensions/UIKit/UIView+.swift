@@ -13,22 +13,6 @@ public extension UIView {
     typealias AnimatingCompletion = (Bool) -> Void
 }
 
-extension UIView {
-
-    func customSnapshotView() -> UIView? {
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.isOpaque, 0)
-
-        if let context = UIGraphicsGetCurrentContext() {
-            self.layer.render(in: context)
-        }
-
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-
-        UIGraphicsEndImageContext()
-        return UIImageView(image: image)
-    }
-}
-
 public extension UIView {
 
     static func animate(withDuration duration: TimeInterval, animations: @escaping () -> Void) -> Observable<Bool> {

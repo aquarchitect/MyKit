@@ -1,5 +1,5 @@
 // 
-// ReorderingLongPress.swift
+// ReorderingTableGesture.swift
 // MyKit
 // 
 // Created by Hai Nguyen.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-/// Reoder `UICollectionView` cell or `UITableView` row with
+/// Reorder `UITableView` row with
 /// long press gesture.
-open class ReorderingLongPress: UILongPressGestureRecognizer {
+open class ReorderingTableGesture: UILongPressGestureRecognizer {
 
     // MARK: Properties
 
@@ -23,18 +23,22 @@ open class ReorderingLongPress: UILongPressGestureRecognizer {
 
     // MARK: Initialization
 
+    public init() {
+        super.init(target: nil, action: nil)
+        super.addTarget(self, action: #selector(handleGesture))
+    }
+
     deinit { cellSnapshot?.removeFromSuperview() }
 
     // MARK: System Methods
 
     open func handleGesture() {
         switch self.state {
+
         case .began:
-            guard let trackingIndexPath = (tableView.flatMap {
-                (self.location(in:) >>> $0.indexPathForRow(at:))($0)
-            }), (tableView.flatMap {
-                $0.dataSource?.tableView?($0, canMoveRowAt: trackingIndexPath)
-            } ?? false) else { return }
+            guard let trackingIndexPath = tableView.flatMap({ (self.location(in:) >>> $0.indexPathForRow(at:))($0) }),
+                tableView.flatMap({ $0.dataSource?.tableView?($0, canMoveRowAt: trackingIndexPath) }) ?? false
+                else { return }
 
             let cell = tableView?.cellForRow(at: trackingIndexPath)?.then {
                 $0.alpha = 1
@@ -43,7 +47,7 @@ open class ReorderingLongPress: UILongPressGestureRecognizer {
 
             sourceIndexPath = trackingIndexPath
 
-            cellSnapshot = cell?.customSnapshotView()?.then {
+            cellSnapshot = cell?.snapshotView(afterScreenUpdates: true)?.then {
                 $0.backgroundColor = .blue
                 $0.frame = tableView?.convert(cell?.frame ?? .zero, to: nil) ?? .zero
                 $0.alpha = 0
@@ -63,15 +67,14 @@ open class ReorderingLongPress: UILongPressGestureRecognizer {
                     $0.center.y = self.location(in: nil).y
                     $0.transform = CGAffineTransform(scaleX: 1.01, y: 1.01)
                 }
-                }, completion: { [weak cell] _ in
-                    cell?.isHidden = true
-                })
+            }, completion: { [weak cell] _ in
+                cell?.isHidden = true
+            })
+
         case .changed:
-            guard let trackingIndexPath = (tableView.flatMap {
-                (self.location(in:) >>> $0.indexPathForRow(at:))($0)
-            }), (tableView.flatMap {
-                $0.dataSource?.tableView?($0, canMoveRowAt: trackingIndexPath)
-            } ?? false) else { return }
+            guard let trackingIndexPath = tableView.flatMap({ (self.location(in:) >>> $0.indexPathForRow(at:))($0) }),
+                tableView.flatMap({ $0.dataSource?.tableView?($0, canMoveRowAt: trackingIndexPath) }) ?? false
+                else { return }
 
             cellSnapshot?.center.y = self.location(in: nil).y
 
@@ -83,8 +86,9 @@ open class ReorderingLongPress: UILongPressGestureRecognizer {
             // it has data source pointing to itself. This gives you an opportunity
             // to mutate the view models only. The data should be changed on delegation
             // call.
-            tableView.flatMap { $0.dataSource?.tableView?($0, moveRowAt: sourceIndexPath, to: trackingIndexPath) }
+            tableView.flatMap({ $0.dataSource?.tableView?($0, moveRowAt: sourceIndexPath, to: trackingIndexPath) })
             self.sourceIndexPath = trackingIndexPath
+
         default:
             guard let sourceIndexPath = self.sourceIndexPath else { return }
 
@@ -104,7 +108,7 @@ open class ReorderingLongPress: UILongPressGestureRecognizer {
                     cell?.alpha = 1
                     self.cellSnapshot?.alpha = 0
                 }
-                }, completion: { [weak self] _ in
+            }, completion: { [weak self] _ in
                     self?.cellSnapshot?.removeFromSuperview()
                     self?.sourceIndexPath = nil
             })
