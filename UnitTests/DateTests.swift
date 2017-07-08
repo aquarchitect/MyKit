@@ -9,21 +9,23 @@
 final class NSDateTests: XCTestCase {
 
     func testAddingUnitsToDate() {
-        let components = DateComponents(calendar: Date.calendar,
-                                        timeZone: nil,
-                                        era: nil, year: 1990,
-                                        month: 1,
-                                        day: 23,
-                                        hour: nil,
-                                        minute: nil,
-                                        second: nil,
-                                        nanosecond: nil,
-                                        weekday: nil,
-                                        weekdayOrdinal: nil,
-                                        quarter: nil,
-                                        weekOfMonth: nil,
-                                        weekOfYear: nil,
-                                        yearForWeekOfYear: nil)
+        let components = DateComponents(
+            calendar: Date.calendar,
+            timeZone: nil,
+            era: nil, year: 1990,
+            month: 1,
+            day: 23,
+            hour: nil,
+            minute: nil,
+            second: nil,
+            nanosecond: nil,
+            weekday: nil,
+            weekdayOrdinal: nil,
+            quarter: nil,
+            weekOfMonth: nil,
+            weekOfYear: nil,
+            yearForWeekOfYear: nil
+        )
 
         guard let date = components.date else { return XCTFail() }
 

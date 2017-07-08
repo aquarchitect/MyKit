@@ -1,10 +1,12 @@
-// 
+//
 // ArbitraryTests.swift
 // MyKit
 // 
 // Created by Hai Nguyen.
 // Copyright (c) 2016 Hai Nguyen.
 // 
+
+import MyKit
 
 final class ArbitraryTests: XCTestCase {
 
