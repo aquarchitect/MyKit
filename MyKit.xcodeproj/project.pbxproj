@@ -52,7 +52,7 @@
 		C2D1E5221EB287E900DBBEFA /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5151EB287E900DBBEFA /* Box.swift */; };
 		C2D1E5231EB287E900DBBEFA /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5161EB287E900DBBEFA /* Caching.swift */; };
 		C2D1E5241EB287E900DBBEFA /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5171EB287E900DBBEFA /* Composition.swift */; };
-		C2D1E5251EB287E900DBBEFA /* LCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5181EB287E900DBBEFA /* LCS.swift */; };
+		C2D1E5251EB287E900DBBEFA /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5181EB287E900DBBEFA /* Diff.swift */; };
 		C2D1E5261EB287E900DBBEFA /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5191EB287E900DBBEFA /* Empty.swift */; };
 		C2D1E5271EB287E900DBBEFA /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E51A1EB287E900DBBEFA /* Matrix.swift */; };
 		C2D1E5281EB287E900DBBEFA /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E51B1EB287E900DBBEFA /* Mutex.swift */; };
@@ -90,7 +90,7 @@
 		C2D1E57B1EB28FC900DBBEFA /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5151EB287E900DBBEFA /* Box.swift */; };
 		C2D1E57C1EB28FC900DBBEFA /* Caching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5161EB287E900DBBEFA /* Caching.swift */; };
 		C2D1E57D1EB28FC900DBBEFA /* Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5171EB287E900DBBEFA /* Composition.swift */; };
-		C2D1E57E1EB28FC900DBBEFA /* LCS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5181EB287E900DBBEFA /* LCS.swift */; };
+		C2D1E57E1EB28FC900DBBEFA /* Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5181EB287E900DBBEFA /* Diff.swift */; };
 		C2D1E57F1EB28FC900DBBEFA /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5191EB287E900DBBEFA /* Empty.swift */; };
 		C2D1E5801EB28FC900DBBEFA /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E51A1EB287E900DBBEFA /* Matrix.swift */; };
 		C2D1E5811EB28FC900DBBEFA /* Mutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E51B1EB287E900DBBEFA /* Mutex.swift */; };
@@ -201,6 +201,8 @@
 		C2D4F8E71F057BD0001FAE8E /* NSTextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D4F8CB1F0579C2001FAE8E /* NSTextField+.swift */; };
 		C2D4F8E81F057BD0001FAE8E /* NSView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D4F8CC1F0579C2001FAE8E /* NSView+.swift */; };
 		C2D4F8E91F057BD0001FAE8E /* NSWindowStyleMask+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D4F8CD1F0579C2001FAE8E /* NSWindowStyleMask+.swift */; };
+		C2DE85911F121F4A000CF9E6 /* Diff+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DE85901F121F4A000CF9E6 /* Diff+.swift */; };
+		C2DE85921F121F4A000CF9E6 /* Diff+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DE85901F121F4A000CF9E6 /* Diff+.swift */; };
 		C2E9B1EA1EBD734D003D1372 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E9B1E91EBD734D003D1372 /* Benchmark.swift */; };
 		C2E9B1EB1EBD734D003D1372 /* Benchmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E9B1E91EBD734D003D1372 /* Benchmark.swift */; };
 		C2F224061F1092E00033C86B /* SelectingCollectionGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F224041F1092E00033C86B /* SelectingCollectionGesture.swift */; };
@@ -310,7 +312,7 @@
 		C2D1E5151EB287E900DBBEFA /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		C2D1E5161EB287E900DBBEFA /* Caching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Caching.swift; sourceTree = "<group>"; };
 		C2D1E5171EB287E900DBBEFA /* Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Composition.swift; sourceTree = "<group>"; };
-		C2D1E5181EB287E900DBBEFA /* LCS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCS.swift; sourceTree = "<group>"; };
+		C2D1E5181EB287E900DBBEFA /* Diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diff.swift; sourceTree = "<group>"; };
 		C2D1E5191EB287E900DBBEFA /* Empty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Empty.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2D1E51A1EB287E900DBBEFA /* Matrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		C2D1E51B1EB287E900DBBEFA /* Mutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mutex.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 		C2D4F8CC1F0579C2001FAE8E /* NSView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSView+.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2D4F8CD1F0579C2001FAE8E /* NSWindowStyleMask+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSWindowStyleMask+.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2DC8B871CAB2EDB00837D9E /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2DE85901F121F4A000CF9E6 /* Diff+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Diff+.swift"; sourceTree = "<group>"; };
 		C2E9B1E91EBD734D003D1372 /* Benchmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Benchmark.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2EF9F701CAB955100BC205F /* MyKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F224041F1092E00033C86B /* SelectingCollectionGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectingCollectionGesture.swift; sourceTree = "<group>"; };
@@ -761,7 +764,7 @@
 				C2D1E5161EB287E900DBBEFA /* Caching.swift */,
 				C2D1E5171EB287E900DBBEFA /* Composition.swift */,
 				C21A6AF31EBC124F00B42314 /* Curry.swift */,
-				C2D1E5181EB287E900DBBEFA /* LCS.swift */,
+				C2D1E5181EB287E900DBBEFA /* Diff.swift */,
 				C2D1E5191EB287E900DBBEFA /* Empty.swift */,
 				C2D1E51A1EB287E900DBBEFA /* Matrix.swift */,
 				C2D1E51B1EB287E900DBBEFA /* Mutex.swift */,
@@ -793,6 +796,7 @@
 		C2B60ACC1B95080800F6D2BB /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				C2DE85901F121F4A000CF9E6 /* Diff+.swift */,
 				C28C6E841E1C4AB400BC51F0 /* CachingTests.swift */,
 				C2F317471D5A5EF1009B0F42 /* DateTests.swift */,
 				C2F288861DF8BB21003E84F9 /* ReduxControllerTests.swift */,
@@ -1294,6 +1298,7 @@
 				C214B90D1DA2155700754247 /* ActionTrailingTests.swift in Sources */,
 				C2F3174E1D5A5EF6009B0F42 /* FontRegistryTests.swift in Sources */,
 				C2F288891DF8BBBC003E84F9 /* ReduxControllerTests.swift in Sources */,
+				C2DE85911F121F4A000CF9E6 /* Diff+.swift in Sources */,
 				C24B380C1DC12BFA00036264 /* ArbitraryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1311,6 +1316,7 @@
 				C214B90E1DA2155800754247 /* ActionTrailingTests.swift in Sources */,
 				C2F317521D5A5EF7009B0F42 /* FontRegistryTests.swift in Sources */,
 				C2F2888A1DF8BBBC003E84F9 /* ReduxControllerTests.swift in Sources */,
+				C2DE85921F121F4A000CF9E6 /* Diff+.swift in Sources */,
 				C24B380D1DC12BFB00036264 /* ArbitraryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1357,7 +1363,7 @@
 				C2D1E5941EB28FD300DBBEFA /* NSMutableAttributedString+.swift in Sources */,
 				C2D1E57C1EB28FC900DBBEFA /* Caching.swift in Sources */,
 				C2D4F8E81F057BD0001FAE8E /* NSView+.swift in Sources */,
-				C2D1E57E1EB28FC900DBBEFA /* LCS.swift in Sources */,
+				C2D1E57E1EB28FC900DBBEFA /* Diff.swift in Sources */,
 				C2D1E5901EB28FD300DBBEFA /* Date+.swift in Sources */,
 				C2D1E61A1EB2935C00DBBEFA /* FontRegistry.swift in Sources */,
 				C2D1E61C1EB2936300DBBEFA /* CKDatabase+.swift in Sources */,
@@ -1413,7 +1419,7 @@
 				C2D1E5261EB287E900DBBEFA /* Empty.swift in Sources */,
 				C2D1E53C1EB287FC00DBBEFA /* Sequence+.swift in Sources */,
 				C2D4F8BA1F057970001FAE8E /* UIView+.swift in Sources */,
-				C2D1E5251EB287E900DBBEFA /* LCS.swift in Sources */,
+				C2D1E5251EB287E900DBBEFA /* Diff.swift in Sources */,
 				C2D4F8B61F057970001FAE8E /* UIScreen+.swift in Sources */,
 				C2D1E5781EB2888400DBBEFA /* NSManagedObjectContext+.swift in Sources */,
 				C2FB98391F0CE3780092009F /* ActionTrailing.swift in Sources */,
@@ -1677,7 +1683,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS-unittests";
 				PRODUCT_NAME = MyKitUnitTests;
@@ -1722,7 +1728,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS-unittests";
 				PRODUCT_NAME = MyKitUnitTests;
@@ -1757,8 +1763,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = MyKit;
 				SDKROOT = iphoneos;
@@ -1793,8 +1797,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = MyKit;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -1852,7 +1854,7 @@
 				INFOPLIST_FILE = "MyKit/Info-Framework.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MODULEMAP_FILE = MyKit/modulemap;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS";
@@ -1910,7 +1912,7 @@
 				INFOPLIST_FILE = "MyKit/Info-Framework.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MODULEMAP_FILE = MyKit/modulemap;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS";

@@ -9,10 +9,10 @@
 /// Simple _Matrix_ to work with LCS algorithm (debugging purposes only).
 ///
 /// - warning: reference [Surge](https://github.com/mattt/Surge) for optimized matrix computation.
-public struct Matrix<T> {
+public struct Matrix<Element> {
 
     // MARK: Property
-    fileprivate var elements: [T]
+    fileprivate var elements: [Element]
 
     public let rows: Int
     public let columns: Int
@@ -23,7 +23,7 @@ public struct Matrix<T> {
 
     // MARK: Initialization
 
-    public init(repeating value: T, rows: Int, columns: Int) {
+    public init(repeating value: Element, rows: Int, columns: Int) {
         self.rows = rows
         self.columns = columns
         self.elements = Array(repeating: value, count: rows * columns)
@@ -43,7 +43,7 @@ private extension Matrix {
 
 public extension Matrix {
 
-    subscript(row: Int, column: Int) -> T {
+    subscript(row: Int, column: Int) -> Element {
         get {
             assert(isValid(row: row, column: column), "Index out of bounds.")
             return elements[row * columns + column]
@@ -54,7 +54,7 @@ public extension Matrix {
         }
     }
 
-    subscript(row row: Int) -> ArraySlice<T> {
+    subscript(row row: Int) -> ArraySlice<Element> {
         get {
             assert(row < rows, "Row out of bounds.")
             let startIndex = row * columns
@@ -72,7 +72,7 @@ public extension Matrix {
         }
     }
 
-    subscript(column column: Int) -> ArraySlice<T> {
+    subscript(column column: Int) -> ArraySlice<Element> {
         get {
             assert(column < columns, "Column out of bounds")
             return ArraySlice((0..<rows).map({ elements[$0 * columns + column] }))
@@ -80,7 +80,7 @@ public extension Matrix {
         set {
             assert(column < columns, "Column out of bounds")
             assert(newValue.count == rows, "Row out of bounds")
-            (0..<rows).forEach { elements[$0 * columns + column] = newValue[$0] }
+            (0..<rows).forEach({ elements[$0 * columns + column] = newValue[$0] })
         }
     }
 }

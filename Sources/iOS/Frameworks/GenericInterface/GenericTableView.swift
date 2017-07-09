@@ -1,4 +1,4 @@
-// 
+//
 // GenericTableView.swift
 // MyKit
 // 
@@ -9,7 +9,7 @@
 import UIKit
 
 @available(*, deprecated)
-open class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableView, UITableViewDataSource {
+open class GenericTableView<Model: Hashable, Row: UITableViewCell>: UITableView, UITableViewDataSource {
 
     // MARK: Property
 
@@ -28,16 +28,17 @@ open class GenericTableView<Model: Equatable, Row: UITableViewCell>: UITableView
                 return .init(startIndex ... endIndex)
             }()
 
-            let updates = oldValue.compareThoroughlyUsingLCS(
+            let (deletes, inserts, updates) = oldValue.compareUsingLCS(
                 rowModels, in: range,
                 transformer: IndexPath(index: 0).appending
             )
 
             self.beginUpdates()
-            self.reloadRows(at: updates.updates, with: .automatic)
-            self.deleteRows(at: updates.deletes, with: .fade)
-            self.insertRows(at: updates.inserts, with: .automatic)
+            self.deleteRows(at: deletes, with: .automatic)
+            self.insertRows(at: inserts, with: .automatic)
             self.endUpdates()
+
+            self.reloadRows(at: updates, with: .fade)
         }
     }
 

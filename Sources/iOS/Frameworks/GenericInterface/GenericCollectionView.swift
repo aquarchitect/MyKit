@@ -1,4 +1,4 @@
-// 
+//
 // GenericCollectionView.swift
 // MyKit
 // 
@@ -9,7 +9,7 @@
 import UIKit
 
 @available(*, deprecated)
-open class GenericCollectionView<Model: Equatable, Cell: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
+open class GenericCollectionView<Model: Hashable, Cell: UICollectionViewCell>: UICollectionView, UICollectionViewDataSource {
 
     // MARK: Property
 
@@ -30,25 +30,24 @@ open class GenericCollectionView<Model: Equatable, Cell: UICollectionViewCell>: 
             let range: Range<Int>? = {
                 guard estimatedNumberOfVisibleCells != 0 else { return nil }
 
-                /*
-                 * the assumption is `indexPathsForVisibleItems` in an
-                 * ascending order.
-                 */
+                // the assumption is `indexPathsForVisibleItems` in an
+                // ascending order.
                 let startIndex = self.indexPathsForVisibleItems.first?.item ?? 0
                 let endIndex = startIndex + estimatedNumberOfVisibleCells
                 return Range(startIndex ... endIndex)
             }()
 
-            let updates = oldValue.compareThoroughlyUsingLCS(
+            let (deletes, inserts, updates) = oldValue.compareUsingLCS(
                 cellModels, in: range,
                 transformer: IndexPath(index: 0).appending
             )
 
             self.performBatchUpdates({
-                self.reloadItems(at: updates.updates)
-                self.deleteItems(at: updates.deletes)
-                self.insertItems(at: updates.inserts)
-            }, completion: nil)
+                self.deleteItems(at: deletes)
+                self.insertItems(at: inserts)
+            }, completion: { _ in
+                self.reloadItems(at: updates)
+            })
         }
     }
 

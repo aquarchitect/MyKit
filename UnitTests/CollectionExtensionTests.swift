@@ -36,7 +36,7 @@ extension CollectionExtensionTests {
         let c1s = Array(str1.characters)
         let c2s = Array(str2.characters)
 
-        return String(c1s.repeatingElementsUsingLCS(byComparing: c2s, in: range))
+        return String(c1s.repeatingElements(byLCSComparing: c2s, in: range))
     }
 
     func testRepeatingElementsUsingLCSWithManyElements() {
@@ -59,7 +59,7 @@ extension CollectionExtensionTests {
 extension CollectionExtensionTests {
 
     private var sampleCharacters: ([Character], [Character]) {
-        return ("ABDC".characters.map { $0 }, "ACG".characters.map { $0 })
+        return ("ABDC".characters.map({ $0 }), "ACG".characters.map({ $0 }))
     }
 
     // Unfortunately, the current Swift does not allow extension
@@ -76,11 +76,11 @@ extension CollectionExtensionTests {
 
     func testDiffingIndexesUsingLCS() {
         let (c1s, c2s) = sampleCharacters
-        let (deletes1, inserts1) = c1s.compareOptimallyUsingLCS(
+        let (deletes1, inserts1, updates1) = c1s.compareUsingLCS(
             c2s,
             transformer: IndexPath(index: 0).appending
         )
-        let (deletes2, inserts2) = c1s.compareOptimallyUsingLCS(
+        let (deletes2, inserts2, updates2) = c1s.compareUsingLCS(
             c2s,
             in: 1 ..< 6,
             transformer: IndexPath(index: 0).appending
@@ -88,6 +88,81 @@ extension CollectionExtensionTests {
 
         XCTAssertEqual(deletes1, deletes2)
         XCTAssertEqual(inserts1, inserts2)
+        XCTAssertEqual(updates1, updates2)
+    }
+}
+
+extension CollectionExtensionTests {
+
+    struct Cell {
+
+        let title: String
+        let hexColorUInt: UInt
+        let isSelected: Bool
+        let shortcut: String?
+    }
+
+    var sample1s: [Cell] {
+        return [
+            Cell(title: "Search", hexColorUInt: 0, isSelected: false, shortcut: "F"),
+            Cell(title: "Pesonal", hexColorUInt: 1, isSelected: true, shortcut: "1"),
+            Cell(title: "Duende", hexColorUInt: 2, isSelected: false, shortcut: "2"),
+            Cell(title: "New", hexColorUInt: 3, isSelected: false, shortcut: "N")
+        ]
+    }
+
+    var sample2s: [Cell] {
+        return [
+            Cell(title: "Search", hexColorUInt: 0, isSelected: false, shortcut: "F"),
+            Cell(title: "Pesonal", hexColorUInt: 1, isSelected: false, shortcut: "1"),
+            Cell(title: "Duende", hexColorUInt: 2, isSelected: true, shortcut: "2"),
+            Cell(title: "New", hexColorUInt: 3, isSelected: false, shortcut: "N")
+        ]
+    }
+
+    var sample3s: [Cell] {
+        return [
+            Cell(title: "Search", hexColorUInt: 0, isSelected: false, shortcut: "F"),
+            Cell(title: "Work", hexColorUInt: 1, isSelected: true, shortcut: "1"),
+            Cell(title: "New", hexColorUInt: 3, isSelected: true, shortcut: "N")
+        ]
+    }
+
+    func testDiffingIndexesUsingLCS1() {
+        let (deletes, inserts, updates) = sample1s.compareUsingLCS(
+            sample2s,
+            transformer: IndexPath(index: 0).appending
+        )
+
+        XCTAssertEqual(deletes, [])
+        XCTAssertEqual(inserts, [])
+        XCTAssertEqual(updates, [[0, 1], [0, 2]])
+    }
+
+    func testDiffingIndexesUsingLCS2() {
+        let (deletes, inserts, updates) = sample1s.compareUsingLCS(
+            sample3s,
+            transformer: IndexPath(index: 0).appending
+        )
+
+        XCTAssertEqual(deletes, [[0, 1], [0, 2]])
+        XCTAssertEqual(inserts, [[0, 1]])
+        XCTAssertEqual(updates, [[0, 2]])
+    }
+}
+
+extension CollectionExtensionTests.Cell: Hashable {
+
+    var hashValue: Int {
+        return title.appending(shortcut ?? "").hashValue
+            + hexColorUInt.hashValue
+    }
+
+    static func == (lhs: CollectionExtensionTests.Cell, rhs: CollectionExtensionTests.Cell) -> Bool {
+        return lhs.title == rhs.title
+            && lhs.hexColorUInt == rhs.hexColorUInt
+            && lhs.isSelected == rhs.isSelected
+            && lhs.shortcut == rhs.shortcut
     }
 }
 
