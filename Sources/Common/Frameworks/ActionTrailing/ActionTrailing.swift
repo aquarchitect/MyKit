@@ -8,8 +8,6 @@
 
 import Foundation
 
-private var GlobalToken: UInt8 = 0
-
 public protocol ActionTrailing: class {}
 
 extension ActionTrailing where Self: NSObject {

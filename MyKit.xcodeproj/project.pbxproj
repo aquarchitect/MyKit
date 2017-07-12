@@ -13,6 +13,8 @@
 		C214B9111DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */; };
 		C21A6AF41EBC124F00B42314 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A6AF31EBC124F00B42314 /* Curry.swift */; };
 		C21A6AF51EBC124F00B42314 /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21A6AF31EBC124F00B42314 /* Curry.swift */; };
+		C21BB5B81F16C08000D9A1A5 /* UserDefaultsExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21BB5B71F16C08000D9A1A5 /* UserDefaultsExtensionTests.swift */; };
+		C21BB5B91F16C08000D9A1A5 /* UserDefaultsExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21BB5B71F16C08000D9A1A5 /* UserDefaultsExtensionTests.swift */; };
 		C21FE1E31ED37D1800EA98B9 /* JSONSerialization+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21FE1E21ED37D1800EA98B9 /* JSONSerialization+.swift */; };
 		C21FE1E41ED37D1800EA98B9 /* JSONSerialization+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21FE1E21ED37D1800EA98B9 /* JSONSerialization+.swift */; };
 		C225FAA11D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */; };
@@ -41,6 +43,14 @@
 		C2B59A081F0CC68E00EDE5A9 /* SKRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B59A061F0CC68E00EDE5A9 /* SKRequest+.swift */; };
 		C2B59A0A1F0CCC0800EDE5A9 /* SKProductsRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B59A091F0CCC0800EDE5A9 /* SKProductsRequest+.swift */; };
 		C2B59A0B1F0CCC0800EDE5A9 /* SKProductsRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B59A091F0CCC0800EDE5A9 /* SKProductsRequest+.swift */; };
+		C2B9C8081F1688E700583C62 /* NSData+MD5.h in Headers */ = {isa = PBXBuildFile; fileRef = C2B9C8061F1688E700583C62 /* NSData+MD5.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C2B9C8091F1688E700583C62 /* NSData+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9C8071F1688E700583C62 /* NSData+MD5.m */; };
+		C2B9C80B1F168AFD00583C62 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B9C80A1F168AFD00583C62 /* UserDefaults+.swift */; };
+		C2B9C80C1F168AFD00583C62 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B9C80A1F168AFD00583C62 /* UserDefaults+.swift */; };
+		C2B9C80F1F168C1B00583C62 /* NSData+MD5.h in Headers */ = {isa = PBXBuildFile; fileRef = C2B9C8061F1688E700583C62 /* NSData+MD5.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		C2B9C8101F168C2100583C62 /* NSData+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B9C8071F1688E700583C62 /* NSData+MD5.m */; };
+		C2B9C8131F168C6C00583C62 /* IOGetEthernetInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B9C8111F168C6C00583C62 /* IOGetEthernetInterfaces.swift */; };
+		C2B9C8161F168F0200583C62 /* IOServiceGetMACAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B9C8141F168F0200583C62 /* IOServiceGetMACAddress.swift */; };
 		C2BB19AE1D111DBC004F76BA /* PagedCenterCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB19AD1D111DBC004F76BA /* PagedCenterCollectionLayout.swift */; };
 		C2BB19B01D112E1E004F76BA /* ShaderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB19AF1D112E1E004F76BA /* ShaderController.swift */; };
 		C2BB19B51D113186004F76BA /* ShaderKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BB19B41D113186004F76BA /* ShaderKind.swift */; };
@@ -282,6 +292,7 @@
 		C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionTrailingTests.swift; path = UnitTests/ActionTrailingTests.swift; sourceTree = SOURCE_ROOT; };
 		C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSMutableAttributedStringExtensionTests.swift; path = UnitTests/NSMutableAttributedStringExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		C21A6AF31EBC124F00B42314 /* Curry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Curry.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C21BB5B71F16C08000D9A1A5 /* UserDefaultsExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensionTests.swift; sourceTree = "<group>"; };
 		C21FE1E21ED37D1800EA98B9 /* JSONSerialization+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "JSONSerialization+.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppleWatchHomeScreenLayout.swift; path = Demos/iOS/AppleWatchHomeScreenLayout.swift; sourceTree = SOURCE_ROOT; };
 		C225FAA31D111803008DF565 /* LayoutPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutPresentable.swift; path = Demos/iOS/LayoutPresentable.swift; sourceTree = SOURCE_ROOT; };
@@ -302,6 +313,11 @@
 		C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensionTests.swift; path = UnitTests/CollectionExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		C2B59A061F0CC68E00EDE5A9 /* SKRequest+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKRequest+.swift"; sourceTree = "<group>"; };
 		C2B59A091F0CCC0800EDE5A9 /* SKProductsRequest+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKProductsRequest+.swift"; sourceTree = "<group>"; };
+		C2B9C8061F1688E700583C62 /* NSData+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5.h"; sourceTree = "<group>"; };
+		C2B9C8071F1688E700583C62 /* NSData+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MD5.m"; sourceTree = "<group>"; };
+		C2B9C80A1F168AFD00583C62 /* UserDefaults+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
+		C2B9C8111F168C6C00583C62 /* IOGetEthernetInterfaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOGetEthernetInterfaces.swift; sourceTree = "<group>"; };
+		C2B9C8141F168F0200583C62 /* IOServiceGetMACAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOServiceGetMACAddress.swift; sourceTree = "<group>"; };
 		C2BB19AD1D111DBC004F76BA /* PagedCenterCollectionLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PagedCenterCollectionLayout.swift; path = Demos/iOS/PagedCenterCollectionLayout.swift; sourceTree = SOURCE_ROOT; };
 		C2BB19AF1D112E1E004F76BA /* ShaderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShaderController.swift; path = Demos/iOS/ShaderController.swift; sourceTree = SOURCE_ROOT; };
 		C2BB19B41D113186004F76BA /* ShaderKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShaderKind.swift; path = Demos/iOS/ShaderKind.swift; sourceTree = SOURCE_ROOT; };
@@ -380,7 +396,6 @@
 		C2D1E60E1EB2933400DBBEFA /* Bridging-UnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-UnitTests.h"; sourceTree = "<group>"; };
 		C2D1E60F1EB2933400DBBEFA /* Info-UnitTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-UnitTests.plist"; sourceTree = "<group>"; };
 		C2D1E6101EB2933400DBBEFA /* Info-Framework.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Framework.plist"; sourceTree = "<group>"; };
-		C2D1E6111EB2933400DBBEFA /* modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = modulemap; sourceTree = "<group>"; };
 		C2D1E6121EB2933400DBBEFA /* MyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyKit.h; sourceTree = "<group>"; };
 		C2D1E63C1EB2950500DBBEFA /* RandomAccessCollection+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "RandomAccessCollection+.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2D4F8A21F057970001FAE8E /* Draw+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Draw+.swift"; sourceTree = "<group>"; };
@@ -522,6 +537,8 @@
 				C2D1E5401EB2881200DBBEFA /* DateFormatter+.swift */,
 				C21FE1E21ED37D1800EA98B9 /* JSONSerialization+.swift */,
 				C2D1E5411EB2881200DBBEFA /* NSAttributedString+.swift */,
+				C2B9C8061F1688E700583C62 /* NSData+MD5.h */,
+				C2B9C8071F1688E700583C62 /* NSData+MD5.m */,
 				C2D1E5421EB2881200DBBEFA /* NSLayoutConstraint+.swift */,
 				C2D1E5431EB2881200DBBEFA /* NSMutableAttributedString+.swift */,
 				C2FB98321F0CDE190092009F /* NSObject+.swift */,
@@ -530,6 +547,7 @@
 				C2D1E5471EB2881200DBBEFA /* Scanner+.swift */,
 				C2D1E5481EB2881200DBBEFA /* Timer+.swift */,
 				C2D1E5491EB2881200DBBEFA /* URLSession+.swift */,
+				C2B9C80A1F168AFD00583C62 /* UserDefaults+.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -658,7 +676,6 @@
 				C2D1E60E1EB2933400DBBEFA /* Bridging-UnitTests.h */,
 				C2D1E60F1EB2933400DBBEFA /* Info-UnitTests.plist */,
 				C2D1E6101EB2933400DBBEFA /* Info-Framework.plist */,
-				C2D1E6111EB2933400DBBEFA /* modulemap */,
 			);
 			path = MyKit;
 			sourceTree = "<group>";
@@ -730,6 +747,7 @@
 		C289AD931B62BA0500186773 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C2B9C80D1F168BA000583C62 /* IOKit */,
 				C2B59A051F0CC66C00EDE5A9 /* StoreKit */,
 				C201657B1CE0FA6000F7D3E5 /* Native */,
 				C201657E1CE0FA7600F7D3E5 /* Foundation */,
@@ -807,8 +825,18 @@
 				C2A28ED91E12310900D7AD89 /* TimerExtensionTests.swift */,
 				C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */,
 				C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */,
+				C21BB5B71F16C08000D9A1A5 /* UserDefaultsExtensionTests.swift */,
 			);
 			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		C2B9C80D1F168BA000583C62 /* IOKit */ = {
+			isa = PBXGroup;
+			children = (
+				C2B9C8111F168C6C00583C62 /* IOGetEthernetInterfaces.swift */,
+				C2B9C8141F168F0200583C62 /* IOServiceGetMACAddress.swift */,
+			);
+			path = IOKit;
 			sourceTree = "<group>";
 		};
 		C2BB19B11D112FC6004F76BA /* FragmentShader */ = {
@@ -998,6 +1026,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2B9C80F1F168C1B00583C62 /* NSData+MD5.h in Headers */,
 				C2D1E6181EB2934400DBBEFA /* MyKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1006,6 +1035,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2B9C8081F1688E700583C62 /* NSData+MD5.h in Headers */,
 				C2D1E6171EB2933400DBBEFA /* MyKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1145,10 +1175,12 @@
 					};
 					C289AD7B1B62B95700186773 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Manual;
 					};
 					C289AD891B62B97400186773 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Manual;
 					};
 					C2DC8B861CAB2EDB00837D9E = {
@@ -1289,6 +1321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C21BB5B81F16C08000D9A1A5 /* UserDefaultsExtensionTests.swift in Sources */,
 				C214B9101DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift in Sources */,
 				C2F2D8691E08754D0041BF0F /* ObservableTests.swift in Sources */,
 				C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */,
@@ -1307,6 +1340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C21BB5B91F16C08000D9A1A5 /* UserDefaultsExtensionTests.swift in Sources */,
 				C214B9111DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift in Sources */,
 				C2F2D86A1E08754E0041BF0F /* ObservableTests.swift in Sources */,
 				C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */,
@@ -1348,14 +1382,17 @@
 				C2D1E62C1EB2938500DBBEFA /* OpenWeather.swift in Sources */,
 				C2D4F8E91F057BD0001FAE8E /* NSWindowStyleMask+.swift in Sources */,
 				C2D1E5861EB28FC900DBBEFA /* Then.swift in Sources */,
+				C2B9C8161F168F0200583C62 /* IOServiceGetMACAddress.swift in Sources */,
 				C2D4F8E51F057BD0001FAE8E /* NSMenuItem+.swift in Sources */,
 				C2D4F8E71F057BD0001FAE8E /* NSTextField+.swift in Sources */,
 				C2D4F8E11F057BD0001FAE8E /* NSEvent+.swift in Sources */,
 				C2D1E62E1EB2938500DBBEFA /* OpenWeather+.swift in Sources */,
 				C2D1E6311EB2939600DBBEFA /* GenericViewController.swift in Sources */,
 				C2D4F8DF1F057BD0001FAE8E /* NSCollectionView+.swift in Sources */,
+				C2B9C8131F168C6C00583C62 /* IOGetEthernetInterfaces.swift in Sources */,
 				C2D4F8E21F057BD0001FAE8E /* NSFont+.swift in Sources */,
 				C2D1E58D1EB28FCD00DBBEFA /* Sequence+.swift in Sources */,
+				C2B9C8101F168C2100583C62 /* NSData+MD5.m in Sources */,
 				C2D1E61E1EB2936300DBBEFA /* CKRecordID+.swift in Sources */,
 				C2D1E5921EB28FD300DBBEFA /* NSAttributedString+.swift in Sources */,
 				C2D1E5991EB28FD300DBBEFA /* Timer+.swift in Sources */,
@@ -1376,6 +1413,7 @@
 				C21A6AF51EBC124F00B42314 /* Curry.swift in Sources */,
 				C2B59A0B1F0CCC0800EDE5A9 /* SKProductsRequest+.swift in Sources */,
 				C2D1E5931EB28FD300DBBEFA /* NSLayoutConstraint+.swift in Sources */,
+				C2B9C80C1F168AFD00583C62 /* UserDefaults+.swift in Sources */,
 				C2D4F8E41F057BD0001FAE8E /* NSMenu+.swift in Sources */,
 				C2D1E6211EB2936700DBBEFA /* CGRectEdge+.swift in Sources */,
 				C2D1E61F1EB2936700DBBEFA /* CGPoint+.swift in Sources */,
@@ -1419,6 +1457,7 @@
 				C2D1E5261EB287E900DBBEFA /* Empty.swift in Sources */,
 				C2D1E53C1EB287FC00DBBEFA /* Sequence+.swift in Sources */,
 				C2D4F8BA1F057970001FAE8E /* UIView+.swift in Sources */,
+				C2B9C8091F1688E700583C62 /* NSData+MD5.m in Sources */,
 				C2D1E5251EB287E900DBBEFA /* Diff.swift in Sources */,
 				C2D4F8B61F057970001FAE8E /* UIScreen+.swift in Sources */,
 				C2D1E5781EB2888400DBBEFA /* NSManagedObjectContext+.swift in Sources */,
@@ -1486,6 +1525,7 @@
 				C2D1E5381EB287FC00DBBEFA /* CountableRange+.swift in Sources */,
 				C2D4F8BB1F057970001FAE8E /* UIViewController+.swift in Sources */,
 				C2D1E5AA1EB2921F00DBBEFA /* LoremIpsum.swift in Sources */,
+				C2B9C80B1F168AFD00583C62 /* UserDefaults+.swift in Sources */,
 				C2D1E5531EB2881200DBBEFA /* Scanner+.swift in Sources */,
 				C2D1E6031EB292FC00DBBEFA /* SnappingFlowLayout.swift in Sources */,
 				C2D1E6051EB292FC00DBBEFA /* SnappingSuperLayout.swift in Sources */,
@@ -1593,7 +1633,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-iOS-unittests";
@@ -1636,7 +1676,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-iOS-unittests";
@@ -1685,7 +1725,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS-unittests";
 				PRODUCT_NAME = MyKitUnitTests;
@@ -1730,7 +1770,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "MyKit/Info-UnitTests.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS-unittests";
 				PRODUCT_NAME = MyKitUnitTests;
@@ -1857,16 +1897,14 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = MyKit/modulemap;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS";
-				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = MyKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/MyKit/PrivateModule";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1915,16 +1953,14 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = MyKit/modulemap;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS";
-				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
 				PRODUCT_NAME = MyKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/MyKit/PrivateModule";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_VERSION = 3.0;
 				VERSION_INFO_PREFIX = "";
@@ -1977,15 +2013,14 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-iOS";
 				PRODUCT_NAME = MyKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/MyKit/PrivateModule";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2035,15 +2070,14 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-iOS";
 				PRODUCT_NAME = MyKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/MyKit/PrivateModule";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

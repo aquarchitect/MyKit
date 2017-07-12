@@ -1,0 +1,4 @@
+module MyKitPrivate {
+    header "../../Sources/Common/Extensions/Foundation/NSData+MD5.h"
+    export *
+}
