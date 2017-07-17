@@ -15,7 +15,7 @@ public extension URLSession {
         self.dataTask(
             with: url,
             completionHandler: { observable.update(zip($0.0, $0.1), $0.2) }
-        )
+        ).resume()
         return observable
     }
 
@@ -24,7 +24,7 @@ public extension URLSession {
         self.dataTask(
             with: request,
             completionHandler: { observable.update(zip($0.0, $0.1), $0.2) }
-        )
+        ).resume()
         return observable
     }
 }
