@@ -1,13 +1,13 @@
 //
-// OffsetCollection.swift
+// OffsetSlice.swift
 // MyKit
 //
 // Created by Hai Nguyen.
 // Copyright (c) 2017 Hai Nguyen.
 //
 
-/// A collection whose index starts at `offsetValue`.
-public struct OffsetCollection<Base>: Collection where
+/// A view into the collection whose indexes are offseted at a defined value.
+public struct OffsetSlice<Base>: Collection where
     Base: Collection,
     Base.Index: SignedInteger
 {

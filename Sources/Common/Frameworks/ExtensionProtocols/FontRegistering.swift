@@ -1,5 +1,5 @@
 // 
-// FontRegistry.swift
+// FontRegistering.swift
 // MyKit
 // 
 // Created by Hai Nguyen.
@@ -12,12 +12,12 @@ import Foundation
 /// 
 /// - Warning: even though the protocol marks as Public
 /// for unit testing, it's designed for internal usage only.
-public protocol FontRegistry: class {
+public protocol FontRegistering: class {
 
     init?(name: String, size: CGFloat)
 }
 
-extension FontRegistry {
+extension FontRegistering {
 
     private static func registerFont(from file: String, of bundle: Bundle) {
         _ = bundle
@@ -41,8 +41,8 @@ extension FontRegistry {
 
 #if os(iOS)
 import UIKit.UIFont
-extension UIFont: FontRegistry {}
+extension UIFont: FontRegistering {}
 #elseif os(OSX)
 import AppKit.NSFont
-extension NSFont: FontRegistry {}
+extension NSFont: FontRegistering {}
 #endif

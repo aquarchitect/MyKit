@@ -29,14 +29,26 @@
 		C24B380D1DC12BFB00036264 /* ArbitraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B38091DC12BDC00036264 /* ArbitraryTests.swift */; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
 		C2848E061C956A7600707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
+		C28C69C51F1E7D4F006E17CE /* OffsetSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C69C41F1E7D4F006E17CE /* OffsetSlice.swift */; };
+		C28C69C61F1E7D52006E17CE /* OffsetSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C69C41F1E7D4F006E17CE /* OffsetSlice.swift */; };
+		C28C69CA1F1E7D5E006E17CE /* ActionTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C69C71F1E7D5E006E17CE /* ActionTrailing.swift */; };
+		C28C69CB1F1E7D5E006E17CE /* ActionTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C69C71F1E7D5E006E17CE /* ActionTrailing.swift */; };
+		C28C69CC1F1E7D5E006E17CE /* ColorHexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C69C81F1E7D5E006E17CE /* ColorHexing.swift */; };
+		C28C69CD1F1E7D5E006E17CE /* ColorHexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C69C81F1E7D5E006E17CE /* ColorHexing.swift */; };
+		C28C69CE1F1E7D5E006E17CE /* FontRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C69C91F1E7D5E006E17CE /* FontRegistering.swift */; };
+		C28C69CF1F1E7D5E006E17CE /* FontRegistering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C69C91F1E7D5E006E17CE /* FontRegistering.swift */; };
+		C28C69D31F1E7D6E006E17CE /* ColorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = C28C69D11F1E7D6E006E17CE /* ColorPalette.plist */; };
+		C28C69D41F1E7D6E006E17CE /* ColorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = C28C69D11F1E7D6E006E17CE /* ColorPalette.plist */; };
+		C28C69D51F1E7D6E006E17CE /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C69D21F1E7D6E006E17CE /* ColorPalette.swift */; };
+		C28C69D61F1E7D6E006E17CE /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C69D21F1E7D6E006E17CE /* ColorPalette.swift */; };
+		C28C69D81F1E7E22006E17CE /* PermutationSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C69D71F1E7E22006E17CE /* PermutationSlice.swift */; };
+		C28C69D91F1E7E22006E17CE /* PermutationSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C69D71F1E7E22006E17CE /* PermutationSlice.swift */; };
 		C28C6E871E1C4AC400BC51F0 /* CachingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C6E841E1C4AB400BC51F0 /* CachingTests.swift */; };
 		C28C6E881E1C4AC500BC51F0 /* CachingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C6E841E1C4AB400BC51F0 /* CachingTests.swift */; };
 		C2A28EDB1E12312400D7AD89 /* TimerExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A28ED91E12310900D7AD89 /* TimerExtensionTests.swift */; };
 		C2A28EDC1E12312500D7AD89 /* TimerExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A28ED91E12310900D7AD89 /* TimerExtensionTests.swift */; };
 		C2A28EDE1E12374D00D7AD89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A28EDD1E12374D00D7AD89 /* Assets.xcassets */; };
 		C2A28EE01E12376E00D7AD89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2A28EDF1E12376E00D7AD89 /* Assets.xcassets */; };
-		C2A6AA801EE7A91900A5A95E /* OffsetCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6AA7F1EE7A91900A5A95E /* OffsetCollection.swift */; };
-		C2A6AA811EE7A91900A5A95E /* OffsetCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A6AA7F1EE7A91900A5A95E /* OffsetCollection.swift */; };
 		C2AE54FB1D9CDE4B006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2AE54FC1D9CDE4C006E68A6 /* CollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */; };
 		C2B59A071F0CC68E00EDE5A9 /* SKRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B59A061F0CC68E00EDE5A9 /* SKRequest+.swift */; };
@@ -134,12 +146,8 @@
 		C2D1E5A31EB28FEE00DBBEFA /* CKDatabase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E59F1EB28FEE00DBBEFA /* CKDatabase+.swift */; };
 		C2D1E5A41EB28FEE00DBBEFA /* CKRecord+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5A01EB28FEE00DBBEFA /* CKRecord+.swift */; };
 		C2D1E5A51EB28FEE00DBBEFA /* CKRecordID+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5A11EB28FEE00DBBEFA /* CKRecordID+.swift */; };
-		C2D1E5A71EB2921900DBBEFA /* FontRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5A61EB2921900DBBEFA /* FontRegistry.swift */; };
 		C2D1E5AA1EB2921F00DBBEFA /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5A81EB2921F00DBBEFA /* LoremIpsum.swift */; };
 		C2D1E5AB1EB2921F00DBBEFA /* LoremIpsum.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2D1E5A91EB2921F00DBBEFA /* LoremIpsum.txt */; };
-		C2D1E5AF1EB2922500DBBEFA /* ColorHexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5AC1EB2922500DBBEFA /* ColorHexing.swift */; };
-		C2D1E5B01EB2922500DBBEFA /* ColorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2D1E5AD1EB2922500DBBEFA /* ColorPalette.plist */; };
-		C2D1E5B11EB2922500DBBEFA /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5AE1EB2922500DBBEFA /* ColorPalette.swift */; };
 		C2D1E5B81EB2923300DBBEFA /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5B61EB2923300DBBEFA /* SymbolIcon.swift */; };
 		C2D1E5B91EB2923300DBBEFA /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2D1E5B71EB2923300DBBEFA /* SymbolIcon.ttf */; };
 		C2D1E5BD1EB2923B00DBBEFA /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5BA1EB2923B00DBBEFA /* OpenWeather.swift */; };
@@ -159,7 +167,6 @@
 		C2D1E60D1EB2930000DBBEFA /* ParaboloidSuperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E6091EB2930000DBBEFA /* ParaboloidSuperLayout.swift */; };
 		C2D1E6171EB2933400DBBEFA /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2D1E6121EB2933400DBBEFA /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2D1E6181EB2934400DBBEFA /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2D1E6121EB2933400DBBEFA /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C2D1E61A1EB2935C00DBBEFA /* FontRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5A61EB2921900DBBEFA /* FontRegistry.swift */; };
 		C2D1E61B1EB2936300DBBEFA /* CKContainer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E59E1EB28FEE00DBBEFA /* CKContainer+.swift */; };
 		C2D1E61C1EB2936300DBBEFA /* CKDatabase+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E59F1EB28FEE00DBBEFA /* CKDatabase+.swift */; };
 		C2D1E61D1EB2936300DBBEFA /* CKRecord+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5A01EB28FEE00DBBEFA /* CKRecord+.swift */; };
@@ -170,9 +177,6 @@
 		C2D1E6221EB2936700DBBEFA /* CGSize+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E56F1EB2884900DBBEFA /* CGSize+.swift */; };
 		C2D1E6231EB2937700DBBEFA /* LoremIpsum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5A81EB2921F00DBBEFA /* LoremIpsum.swift */; };
 		C2D1E6241EB2937700DBBEFA /* LoremIpsum.txt in Resources */ = {isa = PBXBuildFile; fileRef = C2D1E5A91EB2921F00DBBEFA /* LoremIpsum.txt */; };
-		C2D1E6251EB2937B00DBBEFA /* ColorHexing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5AC1EB2922500DBBEFA /* ColorHexing.swift */; };
-		C2D1E6261EB2937B00DBBEFA /* ColorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2D1E5AD1EB2922500DBBEFA /* ColorPalette.plist */; };
-		C2D1E6271EB2937B00DBBEFA /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5AE1EB2922500DBBEFA /* ColorPalette.swift */; };
 		C2D1E62A1EB2938200DBBEFA /* SymbolIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5B61EB2923300DBBEFA /* SymbolIcon.swift */; };
 		C2D1E62B1EB2938200DBBEFA /* SymbolIcon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2D1E5B71EB2923300DBBEFA /* SymbolIcon.ttf */; };
 		C2D1E62C1EB2938500DBBEFA /* OpenWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5BA1EB2923B00DBBEFA /* OpenWeather.swift */; };
@@ -228,8 +232,6 @@
 		C2F348921ECA203B00F33356 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F348911ECA203B00F33356 /* main.swift */; };
 		C2FB98331F0CDE190092009F /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FB98321F0CDE190092009F /* NSObject+.swift */; };
 		C2FB98341F0CDE190092009F /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FB98321F0CDE190092009F /* NSObject+.swift */; };
-		C2FB98391F0CE3780092009F /* ActionTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5B21EB2922C00DBBEFA /* ActionTrailing.swift */; };
-		C2FB983A1F0CE3790092009F /* ActionTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5B21EB2922C00DBBEFA /* ActionTrailing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -304,12 +306,18 @@
 		C2848E011C956A7600707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7C1B62B95700186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD8A1B62B97400186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C28C69C41F1E7D4F006E17CE /* OffsetSlice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffsetSlice.swift; sourceTree = "<group>"; };
+		C28C69C71F1E7D5E006E17CE /* ActionTrailing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionTrailing.swift; sourceTree = "<group>"; };
+		C28C69C81F1E7D5E006E17CE /* ColorHexing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorHexing.swift; sourceTree = "<group>"; };
+		C28C69C91F1E7D5E006E17CE /* FontRegistering.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontRegistering.swift; sourceTree = "<group>"; };
+		C28C69D11F1E7D6E006E17CE /* ColorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ColorPalette.plist; path = ColorPalette/ColorPalette.plist; sourceTree = "<group>"; };
+		C28C69D21F1E7D6E006E17CE /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorPalette.swift; path = ColorPalette/ColorPalette.swift; sourceTree = "<group>"; };
+		C28C69D71F1E7E22006E17CE /* PermutationSlice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermutationSlice.swift; sourceTree = "<group>"; };
 		C28C6E841E1C4AB400BC51F0 /* CachingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = CachingTests.swift; path = UnitTests/CachingTests.swift; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2A28ED91E12310900D7AD89 /* TimerExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimerExtensionTests.swift; path = UnitTests/TimerExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		C2A28EDD1E12374D00D7AD89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Demos/iOS/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		C2A28EDF1E12376E00D7AD89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Demos/macOS/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		C2A673911DB09493009E063A /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObservableTests.swift; path = UnitTests/ObservableTests.swift; sourceTree = SOURCE_ROOT; };
-		C2A6AA7F1EE7A91900A5A95E /* OffsetCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = OffsetCollection.swift; path = OffsetCollection/OffsetCollection.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2AE54F81D9CDE23006E68A6 /* CollectionExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensionTests.swift; path = UnitTests/CollectionExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		C2B59A061F0CC68E00EDE5A9 /* SKRequest+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKRequest+.swift"; sourceTree = "<group>"; };
 		C2B59A091F0CCC0800EDE5A9 /* SKProductsRequest+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKProductsRequest+.swift"; sourceTree = "<group>"; };
@@ -366,13 +374,8 @@
 		C2D1E59F1EB28FEE00DBBEFA /* CKDatabase+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CKDatabase+.swift"; sourceTree = "<group>"; };
 		C2D1E5A01EB28FEE00DBBEFA /* CKRecord+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CKRecord+.swift"; sourceTree = "<group>"; };
 		C2D1E5A11EB28FEE00DBBEFA /* CKRecordID+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CKRecordID+.swift"; sourceTree = "<group>"; };
-		C2D1E5A61EB2921900DBBEFA /* FontRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontRegistry.swift; sourceTree = "<group>"; };
 		C2D1E5A81EB2921F00DBBEFA /* LoremIpsum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoremIpsum.swift; sourceTree = "<group>"; };
 		C2D1E5A91EB2921F00DBBEFA /* LoremIpsum.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LoremIpsum.txt; sourceTree = "<group>"; };
-		C2D1E5AC1EB2922500DBBEFA /* ColorHexing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorHexing.swift; sourceTree = "<group>"; };
-		C2D1E5AD1EB2922500DBBEFA /* ColorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ColorPalette.plist; sourceTree = "<group>"; };
-		C2D1E5AE1EB2922500DBBEFA /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ColorPalette.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		C2D1E5B21EB2922C00DBBEFA /* ActionTrailing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionTrailing.swift; sourceTree = "<group>"; };
 		C2D1E5B61EB2923300DBBEFA /* SymbolIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolIcon.swift; sourceTree = "<group>"; };
 		C2D1E5B71EB2923300DBBEFA /* SymbolIcon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SymbolIcon.ttf; sourceTree = "<group>"; };
 		C2D1E5BA1EB2923B00DBBEFA /* OpenWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeather.swift; sourceTree = "<group>"; };
@@ -715,14 +718,6 @@
 			path = GenericInterface;
 			sourceTree = "<group>";
 		};
-		C25A3ED01CEBB87200A68790 /* ActionTrailing */ = {
-			isa = PBXGroup;
-			children = (
-				C2D1E5B21EB2922C00DBBEFA /* ActionTrailing.swift */,
-			);
-			path = ActionTrailing;
-			sourceTree = "<group>";
-		};
 		C289AD701B62B93800186773 = {
 			isa = PBXGroup;
 			children = (
@@ -762,11 +757,10 @@
 			isa = PBXGroup;
 			children = (
 				C2C4A21B1F0CAA3F005EEDE8 /* ReduxController */,
-				C2A6AA7E1EE7A8D900A5A95E /* OffsetCollection */,
-				C2C62A2D1D04A5E00009B45F /* FontRegistry */,
+				C28C69C31F1E7C46006E17CE /* GenericSlices */,
+				C28C69C21F1E7C39006E17CE /* ExtensionProtocols */,
+				C28C69D01F1E7D63006E17CE /* ColorPalette */,
 				C20F70241C7532EC004C688F /* LoremIpsum */,
-				C2C180871CEBBF3D00D00FA4 /* ColorHexing */,
-				C25A3ED01CEBB87200A68790 /* ActionTrailing */,
 				C20F70261C753309004C688F /* SymbolIcon */,
 				C20F70251C7532F8004C688F /* OpenWeather */,
 			);
@@ -794,12 +788,32 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		C2A6AA7E1EE7A8D900A5A95E /* OffsetCollection */ = {
+		C28C69C21F1E7C39006E17CE /* ExtensionProtocols */ = {
 			isa = PBXGroup;
 			children = (
-				C2A6AA7F1EE7A91900A5A95E /* OffsetCollection.swift */,
+				C28C69C71F1E7D5E006E17CE /* ActionTrailing.swift */,
+				C28C69C81F1E7D5E006E17CE /* ColorHexing.swift */,
+				C28C69C91F1E7D5E006E17CE /* FontRegistering.swift */,
 			);
-			name = OffsetCollection;
+			path = ExtensionProtocols;
+			sourceTree = "<group>";
+		};
+		C28C69C31F1E7C46006E17CE /* GenericSlices */ = {
+			isa = PBXGroup;
+			children = (
+				C28C69C41F1E7D4F006E17CE /* OffsetSlice.swift */,
+				C28C69D71F1E7E22006E17CE /* PermutationSlice.swift */,
+			);
+			path = GenericSlices;
+			sourceTree = "<group>";
+		};
+		C28C69D01F1E7D63006E17CE /* ColorPalette */ = {
+			isa = PBXGroup;
+			children = (
+				C28C69D11F1E7D6E006E17CE /* ColorPalette.plist */,
+				C28C69D21F1E7D6E006E17CE /* ColorPalette.swift */,
+			);
+			name = ColorPalette;
 			sourceTree = "<group>";
 		};
 		C2B59A051F0CC66C00EDE5A9 /* StoreKit */ = {
@@ -848,30 +862,12 @@
 			name = FragmentShader;
 			sourceTree = "<group>";
 		};
-		C2C180871CEBBF3D00D00FA4 /* ColorHexing */ = {
-			isa = PBXGroup;
-			children = (
-				C2D1E5AC1EB2922500DBBEFA /* ColorHexing.swift */,
-				C2D1E5AD1EB2922500DBBEFA /* ColorPalette.plist */,
-				C2D1E5AE1EB2922500DBBEFA /* ColorPalette.swift */,
-			);
-			path = ColorHexing;
-			sourceTree = "<group>";
-		};
 		C2C4A21B1F0CAA3F005EEDE8 /* ReduxController */ = {
 			isa = PBXGroup;
 			children = (
 				C2C4A21C1F0CAA7E005EEDE8 /* ReduxController.swift */,
 			);
 			path = ReduxController;
-			sourceTree = "<group>";
-		};
-		C2C62A2D1D04A5E00009B45F /* FontRegistry */ = {
-			isa = PBXGroup;
-			children = (
-				C2D1E5A61EB2921900DBBEFA /* FontRegistry.swift */,
-			);
-			path = FontRegistry;
 			sourceTree = "<group>";
 		};
 		C2D4F8A01F0578F1001FAE8E /* Speech */ = {
@@ -1234,10 +1230,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C28C69D41F1E7D6E006E17CE /* ColorPalette.plist in Resources */,
 				C2D1E62D1EB2938500DBBEFA /* OpenWeather.ttf in Resources */,
 				C2A28EE01E12376E00D7AD89 /* Assets.xcassets in Resources */,
 				C2D1E62B1EB2938200DBBEFA /* SymbolIcon.ttf in Resources */,
-				C2D1E6261EB2937B00DBBEFA /* ColorPalette.plist in Resources */,
 				C2D1E6241EB2937700DBBEFA /* LoremIpsum.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1246,10 +1242,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C28C69D31F1E7D6E006E17CE /* ColorPalette.plist in Resources */,
 				C2D1E5BE1EB2923B00DBBEFA /* OpenWeather.ttf in Resources */,
 				C2A28EDE1E12374D00D7AD89 /* Assets.xcassets in Resources */,
 				C2D1E5B91EB2923300DBBEFA /* SymbolIcon.ttf in Resources */,
-				C2D1E5B01EB2922500DBBEFA /* ColorPalette.plist in Resources */,
 				C2D1E5AB1EB2921F00DBBEFA /* LoremIpsum.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1365,6 +1361,7 @@
 				C2D1E61D1EB2936300DBBEFA /* CKRecord+.swift in Sources */,
 				C2D1E58C1EB28FCD00DBBEFA /* OptionSet+.swift in Sources */,
 				C2D1E6301EB2939600DBBEFA /* GenericCollectionItem.swift in Sources */,
+				C28C69CF1F1E7D5E006E17CE /* FontRegistering.swift in Sources */,
 				C2D1E5971EB28FD300DBBEFA /* ProcessInfo+.swift in Sources */,
 				C2D1E5811EB28FC900DBBEFA /* Mutex.swift in Sources */,
 				C2D1E5881EB28FCD00DBBEFA /* Collection+.swift in Sources */,
@@ -1373,9 +1370,9 @@
 				C2D1E57F1EB28FC900DBBEFA /* Empty.swift in Sources */,
 				C2D1E59D1EB28FD700DBBEFA /* NSRelationshipDescription+.swift in Sources */,
 				C2D1E5981EB28FD300DBBEFA /* Scanner+.swift in Sources */,
-				C2D1E6271EB2937B00DBBEFA /* ColorPalette.swift in Sources */,
 				C2D4F8DC1F057BD0001FAE8E /* EdgeInsets+.swift in Sources */,
 				C2D4F8E61F057BD0001FAE8E /* NSTableView+.swift in Sources */,
+				C28C69C61F1E7D52006E17CE /* OffsetSlice.swift in Sources */,
 				C2D1E59A1EB28FD300DBBEFA /* URLSession+.swift in Sources */,
 				C2FB98341F0CDE190092009F /* NSObject+.swift in Sources */,
 				C2D1E58F1EB28FD300DBBEFA /* Bundle+.swift in Sources */,
@@ -1399,10 +1396,10 @@
 				C2D1E5961EB28FD300DBBEFA /* NSRange+.swift in Sources */,
 				C2D1E5941EB28FD300DBBEFA /* NSMutableAttributedString+.swift in Sources */,
 				C2D1E57C1EB28FC900DBBEFA /* Caching.swift in Sources */,
+				C28C69CD1F1E7D5E006E17CE /* ColorHexing.swift in Sources */,
 				C2D4F8E81F057BD0001FAE8E /* NSView+.swift in Sources */,
 				C2D1E57E1EB28FC900DBBEFA /* Diff.swift in Sources */,
 				C2D1E5901EB28FD300DBBEFA /* Date+.swift in Sources */,
-				C2D1E61A1EB2935C00DBBEFA /* FontRegistry.swift in Sources */,
 				C2D1E61C1EB2936300DBBEFA /* CKDatabase+.swift in Sources */,
 				C2D1E5841EB28FC900DBBEFA /* Result.swift in Sources */,
 				C2D1E6221EB2936700DBBEFA /* CGSize+.swift in Sources */,
@@ -1411,6 +1408,7 @@
 				C2D1E59C1EB28FD700DBBEFA /* NSManagedObjectContext+.swift in Sources */,
 				C2D4F8DD1F057BD0001FAE8E /* NSBezierPath+.swift in Sources */,
 				C21A6AF51EBC124F00B42314 /* Curry.swift in Sources */,
+				C28C69D91F1E7E22006E17CE /* PermutationSlice.swift in Sources */,
 				C2B59A0B1F0CCC0800EDE5A9 /* SKProductsRequest+.swift in Sources */,
 				C2D1E5931EB28FD300DBBEFA /* NSLayoutConstraint+.swift in Sources */,
 				C2B9C80C1F168AFD00583C62 /* UserDefaults+.swift in Sources */,
@@ -1419,9 +1417,9 @@
 				C2D1E61F1EB2936700DBBEFA /* CGPoint+.swift in Sources */,
 				C2D1E5911EB28FD300DBBEFA /* DateFormatter+.swift in Sources */,
 				C2C4A21E1F0CAA7E005EEDE8 /* ReduxController.swift in Sources */,
+				C28C69CB1F1E7D5E006E17CE /* ActionTrailing.swift in Sources */,
 				C2D1E5851EB28FC900DBBEFA /* Swizzle.swift in Sources */,
 				C2D1E57B1EB28FC900DBBEFA /* Box.swift in Sources */,
-				C2FB983A1F0CE3790092009F /* ActionTrailing.swift in Sources */,
 				C2D4F8DE1F057BD0001FAE8E /* NSCell+.swift in Sources */,
 				C2D1E6201EB2936700DBBEFA /* CGRect+.swift in Sources */,
 				C2D1E5891EB28FCD00DBBEFA /* CountableRange+.swift in Sources */,
@@ -1431,10 +1429,9 @@
 				C2D1E58B1EB28FCD00DBBEFA /* Optional+.swift in Sources */,
 				C2E9B1EB1EBD734D003D1372 /* Benchmark.swift in Sources */,
 				C2D1E58A1EB28FCD00DBBEFA /* Dictionary+.swift in Sources */,
-				C2D1E6251EB2937B00DBBEFA /* ColorHexing.swift in Sources */,
 				C2D1E59B1EB28FD700DBBEFA /* NSAttributeDescription+.swift in Sources */,
 				C2D1E62A1EB2938200DBBEFA /* SymbolIcon.swift in Sources */,
-				C2A6AA811EE7A91900A5A95E /* OffsetCollection.swift in Sources */,
+				C28C69D61F1E7D6E006E17CE /* ColorPalette.swift in Sources */,
 				C2B59A081F0CC68E00EDE5A9 /* SKRequest+.swift in Sources */,
 				C2D1E6231EB2937700DBBEFA /* LoremIpsum.swift in Sources */,
 				C2D1E63E1EB2950500DBBEFA /* RandomAccessCollection+.swift in Sources */,
@@ -1461,7 +1458,6 @@
 				C2D1E5251EB287E900DBBEFA /* Diff.swift in Sources */,
 				C2D4F8B61F057970001FAE8E /* UIScreen+.swift in Sources */,
 				C2D1E5781EB2888400DBBEFA /* NSManagedObjectContext+.swift in Sources */,
-				C2FB98391F0CE3780092009F /* ActionTrailing.swift in Sources */,
 				C2D1E60C1EB2930000DBBEFA /* ParaboloidLayoutController.swift in Sources */,
 				C2D1E5FF1EB292F600DBBEFA /* GenericViewController.swift in Sources */,
 				C2D1E5541EB2881200DBBEFA /* Timer+.swift in Sources */,
@@ -1478,7 +1474,6 @@
 				C2FB98331F0CDE190092009F /* NSObject+.swift in Sources */,
 				C2D1E5721EB2884900DBBEFA /* CGRectEdge+.swift in Sources */,
 				C2D1E5221EB287E900DBBEFA /* Box.swift in Sources */,
-				C2D1E5A71EB2921900DBBEFA /* FontRegistry.swift in Sources */,
 				C2D1E5A21EB28FEE00DBBEFA /* CKContainer+.swift in Sources */,
 				C2D1E5791EB2888400DBBEFA /* NSRelationshipDescription+.swift in Sources */,
 				C2D1E5281EB287E900DBBEFA /* Mutex.swift in Sources */,
@@ -1489,12 +1484,15 @@
 				C2D1E54C1EB2881200DBBEFA /* DateFormatter+.swift in Sources */,
 				C2D1E5FD1EB292F600DBBEFA /* GenericCollectionView.swift in Sources */,
 				C2D4F8B31F057970001FAE8E /* UIEdgeInsets+.swift in Sources */,
-				C2A6AA801EE7A91900A5A95E /* OffsetCollection.swift in Sources */,
 				C2D4F8B91F057970001FAE8E /* UITableView+.swift in Sources */,
 				C2D1E5371EB287FC00DBBEFA /* Collection+.swift in Sources */,
+				C28C69CC1F1E7D5E006E17CE /* ColorHexing.swift in Sources */,
 				C2D1E5511EB2881200DBBEFA /* NSRange+.swift in Sources */,
+				C28C69CE1F1E7D5E006E17CE /* FontRegistering.swift in Sources */,
 				C2D1E53D1EB287FC00DBBEFA /* String+.swift in Sources */,
+				C28C69C51F1E7D4F006E17CE /* OffsetSlice.swift in Sources */,
 				C2D1E52B1EB287E900DBBEFA /* Result.swift in Sources */,
+				C28C69CA1F1E7D5E006E17CE /* ActionTrailing.swift in Sources */,
 				C2D1E5231EB287E900DBBEFA /* Caching.swift in Sources */,
 				C2D1E5FE1EB292F600DBBEFA /* GenericTableView.swift in Sources */,
 				C2D1E54E1EB2881200DBBEFA /* NSLayoutConstraint+.swift in Sources */,
@@ -1507,6 +1505,7 @@
 				C2D1E5361EB287FC00DBBEFA /* AnyIterator+.swift in Sources */,
 				C2D1E5211EB287E900DBBEFA /* Arbitrary.swift in Sources */,
 				C2D1E5FC1EB292F600DBBEFA /* GenericCollectionCell.swift in Sources */,
+				C28C69D51F1E7D6E006E17CE /* ColorPalette.swift in Sources */,
 				C2B59A071F0CC68E00EDE5A9 /* SKRequest+.swift in Sources */,
 				C2D1E54D1EB2881200DBBEFA /* NSAttributedString+.swift in Sources */,
 				C21FE1E31ED37D1800EA98B9 /* JSONSerialization+.swift in Sources */,
@@ -1515,7 +1514,7 @@
 				C2C4A21D1F0CAA7E005EEDE8 /* ReduxController.swift in Sources */,
 				C21A6AF41EBC124F00B42314 /* Curry.swift in Sources */,
 				C2B59A0A1F0CCC0800EDE5A9 /* SKProductsRequest+.swift in Sources */,
-				C2D1E5AF1EB2922500DBBEFA /* ColorHexing.swift in Sources */,
+				C28C69D81F1E7E22006E17CE /* PermutationSlice.swift in Sources */,
 				C2D1E5241EB287E900DBBEFA /* Composition.swift in Sources */,
 				C2D4F8B11F057970001FAE8E /* UICollectionView+.swift in Sources */,
 				C2D1E54A1EB2881200DBBEFA /* Bundle+.swift in Sources */,
@@ -1530,7 +1529,6 @@
 				C2D1E6031EB292FC00DBBEFA /* SnappingFlowLayout.swift in Sources */,
 				C2D1E6051EB292FC00DBBEFA /* SnappingSuperLayout.swift in Sources */,
 				C2D1E5BF1EB2923B00DBBEFA /* OpenWeather+.swift in Sources */,
-				C2D1E5B11EB2922500DBBEFA /* ColorPalette.swift in Sources */,
 				C2D4F8B71F057970001FAE8E /* UIScrollView+.swift in Sources */,
 				C2D1E5B81EB2923300DBBEFA /* SymbolIcon.swift in Sources */,
 				C2D1E5A51EB28FEE00DBBEFA /* CKRecordID+.swift in Sources */,

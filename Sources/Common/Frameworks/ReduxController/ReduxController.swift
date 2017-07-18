@@ -29,11 +29,12 @@ open class ReduxController<State, Action> {
     public init(reducer: @escaping Reducer, middleware: @escaping Middleware) {
         // error is directed to handle in one of the middlewaress.
         _ = inputStream.flatMap { oldState, action in
-            reducer(oldState, action).onError { error in
-                try? middleware(oldState, { _ in throw error })(action)
+            reducer(oldState, action)
+                .onError { error in
+                    try? middleware(oldState, { _ in throw error })(action)
                 }.onNext { newState in
                     try? middleware(newState, { _ in })(action)
-            }
+                }
         }
     }
 

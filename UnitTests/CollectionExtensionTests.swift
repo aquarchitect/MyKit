@@ -12,6 +12,19 @@ final class CollectionExtensionTests: XCTestCase {}
 
 extension CollectionExtensionTests {
 
+    func testGroupingBy() {
+        let result = Array("ABAABDDBCADBDD".characters).group(by: { $0 })
+
+        XCTAssertEqual(Set(result.keys), Set(["A", "B", "C", "D"]))
+        XCTAssertEqual(result["A"]?.count, 4)
+        XCTAssertEqual(result["B"]?.count, 4)
+        XCTAssertEqual(result["C"]?.count, 1)
+        XCTAssertEqual(result["D"]?.count, 5)
+    }
+}
+
+extension CollectionExtensionTests {
+
     func testBinarySearchWithManyElements() {
         let sample = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67 ]
         XCTAssertEqual(sample.binarySearch(43), 13)

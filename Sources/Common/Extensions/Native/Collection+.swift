@@ -16,11 +16,36 @@ public extension Collection {
     typealias IndexTransformer<T> = (Index) -> T
 }
 
+public extension Collection {
+
+    func permutate<S>(with indexes: S) -> PermutationSlice<Self> where
+        S: Sequence,
+        S.Iterator.Element == Index
+    {
+        return PermutationSlice(base: self, permutatedIndexes: indexes)
+    }
+}
+
 public extension Collection where Index: SignedInteger {
 
     /// A view onto the collection with offseted indexes
-    func offsetIndexes(by value: IndexDistance) -> OffsetCollection<Self> {
-        return OffsetCollection(base: self, offsetValue: Int(value.toIntMax()))
+    func offsetIndexes(by value: IndexDistance) -> OffsetSlice<Self> {
+        return OffsetSlice(base: self, offsetValue: Int(value.toIntMax()))
+    }
+
+    func group<U: Hashable>(by predicate: (Iterator.Element) -> U) -> [U: PermutationSlice<Self>] {
+        var result = Dictionary<U, PermutationSlice<Self>>(minimumCapacity: self.count.hashValue)
+
+        for (index, element) in self.enumerated() {
+            let key = predicate(element)
+            let indexes = (result[key]?.permutatedIndexes ?? []) + [
+                self.startIndex.advanced(by: index)
+            ]
+
+            result[key] = PermutationSlice(base: self, permutatedIndexes: indexes)
+        }
+
+        return result
     }
 }
 
