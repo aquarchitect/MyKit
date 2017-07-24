@@ -8,11 +8,9 @@
 
 import StoreKit
 
-private var GlobalToken: UInt8 = 0
+extension SKRequest: ObjectAssociating {
 
-extension SKRequest {
-
-    var subscription: Observable<[SKProduct]> {
+    public var subscription: Observable<[SKProduct]> {
         return getAssociatedObject()
             ?? Observable<[SKProduct]>()
             .then(setAssociatedObject)

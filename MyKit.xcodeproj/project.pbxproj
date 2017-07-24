@@ -19,6 +19,8 @@
 		C21FE1E41ED37D1800EA98B9 /* JSONSerialization+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21FE1E21ED37D1800EA98B9 /* JSONSerialization+.swift */; };
 		C225FAA11D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */; };
 		C225FAA41D111803008DF565 /* LayoutPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C225FAA31D111803008DF565 /* LayoutPresentable.swift */; };
+		C226ECB61F2580A800C27915 /* ObjectAssociating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C226ECB51F2580A800C27915 /* ObjectAssociating.swift */; };
+		C226ECB71F2580A800C27915 /* ObjectAssociating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C226ECB51F2580A800C27915 /* ObjectAssociating.swift */; };
 		C23939C81CAC7F5900526B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23939BB1CAC7F4300526B30 /* AppDelegate.swift */; };
 		C23939CA1CAC7F8E00526B30 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23939C41CAC7F4F00526B30 /* Launch.storyboard */; };
 		C23DFCED1CADFEF9008EFF34 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
@@ -230,8 +232,6 @@
 		C2F317521D5A5EF7009B0F42 /* FontRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317461D5A5EF1009B0F42 /* FontRegistryTests.swift */; };
 		C2F317531D5A5EF7009B0F42 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F317471D5A5EF1009B0F42 /* DateTests.swift */; };
 		C2F348921ECA203B00F33356 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F348911ECA203B00F33356 /* main.swift */; };
-		C2FB98331F0CDE190092009F /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FB98321F0CDE190092009F /* NSObject+.swift */; };
-		C2FB98341F0CDE190092009F /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FB98321F0CDE190092009F /* NSObject+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -298,6 +298,7 @@
 		C21FE1E21ED37D1800EA98B9 /* JSONSerialization+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "JSONSerialization+.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C225FAA01D1116D9008DF565 /* AppleWatchHomeScreenLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppleWatchHomeScreenLayout.swift; path = Demos/iOS/AppleWatchHomeScreenLayout.swift; sourceTree = SOURCE_ROOT; };
 		C225FAA31D111803008DF565 /* LayoutPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutPresentable.swift; path = Demos/iOS/LayoutPresentable.swift; sourceTree = SOURCE_ROOT; };
+		C226ECB51F2580A800C27915 /* ObjectAssociating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociating.swift; sourceTree = "<group>"; };
 		C23939BB1CAC7F4300526B30 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Demos/iOS/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C23939BC1CAC7F4300526B30 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Demos/iOS/Info.plist; sourceTree = SOURCE_ROOT; };
 		C23939C51CAC7F4F00526B30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Demos/iOS/Base.lproj/Launch.storyboard; sourceTree = SOURCE_ROOT; };
@@ -442,7 +443,6 @@
 		C2F317461D5A5EF1009B0F42 /* FontRegistryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FontRegistryTests.swift; path = UnitTests/FontRegistryTests.swift; sourceTree = SOURCE_ROOT; };
 		C2F317471D5A5EF1009B0F42 /* DateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTests.swift; path = UnitTests/DateTests.swift; sourceTree = SOURCE_ROOT; };
 		C2F348911ECA203B00F33356 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = main.swift; path = Demos/macOS/main.swift; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		C2FB98321F0CDE190092009F /* NSObject+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -544,7 +544,6 @@
 				C2B9C8071F1688E700583C62 /* NSData+MD5.m */,
 				C2D1E5421EB2881200DBBEFA /* NSLayoutConstraint+.swift */,
 				C2D1E5431EB2881200DBBEFA /* NSMutableAttributedString+.swift */,
-				C2FB98321F0CDE190092009F /* NSObject+.swift */,
 				C2D1E5451EB2881200DBBEFA /* NSRange+.swift */,
 				C2D1E5461EB2881200DBBEFA /* ProcessInfo+.swift */,
 				C2D1E5471EB2881200DBBEFA /* Scanner+.swift */,
@@ -794,6 +793,7 @@
 				C28C69C71F1E7D5E006E17CE /* ActionTrailing.swift */,
 				C28C69C81F1E7D5E006E17CE /* ColorHexing.swift */,
 				C28C69C91F1E7D5E006E17CE /* FontRegistering.swift */,
+				C226ECB51F2580A800C27915 /* ObjectAssociating.swift */,
 			);
 			path = ExtensionProtocols;
 			sourceTree = "<group>";
@@ -1371,10 +1371,10 @@
 				C2D1E59D1EB28FD700DBBEFA /* NSRelationshipDescription+.swift in Sources */,
 				C2D1E5981EB28FD300DBBEFA /* Scanner+.swift in Sources */,
 				C2D4F8DC1F057BD0001FAE8E /* EdgeInsets+.swift in Sources */,
+				C226ECB71F2580A800C27915 /* ObjectAssociating.swift in Sources */,
 				C2D4F8E61F057BD0001FAE8E /* NSTableView+.swift in Sources */,
 				C28C69C61F1E7D52006E17CE /* OffsetSlice.swift in Sources */,
 				C2D1E59A1EB28FD300DBBEFA /* URLSession+.swift in Sources */,
-				C2FB98341F0CDE190092009F /* NSObject+.swift in Sources */,
 				C2D1E58F1EB28FD300DBBEFA /* Bundle+.swift in Sources */,
 				C2D1E62C1EB2938500DBBEFA /* OpenWeather.swift in Sources */,
 				C2D4F8E91F057BD0001FAE8E /* NSWindowStyleMask+.swift in Sources */,
@@ -1465,13 +1465,13 @@
 				C2D1E63D1EB2950500DBBEFA /* RandomAccessCollection+.swift in Sources */,
 				C2D4F8AF1F057970001FAE8E /* Draw+.swift in Sources */,
 				C2D4F8B41F057970001FAE8E /* UIImage+.swift in Sources */,
+				C226ECB61F2580A800C27915 /* ObjectAssociating.swift in Sources */,
 				C2E9B1EA1EBD734D003D1372 /* Benchmark.swift in Sources */,
 				C2D1E52D1EB287E900DBBEFA /* Then.swift in Sources */,
 				C2D4F8B01F057970001FAE8E /* UIBezierPath+.swift in Sources */,
 				C2D1E5551EB2881200DBBEFA /* URLSession+.swift in Sources */,
 				C2D1E5271EB287E900DBBEFA /* Matrix.swift in Sources */,
 				C2D1E5F71EB292F000DBBEFA /* GrowingTextView.swift in Sources */,
-				C2FB98331F0CDE190092009F /* NSObject+.swift in Sources */,
 				C2D1E5721EB2884900DBBEFA /* CGRectEdge+.swift in Sources */,
 				C2D1E5221EB287E900DBBEFA /* Box.swift in Sources */,
 				C2D1E5A21EB28FEE00DBBEFA /* CKContainer+.swift in Sources */,

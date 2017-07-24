@@ -19,35 +19,52 @@ final class ActionTrailingTests: XCTestCase {
 
 #if os(iOS)
     func testAction() {
+        let expectation = self.expectation(description: #function).then {
+            $0.expectedFulfillmentCount = 2
+        }
+
         let button = UIButton()
         button.addAction({
             XCTAssert(type(of: $0) == UIButton.self)
+            expectation.fulfill()
+            Swift.print($0)
         }, for: .touchUpInside)
 
-        button.handleAction(button)
+        button.handleAction()
 
         let gesture = UITapGestureRecognizer()
         gesture.addAction {
             XCTAssert(type(of: $0) == UITapGestureRecognizer.self)
+            expectation.fulfill()
         }
 
-        gesture.handleAction(gesture)
+        gesture.handleAction()
+
+        wait(for: [expectation], timeout: 0.2)
     }
 #elseif os(OSX)
     func testAction() {
+        let expectation = self.expectation(description: #function).then {
+            $0.expectedFulfillmentCount = 2
+        }
+
         let button = NSButton()
         button.addAction {
             XCTAssert(type(of: $0) == NSButton.self)
+            expectation.fulfill()
         }
 
-        button.handleAction(button)
+        button.perform(button.action)
 
         let gesture = NSGestureRecognizer()
         gesture.addAction {
             XCTAssert(type(of: $0) == NSGestureRecognizer.self)
+            expectation.fulfill()
         }
 
-        gesture.handleAction(gesture)
+        gesture.perform(gesture.action)
+
+        wait(for: [expectation], timeout: 0.2)
     }
 #endif
 }

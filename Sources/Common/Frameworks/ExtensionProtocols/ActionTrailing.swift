@@ -1,4 +1,4 @@
-// 
+//
 // ActionTrailing.swift
 // MyKit
 // 
@@ -8,60 +8,58 @@
 
 import Foundation
 
-public protocol ActionTrailing: class {}
+public protocol ActionTrailing: ObjectAssociating {}
 
-extension ActionTrailing where Self: NSObject {
+extension ActionTrailing {
 
-    var block: ((Self) -> Void)? {
-        get { return getAssociatedObject() }
-        set { newValue.map(setAssociatedObject) }
+    func execute() {
+        _ = getAssociatedObject().map {
+            (block: (Self) -> Void) in
+            block(self)
+        }
+   }
+}
+
+extension NSObject {
+
+    func handleAction() {
+        (self as? ActionTrailing)?.execute()
     }
 }
 
 #if os(iOS)
 import UIKit
 
-extension UIControl: ActionTrailing {
-
-    func handleAction(_ sender: UIControl) {
-        block?(sender)
-    }
-}
+extension UIControl: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIControl {
 
     func addAction(_ block: @escaping (Self) -> Void, for controlEvents: UIControlEvents) {
-        self.block = block
-        self.addTarget(self, action: #selector(handleAction), for: controlEvents)
+        self.setAssociatedObject(block)
+        self.addTarget(
+            self, action:
+            #selector(handleAction),
+            for: controlEvents
+        )
     }
 }
 
-extension UIGestureRecognizer: ActionTrailing {
-
-    func handleAction(_ sender: UIGestureRecognizer) {
-        block?(sender)
-    }
-}
+extension UIGestureRecognizer: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIGestureRecognizer {
 
     func addAction(_ block: @escaping (Self) -> Void) {
-        self.block = block
+        self.setAssociatedObject(block)
         self.addTarget(self, action: #selector(handleAction))
     }
 }
 
-extension UIBarButtonItem: ActionTrailing {
-
-    func handleAction(_ sender: UIBarButtonItem) {
-        block?(sender)
-    }
-}
+extension UIBarButtonItem: ActionTrailing {}
 
 public extension ActionTrailing where Self: UIBarButtonItem {
 
     func addAction(_ block: @escaping (Self) -> Void) {
-        self.block = block
+        self.setAssociatedObject(block)
         self.target = self
         self.action = #selector(handleAction)
     }
@@ -70,49 +68,34 @@ public extension ActionTrailing where Self: UIBarButtonItem {
 #elseif os(OSX)
 import AppKit
 
-extension NSControl: ActionTrailing {
-
-    func handleAction(_ sender: NSControl) {
-        block?(sender)
-    }
-}
+extension NSControl: ActionTrailing {}
 
 public extension ActionTrailing where Self: NSControl {
 
     func addAction(_ block: @escaping (Self) -> Void) {
-        self.block = block
+        self.setAssociatedObject(block)
         self.action = #selector(handleAction)
         self.target = self
     }
 }
 
-extension NSMenuItem: ActionTrailing {
-
-    func handleAction(_ sender: NSMenuItem) {
-        block?(sender)
-    }
-}
+extension NSMenuItem: ActionTrailing {}
 
 public extension ActionTrailing where Self: NSMenuItem {
 
     func addAction(_ block: @escaping (Self) -> Void) {
-        self.block = block
+        self.setAssociatedObject(block)
         self.action = #selector(handleAction)
         self.target = self
     }
 }
 
-extension NSGestureRecognizer: ActionTrailing {
-
-    func handleAction(_ sender: NSGestureRecognizer) {
-        block?(sender)
-    }
-}
+extension NSGestureRecognizer: ActionTrailing {}
 
 public extension ActionTrailing where Self: NSGestureRecognizer {
 
     func addAction(_ block: @escaping (Self) -> Void) {
-        self.block = block
+        self.setAssociatedObject(block)
         self.action = #selector(handleAction)
         self.target = self
     }

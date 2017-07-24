@@ -14,9 +14,9 @@ import AppKit
 
 import MyKitPrivate
 
-public extension UserDefaults {
+extension UserDefaults: ObjectAssociating {
 
-    var encryptedKey: String? {
+    public var encryptedKey: String? {
         get { return getAssociatedObject() }
         set { setAssociatedObject(newValue) }
     }
