@@ -33,14 +33,16 @@ public extension SnappingLayoutDelegate where Self: UICollectionViewLayout {
 
         return (self.layoutAttributesForElements(in: rect) ?? [])
             .lazy
-            .filter { $0.representedElementCategory == .cell }
-            .sorted { distance($0) < distance($1) }
+            .filter({ $0.representedElementCategory == .cell })
+            .sorted(by: { distance($0) < distance($1) })
             .first
+            .flatMap({ dump($0) })
     }
 
-    internal func snappedContentOffset(forProposedContentOffset contentOffset: CGPoint, at point: CGPoint) -> CGPoint {
+    func snappedContentOffset(forProposedContentOffset contentOffset: CGPoint, at point: CGPoint) -> CGPoint {
         return snappedLayoutAttribute(forProposedContentOffset: contentOffset, at: point)
-            .map { CGPoint(x: $0.center.x - point.x, y: $0.center.y - point.y) }
+            .map({ CGPoint(x: $0.center.x - point.x, y: $0.center.y - point.y) })
+            .flatMap({ dump($0) })
             ?? contentOffset
     }
 }

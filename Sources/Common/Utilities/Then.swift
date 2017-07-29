@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// _Then_ provides helper functions to ease the transformation of one type to another.
+/// The protocol simply provides a couple of helper functions to configure the object instance.
 ///
 /// - warning: `map` and `flatMap` should be favored in the case of `Optional`.
 public protocol Then: class {}

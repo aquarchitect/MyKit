@@ -24,13 +24,17 @@ public extension Collection {
     {
         return PermutationSlice(base: self, permutatedIndexes: indexes)
     }
+
+    func enumerate(inline block: @escaping (Index, Iterator.Element) -> Iterator.Element) -> EnumeratedCollection<Self> {
+        return EnumeratedCollection(base: self, block: block)
+    }
 }
 
 public extension Collection where Index: SignedInteger {
 
     /// A view onto the collection with offseted indexes
-    func offsetIndexes(by value: IndexDistance) -> OffsetSlice<Self> {
-        return OffsetSlice(base: self, offsetValue: Int(value.toIntMax()))
+    func offsetIndexes(by value: Index.Stride) -> OffsetCollection<Self> {
+        return OffsetCollection(base: self, offsetValue: value)
     }
 
     func group<U: Hashable>(by predicate: (Iterator.Element) -> U) -> [U: PermutationSlice<Self>] {

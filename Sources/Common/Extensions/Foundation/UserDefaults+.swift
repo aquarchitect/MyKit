@@ -74,3 +74,17 @@ public extension UserDefaults {
         return hash(encryptedValue) == encryptedHash ? encryptedValue : nil
     }
 }
+
+public extension UserDefaults {
+
+    func set(_ json: [String: Any], forKey defaultName: String) {
+        (try? JSONSerialization.data(withJSONObject: json))
+            .map({ self.set($0, forKey: defaultName) })
+    }
+
+    func json(forKey defaultName: String) -> [String: Any]? {
+        return self.data(forKey: defaultName)
+            .flatMap({ try? JSONSerialization.jsonObject(with: $0) })
+            .flatMap({ $0 as? [String: Any] })
+    }
+}

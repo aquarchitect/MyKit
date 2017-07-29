@@ -1,5 +1,5 @@
 //
-// OffsetSlice.swift
+// OffsetCollection.swift
 // MyKit
 //
 // Created by Hai Nguyen.
@@ -7,7 +7,7 @@
 //
 
 /// A view into the collection whose indexes are offseted at a defined value.
-public struct OffsetSlice<Base>: Collection where
+public struct OffsetCollection<Base>: Collection where
     Base: Collection,
     Base.Index: SignedInteger
 {
@@ -16,7 +16,7 @@ public struct OffsetSlice<Base>: Collection where
 
     private let base: Base
 
-    let offsetValue: IndexDistance
+    let offsetValue: Index.Stride
 
     public var startIndex: Base.Index {
         return base.startIndex.advanced(by: offsetValue)
@@ -28,7 +28,7 @@ public struct OffsetSlice<Base>: Collection where
 
     // MARK: Initialization
 
-    public init(base: Base, offsetValue: IndexDistance) {
+    public init(base: Base, offsetValue: Index.Stride) {
         self.base = base
         self.offsetValue = offsetValue
     }
@@ -43,3 +43,6 @@ public struct OffsetSlice<Base>: Collection where
         return base.index(after: i)
     }
 }
+
+@available(*, renamed: "OffsetCollection")
+public typealias OffsetSlice<Base> = OffsetCollection<Base> where Base: Collection, Base.Index: SignedInteger
