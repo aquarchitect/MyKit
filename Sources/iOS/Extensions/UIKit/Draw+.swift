@@ -36,3 +36,17 @@ public func render(size: CGSize, opaque: Bool, in block: (CGContext) -> Void) ->
     
     return image
 }
+
+public func render(_ rect: CGRect, withTileSize size: CGSize, and prefix: String) {
+    rect.slicesIntoTiles(of: size)
+        .enumerated()
+        .lazy
+        .forEach { index, rect in
+            FileManager.default
+                .urls(for: .cachesDirectory, in: .userDomainMask)
+                .first
+                .map({ $0.appendingPathExtension("\(prefix)_\(index).png") })
+                .flatMap({ UIImage(contentsOfFile: $0.path) })?
+                .draw(in: rect)
+        }
+}

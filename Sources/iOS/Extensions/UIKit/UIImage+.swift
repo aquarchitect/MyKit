@@ -22,3 +22,23 @@ public extension UIImage {
         return image
     }
 }
+
+public extension UIImage {
+
+    func slicesIntoTiles(of size: CGSize, andCachesWithPrefix prefix: String) {
+        guard let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else { return }
+
+        let imageRef = self.cgImage
+
+        CGRect(origin: .zero, size: self.size)
+            .slicesIntoTiles(of: size)
+            .enumerated()
+            .forEach {
+                try? imageRef?
+                    .cropping(to: $0.element)
+                    .map(UIImage.init(cgImage:))
+                    .flatMap(UIImagePNGRepresentation(_:))?
+                    .write(to: cachesURL.appendingPathComponent("\(prefix)_\($0.offset).png"))
+        }
+    }
+}

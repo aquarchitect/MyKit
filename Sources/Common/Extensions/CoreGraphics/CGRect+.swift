@@ -33,3 +33,38 @@ public extension CGRect {
         self.init(origin: origin, size: size)
     }
 }
+
+public extension CGRect {
+
+    func slicesIntoTiles(of size: CGSize) -> AnyIterator<CGRect> {
+        let rows = Int(self.size.height / size.height) + 1
+        let columns = Int(self.size.width / size.width) + 1
+
+        var i = 0, j = 0
+
+        return AnyIterator<CGRect> {
+            while i < columns && j < rows {
+                let rect = CGRect(
+                    x: size.width * CGFloat(i),
+                    y: size.height * CGFloat(j),
+                    width: i == columns - 1 ? self.size.width.truncatingRemainder(dividingBy: size.width) : size.width,
+                    height: j == rows - 1 ? self.size.height.truncatingRemainder(dividingBy: size.height) : size.height
+                )
+
+                if i == columns - 1 {
+                    i = 0; j += 1
+                } else {
+                    i += 1
+                }
+
+                if rect.isEmpty {
+                    continue
+                } else {
+                    return rect
+                }
+            }
+            
+            return nil
+        }
+    }
+}
