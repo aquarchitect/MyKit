@@ -13,9 +13,11 @@ final class CGRectExtensionTests: XCTestCase {}
 extension CGRectExtensionTests {
 
     func testTileFittingSlicing() {
+        let rect = CGRect(x: 0, y: 0, width: 40, height: 60)
+        let enumerator = { rect.slices(rect, intoTilesOf: CGSize(width: 20, height: 30)) }
+
         XCTAssertEqual(
-            Array(CGRect(x: 0, y: 0, width: 40, height: 60)
-                .slicesIntoTiles(of: CGSize(width: 20, height: 30))),
+            enumerator().map({ $0.rect }),
             [
                 CGRect(x: 0, y: 0, width: 20, height: 30),
                 CGRect(x: 20, y: 0, width: 20, height: 30),
@@ -23,12 +25,17 @@ extension CGRectExtensionTests {
                 CGRect(x: 20, y: 30, width: 20, height: 30)
             ]
         )
+
+        XCTAssertEqual(enumerator().map({ $0.row }), [0, 0, 1, 1])
+        XCTAssertEqual(enumerator().map({ $0.column }), [0, 1, 0, 1])
     }
 
     func testTileExtraSlicing() {
+        let rect = CGRect(x: 0, y: 0, width: 50, height: 70)
+        let enumerator = { rect.slices(rect, intoTilesOf: CGSize(width: 20, height: 30)) }
+
         XCTAssertEqual(
-            Array(CGRect(x: 0, y: 0, width: 50, height: 70)
-                .slicesIntoTiles(of: CGSize(width: 20, height: 30))),
+            enumerator().map({ $0.rect }),
             [
                 CGRect(x: 0, y: 0, width: 20, height: 30),
                 CGRect(x: 20, y: 0, width: 20, height: 30),
@@ -41,5 +48,30 @@ extension CGRectExtensionTests {
                 CGRect(x: 40, y: 60, width: 10, height: 10),
             ]
         )
+
+        XCTAssertEqual(enumerator().map({ $0.row }), [0, 0, 0, 1, 1, 1, 2, 2, 2])
+        XCTAssertEqual(enumerator().map({ $0.column }), [0, 1, 2, 0, 1, 2, 0, 1, 2])
+    }
+
+    func testTileMiddleSlicing() {
+        let enumerator = {
+            CGRect(x: 0, y: 0, width: 50, height: 70).slices(
+                CGRect(x: 25, y: 20, width: 20, height: 30),
+                intoTilesOf: CGSize(width: 20, height: 30)
+            )
+        }
+
+        XCTAssertEqual(
+            enumerator().map({ $0.rect }),
+            [
+                CGRect(x: 20, y: 0, width: 20, height: 30),
+                CGRect(x: 40, y: 0, width: 10, height: 30),
+                CGRect(x: 20, y: 30, width: 20, height: 30),
+                CGRect(x: 40, y: 30, width: 10, height: 30)
+            ]
+        )
+
+        XCTAssertEqual(enumerator().map({ $0.row }), [0, 0, 1, 1])
+        XCTAssertEqual(enumerator().map({ $0.column }), [1, 2, 1, 2])
     }
 }

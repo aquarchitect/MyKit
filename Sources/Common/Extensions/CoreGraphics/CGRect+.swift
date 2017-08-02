@@ -36,31 +36,37 @@ public extension CGRect {
 
 public extension CGRect {
 
-    func slicesIntoTiles(of size: CGSize) -> AnyIterator<CGRect> {
-        let rows = Int(self.size.height / size.height) + 1
-        let columns = Int(self.size.width / size.width) + 1
+    typealias Tile = (column: Int, row: Int, rect: CGRect)
 
-        var i = 0, j = 0
+    func slices(_ rect: CGRect, intoTilesOf size: CGSize) -> AnyIterator<Tile> {
+        let firstColumn = Int(rect.minX/size.width)
+        let lastColumn = Int(rect.maxX/size.width) + 1
+        let firstRow = Int(rect.minY/size.height)
+        let lastRow = Int(rect.maxY/size.height) + 1
 
-        return AnyIterator<CGRect> {
-            while i < columns && j < rows {
+        var i = firstColumn, j = firstRow
+
+        return AnyIterator<Tile> {
+            while i < lastColumn && j < lastRow {
                 let rect = CGRect(
                     x: size.width * CGFloat(i),
                     y: size.height * CGFloat(j),
-                    width: i == columns - 1 ? self.size.width.truncatingRemainder(dividingBy: size.width) : size.width,
-                    height: j == rows - 1 ? self.size.height.truncatingRemainder(dividingBy: size.height) : size.height
+                    width: size.width,
+                    height: size.height
                 )
 
-                if i == columns - 1 {
-                    i = 0; j += 1
+                let tile: Tile = (i, j, self.intersection(rect))
+
+                if i == lastColumn - 1 {
+                    i = firstColumn; j += 1
                 } else {
                     i += 1
                 }
 
-                if rect.isEmpty {
+                if tile.rect.isEmpty {
                     continue
                 } else {
-                    return rect
+                    return tile
                 }
             }
             

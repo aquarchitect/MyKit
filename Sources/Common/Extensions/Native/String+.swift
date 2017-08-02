@@ -12,7 +12,13 @@ public extension String {
 
     var fourCharCode: FourCharCode? {
         guard self.characters.count == 4 else { return nil }
-        return self.utf16.reduce(0) { ($0 << 8) + FourCharCode($1) }
+
+        var result: FourCharCode = 0
+        for stringView in self.utf16 {
+            result = (result << 8) + FourCharCode(stringView)
+        }
+
+        return result
     }
 }
 

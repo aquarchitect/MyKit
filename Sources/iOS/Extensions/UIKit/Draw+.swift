@@ -37,18 +37,18 @@ public func render(size: CGSize, opaque: Bool, in block: (CGContext) -> Void) ->
     return image
 }
 
-public func render(size: CGSize, in rect: CGRect, withTileSize tileSize: CGSize, and prefix: String) {
-    CGRect(origin: .zero, size: size)
-        .slicesIntoTiles(of: tileSize)
-        .enumerated()
-        .lazy
-        .filter({ $0.element.intersects(rect) })
-        .forEach { index, rect in
-            FileManager.default
-                .urls(for: .cachesDirectory, in: .userDomainMask)
-                .first
-                .map({ $0.appendingPathComponent("\(prefix)_\(index).png") })
-                .flatMap({ UIImage(contentsOfFile: $0.path) })?
-                .draw(in: rect)
-        }
+public func render(size: CGSize, region: CGRect, withTileSize tileSize: CGSize, and prefix: String) {
+    let enumerator = CGRect(origin: .zero, size: size)
+        .slices(region, intoTilesOf: tileSize)
+
+    for tile in enumerator {
+        let name = "\(prefix)_\(tile.row)_\(tile.column).png"
+
+        FileManager.default
+            .urls(for: .cachesDirectory, in: .userDomainMask)
+            .first
+            .map({ $0.appendingPathComponent(name) })
+            .flatMap({ UIImage(contentsOfFile: $0.path) })?
+            .draw(in: tile.rect)
+    }
 }

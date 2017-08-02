@@ -1,4 +1,4 @@
-// 
+//
 // OpenWeather+.swift
 // MyKit
 // 
@@ -273,7 +273,7 @@ public extension OpenWeather.Icon {
 
     func attributedString(ofSize size: CGFloat) -> NSMutableAttributedString {
         return NSMutableAttributedString(string: self.description).then {
-            $0.addFont(.getFont(name: "Weather Icons", size: size, fromFile: "OpenWeather"))
+            $0.addFont(Font.getFont(name: "Weather Icons", size: size, fromFile: "OpenWeather")!)
         }
     }
 }

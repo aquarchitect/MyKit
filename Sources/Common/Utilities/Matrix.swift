@@ -75,12 +75,21 @@ public extension Matrix {
     subscript(column column: Int) -> ArraySlice<Element> {
         get {
             assert(column < columns, "Column out of bounds")
-            return ArraySlice((0..<rows).map({ elements[$0 * columns + column] }))
+
+            let base = (0..<rows)
+                .makeIterator()
+                .lazy
+                .map({ self.elements[$0 * self.columns + column] })
+
+            return ArraySlice(base)
         }
         set {
             assert(column < columns, "Column out of bounds")
             assert(newValue.count == rows, "Row out of bounds")
-            (0..<rows).forEach({ elements[$0 * columns + column] = newValue[$0] })
+
+            for index in 0..<rows {
+                elements[index * columns + column] = newValue[index]
+            }
         }
     }
 }

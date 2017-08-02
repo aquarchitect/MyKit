@@ -22,7 +22,11 @@ open class ParaboloidFlowLayout: SnappingFlowLayout {
 
     open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return super.layoutAttributesForElements(in: rect)?.map {
-            $0.representedElementCategory == .cell ? (self.layoutAttributesForItem(at: $0.indexPath) ?? $0) : $0
+            if $0.representedElementCategory == .cell {
+                return self.layoutAttributesForItem(at: $0.indexPath) ?? $0
+            } else {
+                return $0
+            }
         }
     }
 

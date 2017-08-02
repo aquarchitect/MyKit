@@ -66,7 +66,7 @@ public extension UserDefaults {
     }
 
     func encryptedObject(forKey defaultName: String) -> Any? {
-        guard let encryptedDict = self.dictionary(forKey: defaultName),
+        guard let encryptedDict = self.json(forKey: defaultName),
             let encryptedValue = encryptedDict[UserDefaults.encryptedDefaultValueKey] as? NSCopying,
             let encryptedHash = encryptedDict[UserDefaults.encryptedDefaultHashKey] as? String
             else { return nil }

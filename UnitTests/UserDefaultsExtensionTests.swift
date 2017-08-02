@@ -38,7 +38,10 @@ extension UserDefaultsExtensionTests {
         let sensitiveTuple = (key: "Foo", value: "Bar")
         userDefaults?.setEncryptedObject(sensitiveTuple.value, forKey: sensitiveTuple.key)
 
-        XCTAssertEqual(userDefaults?.encryptedObject(forKey: sensitiveTuple.key) as? String, sensitiveTuple.value)
+        XCTAssertEqual(
+            userDefaults?.encryptedObject(forKey: sensitiveTuple.key) as? String,
+            sensitiveTuple.value
+        )
 
         userDefaults?.set([
             UserDefaults.encryptedDefaultValueKey: sensitiveTuple.value,

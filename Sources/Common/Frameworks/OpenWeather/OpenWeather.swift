@@ -44,7 +44,7 @@ public final class OpenWeather {
     public let language: String
     public let format: Format
 
-    private let baseURL = "http://api.openweathermap.org/data/"
+    private let basePath = "http://api.openweathermap.org/data/"
 
     // MARK: Initialization
 
@@ -69,13 +69,9 @@ public final class OpenWeather {
             .apiKey(apiKey),
             .language(language),
             .units(format)
-        ]
-        
-        let fullURL = baseURL
-            + String(version)
-            + (method + .compound(baseComps + comps))
+        ] + comps
 
-        return URL(string: fullURL)
+        return URL(string: "\(basePath)\(version)\(method + .compound(baseComps))")
             .map(URLSession.shared.dataTask(with:))
             ?? Observable()
     }
@@ -127,7 +123,7 @@ extension OpenWeather.Component {
         case .cityName(let name): return "q=\(name)"
         case .cityID(let id): return "id=\(id)"
         case .locationCoordinate(let coord): return "lat=\(coord.latitude)&lon=\(coord.longitude)"
-        case .compound(let comps): return comps.map { $0.query }.joined(separator: "&")
+        case .compound(let comps): return comps.map({ $0.query }).joined(separator: "&")
         }
     }
 }

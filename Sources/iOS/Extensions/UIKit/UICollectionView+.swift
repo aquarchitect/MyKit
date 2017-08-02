@@ -58,10 +58,9 @@ public extension UICollectionView {
     }
 
     final func index(bySerializing indexPath: IndexPath) -> Int {
-        return (0..<indexPath.section)
-            .lazy
-            .map(self.numberOfItems(inSection:))
-            .reduce(indexPath.row, +)
+        return (0..<indexPath.section).reduce(indexPath.row) {
+            $0 + self.numberOfItems(inSection: $1)
+        }
     }
 
     final func indexPath(byDeserializing index: Int) -> IndexPath {

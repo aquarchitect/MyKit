@@ -31,12 +31,11 @@ public extension SnappingLayoutDelegate where Self: UICollectionViewLayout {
 
         let rect = CGRect(origin: contentOffset, size: collectionView.bounds.size)
 
-        return (self.layoutAttributesForElements(in: rect) ?? [])
+        return self.layoutAttributesForElements(in: rect)?
             .lazy
             .filter({ $0.representedElementCategory == .cell })
             .sorted(by: { distance($0) < distance($1) })
             .first
-            .flatMap({ dump($0) })
     }
 
     func snappedContentOffset(forProposedContentOffset contentOffset: CGPoint, at point: CGPoint) -> CGPoint {

@@ -1,4 +1,4 @@
-// 
+//
 // NSMutableAttributedString+.swift
 // MyKit
 // 
@@ -8,8 +8,12 @@
 
 #if os(iOS)
 import UIKit
+public typealias Color = UIColor
+public typealias Font = UIFont
 #elseif os(OSX)
 import AppKit
+public typealias Color = NSColor
+public typealias Font = NSFont
 #endif
 
 extension NSMutableAttributedString {
@@ -17,8 +21,11 @@ extension NSMutableAttributedString {
     var range: NSRange {
         return NSMakeRange(0, self.length)
     }
+}
 
-    func _addFont(_ font: Any, to range: NSRange?) {
+public extension NSMutableAttributedString {
+
+    func addFont(_ font: Font, to range: NSRange? = nil) {
         self.addAttribute(
             NSFontAttributeName,
             value: font,
@@ -26,40 +33,29 @@ extension NSMutableAttributedString {
         )
     }
 
-    func _addColor(_ color: Any, to range: NSRange?) {
+    func addForegroundColor(_ color: Color, to range: NSRange? = nil) {
         self.addAttribute(
             NSForegroundColorAttributeName,
             value: color,
             range: range ?? self.range
         )
     }
-}
 
-#if os(iOS)
-public extension NSMutableAttributedString {
-
-    func addFont(_ font: UIFont?, to range: NSRange? = nil) {
-        font.flatMap({ self._addFont($0, to: range) })
+    func addStrokeColor(_ color: Color, to range: NSRange? = nil) {
+        self.addAttribute(
+            NSStrokeColorAttributeName,
+            value: color,
+            range: range ?? self.range
+        )
     }
 
-    func addColor(_ color: UIColor?, to range: NSRange? = nil) {
-        color.flatMap({ self._addColor($0, to: range) })
+    func addStrokeWidth(_ width: Float, to range: NSRange? = nil) {
+        self.addAttribute(
+            NSStrokeWidthAttributeName,
+            value: NSNumber(value: width),
+            range: range ?? self.range
+        )
     }
-}
-#elseif os(OSX)
-public extension NSMutableAttributedString {
-
-    func addFont(_ font: NSFont?, to range: NSRange? = nil) {
-        font.flatMap({ self._addFont($0, to: range) })
-    }
-
-    func addColor(_ color: NSColor?, to range: NSRange? = nil) {
-        color.flatMap({ self._addColor($0, to: range) })
-    }
-}
-#endif
-
-public extension NSMutableAttributedString {
 
     func addAlignment(_ alignment: NSTextAlignment, to range: NSRange? = nil) {
         NSMutableParagraphStyle()

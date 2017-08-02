@@ -26,7 +26,7 @@ public extension SymbolIcon {
 
     func attributedString(ofSize size: CGFloat) -> NSMutableAttributedString {        
         return NSMutableAttributedString(string: "\(character)").then {
-            $0.addFont(.getFont(name: "Ionicons", size: size, fromFile: "SymbolIcon"))
+            $0.addFont(Font.getFont(name: "Ionicons", size: size, fromFile: "SymbolIcon")!)
         }
     }
 }

@@ -20,7 +20,7 @@ final class NSMutableAttributedStringExtensionTests: XCTestCase {
     func testAddingAttributes() {
         NSMutableAttributedString(string: "Foo").then {
             $0.addFont(.systemFont(ofSize: 17))
-            $0.addColor(.white)
+            $0.addForegroundColor(.white)
             $0.addAlignment(.center)
             $0.addKern(3)
             $0.addBaseline(-3)
