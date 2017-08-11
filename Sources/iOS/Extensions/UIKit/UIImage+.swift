@@ -25,20 +25,18 @@ public extension UIImage {
 
 public extension UIImage {
 
-    func slicesIntoTiles(of size: CGSize, andCachesWithPrefix prefix: String) {
-        guard let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else { return }
-
+    func slicesIntoTiles(of size: CGSize, andCachesTo url: URL, withPrefix prefix: String) {
         let rect = CGRect(origin: .zero, size: self.size)
         let imageRef = self.cgImage
 
         rect.slices(rect, intoTilesOf: size).forEach {
-            let name = "\(prefix)_\($0.row)_\($0.column).png"
+            let name = "\(prefix)_\($0.column)_\($0.row).png"
 
             try? imageRef?
                 .cropping(to: $0.rect)
                 .map(UIImage.init(cgImage:))
                 .flatMap(UIImagePNGRepresentation(_:))?
-                .write(to: cachesURL.appendingPathComponent(name))
+                .write(to: url.appendingPathComponent(name))
         }
     }
 }

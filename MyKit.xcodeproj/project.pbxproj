@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C204C8531F3E1D4E002A9BF0 /* TilingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204C8521F3E1D4E002A9BF0 /* TilingImageView.swift */; };
+		C204C8551F3E2148002A9BF0 /* TilingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C204C8541F3E2148002A9BF0 /* TilingContainerView.swift */; };
 		C214B90D1DA2155700754247 /* ActionTrailingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */; };
 		C214B90E1DA2155800754247 /* ActionTrailingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */; };
 		C214B9101DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */; };
@@ -317,6 +319,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C204C8521F3E1D4E002A9BF0 /* TilingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilingImageView.swift; sourceTree = "<group>"; };
+		C204C8541F3E2148002A9BF0 /* TilingContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilingContainerView.swift; sourceTree = "<group>"; };
 		C214B90B1DA2153F00754247 /* ActionTrailingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActionTrailingTests.swift; path = UnitTests/ActionTrailingTests.swift; sourceTree = SOURCE_ROOT; };
 		C214B90F1DA2231900754247 /* NSMutableAttributedStringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSMutableAttributedStringExtensionTests.swift; path = UnitTests/NSMutableAttributedStringExtensionTests.swift; sourceTree = SOURCE_ROOT; };
 		C21A6AF31EBC124F00B42314 /* Curry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Curry.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -608,6 +612,7 @@
 		C201662F1CE1016400F7D3E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C204C8511F3E1D0F002A9BF0 /* TilingImage */,
 				C231CAA61D790A48007A895E /* GestureRecognizer */,
 				C201664D1CE1025C00F7D3E5 /* GrowingText */,
 				C20166591CE1035B00F7D3E5 /* GenericInterface */,
@@ -672,6 +677,15 @@
 				C2D1E6021EB292FC00DBBEFA /* SnappingSuperLayout.swift */,
 			);
 			path = Snapping;
+			sourceTree = "<group>";
+		};
+		C204C8511F3E1D0F002A9BF0 /* TilingImage */ = {
+			isa = PBXGroup;
+			children = (
+				C204C8521F3E1D4E002A9BF0 /* TilingImageView.swift */,
+				C204C8541F3E2148002A9BF0 /* TilingContainerView.swift */,
+			);
+			path = TilingImage;
 			sourceTree = "<group>";
 		};
 		C20F70241C7532EC004C688F /* LoremIpsum */ = {
@@ -1523,6 +1537,7 @@
 				C2D1E5A31EB28FEE00DBBEFA /* CKDatabase+.swift in Sources */,
 				C2D4F8B51F057970001FAE8E /* UILabel+.swift in Sources */,
 				C2D1E5711EB2884900DBBEFA /* CGRect+.swift in Sources */,
+				C204C8531F3E1D4E002A9BF0 /* TilingImageView.swift in Sources */,
 				C2F224061F1092E00033C86B /* SelectingCollectionGesture.swift in Sources */,
 				C2D4F8B21F057970001FAE8E /* UICollectionViewFlowLayout+.swift in Sources */,
 				C2D1E5771EB2888400DBBEFA /* NSAttributeDescription+.swift in Sources */,
@@ -1619,6 +1634,7 @@
 				C2D1E5A51EB28FEE00DBBEFA /* CKRecordID+.swift in Sources */,
 				C2B1506A1F2D1B8C004AF241 /* EnumeratedBidirectionalCollection.swift in Sources */,
 				C2F224071F1092E00033C86B /* ReorderingTableGesture.swift in Sources */,
+				C204C8551F3E2148002A9BF0 /* TilingContainerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

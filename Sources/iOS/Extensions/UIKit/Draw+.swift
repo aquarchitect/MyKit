@@ -37,18 +37,15 @@ public func render(size: CGSize, opaque: Bool, in block: (CGContext) -> Void) ->
     return image
 }
 
-public func render(size: CGSize, region: CGRect, withTileSize tileSize: CGSize, and prefix: String) {
+public func render(region: CGRect, of size: CGSize, from url: URL, withTileSize tileSize: CGSize, andPrefix prefix: String) {
     let enumerator = CGRect(origin: .zero, size: size)
         .slices(region, intoTilesOf: tileSize)
 
     for tile in enumerator {
-        let name = "\(prefix)_\(tile.row)_\(tile.column).png"
+        let path = url
+            .appendingPathComponent("\(prefix)_\(tile.column)_\(tile.row).png")
+            .path
 
-        FileManager.default
-            .urls(for: .cachesDirectory, in: .userDomainMask)
-            .first
-            .map({ $0.appendingPathComponent(name) })
-            .flatMap({ UIImage(contentsOfFile: $0.path) })?
-            .draw(in: tile.rect)
+        UIImage(contentsOfFile: path)?.draw(in: tile.rect)
     }
 }
