@@ -1,4 +1,4 @@
-// 
+//
 // AppleWatchHomeScreenLayout.swift
 // MyKit
 // 
@@ -13,25 +13,34 @@ final class AppleWatchHomeScreenLayout: ParaboloidSuperLayout {
         override var paraboloidValue: CGFloat? {
             didSet {
                 let value = paraboloidValue ?? 1
-                self.transform = CGAffineTransformMakeScale(value, value)
+                self.transform = CGAffineTransform(scaleX: value, y: value)
             }
         }
     }
 
     static let name = "Apple Watch Home Screen Layout"
-    static let items = Array(count: 400, repeatedValue: 0)
+    static let items = Array(repeating: 0, count: 400)
 
-    private var gridColumn: Int = 20
-    private var iterimSpacing: CGFloat = 10
+    // MARK: Initialization
 
-    private var itemSize: CGSize = {
-        let length = UIScreen.main.traitCollection.displayScale * 50
-        return CGSizeMake(length, length)
-    }()
-
-    private var itemsCount: Int {
-        return (0..<(collectionView?.numberOfSections() ?? 0)).reduce(0) { $0 + (collectionView?.numberOfItemsInSection($1) ?? 0) }
+    class override var layoutAttributesClass: AnyClass {
+        return Attributes.self
     }
+
+    private let gridColumn: Int = 20
+    private let iterimSpacing: CGFloat = 10
+
+    private let itemSize = CGSize(sideLength: UIScreen.main.traitCollection.displayScale * 50)
+
+    override var collectionViewContentSize: CGSize {
+        // add haft of the item size because of shifted odd rows
+        let width = CGFloat(gridColumn) * (itemSize.width + iterimSpacing) - iterimSpacing + (itemSize.width / 2)
+        let height = ceil(CGFloat(itemsCount) / CGFloat(gridColumn)) * (itemSize.height + iterimSpacing) - iterimSpacing
+
+        return CGSize(width: width, height: height)
+    }
+
+    // MARK: Initialization
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -40,15 +49,14 @@ final class AppleWatchHomeScreenLayout: ParaboloidSuperLayout {
     override init() {
         super.init()
 
-        self.paraboloidFormula = ParaboloidLayoutFormula()
+        self.paraboloidController = ParaboloidLayoutController()
     }
 
-    class override func layoutAttributesClass() -> AnyClass {
-        return Attributes.self
-    }
 
-    override func prepareLayout() {
-        visibleAttributes.removeAll(keepCapacity: true)
+    override func prepare() {
+        super.prepare()
+
+        visibleAttributes.removeAll(keepingCapacity: true)
 
         (0..<itemsCount).forEach {
             let column = $0 % gridColumn
@@ -57,21 +65,24 @@ final class AppleWatchHomeScreenLayout: ParaboloidSuperLayout {
             let x = CGFloat(column) * (itemSize.width + iterimSpacing) + CGFloat(row % 2) * itemSize.width / 2
             let y = CGFloat(row) * (itemSize.height + iterimSpacing)
 
-            let origin = CGPointMake(x, y)
+            let origin = CGPoint(x: x, y: y)
             let rect = CGRect(origin: origin, size: itemSize)
 
-            !CGRectIntersectsRect(rect, self.collectionView?.bounds ?? .zero) ? () :
-                IndexPath(item: $0, inSection: 0)
-                    .then { Attributes(forCellWithIndexPath: $0) }
-                    .then { $0.frame = rect; visibleAttributes[$0.indexPath] = $0 }
+            if rect.intersects(self.collectionView?.bounds ?? .zero) {
+                let indexPath = IndexPath(arrayLiteral: 0, $0)
+                visibleAttributes[indexPath] = Attributes(forCellWith: indexPath)
+                    .then({ $0.frame = rect })
+            }
         }
     }
+}
 
-    override func collectionViewContentSize() -> CGSize {
-        // add halft of the item size because of shifted odd rows
-        let width = CGFloat(gridColumn) * (itemSize.width + iterimSpacing) - iterimSpacing + (itemSize.width / 2)
-        let height = ceil(CGFloat(itemsCount) / CGFloat(gridColumn)) * (itemSize.height + iterimSpacing) - iterimSpacing
-        return CGSizeMake(width, height)
+private extension AppleWatchHomeScreenLayout {
+
+    var itemsCount: Int {
+        return (0..<(self.collectionView?.numberOfSections ?? 0)).reduce(0) {
+            $0 + (collectionView?.numberOfItems(inSection: $1) ?? 0)
+        }
     }
 }
 

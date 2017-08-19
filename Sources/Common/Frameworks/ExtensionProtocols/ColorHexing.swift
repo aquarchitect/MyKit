@@ -57,41 +57,6 @@ public extension ColorHexing {
     }
 }
 
-public extension ColorHexing {
-
-    func lighten(_ amount: CGFloat) -> Self {
-        var r: CGFloat = 0
-        var g: CGFloat = 0
-        var b: CGFloat = 0
-        var a: CGFloat = 0
-
-        self.getRed(&r, green: &g, blue: &b, alpha: &a)
-
-        return Self(
-            red: min(r + amount, 1),
-            green: min(g + amount, 1),
-            blue: min(b + amount, 1),
-            alpha: min(a + amount, 1)
-        )
-    }
-
-    func darken(_ amount: CGFloat) -> Self {
-        var r: CGFloat = 0
-        var g: CGFloat = 0
-        var b: CGFloat = 0
-        var a: CGFloat = 0
-
-        self.getRed(&r, green: &g, blue: &b, alpha: &a)
-
-        return Self(
-            red: max(r - amount, 0),
-            green: max(g - amount, 0),
-            blue: max(b - amount, 0),
-            alpha: max(a - amount, 0)
-        )
-    }
-}
-
 #if os(iOS)
 import UIKit.UIColor
 extension UIColor: ColorHexing {}

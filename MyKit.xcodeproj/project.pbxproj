@@ -217,6 +217,7 @@
 		C2D1E6311EB2939600DBBEFA /* GenericViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E5C21EB2927500DBBEFA /* GenericViewController.swift */; };
 		C2D1E63D1EB2950500DBBEFA /* RandomAccessCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E63C1EB2950500DBBEFA /* RandomAccessCollection+.swift */; };
 		C2D1E63E1EB2950500DBBEFA /* RandomAccessCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D1E63C1EB2950500DBBEFA /* RandomAccessCollection+.swift */; };
+		C2D2D9441F47628B00F5B4F8 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D2D9431F47628B00F5B4F8 /* UIColor+.swift */; };
 		C2D4F8AF1F057970001FAE8E /* Draw+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D4F8A21F057970001FAE8E /* Draw+.swift */; };
 		C2D4F8B01F057970001FAE8E /* UIBezierPath+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D4F8A31F057970001FAE8E /* UIBezierPath+.swift */; };
 		C2D4F8B11F057970001FAE8E /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D4F8A41F057970001FAE8E /* UICollectionView+.swift */; };
@@ -445,6 +446,7 @@
 		C2D1E6101EB2933400DBBEFA /* Info-Framework.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-Framework.plist"; sourceTree = "<group>"; };
 		C2D1E6121EB2933400DBBEFA /* MyKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyKit.h; sourceTree = "<group>"; };
 		C2D1E63C1EB2950500DBBEFA /* RandomAccessCollection+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "RandomAccessCollection+.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C2D2D9431F47628B00F5B4F8 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		C2D4F8A21F057970001FAE8E /* Draw+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Draw+.swift"; sourceTree = "<group>"; };
 		C2D4F8A31F057970001FAE8E /* UIBezierPath+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+.swift"; sourceTree = "<group>"; };
 		C2D4F8A41F057970001FAE8E /* UICollectionView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
@@ -794,7 +796,7 @@
 		C289AD921B62B9AD00186773 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				C2DC8C3C1CAB4C1600837D9E /* Shared */,
+				C2DC8C3C1CAB4C1600837D9E /* Common */,
 				C2DC8C3D1CAB4C2700837D9E /* iOS */,
 				C2DC8C3E1CAB4C2C00837D9E /* macOS */,
 			);
@@ -968,6 +970,7 @@
 				C2D4F8AC1F057970001FAE8E /* UITableView+.swift */,
 				C2D4F8AD1F057970001FAE8E /* UIView+.swift */,
 				C2D4F8AE1F057970001FAE8E /* UIViewController+.swift */,
+				C2D2D9431F47628B00F5B4F8 /* UIColor+.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1003,14 +1006,13 @@
 			path = "MyKit-iOSDemo";
 			sourceTree = "<group>";
 		};
-		C2DC8C3C1CAB4C1600837D9E /* Shared */ = {
+		C2DC8C3C1CAB4C1600837D9E /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				C289AD951B62BA1700186773 /* Utilities */,
 				C289AD931B62BA0500186773 /* Extensions */,
 				C289AD941B62BA0E00186773 /* Frameworks */,
 			);
-			name = Shared;
 			path = Common;
 			sourceTree = "<group>";
 		};
@@ -1583,6 +1585,7 @@
 				C2D1E5371EB287FC00DBBEFA /* Collection+.swift in Sources */,
 				C28C69CC1F1E7D5E006E17CE /* ColorHexing.swift in Sources */,
 				C2D1E5511EB2881200DBBEFA /* NSRange+.swift in Sources */,
+				C2D2D9441F47628B00F5B4F8 /* UIColor+.swift in Sources */,
 				C28C69CE1F1E7D5E006E17CE /* FontRegistering.swift in Sources */,
 				C2D1E53D1EB287FC00DBBEFA /* String+.swift in Sources */,
 				C24767321F28FB05008AFACA /* TreeNode.swift in Sources */,

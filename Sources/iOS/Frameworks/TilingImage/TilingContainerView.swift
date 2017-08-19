@@ -52,4 +52,9 @@ public extension TilingContainerView {
         get { return highResolutionImageView.imagePrefix }
         set { highResolutionImageView.imagePrefix = newValue }
     }
+
+    var lowResolutionImage: UIImage? {
+        get { return lowResolutionImageView.image }
+        set { lowResolutionImageView.image = newValue }
+    }
 }
