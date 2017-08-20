@@ -8,7 +8,9 @@
 
 import Foundation
 
-/// Future Value
+// `Observable` is a great pattern of reactive programming; 
+// however it's quite large and complex, especially dealing 
+// with references dancing.
 final public class Observable<T> {
 
     private var globalID: UInt64 = 0
@@ -76,21 +78,17 @@ public extension Observable {
 
 public extension Observable {
 
-    internal func update(_ result: Result<T>) {
+    func update(_ result: Result<T>) {
         mutex.perform {
-            callbacks.values.forEach { $0(result) }
+            callbacks.values.forEach({ $0(result) })
         }
-    }
-
-    internal func update(_ value: T?, _ error: Error?) {
-        update(.init(value, error))
     }
 
     func update(_ value: T) {
         update(.fulfill(value))
     }
 
-    func update(_ error: Error) {
+    func update(_ error: Swift.Error) {
         update(.reject(error))
     }
 }
@@ -170,11 +168,11 @@ public extension Observable {
 
 public extension Observable {
 
-    func recover(_ transformer: @escaping (Error) -> Observable) -> Observable {
+    func recover(_ transformer: @escaping (Swift.Error) -> Observable) -> Observable {
         let observable = Observable()
 
         subscribe { result in
-            guard case .reject(let error) = result else { return }
+            guard case let .reject(error) = result else { return }
             transformer(error).subscribe(observable.update)
         }
 
@@ -215,7 +213,7 @@ public extension Observable {
     }
 
     @discardableResult
-    func onError(_ handler: @escaping (Error) -> Void) -> Observable {
+    func onError(_ handler: @escaping (Swift.Error) -> Void) -> Observable {
         subscribe { result in
             if case .reject(let error) = result { handler(error) }
         }
@@ -264,11 +262,9 @@ public extension Observable {
         return observable
     }
 
-    /**
-     * The observable only fires once per specified time interval. The last
-     * call to update will always be delivered (although it might be delayed 
-     * up to thhe specified amount of seconds).
-     */
+    /// The observable only fires once per specified time interval. The last
+    /// call to update will always be delivered (although it might be delayed
+    /// up to thhe specified amount of seconds).
     func throttle(_ timeInterval: TimeInterval) -> Observable {
         let observable = Observable()
         var lastResult: Box<Result<T>>?
@@ -328,8 +324,8 @@ public func zip<A, B>(_ observableA: Observable<A>, _ observableB: Observable<B>
             .map(observable.update)
     }
 
-    observableA.subscribe { resultA = $0; update() }
-    observableB.subscribe { resultB = $0; update() }
+    observableA.subscribe({ resultA = $0; update() })
+    observableB.subscribe({ resultB = $0; update() })
 
     return observable
 }
@@ -343,13 +339,13 @@ public func zip<A, B, C>(_ observableA: Observable<A>, _ observableB: Observable
 
     func update() {
         zip(resultA, resultB, resultC)
-            .map { zip($0, $1, $2) }
+            .map({ zip($0, $1, $2) })
             .map(observable.update)
     }
 
-    observableA.subscribe { resultA = $0; update() }
-    observableB.subscribe { resultB = $0; update() }
-    observableC.subscribe { resultC = $0; update() }
+    observableA.subscribe({ resultA = $0; update() })
+    observableB.subscribe({ resultB = $0; update() })
+    observableC.subscribe({ resultC = $0; update() })
 
     return observable
 }

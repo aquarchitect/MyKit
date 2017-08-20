@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIImage {
 
-    static func render(_ attributedString: NSAttributedString) -> UIImage? {
+    static func render(_ attributedString: NSAttributedString) -> UIImage {
         let size = attributedString.size()
         let image: UIImage?
 
@@ -19,7 +19,7 @@ public extension UIImage {
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
-        return image
+        return image ?? UIImage()
     }
 }
 

@@ -24,9 +24,19 @@ public struct SymbolIcon {
 
 public extension SymbolIcon {
 
-    func attributedString(ofSize size: CGFloat) -> NSMutableAttributedString {        
-        return NSMutableAttributedString(string: "\(character)").then {
-            $0.addFont(Font.getFont(name: "Ionicons", size: size, fromFile: "SymbolIcon")!)
+    func attributedString(ofSize size: CGFloat) -> NSMutableAttributedString {
+#if os(iOS)
+        let bundle = Bundle(identifier: "hainguyen.mykit-iOS")
+#elseif os(OSX)
+        let bundle = Bundle(identifier: "hainguyen.mykit-macOS")
+#endif
+        let name = "Ionicons", file = "SymbolIcon", ext = "ttf"
+
+        if let font = Font.customFont(name: name, size: size, fromFile: file, withExtension: ext, in: bundle) {
+            return NSMutableAttributedString(string: "\(character)")
+                .then({ $0.addFont(font) })
+        } else {
+            fatalError("Unable to find \(name) font in \(file).\(ext)!")
         }
     }
 }

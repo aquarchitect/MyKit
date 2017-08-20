@@ -29,14 +29,18 @@ public struct LoremIpsum: Collection {
     // MARK: Initialization
 
     fileprivate init() {
-        guard let url = Bundle.default?.url(
-            forResource: "LoremIpsum",
-            withExtension: "txt"
-        ) else {
-            fatalError("Unable to open source file!")
-        }
+#if os(iOS)
+        let bundle = Bundle(identifier: "hainguyen.mykit-iOS")
+#elseif os(OSX)
+        let bundle = Bundle(identifier: "hainguyen.mykit-macOS")
+#endif
+        let name = "LoremIpsum", ext = "txt"
 
-        let lorem = try! String(contentsOf: url)
+        guard let lorem = try! bundle?
+            .url(forResource: name, withExtension: ext)
+            .flatMap(String.init(contentsOf:))
+            else { fatalError("Unable to open \(name).\(ext)!") }
+
         let range = lorem.startIndex..<lorem.endIndex
         var storage = [String]()
 

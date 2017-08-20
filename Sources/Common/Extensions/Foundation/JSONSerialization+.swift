@@ -14,8 +14,7 @@ public extension JSONSerialization {
         let data = try self.data(withJSONObject: obj, options: [.prettyPrinted])
 
         guard let string = String(data: data, encoding: .utf8) else {
-            enum Exception: Error { case unableToParseJSONObject }
-            throw Exception.unableToParseJSONObject
+            fatalError("Unable to parse \(obj) to json!")
         }
 
         return string

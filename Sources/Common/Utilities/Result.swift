@@ -12,7 +12,7 @@ public enum Result<T> {
     public typealias Callback = (Result) -> Void
 
     case fulfill(T)
-    case reject(Error)
+    case reject(Swift.Error)
 
     public init(_ contruct: @autoclosure () throws -> T) {
         do {
@@ -22,13 +22,13 @@ public enum Result<T> {
         }
     }
 
-    public init(_ value: T?, _ error: Error?) {
+    public init(_ value: T?, _ error: Swift.Error?) {
         if let _error = error {
             self = .reject(_error)
         } else if let _value = value {
             self = .fulfill(_value)
         } else {
-            self = .reject(Empty.default)
+            self = .reject(MyKit.Error.harmless)
         }
     }
 }

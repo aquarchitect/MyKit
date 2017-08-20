@@ -17,22 +17,17 @@ public protocol FontRegistering: class {
     init?(name: String, size: CGFloat)
 }
 
-extension FontRegistering {
-
-    private static func registerFont(from file: String, of bundle: Bundle) {
-        _ = bundle
-            .url(forResource: file, withExtension: "ttf")
-            .flatMap(NSData.init(contentsOf:))
-            .flatMap({ CGDataProvider(data: $0) })
-            .map(CGFont.init)
-            .map({ CTFontManagerRegisterGraphicsFont($0, nil) })
-    }
+public extension FontRegistering {
 
     /// Return a font object from default bundle
-    static func getFont(name: String, size: CGFloat, fromFile file: String) -> Self? {
+    static func customFont(name: String, size: CGFloat, fromFile file: String, withExtension ext: String, in bundle: Bundle?) -> Self? {
         return Self(name: name, size: size) ?? {
-            guard let bundle = Bundle.default else { return nil }
-            registerFont(from: file, of: bundle)
+            _ = (bundle ?? .main)
+                .url(forResource: file, withExtension: ext)
+                .flatMap(NSData.init(contentsOf:))
+                .flatMap({ CGDataProvider(data: $0) })
+                .map(CGFont.init)
+                .map({ CTFontManagerRegisterGraphicsFont($0, nil) })
 
             return Self(name: name, size: size)
         }()

@@ -27,10 +27,19 @@ public struct ColorPalette: Collection {
     // MARK: Initialization
 
     fileprivate init() {
-        guard let url = Bundle.default?.url(forResource: "ColorPalette", withExtension: "plist")
-            else { fatalError("Unable to open source file!") }
+#if os(iOS)
+        let bundle = Bundle(identifier: "hainguyen.mykit-iOS")
+#elseif os(OSX)
+        let bundle = Bundle(identifier: "hainguyen.mykit-macOS")
+#endif
+        let name = "ColorPalette", ext = "plist"
 
-        self.storage = (NSArray(contentsOf: url) as? [String]) ?? []
+        guard let rawInfo = bundle?
+            .url(forResource: name, withExtension: ext)
+            .flatMap(NSArray.init(contentsOf:))
+            else { fatalError("Unable to open \(name).\(ext)!") }
+
+        self.storage = (rawInfo as? [String]) ?? []
     }
 
     // MARK: System Methods

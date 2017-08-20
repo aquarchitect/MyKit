@@ -10,7 +10,7 @@
 
 final class ReduxControllerTests: XCTestCase {
 
-    fileprivate enum Exception: Error { case a, b }
+    fileprivate enum Exception: Swift.Error { case a, b }
 
     typealias SimpleRedux = ReduxController<String, Bool>
 
@@ -53,7 +53,7 @@ extension ReduxControllerTests {
             XCTFail(error.localizedDescription)
         }
 
-        waitForExpectations(timeout: 2) { XCTAssertNil($0) }
+        waitForExpectations(timeout: 2, handler: nil)
     }
 
     func testReduxDispatch() {
@@ -75,6 +75,6 @@ extension ReduxControllerTests {
             middlewares: [middleware3, middleware2, middleware1]
         ).dispatch("Initial", true)
 
-        waitForExpectations(timeout: 2) { XCTAssertNil($0) }
+        waitForExpectations(timeout: 2, handler: nil)
     }
 }

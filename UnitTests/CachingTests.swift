@@ -1,4 +1,4 @@
-// 
+//
 // CachingTests.swift
 // MyKit
 // 
@@ -8,35 +8,36 @@
 
 final class CachingTests: XCTestCase {
 
-    func testObjectFetching() {
+    func testImageFetching() {
         let expectation = self.expectation(description: #function)
 
 #if os(iOS)
-        let observable = UIImage.fetchObject(
-            for: "Testing",
-            with: .lift(
-                UIImage.render(.init(string: "Testing"))!,
-                on: .global(qos: .background)
-            )
-        )
-#elseif os(OSX)
-        let observable = NSImage.fetchObject(
-            for: "Testing",
-            with: .lift(
+        typealias Image = UIImage
+#else
+        typealias Image = NSImage
+#endif
+
+#if true
+        Image.fetchObject(
+            forKey: "Test",
+            contructIfNeeded: Image.render(NSAttributedString(string: "Test"))
+        ).inBackground().onSuccess {
+            XCTAssertNotNil($0.cgImage)
+            expectation.fulfill()
+        }.resolve()
+#else
+        Image.fetchObject(
+            forKey: "Testing",
+            contructIfNeeded: .lift(
                 NSImage.render(.init(string: "Testing")),
                 on: .global(qos: .background)
             )
-        )
-#endif
-
-        observable.onNext {
+        ).onNext {
             XCTAssertNotNil($0)
             expectation.fulfill()
-        }.onError {
-            XCTFail($0.localizedDescription)
-            expectation.fulfill()
         }
+#endif
 
-        waitForExpectations(timeout: 2) { XCTAssertNil($0) }
+        waitForExpectations(timeout: 2, handler: nil)
     }
 }

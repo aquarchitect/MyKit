@@ -12,19 +12,20 @@ final class TimerExtensionTests: XCTestCase {}
 
 extension TimerExtensionTests {
 
-    func testCountdown() {
-        let expectation = self.expectation(description: #function)
-        var iterator = stride(from: 2.0, through: 0, by: -0.5).makeIterator()
+    func testEveryAndCountdown() {
+        let count: UInt = 5
 
-        Timer.countdown(5, timeInterval: 0.5).onNext {
-            XCTAssertEqual(iterator.next(), $0)
-            $0 != 0 ? () : expectation.fulfill()
+        let expectation = self
+            .expectation(description: #function)
+            .then({ $0.expectedFulfillmentCount = count + 1 })
+
+        Timer.countdown(
+            0.5, from: count,
+            block: { _ in expectation.fulfill() }
+        ).then {
+            RunLoop.current.add($0, forMode: .defaultRunLoopMode)
         }
 
-        waitForExpectations(timeout: 4) { XCTAssertNil($0) }
-    }
-
-    func testEvery() {
-        // TODO: implement stop singal by another signal in order to break out infinitive loop.
+        waitForExpectations(timeout: 4, handler: nil)
     }
 }

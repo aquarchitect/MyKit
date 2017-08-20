@@ -6,9 +6,10 @@
 // Copyright (c) 2017 Hai Nguyen.
 //
 
-/// `Redux` is a redeign of `_Redux`. The implemetation integrates
-/// the use of `Observable` to `REDUCER, which allows to dispatch
-/// state and action with `flatMap` latest.
+/// `ReduxController` objects directs the data flow unidirectionally. 
+/// The implemetation uses `Observable` for the return of REDUCER 
+/// (instead of simply STATE), which will allow dispatching state 
+/// and action with `flatMapLatest`.
 ///
 /// - Note: In the previous implemetation, `ActionReducer` holds
 /// a significant responsibility such as traversing actions stack

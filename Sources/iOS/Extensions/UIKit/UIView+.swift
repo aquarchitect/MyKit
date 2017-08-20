@@ -10,24 +10,6 @@ import UIKit
 
 public extension UIView {
 
-    typealias AnimatingCompletion = (Bool) -> Void
-}
-
-public extension UIView {
-
-    static func animate(withDuration duration: TimeInterval, animations: @escaping () -> Void) -> Observable<Bool> {
-        return Observable().then {
-            self.animate(
-                withDuration: duration,
-                animations: animations,
-                completion: $0.update
-            )
-        }
-    }
-}
-
-public extension UIView {
-
     func constraint(_ subviews: [UIView], equallyAlong axis: UILayoutConstraintAxis) {
         var axisFormat: String = "\(axis.initial):|"
         var dictionaryViews: [String: UIView] = [:]

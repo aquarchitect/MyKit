@@ -10,19 +10,18 @@
 
 final class CustomFontTests: XCTestCase {
 
-    func testsFontInstanceOf<T: FontRegistering>(type: T.Type) {
-        [("Ionicons", "SymbolIcon"), ("Weather Icons", "OpenWeather")].forEach {
-            XCTAssertNotNil(T.getFont(name: $0.0, size: 17, fromFile: $0.1))
-        }
-    }
-
-    func testsCustomFontRegister() {
-        XCTAssertNotNil(Bundle.default)
-
+    func testCustomFontRegistry() {
 #if os(iOS)
-        testsFontInstanceOf(type: UIFont.self)
+        let bundle = Bundle(identifier: "hainguyen.mykit-iOS")
 #elseif os(OSX)
-        testsFontInstanceOf(type: NSFont.self)
+        let bundle = Bundle(identifier: "hainguyen.mykit-macOS")
 #endif
+
+        [
+            ("Ionicons", "SymbolIcon"),
+            ("Weather Icons", "OpenWeather")
+        ].forEach {
+            XCTAssertNotNil(Font.customFont(name: $0, size: 17, fromFile: $1, withExtension: "ttf", in: bundle))
+        }
     }
 }

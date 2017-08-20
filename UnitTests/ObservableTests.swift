@@ -1,4 +1,4 @@
-// 
+//
 // ObservableTests.swift
 // MyKit
 // 
@@ -18,9 +18,7 @@ final class ObservableTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 2) {
-            XCTAssertNil($0)
-        }
+        waitForExpectations(timeout: 2, handler: nil)
     }
 
     func testMap() {
@@ -36,9 +34,7 @@ final class ObservableTests: XCTestCase {
 
         observable.update("Hello")
 
-        waitForExpectations(timeout: 2) {
-            XCTAssertNil($0)
-        }
+        waitForExpectations(timeout: 2, handler: nil)
     }
 
     func testFlatMap() {
@@ -47,11 +43,9 @@ final class ObservableTests: XCTestCase {
         var results: [String] = []
         let main = Observable<Int>()
 
-        main.flatMap { value in
-            Observable.lift("\(value)")
-        }.onNext {
-            results.append($0)
-        }
+        main
+            .flatMap({ Observable.lift("\($0)") })
+            .onNext({ results.append($0) })
 
         main.update(1)
 
@@ -60,9 +54,7 @@ final class ObservableTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 3) {
-            XCTAssertNil($0)
-        }
+        waitForExpectations(timeout: 3, handler: nil)
     }
 
     func testFlatMapLastest() {
@@ -71,6 +63,7 @@ final class ObservableTests: XCTestCase {
 
         var result: [String] = []
         let observable = Observable<Int>()
+
         observable.flatMapLatest { value -> Observable<String> in
             let innerObservable = Observable<String>()
 
@@ -95,9 +88,7 @@ final class ObservableTests: XCTestCase {
             secondExpectation.fulfill()
         }
 
-        waitForExpectations(timeout: 6) {
-            XCTAssertNil($0)
-        }
+        waitForExpectations(timeout: 6, handler: nil)
     }
 
     func testDelay() {
@@ -105,7 +96,7 @@ final class ObservableTests: XCTestCase {
 
         let observable = Observable<String>()
         observable.delay(4)
-            .map { $0 + " World" }
+            .map({ $0 + " World" })
             .onNext {
                 XCTAssertEqual($0, "Hello World")
                 expectation.fulfill()
@@ -113,9 +104,7 @@ final class ObservableTests: XCTestCase {
 
         observable.update("Hello")
 
-        waitForExpectations(timeout: 6) {
-            XCTAssertNil($0)
-        }
+        waitForExpectations(timeout: 6, handler: nil)
     }
 
     func testDebounce() {
@@ -139,9 +128,7 @@ final class ObservableTests: XCTestCase {
             secondExepectation.fulfill()
         }
 
-        waitForExpectations(timeout: 5) {
-            XCTAssertNil($0)
-        }
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
     func testBackground() {
@@ -152,6 +139,6 @@ final class ObservableTests: XCTestCase {
             expectation.fulfill()
         }
 
-        waitForExpectations(timeout: 1) { XCTAssertNil($0) }
+        waitForExpectations(timeout: 1, handler: nil)
     }
 }
