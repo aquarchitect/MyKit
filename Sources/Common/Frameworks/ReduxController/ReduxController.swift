@@ -55,7 +55,7 @@ open class ReduxController<State, Action> {
 
 public extension ReduxController {
 
-    static func merge<S>(_ middlewares: S) -> Middleware where
+    class func merge<S>(_ middlewares: S) -> Middleware where
         S: Sequence,
         S.Iterator.Element == Middleware
     {

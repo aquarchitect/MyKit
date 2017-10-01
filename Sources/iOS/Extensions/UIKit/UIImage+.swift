@@ -10,16 +10,18 @@ import UIKit
 
 public extension UIImage {
 
-    static func render(_ attributedString: NSAttributedString) -> UIImage {
-        let size = attributedString.size()
+    class func render(_ attributedString: NSAttributedString, scale: CGFloat = 1.0) -> UIImage? {
+        let transform = CGAffineTransform(scaleX: scale, y: scale)
+        let size = attributedString.size().applying(transform)
+        let rect = CGRect(origin: .zero, size: size)
         let image: UIImage?
 
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
-        attributedString.draw(in: .init(origin: .zero, size: size))
+        attributedString.draw(in: rect)
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
-        return image ?? UIImage()
+        return image
     }
 }
 

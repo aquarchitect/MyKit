@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class GenericCollectionCell<V: UIView>: UICollectionViewCell where V: Then {
+open class GenericCollectionCell<V: UIView>: UICollectionViewCell {
 
     // MARK: Property
 

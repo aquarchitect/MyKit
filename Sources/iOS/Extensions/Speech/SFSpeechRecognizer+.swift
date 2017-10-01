@@ -12,13 +12,13 @@ import Speech
 public extension SFSpeechRecognizer {
 
 #if true
-    static func requestAuthorization() -> Promise<SFSpeechRecognizerAuthorizationStatus> {
+    class func requestAuthorization() -> Promise<SFSpeechRecognizerAuthorizationStatus> {
         return Promise { callback in
             SFSpeechRecognizer.requestAuthorization(Result.fulfill >>> callback)
         }
     }
 #else
-    static func requestAuthorization() -> Observable<SFSpeechRecognizerAuthorizationStatus> {
+    class func requestAuthorization() -> Observable<SFSpeechRecognizerAuthorizationStatus> {
         return Observable().then {
             SFSpeechRecognizer.requestAuthorization($0.update)
         }

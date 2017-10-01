@@ -10,7 +10,7 @@ import Foundation
 
 public extension JSONSerialization {
 
-    static func prettyPrintedDescription(JSONObject obj: Any) throws -> String {
+    class func prettyPrintedDescription(JSONObject obj: Any) throws -> String {
         let data = try self.data(withJSONObject: obj, options: [.prettyPrinted])
 
         guard let string = String(data: data, encoding: .utf8) else {

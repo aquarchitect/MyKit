@@ -58,7 +58,7 @@ extension Observable: Then {}
 
 public extension Observable {
 
-    static func lift(_ constructor: @autoclosure @escaping () throws -> T, on queue: DispatchQueue = .main) -> Observable {
+    class func lift(_ constructor: @autoclosure @escaping () throws -> T, on queue: DispatchQueue = .main) -> Observable {
         let observable = Observable()
 
         queue.async {
@@ -235,7 +235,7 @@ public extension Observable {
         return self
     }
 
-    static func merge(_ observables: Observable...) -> Observable {
+    class func merge(_ observables: Observable...) -> Observable {
         let observable = Observable()
 
         observables.forEach {

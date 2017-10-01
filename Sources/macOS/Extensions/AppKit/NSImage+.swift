@@ -27,7 +27,7 @@ public extension NSImage {
 
 public extension NSImage {
 
-    static func render(_ attributedString: NSAttributedString) -> NSImage {
+    class func render(_ attributedString: NSAttributedString) -> NSImage {
         let size = attributedString.size()
 
         return NSImage(size: size).then {

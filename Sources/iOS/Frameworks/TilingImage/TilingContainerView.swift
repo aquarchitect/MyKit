@@ -39,8 +39,9 @@ open class TilingContainerView: UIView {
 
 public extension TilingContainerView {
 
-    var tiledLayer: CATiledLayer {
-        return highResolutionImageView.layer as! CATiledLayer
+    var tileSize: CGSize {
+        get { return highResolutionImageView.tileSize }
+        set { highResolutionImageView.tileSize = newValue }
     }
 
     var cacheURL: URL? {

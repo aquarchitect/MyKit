@@ -29,4 +29,6 @@ public func == (lhs: NSRange, rhs: NSRange) -> Bool {
     return lhs.location == rhs.location && lhs.length == rhs.length
 }
 
+#if !swift(>=3.2)
 extension NSRange: Equatable {}
+#endif
