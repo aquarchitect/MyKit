@@ -17,10 +17,17 @@ public extension NSRange {
             && range.length >= 0
             else { return self }
 
+#if swift(>=4.0)
+        return zip(Range(self), Range(range))
+            .map({ $0.clamped(to: $1) })
+            .map(NSRange.init)
+            ?? self
+#else
         return zip(self.toRange(), range.toRange())
             .map({ $0.clamped(to: $1) })
             .map(NSRange.init)
             ?? self
+#endif
     }
 }
 

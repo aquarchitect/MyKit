@@ -22,15 +22,18 @@ public extension String {
     }
 }
 
+#if !swift(>=4.0)
 public extension String {
 
     /// Finds and returns the range of the first occurrence between given strings
     /// using regular expression option.
     func substring(between from: String, and to: String, range searchRange: Range<String.Index>? = nil, locale: Locale? = nil) -> String {
-        return Optional("(?<=\(from))[^\(to)]+")
-            .flatMap({ self.range(of: $0, options: .regularExpression, range: searchRange, locale: locale) })
-            .map({ self[$0] })
-            ?? ""
+        return self.range(
+            of: "(?<=\(from))[^\(to)]+",
+            options: .regularExpression,
+            range: searchRange,
+            locale: locale
+        ).map({ String(self[$0]) }) ?? ""
     }
 
     func substring(byOmittingSuffix suffix: String) -> String {
@@ -45,6 +48,7 @@ public extension String {
             ?? self
     }
 }
+#endif
 
 public extension String {
 

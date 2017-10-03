@@ -357,7 +357,11 @@ public extension NSMenuItem {
         return NSMenuItem().then {
             $0.title = "Print..."
             $0.keyEquivalent = "p"
+#if swift(>=4.0)
+            $0.action = #selector(NSWindow.printWindow(_:))
+#else
             $0.action = #selector(NSWindow.print(_:))
+#endif
         }
     }
 

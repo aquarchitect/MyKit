@@ -27,8 +27,9 @@ public extension SFSpeechRecognizer {
 
 #if true
     func recognitionTask(with request: SFSpeechRecognitionRequest) -> Promise<SFSpeechRecognitionResult> {
-        return Promise { callback in
-            self.recognitionTask(with: request, resultHandler: Result.init >>> callback)
+        return Promise { (callback: @escaping Result<SFSpeechRecognitionResult>.Callback) in
+            let handler = Result.init >>> callback
+            self.recognitionTask(with: request, resultHandler: handler)
         }
     }
 #else

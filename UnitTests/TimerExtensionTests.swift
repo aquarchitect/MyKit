@@ -13,15 +13,15 @@ final class TimerExtensionTests: XCTestCase {}
 extension TimerExtensionTests {
 
     func testEveryAndCountdown() {
-        let count: UInt = 5
+        let count: Int = 5
 
         let expectation = self
             .expectation(description: #function)
             .then({ $0.expectedFulfillmentCount = count + 1 })
 
         Timer.countdown(
-            0.5, from: count,
-            block: { _ in expectation.fulfill() }
+            0.5, from: UInt(count),
+            block: { _, _ in expectation.fulfill() }
         ).then {
             RunLoop.current.add($0, forMode: .defaultRunLoopMode)
         }

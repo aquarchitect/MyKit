@@ -17,26 +17,13 @@ final class CachingTests: XCTestCase {
         typealias Image = NSImage
 #endif
 
-#if true
         Image.fetchObject(
             forKey: "Test",
-            contructIfNeeded: Image.render(NSAttributedString(string: "Test"))
+            contructIfNeeded: Image.render(.init(string: "Testing"))
         ).inBackground().onSuccess {
             XCTAssertNotNil($0.cgImage)
             expectation.fulfill()
         }.resolve()
-#else
-        Image.fetchObject(
-            forKey: "Testing",
-            contructIfNeeded: .lift(
-                NSImage.render(.init(string: "Testing")),
-                on: .global(qos: .background)
-            )
-        ).onNext {
-            XCTAssertNotNil($0)
-            expectation.fulfill()
-        }
-#endif
 
         waitForExpectations(timeout: 2, handler: nil)
     }

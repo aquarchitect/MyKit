@@ -30,7 +30,7 @@ open class SelectingCollectionGesture: UILongPressGestureRecognizer {
 
     // MARK: Helper Methods
 
-    open func handleGesture() {
+    @objc open func handleGesture() {
         guard let touchingIndexPath = collectionView.flatMap({ (self.location(in:) >>> $0.indexPathForItem(at:))($0) })
             else { return }
 

@@ -11,20 +11,6 @@ import AppKit
 @available(OSX 10.11, *)
 public extension NSCollectionView {
 
-    func register<T: NSCollectionViewItem>(_ itemClass: T.Type) {
-        self.register(itemClass, forItemWithIdentifier: String(describing: itemClass))
-    }
-
-    func makeItem<T: NSCollectionViewItem>(for indexPath: IndexPath) -> T {
-        let identifier = String(describing: T.self)
-
-        return self.makeItem(withIdentifier: identifier, for: indexPath) as! T
-    }
-}
-
-@available(OSX 10.11, *)
-public extension NSCollectionView {
-
     /// Return an estimated range of item indexes that are visible in bounds.
     ///
     /// The calculation uses `estimatedNumberOfVisibleElements` and only works 

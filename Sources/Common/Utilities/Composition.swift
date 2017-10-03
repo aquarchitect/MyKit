@@ -16,6 +16,6 @@ public func >>><A, B, C>(lhs: @escaping (A) -> B, rhs: @escaping (B) -> C) -> ((
     return { rhs(lhs($0)) }
 }
 
-public func >>><A, B, C>(lhs: @escaping (A) throws -> B, rhs: @escaping (B) throws -> C) -> (A) throws -> C {
+public func >>><A, B, C>(lhs: @escaping (A) throws -> B, rhs: @escaping (B) throws -> C) -> ((A) throws -> C) {
     return { try rhs(try lhs($0)) }
 }

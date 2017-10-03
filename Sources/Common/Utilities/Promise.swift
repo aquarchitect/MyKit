@@ -69,7 +69,7 @@ public extension Promise {
         return Promise<U> { callback in
             self.resolve { result in
                 do {
-                    try (result.resolve >>> transformer)().resolve(callback)
+                    transformer(try result.resolve()).resolve(callback)
                 } catch {
                     callback(.reject(error))
                 }
@@ -186,7 +186,7 @@ public extension Promise {
             }
 
             group.notify(queue: .main) {
-                callback(Result.concat(outputs))
+                (Result.concat >>> callback)(outputs)
             }
         }
     }

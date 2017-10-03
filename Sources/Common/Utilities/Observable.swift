@@ -112,7 +112,7 @@ public extension Observable {
 
         subscribe { result in
             do {
-                try (result.resolve >>> transformer)().subscribe(observable.update)
+                transformer(try result.resolve()).subscribe(observable.update)
             } catch {
                 observable.update(.reject(error))
             }
@@ -130,7 +130,7 @@ public extension Observable {
             lastResult = boxedResult
 
             do {
-                try (outerResult.resolve >>> transformer)().subscribe { innerResult in
+                try transformer(try outerResult.resolve()).subscribe { innerResult in
                     guard lastResult === boxedResult else { return }
                     observable.update(innerResult)
                     lastResult = nil
@@ -152,7 +152,7 @@ public extension Observable {
 
         subscribe { result in
             do {
-                if try (result.resolve >>> isIncluded)() {
+                if try isIncluded(try result.resolve()) {
                     observable.update(result)
                 }
             } catch {

@@ -183,11 +183,17 @@ public extension NSMenu {
     }
 
     static var format: NSMenu {
+#if swift(>=4.0)
+        let fontManager = NSFontManager.shared
+#else
+        let fontManager = NSFontManager.shared()
+#endif
+        
         return NSMenu(title: "Format").then {
             [
                 NSMenuItem().then {
                     $0.title = "Font"
-                    $0.submenu = NSFontManager.shared().fontMenu(true)
+                    $0.submenu = fontManager.fontMenu(true)
                 },
                 NSMenuItem().then {
                     $0.title = "Text"

@@ -10,17 +10,10 @@ import CloudKit
 
 public extension CKContainer {
 
-#if true
     func fetchUserRecordID() -> Promise<CKRecordID> {
-        return Promise { callback in
-            self.fetchUserRecordID(completionHandler: Result.init >>> callback)
+        return Promise { (callback: @escaping Result<CKRecordID>.Callback) in
+            let handler = Result.init >>> callback
+            self.fetchUserRecordID(completionHandler: handler)
         }
     }
-#else
-    func fetchUserRecordID() -> Observable<CKRecordID> {
-        return Observable().then {
-            self.fetchUserRecordID(completionHandler: Result.init >>> $0.update)
-        }
-    }
-#endif
 }

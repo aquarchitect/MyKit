@@ -20,7 +20,6 @@ public protocol Caching: class {
 
 public extension Caching {
 
-#if true
     static func fetchObject(forKey key: Key, contructIfNeeded constructor: @autoclosure @escaping () throws -> Object) -> Promise<Object> {
         if let object = storage.object(forKey: key) {
             return Promise(object)
@@ -45,26 +44,6 @@ public extension Caching {
             }
         }
     }
-#else
-    /// The constructor can be either an async or sync task.
-    static func fetchObject(forKey key: Key, contructIfNeeded constructor: @autoclosure () -> Observable<Object>) -> Observable<Object> {
-        if let object = storage.object(forKey: key) {
-            return .lift(object)
-        } else if pendingOperationIDs.contains(key) {
-            return .init()
-        } else {
-            pendingOperationIDs.add(key)
-
-            return constructor().onNext {
-                self.storage.setObject($0, forKey: key)
-
-                objc_sync_enter(self.pendingOperationIDs)
-                self.pendingOperationIDs.remove(key)
-                objc_sync_exit(self.pendingOperationIDs)
-            }
-        }
-    }
-#endif
 }
 
 #if os(iOS)

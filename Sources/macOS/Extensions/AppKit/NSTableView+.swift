@@ -23,11 +23,12 @@ public extension NSTableView {
     }
 }
 
+#if !swift(>=3.2)
 public extension NSTableView {
 
     func make<V: NSView>(for owner: Any?) -> V where V: Then {
         let identifier = String(describing: V.self)
-
+        
         return self.make(
             withIdentifier: identifier,
             owner: owner
@@ -36,3 +37,4 @@ public extension NSTableView {
         }
     }
 }
+#endif

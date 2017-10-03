@@ -14,3 +14,4 @@ open class GenericAccessoryController<V: NSView>: NSTitlebarAccessoryViewControl
         view = V()
     }
 }
+

@@ -26,7 +26,7 @@ public extension FontRegistering {
                 .url(forResource: file, withExtension: ext)
                 .flatMap(NSData.init(contentsOf:))
                 .flatMap({ CGDataProvider(data: $0) })
-                .map(CGFont.init)
+                .flatMap(CGFont.init)
                 .map({ CTFontManagerRegisterGraphicsFont($0, nil) })
 
             return Self(name: name, size: size)

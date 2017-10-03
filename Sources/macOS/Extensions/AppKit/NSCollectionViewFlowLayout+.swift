@@ -11,7 +11,7 @@ import AppKit
 @available(OSX 10.11, *)
 public extension NSCollectionViewFlowLayout {
 
-    func delegateInsetForSection(at index: Int) -> EdgeInsets? {
+    func delegateInsetForSection(at index: Int) -> NSEdgeInsets? {
         return zip(
             self.collectionView,
             self.collectionView?.delegate as? NSCollectionViewDelegateFlowLayout

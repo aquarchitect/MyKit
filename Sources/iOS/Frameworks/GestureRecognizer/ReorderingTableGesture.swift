@@ -31,7 +31,7 @@ open class ReorderingTableGesture: UILongPressGestureRecognizer {
 
     // MARK: System Methods
 
-    open func handleGesture() {
+    @objc open func handleGesture() {
         switch self.state {
 
         case .began:

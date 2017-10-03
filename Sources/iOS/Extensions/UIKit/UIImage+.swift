@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIImage {
 
-    class func render(_ attributedString: NSAttributedString, scale: CGFloat = 1.0) -> UIImage? {
+    class func render(_ attributedString: NSAttributedString, scale: CGFloat = 1.0) -> UIImage {
         let transform = CGAffineTransform(scaleX: scale, y: scale)
         let size = attributedString.size().applying(transform)
         let rect = CGRect(origin: .zero, size: size)
@@ -21,7 +21,7 @@ public extension UIImage {
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
 
-        return image
+        return image ?? UIImage()
     }
 }
 

@@ -26,13 +26,4 @@ public extension NSView {
             $0.image = image
         }
     }
-
-    func position(at edge: CGRectEdge) {
-        switch edge {
-        case .minXEdge: self.frame.origin.x -= self.bounds.width
-        case .maxXEdge: self.frame.origin.x += self.bounds.width
-        case .minYEdge: self.frame.origin.y -= self.bounds.height
-        case .maxYEdge: self.frame.origin.y += self.bounds.height
-        }
-    }
 }

@@ -1,5 +1,5 @@
 // 
-// EdgeInsets+.swift
+// NSEdgeInsets+.swift
 // MyKit
 // 
 // Created by Hai Nguyen.
@@ -8,7 +8,11 @@
 
 import AppKit
 
-public extension EdgeInsets {
+#if !swift(>=4.0)
+public typealias NSEdgeInsets = EdgeInsets
+#endif
+    
+public extension NSEdgeInsets {
 
     var vertical: CGFloat {
         return self.top + self.bottom

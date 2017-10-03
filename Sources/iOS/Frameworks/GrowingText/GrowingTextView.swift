@@ -51,13 +51,13 @@ open class GrowingTextView: UIControl {
         ].map {
             NSLayoutConstraint(
                 item: textBox,
-                attribute: $0,
+                attribute: $0.0,
                 relatedBy: .equal,
                 toItem: self,
-                attribute: $1,
+                attribute: $0.1,
                 multiplier: 1,
                 constant: 0
-            ).then { $0.priority = 800 }
+            ).then { $0.priority = UILayoutPriority(800) }
         }.activate()
 
         textBox.addObserver(

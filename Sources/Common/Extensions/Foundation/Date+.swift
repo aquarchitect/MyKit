@@ -30,7 +30,7 @@ public extension Date {
         return Date.calendar.component(component, from: self)
     }
 
-    func dateComponents(of components: Calendar.Component...) -> DateComponents {
+    func dateComponents(of components: [Calendar.Component]) -> DateComponents {
         return Date.calendar.dateComponents(Set(components), from: self)
     }
 
@@ -52,11 +52,11 @@ public extension Date {
 public extension Date {
 
     func firstDateOfTheMonth() -> Date {
-        return (dateComponents(of:) >>> Date.calendar.date(from:))((.year, .month))!
+        return (dateComponents(of:) >>> Date.calendar.date(from:))([.year, .month])!
     }
 
     func firstDateOfTheWeek() -> Date {
-        return (dateComponents(of:) >>> Date.calendar.date(from:))((.year, .weekOfYear))!
+        return (dateComponents(of:) >>> Date.calendar.date(from:))([.year, .weekOfYear])!
     }
 }
 
@@ -81,8 +81,8 @@ public extension Date {
     }
 
     static func numberOfDaysInThisWeek() -> Period {
-        var days = calendar.firstWeekday - today.dateComponents(of: .weekday).weekday!
-        days += 7 * Int(.init(value: days <= 0))
+        var days = calendar.firstWeekday - today.dateComponents(of: [.weekday]).weekday!
+        days += 7 * (days <= 0).hashValue
         return (7 - days, days - 1)
     }
 
@@ -130,24 +130,24 @@ public extension Date {
 
 public extension Date {
 
-    private func isMatched(with date: Date) -> (Calendar.Component...) -> Bool {
+    private func isMatched(with date: Date) -> (([Calendar.Component]) -> Bool) {
         return date.dateComponents(of:) >>> isMatched(with:)
     }
 
     func isSameDayAs(_ date: Date) -> Bool {
-        return isMatched(with: date)(.year, .month, .day)
+        return isMatched(with: date)([.year, .month, .day])
     }
 
     func isSameWeekAs(_ date: Date) -> Bool {
-        return isMatched(with: date)(.year, .weekOfYear)
+        return isMatched(with: date)([.year, .weekOfYear])
     }
 
     func isSameMonthAs(_ date: Date) -> Bool {
-        return isMatched(with: date)(.year, .month)
+        return isMatched(with: date)([.year, .month])
     }
 
     func isSameYearAs(_ date: Date) -> Bool {
-        return isMatched(with: date)(.year)
+        return isMatched(with: date)([.year])
     }
 }
 

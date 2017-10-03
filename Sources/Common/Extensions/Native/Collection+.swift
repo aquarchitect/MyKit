@@ -157,7 +157,11 @@ public extension Collection where SubSequence.Iterator.Element: Hashable, Index:
         return matrixLookup(at: (ranges.this.count + 1, ranges.other.count + 1), result: [])
     }
 
+#if swift(>=4.0)
+    typealias Step = (index: Index, element: Iterator.Element)
+#else
     typealias Step = (index: Index, element: Generator.Element)
+#endif
 
 #if swift(>=3.2)
     /// Returns a tuple of collections' clamped ranges and longest common subsequence (LCS) diffing results.

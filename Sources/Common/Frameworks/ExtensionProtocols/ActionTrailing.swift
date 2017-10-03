@@ -22,7 +22,7 @@ extension ActionTrailing {
 
 extension NSObject {
 
-    func handleAction() {
+    @objc func handleAction() {
         (self as? ActionTrailing)?.execute()
     }
 }

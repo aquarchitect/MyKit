@@ -72,7 +72,7 @@ extension ReduxControllerTests {
 
         SimpleRedux(
             reducer: handle(_:_:),
-            middlewares: [middleware3, middleware2, middleware1]
+            middlewares: middleware3, middleware2, middleware1
         ).dispatch("Initial", true)
 
         waitForExpectations(timeout: 2, handler: nil)

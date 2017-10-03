@@ -52,10 +52,16 @@ import Foundation
 /// - Parameter originalSelector: name of original method
 /// - Parameter swizzledSelector: name of replacement
 public func swizzle(type: AnyClass, original originalSelector: Selector, swizzled swizzledSelector: Selector) {
+#if swift(>=4.0)
+    guard let originalMethod = class_getInstanceMethod(type, originalSelector),
+        let swizzledMethod = class_getInstanceMethod(type, swizzledSelector)
+        else { return }
+#else
     //  get method objects
     let originalMethod = class_getInstanceMethod(type, originalSelector)
     let swizzledMethod = class_getInstanceMethod(type, swizzledSelector)
-
+#endif
+    
     //  check whether original method has been swizzlled
     if class_addMethod(
             type, originalSelector,

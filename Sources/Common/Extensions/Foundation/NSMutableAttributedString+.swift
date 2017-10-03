@@ -26,35 +26,67 @@ extension NSMutableAttributedString {
 public extension NSMutableAttributedString {
 
     func addFont(_ font: Font, to range: NSRange? = nil) {
+#if swift(>=4.0)
+        self.addAttribute(
+            NSAttributedStringKey.font,
+            value: font,
+            range: range ?? self.range
+        )
+#else
         self.addAttribute(
             NSFontAttributeName,
             value: font,
             range: range ?? self.range
         )
+#endif
     }
 
     func addForegroundColor(_ color: Color, to range: NSRange? = nil) {
+#if swift(>=4.0)
+        self.addAttribute(
+            NSAttributedStringKey.foregroundColor,
+            value: color,
+            range: range ?? self.range
+        )
+#else
         self.addAttribute(
             NSForegroundColorAttributeName,
             value: color,
             range: range ?? self.range
         )
+#endif
     }
 
     func addStrokeColor(_ color: Color, to range: NSRange? = nil) {
+#if swift(>=4.0)
+        self.addAttribute(
+            NSAttributedStringKey.strokeColor,
+            value: color,
+            range: range ?? self.range
+        )
+#else
         self.addAttribute(
             NSStrokeColorAttributeName,
             value: color,
             range: range ?? self.range
         )
+#endif
     }
 
     func addStrokeWidth(_ width: Float, to range: NSRange? = nil) {
+#if swift(>=4.0)
+        self.addAttribute(
+            NSAttributedStringKey.strokeWidth,
+            value: NSNumber(value: width),
+            range: range ?? self.range
+        )
+#else
         self.addAttribute(
             NSStrokeWidthAttributeName,
             value: NSNumber(value: width),
             range: range ?? self.range
         )
+#endif
     }
 
     func addAlignment(_ alignment: NSTextAlignment, to range: NSRange? = nil) {
@@ -64,26 +96,50 @@ public extension NSMutableAttributedString {
     }
 
     func addParagraph(_ paragraph: NSParagraphStyle, to range: NSRange? = nil) {
+#if swift(>=4.0)
+        self.addAttribute(
+            NSAttributedStringKey.paragraphStyle,
+            value: paragraph,
+            range: range ?? self.range
+        )
+#else
         self.addAttribute(
             NSParagraphStyleAttributeName,
             value: paragraph,
             range: range ?? self.range
         )
+#endif
     }
 
     func addBaseline(_ baseline: Float, to range: NSRange? = nil) {
+#if swift(>=4.0)
+        self.addAttribute(
+            NSAttributedStringKey.baselineOffset,
+            value: NSNumber(value: baseline),
+            range: range ?? self.range
+        )
+#else
         self.addAttribute(
             NSBaselineOffsetAttributeName,
             value: NSNumber(value: baseline),
             range: range ?? self.range
         )
+#endif
     }
 
     func addKern(_ kern: Float, to range: NSRange? = nil) {
+#if swift(>=4.0)
+        self.addAttribute(
+            NSAttributedStringKey.kern,
+            value: NSNumber(value: kern),
+            range: range ?? self.range
+        )
+#else
         self.addAttribute(
             NSKernAttributeName,
             value: NSNumber(value: kern),
             range: range ?? self.range
         )
+#endif
     }
 }

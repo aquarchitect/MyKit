@@ -39,11 +39,9 @@ open class ReduxController<State, Action> {
         }
     }
 
-    public convenience init<S>(reducer: @escaping Reducer, middlewares: S) where
-        S: Sequence,
-        S.Iterator.Element == Middleware
-    {
-        self.init(reducer: reducer, middleware: ReduxController.merge(middlewares))
+    public convenience init(reducer: @escaping Reducer, middlewares: Middleware...) {
+        let middleware = ReduxController.merge(middlewares)
+        self.init(reducer: reducer, middleware: middleware)
     }
 
     // MARK: Support Methods
@@ -54,7 +52,7 @@ open class ReduxController<State, Action> {
 }
 
 public extension ReduxController {
-
+    
     class func merge<S>(_ middlewares: S) -> Middleware where
         S: Sequence,
         S.Iterator.Element == Middleware
@@ -65,8 +63,8 @@ public extension ReduxController {
                 .reduce(dispatch, { $1(state, $0) })
         }
     }
-
-    static func merge(_ middlerwares: Middleware...) -> Middleware {
-        return merge(middlerwares)
+    
+    class func merge(_ middlewares: Middleware...) -> Middleware {
+        return merge(middlewares)
     }
 }
