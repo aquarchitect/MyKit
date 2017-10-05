@@ -8,7 +8,7 @@
 
 #if os(iOS)
 import UIKit
-#elseif os(OSX)
+#elseif os(macOS)
 import AppKit
 #endif
 
@@ -40,7 +40,7 @@ extension UserDefaults {
         guard let deviceIDData = { () -> String? in
 #if os(iOS)
             return UIDevice.current.identifierForVendor?.uuidString
-#elseif os(OSX)
+#elseif os(macOS)
             return IOGetEthernetInterfaces().flatMap(IOServiceGetMACAddress)
 #endif
         }()?.data(using: .utf8) else {

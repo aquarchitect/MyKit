@@ -10,7 +10,7 @@
 import UIKit
 public typealias Color = UIColor
 public typealias Font = UIFont
-#elseif os(OSX)
+#elseif os(macOS)
 import AppKit
 public typealias Color = NSColor
 public typealias Font = NSFont

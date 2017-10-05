@@ -31,7 +31,7 @@ public struct LoremIpsum: Collection {
     fileprivate init() {
 #if os(iOS)
         let bundle = Bundle(identifier: "hainguyen.mykit-iOS")
-#elseif os(OSX)
+#elseif os(macOS)
         let bundle = Bundle(identifier: "hainguyen.mykit-macOS")
 #endif
         let name = "LoremIpsum", ext = "txt"

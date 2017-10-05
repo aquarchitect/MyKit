@@ -274,7 +274,7 @@ public extension OpenWeather.Icon {
     func attributedString(ofSize size: CGFloat) -> NSMutableAttributedString {
 #if os(iOS)
         let bundle = Bundle(identifier: "hainguyen.mykit-iOS")
-#elseif os(OSX)
+#elseif os(macOS)
         let bundle = Bundle(identifier: "hainguyen.mykit-macOS")
 #endif
         let name = "Weather Icons", file = "OpenWeather", ext = "ttf"

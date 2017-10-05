@@ -65,7 +65,7 @@ public extension ActionTrailing where Self: UIBarButtonItem {
     }
 }
 
-#elseif os(OSX)
+#elseif os(macOS)
 import AppKit
 
 extension NSControl: ActionTrailing {}

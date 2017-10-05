@@ -71,7 +71,7 @@ extension UIImage: Caching {
         return Singleton.value
     }
 }
-#elseif os(OSX)
+#elseif os(macOS)
 import AppKit
 
 // This solution is simply an alternative for the

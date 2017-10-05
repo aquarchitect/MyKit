@@ -6,6 +6,8 @@
 // Copyright (c) 2017 Hai Nguyen.
 //
 
+import Foundation
+
 public indirect enum BinaryTree<T> {
 
     case node(BinaryTree<T>, T, BinaryTree<T>)
@@ -89,4 +91,3 @@ public extension BinaryTree where T: CustomStringConvertible {
         }
     }
 }
-

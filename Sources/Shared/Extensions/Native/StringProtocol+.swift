@@ -5,8 +5,10 @@
 //  Created by Hai Nguyen on 10/2/17.
 //
 
+import Foundation
+
 #if swift(>=4.0)
-    public extension StringProtocol where Index == String.Index {
+public extension StringProtocol where Index == String.Index {
     
     /// Finds and returns the range of the first occurrence between given strings
     /// using regular expression option.
