@@ -6,6 +6,8 @@
 // Copyright (c) 2015 Hai Nguyen.
 // 
 
+import XCTest
+
 final class NSDateTests: XCTestCase {
 
     func testAddingUnitsToDate() {

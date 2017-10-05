@@ -6,6 +6,7 @@
 // Copyright (c) 2015 Hai Nguyen.
 // 
 
+import XCTest
 @testable import MyKit
 
 final class CustomFontTests: XCTestCase {
@@ -13,7 +14,7 @@ final class CustomFontTests: XCTestCase {
     func testCustomFontRegistry() {
 #if os(iOS)
         let bundle = Bundle(identifier: "hainguyen.mykit-iOS")
-#elseif os(OSX)
+#elseif os(macOS)
         let bundle = Bundle(identifier: "hainguyen.mykit-macOS")
 #endif
 

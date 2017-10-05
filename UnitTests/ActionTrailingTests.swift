@@ -9,10 +9,11 @@
 
 #if os(iOS)
 import UIKit
-#elseif os(OSX)
+#elseif os(macOS)
 import AppKit
 #endif
 
+import XCTest
 @testable import MyKit
 
 final class ActionTrailingTests: XCTestCase {
@@ -42,7 +43,7 @@ final class ActionTrailingTests: XCTestCase {
 
         wait(for: [expectation], timeout: 0.2)
     }
-#elseif os(OSX)
+#elseif os(macOS)
     func testAction() {
         let expectation = self.expectation(description: #function).then {
             $0.expectedFulfillmentCount = 2

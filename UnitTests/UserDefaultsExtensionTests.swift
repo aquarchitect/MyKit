@@ -6,6 +6,7 @@
 // Copyright (c) 2017 Hai Nguyen.
 //
 
+import XCTest
 @testable import MyKit
 
 final class UserDefaultsExtensionTests: XCTestCase {

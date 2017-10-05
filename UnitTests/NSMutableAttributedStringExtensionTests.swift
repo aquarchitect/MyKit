@@ -5,14 +5,14 @@
 // Created by Hai Nguyen.
 // Copyright (c) 2016 Hai Nguyen. All rights reserved.
 // 
-// 
 
 #if os(iOS)
-    import UIKit
-#elseif os(OSX)
-    import AppKit
+import UIKit
+#elseif os(macOS)
+import AppKit
 #endif
 
+import XCTest
 @testable import MyKit
 
 final class NSMutableAttributedStringExtensionTests: XCTestCase {

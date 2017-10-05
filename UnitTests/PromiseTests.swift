@@ -6,6 +6,7 @@
 // Copyright (c) 2015 Hai Nguyen.
 //
 
+import XCTest
 import MyKit
 
 final class PromiseTests: XCTestCase {

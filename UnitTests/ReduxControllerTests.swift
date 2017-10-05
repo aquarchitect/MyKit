@@ -6,6 +6,7 @@
 // Copyright (c) 2016 Hai Nguyen.
 // 
 
+import XCTest
 @testable import MyKit
 
 final class ReduxControllerTests: XCTestCase {

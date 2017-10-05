@@ -6,6 +6,7 @@
 // Copyright (c) 2017 Hai Nguyen.
 //
 
+import XCTest
 import MyKit
 
 final class CGRectExtensionTests: XCTestCase {}

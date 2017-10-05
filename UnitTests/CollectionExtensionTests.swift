@@ -6,6 +6,7 @@
 // Copyright (c) 2016 Hai Nguyen. All rights reserved.
 // 
 
+import XCTest
 @testable import MyKit
 
 final class CollectionExtensionTests: XCTestCase {}

@@ -6,6 +6,8 @@
 // Copyright (c) 2017 Hai Nguyen.
 // 
 
+import XCTest
+
 final class CachingTests: XCTestCase {
 
     func testImageFetching() {
