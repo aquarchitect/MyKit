@@ -1,4 +1,6 @@
-xcuserdata/
 .DS_Store
+
+## Xcode 
+xcuserdata/
 *.playground
 *.xcworkspace
