@@ -2,7 +2,7 @@
 //  NSData+MD5.m
 //  MyKit
 //
-//  Created by Hai Nguyen on 7/11/17.
+//  Created by Hai Nguyen.
 //
 //
 

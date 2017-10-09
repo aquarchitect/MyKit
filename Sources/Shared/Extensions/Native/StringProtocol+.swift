@@ -2,7 +2,7 @@
 //  StringProtocol+.swift
 //  MyKit
 //
-//  Created by Hai Nguyen on 10/2/17.
+//  Created by Hai Nguyen.
 //
 
 import Foundation

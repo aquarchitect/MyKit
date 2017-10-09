@@ -2,7 +2,7 @@
 // TilingContainerView.swift
 // MyKit
 //
-// Created by Hai Nguyen on 8/11/17.
+// Created by Hai Nguyen.
 // Copyright (c) 2017 Hai Nguyen.
 //
 

@@ -2,7 +2,7 @@
 // TreeNode.swift
 // MyKit
 //
-// Created by Hai Nguyen on 7/26/17.
+// Created by Hai Nguyen.
 // Copyright (c) 2017 Hai Nguyen.
 //
 
