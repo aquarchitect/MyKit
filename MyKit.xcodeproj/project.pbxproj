@@ -232,6 +232,8 @@
 		C2D4F8BD1F057979001FAE8E /* SFSpeechRecognizer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D4F8BC1F057979001FAE8E /* SFSpeechRecognizer+.swift */; };
 		C2DE85911F121F4A000CF9E6 /* Diff+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DE85901F121F4A000CF9E6 /* Diff+.swift */; };
 		C2DE85921F121F4A000CF9E6 /* Diff+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DE85901F121F4A000CF9E6 /* Diff+.swift */; };
+		C2E396861F8BF997007E2F22 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2E396851F8BF997007E2F22 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2E396871F8BF997007E2F22 /* MyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C2E396851F8BF997007E2F22 /* MyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2E849841F854E0D0004609A /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E849821F854E0D0004609A /* ColorPalette.swift */; };
 		C2E849851F854E0D0004609A /* ColorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2E849831F854E0D0004609A /* ColorPalette.plist */; };
 		C2E849861F854E120004609A /* ColorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = C2E849831F854E0D0004609A /* ColorPalette.plist */; };
@@ -280,7 +282,6 @@
 		C21B68A91F2C471A00FF4A60 /* EnumeratedCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumeratedCollection.swift; sourceTree = "<group>"; };
 		C21BB5B71F16C08000D9A1A5 /* UserDefaultsExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensionTests.swift; sourceTree = "<group>"; };
 		C21FE1E21ED37D1800EA98B9 /* JSONSerialization+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "JSONSerialization+.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		C2223F071F85C26600CF53D0 /* MyKit.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = MyKit.modulemap; sourceTree = "<group>"; };
 		C226ECB51F2580A800C27915 /* ObjectAssociating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociating.swift; sourceTree = "<group>"; };
 		C23BF45B1F492CD00089E7B0 /* Promise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		C23BF45E1F49304E0089E7B0 /* PromiseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromiseTests.swift; sourceTree = "<group>"; };
@@ -411,6 +412,7 @@
 		C2D4F8CC1F0579C2001FAE8E /* NSView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSView+.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2D4F8CD1F0579C2001FAE8E /* NSWindow.StyleMask+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "NSWindow.StyleMask+.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C2DE85901F121F4A000CF9E6 /* Diff+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Diff+.swift"; sourceTree = "<group>"; };
+		C2E396851F8BF997007E2F22 /* MyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyKit.h; sourceTree = "<group>"; };
 		C2E849821F854E0D0004609A /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		C2E849831F854E0D0004609A /* ColorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ColorPalette.plist; sourceTree = "<group>"; };
 		C2E9B1E91EBD734D003D1372 /* Benchmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Benchmark.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -639,7 +641,7 @@
 			children = (
 				C2D1E60F1EB2933400DBBEFA /* Info-UnitTests.plist */,
 				C2D1E6101EB2933400DBBEFA /* Info.plist */,
-				C2223F071F85C26600CF53D0 /* MyKit.modulemap */,
+				C2E396851F8BF997007E2F22 /* MyKit.h */,
 			);
 			path = MyKit;
 			sourceTree = "<group>";
@@ -940,6 +942,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2B9C80F1F168C1B00583C62 /* NSData+MD5.h in Headers */,
+				C2E396871F8BF997007E2F22 /* MyKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -948,6 +951,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2B9C8081F1688E700583C62 /* NSData+MD5.h in Headers */,
+				C2E396861F8BF997007E2F22 /* MyKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1736,7 +1740,6 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = MyKit/MyKit.modulemap;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS";
 				PRODUCT_NAME = MyKit;
@@ -1793,7 +1796,6 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = MyKit/MyKit.modulemap;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-macOS";
 				PRODUCT_NAME = MyKit;
@@ -1854,7 +1856,6 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = MyKit/MyKit.modulemap;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-iOS";
 				PRODUCT_NAME = MyKit;
@@ -1912,7 +1913,6 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = MyKit/MyKit.modulemap;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "hainguyen.mykit-iOS";
 				PRODUCT_NAME = MyKit;
