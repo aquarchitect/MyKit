@@ -35,9 +35,9 @@ public extension FontRegistering {
 }
 
 #if os(iOS)
-import UIKit.UIFont
+import UIKit
 extension UIFont: FontRegistering {}
 #elseif os(macOS)
-import AppKit.NSFont
+import AppKit
 extension NSFont: FontRegistering {}
 #endif

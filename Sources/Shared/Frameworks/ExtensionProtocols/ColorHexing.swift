@@ -58,9 +58,9 @@ public extension ColorHexing {
 }
 
 #if os(iOS)
-import UIKit.UIColor
+import UIKit
 extension UIColor: ColorHexing {}
 #elseif os(macOS)
-import AppKit.NSColor
+import AppKit
 extension NSColor: ColorHexing {}
 #endif
