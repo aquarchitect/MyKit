@@ -59,6 +59,12 @@
 		C24767331F28FB05008AFACA /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24767311F28FB05008AFACA /* TreeNode.swift */; };
 		C24B380C1DC12BFA00036264 /* ArbitraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B38091DC12BDC00036264 /* ArbitraryTests.swift */; };
 		C24B380D1DC12BFB00036264 /* ArbitraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24B38091DC12BDC00036264 /* ArbitraryTests.swift */; };
+		C267C61D1F8C48FB00CF80F9 /* AnyCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267C61C1F8C48FB00CF80F9 /* AnyCollection+.swift */; };
+		C267C61E1F8C48FB00CF80F9 /* AnyCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267C61C1F8C48FB00CF80F9 /* AnyCollection+.swift */; };
+		C267C6201F8C4D1400CF80F9 /* AnyRandomAccessCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267C61F1F8C4D1400CF80F9 /* AnyRandomAccessCollection+.swift */; };
+		C267C6211F8C4D1400CF80F9 /* AnyRandomAccessCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267C61F1F8C4D1400CF80F9 /* AnyRandomAccessCollection+.swift */; };
+		C267C6231F8C4D4900CF80F9 /* AnyBidirectionalCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267C6221F8C4D4900CF80F9 /* AnyBidirectionalCollection+.swift */; };
+		C267C6241F8C4D4900CF80F9 /* AnyBidirectionalCollection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267C6221F8C4D4900CF80F9 /* AnyBidirectionalCollection+.swift */; };
 		C2848DE51C95642E00707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD8A1B62B97400186773 /* MyKit.framework */; };
 		C2848E061C956A7600707F53 /* MyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C289AD7C1B62B95700186773 /* MyKit.framework */; };
 		C28C69CA1F1E7D5E006E17CE /* ActionTrailing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28C69C71F1E7D5E006E17CE /* ActionTrailing.swift */; };
@@ -288,6 +294,9 @@
 		C247672E1F28FADC008AFACA /* BinaryTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
 		C24767311F28FB05008AFACA /* TreeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
 		C24B38091DC12BDC00036264 /* ArbitraryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArbitraryTests.swift; path = UnitTests/ArbitraryTests.swift; sourceTree = SOURCE_ROOT; };
+		C267C61C1F8C48FB00CF80F9 /* AnyCollection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyCollection+.swift"; sourceTree = "<group>"; };
+		C267C61F1F8C4D1400CF80F9 /* AnyRandomAccessCollection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyRandomAccessCollection+.swift"; sourceTree = "<group>"; };
+		C267C6221F8C4D4900CF80F9 /* AnyBidirectionalCollection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyBidirectionalCollection+.swift"; sourceTree = "<group>"; };
 		C2848DE01C95642E00707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2848E011C956A7600707F53 /* MyKitUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKitUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C289AD7C1B62B95700186773 /* MyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -460,7 +469,10 @@
 		C201657B1CE0FA6000F7D3E5 /* Native */ = {
 			isa = PBXGroup;
 			children = (
+				C267C6221F8C4D4900CF80F9 /* AnyBidirectionalCollection+.swift */,
+				C267C61C1F8C48FB00CF80F9 /* AnyCollection+.swift */,
 				C2D1E52E1EB287FC00DBBEFA /* AnyIterator+.swift */,
+				C267C61F1F8C4D1400CF80F9 /* AnyRandomAccessCollection+.swift */,
 				C2B150721F2D1C61004AF241 /* BidirectionalCollection+.swift */,
 				C2D1E52F1EB287FC00DBBEFA /* Collection+.swift */,
 				C2D1E5301EB287FC00DBBEFA /* CountableRange+.swift */,
@@ -1254,6 +1266,7 @@
 				C20BC77A1F8433DC00F37708 /* NSImage+.swift in Sources */,
 				C20BC7841F8433EA00F37708 /* ActionTrailing.swift in Sources */,
 				C20BC7741F8433DC00F37708 /* NSBezierPath+.swift in Sources */,
+				C267C6211F8C4D1400CF80F9 /* AnyRandomAccessCollection+.swift in Sources */,
 				C28C69CD1F1E7D5E006E17CE /* ColorHexing.swift in Sources */,
 				C2B1506E1F2D1BC1004AF241 /* PermutationBidirectionalSlice.swift in Sources */,
 				C2D1E57E1EB28FC900DBBEFA /* Diff.swift in Sources */,
@@ -1262,6 +1275,7 @@
 				C2D1E61C1EB2936300DBBEFA /* CKDatabase+.swift in Sources */,
 				C20BC7771F8433DC00F37708 /* NSCollectionViewFlowLayout+.swift in Sources */,
 				C2D1E5841EB28FC900DBBEFA /* Result.swift in Sources */,
+				C267C6241F8C4D4900CF80F9 /* AnyBidirectionalCollection+.swift in Sources */,
 				C2D1E6221EB2936700DBBEFA /* CGSize+.swift in Sources */,
 				C2D1E57D1EB28FC900DBBEFA /* Composition.swift in Sources */,
 				C2D1E61B1EB2936300DBBEFA /* CKContainer+.swift in Sources */,
@@ -1283,6 +1297,7 @@
 				C21B68A81F2C457400FF4A60 /* PermutationSlice.swift in Sources */,
 				C2D1E5891EB28FCD00DBBEFA /* CountableRange+.swift in Sources */,
 				C2D1E5821EB28FC900DBBEFA /* Observable.swift in Sources */,
+				C267C61E1F8C48FB00CF80F9 /* AnyCollection+.swift in Sources */,
 				C2D1E58B1EB28FCD00DBBEFA /* Optional+.swift in Sources */,
 				C24767301F28FADC008AFACA /* BinaryTree.swift in Sources */,
 				C2E9B1EB1EBD734D003D1372 /* Benchmark.swift in Sources */,
@@ -1334,6 +1349,7 @@
 				C226ECB61F2580A800C27915 /* ObjectAssociating.swift in Sources */,
 				C2E9B1EA1EBD734D003D1372 /* Benchmark.swift in Sources */,
 				C2D1E52D1EB287E900DBBEFA /* Then.swift in Sources */,
+				C267C61D1F8C48FB00CF80F9 /* AnyCollection+.swift in Sources */,
 				C2D4F8B01F057970001FAE8E /* UIBezierPath+.swift in Sources */,
 				C2D1E5551EB2881200DBBEFA /* URLSession+.swift in Sources */,
 				C2D1E5271EB287E900DBBEFA /* Matrix.swift in Sources */,
@@ -1370,6 +1386,7 @@
 				C2D1E5A41EB28FEE00DBBEFA /* CKRecord+.swift in Sources */,
 				C2D1E6041EB292FC00DBBEFA /* SnappingLayoutDelegate.swift in Sources */,
 				C2D1E60A1EB2930000DBBEFA /* ParaboloidFlowLayout.swift in Sources */,
+				C267C6201F8C4D1400CF80F9 /* AnyRandomAccessCollection+.swift in Sources */,
 				C2D1E53A1EB287FC00DBBEFA /* Optional+.swift in Sources */,
 				C2D1E5361EB287FC00DBBEFA /* AnyIterator+.swift in Sources */,
 				C2D1E5211EB287E900DBBEFA /* Arbitrary.swift in Sources */,
@@ -1405,6 +1422,7 @@
 				C2D1E5B81EB2923300DBBEFA /* SymbolIcon.swift in Sources */,
 				C2D1E5A51EB28FEE00DBBEFA /* CKRecordID+.swift in Sources */,
 				C2B1506A1F2D1B8C004AF241 /* EnumeratedBidirectionalCollection.swift in Sources */,
+				C267C6231F8C4D4900CF80F9 /* AnyBidirectionalCollection+.swift in Sources */,
 				C2F224071F1092E00033C86B /* ReorderingTableGesture.swift in Sources */,
 				C204C8551F3E2148002A9BF0 /* TilingContainerView.swift in Sources */,
 			);
