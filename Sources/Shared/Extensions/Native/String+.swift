@@ -81,11 +81,10 @@ public extension String {
 
     @available(*, deprecated, message: "Prefer system format like autocapitalizationType")
     func capitalizedFirstWord(with locale: Locale?) -> String {
-        return self.range(of: " ").map {
-            self.substring(to: $0.lowerBound)
-                .capitalized(with: locale)
-                + self.substring(from: $0.lowerBound)
-            } ?? self
+        guard let range = self.range(of: " ") else { return self }
+        return self.substring(to: range.lowerBound)
+            .capitalized(with: locale)
+            + self.substring(from: range.lowerBound)
     }
 
     @available(*, deprecated, renamed: "capitalizedFirstWord(with:)")
@@ -115,7 +114,7 @@ public extension String {
     var hexUInt: UInt? {
         guard self.isValid(as: .hexadecimal) else { return nil }
         let scanner = Scanner(string: self)
-            .then { $0.scanLocation = 1 }
+            .then({ $0.scanLocation = 1 })
 
         guard let hex = scanner.scanHexUInt32() else { return nil }
         return UInt(hex)

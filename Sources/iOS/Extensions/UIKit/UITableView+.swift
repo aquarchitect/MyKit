@@ -13,13 +13,7 @@ import UIKit
 /// :nodoc:
 public extension UITableView {
 
-    var bottomedIndexPath: IndexPath {
-        let section = self.numberOfSections - 1
-        let row = self.numberOfRows(inSection: section)
-
-        return .init(row: row, section: section)
-    }
-
+    @available(*, deprecated)
     var estimatedNumberOfVisibleRows: Int {
         if self.estimatedRowHeight == 0 {
             return Int(self.bounds.height/self.rowHeight)
@@ -28,6 +22,7 @@ public extension UITableView {
         }
     }
 
+    @available(*, deprecated)
     var estimatedRangeOfVisibleRows: CountableRange<Int> {
         let lowerBound = self.indexPathsForVisibleRows?.first?.row ?? 0
         return lowerBound ..< (lowerBound + estimatedNumberOfVisibleRows)
@@ -78,5 +73,24 @@ public extension UITableView {
         }
 
         return IndexPath(row: index - count, section: section)
+    }
+}
+
+public extension UITableView {
+    
+    var firstIndexPath: IndexPath? {
+        guard let section = (0..<self.numberOfSections).first,
+            let row = (0..<self.numberOfRows(inSection: section)).first
+            else { return nil }
+        
+        return [section, row]
+    }
+    
+    var lastIndexPath: IndexPath? {
+        guard let section = (0..<self.numberOfSections).last,
+            let row = (0..<self.numberOfRows(inSection: section)).last
+            else { return nil }
+        
+        return [section, row]
     }
 }

@@ -6,6 +6,7 @@
 // Copyright (c) 2015 Hai Nguyen.
 // 
 
+#if !swift(>=4.0)
 /// :nodoc:
 public extension Dictionary {
 
@@ -27,3 +28,4 @@ public extension Dictionary {
         return result
     }
 }
+#endif

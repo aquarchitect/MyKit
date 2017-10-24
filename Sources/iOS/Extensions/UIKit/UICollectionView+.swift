@@ -24,6 +24,7 @@ public extension UICollectionView {
     ///
     /// The calculation uses `estimatedNumberOfVisibleElements` and only works
     /// for a simple flow layout and single section collection view.
+    @available(*, deprecated)
     var estimatedRangeOfVisibleItems: CountableRange<Int> {
         guard self.numberOfSections == 1,
             let flowLayout = self.collectionViewLayout as? UICollectionViewFlowLayout,
@@ -72,6 +73,25 @@ public extension UICollectionView {
             section += 1
         }
 
-        return IndexPath(row: index - count, section: section)
+        return [section, index - count]
+    }
+}
+
+public extension UICollectionView {
+ 
+    var firstIndexPath: IndexPath? {
+        guard let section = (0..<self.numberOfSections).first,
+            let item = (0..<self.numberOfItems(inSection: section)).first
+            else { return nil }
+        
+        return [section, item]
+    }
+    
+    var lastIndexPath: IndexPath? {
+        guard let section = (0..<self.numberOfSections).last,
+            let item = (0..<self.numberOfItems(inSection: section)).last
+            else { return nil }
+        
+        return [section, item]
     }
 }

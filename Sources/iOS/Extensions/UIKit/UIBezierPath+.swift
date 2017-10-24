@@ -34,13 +34,14 @@ public extension UIBezierPath {
 public extension UIBezierPath {
 
     var outlineStroke: UIBezierPath {
-        return CGPath(__byStroking: self.cgPath,
-                      transform: nil,
-                      lineWidth: self.lineWidth,
-                      lineCap: self.lineCapStyle,
-                      lineJoin: self.lineJoinStyle,
-                      miterLimit: self.miterLimit)
-            .flatMap(UIBezierPath.init(cgPath:))
-            ?? UIBezierPath()
+        return CGPath(
+            __byStroking: self.cgPath,
+            transform: nil,
+            lineWidth: self.lineWidth,
+            lineCap: self.lineCapStyle,
+            lineJoin: self.lineJoinStyle,
+            miterLimit: self.miterLimit)
+        .flatMap(UIBezierPath.init(cgPath:))
+        ?? UIBezierPath()
     }
 }

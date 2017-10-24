@@ -41,8 +41,8 @@ public extension UICollectionViewFlowLayout {
         return zip(
             self.collectionView,
             self.collectionView?.delegate as? UICollectionViewDelegateFlowLayout
-            ).flatMap {
-                $1.collectionView?($0, layout: self, referenceSizeForHeaderInSection: index)
+        ).flatMap {
+            $1.collectionView?($0, layout: self, referenceSizeForHeaderInSection: index)
         }
     }
 
@@ -50,8 +50,8 @@ public extension UICollectionViewFlowLayout {
         return zip(
             self.collectionView,
             self.collectionView?.delegate as? UICollectionViewDelegateFlowLayout
-            ).flatMap {
-                $1.collectionView?($0, layout: self, referenceSizeForFooterInSection: index)
+        ).flatMap {
+            $1.collectionView?($0, layout: self, referenceSizeForFooterInSection: index)
         }
     }
 }
@@ -63,6 +63,7 @@ public extension UICollectionViewFlowLayout {
     /// section insets, spacing, and scroll direction.
     ///
     /// - Warning: the calculation is only capable of simple flow layout.
+    @available(*, deprecated)
     var estimatedNumberOfVisibleElements: Int {
         guard let collectionView = self.collectionView else { return 0 }
 
