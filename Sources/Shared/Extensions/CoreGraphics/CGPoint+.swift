@@ -18,4 +18,11 @@ public extension CGPoint {
     func convertToCoordinate(of point: CGPoint) -> CGPoint {
         return CGPoint(x: self.x - point.x, y: self.y - point.y)
     }
+    
+    func center(with point: CGPoint) -> CGPoint {
+        return CGPoint(
+            x: (self.x + point.x)/2,
+            y: (self.y + point.y)/2
+        )
+    }
 }
