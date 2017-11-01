@@ -10,49 +10,52 @@ import UIKit
 
 public extension UICollectionViewFlowLayout {
 
-    func delegateInsetForSection(at index: Int) -> UIEdgeInsets? {
-        return zip(
-            self.collectionView,
-            self.collectionView?.delegate as? UICollectionViewDelegateFlowLayout
-        ).flatMap {
-            $1.collectionView?($0, layout: self, insetForSectionAt: index)
-        }
+    func delegateInsetForSection(at section: Int) -> UIEdgeInsets? {
+        guard let collectionView = self.collectionView else { return nil }
+        
+        return collectionView.delegate
+            .flatMap({ $0 as? UICollectionViewDelegateFlowLayout })?
+            .collectionView?(collectionView, layout: self, insetForSectionAt: section)
     }
 
-    func delegateMinimumLineSpacingForSection(at index: Int) -> CGFloat? {
-        return zip(
-            self.collectionView,
-            self.collectionView?.delegate as? UICollectionViewDelegateFlowLayout
-        ).flatMap {
-            $1.collectionView?($0, layout: self, minimumLineSpacingForSectionAt: index)
-        }
+    func delegateMinimumLineSpacingForSection(at section: Int) -> CGFloat? {
+        guard let collectionView = self.collectionView else { return nil }
+        
+        return collectionView.delegate
+            .flatMap({ $0 as? UICollectionViewDelegateFlowLayout })?
+            .collectionView?(collectionView, layout: self, minimumLineSpacingForSectionAt: section)
     }
 
-    func delegateMinimumInteritemSpacingForSection(at index: Int) -> CGFloat? {
-        return zip(
-            self.collectionView,
-            self.collectionView?.delegate as? UICollectionViewDelegateFlowLayout
-        ).flatMap {
-            $1.collectionView?($0, layout: self, minimumInteritemSpacingForSectionAt: index)
-        }
+    func delegateMinimumInteritemSpacingForSection(at section: Int) -> CGFloat? {
+        guard let collectionView = self.collectionView else { return nil }
+        
+        return collectionView.delegate
+            .flatMap({ $0 as? UICollectionViewDelegateFlowLayout })?
+            .collectionView?(collectionView, layout: self, minimumInteritemSpacingForSectionAt: section)
     }
 
-    func delegateHeaderSizeInSection(_ index: Int) -> CGSize? {
-        return zip(
-            self.collectionView,
-            self.collectionView?.delegate as? UICollectionViewDelegateFlowLayout
-        ).flatMap {
-            $1.collectionView?($0, layout: self, referenceSizeForHeaderInSection: index)
-        }
+    func delegateReferenceSizeForHeader(in section: Int) -> CGSize? {
+        guard let collectionView = self.collectionView else { return nil }
+        
+        return collectionView.delegate
+            .flatMap({ $0 as? UICollectionViewDelegateFlowLayout })?
+            .collectionView?(collectionView, layout: self, referenceSizeForHeaderInSection: section)
     }
 
-    func delegateFooterSizeInSection(_ index: Int) -> CGSize? {
-        return zip(
-            self.collectionView,
-            self.collectionView?.delegate as? UICollectionViewDelegateFlowLayout
-        ).flatMap {
-            $1.collectionView?($0, layout: self, referenceSizeForFooterInSection: index)
-        }
+    func delegateReferenceSizeForFooter(in section: Int) -> CGSize? {
+        guard let collectionView = self.collectionView else { return nil }
+        
+        return collectionView.delegate
+            .flatMap({ $0 as? UICollectionViewDelegateFlowLayout })?
+            .collectionView?(collectionView, layout: self, referenceSizeForFooterInSection: section)
+    }
+    
+    func delegateSizeForCell(at indexPath: IndexPath) -> CGSize? {
+        guard let collectionView = self.collectionView else { return nil }
+        
+        return collectionView.delegate
+            .flatMap({ $0 as? UICollectionViewDelegateFlowLayout })?
+            .collectionView?(collectionView, layout: self, sizeForItemAt: indexPath)
     }
 }
 
