@@ -13,4 +13,8 @@ public extension CGSize {
     init(sideLength: CGFloat) {
         self.init(width: sideLength, height: sideLength)
     }
+    
+    func flipping() -> CGSize {
+        return CGSize(width: self.height, height: self.width)
+    }
 }
